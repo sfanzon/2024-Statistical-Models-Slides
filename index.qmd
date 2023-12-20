@@ -25,21 +25,65 @@ date-format: "D MMM YYYY"
 
 # Welcome 
 
-Using [@pressley]
 
-## Welcome 
+
+These are the Slides of the module **Statistical Models 551305** for T2 2023/24 at the University of Hull. 
+If you have any question or find any typo, please email me at
+
+
+::: {.content-visible when-format="html"}
+<div style="text-align: center;">
+**[S.Fanzon@hull.ac.uk](mailto: S.Fanzon@hull.ac.uk)**
+</div>
+:::
+
+
+Up to date information about the module will be published on the University of Hull **Canvas Website**
+
+
+::: {.content-visible when-format="html"}
+<div style="text-align: center;">
+**[canvas.hull.ac.uk/courses/70065](https://canvas.hull.ac.uk/courses/70065)**
+</div>
+:::
+
+
+and on the **Course Webpage** hosted on my website
+
+
+::: {.content-visible when-format="html"}
+<div style="text-align: center;">
+**[silviofanzon.com/blog/2023/Statistical-Models/](https://www.silviofanzon.com/blog/2023/Statistical-Models/)**
+</div>
+:::
+
+
+
+
+
+# Lectures list
+
+
+There are 11 lectures in this module. Topics and links to the slides can be found below.
+
 
 
 <a href="slides/lecture_1.qmd">Lecture 1 Slides</a>
 
 
 
-# References
 
 
+# Readings
+
+**Main textbooks**:
+
+- Statistics theory: The book by Bingham and Fry [@bingham-fry]
+- Statistics in R: The book by Fry and Burke [@fry-burke]
+
+**Reference books**:
+
+- Probability & Statistics: The book by Casella and Berger [@casella-berger]
+- Manual of R: The book by Dalgaard [@dalgaard]
 
 
-
-# License 
-
-Click <a href="license.html">here</a>

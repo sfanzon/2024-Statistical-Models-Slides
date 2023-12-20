@@ -19,11 +19,13 @@ website:
     contents:
       - href: index.qmd
         text: Homepage
-      - href: slides/lecture_1.qmd
-        text: Lecture 1
+      - section: "Slides"
+        contents:
+          - href: slides/lecture_1.qmd
+            text: Lecture 1
       - href: license.qmd
         text: License
-      - href: references.qmd
+      - href: /#references-1
         text: References
   page-footer:
     center: 
