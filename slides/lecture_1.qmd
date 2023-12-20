@@ -1,0 +1,32 @@
+---
+title: "Statistical Models"
+subtitle: "Lecture 1"
+author: 
+    - name: "Dr. Silvio Fanzon"
+      id: sf
+      email: "S.Fanzon@hull.ac.uk"
+      url: "https://www.silviofanzon.com"
+    - name: "Dr. John Fry"
+      id: jf
+      email: "J.M.Fry@hull.ac.uk"
+      url: "https://www.hull.ac.uk/staff-directory/john-fry"  
+      institute: "University of Hull"    
+---
+
+## Today's plan
+
+
+### Test
+
+<br/>
+
+::: {.incremental}
+1. What is R? How can it ease the burden of repeated reporting?
+2. Basic functions for manipulating data
+3. Using R effectively
+4. More data manipulation
+5. Visualizing data
+6. A peek at advanced topics
+:::
+
+

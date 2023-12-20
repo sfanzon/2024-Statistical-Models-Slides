@@ -1,0 +1,52 @@
+project:
+  title: "Statistical Models"
+  type: website
+  output-dir: docs
+
+
+website:
+  
+  favicon: favicon.png
+  search: false
+  navbar:
+    search: false
+    pinned: false
+    background: black
+    foreground: "#E8E8E8"
+  sidebar:
+    style: "floating"
+    search: false
+    contents:
+      - href: index.qmd
+        text: Homepage
+      - href: slides/lecture_1.qmd
+        text: Lecture 1
+      - href: license.qmd
+        text: License
+      - href: references.qmd
+        text: References
+  page-footer:
+    center: 
+      - text: "License"
+        href: license.qmd
+      - text: "Contact" 
+        href: https://www.silviofanzon.com/contact
+
+format:
+  html:
+    toc: true
+    toc-title: On this page
+    toc-location: right
+    code-overflow: wrap
+    execute:
+      freeze: auto
+    theme:
+      light: [flatly, theme-custom.scss]
+      dark: [darkly]
+    fig-align: center
+    fig-cap-location: bottom
+    link-external-icon: true
+
+
+
+bibliography: teaching.bib

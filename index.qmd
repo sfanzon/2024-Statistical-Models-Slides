@@ -1,0 +1,45 @@
+---
+title: "Statistical Models"
+subtitle: "Lecture Slides"
+author: 
+  - name: "Dr Silvio Fanzon"
+    affiliations: 
+      - name: "University of Hull"
+        department: "Department of Mathematics"
+        state: "United Kingdom"
+    email: "S.Fanzon@hull.ac.uk"
+    url: "https://www.silviofanzon.com"
+  - name: "Dr John Fry"
+    affiliations: 
+      - name: "University of Hull"
+        department: "Department of Mathematics"
+        state: "United Kingdom"
+    email: "J.M.Fry@hull.ac.uk"
+    url: "https://www.hull.ac.uk/staff-directory/john-fry"
+date: 2024-01-15 
+# To enter today's date replace by today
+# Enter date formatted as dd MM yyyy
+date-format: "D MMM YYYY"
+---
+
+
+# Welcome 
+
+Using [@pressley]
+
+## Welcome 
+
+
+<a href="slides/lecture_1.qmd">Lecture 1 Slides</a>
+
+
+
+# References
+
+
+
+
+
+# License 
+
+Click <a href="license.html">here</a>
