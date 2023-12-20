@@ -4,6 +4,11 @@ project:
   output-dir: docs
 
 
+
+bibliography: teaching.bib
+csl: diabetologia.csl
+
+
 website:
   
   favicon: favicon.png
@@ -25,8 +30,6 @@ website:
             text: Lecture 1
       - href: license.qmd
         text: License
-      - href: /#references-1
-        text: References
   page-footer:
     center: 
       - text: "License"
@@ -51,4 +54,3 @@ format:
 
 
 
-bibliography: teaching.bib
