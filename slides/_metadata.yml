@@ -1,13 +1,13 @@
 
 format: 
     revealjs:
-      footer: "[Homepage](/index.html) &nbsp;&nbsp;&nbsp;&nbsp; [License](license.html) &nbsp;&nbsp;&nbsp;&nbsp; [Contact](https://www.silviofanzon.com/contact)"
-      theme: moon
+      footer: "[Homepage](/index.html) &nbsp;&nbsp;&nbsp;&nbsp; [License](/license.html) &nbsp;&nbsp;&nbsp;&nbsp; [Contact](https://www.silviofanzon.com/contact)"
+      theme: [default, custom-theme-slides.scss]
       preview-links: auto
       toc: false
       number-sections: true
       slide-number: true
-      transition: fade
+      transition: slide
       touch: true
       keyboard: true
 search: false

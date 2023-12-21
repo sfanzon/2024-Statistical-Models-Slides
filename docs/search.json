@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "References"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Statistical Models",
-    "section": "",
-    "text": "Welcome\nThese are the Slides of the module Statistical Models 551305 for T2 2023/24 at the University of Hull. If you have any question or find any typo, please email me at\n\nS.Fanzon@hull.ac.uk\n\nUp to date information about the module will be published on the University of Hull Canvas Website\n\ncanvas.hull.ac.uk/courses/70065\n\nand on the Course Webpage hosted on my website\n\nsilviofanzon.com/blog/2023/Statistical-Models/\n\n\n\nLectures list\nThere are 11 lectures in this module. Topics and links to the slides can be found below.\nLecture 1 Slides\n\n\nReadings\nMain textbooks:\n\nStatistics theory: The book by Bingham and Fry [1]\nStatistics in R: The book by Fry and Burke [2]\n\nReference books:\n\nProbability & Statistics: The book by Casella and Berger [3]\nManual of R: The book by Dalgaard [4]\n\n\n\n\n\n\nReferences\n\n1. Bingham, Nicholas H., Fry, John (2010) Regression, linear models in statistics. Springer\n\n\n2. Fry, John, Burke, Matt (2022) Quantitative methods in finance using R. Open University Press\n\n\n3. Casella, George, Berger, Roger L. (2002) Statistical inference, second edition. Brooks/Cole\n\n\n4. Dalgaard P (2008) Introductory statistics with R, Second Edition. Springer"
-  },
-  {
     "objectID": "license.html",
     "href": "license.html",
     "title": "License",
@@ -33,5 +19,12 @@
     "title": "License",
     "section": "",
     "text": "For attribution, please cite this work as:\n\nFanzon, Silvio and Fry, John (2024). Lecture Slides on Statistical Models.\nhttps://www.silviofanzon.com/2024-Statistical-Models-Slides/\n\nBibTex citation:\n@electronic{Fanzon-Fry-Statistical-Models-2024,\n    author = {Fanzon, Silvio and Fry, John},\n    title = {Lecture Slides on Statistical Models},\n    url = {https://www.silviofanzon.com/2024-Statistical-Models-Slides/},\n    year = {2024}}"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistical Models",
+    "section": "",
+    "text": "Welcome\nThese are the Slides of the module Statistical Models 551305 for T2 2023/24 at the University of Hull. If you have any question or find any typo, please email me at\n\nS.Fanzon@hull.ac.uk\n\nUp to date information about the module will be published on the University of Hull Canvas Website\n\ncanvas.hull.ac.uk/courses/70065\n\nand on the Course Webpage hosted on my website\n\nsilviofanzon.com/blog/2023/Statistical-Models/\n\n\n\nSlides\nThere are 11 lectures in this module. Topics and links to the slides can be found below.\n\n\n\n\n\n\n\nSlides\nTopics\n\n\n\n\nLecture 1\nProbability recap. Moment generating functions.\n\n\nLecture 2\nTBA.\n\n\n\n\n\nReadings\nMain textbooks:\n\nStatistics theory: The book by Bingham and Fry [1]\nStatistics in R: The book by Fry and Burke [2]\n\nReference books:\n\nProbability & Statistics: The book by Casella and Berger [3]\nManual of R: The book by Dalgaard [4]\n\n\n\n\n\n\nReferences\n\n[1] Bingham, Nicholas H., Fry, John, Regression, linear models in statistics, Springer, 2010.\n\n\n[2] Fry, John, Burke, Matt, Quantitative methods in finance using R, Open University Press, 2022.\n\n\n[3] Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.\n\n\n[4] Dalgaard, Peter, Introductory statistics with R, Second Edition, Springer, 2008."
   }
 ]

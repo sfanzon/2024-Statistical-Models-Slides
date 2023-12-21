@@ -6,7 +6,7 @@ project:
 
 
 bibliography: teaching.bib
-csl: diabetologia.csl
+csl: elsevier-with-titles.csl
 
 
 website:
