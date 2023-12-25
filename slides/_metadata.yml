@@ -5,11 +5,12 @@ format:
       theme: [default, custom-theme-slides.scss]
       preview-links: auto
       toc: false
-      number-sections: true
+      number-sections: false
       slide-number: true
       transition: slide
       touch: true
       keyboard: true
+
 search: false
 favicon: images/favicon.png
 bibliography: teaching.bib

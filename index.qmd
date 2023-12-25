@@ -1,21 +1,21 @@
 ---
-title: "Statistical Models"
-subtitle: "Lecture Slides"
+title: Statistical Models
+subtitle: Lecture Slides
 author: 
-  - name: "Dr Silvio Fanzon"
+  - name: Dr Silvio Fanzon
     affiliations: 
-      - name: "University of Hull"
-        department: "Department of Mathematics"
-        state: "United Kingdom"
-    email: "S.Fanzon@hull.ac.uk"
-    url: "https://www.silviofanzon.com"
-  - name: "Dr John Fry"
+      - name: University of Hull
+        department: Department of Mathematics
+        state: United Kingdom
+    email: S.Fanzon@hull.ac.uk
+    url: https://www.silviofanzon.com
+  - name: Dr John Fry
     affiliations: 
-      - name: "University of Hull"
-        department: "Department of Mathematics"
-        state: "United Kingdom"
-    email: "J.M.Fry@hull.ac.uk"
-    url: "https://www.hull.ac.uk/staff-directory/john-fry"
+      - name: University of Hull
+        department: Department of Mathematics
+        state: United Kingdom
+    email: J.M.Fry@hull.ac.uk
+    url: https://www.hull.ac.uk/staff-directory/john-fry
 date: 2024-01-15 
 # To enter today's date replace by today
 # Enter date formatted as dd MM yyyy
@@ -67,10 +67,10 @@ and on the **Course Webpage** hosted on my website
 There are 11 lectures in this module. Topics and links to the slides can be found below.
 
 
-| **Slides** | **Topics** | 
+| **Slides** | **Title** | 
 |:------      |:------     |
-| <a href="slides/lecture_1.qmd">Lecture 1</a>   | Probability recap. Moment generating functions.     | 
-| <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA.     | 
+| <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
+| <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA     | 
 : {tbl-colwidths="[20,80]"}
 
 
