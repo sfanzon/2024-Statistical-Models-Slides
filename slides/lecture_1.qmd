@@ -32,35 +32,109 @@ author:
 
 ## Contact details
 
-- Lecturer: Dr. Silvio Fanzon. Call me:
+- **Lecturer:** Dr. Silvio Fanzon
+- **Call me:**
   * Silvio
-  * Dr Fanzon
-
-- Email: S.Fanzon@hull.ac.uk
-- Office: Room 104a, Larkin Building
-- Office hours: Wednesday 12:00-13:00
-- Meetings in my office or send me an Email
+  * Dr. Fanzon
+- **Email:** S.Fanzon@hull.ac.uk
+- **Office:** Room 104a, Larkin Building
+- **Office hours:** Wednesday 12:00-13:00
+- **Meetings**: in my office or send me an Email
 
 
 
 
 ## References
+### Main textbooks 
 
-Lecture notes are self-contained and based on books
+These lecture notes are self-contained and based on books
 
-- Bingham, N. H. and Fry, J. M. (2010) <br> *Regression: Linear models in statistics.* <br> Springer Undergraduate Mathematics Series
+- [@bingham-fry] Bingham, N. H. and Fry, J. M. (2010) <br> *Regression: Linear models in statistics.* <br> Springer Undergraduate Mathematics Series
 
-- Fry, J. M. and Burke, M. (2022) <br>*Quantitative methods in finance using R.* <br>Open University Press
-
-Other References
-
-- ac
-
-- ad
+- [@fry-burke] Fry, J. M. and Burke, M. (2022) <br>*Quantitative methods in finance using R.* <br>Open University Press
 
 
+## References
+### Secondary References 
 
-## Overview of the module - Part I
+::: {.column width="65%"}
+- [@casella-berger] Casella, G. and Berger R. L. (2002)<br>
+*Statistical inference.*
+<br> Second Edition, Brooks/Cole
+
+
+- [@dalgaard] Dalgaard, P. (2008)
+<br> *Introductory statistics with R.*
+<br> Second Edition, Springer   
+:::
+
+::: {.column width="30%"}
+**Probability and statistics manual**
+
+<br>
+
+**R manual**
+:::
+
+
+
+
+
+## Overview of the module
+
+Module comprises two parts:
+
+- **Part I** Mathematical statistics
+
+- **Parti II** Applied statistics
+
+
+
+## Overview of the module
+### Part I -  Mathematical statistics
+
+With a continuous probability density function $f(\cdot)$ the mean and variance can be calculated as
+
+\begin{gather*}
+\mbox{Mean}=E[X]=\int_{-\infty}^{\infty}x \, f(x)dx \\
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+$$
+E[X^2]=\int_{-\infty}^{\infty}x^2f(x)dx
+$$
+$$
+\mbox{Variance}=E[X^2]-(E[X])^2
+$$
+
+
+
+## Overview of the module
+### Part II
+
+[important note]{.alert}
+
+::: {#thm-line}
+
+## Line
+
+The equation of any straight line, called a linear equation, can be written as:
+
+$$
+y = mx + b
+$$
+:::
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.proof}
+The solution.
+:::
+
+## References
 
 
 

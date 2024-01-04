@@ -53,7 +53,7 @@ and on the **Course Webpage** hosted on my website
 
 ::: {.content-visible when-format="html"}
 <div style="text-align: center;">
-**[silviofanzon.com/blog/2023/Statistical-Models/](https://www.silviofanzon.com/blog/2023/Statistical-Models/)**
+**[silviofanzon.com/blog/2024/Statistical-Models/](https://www.silviofanzon.com/blog/2023/Statistical-Models/)**
 </div>
 :::
 
@@ -64,14 +64,14 @@ and on the **Course Webpage** hosted on my website
 # Slides
 
 
-There are 11 lectures in this module. Topics and links to the slides can be found below.
+There are 11 lectures in this module. Topics and links to the slides are below.
 
 
 | **Slides** | **Title** | 
 |:------      |:------     |
 | <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
 | <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA     | 
-: {tbl-colwidths="[20,80]"}
+: {tbl-colwidths="[25,75]"}
 
 
 
@@ -79,12 +79,13 @@ There are 11 lectures in this module. Topics and links to the slides can be foun
 
 # Readings
 
-**Main textbooks**:
+**Main textbooks**: These lecture slides are self-contained and based on
 
 - Statistics theory: The book by Bingham and Fry [@bingham-fry]
 - Statistics in R: The book by Fry and Burke [@fry-burke]
 
-**Reference books**:
+**Reference books**: In addition we reccommend the following
+
 
 - Probability & Statistics: The book by Casella and Berger [@casella-berger]
 - Manual of R: The book by Dalgaard [@dalgaard]

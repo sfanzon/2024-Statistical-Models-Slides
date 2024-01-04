@@ -28,6 +28,8 @@ website:
         contents:
           - href: slides/lecture_1.qmd
             text: Lecture 1
+          - href: slides/lecture_2.qmd
+            text: Lecture 2
       - href: license.qmd
         text: License
   page-footer:

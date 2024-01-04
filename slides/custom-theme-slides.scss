@@ -4,29 +4,59 @@
 $link-color: #cc0164;
 $link-decoration: none;
 $presentation-heading-color: #cc0164;
-
-
 $right-arrow: "\2192"; // Unicode character for right arrow
-
 
 
 /*-- scss:rules --*/
 
 
+//.reveal a {
+  //line-height: 1em;
+//}
+
+.reveal p {
+  // font-weight: 300;
+  font-weight: lighter;
+  margin-top: 0.6em;
+}
+
+
+// Headers
+
+.reveal h2 {
+  // font-weight: 350;
+  //font-weight: lighter;
+  font-size: 1.4em;
+}
+
+.reveal h3 {
+  color: black;
+  //font-style: italic;
+  // font-weight: 350;
+  //font-weight: lighter;
+  font-size: 0.95em;
+}
+
+.reveal h4 {
+  color: black;
+  // font-weight: 350;
+  font-weight: normal;
+  margin-top: 1.25em;
+}
 
 // Title slide
 
 #title-slide {
   
     .title {
-      font-size: 2.1em;
+      font-size: 2.5em;
       // font-weight: 350;
       font-weight: lighter;
     }
   
     .subtitle {
       color: black;
-      font-size: 1.2em;
+      font-size: 1.8em;
       margin-top: 0.5em;
       font-weight: lighter;
     }
@@ -59,6 +89,13 @@ $right-arrow: "\2192"; // Unicode character for right arrow
   
   }
   
+
+ // alert
+
+ .alert {
+  color: var(--col, #cc0164);
+}
+
 
   // Slide number   
   

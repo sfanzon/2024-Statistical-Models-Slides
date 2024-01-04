@@ -7,7 +7,7 @@ format:
       toc: false
       number-sections: false
       slide-number: true
-      transition: slide
+      transition: none
       touch: true
       keyboard: true
 
