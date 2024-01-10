@@ -85,10 +85,12 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 - Fry and Burke [@fry-burke]
 
 
-::: {layout-ncol=2}
-[![](images/bingham_fry.png){width=60%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+::: {.column width="45%"}
+[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+:::
 
-[![](images/fry_burke.png){width=61.4%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+::: {.column width="45%"}
+[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
 :::
 
 
