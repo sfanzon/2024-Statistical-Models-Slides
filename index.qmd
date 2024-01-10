@@ -70,7 +70,16 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | **Slides** | **Title** | 
 |:------      |:------     |
 | <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
-| <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA     | 
+| <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA     |
+| <a href="slides/lecture_3.qmd">Lecture 3</a>   | TBA     |
+| <a href="slides/lecture_4.qmd">Lecture 4</a>   | TBA     |
+| <a href="slides/lecture_5.qmd">Lecture 5</a>   | TBA     |
+| <a href="slides/lecture_6.qmd">Lecture 6</a>   | TBA     |
+| <a href="slides/lecture_7.qmd">Lecture 7</a>   | TBA     |
+| <a href="slides/lecture_8.qmd">Lecture 8</a>   | TBA     |
+| <a href="slides/lecture_9.qmd">Lecture 9</a>   | TBA     |
+| <a href="slides/lecture_10.qmd">Lecture 10</a> | TBA     |
+| <a href="slides/lecture_11.qmd">Lecture 11</a> | TBA     |
 : {tbl-colwidths="[30,70]"}
 
 
@@ -94,11 +103,11 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 :::
 
 
-**Reference books**: In addition we reccommend the following readings
+**Secondary References**: In addition we reccomend the following
 
 
-- Probability & Statistics Manual: Casella and Berger [@casella-berger]
-- Easier Probability & Statistics Manual: DeGroot and Schervish [@degroot]
-- Manual of R: Dalgaard [@dalgaard]
+- **Probability & Statistics Manual**: Casella and Berger [@casella-berger]
+- **Easier Probability & Statistics Manual**: DeGroot and Schervish [@degroot]
+- **Manual of R**: Dalgaard [@dalgaard]
 
 
