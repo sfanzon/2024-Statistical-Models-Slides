@@ -69,7 +69,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=90%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 
 :::
 
@@ -84,7 +84,7 @@ Slides are self-contained and based on the book
 ::: {.column width="61%"}
 <br>
 
-And also on the book
+.. and also on the book
 
 - [@fry-burke] Fry, J. M. and Burke, M. 
 <br>*Quantitative methods in finance using R.* 
@@ -95,7 +95,7 @@ And also on the book
 
 ::: {.column width="38%"}
 
-[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+[![](images/fry_burke.png){width=90%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
 
 :::
 
@@ -279,7 +279,6 @@ Module has **11 Lectures**, divided into two parts:
 
 ## Motivating regression
 
-
 **Basic question in regression:**
 
 - What happens to $Y$ as $X$ increases?
@@ -397,14 +396,6 @@ abline(
 
 
 
-## Test
-
-::: {#fig-elephant}
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M7lc1UVf-VE"></iframe>
-
-Elephant
-:::
 
 
 
