@@ -71,7 +71,7 @@ There are 11 lectures in this module. Topics and links to the slides are below.
 |:------      |:------     |
 | <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
 | <a href="slides/lecture_2.qmd">Lecture 2</a>   | TBA     | 
-: {tbl-colwidths="[25,75]"}
+: {tbl-colwidths="[30,70]"}
 
 
 
