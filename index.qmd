@@ -86,7 +86,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 
 
 ::: {.column width="45%"}
-[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=97.9%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 :::
 
 ::: {.column width="45%"}
