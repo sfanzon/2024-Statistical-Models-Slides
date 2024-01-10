@@ -64,7 +64,7 @@ and on the **Course Webpage** hosted on my website
 # Slides
 
 
-There are 11 lectures in this module. Topics and links to the slides are below.
+There are 11 lectures in this module. Links to the slides and lecture titles are below.
 
 
 | **Slides** | **Title** | 
@@ -79,16 +79,16 @@ There are 11 lectures in this module. Topics and links to the slides are below.
 
 # Readings
 
-**Main textbooks**: These lecture notes are self-contained and based on the books
+**Main textbooks**: These slides are self-contained and based on the books
 
 - Bingham and Fry [@bingham-fry]
 - Fry and Burke [@fry-burke]
 
 
 ::: {layout-ncol=2}
-[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=60%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 
-[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+[![](images/fry_burke.png){width=61.4%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
 :::
 
 

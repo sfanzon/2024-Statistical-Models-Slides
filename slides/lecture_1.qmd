@@ -53,14 +53,52 @@ author:
 ## References
 ### Main textbooks 
 
-These lecture notes are self-contained and based on the books
+
+::: {.column width="61%"}
+
+<br>
+
+Slides are self-contained and based on the book
 
 - [@bingham-fry] Bingham, N. H. and Fry, J. M. 
-<br> *Regression: Linear models in statistics.* <br> Springer Undergraduate Mathematics Series, 2010
+<br> *Regression: Linear models in statistics.* <br> Springer, 2010
+
+
+:::
+
+
+::: {.column width="38%"}
+
+[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+
+:::
+
+
+
+
+
+## References
+### Main textbooks 
+
+
+::: {.column width="61%"}
+<br>
+
+And also on the book
 
 - [@fry-burke] Fry, J. M. and Burke, M. 
 <br>*Quantitative methods in finance using R.* 
 <br>Open University Press, 2022
+
+:::
+
+
+::: {.column width="38%"}
+
+[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+
+:::
+
 
 
 
@@ -357,6 +395,16 @@ abline(
 ```
 
 
+
+
+## Test
+
+::: {#fig-elephant}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M7lc1UVf-VE"></iframe>
+
+Elephant
+:::
 
 
 
