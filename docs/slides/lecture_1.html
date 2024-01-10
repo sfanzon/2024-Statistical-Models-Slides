@@ -388,6 +388,11 @@
 <li>Probability background</li>
 <li>Statistics background</li>
 </ol>
+</section></section>
+<section>
+<section id="part-1-module-info" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>Module info</h1>
+
 </section>
 <section id="contact-details" class="slide level2">
 <h2>Contact details</h2>
@@ -407,77 +412,161 @@
 <section id="references" class="slide level2">
 <h2>References</h2>
 <h3 id="main-textbooks">Main textbooks</h3>
-<p>These lecture notes are self-contained and based on books</p>
+<p>These lecture notes are self-contained and based on the books</p>
 <ul>
-<li><p><span class="citation" data-cites="bingham-fry">[<a href="#/references-2" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. (2010) <br> <em>Regression: Linear models in statistics.</em> <br> Springer Undergraduate Mathematics Series</p></li>
-<li><p><span class="citation" data-cites="fry-burke">[<a href="#/references-2" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. (2022) <br><em>Quantitative methods in finance using R.</em> <br>Open University Press</p></li>
+<li><p><span class="citation" data-cites="bingham-fry">[<a href="#/references-2" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer Undergraduate Mathematics Series, 2010</p></li>
+<li><p><span class="citation" data-cites="fry-burke">[<a href="#/references-2" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</p></li>
 </ul>
 </section>
 <section id="references-1" class="slide level2">
 <h2>References</h2>
 <h3 id="secondary-references">Secondary References</h3>
-<div class="column" style="width:65%;">
+<div class="column" style="width:69%;">
 <ul>
-<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-2" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. (2002)<br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole</p></li>
-<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-2" role="doc-biblioref" onclick="">4</a>]</span> Dalgaard, P. (2008) <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer<br>
-</p></li>
+<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-2" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
+<li><p><span class="citation" data-cites="degroot">[<a href="#/references-2" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
+<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-2" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
 </ul>
 </div>
 <div class="column" style="width:30%;">
-<p><strong>Probability and statistics manual</strong></p>
-<p><br></p>
+<p><strong>Probability &amp; Statistics manual</strong></p>
+<p><strong>Easier Probability &amp; Statistics manual</strong></p>
 <p><strong>R manual</strong></p>
 </div>
 </section>
+<section id="the-nature-of-statistics" class="slide level2">
+<h2>The nature of Statistics</h2>
+<h3 id="statistics-is-a-mathematical-subject">Statistics is a mathematical subject</h3>
+<ul>
+<li><p>Maths skills will give you a head start</p></li>
+<li><p>There are other occasions where common sense and <em>detective skills</em> can be more important</p></li>
+<li><p>Provides an early example of mathematics working in concert with the available computation</p></li>
+</ul>
+</section>
+<section id="the-nature-of-statistics-1" class="slide level2">
+<h2>The nature of Statistics</h2>
+<h3 id="we-will-use-a-combination-of-hand-calculation-and-software">We will use a combination of hand calculation and software</h3>
+<ul>
+<li>Recognises that you are maths students</li>
+<li>Software (R) is really useful, particularly for dissertations</li>
+<li>Please bring your laptop into class</li>
+<li>Download R onto your laptop</li>
+</ul>
+</section>
 <section id="overview-of-the-module" class="slide level2">
 <h2>Overview of the module</h2>
-<p>Module comprises two parts:</p>
+<p>Module has <strong>11 Lectures</strong>, divided into two parts:</p>
 <ul>
-<li><p><strong>Part I</strong> Mathematical statistics</p></li>
-<li><p><strong>Parti II</strong> Applied statistics</p></li>
+<li><p><strong>Part I</strong> - Mathematical statistics</p></li>
+<li><p><strong>Part II</strong> - Applied statistics</p></li>
 </ul>
 </section>
 <section id="overview-of-the-module-1" class="slide level2">
 <h2>Overview of the module</h2>
 <h3 id="part-i---mathematical-statistics">Part I - Mathematical statistics</h3>
-<p>With a continuous probability density function <span class="math inline">\(f(\cdot)\)</span> the mean and variance can be calculated as</p>
-<p><span class="math display">\[\begin{gather*}
-\mbox{Mean}=E[X]=\int_{-\infty}^{\infty}x \, f(x)dx \\
-a_1=b_1+c_1\\
-a_2=b_2+c_2-d_2+e_2
-\end{gather*}\]</span> <span class="math display">\[
-E[X^2]=\int_{-\infty}^{\infty}x^2f(x)dx
-\]</span> <span class="math display">\[
-\mbox{Variance}=E[X^2]-(E[X])^2
-\]</span></p>
+<ol type="1">
+<li>Introduction to statistics</li>
+<li>Normal distribution family and one-sample hypothesis tests</li>
+<li>Two-sample hypothesis tests</li>
+<li>The chi-squared test</li>
+<li>Non-parametric statistics</li>
+<li>The maths of regression</li>
+</ol>
 </section>
 <section id="overview-of-the-module-2" class="slide level2">
 <h2>Overview of the module</h2>
-<h3 id="part-ii">Part II</h3>
-<p><span class="alert">important note</span></p>
-<div id="thm-line" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1 (Line) </strong></span>The equation of any straight line, called a linear equation, can be written as:</p>
-<p><span class="math display">\[
-y = mx + b
-\]</span></p>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
-</div>
-</div>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>The solution.</p>
-</div>
+<h3 id="part-ii---applied-statistics">Part II - Applied statistics</h3>
+<ol start="7" type="1">
+<li>An introduction to practical regression</li>
+<li>The extra sum of squares principle and regression modelling assumptions</li>
+<li>Violations of regression assumptions – Autocorrelation</li>
+<li>Violation of regression assumptions – Multicollinearity</li>
+<li>Dummy variable regression models</li>
+</ol>
+</section></section>
+<section>
+<section id="part-2-motivation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Motivation</h1>
+
 </section>
+<section id="simple-but-useful-questions" class="slide level2 smaller">
+<h2>Simple but useful questions</h2>
+<div class="column" style="width:48%;">
+<p><strong>Generic data:</strong></p>
+<ul>
+<li>What is a <em>typical</em> observation
+<ul>
+<li>What is the <strong>mean</strong>?</li>
+</ul></li>
+<li>How spread out is the data?
+<ul>
+<li>What is the <strong>variance</strong>?</li>
+</ul></li>
+</ul>
+</div>
+<div class="column" style="width:48%;">
+<p><strong>Regression:</strong></p>
+<ul>
+<li>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?
+<ul>
+<li>increases?</li>
+<li>decreases?</li>
+<li>nothing?</li>
+</ul></li>
+</ul>
+</div>
+<p><br></p>
+<p><strong>Statistics answers these questions systematically</strong></p>
+<ul>
+<li>important for large datasets</li>
+<li>The same mathematical machinery (normal family of distributions) can be applied to both questions</li>
+</ul>
+</section>
+<section id="analysing-a-general-dataset" class="slide level2">
+<h2>Analysing a general dataset</h2>
+<p><strong>Two basic questions:</strong></p>
+<ol type="1">
+<li>Location or mean</li>
+<li>Spread or variance</li>
+</ol>
+<p><strong>Statistics enables to answer systematically:</strong></p>
+<ol type="1">
+<li>One sample and two-sample <span class="math inline">\(t\)</span>-test</li>
+<li>Chi-squared test and <span class="math inline">\(F\)</span>-test</li>
+</ol>
+</section>
+<section id="recall-the-following-sketch" class="slide level2">
+<h2>Recall the following sketch</h2>
+
+<img data-src="images/Fig1.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Curve represents data distribution</p></section>
+<section id="motivating-regression" class="slide level2">
+<h2>Motivating regression</h2>
+<p><strong>Basic question in regression:</strong></p>
+<ul>
+<li><p>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?</p>
+<ul>
+<li>increases?</li>
+<li>decreases?</li>
+<li>nothing?</li>
+</ul></li>
+</ul>
+<p><strong>In this way regression can be seen as a more advanced version of high-school maths</strong></p>
+</section>
+<section id="positive-gradient" class="slide level2">
+<h2>Positive gradient</h2>
+<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> increases</p>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="negative-gradient" class="slide level2">
+<h2>Negative gradient</h2>
+<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> decreases</p>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="zero-gradient" class="slide level2">
+<h2>Zero gradient</h2>
+<p>Changes in <span class="math inline">\(X\)</span> do not affect <span class="math inline">\(Y\)</span></p>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="references-2" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
@@ -494,8 +583,11 @@ y = mx + b
 <div id="ref-casella-berger" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[3] </div><div class="csl-right-inline">Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.</div>
 </div>
+<div id="ref-degroot" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.</div>
+</div>
 <div id="ref-dalgaard" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
 </div>
 </div>
 </section></section>
@@ -710,6 +802,44 @@ y = mx + b
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

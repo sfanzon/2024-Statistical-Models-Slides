@@ -30,6 +30,10 @@ author:
 
 
 
+
+# Part 1: <br>Module info {background-color="#cc0164" visibility="uncounted"}
+
+
 ## Contact details
 
 - **Lecturer:** Dr. Silvio Fanzon
@@ -44,34 +48,55 @@ author:
 
 
 
+
+
 ## References
 ### Main textbooks 
 
-These lecture notes are self-contained and based on books
+These lecture notes are self-contained and based on the books
 
-- [@bingham-fry] Bingham, N. H. and Fry, J. M. (2010) <br> *Regression: Linear models in statistics.* <br> Springer Undergraduate Mathematics Series
+- [@bingham-fry] Bingham, N. H. and Fry, J. M. 
+<br> *Regression: Linear models in statistics.* <br> Springer Undergraduate Mathematics Series, 2010
 
-- [@fry-burke] Fry, J. M. and Burke, M. (2022) <br>*Quantitative methods in finance using R.* <br>Open University Press
+- [@fry-burke] Fry, J. M. and Burke, M. 
+<br>*Quantitative methods in finance using R.* 
+<br>Open University Press, 2022
+
+
+
+
 
 
 ## References
 ### Secondary References 
 
-::: {.column width="65%"}
-- [@casella-berger] Casella, G. and Berger R. L. (2002)<br>
+::: {.column width="69%"}
+- [@casella-berger] Casella, G. and Berger R. L. <br>
 *Statistical inference.*
-<br> Second Edition, Brooks/Cole
+<br> Second Edition, Brooks/Cole, 2002
 
 
-- [@dalgaard] Dalgaard, P. (2008)
+- [@degroot] DeGroot M. H. and Schervish M. J. <br> 
+*Probability and Statistics.* 
+<br> Fourth Edition, Addison-Wesley, 2012
+
+
+- [@dalgaard] Dalgaard, P. 
 <br> *Introductory statistics with R.*
-<br> Second Edition, Springer   
+<br> Second Edition, Springer, 2008   
+
 :::
 
-::: {.column width="30%"}
-**Probability and statistics manual**
 
-<br>
+::: {.column width="30%"}
+
+**Probability & Statistics manual**
+
+
+
+**Easier Probability & Statistics manual**
+
+
 
 **R manual**
 :::
@@ -80,59 +105,260 @@ These lecture notes are self-contained and based on books
 
 
 
-## Overview of the module
 
-Module comprises two parts:
+## The nature of Statistics
+### Statistics is a mathematical subject
 
-- **Part I** Mathematical statistics
+- Maths skills will give you a head start
 
-- **Parti II** Applied statistics
+- There are other occasions where common sense and *detective skills* can be more important
+
+- Provides an early example of mathematics working in concert with the available computation
 
 
 
-## Overview of the module
-### Part I -  Mathematical statistics
 
-With a continuous probability density function $f(\cdot)$ the mean and variance can be calculated as
+## The nature of Statistics
+### We will use a combination of hand calculation and software
 
-\begin{gather*}
-\mbox{Mean}=E[X]=\int_{-\infty}^{\infty}x \, f(x)dx \\
-a_1=b_1+c_1\\
-a_2=b_2+c_2-d_2+e_2
-\end{gather*}
-$$
-E[X^2]=\int_{-\infty}^{\infty}x^2f(x)dx
-$$
-$$
-\mbox{Variance}=E[X^2]-(E[X])^2
-$$
+- Recognises that you are maths students
+- Software (R) is really useful, particularly for dissertations
+- Please bring your laptop into class
+- Download R onto your laptop
+
+
+
+
 
 
 
 ## Overview of the module
-### Part II
 
-[important note]{.alert}
 
-::: {#thm-line}
+Module has **11 Lectures**, divided into two parts:
 
-## Line
+- **Part I** - Mathematical statistics
 
-The equation of any straight line, called a linear equation, can be written as:
+- **Part II** - Applied statistics
 
-$$
-y = mx + b
-$$
+
+
+
+
+## Overview of the module
+### Part I - Mathematical statistics
+
+1. Introduction to statistics
+2. Normal distribution family and one-sample hypothesis tests
+3. Two-sample hypothesis tests
+4. The chi-squared test
+5. Non-parametric statistics
+6. The maths of regression
+
+
+
+
+
+## Overview of the module
+### Part II - Applied statistics
+
+
+7. An introduction to practical regression
+8. The extra sum of squares principle and regression modelling assumptions
+9. Violations of regression assumptions -- Autocorrelation
+10. Violation of regression assumptions -- Multicollinearity
+10. Dummy variable regression models 
+
+
+
+
+
+# Part 2: <br>Motivation {background-color="#cc0164" visibility="uncounted"}
+
+
+
+## Simple but useful questions {.smaller}
+
+
+::: {.column width="48%"}
+
+**Generic data:**
+
+- What is a *typical* observation
+  * What is the **mean**?
+
+- How spread out is the data?
+  * What is the **variance**?
+
 :::
 
-::: {.callout-note}
-Note that there are five types of callouts, including:
-`note`, `warning`, `important`, `tip`, and `caution`.
+
+::: {.column width="48%"}
+
+**Regression:**
+
+- What happens to $Y$ as $X$ increases?
+  * increases?
+  * decreases?
+  * nothing?
+
 :::
 
-::: {.proof}
-The solution.
-:::
+
+<br>
+
+**Statistics answers these questions systematically**
+
+- important for large datasets
+- The same mathematical machinery (normal family of distributions) can be applied to both questions
+
+
+
+
+## Analysing a general dataset
+
+**Two basic questions:**
+
+1. Location or mean
+2. Spread or variance
+
+
+**Statistics enables to answer systematically:**
+
+1. One sample and two-sample $t$-test
+2. Chi-squared test and $F$-test
+
+
+
+
+
+## Recall the following sketch
+
+![Curve represents data distribution](images/Fig1.png){width=90%}
+
+
+
+
+## Motivating regression
+
+
+**Basic question in regression:**
+
+- What happens to $Y$ as $X$ increases?
+
+  * increases?
+  * decreases?
+  * nothing?
+
+
+**In this way regression can be seen as a more advanced version of high-school maths**
+
+
+
+
+
+
+
+## Positive gradient
+
+As $X$ increases $Y$ increases
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "X", 
+  ylab = "Y", 
+  xlim = c(0, 5), 
+  ylim = c(0, 5), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+# Add the line y = x
+abline(
+  a = 0, 
+  b = 1, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+
+## Negative gradient
+
+As $X$ increases $Y$ decreases
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "X", 
+  ylab = "Y", 
+  xlim = c(-3, 3), 
+  ylim = c(-3, 3), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+# Add the line y = x
+abline(
+  a = 0, 
+  b = -1, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+
+
+## Zero gradient
+
+Changes in $X$ do not affect $Y$
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "X", 
+  ylab = "Y", 
+  xlim = c(0, 5), 
+  ylim = c(0, 5), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+# Add the line y = x
+abline(
+  a = 2.5, 
+  b = 0, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+
 
 ## References
 

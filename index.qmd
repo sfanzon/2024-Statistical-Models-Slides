@@ -79,15 +79,24 @@ There are 11 lectures in this module. Topics and links to the slides are below.
 
 # Readings
 
-**Main textbooks**: These lecture slides are self-contained and based on
+**Main textbooks**: These lecture notes are self-contained and based on the books
 
-- Statistics theory: The book by Bingham and Fry [@bingham-fry]
-- Statistics in R: The book by Fry and Burke [@fry-burke]
-
-**Reference books**: In addition we reccommend the following
+- Bingham and Fry [@bingham-fry]
+- Fry and Burke [@fry-burke]
 
 
-- Probability & Statistics: The book by Casella and Berger [@casella-berger]
-- Manual of R: The book by Dalgaard [@dalgaard]
+::: {layout-ncol=2}
+[![](images/bingham_fry.png)](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+
+[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+:::
+
+
+**Reference books**: In addition we reccommend the following readings
+
+
+- Probability & Statistics Manual: Casella and Berger [@casella-berger]
+- Easier Probability & Statistics Manual: DeGroot and Schervish [@degroot]
+- Manual of R: Dalgaard [@dalgaard]
 
 
