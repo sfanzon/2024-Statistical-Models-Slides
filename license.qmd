@@ -2,13 +2,16 @@
 
 ## Reuse {.unnumbered}
 
+
+::: {.column width="60%"}
 This work is licensed under a 
 [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+:::
 
 
-
-![](/by-nc-nd.png){width=1.3in}
-
+::: {.column width="38%"}
+![](/by-nc-nd.png){width=2.1in}
+:::
 
 
 ## Citation {.unnumbered}

@@ -53,7 +53,7 @@ and on the **Course Webpage** hosted on my website
 
 ::: {.content-visible when-format="html"}
 <div style="text-align: center;">
-**[silviofanzon.com/blog/2024/Statistical-Models/](https://www.silviofanzon.com/blog/2023/Statistical-Models/)**
+**[silviofanzon.com/blog/2024/Statistical-Models/](https://www.silviofanzon.com/blog/2024/Statistical-Models/)**
 </div>
 :::
 
