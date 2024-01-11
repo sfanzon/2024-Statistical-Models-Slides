@@ -243,7 +243,6 @@ Module has **11 Lectures**, divided into two parts:
 :::
 
 
-<br>
 
 **Statistics answers these questions systematically**
 
@@ -309,13 +308,17 @@ As $X$ increases $Y$ increases
 plot(
   1, 1, 
   type = "n", 
-  xlab = "X", 
-  ylab = "Y", 
+  xlab = "", 
+  ylab = "", 
   xlim = c(0, 5), 
   ylim = c(0, 5), 
   frame.plot = TRUE, 
   axes = FALSE, 
   asp = 1)
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
 
 # Add the line y = x
 abline(
@@ -342,13 +345,18 @@ As $X$ increases $Y$ decreases
 plot(
   1, 1, 
   type = "n", 
-  xlab = "X", 
-  ylab = "Y", 
+  xlab = "", 
+  ylab = "", 
   xlim = c(-3, 3), 
   ylim = c(-3, 3), 
   frame.plot = TRUE, 
   axes = FALSE, 
   asp = 1)
+
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
 
 # Add the line y = x
 abline(
@@ -376,13 +384,17 @@ Changes in $X$ do not affect $Y$
 plot(
   1, 1, 
   type = "n", 
-  xlab = "X", 
-  ylab = "Y", 
+  xlab = "", 
+  ylab = "", 
   xlim = c(0, 5), 
   ylim = c(0, 5), 
   frame.plot = TRUE, 
   axes = FALSE, 
   asp = 1)
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
 
 # Add the line y = x
 abline(
@@ -397,6 +409,131 @@ abline(
 
 
 
+## Real data example
+
+
+- Real data is more **imperfect**
+- But the same basic idea applies
+- Example: 
+    * $X =$ Stock price
+    * $Y =$ Gold price
+
+
+
+
+## Real data example
+### How does real data look like?
+
+::: {style="font-size: 0.8em"}
+Dataset with $33$ entries for Stock and Gold prices at different times
+:::
+
+::: {style="font-size: 0.6em"}
+
+```{r}
+#| echo: false
+#| layout-ncol: 3
+
+# Read dataset
+data <- read.table("datasets/L3eg1data.txt")
+
+#Add column labels to data
+colnames(data) <- c("Stock Price","Gold Price")
+
+# Output markdown table from data
+
+knitr::kable(data[1:11,], row.names = TRUE)
+
+knitr::kable(data[12:22,], row.names = TRUE)
+
+knitr::kable(data[23:33,], row.names = TRUE)
+
+```
+
+:::
+
+
+
+
+
+
+## Real data example {.smaller}
+### Visualizing data
+
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Plot Stock Price against Gold Price
+
+- Observation: 
+
+  * As Stock price decreases, Gold price increases
+
+- Why? This might be because:
+    * Stock price decreases
+    * People invest in secure assets (Gold)
+    * Gold demand increases
+    * Gold price increases
+
+:::
+
+
+::: {.column width="61%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+data1 <- read.table("datasets/L3eg1data.txt")
+realgoldprice<-data1[,1]
+realstockprice<-data1[,2]
+plot(realstockprice, 
+  realgoldprice, 
+  xlab="", 
+  ylab="")
+
+mtext("Stock Price", side=1, line=3, cex=2)
+mtext("Gold Price", side=2, line=2.5, cex=2)
+
+```
+
+:::
+
+:::::
+
+
+
+
+## Don't panic {.smaller}
+
+- Regression problems can look a lot harder than they really are
+  * Basic question remains the same: what happens to $Y$ as $X$ increases?
+
+- Beware of jargon. Various authors distinguish between
+  * Two variable regression model
+  * Multiple regression model
+  * Analysis of Variance
+  * Analysis of Covariance
+
+- Despite these apparent differences:
+  * Mathematical methodology stays (essentially) the same
+  * regression-fitting commands in R stay (essentially) the same
+
+
+
+
+# Part 3: <br>Probability background {background-color="#cc0164" visibility="uncounted"}
+
+
+
+
+# Part 4: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
+
+
+
+# Thank you! {background-color="#cc0164" visibility="uncounted"}
 
 
 ## References

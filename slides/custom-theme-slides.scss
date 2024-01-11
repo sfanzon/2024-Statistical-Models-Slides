@@ -1,10 +1,20 @@
 /*-- scss:defaults --*/
 // Base document colors
 //$body-bg: #181818;
+
 $link-color: #cc0164;
 $link-decoration: none;
 $presentation-heading-color: #cc0164;
 $right-arrow: "\2192"; // Unicode character for right arrow
+
+
+// Font-sizes
+$presentation-h2-font-size: 1.4em;
+$presentation-h3-font-size: 0.95em;
+$presentation-h4-font-size: 1.0em;
+
+$presentation-font-smaller: 0.8;
+
 
 
 /*-- scss:rules --*/
@@ -24,18 +34,18 @@ $right-arrow: "\2192"; // Unicode character for right arrow
 
 // Headers
 
-.reveal h2 {
+//.reveal h2 {
   // font-weight: 350;
   //font-weight: lighter;
-  font-size: 1.4em;
-}
+  //font-size: 1.4em;
+//}
 
 .reveal h3 {
   color: black;
   //font-style: italic;
   // font-weight: 350;
   //font-weight: lighter;
-  font-size: 0.95em;
+  //font-size: 0.95em;
 }
 
 .reveal h4 {
@@ -109,7 +119,7 @@ $right-arrow: "\2192"; // Unicode character for right arrow
 .reveal ul {
     // font-weight: 300;
     font-weight: lighter;
-    padding-left: 16px;
+    padding-left: 15px;
   
     li::marker {
       color: mix(#cc0164, white, 90%);
@@ -134,9 +144,10 @@ $right-arrow: "\2192"; // Unicode character for right arrow
   .reveal ol {
     // font-weight: 300;
     font-weight: lighter;
-    padding-left: 16px;
+    padding-left: 15px;
   
     li::marker {
       color: #cc0164;
     }
   }
+
