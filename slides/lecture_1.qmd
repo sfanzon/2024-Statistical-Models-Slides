@@ -428,12 +428,12 @@ abline(
 ## Real data example
 ### How does real data look like?
 
-::: {style="font-size: 0.8em"}
+::: {style="font-size: 0.75em"}
 Dataset with $33$ entries for Stock and Gold price pairs
 :::
 
 
-::: {style="font-size: 0.6em"}
+::: {style="font-size: 0.55em"}
 ```{r}
 #| echo: false
 #| layout-ncol: 1
@@ -530,6 +530,11 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 # Part 3: <br>Probability background {background-color="#cc0164" visibility="uncounted"}
 
+
+
+## Boh
+
+We start with a recap of things seen in the Introduction to Prob module
 
 
 
