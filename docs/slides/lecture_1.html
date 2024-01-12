@@ -340,6 +340,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -609,18 +610,26 @@
 <h2>Real data example</h2>
 <h3 id="how-does-real-data-look-like">How does real data look like?</h3>
 <div style="font-size: 0.8em">
-<p>Dataset with <span class="math inline">\(33\)</span> entries for Stock and Gold prices at different times</p>
+<p>Dataset with <span class="math inline">\(33\)</span> entries for Stock and Gold price pairs</p>
 </div>
 <div style="font-size: 0.6em">
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<table>
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<table class="kable_wrapper" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Stock Price</th>
-<th style="text-align: right;">Gold Price</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
 </tr>
 </thead>
 <tbody>
@@ -680,15 +689,13 @@
 <td style="text-align: right;">9.406448</td>
 </tr>
 </tbody>
-</table>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<table>
+</table></td>
+<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Stock Price</th>
-<th style="text-align: right;">Gold Price</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
 </tr>
 </thead>
 <tbody>
@@ -748,15 +755,13 @@
 <td style="text-align: right;">20.20052</td>
 </tr>
 </tbody>
-</table>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<table>
+</table></td>
+<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Stock Price</th>
-<th style="text-align: right;">Gold Price</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
 </tr>
 </thead>
 <tbody>
@@ -816,7 +821,16 @@
 <td style="text-align: right;">41.45828</td>
 </tr>
 </tbody>
+</table></td>
+</tr>
+</tbody>
 </table>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+
+
 </div>
 </div>
 </div>

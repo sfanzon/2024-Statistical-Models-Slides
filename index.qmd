@@ -80,7 +80,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | <a href="slides/lecture_9.qmd">Lecture 9</a>   | TBA     |
 | <a href="slides/lecture_10.qmd">Lecture 10</a> | TBA     |
 | <a href="slides/lecture_11.qmd">Lecture 11</a> | TBA     |
-: {tbl-colwidths="[30,70]"}
+: {tbl-colwidths="[30,70]" .hover}
 
 
 
