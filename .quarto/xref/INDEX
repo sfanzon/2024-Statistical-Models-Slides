@@ -19,5 +19,11 @@
   },
   "references.qmd": {
     "references.html": "79fd7046"
+  },
+  "slides/list-of-stilltodo.qmd": {
+    "list-of-stilltodo.html": "4810c82f"
+  },
+  "slides/list-of-mathstuff.qmd": {
+    "list-of-mathstuff.html": "8edc8379"
   }
 }

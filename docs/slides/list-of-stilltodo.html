@@ -12,8 +12,6 @@
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.542">
 
-  <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
-  <meta name="author" content="Dr.&nbsp;John Fry">
   <title>Statistical Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -32,27 +30,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -345,30 +323,6 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
@@ -377,11 +331,31 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,25 +363,29 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Theorem {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Axiom {
     --color1: #f4cce0;
@@ -419,610 +397,16 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Statistical Models</h1>
-  <p class="subtitle">Lecture 1</p>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-<a href="https://www.silviofanzon.com">Dr.&nbsp;Silvio Fanzon</a> 
-</div>
-<div class="quarto-title-author-email">
-<a href="mailto:S.Fanzon@hull.ac.uk">S.Fanzon@hull.ac.uk</a>
-</div>
-        <p class="quarto-title-affiliation">
-            University of Hull
-          </p>
-    </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-<a href="https://www.hull.ac.uk/staff-directory/john-fry">Dr.&nbsp;John Fry</a> 
-</div>
-<div class="quarto-title-author-email">
-<a href="mailto:J.M.Fry@hull.ac.uk">J.M.Fry@hull.ac.uk</a>
-</div>
-        <p class="quarto-title-affiliation">
-            University of Hull
-          </p>
-    </div>
-</div>
+<section class="slide level2">
 
-</section>
-<section>
-<section id="lecture-1-an-introduction-to-statistics" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Lecture 1: <br>An introduction to Statistics</h1>
-
-</section>
-<section id="outline-of-lecture-1" class="slide level2">
-<h2>Outline of Lecture 1</h2>
-<ol type="1">
-<li>Module info</li>
-<li>Motivation</li>
-<li>Probability background</li>
-<li>Statistics background</li>
-</ol>
-</section></section>
-<section>
-<section id="part-1-module-info" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>Module info</h1>
-
-</section>
-<section id="contact-details" class="slide level2">
-<h2>Contact details</h2>
-<ul>
-<li><strong>Lecturer:</strong> Dr.&nbsp;Silvio Fanzon</li>
-<li><strong>Call me:</strong>
-<ul>
-<li>Silvio</li>
-<li>Dr.&nbsp;Fanzon</li>
-</ul></li>
-<li><strong>Email:</strong> S.Fanzon@hull.ac.uk</li>
-<li><strong>Office:</strong> Room 104a, Larkin Building</li>
-<li><strong>Office hours:</strong> Wednesday 12:00-13:00</li>
-<li><strong>Meetings</strong>: in my office or send me an Email</li>
-</ul>
-</section>
-<section id="references" class="slide level2">
-<h2>References</h2>
-<h3 id="main-textbooks">Main textbooks</h3>
-<div class="column" style="width:61%;">
-<p><br></p>
-<p>Slides are self-contained and based on the book</p>
-<ul>
-<li><span class="citation" data-cites="bingham-fry">[<a href="#/references-3" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
-</ul>
-</div>
-<div class="column" style="width:38%;">
-<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:90.0%"></a></p>
-</div>
-</section>
-<section id="references-1" class="slide level2">
-<h2>References</h2>
-<h3 id="main-textbooks-1">Main textbooks</h3>
-<div class="column" style="width:61%;">
-<p><br></p>
-<p>.. and also on the book</p>
-<ul>
-<li><span class="citation" data-cites="fry-burke">[<a href="#/references-3" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
-</ul>
-</div>
-<div class="column" style="width:38%;">
-<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:90.0%"></a></p>
-</div>
-</section>
-<section id="references-2" class="slide level2">
-<h2>References</h2>
-<h3 id="secondary-references">Secondary References</h3>
-<div class="column" style="width:69%;">
-<ul>
-<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-3" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
-<li><p><span class="citation" data-cites="degroot">[<a href="#/references-3" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
-<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-3" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
-</ul>
-</div>
-<div class="column" style="width:30%;">
-<p><strong>Probability &amp; Statistics manual</strong></p>
-<p><strong>Easier Probability &amp; Statistics manual</strong></p>
-<p><strong>R manual</strong></p>
-</div>
-</section>
-<section id="the-nature-of-statistics" class="slide level2">
-<h2>The nature of Statistics</h2>
-<h3 id="statistics-is-a-mathematical-subject">Statistics is a mathematical subject</h3>
-<ul>
-<li><p>Maths skills will give you a head start</p></li>
-<li><p>There are other occasions where common sense and <em>detective skills</em> can be more important</p></li>
-<li><p>Provides an early example of mathematics working in concert with the available computation</p></li>
-</ul>
-</section>
-<section id="the-nature-of-statistics-1" class="slide level2">
-<h2>The nature of Statistics</h2>
-<h3 id="we-will-use-a-combination-of-hand-calculation-and-software">We will use a combination of hand calculation and software</h3>
-<ul>
-<li>Recognises that you are maths students</li>
-<li>Software (R) is really useful, particularly for dissertations</li>
-<li>Please bring your laptop into class</li>
-<li>Download R onto your laptop</li>
-</ul>
-</section>
-<section id="overview-of-the-module" class="slide level2">
-<h2>Overview of the module</h2>
-<p>Module has <strong>11 Lectures</strong>, divided into two parts:</p>
-<ul>
-<li><p><strong>Part I</strong> - Mathematical statistics</p></li>
-<li><p><strong>Part II</strong> - Applied statistics</p></li>
-</ul>
-</section>
-<section id="overview-of-the-module-1" class="slide level2">
-<h2>Overview of the module</h2>
-<h3 id="part-i---mathematical-statistics">Part I - Mathematical statistics</h3>
-<ol type="1">
-<li>Introduction to statistics</li>
-<li>Normal distribution family and one-sample hypothesis tests</li>
-<li>Two-sample hypothesis tests</li>
-<li>The chi-squared test</li>
-<li>Non-parametric statistics</li>
-<li>The maths of regression</li>
-</ol>
-</section>
-<section id="overview-of-the-module-2" class="slide level2">
-<h2>Overview of the module</h2>
-<h3 id="part-ii---applied-statistics">Part II - Applied statistics</h3>
-<ol start="7" type="1">
-<li>An introduction to practical regression</li>
-<li>The extra sum of squares principle and regression modelling assumptions</li>
-<li>Violations of regression assumptions – Autocorrelation</li>
-<li>Violation of regression assumptions – Multicollinearity</li>
-<li>Dummy variable regression models</li>
-</ol>
-</section></section>
-<section>
-<section id="part-2-motivation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Motivation</h1>
-
-</section>
-<section id="simple-but-useful-questions" class="slide level2 smaller">
-<h2>Simple but useful questions</h2>
-<div class="column" style="width:48%;">
-<p><strong>Generic data:</strong></p>
-<ul>
-<li>What is a <em>typical</em> observation
-<ul>
-<li>What is the <strong>mean</strong>?</li>
-</ul></li>
-<li>How spread out is the data?
-<ul>
-<li>What is the <strong>variance</strong>?</li>
-</ul></li>
-</ul>
-</div>
-<div class="column" style="width:48%;">
-<p><strong>Regression:</strong></p>
-<ul>
-<li>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?
-<ul>
-<li>increases?</li>
-<li>decreases?</li>
-<li>nothing?</li>
-</ul></li>
-</ul>
-</div>
-<p><strong>Statistics answers these questions systematically</strong></p>
-<ul>
-<li>important for large datasets</li>
-<li>The same mathematical machinery (normal family of distributions) can be applied to both questions</li>
-</ul>
-</section>
-<section id="analysing-a-general-dataset" class="slide level2">
-<h2>Analysing a general dataset</h2>
-<p><strong>Two basic questions:</strong></p>
-<ol type="1">
-<li>Location or mean</li>
-<li>Spread or variance</li>
-</ol>
-<p><strong>Statistics enables to answer systematically:</strong></p>
-<ol type="1">
-<li>One sample and two-sample <span class="math inline">\(t\)</span>-test</li>
-<li>Chi-squared test and <span class="math inline">\(F\)</span>-test</li>
-</ol>
-</section>
-<section id="recall-the-following-sketch" class="slide level2">
-<h2>Recall the following sketch</h2>
-
-<img data-src="images/Fig1.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Curve represents data distribution</p></section>
-<section id="motivating-regression" class="slide level2">
-<h2>Motivating regression</h2>
-<p><strong>Basic question in regression:</strong></p>
-<ul>
-<li><p>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?</p>
-<ul>
-<li>increases?</li>
-<li>decreases?</li>
-<li>nothing?</li>
-</ul></li>
-</ul>
-<p><strong>In this way regression can be seen as a more advanced version of high-school maths</strong></p>
-</section>
-<section id="positive-gradient" class="slide level2">
-<h2>Positive gradient</h2>
-<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> increases</p>
-
-<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="negative-gradient" class="slide level2">
-<h2>Negative gradient</h2>
-<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> decreases</p>
-
-<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="zero-gradient" class="slide level2">
-<h2>Zero gradient</h2>
-<p>Changes in <span class="math inline">\(X\)</span> do not affect <span class="math inline">\(Y\)</span></p>
-
-<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="real-data-example" class="slide level2">
-<h2>Real data example</h2>
-<ul>
-<li>Real data is more <strong>imperfect</strong></li>
-<li>But the same basic idea applies</li>
-<li>Example:
-<ul>
-<li><span class="math inline">\(X =\)</span> Stock price</li>
-<li><span class="math inline">\(Y =\)</span> Gold price</li>
-</ul></li>
-</ul>
-</section>
-<section id="real-data-example-1" class="slide level2">
-<h2>Real data example</h2>
-<h3 id="how-does-real-data-look-like">How does real data look like?</h3>
-<div style="font-size: 0.75em">
-<p>Dataset with <span class="math inline">\(33\)</span> entries for Stock and Gold price pairs</p>
-</div>
-<div style="font-size: 0.55em">
-<div class="cell quarto-layout-panel" data-layout-ncol="1">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<table class="kable_wrapper" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: right;">3.230426</td>
-<td style="text-align: right;">9.402434</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: right;">2.992937</td>
-<td style="text-align: right;">8.987918</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: right;">2.194025</td>
-<td style="text-align: right;">10.120387</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: right;">2.602475</td>
-<td style="text-align: right;">9.367327</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: right;">2.963497</td>
-<td style="text-align: right;">8.708742</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: right;">4.224242</td>
-<td style="text-align: right;">8.494215</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7</td>
-<td style="text-align: right;">7.433981</td>
-<td style="text-align: right;">8.739684</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8</td>
-<td style="text-align: right;">5.060836</td>
-<td style="text-align: right;">8.609681</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9</td>
-<td style="text-align: right;">3.903316</td>
-<td style="text-align: right;">7.552746</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: right;">4.260542</td>
-<td style="text-align: right;">9.834538</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: right;">3.469490</td>
-<td style="text-align: right;">9.406448</td>
-</tr>
-</tbody>
-</table></td>
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">12</td>
-<td style="text-align: right;">2.948513</td>
-<td style="text-align: right;">10.62240</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">13</td>
-<td style="text-align: right;">3.354562</td>
-<td style="text-align: right;">13.12062</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">14</td>
-<td style="text-align: right;">3.930106</td>
-<td style="text-align: right;">15.05097</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">15</td>
-<td style="text-align: right;">3.693491</td>
-<td style="text-align: right;">13.39932</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">16</td>
-<td style="text-align: right;">3.076129</td>
-<td style="text-align: right;">15.34968</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">17</td>
-<td style="text-align: right;">2.934277</td>
-<td style="text-align: right;">14.83910</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">18</td>
-<td style="text-align: right;">2.658664</td>
-<td style="text-align: right;">16.01850</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">19</td>
-<td style="text-align: right;">2.450606</td>
-<td style="text-align: right;">17.25952</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">20</td>
-<td style="text-align: right;">2.489758</td>
-<td style="text-align: right;">18.26270</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">21</td>
-<td style="text-align: right;">2.591093</td>
-<td style="text-align: right;">18.13104</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">22</td>
-<td style="text-align: right;">2.520800</td>
-<td style="text-align: right;">20.20052</td>
-</tr>
-</tbody>
-</table></td>
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Stock Price</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Gold Price</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">23</td>
-<td style="text-align: right;">2.471447</td>
-<td style="text-align: right;">24.13767</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">24</td>
-<td style="text-align: right;">2.062430</td>
-<td style="text-align: right;">30.07695</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">25</td>
-<td style="text-align: right;">1.805153</td>
-<td style="text-align: right;">35.69485</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">26</td>
-<td style="text-align: right;">1.673950</td>
-<td style="text-align: right;">39.29658</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">27</td>
-<td style="text-align: right;">1.620848</td>
-<td style="text-align: right;">39.52317</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28</td>
-<td style="text-align: right;">1.547374</td>
-<td style="text-align: right;">36.12564</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">29</td>
-<td style="text-align: right;">1.721679</td>
-<td style="text-align: right;">31.01106</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">30</td>
-<td style="text-align: right;">1.974891</td>
-<td style="text-align: right;">29.60810</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">31</td>
-<td style="text-align: right;">2.168978</td>
-<td style="text-align: right;">35.00593</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">32</td>
-<td style="text-align: right;">2.277214</td>
-<td style="text-align: right;">37.62929</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">33</td>
-<td style="text-align: right;">2.993353</td>
-<td style="text-align: right;">41.45828</td>
-</tr>
-</tbody>
-</table></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="real-data-example-2" class="slide level2 smaller">
-<h2>Real data example</h2>
-<h3 id="visualizing-the-data">Visualizing the data</h3>
-<div class="columns" style="display: flex !important; height: 80%;">
-<div class="column" style="display: flex; justify-content: center; align-items: center;">
-<ul>
-<li><p>Plot Stock Price against Gold Price</p></li>
-<li><p>Observation:</p>
-<ul>
-<li>As Stock price decreases, Gold price increases</li>
-</ul></li>
-<li><p>Why? This might be because:</p>
-<ul>
-<li>Stock price decreases</li>
-<li>People invest in secure assets (Gold)</li>
-<li>Gold demand increases</li>
-<li>Gold price increases</li>
-</ul></li>
-</ul>
-</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="dont-panic" class="slide level2 smaller">
-<h2>Don’t panic</h2>
-<ul>
-<li>Regression problems can look a lot harder than they really are
-<ul>
-<li>Basic question remains the same: what happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?</li>
-</ul></li>
-<li>Beware of jargon. Various authors distinguish between
-<ul>
-<li>Two variable regression model</li>
-<li>Multiple regression model</li>
-<li>Analysis of Variance</li>
-<li>Analysis of Covariance</li>
-</ul></li>
-<li>Despite these apparent differences:
-<ul>
-<li>Mathematical methodology stays (essentially) the same</li>
-<li>regression-fitting commands in R stay (essentially) the same</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="part-3-probability-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 3: <br>Probability background</h1>
-
-</section>
-<section id="examples-of-continuous-rv" class="slide level2 smaller">
-<h2>Examples of Continuous RV</h2>
-<ul>
-<li><p>The <strong>Normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is denoted by <span class="math display">\[\begin{equation}
-N(\mu,\sigma^2)
-\end{equation}\]</span></p></li>
-<li><p>The <strong>pdf</strong> of <span class="math inline">\(N(\mu,\sigma^2)\)</span> is <span class="math display">\[
-f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
-\]</span></p></li>
-<li><p><span class="math inline">\(N(0,1)\)</span> is the <strong>standard normal</strong> distribution</p></li>
-</ul>
-</section>
-<section id="examples-of-continuous-rv-1" class="slide level2 smaller">
-<h2>Examples of Continuous RV</h2>
-<div id="Theorem-4.1" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4.1</strong></summary><div>If <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span> then <span class="math inline">\(Z \sim N(0,1)\)</span> where <span class="math display">\[
-Z := \frac{X-\mu}{\sigma}
-\]</span><p></p>
-</div></details>
-</div>
-<p>Check</p>
-<div id="Proof*-4.1" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
-</div></details>
-</div>
-</section></section>
-<section id="part-4-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 4: <br>Statistics background</h1>
-
-</section>
-
-<section>
-<section id="thank-you-link-color-cc0164-background-colorcc0164-visibilityuncounted" class="title-slide slide level1 center">
-<h1>Thank you! {link-color = “#cc0164” background-color=“#cc0164” visibility=“uncounted”}</h1>
-<div class="footer">
-<p><a href="https">link</a> Custom footer text</p>
-</div>
-</section>
-<section id="references-3" class="slide level2 smaller scrollable">
-<h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="../index.html">Homepage</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../license.html">License</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.silviofanzon.com/contact">Contact</a></p>
 </div>
 </div>
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-bingham-fry" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Bingham, Nicholas H., Fry, John M., Regression, linear models in statistics, Springer, 2010.</div>
-</div>
-<div id="ref-fry-burke" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Fry, John M., Burke, Matt, Quantitative methods in finance using <span>R</span>, Open University Press, 2022.</div>
-</div>
-<div id="ref-casella-berger" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.</div>
-</div>
-<div id="ref-degroot" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.</div>
-</div>
-<div id="ref-dalgaard" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
-</div>
-</div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -1233,44 +617,6 @@ Z := \frac{X-\mu}{\sigma}
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

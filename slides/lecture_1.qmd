@@ -532,9 +532,44 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 
 
-## Boh
+## Examples of Continuous RV {.smaller}
 
-We start with a recap of things seen in the Introduction to Prob module
+
+- The **Normal distribution** with mean $\mu$ and variance $\sigma^2$ is denoted by 
+\begin{equation}
+N(\mu,\sigma^2)
+\end{equation}
+
+- The **pdf** of $N(\mu,\sigma^2)$ is
+$$
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
+$$
+
+- $N(0,1)$ is the **standard normal** distribution
+
+
+
+
+## Examples of Continuous RV {.smaller}
+
+
+
+::: Theorem
+
+If $X \sim N(\mu,\sigma^2)$ then $Z \sim N(0,1)$ where
+$$
+Z := \frac{X-\mu}{\sigma}
+$$
+:::
+
+Check
+
+::: Proof
+
+Check
+
+:::
+
 
 
 
@@ -542,8 +577,12 @@ We start with a recap of things seen in the Introduction to Prob module
 
 
 
-# Thank you! {background-color="#cc0164" visibility="uncounted"}
+# Thank you! {link-color = "#cc0164" background-color="#cc0164" visibility="uncounted"}
 
+::: footer
+[link](https)
+Custom footer text
+:::
 
 ## References
 

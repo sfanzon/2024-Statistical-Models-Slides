@@ -3,12 +3,14 @@ format:
     revealjs:
       footer: "[Homepage](/index.html) &nbsp;&nbsp;&nbsp;&nbsp; [License](/license.html) &nbsp;&nbsp;&nbsp;&nbsp; [Contact](https://www.silviofanzon.com/contact)"
       theme: [default, custom-theme-slides.scss]
+      transition: slide
+      background-transition: fade
       preview-links: auto
       toc: false
       number-sections: false
       slide-number: true
-      transition: none
       touch: true
+      callout-icon: false
       keyboard: true
       include-in-header:
         - text: |
@@ -18,3 +20,83 @@ format:
 search: false
 favicon: images/favicon.png
 bibliography: teaching.bib
+
+
+filters:
+  - custom-numbered-blocks
+
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [f4cce0, db4d92]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  
+  classes:
+    
+    Theorem:
+      group: thmlike
+    
+    Corollary:
+      group: thmlike
+    
+    Conjecture:
+      group: thmlike
+
+    Proposition:
+      group: thmlike
+    
+    Lemma:
+      group: thmlike
+    
+    Question: 
+      group: thmlike
+    
+    Axiom: 
+      group: thmlike
+
+    Important: 
+      group: thmlike
+      numbered: false
+
+    Warning: 
+      group: thmlike
+      numbered: false
+
+    Problem: 
+      group: thmlike
+      numbered: false
+
+    Definition:
+      group: thmlike
+      colors: [c6e6ed, 1995ad]
+
+    Notation: 
+      group: thmlike
+      colors: [c6e6ed, 1995ad]
+
+    Remark: 
+      group: thmlike
+      colors: [bce5de, 21aa93]
+
+    Example: 
+      group: thmlike
+      colors: [bce5de, 21aa93]
+
+    Proof:
+      group: thmlike
+      colors: [f1f1f2, c0c0c1]
+      numbered: false
+
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+      
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos
