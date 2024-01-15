@@ -54,6 +54,22 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -345,43 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,27 +377,55 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Theorem {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Axiom {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -452,7 +468,11 @@
 <section>
 <section id="lecture-1-an-introduction-to-statistics" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Lecture 1: <br>An introduction to Statistics</h1>
+<div class="footer">
+<div color="#cc0164">
 
+</div>
+</div>
 </section>
 <section id="outline-of-lecture-1" class="slide level2">
 <h2>Outline of Lecture 1</h2>
@@ -466,7 +486,11 @@
 <section>
 <section id="part-1-module-info" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 1: <br>Module info</h1>
+<div class="footer">
+<div color="#cc0164">
 
+</div>
+</div>
 </section>
 <section id="contact-details" class="slide level2">
 <h2>Contact details</h2>
@@ -580,7 +604,11 @@
 <section>
 <section id="part-2-motivation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 2: <br>Motivation</h1>
+<div class="footer">
+<div color="#cc0164">
 
+</div>
+</div>
 </section>
 <section id="simple-but-useful-questions" class="slide level2 smaller">
 <h2>Simple but useful questions</h2>
@@ -600,7 +628,7 @@
 <div class="column" style="width:48%;">
 <p><strong>Regression:</strong></p>
 <ul>
-<li>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?
+<li>What happens to <span class="math inline">Y</span> as <span class="math inline">X</span> increases?
 <ul>
 <li>increases?</li>
 <li>decreases?</li>
@@ -623,8 +651,8 @@
 </ol>
 <p><strong>Statistics enables to answer systematically:</strong></p>
 <ol type="1">
-<li>One sample and two-sample <span class="math inline">\(t\)</span>-test</li>
-<li>Chi-squared test and <span class="math inline">\(F\)</span>-test</li>
+<li>One sample and two-sample <span class="math inline">t</span>-test</li>
+<li>Chi-squared test and <span class="math inline">F</span>-test</li>
 </ol>
 </section>
 <section id="recall-the-following-sketch" class="slide level2">
@@ -635,7 +663,7 @@
 <h2>Motivating regression</h2>
 <p><strong>Basic question in regression:</strong></p>
 <ul>
-<li><p>What happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?</p>
+<li><p>What happens to <span class="math inline">Y</span> as <span class="math inline">X</span> increases?</p>
 <ul>
 <li>increases?</li>
 <li>decreases?</li>
@@ -646,17 +674,17 @@
 </section>
 <section id="positive-gradient" class="slide level2">
 <h2>Positive gradient</h2>
-<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> increases</p>
+<p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> increases</p>
 
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
 <section id="negative-gradient" class="slide level2">
 <h2>Negative gradient</h2>
-<p>As <span class="math inline">\(X\)</span> increases <span class="math inline">\(Y\)</span> decreases</p>
+<p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> decreases</p>
 
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="zero-gradient" class="slide level2">
 <h2>Zero gradient</h2>
-<p>Changes in <span class="math inline">\(X\)</span> do not affect <span class="math inline">\(Y\)</span></p>
+<p>Changes in <span class="math inline">X</span> do not affect <span class="math inline">Y</span></p>
 
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="real-data-example" class="slide level2">
@@ -666,8 +694,8 @@
 <li>But the same basic idea applies</li>
 <li>Example:
 <ul>
-<li><span class="math inline">\(X =\)</span> Stock price</li>
-<li><span class="math inline">\(Y =\)</span> Gold price</li>
+<li><span class="math inline">X =</span> Stock price</li>
+<li><span class="math inline">Y =</span> Gold price</li>
 </ul></li>
 </ul>
 </section>
@@ -675,7 +703,7 @@
 <h2>Real data example</h2>
 <h3 id="how-does-real-data-look-like">How does real data look like?</h3>
 <div style="font-size: 0.75em">
-<p>Dataset with <span class="math inline">\(33\)</span> entries for Stock and Gold price pairs</p>
+<p>Dataset with <span class="math inline">33</span> entries for Stock and Gold price pairs</p>
 </div>
 <div style="font-size: 0.55em">
 <div class="cell quarto-layout-panel" data-layout-ncol="1">
@@ -938,7 +966,7 @@
 <ul>
 <li>Regression problems can look a lot harder than they really are
 <ul>
-<li>Basic question remains the same: what happens to <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> increases?</li>
+<li>Basic question remains the same: what happens to <span class="math inline">Y</span> as <span class="math inline">X</span> increases?</li>
 </ul></li>
 <li>Beware of jargon. Various authors distinguish between
 <ul>
@@ -957,44 +985,70 @@
 <section>
 <section id="part-3-probability-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 3: <br>Probability background</h1>
+<div class="footer">
+<div color="#cc0164">
 
+</div>
+</div>
+</section>
+<section id="probability-space" class="slide level2 smaller">
+<h2>Probability space</h2>
+<div id="sample-space" class="Definition" title="Sample space">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Sample space</summary><div>A set <span class="math inline">\Omega</span> of all possible outcomes of some experiment<p></p>
+</div></details>
+</div>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><p>Coin toss: results in Heads <span class="math inline">= H</span> and Tails <span class="math inline">= T</span> <span class="math display">
+\Omega = \{ H, T \}
+</span></p></li>
+<li><p>Student grade for <em>Statistical Models</em>: a number between <span class="math inline">0</span> and <span class="math inline">100</span> <span class="math display">
+\Omega = \{ x \in \mathbb{R} \, \colon \, 0 \leq x \leq 100 \} = [0,100]
+</span></p></li>
+</ul>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
 <ul>
-<li><p>The <strong>Normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> is denoted by <span class="math display">\[\begin{equation}
+<li><p>The <strong>Normal distribution</strong> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span> is denoted by <span class="math display">
 N(\mu,\sigma^2)
-\end{equation}\]</span></p></li>
-<li><p>The <strong>pdf</strong> of <span class="math inline">\(N(\mu,\sigma^2)\)</span> is <span class="math display">\[
+</span></p></li>
+<li><p>The <strong>pdf</strong> of <span class="math inline">N(\mu,\sigma^2)</span> is <span class="math display">
 f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
-\]</span></p></li>
-<li><p><span class="math inline">\(N(0,1)\)</span> is the <strong>standard normal</strong> distribution</p></li>
+</span></p></li>
+<li><p><span class="math inline">N(0,1)</span> is the <strong>standard normal</strong> distribution</p></li>
 </ul>
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem-4.1" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4.1</strong></summary><div>If <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span> then <span class="math inline">\(Z \sim N(0,1)\)</span> where <span class="math display">\[
+<div id="Theorem*-4.2" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
-\]</span><p></p>
+</span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.1" class="Proof">
+<div id="Proof*-4.3" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
 </section></section>
 <section id="part-4-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 4: <br>Statistics background</h1>
+<div class="footer">
+<div color="#cc0164">
 
+</div>
+</div>
 </section>
 
 <section>
-<section id="thank-you-link-color-cc0164-background-colorcc0164-visibilityuncounted" class="title-slide slide level1 center">
-<h1>Thank you! {link-color = “#cc0164” background-color=“#cc0164” visibility=“uncounted”}</h1>
+<section id="thank-you" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Thank you!</h1>
 <div class="footer">
-<p><a href="https">link</a> Custom footer text</p>
+<div color="#cc0164">
+
+</div>
 </div>
 </section>
 <section id="references-3" class="slide level2 smaller scrollable">
@@ -1039,7 +1093,6 @@ Z := \frac{X-\mu}{\sigma}
   <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1179,7 +1232,7 @@ Z := \frac{X-\mu}{\sigma}
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -1206,27 +1259,9 @@ Z := \frac{X-\mu}{\sigma}
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

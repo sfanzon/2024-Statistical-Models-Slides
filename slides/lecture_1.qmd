@@ -17,6 +17,12 @@ author:
 
 # Lecture 1: <br>An introduction to Statistics {background-color="#cc0164" visibility="uncounted"}
 
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
 
 
 
@@ -32,6 +38,14 @@ author:
 
 
 # Part 1: <br>Module info {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
 
 
 ## Contact details
@@ -51,7 +65,7 @@ author:
 
 
 ## References
-### Main textbooks 
+### Main textbooks  
 
 
 ::: {.column width="61%"}
@@ -130,13 +144,10 @@ Slides are self-contained and based on the book
 
 **Probability & Statistics manual**
 
-
-
 **Easier Probability & Statistics manual**
 
-
-
 **R manual**
+
 :::
 
 
@@ -213,6 +224,11 @@ Module has **11 Lectures**, divided into two parts:
 
 # Part 2: <br>Motivation {background-color="#cc0164" visibility="uncounted"}
 
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 ## Simple but useful questions {.smaller}
@@ -530,15 +546,48 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 # Part 3: <br>Probability background {background-color="#cc0164" visibility="uncounted"}
 
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+## Probability space {.smaller}
+
+::: Definition
+### Sample space
+
+A set $\Omega$ of all possible outcomes of some experiment
+
+:::
+
+
+**Examples**:
+
+- Coin toss: results in Heads $= H$ and Tails $= T$ 
+$$
+\Omega = \{ H, T \}
+$$
+
+- Student grade for *Statistical Models*: a number between $0$ and $100$
+$$
+\Omega = \{ x \in \mathbb{R} \, \colon \, 0 \leq x \leq 100 \} = [0,100]
+$$
+
+
 
 
 ## Examples of Continuous RV {.smaller}
 
 
 - The **Normal distribution** with mean $\mu$ and variance $\sigma^2$ is denoted by 
-\begin{equation}
+$$
 N(\mu,\sigma^2)
-\end{equation}
+$$
 
 - The **pdf** of $N(\mu,\sigma^2)$ is
 $$
@@ -575,18 +624,30 @@ Check
 
 # Part 4: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
 
-
-
-# Thank you! {link-color = "#cc0164" background-color="#cc0164" visibility="uncounted"}
-
 ::: footer
-[link](https)
-Custom footer text
+
+<div color="#cc0164">  </div>
+
 :::
 
+
+
+
+
+
+# Thank you! {background-color="#cc0164" visibility="uncounted"}
+
+
+::: footer
+
+<div color="#cc0164"> </div>
+
+:::
+
+
+
+
 ## References
-
-
 
 
 

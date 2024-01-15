@@ -17,9 +17,14 @@ $presentation-font-smaller: 0.75;
 
 
 
+//.math.inline .katex  {
+//  font-size: 100% !important;
+//}
 
-
-
+//.math.display .katex  {
+//  font-size: 100% !important;
+  //color: #b22222;
+//}
 
 
 /*-- scss:rules --*/
@@ -119,7 +124,7 @@ $presentation-font-smaller: 0.75;
   color: #cc0164 !important;
   }
 
-  
+
   // Unordered lists
 
 .reveal ul {

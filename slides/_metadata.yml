@@ -3,7 +3,7 @@ format:
     revealjs:
       footer: "[Homepage](/index.html) &nbsp;&nbsp;&nbsp;&nbsp; [License](/license.html) &nbsp;&nbsp;&nbsp;&nbsp; [Contact](https://www.silviofanzon.com/contact)"
       theme: [default, custom-theme-slides.scss]
-      transition: slide
+      transition: none
       background-transition: fade
       preview-links: auto
       toc: false
@@ -11,6 +11,7 @@ format:
       slide-number: true
       touch: true
       callout-icon: false
+      html-math-method: katex
       keyboard: true
       include-in-header:
         - text: |
@@ -32,6 +33,7 @@ custom-numbered-blocks:
       boxstyle: foldbox.simple
       collapse: false
       listin: [mathstuff]
+      numbered: false
     todos: default  
   
   classes:
