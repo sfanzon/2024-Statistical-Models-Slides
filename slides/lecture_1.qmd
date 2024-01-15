@@ -83,7 +83,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/bingham_fry.png){width=87%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=82%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 
 :::
 
@@ -682,7 +682,7 @@ The collection of events  $A_1, A_2, \ldots$ is a **partition** of $\Omega$ if
 
 
 
-## Probability {.smaller}
+## What's a Probability? {.smaller}
 
 
 - To each event $E \subset \Omega$ we would like to associate a number
@@ -697,9 +697,6 @@ $$
     * $P(E)$ small means $E$ has low chance of occurring
     * $P(E)$ large means $E$ has high chance of occurring
 
-
-<br>
-
 - **Technical issue**:
 
     * One cannot associate a number $P(E)$ for all events in $\Omega$
@@ -709,11 +706,13 @@ $$
 
 
 
-## Probability {.smaller}
+
+
+## $\sigma$-algebras {.smaller}
+
 
 ::: Definition
 ### sigma-algebra
-
 
 Let $\mathcal{B}$ be a collection of events. We say that $\mathcal{B}$ is a $\sigma$-algebra if
 
@@ -725,22 +724,277 @@ Let $\mathcal{B}$ be a collection of events. We say that $\mathcal{B}$ is a $\si
 :::
 
 
-**Example**: If $\Omega$ is any set, then
+
+**Remarks**:
+
+- Since $\emptyset \in \mathcal{B}$ and $\emptyset^c = \Omega$, we deduce that
+$$
+\Omega \in \mathcal{B}
+$$
+
+- Thanks to DeMorgan's Law we have that
+$$
+A_1,A_2 , \ldots \in \mathcal{B} \quad \implies \quad \cap_{i=1}^\infty A_i \in \mathcal{B}
+$$
+
+
+
+
+
+
+## $\sigma$-algebras {.smaller}
+
+
+**Examples**: 
+
+- If $\Omega$ is any set, then
 $$
 \mathcal{B} = \{ \emptyset, \Omega \}
 $$
 is a $\sigma$-algebra
 
 
-
-
-## Probability {.smaller}
-
-**Example**: If $\Omega$ is **finite** or **countable** then the power set of $\Omega$
+- If $\Omega$ is **finite** or **countable** then the power set of $\Omega$
 $$
 \mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
 $$
 is a $\sigma$-algebra
+
+
+
+
+
+
+## $\sigma$-algebras {.smaller}
+
+**Examples**: 
+
+
+- If $\Omega$ has $n$ elements then $\mathcal{B} = \operatorname{Power} (\Omega)$ contains $2^n$ sets
+
+- If $\Omega = \{ 1,2,3\}$ then
+\begin{align*}
+\mathcal{B} = \operatorname{Power} (\Omega) = \big\{ & \{1\} , \, \{2\}, \, \{3\}  \\
+                                       &  \{1,2\} , \, \{2,3\}, \, \{1,3\}      \\
+                                       & \emptyset , \{1,2,3\}   \big\}
+\end{align*}
+
+- If $\Omega$ is **uncountable** then the power set of $\Omega$ is not easy to describe
+
+
+
+
+
+
+## Lebesgue $\sigma$-algebra {.smaller}
+
+
+::: Question
+
+$\mathbb{R}$ is uncountable. Which $\sigma$-algebra do we consider?
+
+:::
+
+
+
+::: Definition 
+### Lebesgue sigma-algebra
+
+
+The Lebesgue $\sigma$-algebra on $\mathbb{R}$ is the smallest $\sigma$-algebra $\mathcal{L}$ containing all sets of the form
+$$
+(a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b] 
+$$
+for all $a,b \in \mathbb{R}$
+
+:::
+
+
+
+## Lebesgue $\sigma$-algebra {.smaller}
+
+
+::: Important
+
+Therefore the events of $\R$ are 
+
+- Intervals
+- Unions and intersection of intervals
+- Countable Unions and intersection of intervals
+
+:::
+
+
+::: Warning 
+
+- I only told you that the Lebsesgue $\sigma$-algebra $\mathcal{L}$ **exists**
+- Explicitly showing that $\mathcal{L}$ exists is not easy, see [@rosenthal]
+
+:::
+
+
+
+
+## Probability {.smaller}
+
+Suppose given:
+
+- $\Omega$ sample space 
+- $\mathcal{B}$ a $\sigma$-algebra on $\Omega$
+
+::: Definition
+### Probability function
+
+A **probability function** on $\Omega$ is a map
+$$
+P \colon \mathcal{B} \to [0,1]
+$$
+such that the **Axioms of Probability** hold
+
+1. $P(\Omega) = 1$
+2. If $A_1, A_2,\ldots$ are pairwise disjoint then
+$$
+P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)
+$$
+
+:::
+
+
+
+
+## Properties of Probability {.smaller}
+
+Let $A, B \in \mathcal{B}$. As a consequence of the Axioms of Probability:
+
+
+1. $P(\emptyset) = 0$
+2. If $A$ and $B$ are disjoint then
+$$
+P(A \cup B) = P(A) + P(B)
+$$
+3. $P(A^c) = 1 - P(A)$
+4. $P(A) = P(A \cap B) + P(A \cap B^c)$
+5. $P(A\cup B) = P(A) + P(B) - P(A \cap B)$
+6. If $A \subset B$ then
+$$
+P(A) \leq P(B)
+$$
+
+
+
+
+
+## Properties of Probability {.smaller} 
+
+7. Suppose $A$ is an event and $B_1,B_2, \ldots$ a partition of $\Omega$. Then
+$$
+P(A) = \sum_{i=1}^\infty  P(A \cap B_i)
+$$
+8. Suppose $A_1,A_2, \ldots$ are events. Then
+$$
+P\left( \bigcup_{i=1}^\infty  A_i \right)  \leq  \sum_{i=1}^\infty P(A_i)
+$$
+
+
+
+
+## Example: Fair Coin Toss {.smaller}
+
+- The sample space for **coin toss** is $\Omega = \{ H, T \}$
+
+- We take as $\sigma$-algebra the power set of $\Omega$
+$$
+\mathcal{B} = \{  \emptyset , \, \{H\}  , \, \{T\} , \, \{H,T\}   \}
+$$
+
+- We suppose that the coin is fair
+
+    * This means $P \colon \mathcal{B} \to [0,1]$ satisfies
+    $$
+    P(\{H\}) = P(\{T\})
+    $$
+    * Assuming the above we get
+    $$
+    1 = P(\Omega) = P(\{H\} \cup \{T\}) = 
+    P(\{H\}) + P(\{T\}) = 2 P(\{H\})
+    $$
+    * Therefore 
+    $$
+    P(\{H\}) = P(\{T\}) = \frac12
+    $$
+
+
+
+
+
+## Conditional Probability {.smaller}
+
+::: Definition
+### Conditional Probability
+
+Let $A,B$ be events in $\Omega$ with 
+$$
+P(B)>0
+$$
+The **conditional probability** of $A$ given $B$ is
+$$
+P(A|B) := \frac{P(A \cap B)}{P(B)} 
+$$
+
+:::
+
+
+- $P(A|B)$ represents the probability of $A$, knowing that $B$ happened
+- The function $A \mapsto P(A|B)$ is a probability function on $\Omega$
+
+
+
+
+## Bayes' Rule {.smaller}
+
+
+- For two events $A$ and $B$ is holds
+
+$$
+P(A | B ) = P(B|A) \frac{P(A)}{P(B)}
+$$
+
+
+- Given a partition $A_1, A_2, \ldots$ of the sample space we have
+
+$$
+P(A_i | B ) = \frac{ P(B|A_i) P(A_i)}{\sum_{j=1}^\infty P(B | A_j) P(A_j)}
+$$
+
+
+
+
+
+## Independence {.smaller}
+
+
+::: Definition
+
+Two events $A$ and $B$ are **independent** if 
+$$
+P(A \cap B) = P(A)P(B)
+$$
+A collection of events $A_1 , \ldots ,A_n$ are **mutually independent** if
+for any subcollection $A_{i_1}, \ldots, A_{i_k}$ it holds
+$$
+P \left(  \bigcap_{j=1}^k A_j  \right) = \prod_{j=1}^k  P(A_{i_j})
+$$
+
+:::
+
+
+
+
+## Random Variables
+
+
+
+
 
 
 
@@ -763,8 +1017,9 @@ $$
 
 
 
-## Examples of Continuous RV {.smaller}
 
+
+## Examples of Continuous RV {.smaller}
 
 
 ::: Theorem

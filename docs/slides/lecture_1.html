@@ -361,27 +361,31 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,35 +393,19 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -425,9 +413,21 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -518,7 +518,7 @@
 </ul>
 </div>
 <div class="column" style="width:38%;">
-<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:87.0%"></a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:82.0%"></a></p>
 </div>
 </section>
 <section id="references-1" class="slide level2">
@@ -1072,8 +1072,8 @@ A_i \cap A_j = \emptyset \,, \quad \forall \, i \neq j
 </div></details>
 </div>
 </section>
-<section id="probability" class="slide level2 smaller">
-<h2>Probability</h2>
+<section id="whats-a-probability" class="slide level2 smaller">
+<h2>What’s a Probability?</h2>
 <ul>
 <li><p>To each event <span class="math inline">E \subset \Omega</span> we would like to associate a number <span class="math display">
 P(E) \in [0,1]
@@ -1084,9 +1084,6 @@ P(E) \in [0,1]
 <li><span class="math inline">P(E)</span> small means <span class="math inline">E</span> has low chance of occurring</li>
 <li><span class="math inline">P(E)</span> large means <span class="math inline">E</span> has high chance of occurring</li>
 </ul></li>
-</ul>
-<p><br></p>
-<ul>
 <li><p><strong>Technical issue</strong>:</p>
 <ul>
 <li>One cannot associate a number <span class="math inline">P(E)</span> for all events in <span class="math inline">\Omega</span></li>
@@ -1095,8 +1092,8 @@ P(E) \in [0,1]
 </ul></li>
 </ul>
 </section>
-<section id="probability-1" class="slide level2 smaller">
-<h2>Probability</h2>
+<section id="sigma-algebras" class="slide level2 smaller">
+<h2><span class="math inline">\sigma</span>-algebras</h2>
 <div id="sigma-algebra" class="Definition" title="sigma-algebra">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>sigma-algebra</summary><div>
 <p>Let <span class="math inline">\mathcal{B}</span> be a collection of events. We say that <span class="math inline">\mathcal{B}</span> is a <span class="math inline">\sigma</span>-algebra if</p>
@@ -1107,15 +1104,188 @@ P(E) \in [0,1]
 </ol>
 </div></details>
 </div>
-<p><strong>Example</strong>: If <span class="math inline">\Omega</span> is any set, then <span class="math display">
-\mathcal{B} = \{ \emptyset, \Omega \}
-</span> is a <span class="math inline">\sigma</span>-algebra</p>
+<p><strong>Remarks</strong>:</p>
+<ul>
+<li><p>Since <span class="math inline">\emptyset \in \mathcal{B}</span> and <span class="math inline">\emptyset^c = \Omega</span>, we deduce that <span class="math display">
+\Omega \in \mathcal{B}
+</span></p></li>
+<li><p>Thanks to DeMorgan’s Law we have that <span class="math display">
+A_1,A_2 , \ldots \in \mathcal{B} \quad \implies \quad \cap_{i=1}^\infty A_i \in \mathcal{B}
+</span></p></li>
+</ul>
 </section>
-<section id="probability-2" class="slide level2 smaller">
-<h2>Probability</h2>
-<p><strong>Example</strong>: If <span class="math inline">\Omega</span> is <strong>finite</strong> or <strong>countable</strong> then the power set of <span class="math inline">\Omega</span> <span class="math display">
+<section id="sigma-algebras-1" class="slide level2 smaller">
+<h2><span class="math inline">\sigma</span>-algebras</h2>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><p>If <span class="math inline">\Omega</span> is any set, then <span class="math display">
+\mathcal{B} = \{ \emptyset, \Omega \}
+</span> is a <span class="math inline">\sigma</span>-algebra</p></li>
+<li><p>If <span class="math inline">\Omega</span> is <strong>finite</strong> or <strong>countable</strong> then the power set of <span class="math inline">\Omega</span> <span class="math display">
 \mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
-</span> is a <span class="math inline">\sigma</span>-algebra</p>
+</span> is a <span class="math inline">\sigma</span>-algebra</p></li>
+</ul>
+</section>
+<section id="sigma-algebras-2" class="slide level2 smaller">
+<h2><span class="math inline">\sigma</span>-algebras</h2>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><p>If <span class="math inline">\Omega</span> has <span class="math inline">n</span> elements then <span class="math inline">\mathcal{B} = \operatorname{Power} (\Omega)</span> contains <span class="math inline">2^n</span> sets</p></li>
+<li><p>If <span class="math inline">\Omega = \{ 1,2,3\}</span> then <span class="math display">\begin{align*}
+\mathcal{B} = \operatorname{Power} (\Omega) = \big\{ &amp; \{1\} , \, \{2\}, \, \{3\}  \\
+                                     &amp;  \{1,2\} , \, \{2,3\}, \, \{1,3\}      \\
+                                     &amp; \emptyset , \{1,2,3\}   \big\}
+\end{align*}</span></p></li>
+<li><p>If <span class="math inline">\Omega</span> is <strong>uncountable</strong> then the power set of <span class="math inline">\Omega</span> is not easy to describe</p></li>
+</ul>
+</section>
+<section id="lebesgue-sigma-algebra" class="slide level2 smaller">
+<h2>Lebesgue <span class="math inline">\sigma</span>-algebra</h2>
+<div id="Question*-4.6" class="Question">
+<p></p><details class="Question fbx-simplebox fbx-default" open=""><summary><strong>Question</strong></summary><div><span class="math inline">\mathbb{R}</span> is uncountable. Which <span class="math inline">\sigma</span>-algebra do we consider?<p></p>
+</div></details>
+</div>
+<div id="lebesgue-sigma-algebra-1" class="Definition" title="Lebesgue sigma-algebra">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Lebesgue sigma-algebra</summary><div>The Lebesgue <span class="math inline">\sigma</span>-algebra on <span class="math inline">\mathbb{R}</span> is the smallest <span class="math inline">\sigma</span>-algebra <span class="math inline">\mathcal{L}</span> containing all sets of the form <span class="math display">
+(a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b]
+</span> for all <span class="math inline">a,b \in \mathbb{R}</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="lebesgue-sigma-algebra-2" class="slide level2 smaller">
+<h2>Lebesgue <span class="math inline">\sigma</span>-algebra</h2>
+<div id="Important*-4.8" class="Important">
+<details class="Important fbx-simplebox fbx-default" open=""><summary><strong>Important</strong></summary><div>
+<p>Therefore the events of <span class="math inline">\R</span> are</p>
+<ul>
+<li>Intervals</li>
+<li>Unions and intersection of intervals</li>
+<li>Countable Unions and intersection of intervals</li>
+</ul>
+</div></details>
+</div>
+<div id="Warning*-4.9" class="Warning">
+<details class="Warning fbx-simplebox fbx-default" open=""><summary><strong>Warning</strong></summary><div>
+<ul>
+<li>I only told you that the Lebsesgue <span class="math inline">\sigma</span>-algebra <span class="math inline">\mathcal{L}</span> <strong>exists</strong></li>
+<li>Explicitly showing that <span class="math inline">\mathcal{L}</span> exists is not easy, see <span class="citation" data-cites="rosenthal">[<a href="#/references-3" role="doc-biblioref" onclick="">6</a>]</span></li>
+</ul>
+</div></details>
+</div>
+</section>
+<section id="probability" class="slide level2 smaller">
+<h2>Probability</h2>
+<p>Suppose given:</p>
+<ul>
+<li><span class="math inline">\Omega</span> sample space</li>
+<li><span class="math inline">\mathcal{B}</span> a <span class="math inline">\sigma</span>-algebra on <span class="math inline">\Omega</span></li>
+</ul>
+<div id="probability-function" class="Definition" title="Probability function">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Probability function</summary><div>
+<p>A <strong>probability function</strong> on <span class="math inline">\Omega</span> is a map <span class="math display">
+P \colon \mathcal{B} \to [0,1]
+</span> such that the <strong>Axioms of Probability</strong> hold</p>
+<ol type="1">
+<li><span class="math inline">P(\Omega) = 1</span></li>
+<li>If <span class="math inline">A_1, A_2,\ldots</span> are pairwise disjoint then <span class="math display">
+P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)
+</span></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="properties-of-probability" class="slide level2 smaller">
+<h2>Properties of Probability</h2>
+<p>Let <span class="math inline">A, B \in \mathcal{B}</span>. As a consequence of the Axioms of Probability:</p>
+<ol type="1">
+<li><span class="math inline">P(\emptyset) = 0</span></li>
+<li>If <span class="math inline">A</span> and <span class="math inline">B</span> are disjoint then <span class="math display">
+P(A \cup B) = P(A) + P(B)
+</span></li>
+<li><span class="math inline">P(A^c) = 1 - P(A)</span></li>
+<li><span class="math inline">P(A) = P(A \cap B) + P(A \cap B^c)</span></li>
+<li><span class="math inline">P(A\cup B) = P(A) + P(B) - P(A \cap B)</span></li>
+<li>If <span class="math inline">A \subset B</span> then <span class="math display">
+P(A) \leq P(B)
+</span></li>
+</ol>
+</section>
+<section id="properties-of-probability-1" class="slide level2 smaller">
+<h2>Properties of Probability</h2>
+<ol start="7" type="1">
+<li>Suppose <span class="math inline">A</span> is an event and <span class="math inline">B_1,B_2, \ldots</span> a partition of <span class="math inline">\Omega</span>. Then <span class="math display">
+P(A) = \sum_{i=1}^\infty  P(A \cap B_i)
+</span></li>
+<li>Suppose <span class="math inline">A_1,A_2, \ldots</span> are events. Then <span class="math display">
+P\left( \bigcup_{i=1}^\infty  A_i \right)  \leq  \sum_{i=1}^\infty P(A_i)
+</span></li>
+</ol>
+</section>
+<section id="example-fair-coin-toss" class="slide level2 smaller">
+<h2>Example: Fair Coin Toss</h2>
+<ul>
+<li><p>The sample space for <strong>coin toss</strong> is <span class="math inline">\Omega = \{ H, T \}</span></p></li>
+<li><p>We take as <span class="math inline">\sigma</span>-algebra the power set of <span class="math inline">\Omega</span> <span class="math display">
+\mathcal{B} = \{  \emptyset , \, \{H\}  , \, \{T\} , \, \{H,T\}   \}
+</span></p></li>
+<li><p>We suppose that the coin is fair</p>
+<ul>
+<li>This means <span class="math inline">P \colon \mathcal{B} \to [0,1]</span> satisfies <span class="math display">
+  P(\{H\}) = P(\{T\})
+  </span></li>
+<li>Assuming the above we get <span class="math display">
+  1 = P(\Omega) = P(\{H\} \cup \{T\}) =
+  P(\{H\}) + P(\{T\}) = 2 P(\{H\})
+  </span></li>
+<li>Therefore <span class="math display">
+  P(\{H\}) = P(\{T\}) = \frac12
+  </span></li>
+</ul></li>
+</ul>
+</section>
+<section id="conditional-probability" class="slide level2 smaller">
+<h2>Conditional Probability</h2>
+<div id="conditional-probability-1" class="Definition" title="Conditional Probability">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Conditional Probability</summary><div>Let <span class="math inline">A,B</span> be events in <span class="math inline">\Omega</span> with <span class="math display">
+P(B)&gt;0
+</span> The <strong>conditional probability</strong> of <span class="math inline">A</span> given <span class="math inline">B</span> is <span class="math display">
+P(A|B) := \frac{P(A \cap B)}{P(B)}
+</span><p></p>
+</div></details>
+</div>
+<ul>
+<li><span class="math inline">P(A|B)</span> represents the probability of <span class="math inline">A</span>, knowing that <span class="math inline">B</span> happened</li>
+<li>The function <span class="math inline">A \mapsto P(A|B)</span> is a probability function on <span class="math inline">\Omega</span></li>
+</ul>
+</section>
+<section id="bayes-rule" class="slide level2 smaller">
+<h2>Bayes’ Rule</h2>
+<ul>
+<li>For two events <span class="math inline">A</span> and <span class="math inline">B</span> is holds</li>
+</ul>
+<p><span class="math display">
+P(A | B ) = P(B|A) \frac{P(A)}{P(B)}
+</span></p>
+<ul>
+<li>Given a partition <span class="math inline">A_1, A_2, \ldots</span> of the sample space we have</li>
+</ul>
+<p><span class="math display">
+P(A_i | B ) = \frac{ P(B|A_i) P(A_i)}{\sum_{j=1}^\infty P(B | A_j) P(A_j)}
+</span></p>
+</section>
+<section id="independence" class="slide level2 smaller">
+<h2>Independence</h2>
+<div id="Definition*-4.12" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Two events <span class="math inline">A</span> and <span class="math inline">B</span> are <strong>independent</strong> if <span class="math display">
+P(A \cap B) = P(A)P(B)
+</span> A collection of events <span class="math inline">A_1 , \ldots ,A_n</span> are <strong>mutually independent</strong> if for any subcollection <span class="math inline">A_{i_1}, \ldots, A_{i_k}</span> it holds <span class="math display">
+P \left(  \bigcap_{j=1}^k A_j  \right) = \prod_{j=1}^k  P(A_{i_j})
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="random-variables" class="slide level2">
+<h2>Random Variables</h2>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
@@ -1131,14 +1301,14 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\ri
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-4.6" class="Theorem">
+<div id="Theorem*-4.13" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.7" class="Proof">
+<div id="Proof*-4.14" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
@@ -1184,6 +1354,9 @@ Z := \frac{X-\mu}{\sigma}
 </div>
 <div id="ref-dalgaard" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
+</div>
+<div id="ref-rosenthal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Rosenthal, Jeffrey S., A first look at rigorous probability theory, Second Edition, World Scientific Publishing, 2006.</div>
 </div>
 </div>
 </section></section>
