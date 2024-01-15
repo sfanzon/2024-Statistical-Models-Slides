@@ -990,7 +990,31 @@ $$
 
 
 
-## Random Variables
+## Random Variables {.smaller}
+### Motivation
+
+- Consider the experiment of flipping a coin $50$ times
+- The sample space consists of $2^{50}$ elements
+- Elements are vectors of $50$ entries recording the outcome $H$ or $T$ of each flip
+- This is a very large sample space!
+
+
+Suppose we are only interested in
+$$
+X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
+$$
+
+- Then the new sample space is the set of integers
+$$
+\{ 0,1,2,\ldots,50\}
+$$
+- This is much smaller!
+- $X$ is called a Random Variable
+
+
+
+
+## Random Variables {.smaller}
 
 
 
