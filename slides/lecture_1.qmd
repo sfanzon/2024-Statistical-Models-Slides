@@ -83,7 +83,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/bingham_fry.png){width=90%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=87%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 
 :::
 
@@ -109,7 +109,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/fry_burke.png){width=90%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+[![](images/fry_burke.png){width=87%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
 
 :::
 
@@ -556,7 +556,7 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 
 
-## Probability space {.smaller}
+## Sample space {.smaller}
 
 ::: Definition
 ### Sample space
@@ -577,6 +577,170 @@ $$
 $$
 \Omega = \{ x \in \mathbb{R} \, \colon \, 0 \leq x \leq 100 \} = [0,100]
 $$
+
+
+
+
+
+
+## Events {.smaller}
+
+
+::: Definition
+### Event
+
+A subset $E$ of the sample space $\Omega$ (including $\emptyset$ and $\Omega$ itself)
+
+:::
+
+
+**Operations with events**:
+
+- **Union** of two events $A$ and $B$
+$$
+A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}
+$$
+
+- **Intersection** of two events $A$ and $B$
+$$
+A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}
+$$
+
+- **Complement** of an event $A$
+$$
+A^c  := \{ x \in \Omega \colon x \notin A  \}
+$$
+
+
+
+
+## Events {.smaller}
+
+
+**More Operations with events**:
+
+- **Infinite Union** of a family of events $A_i$ with $i \in I$
+
+$$
+\bigcup_{i \in I} A_i := \{ x \in \Omega \colon x \in A_i \, \text{ for some } \, i \in I \}
+$$
+
+- **Infinite Intersection** of a family of events $A_i$ with $i \in I$
+
+$$
+\bigcap_{i \in I} A_i := \{ x \in \Omega \colon x \in A_i \, \text{ for all } \, i \in I \}
+$$
+
+
+
+
+
+## Events {.smaller}
+
+
+**Example**: Consider sample space and events
+$$
+\Omega := (0,1] \,, \quad 
+A_i = \left[\frac{1}{i} , 1 \right] \,, \quad i \in \mathbb{N}
+$$
+Then
+$$
+\bigcup_{i \in I} A_i = (0,1] \,, \quad 
+\bigcap_{i \in I} A_i = \{ 1 \}
+$$
+
+
+
+
+
+## Events {.smaller}
+
+::: Definition
+### Disjoint
+
+Two events $A$ and $B$ are **disjoint** if
+$$
+A \cap B = \emptyset
+$$
+Events $A_1, A_2, \ldots$ are **pairwise disjoint** if
+$$
+A_i \cap A_j = \emptyset \,, \quad \forall \, i \neq j
+$$
+:::
+
+
+::: Definition
+### Partition
+
+The collection of events  $A_1, A_2, \ldots$ is a **partition** of $\Omega$ if
+
+1. $A_1, A_2, \ldots$ are pairwise disjoint
+2. $\Omega = \cup_{i=1}^\infty A_i$
+
+:::
+
+
+
+
+## Probability {.smaller}
+
+
+- To each event $E \subset \Omega$ we would like to associate a number
+$$
+P(E) \in [0,1]
+$$
+
+- The number $P(E)$ is called the **probability** of $E$
+
+- The number $P(E)$ models the **frequency of occurrence** of $E$:
+
+    * $P(E)$ small means $E$ has low chance of occurring
+    * $P(E)$ large means $E$ has high chance of occurring
+
+
+<br>
+
+- **Technical issue**:
+
+    * One cannot associate a number $P(E)$ for all events in $\Omega$
+    * Probability function $P$ only defined for a **smaller** family of events
+    * Such family of events is called $\sigma$-algebra
+
+
+
+
+## Probability {.smaller}
+
+::: Definition
+### sigma-algebra
+
+
+Let $\mathcal{B}$ be a collection of events. We say that $\mathcal{B}$ is a $\sigma$-algebra if
+
+1. $\emptyset \in \mathcal{B}$
+2. If $A \in \mathcal{B}$ then $A^c \in \mathcal{B}$
+3. If $A_1,A_2 , \ldots \in \mathcal{B}$ then $\cup_{i=1}^\infty A_i \in \mathcal{B}$
+
+
+:::
+
+
+**Example**: If $\Omega$ is any set, then
+$$
+\mathcal{B} = \{ \emptyset, \Omega \}
+$$
+is a $\sigma$-algebra
+
+
+
+
+## Probability {.smaller}
+
+**Example**: If $\Omega$ is **finite** or **countable** then the power set of $\Omega$
+$$
+\mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
+$$
+is a $\sigma$-algebra
 
 
 
@@ -633,8 +797,6 @@ Check
 
 
 
-
-
 # Thank you! {background-color="#cc0164" visibility="uncounted"}
 
 
@@ -646,8 +808,8 @@ Check
 
 
 
-
 ## References
+
 
 
 

@@ -361,31 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,41 +377,57 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
-  .Proposition {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   </style>
 </head>
@@ -518,7 +518,7 @@
 </ul>
 </div>
 <div class="column" style="width:38%;">
-<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:90.0%"></a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:87.0%"></a></p>
 </div>
 </section>
 <section id="references-1" class="slide level2">
@@ -532,7 +532,7 @@
 </ul>
 </div>
 <div class="column" style="width:38%;">
-<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:90.0%"></a></p>
+<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:87.0%"></a></p>
 </div>
 </section>
 <section id="references-2" class="slide level2">
@@ -991,9 +991,9 @@
 </div>
 </div>
 </section>
-<section id="probability-space" class="slide level2 smaller">
-<h2>Probability space</h2>
-<div id="sample-space" class="Definition" title="Sample space">
+<section id="sample-space" class="slide level2 smaller">
+<h2>Sample space</h2>
+<div id="sample-space-1" class="Definition" title="Sample space">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Sample space</summary><div>A set <span class="math inline">\Omega</span> of all possible outcomes of some experiment<p></p>
 </div></details>
 </div>
@@ -1006,6 +1006,116 @@
 \Omega = \{ x \in \mathbb{R} \, \colon \, 0 \leq x \leq 100 \} = [0,100]
 </span></p></li>
 </ul>
+</section>
+<section id="events" class="slide level2 smaller">
+<h2>Events</h2>
+<div id="event" class="Definition" title="Event">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Event</summary><div>A subset <span class="math inline">E</span> of the sample space <span class="math inline">\Omega</span> (including <span class="math inline">\emptyset</span> and <span class="math inline">\Omega</span> itself)<p></p>
+</div></details>
+</div>
+<p><strong>Operations with events</strong>:</p>
+<ul>
+<li><p><strong>Union</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math display">
+A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}
+</span></p></li>
+<li><p><strong>Intersection</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math display">
+A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}
+</span></p></li>
+<li><p><strong>Complement</strong> of an event <span class="math inline">A</span> <span class="math display">
+A^c  := \{ x \in \Omega \colon x \notin A  \}
+</span></p></li>
+</ul>
+</section>
+<section id="events-1" class="slide level2 smaller">
+<h2>Events</h2>
+<p><strong>More Operations with events</strong>:</p>
+<ul>
+<li><strong>Infinite Union</strong> of a family of events <span class="math inline">A_i</span> with <span class="math inline">i \in I</span></li>
+</ul>
+<p><span class="math display">
+\bigcup_{i \in I} A_i := \{ x \in \Omega \colon x \in A_i \, \text{ for some } \, i \in I \}
+</span></p>
+<ul>
+<li><strong>Infinite Intersection</strong> of a family of events <span class="math inline">A_i</span> with <span class="math inline">i \in I</span></li>
+</ul>
+<p><span class="math display">
+\bigcap_{i \in I} A_i := \{ x \in \Omega \colon x \in A_i \, \text{ for all } \, i \in I \}
+</span></p>
+</section>
+<section id="events-2" class="slide level2 smaller">
+<h2>Events</h2>
+<p><strong>Example</strong>: Consider sample space and events <span class="math display">
+\Omega := (0,1] \,, \quad
+A_i = \left[\frac{1}{i} , 1 \right] \,, \quad i \in \mathbb{N}
+</span> Then <span class="math display">
+\bigcup_{i \in I} A_i = (0,1] \,, \quad
+\bigcap_{i \in I} A_i = \{ 1 \}
+</span></p>
+</section>
+<section id="events-3" class="slide level2 smaller">
+<h2>Events</h2>
+<div id="disjoint" class="Definition" title="Disjoint">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Disjoint</summary><div>Two events <span class="math inline">A</span> and <span class="math inline">B</span> are <strong>disjoint</strong> if <span class="math display">
+A \cap B = \emptyset
+</span> Events <span class="math inline">A_1, A_2, \ldots</span> are <strong>pairwise disjoint</strong> if <span class="math display">
+A_i \cap A_j = \emptyset \,, \quad \forall \, i \neq j
+</span><p></p>
+</div></details>
+</div>
+<div id="partition" class="Definition" title="Partition">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Partition</summary><div>
+<p>The collection of events <span class="math inline">A_1, A_2, \ldots</span> is a <strong>partition</strong> of <span class="math inline">\Omega</span> if</p>
+<ol type="1">
+<li><span class="math inline">A_1, A_2, \ldots</span> are pairwise disjoint</li>
+<li><span class="math inline">\Omega = \cup_{i=1}^\infty A_i</span></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="probability" class="slide level2 smaller">
+<h2>Probability</h2>
+<ul>
+<li><p>To each event <span class="math inline">E \subset \Omega</span> we would like to associate a number <span class="math display">
+P(E) \in [0,1]
+</span></p></li>
+<li><p>The number <span class="math inline">P(E)</span> is called the <strong>probability</strong> of <span class="math inline">E</span></p></li>
+<li><p>The number <span class="math inline">P(E)</span> models the <strong>frequency of occurrence</strong> of <span class="math inline">E</span>:</p>
+<ul>
+<li><span class="math inline">P(E)</span> small means <span class="math inline">E</span> has low chance of occurring</li>
+<li><span class="math inline">P(E)</span> large means <span class="math inline">E</span> has high chance of occurring</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong>Technical issue</strong>:</p>
+<ul>
+<li>One cannot associate a number <span class="math inline">P(E)</span> for all events in <span class="math inline">\Omega</span></li>
+<li>Probability function <span class="math inline">P</span> only defined for a <strong>smaller</strong> family of events</li>
+<li>Such family of events is called <span class="math inline">\sigma</span>-algebra</li>
+</ul></li>
+</ul>
+</section>
+<section id="probability-1" class="slide level2 smaller">
+<h2>Probability</h2>
+<div id="sigma-algebra" class="Definition" title="sigma-algebra">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>sigma-algebra</summary><div>
+<p>Let <span class="math inline">\mathcal{B}</span> be a collection of events. We say that <span class="math inline">\mathcal{B}</span> is a <span class="math inline">\sigma</span>-algebra if</p>
+<ol type="1">
+<li><span class="math inline">\emptyset \in \mathcal{B}</span></li>
+<li>If <span class="math inline">A \in \mathcal{B}</span> then <span class="math inline">A^c \in \mathcal{B}</span></li>
+<li>If <span class="math inline">A_1,A_2 , \ldots \in \mathcal{B}</span> then <span class="math inline">\cup_{i=1}^\infty A_i \in \mathcal{B}</span></li>
+</ol>
+</div></details>
+</div>
+<p><strong>Example</strong>: If <span class="math inline">\Omega</span> is any set, then <span class="math display">
+\mathcal{B} = \{ \emptyset, \Omega \}
+</span> is a <span class="math inline">\sigma</span>-algebra</p>
+</section>
+<section id="probability-2" class="slide level2 smaller">
+<h2>Probability</h2>
+<p><strong>Example</strong>: If <span class="math inline">\Omega</span> is <strong>finite</strong> or <strong>countable</strong> then the power set of <span class="math inline">\Omega</span> <span class="math display">
+\mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
+</span> is a <span class="math inline">\sigma</span>-algebra</p>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
@@ -1021,14 +1131,14 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\ri
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-4.2" class="Theorem">
+<div id="Theorem*-4.6" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.3" class="Proof">
+<div id="Proof*-4.7" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
