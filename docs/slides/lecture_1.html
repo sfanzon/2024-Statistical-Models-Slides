@@ -361,11 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
-  .Conjecture {
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -373,19 +377,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Corollary {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,37 +393,37 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Definition {
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Problem {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .DONE {
     --color1: #cce7b1;
@@ -1306,6 +1306,59 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 </section>
 <section id="random-variables-1" class="slide level2 smaller">
 <h2>Random Variables</h2>
+<p>Assume given</p>
+<ul>
+<li><span class="math inline">\Omega</span> sample space</li>
+<li><span class="math inline">\mathcal{B}</span> a <span class="math inline">\sigma</span>-algebra of events on <span class="math inline">\Omega</span></li>
+<li><span class="math inline">P \colon \mathcal{B} \to [0,1]</span> a probability measure</li>
+</ul>
+<div id="random-variable" class="Definition" title="Random variable">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Random variable</summary><div>A function <span class="math inline">X \colon \Omega \to \mathbb{R}</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="random-variables-2" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="technical-remark">Technical remark</h3>
+<div id="random-variable-1" class="Definition" title="Random variable">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Random variable</summary><div>A <span style="color: magenta-color;"><strong>measurable</strong></span> function <span class="math inline">X \colon \Omega \to \mathbb{R}</span><p></p>
+</div></details>
+</div>
+<p><strong>Technicality</strong>: <span style="color:magenta-color;"><strong>red</strong></span> <span class="math inline">X</span> is a <span style="color:mymagenta;">measurable</span> function if <span class="math display">
+\{ \omega \in \Omega \colon X(\omega) \in \mathcal{A} \} \in \mathcal{B} \,, \quad \forall A \in \mathcal{L}
+</span> where</p>
+<ul>
+<li><span class="math inline">\mathcal{L}</span> is the Lebsgue <span class="math inline">\sigma</span>-algebra on <span class="math inline">\mathbb{R}</span></li>
+<li><span class="math inline">\mathcal{B}</span> is the given <span class="math inline">\sigma</span>-algebra on <span class="math inline">\Omega</span></li>
+</ul>
+</section>
+<section id="random-variables-3" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Tossing two dice</li>
+</ul>
+<table style="width:53%;">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Right</th>
+<th style="text-align: left;">Left</th>
+<th style="text-align: center;">Centered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Bananas</td>
+<td style="text-align: left;">$1.34</td>
+<td style="text-align: center;">built-in wrapper</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
@@ -1321,14 +1374,14 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\ri
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-4.13" class="Theorem">
+<div id="Theorem*-4.15" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.14" class="Proof">
+<div id="Proof*-4.16" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>

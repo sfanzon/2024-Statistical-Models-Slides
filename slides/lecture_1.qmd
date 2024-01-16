@@ -1017,9 +1017,65 @@ $$
 ## Random Variables {.smaller}
 
 
+Assume given
+
+- $\Omega$ sample space
+- $\mathcal{B}$ a $\sigma$-algebra of events on $\Omega$
+- $P \colon \mathcal{B} \to [0,1]$ a probability measure
+
+
+::: Definition
+### Random variable
+
+A function $X \colon \Omega \to \mathbb{R}$
+
+:::
 
 
 
+
+## Random Variables {.smaller}
+### Technical remark 
+
+
+::: Definition
+### Random variable
+
+A <span style="color: magenta-color;">**measurable**</span> 
+function $X \colon \Omega \to \mathbb{R}$
+
+:::
+
+
+**Technicality**: [**red**]{style="color:magenta-color;"}
+$X$ is a <span style="color:mymagenta;">measurable</span>
+function if
+$$
+\{ \omega \in \Omega \colon X(\omega) \in \mathcal{A} \} \in \mathcal{B} \,, \quad \forall A \in \mathcal{L}
+$$
+where 
+
+- $\mathcal{L}$ is the Lebsgue $\sigma$-algebra on $\mathbb{R}$
+- $\mathcal{B}$ is the given $\sigma$-algebra on $\Omega$
+
+
+
+
+
+## Random Variables {.smaller}
+
+**Examples**:
+
+- Tossing two dice
+
+
+
+
++---------+--------+------------------+
+| Right   | Left   | Centered         |
++========:+:=======+:================:+
+| Bananas | $1.34  | built-in wrapper |
++---------+--------+------------------+
 
 
 

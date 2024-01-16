@@ -2,6 +2,8 @@
 // Base document colors
 //$body-bg: #181818;
 
+$magenta-color:       #cc0164 !default;
+
 $link-color: #cc0164;
 $link-decoration: none;
 $presentation-heading-color: #cc0164;
@@ -28,6 +30,7 @@ $presentation-font-smaller: 0.75;
 
 
 /*-- scss:rules --*/
+
 
 
 //.reveal a {
@@ -111,11 +114,7 @@ $presentation-font-smaller: 0.75;
   }
   
 
- // alert
 
- .alert {
-  color: var(--col, #cc0164);
-}
 
 
   // Slide number   
