@@ -1,6 +1,7 @@
 ---
 title: "Statistical Models"
 subtitle: "Lecture 1"
+from: markdown+emoji
 author: 
     - name: Dr. Silvio Fanzon
       id: sf
@@ -149,6 +150,101 @@ Slides are self-contained and based on the book
 **R manual**
 
 :::
+
+
+
+## Assessment 
+
+This course will be assessed as follows:
+
+<br>
+
+
+|**Type of Assessment**  | **Percentage of final grade** |
+|:-----                  |:-----                         |
+|  Coursework Portfolio  | 70%                           |
+|  Homework              | 30%                           |
+
+
+
+
+## Assessment 
+### Rules for Coursework
+
+
+- Coursework available on Canvas from Week 2
+
+- We will discuss coursework exercises in class
+
+- Coursework must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** by **14:00 on Wednesday 1st May 2024**
+
+
+
+
+
+## Assessment
+### Rules for Homework
+
+
+- 10 Homework papers, posted weekly on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
+
+- Each Homework paper is worth 14 points
+
+- Final Homework grade computation: 
+    * Sum the top 7 scores, for a maximum of 98 points
+    * Bonus 2 points will be added to the final score
+
+- Homework papers must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** by **14:00 on Mondays** 
+
+
+
+
+
+## Assessment
+### Key submission dates
+
+
+::: {.column width="48%"}
+
+|  **Assignment** |**Due date** |
+|:--------        |:----------- |
+| Homework 1      | 5 Feb       |
+| Homework 2      | 12 Feb      |
+| Homework 3      | 19 Feb      |
+| Homework 4      | 26 Feb      |
+| Homework 5      | 4 Mar       |
+| Homework 6      | 11 Mar      |
+
+
+:::
+
+
+
+::: {.column width="48%"}
+
+|  **Assignment** |**Due date** |
+|:--------        |:----------- |
+| Homework 7      | 18 Mar      |
+| Easter Break    | :sunglasses:|
+| Homework 8      | 8 Apr       |
+| Homework 9      | 15 Apr      |
+| Homework 10     | 22 Apr      |
+| Coursework      | 1 May       |
+
+:::
+
+
+
+## Assessment
+### How to submit assignments
+
+
+- Submit **PDFs only** on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
+
+- You have two options:
+	* Write on tablet and submit PDF Output
+	* Write on paper and **Scan in Black and White** using a **Scanner** or **Scanner App** (Tiny Scanner, Scanner Pro, ...)
+
 
 
 
@@ -835,7 +931,7 @@ Therefore the events of $\R$ are
 
 
 
-## Probability {.smaller}
+## Probability measure {.smaller}
 
 Suppose given:
 
@@ -843,9 +939,9 @@ Suppose given:
 - $\mathcal{B}$ a $\sigma$-algebra on $\Omega$
 
 ::: Definition
-### Probability function
+### Probability measure
 
-A **probability function** on $\Omega$ is a map
+A **probability measure** on $\Omega$ is a map
 $$
 P \colon \mathcal{B} \to [0,1]
 $$
@@ -945,7 +1041,7 @@ $$
 
 
 - $P(A|B)$ represents the probability of $A$, knowing that $B$ happened
-- The function $A \mapsto P(A|B)$ is a probability function on $\Omega$
+- The function $A \mapsto P(A|B)$ is a probability measure on $\Omega$
 
 
 
@@ -986,6 +1082,7 @@ P \left(  \bigcap_{j=1}^k A_j  \right) = \prod_{j=1}^k  P(A_{i_j})
 $$
 
 :::
+
 
 
 
@@ -1041,23 +1138,94 @@ A function $X \colon \Omega \to \mathbb{R}$
 ::: Definition
 ### Random variable
 
-A <span style="color: magenta-color;">**measurable**</span> 
+A [**measurable**]{style="color:#cc0164;"}
 function $X \colon \Omega \to \mathbb{R}$
 
 :::
 
 
-**Technicality**: [**red**]{style="color:magenta-color;"}
-$X$ is a <span style="color:mymagenta;">measurable</span>
+**Technicality**: 
+$X$ is a [**measurable**]{style="color:#cc0164;"}
 function if
 $$
-\{ \omega \in \Omega \colon X(\omega) \in \mathcal{A} \} \in \mathcal{B} \,, \quad \forall A \in \mathcal{L}
+\{ X \in I \} := \{ \omega \in \Omega \colon X(\omega) \in I \} \in \mathcal{B} \,, \quad \forall \, I \in \mathcal{L}
 $$
 where 
 
 - $\mathcal{L}$ is the Lebsgue $\sigma$-algebra on $\mathbb{R}$
 - $\mathcal{B}$ is the given $\sigma$-algebra on $\Omega$
 
+
+
+
+## Random Variables {.smaller}
+### Notation
+
+- In particular $I \in \mathcal{L}$ can be of the form
+$$
+(a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b] 
+$$
+for all $a,b \in \mathbb{R}$
+
+- In this case the set 
+$$
+\{X \in I\} \in \mathcal{B}
+$$ 
+is denoted by, respectively:
+$$
+\{ a < X < b \} \,, \quad \{ a < X \leq b \} \,, \quad \{ a \leq X < b \} \,, \quad \{ a \leq X \leq b \}
+$$
+
+
+
+## Random Variables {.smaller}
+### Why do we require measurability?
+
+**Answer**: Because it allows to define a new probability measure on $\mathbb{R}$
+
+
+::: Definition
+### Distribution
+
+The **distribution** of a random variable $X \colon \Omega \to \mathbb{R}$ is the probability measure on $\mathbb{R}$
+$$
+P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( \{X \in I\} \right) \,, \,\, \forall \, I \in  \mathcal{L}
+$$
+
+:::
+
+
+**Note**: 
+
+- One can show that $P_X$ satisfies the *Probability Axioms*
+- Thus $P_X$ is a probability measure on $\mathbb{R}$
+- In the future we will denote 
+$$
+P \left( X \in I \right) := P \left( \{X \in I\} \right)
+$$
+
+
+
+
+
+
+
+## Random Variables {.smaller}
+### Why is the distribution useful?
+
+**Answer**: Because it allows to define a random variable $X$
+
+- by specifying the distribution values
+$$
+P \left( X \in I \right) 
+$$
+- rather than defining an explicit function $X \colon \Omega \to \mathbb{R}$
+
+
+**Important**: More often than not
+
+- We care about the distribution of $X$
+- We do not care about how $X$ is defined
 
 
 
