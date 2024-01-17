@@ -361,19 +361,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Conjecture {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -381,13 +369,45 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Problem {
     --color1: #f4cce0;
@@ -397,19 +417,7 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -417,17 +425,9 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Axiom {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
   }
   </style>
 </head>
@@ -1250,19 +1250,20 @@ A_1,A_2 , \ldots \in \mathcal{B} \quad \implies \quad \cap_{i=1}^\infty A_i \in 
 </section>
 <section id="sigma-algebras-1" class="slide level2 smaller">
 <h2><span class="math inline">\sigma</span>-algebras</h2>
-<p><strong>Examples</strong>:</p>
+<h3 id="examples">Examples</h3>
+<p>Suppose <span class="math inline">\Omega</span> is any set:</p>
 <ul>
-<li><p>If <span class="math inline">\Omega</span> is any set, then <span class="math display">
+<li><p>Then <span class="math display">
 \mathcal{B} = \{ \emptyset, \Omega \}
 </span> is a <span class="math inline">\sigma</span>-algebra</p></li>
-<li><p>If <span class="math inline">\Omega</span> is <strong>finite</strong> or <strong>countable</strong> then the power set of <span class="math inline">\Omega</span> <span class="math display">
-\mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
+<li><p>The power set of <span class="math inline">\Omega</span> <span class="math display">
+\mathcal{B} = \operatorname{Power} (\Omega) := \{ A \colon A \subset \Omega \}
 </span> is a <span class="math inline">\sigma</span>-algebra</p></li>
 </ul>
 </section>
 <section id="sigma-algebras-2" class="slide level2 smaller">
 <h2><span class="math inline">\sigma</span>-algebras</h2>
-<p><strong>Examples</strong>:</p>
+<h3 id="examples-1">Examples</h3>
 <ul>
 <li><p>If <span class="math inline">\Omega</span> has <span class="math inline">n</span> elements then <span class="math inline">\mathcal{B} = \operatorname{Power} (\Omega)</span> contains <span class="math inline">2^n</span> sets</p></li>
 <li><p>If <span class="math inline">\Omega = \{ 1,2,3\}</span> then <span class="math display">\begin{align*}
@@ -1321,9 +1322,7 @@ P \colon \mathcal{B} \to [0,1]
 </span> such that the <strong>Axioms of Probability</strong> hold</p>
 <ol type="1">
 <li><span class="math inline">P(\Omega) = 1</span></li>
-<li>If <span class="math inline">A_1, A_2,\ldots</span> are pairwise disjoint then <span class="math display">
-P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)
-</span></li>
+<li>If <span class="math inline">A_1, A_2,\ldots</span> are pairwise disjoint then <span class="math inline">P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)</span></li>
 </ol>
 </div></details>
 </div>
@@ -1450,6 +1449,7 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Random variable</summary><div>A function <span class="math inline">X \colon \Omega \to \mathbb{R}</span><p></p>
 </div></details>
 </div>
+<p>We will abbreviate Random Variable with r.v.</p>
 </section>
 <section id="random-variables-2" class="slide level2 smaller">
 <h2>Random Variables</h2>
@@ -1477,6 +1477,9 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 \{X \in I\} \in \mathcal{B}
 </span> is denoted by, respectively: <span class="math display">
 \{ a &lt; X &lt; b \} \,, \quad \{ a &lt; X \leq b \} \,, \quad \{ a \leq X &lt; b \} \,, \quad \{ a \leq X \leq b \}
+</span></p></li>
+<li><p>If <span class="math inline">a=b=x</span> then <span class="math inline">I=[x,x]=\{x\}</span>. Then we denote <span class="math display">
+\{X \in I\} = \{X = x\}
 </span></p></li>
 </ul>
 </section>
@@ -1517,31 +1520,303 @@ P \left( X \in I \right)
 </section>
 <section id="random-variables-6" class="slide level2 smaller">
 <h2>Random Variables</h2>
-<p><strong>Examples</strong>:</p>
+<h3 id="example---three-coin-tosses">Example - Three coin tosses</h3>
 <ul>
-<li>Tossing two dice</li>
+<li>Sample space <span class="math inline">\Omega</span> given by the below values of <span class="math inline">\omega</span></li>
 </ul>
-<table style="width:53%;">
+<table style="width:85%;">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 12%">
-<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
 </colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Right</th>
-<th style="text-align: left;">Left</th>
-<th style="text-align: center;">Centered</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">Bananas</td>
-<td style="text-align: left;">$1.34</td>
-<td style="text-align: center;">built-in wrapper</td>
+<td style="text-align: center;"><span class="math inline">\omega</span></td>
+<td style="text-align: center;">HHH</td>
+<td style="text-align: center;">HHT</td>
+<td style="text-align: center;">HTH</td>
+<td style="text-align: center;">THH</td>
+<td style="text-align: center;">TTH</td>
+<td style="text-align: center;">THT</td>
+<td style="text-align: center;">HTT</td>
+<td style="text-align: center;">TTT</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li><p>The probability of each outcome is the same <span class="math display">
+P(\omega) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8} \,, \quad \forall \, \omega \in \Omega
+</span></p></li>
+<li><p>Define the random variable <span class="math inline">X \colon \Omega \to \R</span> <span class="math display">
+X(\omega) :=  \text{ Number of H in }  \omega
+</span></p></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\omega</span></td>
+<td style="text-align: center;">HHH</td>
+<td style="text-align: center;">HHT</td>
+<td style="text-align: center;">HTH</td>
+<td style="text-align: center;">THH</td>
+<td style="text-align: center;">TTH</td>
+<td style="text-align: center;">THT</td>
+<td style="text-align: center;">HTT</td>
+<td style="text-align: center;">TTT</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X(\omega)</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="random-variables-7" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="example---three-coin-tosses-1">Example - Three coin tosses</h3>
+<ul>
+<li>Recall the definition of <span class="math inline">X</span></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\omega</span></td>
+<td style="text-align: center;">HHH</td>
+<td style="text-align: center;">HHT</td>
+<td style="text-align: center;">HTH</td>
+<td style="text-align: center;">THH</td>
+<td style="text-align: center;">TTH</td>
+<td style="text-align: center;">THT</td>
+<td style="text-align: center;">HTT</td>
+<td style="text-align: center;">TTT</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X(\omega)</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The range of <span class="math inline">X</span> is <span class="math inline">\{0,1,2,3\}</span></p></li>
+<li><p>Hence the only interesting values of <span class="math inline">P_X</span> are <span class="math display">
+P(X=0) \,, \quad
+P(X=1) \,, \quad
+P(X=2) \,, \quad
+P(X=3)
+</span></p></li>
+</ul>
+</section>
+<section id="random-variables-8" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="example---three-coin-tosses-2">Example - Three coin tosses</h3>
+<ul>
+<li>Recall the definition of <span class="math inline">X</span></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\omega</span></td>
+<td style="text-align: center;">HHH</td>
+<td style="text-align: center;">HHT</td>
+<td style="text-align: center;">HTH</td>
+<td style="text-align: center;">THH</td>
+<td style="text-align: center;">TTH</td>
+<td style="text-align: center;">THT</td>
+<td style="text-align: center;">HTT</td>
+<td style="text-align: center;">TTT</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X(\omega)</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We compute <span class="math display">\begin{align*}
+P(X=0) &amp; = P(TTT) = \frac{1}{8} \\
+P(X=1) &amp; = P(TTH) + P(THT) + P(HTT) = \frac{3}{8} \\
+P(X=2) &amp; = P(HHT) + P(HTH) + P(THH) = \frac{3}{8} \\
+P(X=3) &amp; = P(HHH) = \frac{1}{8}
+\end{align*}</span></li>
+</ul>
+</section>
+<section id="random-variables-9" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="example---three-coin-tosses-3">Example - Three coin tosses</h3>
+<ul>
+<li>Recall the definition of <span class="math inline">X</span></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\omega</span></td>
+<td style="text-align: center;">HHH</td>
+<td style="text-align: center;">HHT</td>
+<td style="text-align: center;">HTH</td>
+<td style="text-align: center;">THH</td>
+<td style="text-align: center;">TTH</td>
+<td style="text-align: center;">THT</td>
+<td style="text-align: center;">HTT</td>
+<td style="text-align: center;">TTT</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X(\omega)</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The distribution of <span class="math inline">X</span> is summarized in the table below</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">x</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">P(X=x)</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="random-variables-10" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="cumulative-distribution-function">Cumulative distribution function</h3>
+<p><strong>Recall</strong>: The <strong>distribution</strong> of a r.v. <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is the probability measure on <span class="math inline">\mathbb{R}</span> <span class="math display">
+P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( X \in I \right) \,, \,\, \forall \, I \in  \mathcal{L}
+</span></p>
+<div id="cdf" class="Definition" title="cdf">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>cdf</summary><div>The <strong>cumulative distribution function</strong> or <strong>cdf</strong> of a r.v. <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is <span class="math display">
+F_X \colon \mathbb{R} \to \mathbb{R} \,, \quad
+F_X(x) := P_X (X \leq x)
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Intuition</strong>: <span class="math inline">F_X</span> is the <em>primitive</em> of <span class="math inline">P_X</span></p>
+</section>
+<section id="random-variables-11" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="example-of-cdf">Example of cdf</h3>
+<ul>
+<li><p>Consider again 3 coin tosses and the r.v. <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
+<li><p>We computed that the distribution <span class="math inline">P_X</span> of <span class="math inline">X</span> is</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">x</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">P(X=x)</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+</tr>
+</tbody>
+</table>
+<div class="column" style="width:38%;">
+<ul>
+<li>One can compute <span class="math display">
+F_X(x) =
+\begin{cases}
+0  &amp; \text{if } x &lt; 0 \\
+\frac{1}{8}  &amp; \text{if } 0 \leq x &lt; 1 \\
+\frac{1}{2}  &amp; \text{if } 1 \leq x &lt; 2 \\
+\frac{7}{8}  &amp; \text{if } 2 \leq x &lt; 3 \\
+1            &amp; \text{if } 3 \leq x
+\end{cases}
+</span></li>
+</ul>
+</div>
+<div class="column" style="width:56%;">
+<ul>
+<li>For example <span class="math display">\begin{align*}
+F_X(2.1) &amp; = P(X \leq 2.1) \\
+       &amp; = P(X=0,1 \text{ or } 2) \\
+       &amp; = P(X=0) + P(X=1) + P(X=2) \\
+       &amp; = \frac{1}{8} + \frac{3}{8} + \frac{3}{8} = \frac{7}{8}
+\end{align*}</span></li>
+</ul>
+</div>
+</section>
+<section id="random-variables-12" class="slide level2 smaller">
+<h2>Random Variables</h2>
+<h3 id="example-of-cdf-1">Example of cdf</h3>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><div class="column" style="width:52%;">
+<ul>
+<li>Plot of <span class="math inline">F_X</span>: it is <strong>step function</strong></li>
+<li><span class="math inline">F_X'=0</span> except at jumps <span class="math inline">x=0,1,2,3</span></li>
+</ul>
+</div>
+<div class="column" style="width:47%;">
+<ul>
+<li>Globally <span class="math inline">F_X'=P_X</span> in the sense of <strong>distributions</strong></li>
+<li>This is an advanced analysis concept (not covered here)</li>
+</ul>
+</div>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
@@ -1557,14 +1832,14 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\ri
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-4.16" class="Theorem">
+<div id="Theorem*-4.17" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.17" class="Proof">
+<div id="Proof*-4.18" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>

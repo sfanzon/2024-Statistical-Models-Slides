@@ -839,20 +839,20 @@ $$
 
 
 ## $\sigma$-algebras {.smaller}
+### Examples
 
+Suppose $\Omega$ is any set: 
 
-**Examples**: 
-
-- If $\Omega$ is any set, then
+- Then
 $$
 \mathcal{B} = \{ \emptyset, \Omega \}
 $$
 is a $\sigma$-algebra
 
 
-- If $\Omega$ is **finite** or **countable** then the power set of $\Omega$
+- The power set of $\Omega$
 $$
-\mathcal{B} = \operatorname{Power} (\Omega) = \{ A \colon A \subset \Omega \}
+\mathcal{B} = \operatorname{Power} (\Omega) := \{ A \colon A \subset \Omega \}
 $$
 is a $\sigma$-algebra
 
@@ -862,8 +862,7 @@ is a $\sigma$-algebra
 
 
 ## $\sigma$-algebras {.smaller}
-
-**Examples**: 
+### Examples
 
 
 - If $\Omega$ has $n$ elements then $\mathcal{B} = \operatorname{Power} (\Omega)$ contains $2^n$ sets
@@ -890,7 +889,6 @@ is a $\sigma$-algebra
 $\mathbb{R}$ is uncountable. Which $\sigma$-algebra do we consider?
 
 :::
-
 
 
 ::: Definition 
@@ -949,9 +947,7 @@ such that the **Axioms of Probability** hold
 
 1. $P(\Omega) = 1$
 2. If $A_1, A_2,\ldots$ are pairwise disjoint then
-$$
-P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)
-$$
+$P\left( \bigcup_{i=1}^\infty  A_i \right)  = \sum_{i=1}^\infty P(A_i)$
 
 :::
 
@@ -1129,6 +1125,10 @@ A function $X \colon \Omega \to \mathbb{R}$
 :::
 
 
+We will abbreviate Random Variable with r.v.
+
+
+
 
 
 ## Random Variables {.smaller}
@@ -1176,6 +1176,10 @@ $$
 \{ a < X < b \} \,, \quad \{ a < X \leq b \} \,, \quad \{ a \leq X < b \} \,, \quad \{ a \leq X \leq b \}
 $$
 
+- If $a=b=x$ then $I=[x,x]=\{x\}$. Then we denote
+$$
+\{X \in I\} = \{X = x\}
+$$
 
 
 ## Random Variables {.smaller}
@@ -1230,20 +1234,242 @@ $$
 
 
 
+
 ## Random Variables {.smaller}
-
-**Examples**:
-
-- Tossing two dice
+### Example - Three coin tosses
 
 
+- Sample space $\Omega$ given by the below values of $\omega$
+
++:---------:+:----:+:---:+:---:+:---:+:---:+:---:+:---:+:---:+
+| $\omega$  | HHH  | HHT | HTH | THH | TTH | THT | HTT | TTT |
++-----------+------+-----+-----+-----+-----+-----+-----+-----+
 
 
-+---------+--------+------------------+
-| Right   | Left   | Centered         |
-+========:+:=======+:================:+
-| Bananas | $1.34  | built-in wrapper |
-+---------+--------+------------------+
+- The probability of each outcome is the same
+$$
+P(\omega) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8} \,, \quad \forall \, \omega \in \Omega
+$$
+
+
+- Define the random variable $X \colon \Omega \to \R$
+$$
+X(\omega) :=  \text{ Number of H in }  \omega
+$$
+
+|           |      |     |     |     |     |     |     |     |
+|:---------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $\omega$  | HHH  | HHT | HTH | THH | TTH | THT | HTT | TTT |
+|$X(\omega)$|  $3$ | $2$ | $2$ | $2$ | $1$ | $1$ | $1$ | $0$ | 
+
+
+
+
+## Random Variables {.smaller}
+### Example - Three coin tosses
+
+
+- Recall the definition of $X$
+
+|           |      |     |     |     |     |     |     |     |
+|:---------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $\omega$  | HHH  | HHT | HTH | THH | TTH | THT | HTT | TTT |
+|$X(\omega)$|  $3$ | $2$ | $2$ | $2$ | $1$ | $1$ | $1$ | $0$ | 
+
+
+- The range of $X$ is $\{0,1,2,3\}$
+
+- Hence the only interesting values of $P_X$ are
+$$
+P(X=0) \,, \quad 
+P(X=1) \,, \quad 
+P(X=2) \,, \quad 
+P(X=3)
+$$
+
+
+
+
+## Random Variables {.smaller}
+### Example - Three coin tosses
+
+
+- Recall the definition of $X$
+
+|           |      |     |     |     |     |     |     |     |
+|:---------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $\omega$  | HHH  | HHT | HTH | THH | TTH | THT | HTT | TTT |
+|$X(\omega)$|  $3$ | $2$ | $2$ | $2$ | $1$ | $1$ | $1$ | $0$ | 
+
+
+- We compute
+\begin{align*}
+P(X=0) & = P(TTT) = \frac{1}{8} \\
+P(X=1) & = P(TTH) + P(THT) + P(HTT) = \frac{3}{8} \\
+P(X=2) & = P(HHT) + P(HTH) + P(THH) = \frac{3}{8} \\
+P(X=3) & = P(HHH) = \frac{1}{8}
+\end{align*}
+
+
+
+
+
+## Random Variables {.smaller}
+### Example - Three coin tosses
+
+
+- Recall the definition of $X$
+
+|           |      |     |     |     |     |     |     |     |
+|:---------:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $\omega$  | HHH  | HHT | HTH | THH | TTH | THT | HTT | TTT |
+|$X(\omega)$|  $3$ | $2$ | $2$ | $2$ | $1$ | $1$ | $1$ | $0$ | 
+
+
+- The distribution of $X$ is summarized in the table below
+
+|           |               |               |              |               |
+|:---------:|:-------------:|:-------------:|:------------:|:-------------:|
+| $x$       | $0$           | $1$           | $2$          |     $3$       |
+|$P(X=x)$   | $\frac{1}{8}$ | $\frac{3}{8}$ | $\frac{3}{8}$| $\frac{1}{8}$ | 
+: {tbl-colwidths="[40,15,15,15,15]"}
+
+
+
+
+
+
+## Random Variables {.smaller}
+### Cumulative distribution function
+
+
+**Recall**: The **distribution** of a r.v. $X \colon \Omega \to \mathbb{R}$ is the probability measure on $\mathbb{R}$
+$$
+P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( X \in I \right) \,, \,\, \forall \, I \in  \mathcal{L}
+$$
+
+::: Definition
+### cdf
+
+The **cumulative distribution function** or **cdf** of a r.v. $X \colon \Omega \to \mathbb{R}$ is
+$$
+F_X \colon \mathbb{R} \to \mathbb{R} \,, \quad 
+F_X(x) := P_X (X \leq x) 
+$$
+
+:::
+
+
+**Intuition**: $F_X$ is the *primitive* of $P_X$
+
+
+
+
+## Random Variables {.smaller}
+### Example of cdf
+
+
+- Consider again 3 coin tosses and the r.v.
+$X(\omega) :=  \text{ Number of H in }  \omega$
+
+- We computed that the distribution $P_X$ of $X$ is
+
+|           |               |               |              |               |
+|:---------:|:-------------:|:-------------:|:------------:|:-------------:|
+| $x$       | $0$           | $1$           | $2$          |     $3$       |
+|$P(X=x)$   | $\frac{1}{8}$ | $\frac{3}{8}$ | $\frac{3}{8}$| $\frac{1}{8}$ | 
+: {tbl-colwidths="[40,15,15,15,15]"}
+
+
+::: {.column width="38%"}
+
+- One can compute
+$$
+F_X(x) = 
+\begin{cases}
+0  & \text{if } x < 0 \\
+\frac{1}{8}  & \text{if } 0 \leq x < 1 \\
+\frac{1}{2}  & \text{if } 1 \leq x < 2 \\
+\frac{7}{8}  & \text{if } 2 \leq x < 3 \\
+1            & \text{if } 3 \leq x
+\end{cases}
+$$
+
+:::
+
+
+::: {.column width="56%"}
+
+- For example
+\begin{align*}
+F_X(2.1) & = P(X \leq 2.1) \\
+         & = P(X=0,1 \text{ or } 2) \\
+         & = P(X=0) + P(X=1) + P(X=2) \\
+         & = \frac{1}{8} + \frac{3}{8} + \frac{3}{8} = \frac{7}{8}
+\end{align*}
+
+:::
+
+
+
+
+
+## Random Variables {.smaller}
+### Example of cdf
+
+
+```{r}
+
+# Install and load the necessary package
+# install.packages("ggplot2")
+library(ggplot2)
+
+# Define the step function
+step_function <- function(x) {
+  if (x < 0) {
+    return(0)
+  } else if (x < 1) {
+    return(1/8)
+  } else if (x < 2) {
+    return(1/2)
+  } else if (x < 3) {
+    return(7/8)
+  } else {
+    return(1)
+  }
+}
+
+# Generate x values
+x_values <- seq(-1, 4, length.out = 1000)
+
+# Calculate corresponding y values using the step function
+y_values <- sapply(x_values, step_function)
+
+# Create a data frame for ggplot
+df <- data.frame(x = x_values, y = y_values)
+
+# Plot the step function
+ggplot(df, aes(x, y)) +
+  geom_step() +
+  labs(title = "Step Function F_X(x)",
+       x = "x",
+       y = "F_X(x)")
+
+```
+
+::: {.column width="52%"}
+
+- Plot of $F_X$: it is **step function**
+- $F_X'=0$ except at jumps $x=0,1,2,3$
+
+:::
+
+::: {.column width="47%"}
+
+- Globally $F_X'=P_X$ in the sense of **distributions**
+- This is an advanced analysis concept (not covered here)
+
+:::
 
 
 
