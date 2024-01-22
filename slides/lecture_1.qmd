@@ -30,7 +30,7 @@ author:
 ## Outline of Lecture 1
 
 1. Module info
-2. Motivation
+2. Introduction
 3. Probability background
 4. Statistics background
 
@@ -293,7 +293,7 @@ Slides are self-contained and based on the book
 
 
 
-# Part 2: <br>Module introduction {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>Introduction {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
