@@ -64,6 +64,143 @@ author:
 
 
 
+## Questions
+
+
+- If you have any questions please feel free to ``email me``
+
+- We will address ``Homework`` and ``Coursework`` in class
+
+- In addition, please do not hesitate to attend ``office hours``
+
+
+
+## Lectures
+
+Each week we have
+
+- 2 Lectures of 2h each
+- 1 Tutorial of 1h
+
+|    Session    |      Date        |      Place        |
+|---------------|------------------|-------------------|
+|  Lecture 1    |  Wed 10:00-12:00 | Wilberforce LR 22 |
+|  Lecture 2    |  Thu 15:00-17:00 | Wilberforce LR 10 |
+|  Tutorial     |  Thu 11:00-12:00 | Wilberforce LR 7  |
+
+
+
+
+
+## Assessment 
+
+This course will be assessed as follows:
+
+<br>
+
+
+|**Type of Assessment**  | **Percentage of final grade** |
+|:-----                  |:-----                         |
+|  Coursework Portfolio  | 70%                           |
+|  Homework              | 30%                           |
+
+
+
+
+
+## Rules for Coursework
+
+
+- Coursework available on Canvas from Week 3
+
+- We will discuss coursework exercises in class
+
+- Coursework must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
+
+- Deadline: **14:00 on Thursday 2nd May**
+
+
+
+
+
+
+## Rules for Homework
+
+
+- 10 Homework papers, posted weekly on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
+
+- Each Homework paper is worth 14 points
+
+- Final Homework grade computation: 
+    * Sum the top 7 scores (max score 98 points)
+    * Bonus 2 points will be added to the final score
+
+- Homework papers must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
+
+- Deadlines: **14:00 on Mondays** 
+
+
+
+
+
+
+## Key submission dates
+
+
+::: {.column width="48%"}
+
+|  **Assignment** |**Due date** |
+|:--------        |:----------- |
+| Homework 1      | 5 Feb       |
+| Homework 2      | 12 Feb      |
+| Homework 3      | 19 Feb      |
+| Homework 4      | 26 Feb      |
+| Homework 5      | 4 Mar       |
+| Homework 6      | 11 Mar      |
+
+
+:::
+
+
+
+::: {.column width="48%"}
+
+|  **Assignment** |**Due date** |
+|:--------        |:----------- |
+| Homework 7      | 18 Mar      |
+| Easter Break    | :sunglasses:|
+| Homework 8      | 8 Apr       |
+| Homework 9      | 15 Apr      |
+| Homework 10     | 22 Apr      |
+| Coursework      | 2 May       |
+
+:::
+
+
+
+
+## How to submit assignments
+
+
+- Submit **PDFs only** on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
+
+- You have two options:
+	* Write on tablet and submit PDF Output
+	* Write on paper and **Scan in Black and White** using a **Scanner** or **Scanner App** (Tiny Scanner, Scanner Pro, ...)
+
+
+
+
+**Important**: I will not mark
+
+
+- Assignments submitted **outside of Canvas**
+- Assignments submitted **After the Deadline**
+
+
+
+
+
 
 ## References
 ### Main textbooks  
@@ -153,104 +290,16 @@ Slides are self-contained and based on the book
 
 
 
-## Assessment 
-
-This course will be assessed as follows:
-
-<br>
-
-
-|**Type of Assessment**  | **Percentage of final grade** |
-|:-----                  |:-----                         |
-|  Coursework Portfolio  | 70%                           |
-|  Homework              | 30%                           |
 
 
 
+# Part 2: <br>Module introduction {background-color="#cc0164" visibility="uncounted"}
 
-## Assessment 
-### Rules for Coursework
+::: footer
 
-
-- Coursework available on Canvas from Week 2
-
-- We will discuss coursework exercises in class
-
-- Coursework must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
-
-- Deadline: by **14:00 on Wednesday 1st May 2024**
-
-
-
-
-
-## Assessment
-### Rules for Homework
-
-
-- 10 Homework papers, posted weekly on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
-
-- Each Homework paper is worth 14 points
-
-- Final Homework grade computation: 
-    * Sum the top 7 scores, for a maximum of 98 points
-    * Bonus 2 points will be added to the final score
-
-- Homework papers must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
-
-- Deadlines: by **14:00 on Mondays** 
-
-
-
-
-
-## Assessment
-### Key submission dates
-
-
-::: {.column width="48%"}
-
-|  **Assignment** |**Due date** |
-|:--------        |:----------- |
-| Homework 1      | 5 Feb       |
-| Homework 2      | 12 Feb      |
-| Homework 3      | 19 Feb      |
-| Homework 4      | 26 Feb      |
-| Homework 5      | 4 Mar       |
-| Homework 6      | 11 Mar      |
-
+<div color="#cc0164">  </div>
 
 :::
-
-
-
-::: {.column width="48%"}
-
-|  **Assignment** |**Due date** |
-|:--------        |:----------- |
-| Homework 7      | 18 Mar      |
-| Easter Break    | :sunglasses:|
-| Homework 8      | 8 Apr       |
-| Homework 9      | 15 Apr      |
-| Homework 10     | 22 Apr      |
-| Coursework      | 1 May       |
-
-:::
-
-
-
-## Assessment
-### How to submit assignments
-
-
-- Submit **PDFs only** on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
-
-- You have two options:
-	* Write on tablet and submit PDF Output
-	* Write on paper and **Scan in Black and White** using a **Scanner** or **Scanner App** (Tiny Scanner, Scanner Pro, ...)
-
-
-
 
 
 
@@ -322,13 +371,6 @@ Module has **11 Lectures**, divided into two parts:
 
 
 
-# Part 2: <br>Motivation {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
 
 
 ## Simple but useful questions {.smaller}

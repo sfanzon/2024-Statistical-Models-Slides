@@ -361,11 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Question {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -373,15 +377,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Axiom {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,19 +389,19 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Corollary {
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Problem {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -409,23 +409,23 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Warning {
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -507,49 +507,47 @@
 <li><strong>Meetings</strong>: in my office or send me an Email</li>
 </ul>
 </section>
-<section id="references" class="slide level2">
-<h2>References</h2>
-<h3 id="main-textbooks">Main textbooks</h3>
-<div class="column" style="width:61%;">
-<p><br></p>
-<p>Slides are self-contained and based on the book</p>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
 <ul>
-<li><span class="citation" data-cites="bingham-fry">[<a href="#/references-3" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
+<li><p>If you have any questions please feel free to <code>email me</code></p></li>
+<li><p>We will address <code>Homework</code> and <code>Coursework</code> in class</p></li>
+<li><p>In addition, please do not hesitate to attend <code>office hours</code></p></li>
 </ul>
-</div>
-<div class="column" style="width:38%;">
-<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:82.0%"></a></p>
-</div>
 </section>
-<section id="references-1" class="slide level2">
-<h2>References</h2>
-<h3 id="main-textbooks-1">Main textbooks</h3>
-<div class="column" style="width:61%;">
-<p><br></p>
-<p>.. and also on the book</p>
+<section id="lectures" class="slide level2">
+<h2>Lectures</h2>
+<p>Each week we have</p>
 <ul>
-<li><span class="citation" data-cites="fry-burke">[<a href="#/references-3" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
+<li>2 Lectures of 2h each</li>
+<li>1 Tutorial of 1h</li>
 </ul>
-</div>
-<div class="column" style="width:38%;">
-<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:87.0%"></a></p>
-</div>
-</section>
-<section id="references-2" class="slide level2">
-<h2>References</h2>
-<h3 id="secondary-references">Secondary References</h3>
-<div class="column" style="width:69%;">
-<ul>
-<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-3" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
-<li><p><span class="citation" data-cites="degroot">[<a href="#/references-3" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
-<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-3" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
-</ul>
-</div>
-<div class="column" style="width:30%;">
-<p><strong>Probability &amp; Statistics manual</strong></p>
-<p><strong>Easier Probability &amp; Statistics manual</strong></p>
-<p><strong>R manual</strong></p>
-</div>
+<table>
+<thead>
+<tr class="header">
+<th>Session</th>
+<th>Date</th>
+<th>Place</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lecture 1</td>
+<td>Wed 10:00-12:00</td>
+<td>Wilberforce LR 22</td>
+</tr>
+<tr class="even">
+<td>Lecture 2</td>
+<td>Thu 15:00-17:00</td>
+<td>Wilberforce LR 10</td>
+</tr>
+<tr class="odd">
+<td>Tutorial</td>
+<td>Thu 11:00-12:00</td>
+<td>Wilberforce LR 7</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="assessment" class="slide level2">
 <h2>Assessment</h2>
@@ -574,34 +572,31 @@
 </tbody>
 </table>
 </section>
-<section id="assessment-1" class="slide level2">
-<h2>Assessment</h2>
-<h3 id="rules-for-coursework">Rules for Coursework</h3>
+<section id="rules-for-coursework" class="slide level2">
+<h2>Rules for Coursework</h2>
 <ul>
-<li><p>Coursework available on Canvas from Week 2</p></li>
+<li><p>Coursework available on Canvas from Week 3</p></li>
 <li><p>We will discuss coursework exercises in class</p></li>
 <li><p>Coursework must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
-<li><p>Deadline: by <strong>14:00 on Wednesday 1st May 2024</strong></p></li>
+<li><p>Deadline: <strong>14:00 on Thursday 2nd May</strong></p></li>
 </ul>
 </section>
-<section id="assessment-2" class="slide level2">
-<h2>Assessment</h2>
-<h3 id="rules-for-homework">Rules for Homework</h3>
+<section id="rules-for-homework" class="slide level2">
+<h2>Rules for Homework</h2>
 <ul>
 <li><p>10 Homework papers, posted weekly on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
 <li><p>Each Homework paper is worth 14 points</p></li>
 <li><p>Final Homework grade computation:</p>
 <ul>
-<li>Sum the top 7 scores, for a maximum of 98 points</li>
+<li>Sum the top 7 scores (max score 98 points)</li>
 <li>Bonus 2 points will be added to the final score</li>
 </ul></li>
 <li><p>Homework papers must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
-<li><p>Deadlines: by <strong>14:00 on Mondays</strong></p></li>
+<li><p>Deadlines: <strong>14:00 on Mondays</strong></p></li>
 </ul>
 </section>
-<section id="assessment-3" class="slide level2">
-<h2>Assessment</h2>
-<h3 id="key-submission-dates">Key submission dates</h3>
+<section id="key-submission-dates" class="slide level2">
+<h2>Key submission dates</h2>
 <div class="column" style="width:48%;">
 <table>
 <thead>
@@ -669,15 +664,14 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">Coursework</td>
-<td style="text-align: left;">1 May</td>
+<td style="text-align: left;">2 May</td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="assessment-4" class="slide level2">
-<h2>Assessment</h2>
-<h3 id="how-to-submit-assignments">How to submit assignments</h3>
+<section id="how-to-submit-assignments" class="slide level2">
+<h2>How to submit assignments</h2>
 <ul>
 <li><p>Submit <strong>PDFs only</strong> on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
 <li><p>You have two options:</p>
@@ -686,6 +680,64 @@
 <li>Write on paper and <strong>Scan in Black and White</strong> using a <strong>Scanner</strong> or <strong>Scanner App</strong> (Tiny Scanner, Scanner Pro, …)</li>
 </ul></li>
 </ul>
+<p><strong>Important</strong>: I will not mark</p>
+<ul>
+<li>Assignments submitted <strong>outside of Canvas</strong></li>
+<li>Assignments submitted <strong>After the Deadline</strong></li>
+</ul>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<h3 id="main-textbooks">Main textbooks</h3>
+<div class="column" style="width:61%;">
+<p><br></p>
+<p>Slides are self-contained and based on the book</p>
+<ul>
+<li><span class="citation" data-cites="bingham-fry">[<a href="#/references-3" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
+</ul>
+</div>
+<div class="column" style="width:38%;">
+<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:82.0%"></a></p>
+</div>
+</section>
+<section id="references-1" class="slide level2">
+<h2>References</h2>
+<h3 id="main-textbooks-1">Main textbooks</h3>
+<div class="column" style="width:61%;">
+<p><br></p>
+<p>.. and also on the book</p>
+<ul>
+<li><span class="citation" data-cites="fry-burke">[<a href="#/references-3" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
+</ul>
+</div>
+<div class="column" style="width:38%;">
+<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:87.0%"></a></p>
+</div>
+</section>
+<section id="references-2" class="slide level2">
+<h2>References</h2>
+<h3 id="secondary-references">Secondary References</h3>
+<div class="column" style="width:69%;">
+<ul>
+<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-3" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
+<li><p><span class="citation" data-cites="degroot">[<a href="#/references-3" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
+<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-3" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
+</ul>
+</div>
+<div class="column" style="width:30%;">
+<p><strong>Probability &amp; Statistics manual</strong></p>
+<p><strong>Easier Probability &amp; Statistics manual</strong></p>
+<p><strong>R manual</strong></p>
+</div>
+</section></section>
+<section>
+<section id="part-2-module-introduction" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Module introduction</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
 </section>
 <section id="the-nature-of-statistics" class="slide level2">
 <h2>The nature of Statistics</h2>
@@ -736,15 +788,6 @@
 <li>Violation of regression assumptions – Multicollinearity</li>
 <li>Dummy variable regression models</li>
 </ol>
-</section></section>
-<section>
-<section id="part-2-motivation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Motivation</h1>
-<div class="footer">
-<div color="#cc0164">
-
-</div>
-</div>
 </section>
 <section id="simple-but-useful-questions" class="slide level2 smaller">
 <h2>Simple but useful questions</h2>
