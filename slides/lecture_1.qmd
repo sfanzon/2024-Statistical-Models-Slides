@@ -1745,7 +1745,7 @@ $$
 :::
 
 
-**Technical note**: 
+**Technical issue**: 
 
 - If $X$ is continuous then pdf **does not exist** in general
 - Counterexamples are rare, therefore we will **assume** existence of pdf
