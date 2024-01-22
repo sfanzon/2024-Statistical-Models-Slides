@@ -361,15 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
@@ -377,15 +377,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,27 +389,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Proposition {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -421,13 +401,33 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -580,7 +580,8 @@
 <ul>
 <li><p>Coursework available on Canvas from Week 2</p></li>
 <li><p>We will discuss coursework exercises in class</p></li>
-<li><p>Coursework must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong> by <strong>14:00 on Wednesday 1st May 2024</strong></p></li>
+<li><p>Coursework must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
+<li><p>Deadline: by <strong>14:00 on Wednesday 1st May 2024</strong></p></li>
 </ul>
 </section>
 <section id="assessment-2" class="slide level2">
@@ -594,7 +595,8 @@
 <li>Sum the top 7 scores, for a maximum of 98 points</li>
 <li>Bonus 2 points will be added to the final score</li>
 </ul></li>
-<li><p>Homework papers must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong> by <strong>14:00 on Mondays</strong></p></li>
+<li><p>Homework papers must be submitted on <strong><a href="https://canvas.hull.ac.uk/courses/70065">Canvas</a></strong></p></li>
+<li><p>Deadlines: by <strong>14:00 on Mondays</strong></p></li>
 </ul>
 </section>
 <section id="assessment-3" class="slide level2">
@@ -1147,7 +1149,7 @@
 <ul>
 <li>Random Variable</li>
 <li>Distribution</li>
-<li>Cumulative distribution</li>
+<li>cdf, pmf, pdf</li>
 <li>Expectation</li>
 <li>Variance</li>
 </ul>
@@ -1177,15 +1179,9 @@
 </div>
 <p><strong>Operations with events</strong>:</p>
 <ul>
-<li><p><strong>Union</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math display">
-A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}
-</span></p></li>
-<li><p><strong>Intersection</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math display">
-A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}
-</span></p></li>
-<li><p><strong>Complement</strong> of an event <span class="math inline">A</span> <span class="math display">
-A^c  := \{ x \in \Omega \colon x \notin A  \}
-</span></p></li>
+<li><p><strong>Union</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math inline">A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}</span></p></li>
+<li><p><strong>Intersection</strong> of two events <span class="math inline">A</span> and <span class="math inline">B</span> <span class="math inline">A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}</span></p></li>
+<li><p><strong>Complement</strong> of an event <span class="math inline">A</span> <span class="math inline">A^c  := \{ x \in \Omega \colon x \notin A  \}</span></p></li>
 </ul>
 </section>
 <section id="events-1" class="slide level2 smaller">
@@ -1224,6 +1220,9 @@ A_i \cap A_j = \emptyset \,, \quad \forall \, i \neq j
 </span><p></p>
 </div></details>
 </div>
+</section>
+<section id="events-4" class="slide level2 smaller">
+<h2>Events</h2>
 <div id="partition" class="Definition" title="Partition">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Partition</summary><div>
 <p>The collection of events <span class="math inline">A_1, A_2, \ldots</span> is a <strong>partition</strong> of <span class="math inline">\Omega</span> if</p>
@@ -1268,9 +1267,7 @@ P(E) \in [0,1]
 </div>
 <p><strong>Remarks</strong>:</p>
 <ul>
-<li><p>Since <span class="math inline">\emptyset \in \mathcal{B}</span> and <span class="math inline">\emptyset^c = \Omega</span>, we deduce that <span class="math display">
-\Omega \in \mathcal{B}
-</span></p></li>
+<li><p>Since <span class="math inline">\emptyset \in \mathcal{B}</span> and <span class="math inline">\emptyset^c = \Omega</span>, we deduce that <span class="math inline">\Omega \in \mathcal{B}</span></p></li>
 <li><p>Thanks to DeMorgan’s Law we have that <span class="math display">
 A_1,A_2 , \ldots \in \mathcal{B} \quad \implies \quad \cap_{i=1}^\infty A_i \in \mathcal{B}
 </span></p></li>
@@ -1398,9 +1395,7 @@ P\left( \bigcup_{i=1}^\infty  A_i \right)  \leq  \sum_{i=1}^\infty P(A_i)
   1 = P(\Omega) = P(\{H\} \cup \{T\}) =
   P(\{H\}) + P(\{T\}) = 2 P(\{H\})
   </span></li>
-<li>Therefore <span class="math display">
-  P(\{H\}) = P(\{T\}) = \frac12
-  </span></li>
+<li>Therefore <span class="math inline">P(\{H\}) = P(\{T\}) = \frac12</span></li>
 </ul></li>
 </ul>
 </section>
@@ -1458,9 +1453,7 @@ P \left(  \bigcap_{j=1}^k A_j  \right) = \prod_{j=1}^k  P(A_{i_j})
 X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 </span></p>
 <ul>
-<li>Then the new sample space is the set of integers <span class="math display">
-\{ 0,1,2,\ldots,50\}
-</span></li>
+<li>Then the new sample space is the set of integers <span class="math inline">\{ 0,1,2,\ldots,50\}</span></li>
 <li>This is much smaller!</li>
 <li><span class="math inline">X</span> is called a Random Variable</li>
 </ul>
@@ -1494,9 +1487,8 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 <li><span class="math inline">\mathcal{B}</span> is the given <span class="math inline">\sigma</span>-algebra on <span class="math inline">\Omega</span></li>
 </ul>
 </section>
-<section id="random-variables-3" class="slide level2 smaller">
-<h2>Random Variables</h2>
-<h3 id="notation">Notation</h3>
+<section id="notation" class="slide level2 smaller">
+<h2>Notation</h2>
 <ul>
 <li><p>In particular <span class="math inline">I \in \mathcal{L}</span> can be of the form <span class="math display">
 (a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b]
@@ -1525,9 +1517,7 @@ P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( \{X \in I\} \righ
 <ul>
 <li>One can show that <span class="math inline">P_X</span> satisfies the <em>Probability Axioms</em></li>
 <li>Thus <span class="math inline">P_X</span> is a probability measure on <span class="math inline">\mathbb{R}</span></li>
-<li>In the future we will denote <span class="math display">
-P \left( X \in I \right) := P \left( \{X \in I\} \right)
-</span></li>
+<li>In the future we will denote <span class="math inline">P \left( X \in I \right) := P \left( \{X \in I\} \right)</span></li>
 </ul>
 </section>
 <section id="distribution-2" class="slide level2 smaller">
@@ -1546,9 +1536,8 @@ P \left( X \in I \right)
 <li>We do not care about how <span class="math inline">X</span> is defined</li>
 </ul>
 </section>
-<section id="distribution-3" class="slide level2 smaller">
-<h2>Distribution</h2>
-<h3 id="example---three-coin-tosses">Example - Three coin tosses</h3>
+<section id="example---three-coin-tosses" class="slide level2 smaller">
+<h2>Example - Three coin tosses</h2>
 <ul>
 <li>Sample space <span class="math inline">\Omega</span> given by the below values of <span class="math inline">\omega</span></li>
 </ul>
@@ -1582,7 +1571,7 @@ P \left( X \in I \right)
 <li><p>The probability of each outcome is the same <span class="math display">
 P(\omega) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8} \,, \quad \forall \, \omega \in \Omega
 </span></p></li>
-<li><p>Define the random variable <span class="math inline">X \colon \Omega \to \R</span> <span class="math display">
+<li><p>Define the random variable <span class="math inline">X \colon \Omega \to \R</span> by <span class="math display">
 X(\omega) :=  \text{ Number of H in }  \omega
 </span></p></li>
 </ul>
@@ -1613,9 +1602,8 @@ X(\omega) :=  \text{ Number of H in }  \omega
 </tbody>
 </table>
 </section>
-<section id="distribution-4" class="slide level2 smaller">
-<h2>Distribution</h2>
-<h3 id="example---three-coin-tosses-1">Example - Three coin tosses</h3>
+<section id="example---three-coin-tosses-1" class="slide level2 smaller">
+<h2>Example - Three coin tosses</h2>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>
@@ -1655,9 +1643,8 @@ P(X=3)
 </span></p></li>
 </ul>
 </section>
-<section id="distribution-5" class="slide level2 smaller">
-<h2>Distribution</h2>
-<h3 id="example---three-coin-tosses-2">Example - Three coin tosses</h3>
+<section id="example---three-coin-tosses-2" class="slide level2 smaller">
+<h2>Example - Three coin tosses</h2>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>
@@ -1696,9 +1683,8 @@ P(X=3) &amp; = P(HHH) = \frac{1}{8}
 \end{align*}</span></li>
 </ul>
 </section>
-<section id="distribution-6" class="slide level2 smaller">
-<h2>Distribution</h2>
-<h3 id="example---three-coin-tosses-3">Example - Three coin tosses</h3>
+<section id="example---three-coin-tosses-3" class="slide level2 smaller">
+<h2>Example - Three coin tosses</h2>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>

@@ -176,7 +176,9 @@ This course will be assessed as follows:
 
 - We will discuss coursework exercises in class
 
-- Coursework must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** by **14:00 on Wednesday 1st May 2024**
+- Coursework must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)**
+
+- Deadline: by **14:00 on Wednesday 1st May 2024**
 
 
 
@@ -194,7 +196,9 @@ This course will be assessed as follows:
     * Sum the top 7 scores, for a maximum of 98 points
     * Bonus 2 points will be added to the final score
 
-- Homework papers must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** by **14:00 on Mondays** 
+- Homework papers must be submitted on **[Canvas](https://canvas.hull.ac.uk/courses/70065)** 
+
+- Deadlines: by **14:00 on Mondays** 
 
 
 
@@ -675,7 +679,7 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 - Random Variable
 - Distribution
-- Cumulative distribution
+- cdf, pmf, pdf
 - Expectation
 - Variance
 
@@ -727,19 +731,13 @@ A subset $E$ of the sample space $\Omega$ (including $\emptyset$ and $\Omega$ it
 **Operations with events**:
 
 - **Union** of two events $A$ and $B$
-$$
-A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}
-$$
+$A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}$
 
 - **Intersection** of two events $A$ and $B$
-$$
-A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}
-$$
+$A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}$
 
 - **Complement** of an event $A$
-$$
-A^c  := \{ x \in \Omega \colon x \notin A  \}
-$$
+$A^c  := \{ x \in \Omega \colon x \notin A  \}$
 
 
 
@@ -799,6 +797,11 @@ $$
 :::
 
 
+
+
+
+## Events {.smaller}
+
 ::: Definition
 ### Partition
 
@@ -808,6 +811,8 @@ The collection of events  $A_1, A_2, \ldots$ is a **partition** of $\Omega$ if
 2. $\Omega = \cup_{i=1}^\infty A_i$
 
 :::
+
+
 
 
 
@@ -858,9 +863,7 @@ Let $\mathcal{B}$ be a collection of events. We say that $\mathcal{B}$ is a $\si
 **Remarks**:
 
 - Since $\emptyset \in \mathcal{B}$ and $\emptyset^c = \Omega$, we deduce that
-$$
-\Omega \in \mathcal{B}
-$$
+$\Omega \in \mathcal{B}$
 
 - Thanks to DeMorgan's Law we have that
 $$
@@ -1045,9 +1048,7 @@ $$
     P(\{H\}) + P(\{T\}) = 2 P(\{H\})
     $$
     * Therefore 
-    $$
-    P(\{H\}) = P(\{T\}) = \frac12
-    $$
+    $P(\{H\}) = P(\{T\}) = \frac12$
 
 
 
@@ -1132,9 +1133,7 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 $$
 
 - Then the new sample space is the set of integers
-$$
-\{ 0,1,2,\ldots,50\}
-$$
+$\{ 0,1,2,\ldots,50\}$
 - This is much smaller!
 - $X$ is called a Random Variable
 
@@ -1192,8 +1191,7 @@ where
 
 
 
-## Random Variables {.smaller}
-### Notation
+## Notation {.smaller}
 
 - In particular $I \in \mathcal{L}$ can be of the form
 $$
@@ -1214,6 +1212,7 @@ $$
 $$
 \{X \in I\} = \{X = x\}
 $$
+
 
 
 ## Distribution {.smaller}
@@ -1238,9 +1237,7 @@ $$
 - One can show that $P_X$ satisfies the *Probability Axioms*
 - Thus $P_X$ is a probability measure on $\mathbb{R}$
 - In the future we will denote 
-$$
-P \left( X \in I \right) := P \left( \{X \in I\} \right)
-$$
+$P \left( X \in I \right) := P \left( \{X \in I\} \right)$
 
 
 
@@ -1269,8 +1266,7 @@ $$
 
 
 
-## Distribution {.smaller}
-### Example - Three coin tosses
+## Example - Three coin tosses {.smaller}
 
 
 - Sample space $\Omega$ given by the below values of $\omega$
@@ -1286,7 +1282,7 @@ P(\omega) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8} \,, 
 $$
 
 
-- Define the random variable $X \colon \Omega \to \R$
+- Define the random variable $X \colon \Omega \to \R$ by
 $$
 X(\omega) :=  \text{ Number of H in }  \omega
 $$
@@ -1299,8 +1295,7 @@ $$
 
 
 
-## Distribution {.smaller}
-### Example - Three coin tosses
+## Example - Three coin tosses {.smaller}
 
 
 - Recall the definition of $X$
@@ -1324,8 +1319,7 @@ $$
 
 
 
-## Distribution {.smaller}
-### Example - Three coin tosses
+## Example - Three coin tosses {.smaller}
 
 
 - Recall the definition of $X$
@@ -1347,9 +1341,7 @@ P(X=3) & = P(HHH) = \frac{1}{8}
 
 
 
-
-## Distribution {.smaller}
-### Example - Three coin tosses
+## Example - Three coin tosses {.smaller}
 
 
 - Recall the definition of $X$
