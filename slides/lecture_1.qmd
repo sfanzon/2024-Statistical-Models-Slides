@@ -731,13 +731,14 @@ A subset $E$ of the sample space $\Omega$ (including $\emptyset$ and $\Omega$ it
 **Operations with events**:
 
 - **Union** of two events $A$ and $B$
-$A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}$
+$$
+A \cup B := \{ x \in \Omega \colon x \in A \, \text{ or } \, x \in B \}
+$$
 
 - **Intersection** of two events $A$ and $B$
-$A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}$
-
-- **Complement** of an event $A$
-$A^c  := \{ x \in \Omega \colon x \notin A  \}$
+$$
+A \cap B := \{ x \in \Omega \colon x \in A \, \text{ and } \, x \in B \}
+$$
 
 
 
@@ -746,6 +747,12 @@ $A^c  := \{ x \in \Omega \colon x \notin A  \}$
 
 
 **More Operations with events**:
+
+- **Complement** of an event $A$
+$$
+A^c  := \{ x \in \Omega \colon x \notin A  \}
+$$
+
 
 - **Infinite Union** of a family of events $A_i$ with $i \in I$
 
@@ -1191,13 +1198,14 @@ where
 
 
 
-## Notation {.smaller}
+## Random Variables {.smaller}
+### Notation
 
 - In particular $I \in \mathcal{L}$ can be of the form
 $$
-(a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b] 
+(a,b) \,, \quad (a,b] \,, \quad [a,b) \,, \quad [a,b] \,, \quad 
+\forall \, a, b \in \mathbb{R}
 $$
-for all $a,b \in \mathbb{R}$
 
 - In this case the set 
 $$
@@ -1687,7 +1695,7 @@ Can we define the Probability Mass Function for $X$?
 
 **Answer**: 
 
-- Yes we can, but it would be useless
+- Yes we can, but it would be useless - pmf carries no information
 - This is because 
 $$
 f_X(x) = P(X=x) = 0 \,, \quad \forall \, x \in \mathbb{R}
@@ -1721,7 +1729,7 @@ $$
 ## Probability Density Function {.smaller}
 
 
-- **pmf** makes no sense for continuous RV
+- **pmf** carries no information for continuous RV
 - We instead define the **pdf**
 
 
@@ -1781,8 +1789,6 @@ Logistic
 
 ## Characterization of pmf and pdf {.smaller}
 
-
-It is possible to give a full characterization of pmf and pdf
 
 ::: Theorem
 
