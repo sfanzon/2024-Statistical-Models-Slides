@@ -651,8 +651,42 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 
 
+## Probability background {.smaller}
+
+
+- We start with reviewing some fundamental Probability notions
+- You saw these in the Y1 module **Introduction to Probability & Statistics**
+- We will adopt a slightly more mature mathematical approach
+- Remember: The mathematical description might look (a bit) different, but the concepts are the same
+
+**Topics reviewed**:
+    
+::: {.column width="38%"}
+    
+- Sample space
+- Events
+- Probability measure
+- Conditional probability
+- Events independence
+
+:::
+
+::: {.column width="38%"}
+
+- Random Variable
+- Distribution
+- Cumulative distribution
+- Expectation
+- Variance
+
+:::
+
+
+
+
 
 ## Sample space {.smaller}
+
 
 ::: Definition
 ### Sample space
@@ -1125,7 +1159,7 @@ A function $X \colon \Omega \to \mathbb{R}$
 :::
 
 
-We will abbreviate Random Variable with r.v.
+We will abbreviate Random Variable with rv
 
 
 
@@ -1182,7 +1216,7 @@ $$
 $$
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Why do we require measurability?
 
 **Answer**: Because it allows to define a new probability measure on $\mathbb{R}$
@@ -1214,7 +1248,7 @@ $$
 
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Why is the distribution useful?
 
 **Answer**: Because it allows to define a random variable $X$
@@ -1235,7 +1269,7 @@ $$
 
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Example - Three coin tosses
 
 
@@ -1265,7 +1299,7 @@ $$
 
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Example - Three coin tosses
 
 
@@ -1290,7 +1324,7 @@ $$
 
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Example - Three coin tosses
 
 
@@ -1314,7 +1348,7 @@ P(X=3) & = P(HHH) = \frac{1}{8}
 
 
 
-## Random Variables {.smaller}
+## Distribution {.smaller}
 ### Example - Three coin tosses
 
 
@@ -1339,11 +1373,10 @@ P(X=3) & = P(HHH) = \frac{1}{8}
 
 
 
-## Random Variables {.smaller}
-### Cumulative distribution function
+## Cumulative Distribution Function {.smaller}
 
 
-**Recall**: The **distribution** of a r.v. $X \colon \Omega \to \mathbb{R}$ is the probability measure on $\mathbb{R}$
+**Recall**: The **distribution** of a rv $X \colon \Omega \to \mathbb{R}$ is the probability measure on $\mathbb{R}$
 $$
 P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( X \in I \right) \,, \,\, \forall \, I \in  \mathcal{L}
 $$
@@ -1351,7 +1384,7 @@ $$
 ::: Definition
 ### cdf
 
-The **cumulative distribution function** or **cdf** of a r.v. $X \colon \Omega \to \mathbb{R}$ is
+The **cumulative distribution function** or **cdf** of a rv $X \colon \Omega \to \mathbb{R}$ is
 $$
 F_X \colon \mathbb{R} \to \mathbb{R} \,, \quad 
 F_X(x) := P_X (X \leq x) 
@@ -1360,16 +1393,19 @@ $$
 :::
 
 
-**Intuition**: $F_X$ is the *primitive* of $P_X$
+**Intuition**: 
+
+- $F_X$ is the *primitive* of $P_X$
+- $P_X$ will be the *derivative* of $F_X$^[In a suitable generalized sense]
 
 
 
 
-## Random Variables {.smaller}
-### Example of cdf
+## Distribution Function {.smaller}
+### Example
 
 
-- Consider again 3 coin tosses and the r.v.
+- Consider again 3 coin tosses and the rv
 $X(\omega) :=  \text{ Number of H in }  \omega$
 
 - We computed that the distribution $P_X$ of $X$ is
@@ -1414,16 +1450,11 @@ F_X(2.1) & = P(X \leq 2.1) \\
 
 
 
-## Random Variables {.smaller}
-### Example of cdf
+## Cumulative Distribution Function {.smaller}
+### Example
 
 
 ```{r}
-
-# Install and load the necessary package
-# install.packages("ggplot2")
-library(ggplot2)
-
 # Define the step function
 step_function <- function(x) {
   if (x < 0) {
@@ -1446,30 +1477,364 @@ x_values <- seq(-1, 4, length.out = 1000)
 y_values <- sapply(x_values, step_function)
 
 # Create a data frame for ggplot
-df <- data.frame(x = x_values, y = y_values)
+plot(x_values, 
+    y_values, 
+    type = 's',
+    xlab = "",
+    ylab = "")
 
-# Plot the step function
-ggplot(df, aes(x, y)) +
-  geom_step() +
-  labs(title = "Step Function F_X(x)",
-       x = "x",
-       y = "F_X(x)")
+mtext("x", side=1, line=3, cex=2)
+mtext("F_X(x)", side=2, line=2.5, cex=2)
 
 ```
 
-::: {.column width="52%"}
 
-- Plot of $F_X$: it is **step function**
-- $F_X'=0$ except at jumps $x=0,1,2,3$
+
+::: {.column width="43%"}
+
+- Plot of $F_X$: it is a **step function**
+- $F_X'=0$ except at $x=0,1,2,3$
+- $F_X$ jumps at $x=0,1,2,3$ 
+
+:::
+
+::: {.column width="56%"}
+
+- Size of jump at $x$ is $P(X=x)$ 
+- $F_X'=P_X$ in the sense of **distributions**
+<br> (Advanced analysis concept - not covered)
 
 :::
 
-::: {.column width="47%"}
 
-- Globally $F_X'=P_X$ in the sense of **distributions**
-- This is an advanced analysis concept (not covered here)
+
+
+## Discrete Random Variables {.smaller}
+
+In the previous example:
+
+- The cdf $F_X$ had **jumps**
+- Hence $F_X$ was **discountinuous**
+- We take this as definition of **discrete** rv
+
+
+
+::: Definition
+
+$X \colon \Omega \to \mathbb{R}$ is **discrete** if $F_X$ has jumps
 
 :::
+
+
+
+
+
+## Probability Mass Function {.smaller}
+
+- In this slide $X$ is a **discrete** rv
+- Therefore $F_X$ has **jumps**
+
+::: Definition
+
+The **Probability Mass Function** or **pmf** of a discrete rv $X$ is
+$$
+f_X \colon \mathbb{R} \to \mathbb{R} \,, \quad 
+f_X(x) := P(X = x) 
+$$
+
+:::
+
+
+
+## Probability Mass Function {.smaller}
+### Properties
+
+::: Proposition
+
+The **pmf** $f_X(x) = P(X=x)$ can be used to
+
+- compute probabilities
+    $$
+    P(a \leq X \leq b) = \sum_{k = a}^b f_X (k) \,, \quad \forall \, a,b \in 
+    \mathbb{Z} \,, \,\, a \leq b 
+    $$
+- compute the **cdf**
+    $$
+    F_X(x) = P(X \leq x) = \sum_{k=-\infty}^x f_X(k)
+    $$
+
+:::
+
+
+
+
+
+## Example 1 - Discrete RV {.smaller}
+
+- Consider again 3 coin tosses and the RV
+$X(\omega) :=  \text{ Number of H in }  \omega$
+
+- The pmf of $X$ is $f_X(x):=P(X=x)$, which we have already computed
+
+|           |               |               |              |               |
+|:---------:|:-------------:|:-------------:|:------------:|:-------------:|
+| $x$       | $0$           | $1$           | $2$          |     $3$       |
+|$f_X(x)= P(X=x)$ | $\frac{1}{8}$ | $\frac{3}{8}$ | $\frac{3}{8}$| $\frac{1}{8}$ | 
+: {tbl-colwidths="[40,15,15,15,15]"}
+
+
+
+```{r}
+# Example data
+values <- c(0, 1, 2, 3)
+probabilities <- c(1/8, 3/8, 3/8, 1/8)
+
+# Plot PMF
+plot(values, 
+    probabilities, 
+    xlab = "",
+    ylab = "",
+    xaxt='n',
+    type="h", 
+    lwd=4, 
+    col="blue")
+
+axis(1, at = values,labels = T)
+mtext("x", side=1, line=3, cex=2)
+mtext("f_X(x)", side=2, line=2.5, cex=2)
+
+points(values, probabilities, col = "red", pch = 16)
+
+grid()
+```
+
+
+
+
+
+
+
+## Example 2 - Discrete RV {.smaller}
+
+- Suppose $p \in (0,1)$ is a given probability of **success**
+- Hence $1-p$ is probability of **failure**
+- Consider the random variable 
+$$
+X = \text{ Number of attempts to obtain first success}
+$$
+- Since each trial is independent, the pmf of $X$ is
+$$
+f_X (x) = P(X=x) = (1-p)^{x-1} p \,, \quad \forall \, x \in \mathbb{N}
+$$
+
+
+
+
+## Example 2 - Discrete RV {.smaller}
+
+- We want to compute the cdf of $X$: For $x \in \mathbb{N}$ with $x > 0$
+\begin{align*}
+F_X(x) & = P(X \leq x) = \sum_{k=1}^x P(X=k) = \sum_{k=1}^x f_X(k) \\
+       & = \sum_{k=1}^x (1-p)^{k-1} p 
+         = \frac{1-(1-p)^x}{1-(1-p)} p = 1 - (1-p)^x 
+\end{align*}
+where we used the formula for the sum of geometric series:
+$$
+\sum_{k=1}^x t^{k-1} = \frac{1-t^x}{1-t} \,, \quad t \neq 1 
+$$
+
+
+
+## Example 2 - Discrete RV {.smaller}
+
+
+- $F_X$ is flat between two consecutive natural numbers:
+\begin{align*}
+F_X(x+k) & = P(X \leq x+k) \\
+         & = P(X \leq x) \\
+         & = F_X(x) 
+\end{align*} 
+for all $x \in \mathbb{N}, k \in [0,1)$
+
+- Therefore $F_X$ has **jumps** and $X$ is **discrete**
+
+
+
+
+
+## Continuous Random Variables {.smaller} 
+
+**Recall**: $X$ is **discrete** if $F_X$ has **jumps**
+
+
+::: Definition
+### Continuous Random Variable
+
+$X \colon \Omega \to \mathbb{R}$ is **continuous** if 
+$F_X$ is **continuous**
+
+:::
+
+
+
+
+
+
+
+## Probability Mass Function? {.smaller}
+
+- Suppose $X$ is a **continuous** rv
+- Therefore $F_X$ is **continuous**
+
+::: Question 
+
+Can we define the Probability Mass Function for $X$?
+
+:::
+
+
+**Answer**: 
+
+- Yes we can, but it would be useless
+- This is because 
+$$
+f_X(x) = P(X=x) = 0 \,, \quad \forall \, x \in \mathbb{R}
+$$
+
+
+
+
+## Probability Mass Function? {.smaller}
+
+
+- Indeed, for all $\varepsilon>0$ we have $\{ X = x \} \subset \{  x - \varepsilon < X \leq x  \}$
+- Therefore by the properties of probabilities we have
+\begin{align*}
+P (X = x ) & \leq P(  x - \varepsilon < X \leq x ) \\
+           & = P(X \leq x) - P(X \leq x - \varepsilon) \\
+           & = F_X(x) - F_X(x-\varepsilon)
+\end{align*}
+where we also used the definition of $F_X$
+- Since $F_X$ is continuous we get
+$$
+0 \leq P(X = x) \leq \lim_{\varepsilon \to 0} F_X(x) - F_X(x-\varepsilon) = 0
+$$
+- Then $f_X(x) = P(X=x) = 0$ for all $x \in \mathbb{R}$
+
+
+
+
+
+
+## Probability Density Function {.smaller}
+
+
+- **pmf** makes no sense for continuous RV
+- We instead define the **pdf**
+
+
+::: Definition
+
+The **Probability Density Function** or **pdf** of a continuous rv $X$ is
+a function $f_X \colon \mathbb{R} \to \mathbb{R}$ s.t.
+$$
+F_X(x) =  \int_{-\infty}^x f_X(t) \, dt  \,, \quad \forall \, x \in
+\mathbb{R}
+$$
+
+:::
+
+
+**Technical note**: 
+
+- If $X$ is continuous then pdf **does not exist** in general
+- Counterexamples are rare, therefore we will **assume** existence of pdf
+
+
+
+
+## Probability Density Function {.smaller}
+### Properties
+
+::: Proposition
+
+Suppose $X$ is continuous rv. They hold
+
+- The **cdf** $F_X$ is continuous and differentiable (a.e.) with
+$$
+F_X' = f_X
+$$
+
+- Probability can be computed via
+    $$
+    P(a \leq X \leq b) = \int_{a}^b f_X (t) \, dt \,, \quad \forall \, a,b \in 
+    \mathbb{R} \,, \,\, a \leq b 
+    $$
+
+:::
+
+
+
+
+
+
+
+## Example - Continuous RV {.smaller}
+
+Logistic
+
+
+
+
+
+## Characterization of pmf and pdf {.smaller}
+
+
+It is possible to give a full characterization of pmf and pdf
+
+::: Theorem
+
+Let $f_X \colon \mathbb{R} \to \mathbb{R}$. Then $f_X$ is pmf or pdf of a RV $X$ iff
+
+1. $f_X(x) \geq 0$ for all $x \in \mathbb{R}$
+2. $\sum_{x=-\infty}^\infty f_X(x) = 1 \,\,\,$ (pmf) $\quad$ or $\quad$ $\int_{-\infty}^\infty f(x) \, dx =1\,\,\,$ (pdf)
+
+:::
+
+In the above setting: 
+
+- The RV $X$ has **distribution**
+$$
+P(X = x) = f_X(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
+P(a \leq X \leq b) = \int_a^b f_X(t) \, dt   \,\,\, \text{ (pdf)}
+$$
+
+- We denote that $X$ has distribution $f_X$ by the symbol $X \sim f_X$
+
+
+
+
+
+## Summary - Random Variables {.smaller}
+
+- Suppose $X \colon \Omega \to \mathbb{R}$ is RV
+
+- **Cumulative Density Function (cdf)**:
+$F_X(x) := P(X \leq x)$
+
+
+| Discrete RV                       |        Continuous RV         |
+|--------------                     |----------------              |
+| $F_X$ has **jumps**               |  $F_X$ is **continuous**     |
+|**Probability Mass Function (pmf)**|**Probability Density Function (pdf)**|
+| $f_X(x) := P(X=x)$                | $f_X(x) := F_X'(x)$          |  
+| $f_X \geq 0$                      |  $f_X \geq 0$                |
+|$\sum_{x=-\infty}^\infty f_X(x) = 1$| $\int_{-\infty}^\infty f_X(x) \, dx = 1$ |
+| $F_X (x) = \sum_{k=-\infty}^x f_X(k)$| $F_X (x) = \int_{-\infty}^x f_X(t) \, dt$
+| $P(a \leq X \leq b) = \sum_{k = a}^{b} f_X(k)$ | $P(a \leq X \leq b) = \int_a^b f_X(t) \, dt$ |
+
+
+
 
 
 

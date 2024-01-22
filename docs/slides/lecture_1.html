@@ -361,51 +361,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Corollary {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -413,15 +369,59 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1125,6 +1125,34 @@
 </div>
 </div>
 </section>
+<section id="probability-background" class="slide level2 smaller">
+<h2>Probability background</h2>
+<ul>
+<li>We start with reviewing some fundamental Probability notions</li>
+<li>You saw these in the Y1 module <strong>Introduction to Probability &amp; Statistics</strong></li>
+<li>We will adopt a slightly more mature mathematical approach</li>
+<li>Remember: The mathematical description might look (a bit) different, but the concepts are the same</li>
+</ul>
+<p><strong>Topics reviewed</strong>:</p>
+<div class="column" style="width:38%;">
+<ul>
+<li>Sample space</li>
+<li>Events</li>
+<li>Probability measure</li>
+<li>Conditional probability</li>
+<li>Events independence</li>
+</ul>
+</div>
+<div class="column" style="width:38%;">
+<ul>
+<li>Random Variable</li>
+<li>Distribution</li>
+<li>Cumulative distribution</li>
+<li>Expectation</li>
+<li>Variance</li>
+</ul>
+</div>
+</section>
 <section id="sample-space" class="slide level2 smaller">
 <h2>Sample space</h2>
 <div id="sample-space-1" class="Definition" title="Sample space">
@@ -1449,7 +1477,7 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Random variable</summary><div>A function <span class="math inline">X \colon \Omega \to \mathbb{R}</span><p></p>
 </div></details>
 </div>
-<p>We will abbreviate Random Variable with r.v.</p>
+<p>We will abbreviate Random Variable with rv</p>
 </section>
 <section id="random-variables-2" class="slide level2 smaller">
 <h2>Random Variables</h2>
@@ -1483,11 +1511,11 @@ X = \text{ number of } \, H \, \text{ in } \, 50 \, \text{flips}
 </span></p></li>
 </ul>
 </section>
-<section id="random-variables-4" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="why-do-we-require-measurability">Why do we require measurability?</h3>
 <p><strong>Answer</strong>: Because it allows to define a new probability measure on <span class="math inline">\mathbb{R}</span></p>
-<div id="distribution" class="Definition" title="Distribution">
+<div id="distribution-1" class="Definition" title="Distribution">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Distribution</summary><div>The <strong>distribution</strong> of a random variable <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is the probability measure on <span class="math inline">\mathbb{R}</span> <span class="math display">
 P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( \{X \in I\} \right) \,, \,\, \forall \, I \in  \mathcal{L}
 </span><p></p>
@@ -1502,8 +1530,8 @@ P \left( X \in I \right) := P \left( \{X \in I\} \right)
 </span></li>
 </ul>
 </section>
-<section id="random-variables-5" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution-2" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="why-is-the-distribution-useful">Why is the distribution useful?</h3>
 <p><strong>Answer</strong>: Because it allows to define a random variable <span class="math inline">X</span></p>
 <ul>
@@ -1518,8 +1546,8 @@ P \left( X \in I \right)
 <li>We do not care about how <span class="math inline">X</span> is defined</li>
 </ul>
 </section>
-<section id="random-variables-6" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution-3" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="example---three-coin-tosses">Example - Three coin tosses</h3>
 <ul>
 <li>Sample space <span class="math inline">\Omega</span> given by the below values of <span class="math inline">\omega</span></li>
@@ -1585,8 +1613,8 @@ X(\omega) :=  \text{ Number of H in }  \omega
 </tbody>
 </table>
 </section>
-<section id="random-variables-7" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution-4" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="example---three-coin-tosses-1">Example - Three coin tosses</h3>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
@@ -1627,8 +1655,8 @@ P(X=3)
 </span></p></li>
 </ul>
 </section>
-<section id="random-variables-8" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution-5" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="example---three-coin-tosses-2">Example - Three coin tosses</h3>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
@@ -1668,8 +1696,8 @@ P(X=3) &amp; = P(HHH) = \frac{1}{8}
 \end{align*}</span></li>
 </ul>
 </section>
-<section id="random-variables-9" class="slide level2 smaller">
-<h2>Random Variables</h2>
+<section id="distribution-6" class="slide level2 smaller">
+<h2>Distribution</h2>
 <h3 id="example---three-coin-tosses-3">Example - Three coin tosses</h3>
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
@@ -1729,26 +1757,29 @@ P(X=3) &amp; = P(HHH) = \frac{1}{8}
 </tbody>
 </table>
 </section>
-<section id="random-variables-10" class="slide level2 smaller">
-<h2>Random Variables</h2>
-<h3 id="cumulative-distribution-function">Cumulative distribution function</h3>
-<p><strong>Recall</strong>: The <strong>distribution</strong> of a r.v. <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is the probability measure on <span class="math inline">\mathbb{R}</span> <span class="math display">
+<section id="cumulative-distribution-function" class="slide level2 smaller">
+<h2>Cumulative Distribution Function</h2>
+<p><strong>Recall</strong>: The <strong>distribution</strong> of a rv <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is the probability measure on <span class="math inline">\mathbb{R}</span> <span class="math display">
 P_X \colon \mathcal{L} \to [0,1] \,, \quad P_X (I) := P \left( X \in I \right) \,, \,\, \forall \, I \in  \mathcal{L}
 </span></p>
 <div id="cdf" class="Definition" title="cdf">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>cdf</summary><div>The <strong>cumulative distribution function</strong> or <strong>cdf</strong> of a r.v. <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is <span class="math display">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>cdf</summary><div>The <strong>cumulative distribution function</strong> or <strong>cdf</strong> of a rv <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is <span class="math display">
 F_X \colon \mathbb{R} \to \mathbb{R} \,, \quad
 F_X(x) := P_X (X \leq x)
 </span><p></p>
 </div></details>
 </div>
-<p><strong>Intuition</strong>: <span class="math inline">F_X</span> is the <em>primitive</em> of <span class="math inline">P_X</span></p>
-</section>
-<section id="random-variables-11" class="slide level2 smaller">
-<h2>Random Variables</h2>
-<h3 id="example-of-cdf">Example of cdf</h3>
+<p><strong>Intuition</strong>:</p>
 <ul>
-<li><p>Consider again 3 coin tosses and the r.v. <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
+<li><span class="math inline">F_X</span> is the <em>primitive</em> of <span class="math inline">P_X</span></li>
+<li><span class="math inline">P_X</span> will be the <em>derivative</em> of <span class="math inline">F_X</span><sup>1</sup></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>In a suitable generalized sense</p></li></ol></aside></section>
+<section id="distribution-function" class="slide level2 smaller">
+<h2>Distribution Function</h2>
+<h3 id="example">Example</h3>
+<ul>
+<li><p>Consider again 3 coin tosses and the rv <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
 <li><p>We computed that the distribution <span class="math inline">P_X</span> of <span class="math inline">X</span> is</p></li>
 </ul>
 <table>
@@ -1801,22 +1832,289 @@ F_X(2.1) &amp; = P(X \leq 2.1) \\
 </ul>
 </div>
 </section>
-<section id="random-variables-12" class="slide level2 smaller">
-<h2>Random Variables</h2>
-<h3 id="example-of-cdf-1">Example of cdf</h3>
+<section id="cumulative-distribution-function-1" class="slide level2 smaller">
+<h2>Cumulative Distribution Function</h2>
+<h3 id="example-1">Example</h3>
 
-<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><div class="column" style="width:52%;">
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><div class="column" style="width:43%;">
 <ul>
-<li>Plot of <span class="math inline">F_X</span>: it is <strong>step function</strong></li>
-<li><span class="math inline">F_X'=0</span> except at jumps <span class="math inline">x=0,1,2,3</span></li>
+<li>Plot of <span class="math inline">F_X</span>: it is a <strong>step function</strong></li>
+<li><span class="math inline">F_X'=0</span> except at <span class="math inline">x=0,1,2,3</span></li>
+<li><span class="math inline">F_X</span> jumps at <span class="math inline">x=0,1,2,3</span></li>
 </ul>
 </div>
-<div class="column" style="width:47%;">
+<div class="column" style="width:56%;">
 <ul>
-<li>Globally <span class="math inline">F_X'=P_X</span> in the sense of <strong>distributions</strong></li>
-<li>This is an advanced analysis concept (not covered here)</li>
+<li>Size of jump at <span class="math inline">x</span> is <span class="math inline">P(X=x)</span></li>
+<li><span class="math inline">F_X'=P_X</span> in the sense of <strong>distributions</strong> <br> (Advanced analysis concept - not covered)</li>
 </ul>
 </div>
+</section>
+<section id="discrete-random-variables" class="slide level2 smaller">
+<h2>Discrete Random Variables</h2>
+<p>In the previous example:</p>
+<ul>
+<li>The cdf <span class="math inline">F_X</span> had <strong>jumps</strong></li>
+<li>Hence <span class="math inline">F_X</span> was <strong>discountinuous</strong></li>
+<li>We take this as definition of <strong>discrete</strong> rv</li>
+</ul>
+<div id="Definition*-4.17" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div><span class="math inline">X \colon \Omega \to \mathbb{R}</span> is <strong>discrete</strong> if <span class="math inline">F_X</span> has jumps<p></p>
+</div></details>
+</div>
+</section>
+<section id="probability-mass-function" class="slide level2 smaller">
+<h2>Probability Mass Function</h2>
+<ul>
+<li>In this slide <span class="math inline">X</span> is a <strong>discrete</strong> rv</li>
+<li>Therefore <span class="math inline">F_X</span> has <strong>jumps</strong></li>
+</ul>
+<div id="Definition*-4.18" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>Probability Mass Function</strong> or <strong>pmf</strong> of a discrete rv <span class="math inline">X</span> is <span class="math display">
+f_X \colon \mathbb{R} \to \mathbb{R} \,, \quad
+f_X(x) := P(X = x)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="probability-mass-function-1" class="slide level2 smaller">
+<h2>Probability Mass Function</h2>
+<h3 id="properties">Properties</h3>
+<div id="Proposition*-4.19" class="Proposition">
+<details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>
+<p>The <strong>pmf</strong> <span class="math inline">f_X(x) = P(X=x)</span> can be used to</p>
+<ul>
+<li>compute probabilities <span class="math display">
+  P(a \leq X \leq b) = \sum_{k = a}^b f_X (k) \,, \quad \forall \, a,b \in
+  \mathbb{Z} \,, \,\, a \leq b
+  </span></li>
+<li>compute the <strong>cdf</strong> <span class="math display">
+  F_X(x) = P(X \leq x) = \sum_{k=-\infty}^x f_X(k)
+  </span></li>
+</ul>
+</div></details>
+</div>
+</section>
+<section id="example-1---discrete-rv" class="slide level2 smaller">
+<h2>Example 1 - Discrete RV</h2>
+<ul>
+<li><p>Consider again 3 coin tosses and the RV <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
+<li><p>The pmf of <span class="math inline">X</span> is <span class="math inline">f_X(x):=P(X=x)</span>, which we have already computed</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">x</span></td>
+<td style="text-align: center;"><span class="math inline">0</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">f_X(x)= P(X=x)</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{8}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{8}</span></td>
+</tr>
+</tbody>
+</table>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="example-2---discrete-rv" class="slide level2 smaller">
+<h2>Example 2 - Discrete RV</h2>
+<ul>
+<li>Suppose <span class="math inline">p \in (0,1)</span> is a given probability of <strong>success</strong></li>
+<li>Hence <span class="math inline">1-p</span> is probability of <strong>failure</strong></li>
+<li>Consider the random variable <span class="math display">
+X = \text{ Number of attempts to obtain first success}
+</span></li>
+<li>Since each trial is independent, the pmf of <span class="math inline">X</span> is <span class="math display">
+f_X (x) = P(X=x) = (1-p)^{x-1} p \,, \quad \forall \, x \in \mathbb{N}
+</span></li>
+</ul>
+</section>
+<section id="example-2---discrete-rv-1" class="slide level2 smaller">
+<h2>Example 2 - Discrete RV</h2>
+<ul>
+<li>We want to compute the cdf of <span class="math inline">X</span>: For <span class="math inline">x \in \mathbb{N}</span> with <span class="math inline">x &gt; 0</span> <span class="math display">\begin{align*}
+F_X(x) &amp; = P(X \leq x) = \sum_{k=1}^x P(X=k) = \sum_{k=1}^x f_X(k) \\
+     &amp; = \sum_{k=1}^x (1-p)^{k-1} p
+       = \frac{1-(1-p)^x}{1-(1-p)} p = 1 - (1-p)^x
+\end{align*}</span> where we used the formula for the sum of geometric series: <span class="math display">
+\sum_{k=1}^x t^{k-1} = \frac{1-t^x}{1-t} \,, \quad t \neq 1
+</span></li>
+</ul>
+</section>
+<section id="example-2---discrete-rv-2" class="slide level2 smaller">
+<h2>Example 2 - Discrete RV</h2>
+<ul>
+<li><p><span class="math inline">F_X</span> is flat between two consecutive natural numbers: <span class="math display">\begin{align*}
+F_X(x+k) &amp; = P(X \leq x+k) \\
+       &amp; = P(X \leq x) \\
+       &amp; = F_X(x)
+\end{align*}</span> for all <span class="math inline">x \in \mathbb{N}, k \in [0,1)</span></p></li>
+<li><p>Therefore <span class="math inline">F_X</span> has <strong>jumps</strong> and <span class="math inline">X</span> is <strong>discrete</strong></p></li>
+</ul>
+</section>
+<section id="continuous-random-variables" class="slide level2 smaller">
+<h2>Continuous Random Variables</h2>
+<p><strong>Recall</strong>: <span class="math inline">X</span> is <strong>discrete</strong> if <span class="math inline">F_X</span> has <strong>jumps</strong></p>
+<div id="continuous-random-variable" class="Definition" title="Continuous Random Variable">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Continuous Random Variable</summary><div><span class="math inline">X \colon \Omega \to \mathbb{R}</span> is <strong>continuous</strong> if <span class="math inline">F_X</span> is <strong>continuous</strong><p></p>
+</div></details>
+</div>
+</section>
+<section id="probability-mass-function-2" class="slide level2 smaller">
+<h2>Probability Mass Function?</h2>
+<ul>
+<li>Suppose <span class="math inline">X</span> is a <strong>continuous</strong> rv</li>
+<li>Therefore <span class="math inline">F_X</span> is <strong>continuous</strong></li>
+</ul>
+<div id="Question*-4.21" class="Question">
+<p></p><details class="Question fbx-simplebox fbx-default" open=""><summary><strong>Question</strong></summary><div>Can we define the Probability Mass Function for <span class="math inline">X</span>?<p></p>
+</div></details>
+</div>
+<p><strong>Answer</strong>:</p>
+<ul>
+<li>Yes we can, but it would be useless</li>
+<li>This is because <span class="math display">
+f_X(x) = P(X=x) = 0 \,, \quad \forall \, x \in \mathbb{R}
+</span></li>
+</ul>
+</section>
+<section id="probability-mass-function-3" class="slide level2 smaller">
+<h2>Probability Mass Function?</h2>
+<ul>
+<li>Indeed, for all <span class="math inline">\varepsilon&gt;0</span> we have <span class="math inline">\{ X = x \} \subset \{  x - \varepsilon &lt; X \leq x  \}</span></li>
+<li>Therefore by the properties of probabilities we have <span class="math display">\begin{align*}
+P (X = x ) &amp; \leq P(  x - \varepsilon &lt; X \leq x ) \\
+         &amp; = P(X \leq x) - P(X \leq x - \varepsilon) \\
+         &amp; = F_X(x) - F_X(x-\varepsilon)
+\end{align*}</span> where we also used the definition of <span class="math inline">F_X</span></li>
+<li>Since <span class="math inline">F_X</span> is continuous we get <span class="math display">
+0 \leq P(X = x) \leq \lim_{\varepsilon \to 0} F_X(x) - F_X(x-\varepsilon) = 0
+</span></li>
+<li>Then <span class="math inline">f_X(x) = P(X=x) = 0</span> for all <span class="math inline">x \in \mathbb{R}</span></li>
+</ul>
+</section>
+<section id="probability-density-function" class="slide level2 smaller">
+<h2>Probability Density Function</h2>
+<ul>
+<li><strong>pmf</strong> makes no sense for continuous RV</li>
+<li>We instead define the <strong>pdf</strong></li>
+</ul>
+<div id="Definition*-4.22" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>Probability Density Function</strong> or <strong>pdf</strong> of a continuous rv <span class="math inline">X</span> is a function <span class="math inline">f_X \colon \mathbb{R} \to \mathbb{R}</span> s.t. <span class="math display">
+F_X(x) =  \int_{-\infty}^x f_X(t) \, dt  \,, \quad \forall \, x \in
+\mathbb{R}
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Technical note</strong>:</p>
+<ul>
+<li>If <span class="math inline">X</span> is continuous then pdf <strong>does not exist</strong> in general</li>
+<li>Counterexamples are rare, therefore we will <strong>assume</strong> existence of pdf</li>
+</ul>
+</section>
+<section id="probability-density-function-1" class="slide level2 smaller">
+<h2>Probability Density Function</h2>
+<h3 id="properties-1">Properties</h3>
+<div id="Proposition*-4.23" class="Proposition">
+<details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>
+<p>Suppose <span class="math inline">X</span> is continuous rv. They hold</p>
+<ul>
+<li><p>The <strong>cdf</strong> <span class="math inline">F_X</span> is continuous and differentiable (a.e.) with <span class="math display">
+F_X' = f_X
+</span></p></li>
+<li><p>Probability can be computed via <span class="math display">
+  P(a \leq X \leq b) = \int_{a}^b f_X (t) \, dt \,, \quad \forall \, a,b \in
+  \mathbb{R} \,, \,\, a \leq b
+  </span></p></li>
+</ul>
+</div></details>
+</div>
+</section>
+<section id="example---continuous-rv" class="slide level2 smaller">
+<h2>Example - Continuous RV</h2>
+<p>Logistic</p>
+</section>
+<section id="characterization-of-pmf-and-pdf" class="slide level2 smaller">
+<h2>Characterization of pmf and pdf</h2>
+<p>It is possible to give a full characterization of pmf and pdf</p>
+<div id="Theorem*-4.24" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>
+<p>Let <span class="math inline">f_X \colon \mathbb{R} \to \mathbb{R}</span>. Then <span class="math inline">f_X</span> is pmf or pdf of a RV <span class="math inline">X</span> iff</p>
+<ol type="1">
+<li><span class="math inline">f_X(x) \geq 0</span> for all <span class="math inline">x \in \mathbb{R}</span></li>
+<li><span class="math inline">\sum_{x=-\infty}^\infty f_X(x) = 1 \,\,\,</span> (pmf) <span class="math inline">\quad</span> or <span class="math inline">\quad</span> <span class="math inline">\int_{-\infty}^\infty f(x) \, dx =1\,\,\,</span> (pdf)</li>
+</ol>
+</div></details>
+</div>
+<p>In the above setting:</p>
+<ul>
+<li><p>The RV <span class="math inline">X</span> has <strong>distribution</strong> <span class="math display">
+P(X = x) = f_X(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
+P(a \leq X \leq b) = \int_a^b f_X(t) \, dt   \,\,\, \text{ (pdf)}
+</span></p></li>
+<li><p>We denote that <span class="math inline">X</span> has distribution <span class="math inline">f_X</span> by the symbol <span class="math inline">X \sim f_X</span></p></li>
+</ul>
+</section>
+<section id="summary---random-variables" class="slide level2 smaller">
+<h2>Summary - Random Variables</h2>
+<ul>
+<li><p>Suppose <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is RV</p></li>
+<li><p><strong>Cumulative Density Function (cdf)</strong>: <span class="math inline">F_X(x) := P(X \leq x)</span></p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Discrete RV</th>
+<th>Continuous RV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">F_X</span> has <strong>jumps</strong></td>
+<td><span class="math inline">F_X</span> is <strong>continuous</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Probability Mass Function (pmf)</strong></td>
+<td><strong>Probability Density Function (pdf)</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">f_X(x) := P(X=x)</span></td>
+<td><span class="math inline">f_X(x) := F_X'(x)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_X \geq 0</span></td>
+<td><span class="math inline">f_X \geq 0</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\sum_{x=-\infty}^\infty f_X(x) = 1</span></td>
+<td><span class="math inline">\int_{-\infty}^\infty f_X(x) \, dx = 1</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">F_X (x) = \sum_{k=-\infty}^x f_X(k)</span></td>
+<td><span class="math inline">F_X (x) = \int_{-\infty}^x f_X(t) \, dt</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">P(a \leq X \leq b) = \sum_{k = a}^{b} f_X(k)</span></td>
+<td><span class="math inline">P(a \leq X \leq b) = \int_a^b f_X(t) \, dt</span></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
@@ -1832,14 +2130,14 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\ri
 </section>
 <section id="examples-of-continuous-rv-1" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-4.17" class="Theorem">
+<div id="Theorem*-4.25" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-4.18" class="Proof">
+<div id="Proof*-4.26" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
@@ -1891,6 +2189,7 @@ Z := \frac{X-\mu}{\sigma}
 </div>
 </div>
 </section></section>
+
     </div>
   </div>
 
