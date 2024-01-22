@@ -66,8 +66,8 @@ format:
     execute:
       freeze: auto
     theme:
-      light: [flatly, theme-custom.scss]
-      dark: [darkly]
+      light: [flatly, theme-custom-light.scss]
+      dark: [darkly, theme-custom-dark.scss]
     fig-align: center
     fig-cap-location: bottom
     link-external-icon: true
