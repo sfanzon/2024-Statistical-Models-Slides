@@ -16,6 +16,17 @@ author:
 ---
 
 
+
+::: {.content-hidden}
+$
+{{< include macros.tex >}}
+$
+:::
+
+
+
+
+
 # Lecture 1: <br>An introduction to Statistics {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
@@ -722,9 +733,9 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 - Random Variable
 - Distribution
-- cdf, pmf, pdf
-- Expectation
-- Variance
+- cdf
+- pmf
+- pdf
 
 :::
 
@@ -1960,6 +1971,173 @@ $F_X(x) := P(X \leq x)$
 
 
 
+
+# Part 4: <br>Moment generating functions {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+## Functions of Random Variables {.smaller}
+
+- $X \colon \Omega \to \mathbb{R}$ random variable and $g \colon \mathbb{R} \to \mathbb{R}$ function
+- Then $Y:=g(X) \colon \Omega \to \mathbb{R}$ is random variable
+- For $A \subset \mathbb{R}$ we define the pre-image 
+$$
+g^{-1}(A) := \{  x \in \mathbb{R} \colon g(x) \in A \}
+$$
+- For $A=\{y\}$ single element set we denote
+$$
+g^{-1}(\{y\}) = g^{-1}(y) =  \{  x \in \mathbb{R} \colon g(x) = y \}
+$$
+- The distribution of $Y$ is
+$$
+P(Y \in A) = P(g(X) \in A ) = P(X \in g^{-1}(A))
+$$
+
+
+
+## Functions of Random Variables {.smaller}
+
+**Question**: What is the relationship between $f_X$ and $f_Y$?
+
+- **$X$ discrete**: Then $Y$ is discrete and
+$$
+f_Y (y) = P(Y = y) = \sum_{x \in g^{-1}(y)} P(X=x) = \sum_{x \in g^{-1}(y)} f_X(x) 
+$$
+
+- **$X$ and $Y$ continuous**: Then
+\begin{align*}
+F_Y(y) & = P(Y \leq y) = P(g(X) \leq y) \\
+       & = P(\{ x \in \mathbb{R} \colon g(x) \leq y \}   ) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
+\end{align*}
+
+
+
+
+
+## Functions of Random Variables {.smaller}
+
+**Issue**: The below set may be tricky to compute
+$$
+\{ x \in \mathbb{R} \colon g(x) \leq y \}
+$$
+
+However it can be easily computed if $g$ is **strictly monotone**:
+
+- **g strictly increasing**: Meaning that 
+$$
+x_1 < x_2 \quad \implies \quad g(x_1) < g(x_2)
+$$
+
+- **g strictly decreasing**: Meaning that 
+$$
+x_1 < x_2 \quad \implies \quad g(x_1) > g(x_2)
+$$
+
+- In both cases $g$ is **invertible**
+
+
+
+
+
+## Functions of Random Variables {.smaller}
+
+Let $g$ be **strictly increasing**:
+
+- Then
+$$
+\{ x \in \mathbb{R} \colon g(x) \leq y \} = \{ x \in \mathbb{R} \colon x \leq g^{-1}(y) \}
+$$
+
+- Therefore
+\begin{align*}
+F_Y(y) & = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt 
+         = \int_{\{ x \in \mathbb{R} \colon x \leq g^{-1}(y) \}} f_X(t) \, dt  \\
+       & = \int_{-\infty}^{g^{-1}(y)} f_X(t) \, dt 
+         = F_X(g^{-1}(y)) 
+\end{align*}
+
+
+
+
+
+## Functions of Random Variables {.smaller}
+
+Let $g$ be **strictly decreasing**:
+
+- Then
+$$
+\{ x \in \mathbb{R} \colon g(x) \leq y \} = \{ x \in \mathbb{R} \colon x \geq g^{-1}(y) \}
+$$
+
+- Therefore
+\begin{align*}
+F_Y(y) & = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt 
+         = \int_{\{ x \in \mathbb{R} \colon x \geq g^{-1}(y) \}} f_X(t) \, dt  \\
+       & = \int_{g^{-1}(y)}^{\infty} f_X(t) \, dt 
+         = 1 - \int_{-\infty}^{g^{-1}(y)}f_X(t) \, dt  \\
+       & = 1 - F_X(g^{-1}(y)) 
+\end{align*}
+
+
+
+
+
+## Summary - Functions of Random Variables {.smaller}
+
+
+- **$X$ discrete**: Then $Y$ is discrete and
+$$
+f_Y (y) = \sum_{x \in g^{-1}(y)} f_X(x) 
+$$
+
+- **$X$ and $Y$ continuous**: Then
+$$
+F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
+$$
+
+- **$X$ and $Y$ continuous** and
+    * **$g$ strictly increasing**: $F_Y(y) = F_X(g^{-1}(y))$
+    * **$g$ strictly decreasing**: $F_Y(y) = 1 - F_X(g^{-1}(y))$
+
+
+
+
+
+## Expected Value {.smaller}
+
+Expected value is the **average** value of a random variable
+
+
+::: Definition
+
+$X$ rv and $g \colon \mathbb{R} \to \mathbb{R}$ function. The **expected value** or **mean**
+of $g(X)$ is $\expect g(X)$
+
+- If $X$ discrete
+$$
+\expect g(X):= \sum_{x \in \mathbb{R}} g(x) f_X(x) = \sum_{x \in \mathbb{R}} g(x) P(X = x)
+$$
+
+- If $X$ continuous
+$$
+\expect g(X):= \int_{-\infty}^{\infty} g(x) f_X(x) \, dx
+$$
+
+:::
+
+
+
+
+
+
 ## Examples of Continuous RV {.smaller}
 
 
@@ -2000,16 +2178,6 @@ Check
 :::
 
 
-
-
-
-# Part 4: <br>Moment generating functions {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
 
 
 
