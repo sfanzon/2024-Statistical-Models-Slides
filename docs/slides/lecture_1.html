@@ -365,15 +365,7 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
   .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -381,15 +373,19 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proposition {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -397,27 +393,11 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Axiom {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -428,6 +408,26 @@
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -479,7 +479,8 @@
 <ol type="1">
 <li>Module info</li>
 <li>Introduction</li>
-<li>Probability background</li>
+<li>Probability revision</li>
+<li>Moment generating functions</li>
 <li>Statistics background</li>
 </ol>
 </section></section>
@@ -1162,16 +1163,16 @@
 </ul>
 </section></section>
 <section>
-<section id="part-3-probability-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 3: <br>Probability background</h1>
+<section id="part-3-probability-revision" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Probability revision</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="probability-background" class="slide level2 smaller">
-<h2>Probability background</h2>
+<section id="probability-revision" class="slide level2 smaller">
+<h2>Probability revision</h2>
 <ul>
 <li>We start with reviewing some fundamental Probability notions</li>
 <li>You saw these in the Y1 module <strong>Introduction to Probability &amp; Statistics</strong></li>
@@ -1965,8 +1966,8 @@ f_X(x) := P(X = x)
 </table>
 
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="example-2---discrete-rv" class="slide level2 smaller">
-<h2>Example 2 - Discrete RV</h2>
+<section id="example-2---geometric-distribution" class="slide level2 smaller">
+<h2>Example 2 - Geometric Distribution</h2>
 <ul>
 <li>Suppose <span class="math inline">p \in (0,1)</span> is a given probability of <strong>success</strong></li>
 <li>Hence <span class="math inline">1-p</span> is probability of <strong>failure</strong></li>
@@ -1976,10 +1977,11 @@ X = \text{ Number of attempts to obtain first success}
 <li>Since each trial is independent, the pmf of <span class="math inline">X</span> is <span class="math display">
 f_X (x) = P(X=x) = (1-p)^{x-1} p \,, \quad \forall \, x \in \mathbb{N}
 </span></li>
+<li>This is called <strong>geometric distribution</strong></li>
 </ul>
 </section>
-<section id="example-2---discrete-rv-1" class="slide level2 smaller">
-<h2>Example 2 - Discrete RV</h2>
+<section id="example-2---geometric-distribution-1" class="slide level2 smaller">
+<h2>Example 2 - Geometric Distribution</h2>
 <ul>
 <li>We want to compute the cdf of <span class="math inline">X</span>: For <span class="math inline">x \in \mathbb{N}</span> with <span class="math inline">x &gt; 0</span> <span class="math display">\begin{align*}
 F_X(x) &amp; = P(X \leq x) = \sum_{k=1}^x P(X=k) = \sum_{k=1}^x f_X(k) \\
@@ -1990,8 +1992,8 @@ F_X(x) &amp; = P(X \leq x) = \sum_{k=1}^x P(X=k) = \sum_{k=1}^x f_X(k) \\
 </span></li>
 </ul>
 </section>
-<section id="example-2---discrete-rv-2" class="slide level2 smaller">
-<h2>Example 2 - Discrete RV</h2>
+<section id="example-2---geometric-distribution-2" class="slide level2 smaller">
+<h2>Example 2 - Geometric Distribution</h2>
 <ul>
 <li><p><span class="math inline">F_X</span> is flat between two consecutive natural numbers: <span class="math display">\begin{align*}
 F_X(x+k) &amp; = P(X \leq x+k) \\
@@ -2079,9 +2081,42 @@ F_X' = f_X
 </div></details>
 </div>
 </section>
-<section id="example---continuous-rv" class="slide level2 smaller">
-<h2>Example - Continuous RV</h2>
-<p>Logistic</p>
+<section id="example---logistic-distribution" class="slide level2 smaller">
+<h2>Example - Logistic Distribution</h2>
+<ul>
+<li>The random variable <span class="math inline">X</span> has <strong>logistic distribution</strong> if its <strong>pdf</strong> is <span class="math display">
+f_X(x) = \frac{e^{-x}}{(1+e^{-x})^2}
+</span></li>
+</ul>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="example---logistic-distribution-1" class="slide level2 smaller">
+<h2>Example - Logistic Distribution</h2>
+<ul>
+<li><p>The random variable <span class="math inline">X</span> has <strong>logistic distribution</strong> if its <strong>pdf</strong> is <span class="math display">
+f_X(x) = \frac{e^{-x}}{(1+e^{-x})^2}
+</span></p></li>
+<li><p>The <strong>cdf</strong> can be computed to be <span class="math display">
+F_X(x) = \int_{-\infty}^\infty f_X(t) \, dt = \frac{1}{1+e^{-x}}
+</span></p></li>
+<li><p>The RHS is known as <strong>logistic function</strong></p></li>
+</ul>
+</section>
+<section id="example---logistic-distribution-2" class="slide level2 smaller">
+<h2>Example - Logistic Distribution</h2>
+<p><strong>Application</strong>: Logistic function models expected score in chess (see <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Wikipedia</a>)</p>
+<ul>
+<li><span class="math inline">R_A</span> is ELO rating of player <span class="math inline">A</span>, <span class="math inline">R_B</span> is ELO rating of player <span class="math inline">B</span></li>
+<li><span class="math inline">E_A</span> is expected score of player <span class="math inline">A</span>: <span class="math display">
+E_A := P(A \text{ wins}) + \frac12 P(A \text{ draws})
+</span></li>
+<li><span class="math inline">E_A</span> modelled by logistic function <span class="math display">
+E_A := \frac{1}{1+ 10^{(R_B-R_A)/400} }
+</span></li>
+<li>Example: Beginner is rated <span class="math inline">1000</span>, International Master is rated <span class="math inline">2400</span> <span class="math display">
+R_{\rm Begin} = 1000, \quad  R_{\rm IM}=2400 , \quad E_{\rm Begin} = \frac{1}{1 + 10^{1400/400}} = 0.00031612779
+</span></li>
+</ul>
 </section>
 <section id="characterization-of-pmf-and-pdf" class="slide level2 smaller">
 <h2>Characterization of pmf and pdf</h2>
@@ -2178,8 +2213,17 @@ Z := \frac{X-\mu}{\sigma}
 </div></details>
 </div>
 </section></section>
-<section id="part-4-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 4: <br>Statistics background</h1>
+<section id="part-4-moment-generating-functions" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>Moment generating functions</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
+<section id="part-5-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Statistics background</h1>
 <div class="footer">
 <div color="#cc0164">
 

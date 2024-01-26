@@ -31,8 +31,9 @@ author:
 
 1. Module info
 2. Introduction
-3. Probability background
-4. Statistics background
+3. Probability revision
+4. Moment generating functions
+5. Statistics background
 
 
 
@@ -686,7 +687,7 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 
 
-# Part 3: <br>Probability background {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>Probability revision {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -697,7 +698,7 @@ mtext("Gold Price", side=2, line=2.5, cex=2)
 
 
 
-## Probability background {.smaller}
+## Probability revision {.smaller}
 
 
 - We start with reviewing some fundamental Probability notions
@@ -1656,7 +1657,7 @@ grid()
 
 
 
-## Example 2 - Discrete RV {.smaller}
+## Example 2 - Geometric Distribution {.smaller}
 
 - Suppose $p \in (0,1)$ is a given probability of **success**
 - Hence $1-p$ is probability of **failure**
@@ -1668,11 +1669,11 @@ $$
 $$
 f_X (x) = P(X=x) = (1-p)^{x-1} p \,, \quad \forall \, x \in \mathbb{N}
 $$
+- This is called **geometric distribution**
 
 
 
-
-## Example 2 - Discrete RV {.smaller}
+## Example 2 - Geometric Distribution {.smaller}
 
 - We want to compute the cdf of $X$: For $x \in \mathbb{N}$ with $x > 0$
 \begin{align*}
@@ -1687,7 +1688,7 @@ $$
 
 
 
-## Example 2 - Discrete RV {.smaller}
+## Example 2 - Geometric Distribution {.smaller}
 
 
 - $F_X$ is flat between two consecutive natural numbers:
@@ -1819,12 +1820,93 @@ $$
 
 
 
+## Example - Logistic Distribution {.smaller}
 
 
-## Example - Continuous RV {.smaller}
+- The random variable $X$ has **logistic distribution** if its **pdf** is
+$$
+f_X(x) = \frac{e^{-x}}{(1+e^{-x})^2}
+$$
 
-Logistic
 
+
+```{r}
+
+# Define the probability density function (PDF)
+f_X <- function(x) {
+  exp(-x) / (1 + exp(-x))^2
+}
+
+# Generate x values for plotting
+x_values <- seq(-10, 10, length.out = 1000)
+
+# Calculate corresponding y values
+y_values <- f_X(x_values)
+
+# Plot the distribution using base R plot function
+plot(x_values, 
+    y_values, 
+    type = "l", 
+    col = "blue", 
+    lwd = 4,
+    xlab = "", 
+    ylab = "")
+
+mtext("x", side=1, line=3, cex=2)
+mtext("f_X", side=2, line=2.5, cex=2)
+
+
+# Add a grid for better visualization
+grid()
+
+
+
+```
+
+
+
+## Example - Logistic Distribution {.smaller}
+
+
+- The random variable $X$ has **logistic distribution** if its **pdf** is
+$$
+f_X(x) = \frac{e^{-x}}{(1+e^{-x})^2}
+$$
+
+
+
+- The **cdf** can be computed to be
+$$
+F_X(x) = \int_{-\infty}^\infty f_X(t) \, dt = \frac{1}{1+e^{-x}}
+$$
+
+
+- The RHS is known as **logistic function**
+
+
+
+
+
+## Example - Logistic Distribution {.smaller}
+
+
+**Application**: Logistic function models expected score in chess (see [Wikipedia](https://en.wikipedia.org/wiki/Elo_rating_system))
+
+
+
+- $R_A$ is ELO rating of player $A$, $R_B$ is ELO rating of player $B$
+- $E_A$ is expected score of player $A$: 
+$$
+E_A := P(A \text{ wins}) + \frac12 P(A \text{ draws})
+$$
+- $E_A$ modelled by logistic function
+$$
+E_A := \frac{1}{1+ 10^{(R_B-R_A)/400} }
+$$
+- Example: Beginner is rated $1000$, International Master is rated $2400$
+$$
+R_{\rm Begin} = 1000, \quad  R_{\rm IM}=2400 , \quad E_{\rm Begin} = \frac{1}{1 + 10^{1400/400}} = 0.00031612779
+$$
 
 
 
@@ -1920,13 +2002,33 @@ Check
 
 
 
-# Part 4: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
+
+# Part 4: <br>Moment generating functions {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+
+
+
+
+
+# Part 5: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
 
 
 
@@ -1939,6 +2041,9 @@ Check
 <div color="#cc0164"> </div>
 
 :::
+
+
+
 
 
 
