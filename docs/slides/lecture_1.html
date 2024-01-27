@@ -361,59 +361,27 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Conjecture {
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -421,11 +389,43 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -481,7 +481,6 @@
 <li>Introduction</li>
 <li>Probability revision</li>
 <li>Moment generating functions</li>
-<li>Statistics background</li>
 </ol>
 </section></section>
 <section>
@@ -2728,29 +2727,110 @@ M_X''(t) = \sigma^2  \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right) +
         &amp; = \sigma^2
 \end{align*}</span></p>
 </section>
-<section id="examples-of-continuous-rv" class="slide level2 smaller">
-<h2>Examples of Continuous RV</h2>
-<div id="Theorem*-5.7" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
-Z := \frac{X-\mu}{\sigma}
-</span><p></p>
-</div></details>
-</div>
-<p>Check</p>
-<div id="Proof*-5.8" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
-</div></details>
-</div>
-</section></section>
-<section id="part-5-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 5: <br>Statistics background</h1>
-<div class="footer">
-<div color="#cc0164">
-
-</div>
-</div>
+<section id="example---gamma-distribution-12" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="moment-generating-function-9">Moment generating function</h3>
+<p>Suppose <span class="math inline">X \sim \Gamma(\alpha,\beta)</span>. This means <span class="math display">
+f_X(x) =
+\begin{cases}
+\dfrac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  &amp; \text{ if } x &gt; 0 \\
+0                                                                 &amp; \text{ if } x \leq 0
+\end{cases}
+</span></p>
+<ul>
+<li><p>We have seen already that <span class="math display">
+{\rm I\kern-.3em E}[X] = \frac{\alpha}{\beta} \quad  \qquad
+{\rm Var}[X] =  \frac{\alpha}{\beta^2}
+</span></p></li>
+<li><p>We want to compute mgf <span class="math inline">M_X</span> to derive again <span class="math inline">{\rm I\kern-.3em E}[X]</span> and <span class="math inline">{\rm Var}[X]</span></p></li>
+</ul>
 </section>
-
+<section id="example---gamma-distribution-13" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="moment-generating-function-10">Moment generating function</h3>
+<p>We compute <span class="math display">\begin{align*}
+M_X(t) &amp; = {\rm I\kern-.3em E}[e^{tX}] = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx \\
+       &amp; = \int_0^{\infty} e^{tx} \, \frac{x^{\alpha-1}e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
+       &amp; = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-14" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="moment-generating-function-11">Moment generating function</h3>
+<p>From the previous slide we have <span class="math display">
+M_X(t) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx
+</span> Change variable <span class="math inline">y=(\beta-t)x</span> and recall the definition of <span class="math inline">\Gamma</span>: <span class="math display">\begin{align*}
+\int_0^{\infty} x^{\alpha-1} e^{-(\beta-t)x} \, dx &amp; =
+\int_0^{\infty} \frac{1}{(\beta-t)^{\alpha-1}} [(\beta-t)x]^{\alpha-1} e^{-(\beta-t)x}  \frac{1}{(\beta-t)} (\beta - t) \, dx   \\
+&amp; = \frac{1}{(\beta-t)^{\alpha}} \int_0^{\infty} y^{\alpha-1} e^{-y}  \, dy \\
+&amp; = \frac{1}{(\beta-t)^{\alpha}} \Gamma(\alpha)
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-15" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="moment-generating-function-12">Moment generating function</h3>
+<p>Therefore <span class="math display">\begin{align*}
+M_X(t) &amp; = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx \\
+       &amp; = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \cdot \frac{1}{(\beta-t)^{\alpha}} \Gamma(\alpha) \\
+       &amp; = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-16" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="expectation">Expectation</h3>
+<p>From the mgf <span class="math display">
+M_X(t) = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+</span> we compute the first derivative: <span class="math display">\begin{align*}
+M_X'(t) &amp; = \frac{d}{dt} [\beta^{\alpha}(\beta-t)^{-\alpha}] \\
+        &amp; = \beta^{\alpha}(-\alpha)(\beta-t)^{-\alpha-1}(-1) \\
+        &amp; = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-17" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="expectation-1">Expectation</h3>
+<p>From the first derivative <span class="math display">
+M_X'(t) = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+</span> we compute the expectation <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[X] &amp; = M_X'(0) \\
+           &amp; = \alpha\beta^{\alpha}(\beta)^{-\alpha-1} \\
+           &amp; =\frac{\alpha}{\beta}  
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-18" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-12">Variance</h3>
+<p>From the first derivative <span class="math display">
+M_X'(t) = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+</span> we compute the second derivative <span class="math display">\begin{align*}
+M_X''(t) &amp; = \frac{d}{dt}[\alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}] \\
+         &amp; = \alpha\beta^{\alpha}(-\alpha-1)(\beta-t)^{-\alpha-2}(-1)\\
+         &amp; = \alpha(\alpha+1)\beta^{\alpha}(\beta-t)^{-\alpha-2}
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-19" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-13">Variance</h3>
+<p>From the second derivative <span class="math display">
+M_X''(t) = \alpha(\alpha+1)\beta^{\alpha}(\beta-t)^{-\alpha-2}
+</span> we compute the second moment: <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[X^2] &amp; = M_X''(0) \\
+             &amp; = \alpha(\alpha+1)\beta^{\alpha}(\beta)^{-\alpha-2} \\
+             &amp; = \frac{\alpha(\alpha + 1)}{\beta^2}
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-20" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-14">Variance</h3>
+<p>From the first and second moments: <span class="math display">
+{\rm I\kern-.3em E}[X] = \frac{\alpha}{\beta} \qquad \qquad
+{\rm I\kern-.3em E}[X^2] = \frac{\alpha(\alpha + 1)}{\beta^2}
+</span> we can compute the variance <span class="math display">\begin{align*}
+{\rm Var}[X] &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2 \\
+        &amp; = \frac{\alpha(\alpha + 1)}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
+        &amp; = \frac{\alpha}{\beta^2}
+\end{align*}</span></p>
+</section></section>
 <section>
 <section id="thank-you" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Thank you!</h1>

@@ -44,7 +44,6 @@ $
 2. Introduction
 3. Probability revision
 4. Moment generating functions
-5. Statistics background
 
 
 
@@ -2851,42 +2850,150 @@ Therefore the variance is:
 
 
 
-## Examples of Continuous RV {.smaller}
 
 
-::: Theorem
+## Example - Gamma distribution {.smaller}
+### Moment generating function
 
-If $X \sim N(\mu,\sigma^2)$ then $Z \sim N(0,1)$ where
+Suppose $X \sim \Gamma(\alpha,\beta)$. This means
 $$
-Z := \frac{X-\mu}{\sigma}
+f_X(x) = 
+\begin{cases} 
+\dfrac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  & \text{ if } x > 0 \\
+0                                                                 & \text{ if } x \leq 0
+\end{cases}
 $$
-:::
 
-Check
-
-::: Proof
-
-Check
-
-:::
+- We have seen already that 
+$$
+\Expect[X] = \frac{\alpha}{\beta} \quad  \qquad
+\Var[X] =  \frac{\alpha}{\beta^2}
+$$
 
 
+- We want to compute mgf $M_X$ to derive again $\Expect[X]$ and $\Var[X]$
 
 
 
+## Example - Gamma distribution {.smaller}
+### Moment generating function
+
+We compute
+\begin{align*}
+M_X(t) & = \Expect [e^{tX}] = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx \\
+       & = \int_0^{\infty} e^{tx} \, \frac{x^{\alpha-1}e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
+       & = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx
+\end{align*}
+
+
+## Example - Gamma distribution {.smaller}
+### Moment generating function
+
+From the previous slide we have
+$$
+M_X(t) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx
+$$
+Change variable $y=(\beta-t)x$ and recall the definition of $\Gamma$:
+\begin{align*}
+\int_0^{\infty} x^{\alpha-1} e^{-(\beta-t)x} \, dx & =
+\int_0^{\infty} \frac{1}{(\beta-t)^{\alpha-1}} [(\beta-t)x]^{\alpha-1} e^{-(\beta-t)x}  \frac{1}{(\beta-t)} (\beta - t) \, dx   \\
+& = \frac{1}{(\beta-t)^{\alpha}} \int_0^{\infty} y^{\alpha-1} e^{-y}  \, dy \\
+& = \frac{1}{(\beta-t)^{\alpha}} \Gamma(\alpha)
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Moment generating function
+
+Therefore
+\begin{align*}
+M_X(t) & = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-(\beta-t)x} \, dx \\
+       & = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \cdot \frac{1}{(\beta-t)^{\alpha}} \Gamma(\alpha) \\
+       & = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Expectation
+
+From the mgf
+$$
+M_X(t) = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+$$
+we compute the first derivative:
+\begin{align*}
+M_X'(t) & = \frac{d}{dt} [\beta^{\alpha}(\beta-t)^{-\alpha}] \\
+        & = \beta^{\alpha}(-\alpha)(\beta-t)^{-\alpha-1}(-1) \\
+        & = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Expectation
+
+From the first derivative
+$$
+M_X'(t) = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+$$
+we compute the expectation
+\begin{align*}
+\Expect[X] & = M_X'(0) \\
+           & = \alpha\beta^{\alpha}(\beta)^{-\alpha-1} \\
+           & =\frac{\alpha}{\beta}  
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+From the first derivative
+$$
+M_X'(t) = \alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}
+$$
+we compute the second derivative
+\begin{align*}
+M_X''(t) & = \frac{d}{dt}[\alpha\beta^{\alpha}(\beta-t)^{-\alpha-1}] \\
+         & = \alpha\beta^{\alpha}(-\alpha-1)(\beta-t)^{-\alpha-2}(-1)\\
+         & = \alpha(\alpha+1)\beta^{\alpha}(\beta-t)^{-\alpha-2}
+\end{align*}
 
 
 
 
+## Example - Gamma distribution {.smaller}
+### Variance
 
-# Part 5: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
+From the second derivative
+$$
+M_X''(t) = \alpha(\alpha+1)\beta^{\alpha}(\beta-t)^{-\alpha-2}
+$$
+we compute the second moment:
+\begin{align*}
+\Expect[X^2] & = M_X''(0) \\
+             & = \alpha(\alpha+1)\beta^{\alpha}(\beta)^{-\alpha-2} \\
+             & = \frac{\alpha(\alpha + 1)}{\beta^2}
+\end{align*}
 
-::: footer
 
-<div color="#cc0164">  </div>
 
-:::
+## Example - Gamma distribution {.smaller}
+### Variance
 
+From the first and second moments:
+$$
+\Expect[X] = \frac{\alpha}{\beta} \qquad \qquad
+\Expect[X^2] = \frac{\alpha(\alpha + 1)}{\beta^2}
+$$
+we can compute the variance
+\begin{align*}
+\Var[X] & = \Expect[X^2] - \Expect[X]^2 \\
+        & = \frac{\alpha(\alpha + 1)}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
+        & = \frac{\alpha}{\beta^2}
+\end{align*}
 
 
 

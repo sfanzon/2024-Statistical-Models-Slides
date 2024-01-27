@@ -1,1 +1,4 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
+ [**Theorem**](#Theorem*-2.1)\Pageref{Theorem*-2.1}
+
+ [**Proof**](#Proof*-2.2)\Pageref{Proof*-2.2}
