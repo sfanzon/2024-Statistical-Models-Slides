@@ -361,31 +361,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Conjecture {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,15 +373,23 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -409,25 +397,37 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Proposition {
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -2293,40 +2293,451 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 <p>Expected value is the <strong>average</strong> value of a random variable</p>
 <div id="Definition*-5.1" class="Definition">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>
-<p><span class="math inline">X</span> rv and <span class="math inline">g \colon \mathbb{R} \to \mathbb{R}</span> function. The <strong>expected value</strong> or <strong>mean</strong> of <span class="math inline">g(X)</span> is <span class="math inline">\mathop{\mathrm{E}}g(X)</span></p>
+<p><span class="math inline">X</span> rv and <span class="math inline">g \colon \mathbb{R} \to \mathbb{R}</span> function. The <strong>expected value</strong> or <strong>mean</strong> of <span class="math inline">g(X)</span> is <span class="math inline">{\rm I\kern-.3em E}[g(X)]</span></p>
 <ul>
 <li><p>If <span class="math inline">X</span> discrete <span class="math display">
-\mathop{\mathrm{E}}g(X):= \sum_{x \in \mathbb{R}} g(x) f_X(x) = \sum_{x \in \mathbb{R}} g(x) P(X = x)
+{\rm I\kern-.3em E}[g(X)]:= \sum_{x \in \mathbb{R}} g(x) f_X(x) = \sum_{x \in \mathbb{R}} g(x) P(X = x)
 </span></p></li>
 <li><p>If <span class="math inline">X</span> continuous <span class="math display">
-\mathop{\mathrm{E}}g(X):= \int_{-\infty}^{\infty} g(x) f_X(x) \, dx
+{\rm I\kern-.3em E}[g(X)]:= \int_{-\infty}^{\infty} g(x) f_X(x) \, dx
 </span></p></li>
 </ul>
 </div></details>
 </div>
 </section>
-<section id="examples-of-continuous-rv" class="slide level2 smaller">
-<h2>Examples of Continuous RV</h2>
+<section id="expected-value-1" class="slide level2 smaller">
+<h2>Expected Value</h2>
+<h3 id="properties-2">Properties</h3>
+<p>In particular we have<sup>1</sup></p>
 <ul>
-<li><p>The <strong>Normal distribution</strong> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span> is denoted by <span class="math display">
-N(\mu,\sigma^2)
+<li><p>If <span class="math inline">X</span> discrete <span class="math display">
+{\rm I\kern-.3em E}[X] = \sum_{x \in \mathbb{R}} x f_X(x) = \sum_{x \in \mathbb{R}} x P(X = x)
 </span></p></li>
-<li><p>The <strong>pdf</strong> of <span class="math inline">N(\mu,\sigma^2)</span> is <span class="math display">
-f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
+<li><p>If <span class="math inline">X</span> continuous <span class="math display">
+{\rm I\kern-.3em E}[X] = \int_{-\infty}^{\infty} x f_X(x) \, dx
 </span></p></li>
-<li><p><span class="math inline">N(0,1)</span> is the <strong>standard normal</strong> distribution</p></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>These follow by taking <span class="math inline">g(x)=x</span> in previous definitions, so that <span class="math inline">g(X) = X</span></p></li></ol></aside></section>
+<section id="expected-value-2" class="slide level2 smaller">
+<h2>Expected Value</h2>
+<h3 id="properties-3">Properties</h3>
+<p><span class="math inline">X,Y</span> rv and <span class="math inline">a \in \mathbb{R}</span>. The expected value is:</p>
+<ul>
+<li><p><strong>Linear</strong>: <span class="math display">
+{\rm I\kern-.3em E}[X + Y] = {\rm I\kern-.3em E}[X] + {\rm I\kern-.3em E}[Y]  \,, \qquad {\rm I\kern-.3em E}[aX] = a {\rm I\kern-.3em E}[X]  
+</span></p></li>
+<li><p><strong>Monotone</strong>: <span class="math display">
+X \leq Y  \quad \implies \quad {\rm I\kern-.3em E}[X] \leq  {\rm I\kern-.3em E}[Y]
+</span></p></li>
+<li><p><strong>Non-degenerate</strong>: <span class="math display">
+{\rm I\kern-.3em E}[|X|] = 0 \quad \implies \quad X = 0
+</span></p></li>
 </ul>
 </section>
-<section id="examples-of-continuous-rv-1" class="slide level2 smaller">
+<section id="expected-value-3" class="slide level2 smaller">
+<h2>Expected Value</h2>
+<h3 id="properties-4">Properties</h3>
+<p><span class="math inline">X,Y</span> rv and <span class="math inline">a \in \mathbb{R}</span>. Then</p>
+<ul>
+<li><p><span class="math inline">X=Y \quad \implies \quad {\rm I\kern-.3em E}[X]={\rm I\kern-.3em E}[Y]</span></p></li>
+<li><p><span class="math inline">X=a \quad \implies \quad {\rm I\kern-.3em E}[X]=a</span></p></li>
+<li><p><span class="math inline">{\rm I\kern-.3em E}[ {\rm I\kern-.3em E}[X]]= {\rm I\kern-.3em E}[X]</span></p></li>
+</ul>
+</section>
+<section id="variance" class="slide level2 smaller">
+<h2>Variance</h2>
+<p>Variance measures how much a rv <span class="math inline">X</span> deviates from <span class="math inline">{\rm I\kern-.3em E}[X]</span></p>
+<div id="variance-1" class="Definition" title="Variance">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Variance</summary><div>The <strong>variance</strong> of a random variable <span class="math inline">X</span> is <span class="math display">
+{\rm Var}[X]:= {\rm I\kern-.3em E}[(X - {\rm I\kern-.3em E}[X])^2]
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Note</strong>:</p>
+<ul>
+<li><span class="math inline">{\rm Var}[X] = 0 \quad \implies \quad (X - {\rm I\kern-.3em E}[X])^2 = 0 \quad  \implies \quad X = {\rm I\kern-.3em E}[X]</span></li>
+<li>If <span class="math inline">{\rm Var}[X]</span> is small then <span class="math inline">X</span> is close to <span class="math inline">{\rm I\kern-.3em E}[X]</span></li>
+<li>If <span class="math inline">{\rm Var}[X]</span> is large then <span class="math inline">X</span> is very variable</li>
+</ul>
+</section>
+<section id="variance-2" class="slide level2 smaller">
+<h2>Variance</h2>
+<h3 id="equivalent-formula">Equivalent formula</h3>
+<div id="Proposition*-5.3" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math display">
+{\rm Var}[X] =  {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Proof:</strong> <span class="math display">\begin{align*}
+{\rm Var}[X] &amp; = {\rm I\kern-.3em E}[(X - {\rm I\kern-.3em E}[X])^2] \\
+        &amp; = {\rm I\kern-.3em E}[X^2 - 2 X {\rm I\kern-.3em E}[X] +  {\rm I\kern-.3em E}[X]^2] \\  
+        &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[2 X {\rm I\kern-.3em E}[X]]  + {\rm I\kern-.3em E}[ {\rm I\kern-.3em E}[X]^2] \\
+        &amp; = {\rm I\kern-.3em E}[X^2] - 2 {\rm I\kern-.3em E}[X]^2 + {\rm I\kern-.3em E}[X]^2 \\
+        &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
+\end{align*}</span></p>
+</section>
+<section id="variance-3" class="slide level2 smaller">
+<h2>Variance</h2>
+<h3 id="how-to-compute-the-variance">How to compute the Variance</h3>
+<p>We have <span class="math display">
+{\rm Var}[X] =  {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
+</span></p>
+<ul>
+<li><p><span class="math inline">X</span> discrete: <span class="math display">
+E[X] = \sum_{x \in \mathbb{R}} x f_X(x) \,, \qquad
+E[X^2] = \sum_{x \in \mathbb{R}} x^2 f_X(x)
+</span></p></li>
+<li><p><span class="math inline">X</span> continuous: <span class="math display">
+E[X] = \int_{-\infty}^\infty x f_X(x) \, dx \,, \qquad
+E[X^2] = \int_{-\infty}^\infty x^2 f_X(x) \, dx
+</span></p></li>
+</ul>
+</section>
+<section id="example---gamma-distribution" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="definition">Definition</h3>
+<p>The <strong>Gamma distribution</strong> with parameters <span class="math inline">\alpha,\beta&gt;0</span> is <span class="math display">
+f(x) := \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \,, \quad x &gt; 0
+</span> where <span class="math inline">\Gamma</span> is the <strong>Gamma function</strong> <span class="math display">
+\Gamma(a) :=\int_0^{\infty} x^{a-1} e^{-x} \, dx
+</span></p>
+</section>
+<section id="example---gamma-distribution-1" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="definition-1">Definition</h3>
+<p><strong>Properties of <span class="math inline">\Gamma</span></strong>:</p>
+<ul>
+<li><p>The Gamma function coincides with the factorial on natural numbers <span class="math display">
+\Gamma(n)=(n-1)! \,, \quad \forall \, n \in \mathbb{N}
+</span></p></li>
+<li><p>More in general <span class="math display">
+\Gamma(a)=(a-1)\Gamma(a-1) \,, \quad \forall \, a &gt; 0
+</span></p></li>
+<li><p>Definition of <span class="math inline">\Gamma</span> implies normalization of the Gamma distribution: <span class="math display">
+\int_0^{\infty} f(x) \,dx =
+\int_0^{\infty} \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  \, dx
+=  1
+</span></p></li>
+</ul>
+</section>
+<section id="example---gamma-distribution-2" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="definition-2">Definition</h3>
+<p><span class="math inline">X</span> has Gamma distribution with parameters <span class="math inline">\alpha,\beta</span> if</p>
+<ul>
+<li><p>the pdf of <span class="math inline">X</span> is <span class="math display">
+f_X(x) =
+\begin{cases}
+\dfrac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  &amp; \text{ if } x &gt; 0 \\
+0                                                                 &amp; \text{ if } x \leq 0
+\end{cases}
+</span></p></li>
+<li><p>In this case we write <span class="math inline">X \sim \Gamma(\alpha,\beta)</span></p></li>
+<li><p><span class="math inline">\alpha</span> is <strong>shape</strong> parameter</p></li>
+<li><p><span class="math inline">\beta</span> is <strong>rate</strong> parameter</p></li>
+</ul>
+</section>
+<section id="example---gamma-distribution-3" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="plot">Plot</h3>
+<p>Plotting <span class="math inline">\Gamma(\alpha,\beta)</span> for parameters <span class="math inline">(2,1)</span> and <span class="math inline">(3,2)</span></p>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="example---gamma-distribution-4" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="expected-value-4">Expected value</h3>
+<p>Let <span class="math inline">X \sim \Gamma(\alpha,\beta)</span>. We have: <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[X] &amp; = \int_{-\infty}^\infty x f_X(x) \, dx  \\
+            &amp; = \int_0^\infty  x \, \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
+            &amp; = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-5" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="expected-value-5">Expected value</h3>
+<p>Recall previous calculation: <span class="math display">
+{\rm I\kern-.3em E}[X] = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
+</span> Change variable <span class="math inline">y=\beta x</span> and recall definition of <span class="math inline">\Gamma</span>: <span class="math display">\begin{align*}
+\int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx &amp; =
+  \int_0^\infty  \frac{1}{\beta^{\alpha}} (\beta x)^{\alpha} e^{-\beta{x}} \frac{1}{\beta} \, \beta \, dx \\
+  &amp; = \frac{1}{\beta^{\alpha+1}} \int_0^\infty  y^{\alpha} e^{-y} \, dy \\
+  &amp; = \frac{1}{\beta^{\alpha+1}} \Gamma(\alpha+1)
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-6" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="expected-value-6">Expected value</h3>
+<p>Therefore <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[X] &amp; = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx \\
+            &amp; =  \frac{ \beta^{\alpha} }{ \Gamma(\alpha) } \, \frac{1}{\beta^{\alpha+1}} \Gamma(\alpha+1) \\
+            &amp; = \frac{\Gamma(\alpha+1)}{\beta \Gamma(\alpha)}
+\end{align*}</span></p>
+<p>Recalling that <span class="math inline">\Gamma(\alpha+1)=\alpha \Gamma(\alpha)</span>: <span class="math display">
+{\rm I\kern-.3em E}[X] = \frac{\Gamma(\alpha+1)}{\beta \Gamma(\alpha)} = \frac{\alpha}{\beta}
+</span></p>
+</section>
+<section id="example---gamma-distribution-7" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-4">Variance</h3>
+<p>We want to compute <span class="math display">
+{\rm Var}[X] = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
+</span></p>
+<ul>
+<li>We already have <span class="math inline">{\rm I\kern-.3em E}[X]</span></li>
+<li>Need to compute <span class="math inline">{\rm I\kern-.3em E}[X^2]</span></li>
+</ul>
+</section>
+<section id="example---gamma-distribution-8" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-5">Variance</h3>
+<p>Proceeding similarly we have:</p>
+<p><span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[X^2] &amp; = \int_{-\infty}^{\infty} x^2 f_X(x) \, dx \\
+             &amp; = \int_{0}^{\infty}  x^2 \, \frac{ x^{\alpha-1} \beta^{\alpha} e^{- \beta x} }{ \Gamma(\alpha) } \, dx \\
+             &amp; =  \frac{\beta^{\alpha}}{\Gamma(\alpha)} \int_{0}^{\infty}  x^{\alpha+1} e^{- \beta x} \, dx
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-9" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-6">Variance</h3>
+<p>Recall previous calculation: <span class="math display">
+{\rm I\kern-.3em E}[X^2] =  \frac{\beta^{\alpha}}{\Gamma(\alpha)} \int_{0}^{\infty}  x^{\alpha+1} e^{- \beta x} \, dx
+</span> Change variable <span class="math inline">y=\beta x</span> and recall definition of <span class="math inline">\Gamma</span>: <span class="math display">\begin{align*}
+\int_0^\infty  x^{\alpha+1} e^{-\beta{x}}  \, dx &amp; =
+  \int_0^\infty  \frac{1}{\beta^{\alpha+1}} (\beta x)^{\alpha + 1} e^{-\beta{x}} \frac{1}{\beta} \, \beta \, dx \\
+  &amp; = \frac{1}{\beta^{\alpha+2}} \int_0^\infty  y^{\alpha + 1 } e^{-y} \, dy \\
+  &amp; = \frac{1}{\beta^{\alpha+2}} \Gamma(\alpha+2)
+\end{align*}</span></p>
+</section>
+<section id="example---gamma-distribution-10" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-7">Variance</h3>
+<p>Therefore <span class="math display">
+{\rm I\kern-.3em E}[X^2]  = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha+1} e^{-\beta{x}}  \, dx
+             =  \frac{ \beta^{\alpha} }{ \Gamma(\alpha) } \, \frac{1}{\beta^{\alpha+2}} \Gamma(\alpha+2)
+              = \frac{\Gamma(\alpha+2)}{\beta^2 \Gamma(\alpha)}
+</span> Now use following formula twice <span class="math inline">\Gamma(\alpha+1)=\alpha \Gamma(\alpha)</span>: <span class="math display">
+\Gamma(\alpha+2)= (\alpha + 1) \Gamma(\alpha + 1) = (\alpha + 1) \alpha \Gamma(\alpha)
+</span> Substituting we get <span class="math display">
+{\rm I\kern-.3em E}[X^2] = \frac{\Gamma(\alpha+2)}{\beta^2 \Gamma(\alpha)} = \frac{(\alpha+1) \alpha}{\beta^2}
+</span></p>
+</section>
+<section id="example---gamma-distribution-11" class="slide level2 smaller">
+<h2>Example - Gamma distribution</h2>
+<h3 id="variance-8">Variance</h3>
+<p>Therefore <span class="math display">
+{\rm I\kern-.3em E}[X] = \frac{\alpha}{\beta}  \quad \qquad
+{\rm I\kern-.3em E}[X^2] = \frac{(\alpha+1) \alpha}{\beta^2}
+</span> and the variance is <span class="math display">\begin{align*}
+{\rm Var}[X] &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2 \\
+        &amp; = \frac{(\alpha+1) \alpha}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
+        &amp; = \frac{\alpha}{\beta^2}
+\end{align*}</span></p>
+</section>
+<section id="variance-9" class="slide level2 smaller">
+<h2>Variance</h2>
+<h3 id="properties-5">Properties</h3>
+<div id="Proposition*-5.4" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math inline">X</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. Then <span class="math display">
+{\rm Var}[a X + b] = a^2 {\rm Var}[X]
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Proof:</strong> Using linearity of <span class="math inline">{\rm I\kern-.3em E}</span> and the fact that <span class="math inline">{\rm I\kern-.3em E}[c]=c</span> for constants: <span class="math display">\begin{align*}
+{\rm Var}[a X + b] &amp; = {\rm I\kern-.3em E}[ (aX + b)^2 ] - {\rm I\kern-.3em E}[ aX + b ]^2 \\
+              &amp; = {\rm I\kern-.3em E}[ a^2X^2 + b^2 + 2abX ] - ( a{\rm I\kern-.3em E}[X]  + b)^2 \\
+              &amp; = a^2 {\rm I\kern-.3em E}[ X^2 ] + b^2 + 2ab {\rm I\kern-.3em E}[X] -
+                  a^2 {\rm I\kern-.3em E}[X]^2   - b^2 - 2ab {\rm I\kern-.3em E}[X] \\
+              &amp; = a^2 ( {\rm I\kern-.3em E}[ X^2 ] - {\rm I\kern-.3em E}[ X ]^2 ) = a^2 {\rm Var}[X]
+\end{align*}</span></p>
+</section>
+<section id="moment-generating-function" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<ul>
+<li><p>We abbreviate <strong>Moment generating function</strong> with <strong>MGF</strong></p></li>
+<li><p>MGF is almost the Laplace transform of the probability density function</p></li>
+<li><p>MGF provides a short-cut to calculating mean and variance</p></li>
+<li><p>MGF gives a way of proving distributional results for sums of independent random variables</p></li>
+</ul>
+</section>
+<section id="moment-generating-function-1" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<div id="Definition*-5.5" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>moment generating function</strong> or <strong>MGF</strong> of a rv <span class="math inline">X</span> is <span class="math display">
+M_X(t) := {\rm I\kern-.3em E}[e^{tX}] \,, \quad \forall \, t \in \mathbb{R}
+</span><p></p>
+</div></details>
+</div>
+<p>In particular we have:</p>
+<div class="column" style="width:48%;">
+<ul>
+<li><span class="math inline">X</span> discrete: <span class="math display">
+M_X(t) = \sum_{x \in \mathbb{R}} e^{tx} f_X(x)
+</span></li>
+</ul>
+</div>
+<div class="column" style="width:48%;">
+<ul>
+<li><span class="math inline">X</span> continuous: <span class="math display">
+M_X(t) = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
+</span></li>
+</ul>
+</div>
+</section>
+<section id="moment-generating-function-2" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<h3 id="main-theorem">Main Theorem</h3>
+<div id="Theorem*-5.6" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X</span> has MGF <span class="math inline">M_X</span> then <span class="math display">
+{\rm I\kern-.3em E}[X^n] = M_X^{(n)} (0)
+</span> where we denote <span class="math display">
+M_X^{(n)} (0) :=  \frac{d^n}{dt^n} M_X^{(n)}(t) \bigg|_{t=0}
+</span><p></p>
+</div></details>
+</div>
+<p>The quantity <span class="math inline">{\rm I\kern-.3em E}[X^n]</span> is called <strong><span class="math inline">n</span>-th moment</strong> of <span class="math inline">X</span></p>
+</section>
+<section id="moment-generating-function-3" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<h3 id="proof-of-theorem">Proof of Theorem</h3>
+<p>Suppose <span class="math inline">X</span> continuous and that we can exchange derivative and integral: <span class="math display">\begin{align*}
+\frac{d}{dt} M_X(t) &amp; = \frac{d}{dt} \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
+                      = \int_{-\infty}^\infty \left( \frac{d}{dt} e^{tx} \right) f_X(x) \, dx \\
+                    &amp; = \int_{-\infty}^\infty xe^{tx} f_X(x) \, dx
+                      = {\rm I\kern-.3em E}(Xe^{tX})
+\end{align*}</span> Evaluating at <span class="math inline">t = 0</span>: <span class="math display">
+\frac{d}{dt} M_X(t) \bigg|_{t = 0} = {\rm I\kern-.3em E}(Xe^{0}) = {\rm I\kern-.3em E}[X]
+</span></p>
+</section>
+<section id="moment-generating-function-4" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<h3 id="proof-of-theorem-1">Proof of Theorem</h3>
+<p>Proceeding by induction we obtain: <span class="math display">
+\frac{d^n}{dt^n} M_X(t) = {\rm I\kern-.3em E}(X^n e^{tX})
+</span> Evaluating at <span class="math inline">t = 0</span> yields the thesis: <span class="math display">
+\frac{d^n}{dt^n} M_X(t) \bigg|_{t = 0} = {\rm I\kern-.3em E}(X^n e^{0}) = {\rm I\kern-.3em E}[X^n]
+</span></p>
+</section>
+<section id="moment-generating-function-5" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<h3 id="notation-1">Notation</h3>
+<p>For the first 3 derivatives we use special notations:</p>
+<p><span class="math display">
+M_X'(0) := M^{(1)}_X(0) = {\rm I\kern-.3em E}[X]
+</span> <span class="math display">
+M_X''(0) := M^{(2)}_X(0) = {\rm I\kern-.3em E}[X^2]
+</span> <span class="math display">
+M_X'''(0) := M^{(3)}_X(0) = {\rm I\kern-.3em E}[X^3]
+</span></p>
+</section>
+<section id="example---normal-distribution" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="definition-3">Definition</h3>
+<ul>
+<li><p>The <strong>normal distribution</strong> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span> is <span class="math display">
+f(x) := \frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) \,, \quad x \in \mathbb{R}
+</span></p></li>
+<li><p><span class="math inline">X</span> has <strong>normal distribution</strong> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span> if <span class="math inline">f_X = f</span></p>
+<ul>
+<li>In this case we write <span class="math inline">X \sim N(\mu,\sigma^2)</span></li>
+</ul></li>
+<li><p>The <strong>standard normal distribution</strong> is denoted <span class="math inline">N(0,1)</span></p></li>
+</ul>
+</section>
+<section id="example---normal-distribution-1" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="plot-1">Plot</h3>
+<p>Plotting <span class="math inline">N(\mu,\sigma^2)</span> for parameters <span class="math inline">(0,1)</span> and <span class="math inline">(3,2)</span></p>
+
+<img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="example---normal-distribution-2" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="moment-generating-function-6">Moment generating function</h3>
+<p>The equation for the normal pdf is <span class="math display">
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+</span> Being pdf, we must have <span class="math inline">\int f_X(x) \, dx = 1</span>. This yields: <span class="math display">\begin{equation} \tag{1}
+\int_{-\infty}^{\infty} \exp \left( -\frac{x^2}{2\sigma^2} + \frac{\mu{x}}{\sigma^2} \right) \, dx = \exp \left(\frac{\mu^2}{2\sigma^2} \right) \sqrt{2\pi} \sigma
+\end{equation}</span></p>
+</section>
+<section id="example---normal-distribution-3" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="moment-generating-function-7">Moment generating function</h3>
+<p>We have <span class="math display">\begin{align*}
+M_X(t) &amp; := {\rm I\kern-.3em E}(e^{tX})
+         = \int_{-\infty}^{\infty} e^{tx} f_X(x) \, dx  \\
+       &amp; = \int_{-\infty}^{\infty} e^{tx} \frac{1}{\sqrt{2\pi}\sigma}
+       \exp \left( -\frac{(x-\mu)^2}{2\sigma^2} \right) \, dx \\
+       &amp; = \frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^{\infty} e^{tx}
+       \exp \left( -\frac{x^2}{2\sigma^2} - \frac{\mu^2}{2\sigma^2} + \frac{x\mu}{\sigma^2} \right) \, dx \\     
+       &amp; = \exp\left(-\frac{\mu^2}{2\sigma^2} \right)
+       \frac{1}{\sqrt{2\pi}\sigma}
+       \int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx
+\end{align*}</span></p>
+</section>
+<section id="example---normal-distribution-4" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="moment-generating-function-8">Moment generating function</h3>
+<p>We have shown <span class="math display">\begin{equation} \tag{2}
+M_X(t) = \exp\left(-\frac{\mu^2}{2\sigma^2} \right)
+       \frac{1}{\sqrt{2\pi}\sigma}
+       \int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx
+\end{equation}</span> Replacing <span class="math inline">\mu</span> by <span class="math inline">(t\sigma^2 + \mu)</span> in (1) we obtain <span class="math display">\begin{equation} \tag{3}
+\int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx
+= \exp \left( \frac{(t\sigma^2+\mu)^2}{2\sigma^2}  \right) \,  
+\frac{1}{\sqrt{2\pi}\sigma}
+\end{equation}</span> Substituting (3) in (2) and simplifying we get <span class="math display">
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span></p>
+</section>
+<section id="example---normal-distribution-5" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="mean">Mean</h3>
+<p>Recall the mgf <span class="math display">
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span> The first derivative is <span class="math display">
+M_X'(t) = (\mu + \sigma^2 t ) \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span> Therefore the mean: <span class="math display">
+{\rm I\kern-.3em E}[X] = M_X'(0) = \mu
+</span></p>
+</section>
+<section id="example---normal-distribution-6" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="variance-10">Variance</h3>
+<p>The first derivative of mgf is <span class="math display">
+M_X'(t) = (\mu + \sigma^2 t ) \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span> The second derivative is then <span class="math display">
+M_X''(t) = \sigma^2  \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right) +
+(\mu + \sigma^2 t )^2 \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span> Therefore the second moment is: <span class="math display">
+{\rm I\kern-.3em E}[X^2] = M_X''(0) = \sigma^2 + \mu^2
+</span></p>
+</section>
+<section id="example---normal-distribution-7" class="slide level2 smaller">
+<h2>Example - Normal distribution</h2>
+<h3 id="variance-11">Variance</h3>
+<p>We have seen that: <span class="math display">
+{\rm I\kern-.3em E}[X] = \mu   \quad  \qquad {\rm I\kern-.3em E}[X^2] = \sigma^2 + \mu^2
+</span> Therefore the variance is: <span class="math display">\begin{align*}
+{\rm Var}[X] &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2 \\
+        &amp; =  \sigma^2 + \mu^2 - \mu^2 \\
+        &amp; = \sigma^2
+\end{align*}</span></p>
+</section>
+<section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-5.2" class="Theorem">
+<div id="Theorem*-5.7" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-5.3" class="Proof">
+<div id="Proof*-5.8" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>

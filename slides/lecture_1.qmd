@@ -2119,16 +2119,16 @@ Expected value is the **average** value of a random variable
 ::: Definition
 
 $X$ rv and $g \colon \mathbb{R} \to \mathbb{R}$ function. The **expected value** or **mean**
-of $g(X)$ is $\expect g(X)$
+of $g(X)$ is $\Expect [g(X)]$
 
 - If $X$ discrete
 $$
-\expect g(X):= \sum_{x \in \mathbb{R}} g(x) f_X(x) = \sum_{x \in \mathbb{R}} g(x) P(X = x)
+\Expect [g(X)]:= \sum_{x \in \mathbb{R}} g(x) f_X(x) = \sum_{x \in \mathbb{R}} g(x) P(X = x)
 $$
 
 - If $X$ continuous
 $$
-\expect g(X):= \int_{-\infty}^{\infty} g(x) f_X(x) \, dx
+\Expect [g(X)]:= \int_{-\infty}^{\infty} g(x) f_X(x) \, dx
 $$
 
 :::
@@ -2137,23 +2137,716 @@ $$
 
 
 
+## Expected Value  {.smaller}
+### Properties
 
-## Examples of Continuous RV {.smaller}
+
+In particular we have^[These follow by taking $g(x)=x$ in previous definitions, so that $g(X) = X$]
 
 
-- The **Normal distribution** with mean $\mu$ and variance $\sigma^2$ is denoted by 
+- If $X$ discrete
 $$
-N(\mu,\sigma^2)
-$$
-
-- The **pdf** of $N(\mu,\sigma^2)$ is
-$$
-f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
+\Expect [X] = \sum_{x \in \mathbb{R}} x f_X(x) = \sum_{x \in \mathbb{R}} x P(X = x)
 $$
 
-- $N(0,1)$ is the **standard normal** distribution
+- If $X$ continuous
+$$
+\Expect [X] = \int_{-\infty}^{\infty} x f_X(x) \, dx
+$$
 
 
+
+
+
+
+
+
+## Expected Value  {.smaller}
+### Properties
+
+$X,Y$ rv and $a \in \mathbb{R}$. The expected value is:
+
+- **Linear**:
+$$
+\Expect [X + Y] = \Expect [X] + \Expect [Y]  \,, \qquad \Expect [aX] = a \Expect [X]  
+$$
+
+
+- **Monotone**:
+$$
+X \leq Y  \quad \implies \quad \Expect [X] \leq  \Expect [Y] 
+$$
+
+- **Non-degenerate**:
+$$
+\Expect[|X|] = 0 \quad \implies \quad X = 0
+$$
+
+
+
+## Expected Value  {.smaller}
+### Properties
+
+
+$X,Y$ rv and $a \in \mathbb{R}$. Then
+
+- $X=Y \quad \implies \quad \Expect[X]=\Expect[Y]$ 
+
+- $X=a \quad \implies \quad \Expect[X]=a$
+
+- $\Expect[ \Expect[X]]= \Expect[X]$
+
+
+
+
+
+## Variance {.smaller}
+
+Variance measures how much a rv $X$ deviates from $\Expect[X]$
+
+::: Definition
+### Variance
+
+The **variance** of a random variable $X$ is
+$$
+\Var[X]:= \Expect[(X - \Expect[X])^2]
+$$
+
+:::
+
+
+**Note**:
+
+- $\Var [X] = 0 \quad \implies \quad (X - \Expect[X])^2 = 0 \quad  \implies \quad X = \Expect [X]$
+- If $\Var[X]$ is small then $X$ is close to $\Expect[X]$
+- If $\Var[X]$ is large then $X$ is very variable
+
+
+
+
+## Variance {.smaller}
+### Equivalent formula
+
+::: Proposition
+$$
+\Var[X] =  \Expect[X^2] - \Expect[X]^2
+$$
+:::
+
+**Proof:**
+\begin{align*}
+\Var[X] & = \Expect[(X - \Expect[X])^2] \\
+        & = \Expect[X^2 - 2 X \Expect[X] +  \Expect[X]^2] \\  
+        & = \Expect[X^2] - \Expect[2 X \Expect[X]]  + \Expect[ \Expect[X]^2] \\
+        & = \Expect[X^2] - 2 \Expect[X]^2 + \Expect[X]^2 \\
+        & = \Expect[X^2] - \Expect[X]^2
+\end{align*}
+
+
+
+
+## Variance {.smaller}
+### How to compute the Variance
+
+We have
+$$
+\Var[X] =  \Expect[X^2] - \Expect[X]^2
+$$
+
+- $X$ discrete:
+$$
+E[X] = \sum_{x \in \mathbb{R}} x f_X(x) \,, \qquad 
+E[X^2] = \sum_{x \in \mathbb{R}} x^2 f_X(x)
+$$
+
+
+- $X$ continuous:
+$$
+E[X] = \int_{-\infty}^\infty x f_X(x) \, dx \,, \qquad 
+E[X^2] = \int_{-\infty}^\infty x^2 f_X(x) \, dx
+$$
+
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Definition
+
+
+The **Gamma distribution** with parameters $\alpha,\beta>0$ is
+$$
+f(x) := \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \,, \quad x > 0
+$$
+where $\Gamma$ is the **Gamma function**
+$$
+\Gamma(a) :=\int_0^{\infty} x^{a-1} e^{-x} \, dx
+$$
+
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Definition
+
+**Properties of $\Gamma$**:
+
+- The Gamma function coincides with the factorial on natural numbers
+$$
+\Gamma(n)=(n-1)! \,, \quad \forall \, n \in \N
+$$
+
+- More in general
+$$
+\Gamma(a)=(a-1)\Gamma(a-1) \,, \quad \forall \, a > 0
+$$
+
+
+-  Definition of $\Gamma$ implies normalization of the Gamma distribution:
+$$
+\int_0^{\infty} f(x) \,dx = 
+\int_0^{\infty} \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  \, dx
+=  1 
+$$
+
+
+
+## Example - Gamma distribution {.smaller}
+### Definition
+
+$X$ has Gamma distribution with parameters $\alpha,\beta$ if 
+
+- the pdf of $X$ is
+$$
+f_X(x) = 
+\begin{cases} 
+\dfrac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)}  & \text{ if } x > 0 \\
+0                                                                 & \text{ if } x \leq 0
+\end{cases}
+$$
+
+- In this case we write $X \sim \Gamma(\alpha,\beta)$
+
+- $\alpha$ is **shape** parameter
+
+- $\beta$ is **rate** parameter
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Plot
+
+Plotting $\Gamma(\alpha,\beta)$ for parameters $(2,1)$ and $(3,2)$
+
+```{r}
+# Set the shape and rate parameters for the first gamma distribution
+alpha1 <- 2
+beta1 <- 1
+
+# Set the shape and rate parameters for the second gamma distribution
+alpha2 <- 3
+beta2 <- 2
+
+# Generate values for the x-axis
+x_values <- seq(0, 15, by = 0.1)
+
+# Calculate the probability density function (PDF) values for each x for the first distribution
+pdf_values1 <- dgamma(x_values, shape = alpha1, rate = beta1)
+
+# Calculate the probability density function (PDF) values for each x for the second distribution
+pdf_values2 <- dgamma(x_values, shape = alpha2, rate = beta2)
+
+# Plot the gamma PDFs
+plot(x_values, 
+    pdf_values1, 
+    type = "l", 
+    col = "blue", lwd = 2,
+    xlab = "", 
+    ylab = "",
+    ylim = c(0, max(pdf_values1, pdf_values2) + 0.1))
+
+lines(x_values, 
+      pdf_values2, 
+      col = "red", 
+      lwd = 2)
+
+mtext("x", side=1, line=3, cex=2)
+mtext("pdf", side=2, line=2.5, cex=2)
+
+# Add a legend
+legend("topright", legend = c(paste("Gamma(", alpha1, ",", beta1, ")", sep = ""),
+                              paste("Gamma(", alpha2, ",", beta2, ")", sep = "")),
+       col = c("blue", "red"), lty = 1, lwd = 2, cex = 1.5)
+
+```  
+
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Expected value
+
+Let $X \sim \Gamma(\alpha,\beta)$. We have:
+\begin{align*}
+\Expect [X] & = \int_{-\infty}^\infty x f_X(x) \, dx  \\
+            & = \int_0^\infty  x \, \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
+            & = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Expected value
+
+Recall previous calculation:
+$$
+\Expect [X] = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
+$$
+Change variable $y=\beta x$ and recall definition of $\Gamma$:
+\begin{align*}
+ \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx & = 
+  \int_0^\infty  \frac{1}{\beta^{\alpha}} (\beta x)^{\alpha} e^{-\beta{x}} \frac{1}{\beta} \, \beta \, dx \\
+  & = \frac{1}{\beta^{\alpha+1}} \int_0^\infty  y^{\alpha} e^{-y} \, dy \\
+  & = \frac{1}{\beta^{\alpha+1}} \Gamma(\alpha+1)
+\end{align*}
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Expected value
+
+Therefore
+\begin{align*}
+\Expect [X] & = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx \\
+            & =  \frac{ \beta^{\alpha} }{ \Gamma(\alpha) } \, \frac{1}{\beta^{\alpha+1}} \Gamma(\alpha+1) \\
+            & = \frac{\Gamma(\alpha+1)}{\beta \Gamma(\alpha)}
+\end{align*}
+
+Recalling that $\Gamma(\alpha+1)=\alpha \Gamma(\alpha)$:
+$$
+\Expect [X] = \frac{\Gamma(\alpha+1)}{\beta \Gamma(\alpha)} = \frac{\alpha}{\beta}
+$$
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+We want to compute
+$$
+\Var[X] = \Expect[X^2] - \Expect[X]^2
+$$
+
+- We already have $\Expect[X]$
+- Need to compute $\Expect[X^2]$
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+Proceeding similarly we have:
+
+\begin{align*}
+\Expect[X^2] & = \int_{-\infty}^{\infty} x^2 f_X(x) \, dx \\
+             & = \int_{0}^{\infty}  x^2 \, \frac{ x^{\alpha-1} \beta^{\alpha} e^{- \beta x} }{ \Gamma(\alpha) } \, dx \\
+             & =  \frac{\beta^{\alpha}}{\Gamma(\alpha)} \int_{0}^{\infty}  x^{\alpha+1} e^{- \beta x} \, dx 
+\end{align*}
+
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+Recall previous calculation:
+$$
+\Expect [X^2] =  \frac{\beta^{\alpha}}{\Gamma(\alpha)} \int_{0}^{\infty}  x^{\alpha+1} e^{- \beta x} \, dx 
+$$
+Change variable $y=\beta x$ and recall definition of $\Gamma$:
+\begin{align*}
+ \int_0^\infty  x^{\alpha+1} e^{-\beta{x}}  \, dx & = 
+  \int_0^\infty  \frac{1}{\beta^{\alpha+1}} (\beta x)^{\alpha + 1} e^{-\beta{x}} \frac{1}{\beta} \, \beta \, dx \\
+  & = \frac{1}{\beta^{\alpha+2}} \int_0^\infty  y^{\alpha + 1 } e^{-y} \, dy \\
+  & = \frac{1}{\beta^{\alpha+2}} \Gamma(\alpha+2)
+\end{align*}
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+Therefore
+$$
+\Expect [X^2]  = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
+            \int_0^\infty  x^{\alpha+1} e^{-\beta{x}}  \, dx 
+             =  \frac{ \beta^{\alpha} }{ \Gamma(\alpha) } \, \frac{1}{\beta^{\alpha+2}} \Gamma(\alpha+2) 
+              = \frac{\Gamma(\alpha+2)}{\beta^2 \Gamma(\alpha)}
+$$
+Now use following formula twice $\Gamma(\alpha+1)=\alpha \Gamma(\alpha)$:
+$$
+\Gamma(\alpha+2)= (\alpha + 1) \Gamma(\alpha + 1) = (\alpha + 1) \alpha \Gamma(\alpha)
+$$
+Substituting we get
+$$
+\Expect [X^2] = \frac{\Gamma(\alpha+2)}{\beta^2 \Gamma(\alpha)} = \frac{(\alpha+1) \alpha}{\beta^2}
+$$
+
+
+
+## Example - Gamma distribution {.smaller}
+### Variance
+
+Therefore
+$$
+\Expect [X] = \frac{\alpha}{\beta}  \quad \qquad
+\Expect [X^2] = \frac{(\alpha+1) \alpha}{\beta^2}
+$$
+and the variance is
+\begin{align*}
+\Var[X] & = \Expect [X^2] - \Expect [X]^2 \\
+        & = \frac{(\alpha+1) \alpha}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
+        & = \frac{\alpha}{\beta^2}
+\end{align*}
+
+
+
+
+
+## Variance {.smaller}
+### Properties
+
+::: Proposition
+
+$X$ rv and $a,b \in \R$. Then
+$$
+\Var[a X + b] = a^2 \Var[X] 
+$$
+
+:::
+
+
+**Proof:** Using linearity of $\Expect$ and the fact that $\Expect[c]=c$ for constants:
+\begin{align*}
+\Var[a X + b] & = \Expect[ (aX + b)^2 ] - \Expect[ aX + b ]^2 \\
+              & = \Expect[ a^2X^2 + b^2 + 2abX ] - ( a\Expect[X]  + b)^2 \\
+              & = a^2 \Expect[ X^2 ] + b^2 + 2ab \Expect[X] - 
+                  a^2 \Expect[X]^2   - b^2 - 2ab \Expect[X] \\
+              & = a^2 ( \Expect[ X^2 ] - \Expect[ X ]^2 ) = a^2 \Var[X]
+\end{align*}
+
+
+
+
+
+## Moment generating function {.smaller}
+
+
+- We abbreviate **Moment generating function** with **MGF**
+
+- MGF is almost the Laplace transform of the probability density function
+
+- MGF provides a short-cut to calculating mean and variance
+
+- MGF gives a way of proving distributional results for sums of independent random variables
+
+
+
+
+## Moment generating function {.smaller}
+
+
+::: Definition
+
+The **moment generating function** or **MGF** of a rv $X$ is
+$$
+M_X(t) := \Expect [e^{tX}] \,, \quad \forall \, t \in \R
+$$
+
+:::
+
+In particular we have:
+
+::: {.column width="48%"}
+
+- $X$ discrete:
+$$
+M_X(t) = \sum_{x \in \R} e^{tx} f_X(x)
+$$
+
+:::
+
+::: {.column width="48%"}
+
+- $X$ continuous:
+$$
+M_X(t) = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
+$$
+
+:::
+
+
+
+
+## Moment generating function {.smaller}
+### Main Theorem
+
+
+::: Theorem
+
+If $X$ has MGF $M_X$ then
+$$
+\Expect[X^n] = M_X^{(n)} (0)
+$$
+where we denote
+$$
+M_X^{(n)} (0) :=  \frac{d^n}{dt^n} M_X^{(n)}(t) \bigg|_{t=0}
+$$
+
+:::
+
+The quantity $\Expect[X^n]$ is called **$n$-th moment** of $X$
+ 
+
+
+
+## Moment generating function {.smaller}
+### Proof of Theorem
+
+Suppose $X$ continuous and that we can exchange derivative and integral:
+\begin{align*}
+\frac{d}{dt} M_X(t) & = \frac{d}{dt} \int_{-\infty}^\infty e^{tx} f_X(x) \, dx 
+                      = \int_{-\infty}^\infty \left( \frac{d}{dt} e^{tx} \right) f_X(x) \, dx \\
+                    & = \int_{-\infty}^\infty xe^{tx} f_X(x) \, dx 
+                      = \Expect(Xe^{tX})
+\end{align*}
+Evaluating at $t = 0$:
+$$
+\frac{d}{dt} M_X(t) \bigg|_{t = 0} = \Expect(Xe^{0}) = \Expect[X]
+$$
+
+
+
+
+## Moment generating function {.smaller}
+### Proof of Theorem
+
+Proceeding by induction we obtain:
+$$
+\frac{d^n}{dt^n} M_X(t) = \Expect(X^n e^{tX})
+$$
+Evaluating at $t = 0$ yields the thesis:
+$$
+\frac{d^n}{dt^n} M_X(t) \bigg|_{t = 0} = \Expect(X^n e^{0}) = \Expect[X^n]
+$$
+
+
+
+
+
+
+## Moment generating function {.smaller}
+### Notation
+
+For the first 3 derivatives we use special notations:
+
+$$
+M_X'(0) := M^{(1)}_X(0) = \Expect[X] 
+$$
+$$
+M_X''(0) := M^{(2)}_X(0) = \Expect[X^2] 
+$$
+$$
+M_X'''(0) := M^{(3)}_X(0) = \Expect[X^3] 
+$$
+
+
+
+
+
+
+## Example - Normal distribution {.smaller}
+### Definition
+
+
+- The **normal distribution** with mean $\mu$ and variance $\sigma^2$ is
+$$
+f(x) := \frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) \,, \quad x \in \R
+$$
+
+
+- $X$ has **normal distribution** with mean $\mu$ and variance $\sigma^2$ if $f_X = f$
+
+    * In this case we write $X \sim N(\mu,\sigma^2)$
+
+- The **standard normal distribution** is denoted $N(0,1)$
+
+
+
+
+
+## Example - Normal distribution {.smaller}
+### Plot
+
+Plotting $N(\mu,\sigma^2)$ for parameters $(0,1)$ and $(3,2)$
+
+```{r}
+# Set the shape and rate parameters for the first gamma distribution
+mu1 <- 0
+sigma1 <- 1
+
+# Set the shape and rate parameters for the second gamma distribution
+mu2 <- 3
+sigma2 <- 2
+
+# Generate values for the x-axis
+x_values <- seq(-7, 7, by = 0.1)
+
+# Calculate the probability density function (PDF) values for each x for the first distribution
+pdf_values1 <- dnorm(x_values, mean = mu1, sd = sqrt(sigma1))
+
+# Calculate the probability density function (PDF) values for each x for the second distribution
+pdf_values2 <- dnorm(x_values, mean = mu2, sd = sqrt(sigma2))
+
+# Plot the gamma PDFs
+plot(x_values, 
+    pdf_values1, 
+    type = "l", 
+    col = "blue", lwd = 2,
+    xlab = "", 
+    ylab = "",
+    ylim = c(0, max(pdf_values1, pdf_values2) + 0.1))
+
+lines(x_values, 
+      pdf_values2, 
+      col = "red", 
+      lwd = 2)
+
+mtext("x", side=1, line=3, cex=2)
+mtext("pdf", side=2, line=2.5, cex=2)
+
+# Add a legend
+legend("topright", legend = c(paste("N(", mu1, ",", sigma1, ")", sep = ""),
+                              paste("N(", mu2, ",", sigma2, ")", sep = "")),
+       col = c("blue", "red"), lty = 1, lwd = 2, cex = 1.5)
+
+``` 
+
+
+
+## Example - Normal distribution {.smaller}
+### Moment generating function
+
+The equation for the normal pdf is
+$$
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+$$
+Being pdf, we must have $\int f_X(x) \, dx = 1$. This yields:
+\begin{equation} \tag{1}
+\int_{-\infty}^{\infty} \exp \left( -\frac{x^2}{2\sigma^2} + \frac{\mu{x}}{\sigma^2} \right) \, dx = \exp \left(\frac{\mu^2}{2\sigma^2} \right) \sqrt{2\pi} \sigma
+\end{equation}
+
+
+
+## Example - Normal distribution {.smaller}
+### Moment generating function
+
+We have
+\begin{align*}
+M_X(t) & := \Expect (e^{tX}) 
+         = \int_{-\infty}^{\infty} e^{tx} f_X(x) \, dx  \\
+       & = \int_{-\infty}^{\infty} e^{tx} \frac{1}{\sqrt{2\pi}\sigma} 
+       \exp \left( -\frac{(x-\mu)^2}{2\sigma^2} \right) \, dx \\
+       & = \frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^{\infty} e^{tx} 
+       \exp \left( -\frac{x^2}{2\sigma^2} - \frac{\mu^2}{2\sigma^2} + \frac{x\mu}{\sigma^2} \right) \, dx \\     
+       & = \exp\left(-\frac{\mu^2}{2\sigma^2} \right) 
+       \frac{1}{\sqrt{2\pi}\sigma}
+       \int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx
+\end{align*}
+
+
+
+## Example - Normal distribution {.smaller}
+### Moment generating function
+
+We have shown
+\begin{equation} \tag{2}
+M_X(t) = \exp\left(-\frac{\mu^2}{2\sigma^2} \right) 
+       \frac{1}{\sqrt{2\pi}\sigma}
+       \int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx
+\end{equation}
+Replacing $\mu$ by $(t\sigma^2 + \mu)$ in (1) we obtain
+\begin{equation} \tag{3}
+\int_{-\infty}^{\infty} \exp \left(- \frac{x^2}{2\sigma^2} + \frac{(t\sigma^2+\mu) x}{\sigma^2} \right) \, dx 
+= \exp \left( \frac{(t\sigma^2+\mu)^2}{2\sigma^2}  \right) \,  
+\frac{1}{\sqrt{2\pi}\sigma}
+\end{equation}
+Substituting (3) in (2) and simplifying we get
+$$
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+
+
+
+
+## Example - Normal distribution {.smaller}
+### Mean
+
+Recall the mgf
+$$
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+The first derivative is
+$$
+M_X'(t) = (\mu + \sigma^2 t ) \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+Therefore the mean:
+$$
+\Expect [X] = M_X'(0) = \mu 
+$$
+
+
+
+
+## Example - Normal distribution {.smaller}
+### Variance
+
+The first derivative of mgf is
+$$
+M_X'(t) = (\mu + \sigma^2 t ) \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+The second derivative is then
+$$
+M_X''(t) = \sigma^2  \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right) +
+(\mu + \sigma^2 t )^2 \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+Therefore the second moment is:
+$$
+\Expect [X^2] = M_X''(0) = \sigma^2 + \mu^2 
+$$
+
+
+
+## Example - Normal distribution {.smaller}
+### Variance
+
+We have seen that:
+$$
+\Expect[X] = \mu   \quad  \qquad \Expect [X^2] = \sigma^2 + \mu^2 
+$$
+Therefore the variance is:
+\begin{align*}
+\Var[X] & = \Expect[X^2] - \Expect[X]^2 \\
+        & =  \sigma^2 + \mu^2 - \mu^2 \\
+        & = \sigma^2 
+\end{align*}
 
 
 
