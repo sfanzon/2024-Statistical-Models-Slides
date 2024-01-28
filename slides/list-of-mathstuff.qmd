@@ -1,4 +1,16 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Theorem**](#Theorem*-2.1)\Pageref{Theorem*-2.1}
+ [**Definition**](#Definition*-2.1)\Pageref{Definition*-2.1}
 
- [**Proof**](#Proof*-2.2)\Pageref{Proof*-2.2}
+ [**Definition**](#Definition*-2.2)\Pageref{Definition*-2.2}
+
+ [**Definition**](#Definition*-2.3)\Pageref{Definition*-2.3}
+
+ [**Definition**](#Definition*-2.4)\Pageref{Definition*-2.4}
+
+ [**Definition**](#Definition*-2.5)\Pageref{Definition*-2.5}
+
+ [**Theorem**](#Theorem*-2.6)\Pageref{Theorem*-2.6}
+
+ [**Theorem**](#Theorem*-2.7)\Pageref{Theorem*-2.7}
+
+ [**Proof**](#Proof*-2.8)\Pageref{Proof*-2.8}

@@ -341,15 +341,23 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Important {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
-  .Question {
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -357,25 +365,17 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .Theorem {
     --color1: #f4cce0;
@@ -385,29 +385,29 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Problem {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   </style>
 </head>
@@ -458,7 +458,7 @@
 <h2>Outline of Lecture 2</h2>
 <ol type="1">
 <li>Multiple random variables</li>
-<li>Statistics background</li>
+<li>Unbiased estimators</li>
 </ol>
 </section></section>
 <section>
@@ -470,22 +470,622 @@
 </div>
 </div>
 </section>
+<section id="univariate-vs-multivariate" class="slide level2 smaller">
+<h2>Univariate vs Multivariate</h2>
+<ul>
+<li>Probability models seen so far only involve 1 random variable
+<ul>
+<li>These are called <strong>univariate models</strong></li>
+</ul></li>
+<li>We are also interested in probability models involving multiple variables:
+<ul>
+<li>Models with 2 random variables are called <strong>bivariate</strong></li>
+<li>Models with more than 2 random variables are called <strong>multivariate</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="random-vectors" class="slide level2 smaller">
+<h2>Random vectors</h2>
+<p><strong>Recall</strong>: a random variable is a <strong>measurable</strong> function <span class="math display">
+X \colon \Omega \to \mathbb{R}\,, \quad \Omega \text{ sample space}
+</span></p>
+<div id="Definition*-2.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>A <strong>random vector</strong> is a measurable function <span class="math inline">X \colon \Omega \to \mathbb{R}^n</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="random-vectors-1" class="slide level2 smaller">
+<h2>Random vectors</h2>
+<h3 id="notation">Notation</h3>
+<ul>
+<li><p>The components of a random vector <span class="math inline">X</span> are denoted by <span class="math display">
+X = (X_1, \ldots, X_n)
+</span> with <span class="math inline">X_i \colon \Omega \to \mathbb{R}</span> random variables</p></li>
+<li><p>We denote a two-dimensional random vector by <span class="math display">
+(X,Y)
+</span> with <span class="math inline">X,Y \colon \Omega \to \mathbb{R}</span> random variables</p></li>
+</ul>
+</section>
+<section id="discrete-random-vectors" class="slide level2 smaller">
+<h2>Discrete random vectors</h2>
+<div id="Definition*-2.2" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The random vector <span class="math inline">(X,Y)</span> is <strong>discrete</strong> if <span class="math inline">X</span> and <span class="math inline">Y</span> are discrete random variables<p></p>
+</div></details>
+</div>
+<div id="Definition*-2.3" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>joint probability mass function</strong> or <strong>joint pmf</strong> of a discrete random vector <span class="math inline">(X,Y)</span> is the function <span class="math display">
+f_{X,Y}(x,y) := P( \{X=x \} \cap \{ Y=y \})
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Notation</strong>: <span class="math inline">P(X=x, Y=y ) := P( \{X=x \} \cap \{ Y=y \})</span></p>
+</section>
+<section id="discrete-random-vectors-1" class="slide level2 smaller">
+<h2>Discrete random vectors</h2>
+<h3 id="computing-probabilities">Computing probabilities</h3>
+<ul>
+<li><p>The joint pmf can be used to compute the probability of <span class="math inline">A \subset \mathbb{R}^2</span> <span class="math display">\begin{align*}
+P((X,Y) \in A) &amp; := P( \{ \omega \in \Omega  \colon ( X(\omega), Y(\omega) ) \in A  \} ) \\
+             &amp;  = \sum_{(x,y) \in A} f_{X,Y} (x,y)
+\end{align*}</span></p></li>
+<li><p>In particular we obtain <span class="math display">
+\sum_{(x,y) \in \mathbb{R}^2} f_{X,Y} (x,y) = 1
+</span></p></li>
+</ul>
+</section>
+<section id="discrete-random-vectors-2" class="slide level2 smaller">
+<h2>Discrete random vectors</h2>
+<h3 id="expected-value">Expected value</h3>
+<ul>
+<li>Suppose <span class="math inline">(X,Y) \colon \Omega \to \mathbb{R}^2</span> random vector and <span class="math inline">g \colon \mathbb{R}^2 \to \mathbb{R}</span> function</li>
+<li>Then <span class="math inline">g(X,Y) \colon \Omega \to \mathbb{R}</span> is random variable</li>
+</ul>
+<div id="Definition*-2.4" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>expected value</strong> of the random variable <span class="math inline">g(X,Y)</span> is <span class="math display">
+{\rm I\kern-.3em E}[g(X,Y)] := \sum_{(x,y) \in \mathbb{R}^2} g(x,y) f_{X,Y}(x,y) = \sum_{(x,y) \in \mathbb{R}^2} g(x,y) P(X=x,Y=y)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="discrete-random-vectors-3" class="slide level2 smaller">
+<h2>Discrete random vectors</h2>
+<h3 id="marginals">Marginals</h3>
+<div id="Definition*-2.5" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a discrete random vector. The <strong>marginal pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are the functions <span class="math display">
+f_X (x) := P(X = x) \quad \text{ and } \quad
+f_Y(y) := P(Y = y)
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Note</strong>: The marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> are just the usual pmfs of <span class="math inline">X</span> and <span class="math inline">Y</span></p>
+</section>
+<section id="discrete-random-vectors-4" class="slide level2 smaller">
+<h2>Discrete random vectors</h2>
+<h3 id="marginals-1">Marginals</h3>
+<p>Marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> can be computed from the joint distribution <span class="math inline">f_{X,Y}</span></p>
+<div id="Theorem*-2.6" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a discrete random vector. The <strong>marginal pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are given by <span class="math display">
+f_X(x) = \sum_{y \in \mathbb{R}} f_{X,Y}(x,y) \quad \text{ and }
+\quad
+f_Y(y) = \sum_{x \in \mathbb{R}} f_{X,Y}(x,y)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="example---discrete-random-vector" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<ul>
+<li>Consider experiment of tossing two dice. Then sample space is <span class="math display">
+\Omega = \{ (m,n)  \colon m,n \in \{1,\ldots,6\}  \}
+</span> with <span class="math inline">m</span> and <span class="math inline">n</span> being the outcomes of first and second dice, respectively</li>
+<li>We assume that the dice are fair. Therefore <span class="math inline">P(\{(m,n)\})=1/36</span></li>
+<li>Define the discrete random variables <span class="math display">\begin{align*}
+X(m,n) &amp; := m + n   \quad   &amp;  \text{ sum of the dice} \\
+Y(m,n) &amp; := | m - n|  \quad &amp;  \text{ |difference of the dice|}
+\end{align*}</span></li>
+<li>For example <span class="math display">
+X(3,3) = 3 + 3 = 6  \qquad \qquad  Y(3,3) = |3 - 3| = 0
+</span></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-1" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="computing-joint-pmf">Computing joint pmf</h3>
+<ul>
+<li><p>To compute joint pmf one needs to consider all the cases <span class="math display">
+f_{X,Y}(x,y) = P(X=x,Y=y) \,, \quad (x,y) \in \mathbb{R}^2
+</span></p></li>
+<li><p>For example <span class="math inline">X=4</span> and <span class="math inline">Y=0</span> is only obtained for <span class="math inline">(2,2)</span>. Hence <span class="math display">
+f_{X,Y}(4,0) = P(X=4,Y=0) = P(\{(2,2)\}) = \frac{1}{6} \cdot  \frac{1}{6} = \frac{1}{36}
+</span></p></li>
+<li><p>Similarly <span class="math inline">X=5</span> and <span class="math inline">Y=2</span> is only obtained for <span class="math inline">(4,1)</span> and <span class="math inline">(1,4)</span>. Thus <span class="math display">
+f_{X,Y}(5,2) = P(X=5,Y=2) = P(\{(4,1)\} \cup \{(1,4)\})
+= \frac{1}{36} + \frac{1}{36} = \frac{1}{18}
+</span></p></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-2" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="computing-joint-pmf-1">Computing joint pmf</h3>
+<ul>
+<li><p>Note that <span class="math inline">f_{X,Y}(x,y)=0</span> for most of the pairs <span class="math inline">(x,y)</span></p></li>
+<li><p>Indeed <span class="math inline">f_{X,Y}(x,y)=0</span> if <span class="math display">
+x \notin X(\Omega)  \quad \text{ or } \quad  y \notin Y(\Omega)
+</span></p></li>
+<li><p>We have <span class="math inline">X(\Omega)=\{2,3,4,5,6,7,8,9,10,11,12\}</span></p></li>
+<li><p>We have <span class="math inline">Y(\Omega)=\{0,1,2,3,4,5\}</span></p></li>
+<li><p>Hence <span class="math inline">f_{X,Y}</span> only needs to be computed for pairs <span class="math inline">(x,y)</span> satisfying <span class="math display">
+2 \leq x \leq 12  \quad \text{ and } \quad  0 \leq y \leq 5
+</span></p></li>
+<li><p>Within this range, other values will be zero. For example <span class="math display">
+f_{X,Y}(3,0) = P(X=3,Y=0) = P(\emptyset) = 0
+</span></p></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-3" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="table-of-values-of-joint-pmf">Table of values of joint pmf</h3>
+<p>Below are all the values for <span class="math inline">f_{X,Y}</span>. Empty entries correspond to <span class="math inline">f_{X,Y}(x,y) = 0</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">x</span></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/36</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/36</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/36</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/36</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/36</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">y</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1/18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example---discrete-random-vector-4" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="expected-value-1">Expected value</h3>
+<ul>
+<li>We want to compute <span class="math inline">{\rm I\kern-.3em E}[XY]</span></li>
+<li>Hence consider the function <span class="math inline">g(x,y):=xy</span></li>
+<li>We obtain <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[XY] &amp; = {\rm I\kern-.3em E}[g(X,Y)] \\
+          &amp; = \sum_{(x,y) \in \mathbb{R}^2} g(x,y) f_{X,Y}(x,y)\\
+          &amp; = \sum_{(x,y) \in \mathbb{R}^2} xy f_{X,Y}(x,y)
+\end{align*}</span></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-5" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="expected-value-2">Expected value</h3>
+<p>We can use the non-zero entries in the table for <span class="math inline">f_{X,Y}</span> to compute: <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[XY] &amp; = 3 \cdot 1 \cdot \frac{1}{18} + 5 \cdot 1 \cdot \frac{1}{18} + 7 \cdot 1 \cdot \frac{1}{18} +
+9 \cdot 1 \cdot \frac{1}{18} +  11 \cdot 1 \cdot \frac{1}{18} \\
+            &amp; + 4 \cdot 2 \cdot \frac{1}{18} +
+                6 \cdot 2 \cdot \frac{1}{18} +
+                8 \cdot 2 \cdot \frac{1}{18} +
+                10\cdot 2 \cdot \frac{1}{18} \\
+            &amp; + 5 \cdot 3 \cdot \frac{1}{18} +
+                7 \cdot 3 \cdot \frac{1}{18} +
+                9 \cdot 3 \cdot \frac{1}{18} \\
+            &amp; + 6 \cdot 4 \cdot \frac{1}{18} +
+                8 \cdot 4 \cdot \frac{1}{18}  \\
+            &amp; + 7 \cdot 5 \cdot \frac{1}{18} \\
+            &amp; = (35 + 56 + 63 + 56 + 35 ) \frac{1}{18} = \frac{245}{18}  
+\end{align*}</span></p>
+</section>
+<section id="example---discrete-random-vector-6" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="marginals-2">Marginals</h3>
+<ul>
+<li><p>We want to compute the marginal of <span class="math inline">Y</span> via the formula <span class="math display">
+f_Y(y) = \sum_{x \in \mathbb{R}} f_{X,Y}(x,y)
+</span></p></li>
+<li><p>Again looking at the table for <span class="math inline">f_{X,Y}</span>, we get <span class="math display">\begin{align*}
+f_Y(0) &amp; = f_{X,Y}(2,0) + f_{X,Y}(4,0) + f_{X,Y}(6,0) \\
+     &amp;  + f_{X,Y}(8,0) + f_{X,Y}(10,0) + f_{X,Y}(12,0) \\
+     &amp; = 6 \cdot \frac{1}{36} = \frac{3}{18}
+\end{align*}</span></p></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-7" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="marginals-3">Marginals</h3>
+<ul>
+<li>Similarly, we get <span class="math display">\begin{align*}
+f_Y(1) &amp; = f_{X,Y}(3,1) + f_{X,Y}(5,1) + f_{X,Y}(7,1) \\
+     &amp; + f_{X,Y}(9,1) +  f_{X,Y}(11,1) \\
+     &amp; = 5 \cdot \frac{1}{18} = \frac{5}{18}
+\end{align*}</span></li>
+<li>And the remaining values follow a similar pattern: <span class="math display">
+f_Y(2) = \frac{4}{18}  \,, \quad
+f_Y(3) = \frac{3}{18}  \,, \quad
+f_Y(4) = \frac{2}{18}  \,, \quad
+f_Y(5) = \frac{1}{18}  \,, \quad
+</span></li>
+</ul>
+</section>
+<section id="example---discrete-random-vector-8" class="slide level2 smaller">
+<h2>Example - Discrete random vector</h2>
+<h3 id="marginals-4">Marginals</h3>
+<p>Hence the pmf of <span class="math inline">Y</span> is given by the table below</p>
+<table>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">y</span></th>
+<th style="text-align: center;"><span class="math inline">0</span></th>
+<th style="text-align: center;"><span class="math inline">1</span></th>
+<th style="text-align: center;"><span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">3</span></th>
+<th style="text-align: center;"><span class="math inline">4</span></th>
+<th style="text-align: center;"><span class="math inline">5</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">f_Y(y)</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{18}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{5}{18}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{4}{18}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{3}{18}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{2}{18}</span></td>
+<td style="text-align: center;"><span class="math inline">\frac{1}{18}</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <span class="math inline">f_Y</span> is indeed a pmf, since <span class="math display">
+\sum_{y \in \mathbb{R}} f_Y(y) = \sum_{y=0}^5 f_Y(y) = 1
+</span></p>
+</section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-2.1" class="Theorem">
+<div id="Theorem*-2.7" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-2.2" class="Proof">
+<div id="Proof*-2.8" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
+</section>
+<section id="independent-random-variables" class="slide level2 smaller">
+<h2>Independent random variables</h2>
+<p>Define here</p>
+</section>
+<section id="identically-distributed-random-variables" class="slide level2 smaller">
+<h2>Identically distributed random variables</h2>
+</section>
+<section id="mgfs-for-sums-of-independent-random-variables" class="slide level2 smaller">
+<h2>MGFs for sums of independent random variables</h2>
+<ul>
+<li><p>MGF can be used to compute pdf of sum of random variables</p></li>
+<li><p>For independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span> the MGF of the sum satisfies <span class="math display">
+M_{X+Y}(t) = M_X(t) M_Y(t)
+</span></p></li>
+<li><p>If <span class="math inline">X</span> and <span class="math inline">Y</span> have same distribution then clearly <span class="math inline">M_X = M_Y</span></p></li>
+<li><p>For an independent and identically distributed sequence of random variables <span class="math inline">Y:=X_1, X_2, ..., X_n</span> the MGF of the sum becomes <span class="math display">\begin{align*}
+M_Y(t) &amp; = M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t)
+     &amp; =[M_X(t)]^n
+\end{align*}</span></p></li>
+</ul>
+</section>
+<section id="where-the-multiplication-comes-from" class="slide level2 smaller">
+<h2>Where the multiplication comes from</h2>
+<ul>
+<li>Consider two independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span></li>
+<li>The mgf of the sum <span class="math inline">M_{X+Y}(t)</span> is equal <span class="math inline">E[e^{t(X+Y)}]=E[e^{tX}e^{tY}]</span></li>
+<li>Now <span class="math inline">X</span> and <span class="math inline">Y</span> are independent from each other. Therefore <span class="math inline">e^{tX}</span> and <span class="math inline">e^{tY}</span> are also independent from each other</li>
+<li>For independent random variables <span class="math inline">X</span> and <span class="math inline">Y</span> we have <span class="math inline">E[XY]=E[X]E[Y]</span> so we must also have <span class="math display">\begin{align*}
+E[e^{tX}e^{tY}] &amp; = E[e^{tX}]E[e^{tY}] \\
+              &amp; = M_X(t)M_Y(t)
+\end{align*}</span></li>
+</ul>
 </section></section>
-<section id="part-2-statistics-background" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Statistics background</h1>
+<section>
+<section id="part-2-unbiased-estimators" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Unbiased estimators</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="mean-and-variance-of-sums-of-random-variables" class="slide level2 smaller">
+<h2>Mean and variance of sums of random variables</h2>
+<ul>
+<li><p>Consider random variables <span class="math inline">X_1</span>, <span class="math inline">X_2</span>, …, <span class="math inline">X_n</span> with means <span class="math inline">\mu_i</span> and variances <span class="math inline">\sigma^2_i</span> <span class="math display">
+E[X_1+...+X_n]=\mu_1+\mu_2+...\mu_n
+</span> <span class="math display">
+\mbox{Var}[X_1+...+X_n]=\sigma^2_1+\sigma^2_2+...+\sigma^2_n+2\sum_{i{\neq}j}\mbox{Cov}(X_i, X_j)
+</span></p></li>
+<li><p><strong>The mean is linear but the variance is quadratic</strong></p></li>
+<li><p>Some further simplification is possible in the case of independently and identically distributed random variables when in this case <span class="math display">
+E[X_1+...+X_n]=n\mu,\ \mbox{Var}[X_1+...+X_n]=n\sigma^2
+</span></p></li>
+</ul>
+</section>
+<section id="additional-linear-and-quadratic-nature-of-mean-and-variance" class="slide level2 smaller">
+<h2>Additional linear and quadratic nature of mean and variance</h2>
+<ul>
+<li>For constants <span class="math inline">a</span> and <span class="math inline">b</span> <span class="math display">
+{\rm I\kern-.3em E}[aX+b]=a {\rm I\kern-.3em E}[X]+b
+</span> <span class="math display">
+{\rm Var}[aX+b] = a^2 {\rm Var}[X]
+</span> <span class="math display">
+{\rm Cov}(aX, bY)=ab {\rm Cov}(X, Y)
+</span></li>
+</ul>
+</section>
+<section id="estimating-the-mean-and-the-variance" class="slide level2 smaller">
+<h2>Estimating the mean and the variance</h2>
+<ul>
+<li>Suppose you have an iid sample <span class="math inline">X_1</span>, <span class="math inline">X_2</span>, … <span class="math inline">X_n</span> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span></li>
+<li>Want to estimate the mean and the variance</li>
+<li>It is obvious that the sample mean is the best thing to use</li>
+<li>It is less obvious that the best estimator of the variance is the unbiased estimator <span class="math display">
+s^2=\frac{\sum_i(x_i-\overline{x})^2}{n-1}=\frac{\sum_ix_i^2-n{\overline{x}^2}}{n-1}
+</span></li>
+</ul>
+</section>
+<section id="unbiased-estimator" class="slide level2 smaller">
+<h2>Unbiased estimator</h2>
+<p>Define estimators and unbiassed ones</p>
+</section>
+<section id="the-sample-mean-is-unbiased" class="slide level2 smaller">
+<h2>The sample mean is unbiased</h2>
+<ul>
+<li><p>Define <span class="math inline">\overline{X}=\frac{\sum_{i=1}^nX_i}{n}</span> <span class="math display">
+E[\overline{X}]=E\frac{\sum_{i=1}^nX_i}{n}=\frac{\sum_{i=1}^nE[X_i]}{n}=\frac{n\mu}{n}=\mu
+</span></p></li>
+<li><p>A related result we shall need later is <span class="math display">
+\mbox{Var}[\overline{X}]=\mbox{Var}\frac{\sum_{i=1}^nX_i}{n}
+</span> <span class="math display">
+\mbox{Var}[\overline{X}]=\frac{1}{n^2}\mbox{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}n\sigma^2=\frac{\sigma^2}{n}
+</span></p></li>
+</ul>
+</section>
+<section id="the-sample-variance-is-unbiased" class="slide level2 smaller">
+<h2>The sample variance is unbiased</h2>
+<ul>
+<li><p>Consider <span class="math inline">E[\sum_{i=1}^nX^2_i-n\overline{X}^2].</span> (Dividing this term by <span class="math inline">n-1</span> then gives the unbiased variance estimator <span class="math inline">S^2</span>)</p></li>
+<li><p>For the first term we have <span class="math display">
+E[X_i]=\mu,\ \mbox{Var}[X_i]=\sigma^2
+</span> <span class="math display">
+E[X^2_i]=(E[X_i])^2+\mbox{Var}(X_i)=\mu^2+\sigma^2
+</span> <span class="math display">
+E[\sum_{i=1}^nX_i^2]=\sum_{i=1}^nE[X_i^2]=n(\mu^2+\sigma^2)
+</span></p></li>
+</ul>
+</section>
+<section id="the-sample-variance-is-unbiased-1" class="slide level2 smaller">
+<h2>The sample variance is unbiased</h2>
+<ul>
+<li><p>Re-write <span class="math inline">n\overline{X}^2=(\sqrt{n}\overline{X})^2</span></p></li>
+<li><p>We have that <span class="math display">
+E[\sqrt{n}\overline{X}]=\sqrt{n}\mu
+</span> <span class="math display">\begin{align*}
+\mbox{Var}[\sqrt{n}\overline{X}]
+=(\sqrt{n})^2\mbox{Var}(\overline{X})
+=n\frac{\sigma^2}{n}=\sigma^2
+\end{align*}</span></p></li>
+<li><p>This gives <span class="math display">\begin{eqnarray*}
+E[(\sqrt{n}\overline{X})^2] &amp; = &amp; (E[\sqrt{n}\overline{X}])^2+\mbox{Var}(\sqrt{n}\overline{X})\\
+&amp; = &amp; n\mu^2+\sigma^2
+\end{eqnarray*}</span></p></li>
+</ul>
+</section>
+<section id="the-unbiased-variance-estimator-really-is-unbiased" class="slide level2 smaller">
+<h2>The unbiased variance estimator really is unbiased</h2>
+<p><span class="math inline">\bullet</span> Combining Slides 4.5-4.6 gives <span class="math display">\begin{eqnarray*}
+E[\sum_{i=1}^nX^2_i-n\overline{X}^2] &amp; = &amp; n(\mu^2+\sigma^2)-(n\mu^2+\sigma^2) \\
+&amp; = &amp; (n-1)\sigma^2\\
+E[S^2] &amp; = &amp; \frac{1}{n-1}E[\sum_{i=1}^nX^2_i-n\overline{X}^2]\\
+&amp; = &amp; \frac{(n-1)}{(n-1)}\sigma^2=\sigma^2
+\end{eqnarray*}</span> <span class="math display">
+E[S^2]=\frac{1}{n-1}[n\sigma^2+\sigma^2-2\sigma^2]=\sigma^2
+</span></p>
+</section>
+<section id="additional-note" class="slide level2 smaller">
+<h2>Additional note</h2>
+<p><span class="math inline">\bullet</span> The <span class="math inline">n-1</span> that occurs in the denominator of the sample variance estimator is caused by a loss of precision associated with the fact that we have to estimate <span class="math inline">\mu</span> with the sample mean <span class="math inline">\overline{x}</span>\ <span class="math inline">\bullet</span> This leads to a general statistical rule we shall use later <span class="math display">
+\mbox{Lose 1 degree of freedom for each parameter estimated}
+</span> <span class="math inline">\bullet</span> In this case we have to estimate one parameter (the sample mean) so we are left with <span class="math display">\begin{eqnarray*}
+\mbox{degrees of freedom} &amp; = &amp; \mbox{No. in sample}-\mbox{No. of estimated parameters}\\
+&amp; = &amp; n-1
+\end{eqnarray*}</span></p>
+</section>
+<section id="example-calculation" class="slide level2 smaller">
+<h2>Example calculation</h2>
+<ul>
+<li>Wage data on 10 Advertising Professionals Accountants</li>
+<li>Want to estimate the mean and the variance</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Professional</strong></th>
+<th style="text-align: center;"><span class="math inline">x_1</span></th>
+<th style="text-align: center;"><span class="math inline">x_2</span></th>
+<th style="text-align: center;"><span class="math inline">x_3</span></th>
+<th style="text-align: center;"><span class="math inline">x_4</span></th>
+<th style="text-align: center;"><span class="math inline">x_5</span></th>
+<th style="text-align: center;"><span class="math inline">x_6</span></th>
+<th style="text-align: center;"><span class="math inline">x_7</span></th>
+<th style="text-align: center;"><span class="math inline">x_8</span></th>
+<th style="text-align: center;"><span class="math inline">x_9</span></th>
+<th style="text-align: center;"><span class="math inline">x_{10}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Wage</strong></td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">63</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="solution-to-the-example" class="slide level2 smaller">
+<h2>Solution to the example</h2>
+<ul>
+<li> <span class="math inline">n_1</span>=No.&nbsp;of advertising professionals=10\</li>
+<li><strong>Mean</strong> <span class="math display">\begin{eqnarray*}
+\bar{x}=\frac{36+40+46+{\dots}+62+63}{10}=\frac{535}{10}=53.5
+\end{eqnarray*}</span></li>
+<li><strong>Variance</strong> <span class="math display">\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+s^2 &amp;=&amp; \frac{\sum\ x_{1, i}^2-n\bar{x}_1^2}{n_1-1} \\
+\sum\ x_{1, i}^2 &amp;=&amp; 36^2+40^2+46^2+{\ldots}+62^2+63^2=29435 \\
+s^2 &amp;=&amp; \frac{29435-10(53.5)^2}{9}=90.2778
+\end{eqnarray*}</span></li>
+</ul>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Thank you!</h1>
 <div class="footer">
 <div color="#cc0164">
 

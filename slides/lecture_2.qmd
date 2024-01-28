@@ -41,7 +41,9 @@ $
 ## Outline of Lecture 2
 
 1. Multiple random variables
-2. Statistics background
+2. Unbiased estimators
+
+
 
 
 
@@ -57,6 +59,323 @@ $
 
 
 
+## Univariate vs Multivariate {.smaller}
+
+- Probability models seen so far only involve 1 random variable
+    * These are called **univariate models**
+
+- We are also interested in probability models involving multiple variables:
+    * Models with 2 random variables are called **bivariate**
+    * Models with more than 2 random variables are called **multivariate**
+
+
+
+
+## Random vectors {.smaller}
+
+**Recall**: a random variable is a **measurable** function
+$$
+X \colon \Omega \to \R \,, \quad \Omega \text{ sample space}
+$$
+
+::: Definition
+
+A **random vector** is a measurable function $X \colon \Omega \to \R^n$
+
+:::
+
+
+
+
+## Random vectors {.smaller}
+### Notation
+
+- The components of a random vector $X$ are denoted by
+$$
+X = (X_1, \ldots, X_n) 
+$$
+with $X_i \colon \Omega \to \R$ random variables
+
+
+- We denote a two-dimensional random vector by 
+$$
+(X,Y)
+$$
+with $X,Y \colon \Omega \to \R$ random variables
+
+
+
+
+
+## Discrete random vectors {.smaller}
+
+::: Definition
+
+The random vector $(X,Y)$ is **discrete** if $X$ and $Y$ are discrete random variables
+
+:::
+
+::: Definition
+
+The **joint probability mass function** or **joint pmf** of a discrete
+random vector $(X,Y)$ is the function
+$$
+f_{X,Y}(x,y) := P( \{X=x \} \cap \{ Y=y \}) 
+$$
+
+:::
+
+**Notation**: $P(X=x, Y=y ) := P( \{X=x \} \cap \{ Y=y \})$
+
+
+
+## Discrete random vectors {.smaller}
+### Computing probabilities
+
+- The joint pmf can be used to compute the probability of $A \subset \R^2$
+\begin{align*}
+P((X,Y) \in A) & := P( \{ \omega \in \Omega  \colon ( X(\omega), Y(\omega) ) \in A  \} ) \\ 
+               &  = \sum_{(x,y) \in A} f_{X,Y} (x,y)
+\end{align*}
+
+- In particular we obtain
+$$
+ \sum_{(x,y) \in \R^2} f_{X,Y} (x,y) = 1
+$$
+
+
+
+## Discrete random vectors {.smaller}
+### Expected value
+
+- Suppose $(X,Y) \colon \Omega \to \R^2$ random vector and $g \colon \R^2 \to \R$ function
+- Then $g(X,Y) \colon \Omega \to \R$ is random variable
+
+
+::: Definition
+
+The **expected value** of the random variable $g(X,Y)$ is
+$$
+\Expect[g(X,Y)] := \sum_{(x,y) \in \R^2} g(x,y) f_{X,Y}(x,y) = \sum_{(x,y) \in \R^2} g(x,y) P(X=x,Y=y)
+$$
+
+:::
+
+
+
+## Discrete random vectors {.smaller}
+### Marginals
+
+
+::: Definition
+
+Let $(X,Y)$ be a discrete random vector.
+The **marginal pmfs** of $X$ and $Y$ are the functions
+$$
+f_X (x) := P(X = x) \quad \text{ and } \quad 
+f_Y(y) := P(Y = y)
+$$
+
+:::
+
+**Note**: The marginals of $X$ and $Y$ are just the usual pmfs of $X$ and $Y$
+
+
+
+
+## Discrete random vectors {.smaller}
+### Marginals
+
+
+Marginals of $X$ and $Y$ can be computed from the joint distribution $f_{X,Y}$ 
+
+::: Theorem
+
+Let $(X,Y)$ be a discrete random vector.
+The **marginal pmfs** of $X$ and $Y$ are given by
+$$
+f_X(x) = \sum_{y \in \R} f_{X,Y}(x,y) \quad \text{ and }
+\quad 
+f_Y(y) = \sum_{x \in \R} f_{X,Y}(x,y)
+$$
+
+:::
+
+
+
+## Example - Discrete random vector {.smaller}
+
+- Consider experiment of tossing two dice. Then sample space is
+$$
+\Omega = \{ (m,n)  \colon m,n \in \{1,\ldots,6\}  \}
+$$
+with $m$ and $n$ being the outcomes of first and second dice, respectively
+- We assume that the dice are fair. Therefore $P(\{(m,n)\})=1/36$
+- Define the discrete random variables
+\begin{align*}
+X(m,n) & := m + n   \quad   &  \text{ sum of the dice} \\
+Y(m,n) & := | m - n|  \quad &  \text{ |difference of the dice|}
+\end{align*}
+- For example
+$$
+X(3,3) = 3 + 3 = 6  \qquad \qquad  Y(3,3) = |3 - 3| = 0
+$$
+
+
+
+## Example - Discrete random vector {.smaller}
+### Computing joint pmf
+
+- To compute joint pmf one needs to consider all the cases
+$$
+f_{X,Y}(x,y) = P(X=x,Y=y) \,, \quad (x,y) \in \R^2
+$$
+
+- For example $X=4$ and $Y=0$ is only obtained for $(2,2)$. Hence
+$$
+f_{X,Y}(4,0) = P(X=4,Y=0) = P(\{(2,2)\}) = \frac{1}{6} \cdot  \frac{1}{6} = \frac{1}{36}
+$$
+
+- Similarly $X=5$ and $Y=2$ is only obtained for $(4,1)$ and $(1,4)$. Thus
+$$
+f_{X,Y}(5,2) = P(X=5,Y=2) = P(\{(4,1)\} \cup \{(1,4)\}) 
+= \frac{1}{36} + \frac{1}{36} = \frac{1}{18} 
+$$
+
+
+
+## Example - Discrete random vector {.smaller}
+### Computing joint pmf
+
+
+- Note that $f_{X,Y}(x,y)=0$ for most of the pairs $(x,y)$
+
+- Indeed $f_{X,Y}(x,y)=0$ if
+$$
+x \notin X(\Omega)  \quad \text{ or } \quad  y \notin Y(\Omega)
+$$
+
+- We have $X(\Omega)=\{2,3,4,5,6,7,8,9,10,11,12\}$
+
+- We have $Y(\Omega)=\{0,1,2,3,4,5\}$
+
+- Hence $f_{X,Y}$ only needs to be computed for pairs $(x,y)$ satisfying
+$$
+ 2 \leq x \leq 12  \quad \text{ and } \quad  0 \leq y \leq 5
+$$
+
+- Within this range, other values will be zero. For example
+$$
+f_{X,Y}(3,0) = P(X=3,Y=0) = P(\emptyset) = 0
+$$
+
+
+
+
+## Example - Discrete random vector {.smaller}
+### Table of values of joint pmf
+
+Below are all the values for $f_{X,Y}$. Empty entries correspond to $f_{X,Y}(x,y) = 0$
+
+|    |    |    |    |    |    |    |$x$ |    |    |    |    |    |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|    |    | 2  | 3  | 4  | 5  | 6  | 7  |  8 |  9 |  10| 11 | 12 |
+|    | 0  |1/36|    |1/36|    |1/36|    |1/36|    |1/36|    |1/36|
+|    | 1  |    |1/18|    |1/18|    |1/18|    |1/18|    |1/18|    |
+|$y$ | 2  |    |    |1/18|    |1/18|    |1/18|    |1/18|    |    |
+|    | 3  |    |    |    |1/18|    |1/18|    |1/18|    |    |    |
+|    | 4  |    |    |    |    |1/18|    |1/18|    |    |    |    |
+|    | 5  |    |    |    |    |    |1/18|    |    |    |    |    |
+
+
+
+
+## Example - Discrete random vector {.smaller}
+### Expected value
+
+- We want to compute $\Expect[XY]$
+- Hence consider the function $g(x,y):=xy$
+- We obtain
+\begin{align*}
+\Expect[XY] & = \Expect[g(X,Y)] \\
+            & = \sum_{(x,y) \in \R^2} g(x,y) f_{X,Y}(x,y)\\
+            & = \sum_{(x,y) \in \R^2} xy f_{X,Y}(x,y)
+\end{align*}
+
+
+
+## Example - Discrete random vector {.smaller}
+### Expected value
+
+We can use the non-zero entries in the table for $f_{X,Y}$ to compute:
+\begin{align*}
+\Expect[XY] & = 3 \cdot 1 \cdot \frac{1}{18} + 5 \cdot 1 \cdot \frac{1}{18} + 7 \cdot 1 \cdot \frac{1}{18} + 
+9 \cdot 1 \cdot \frac{1}{18} +  11 \cdot 1 \cdot \frac{1}{18} \\
+            & + 4 \cdot 2 \cdot \frac{1}{18} + 
+                6 \cdot 2 \cdot \frac{1}{18} +
+                8 \cdot 2 \cdot \frac{1}{18} +
+                10\cdot 2 \cdot \frac{1}{18} \\
+            & + 5 \cdot 3 \cdot \frac{1}{18} + 
+                7 \cdot 3 \cdot \frac{1}{18} +
+                9 \cdot 3 \cdot \frac{1}{18} \\
+            & + 6 \cdot 4 \cdot \frac{1}{18} + 
+                8 \cdot 4 \cdot \frac{1}{18}  \\
+            & + 7 \cdot 5 \cdot \frac{1}{18} \\
+            & = (35 + 56 + 63 + 56 + 35 ) \frac{1}{18} = \frac{245}{18}  
+\end{align*}
+
+
+
+## Example - Discrete random vector {.smaller}
+### Marginals
+
+- We want to compute the marginal of $Y$ via the formula
+$$
+f_Y(y) = \sum_{x \in \R} f_{X,Y}(x,y)
+$$
+
+- Again looking at the table for $f_{X,Y}$, we get
+\begin{align*}
+f_Y(0) & = f_{X,Y}(2,0) + f_{X,Y}(4,0) + f_{X,Y}(6,0) \\ 
+       &  + f_{X,Y}(8,0) + f_{X,Y}(10,0) + f_{X,Y}(12,0) \\
+       & = 6 \cdot \frac{1}{36} = \frac{3}{18}
+\end{align*}
+
+
+
+
+## Example - Discrete random vector {.smaller}
+### Marginals
+
+- Similarly, we get
+\begin{align*}
+f_Y(1) & = f_{X,Y}(3,1) + f_{X,Y}(5,1) + f_{X,Y}(7,1) \\
+       & + f_{X,Y}(9,1) +  f_{X,Y}(11,1) \\
+       & = 5 \cdot \frac{1}{18} = \frac{5}{18}
+\end{align*}
+- And the remaining values follow a similar pattern:
+$$
+f_Y(2) = \frac{4}{18}  \,, \quad 
+f_Y(3) = \frac{3}{18}  \,, \quad 
+f_Y(4) = \frac{2}{18}  \,, \quad 
+f_Y(5) = \frac{1}{18}  \,, \quad 
+$$
+
+
+
+## Example - Discrete random vector {.smaller}
+### Marginals
+
+Hence the pmf of $Y$ is given by the table below
+
+| $y$    |   $0$       |        $1$   |      $2$     |     $3$      |      $4$     |     $5$      |
+|:------:|:-----------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|$f_Y(y)$|$\frac{3}{18}$|$\frac{5}{18}$|$\frac{4}{18}$|$\frac{3}{18}$|$\frac{2}{18}$|$\frac{1}{18}$|  
+
+Note that $f_Y$ is indeed a pmf, since 
+$$
+\sum_{y \in \R} f_Y(y) = \sum_{y=0}^5 f_Y(y) = 1
+$$
 
 
 
@@ -83,7 +402,54 @@ Check
 
 
 
-# Part 2: <br>Statistics background {background-color="#cc0164" visibility="uncounted"}
+
+## Independent random variables {.smaller}
+
+Define here
+
+
+
+## Identically distributed random variables {.smaller}
+
+
+
+## MGFs for sums of independent random variables {.smaller}
+
+- MGF can be used to compute pdf of sum of random variables
+
+- For independent random variables $X$ and $Y$ the MGF of the sum satisfies
+$$
+M_{X+Y}(t) = M_X(t) M_Y(t)
+$$
+
+- If $X$ and $Y$ have same distribution then clearly $M_X = M_Y$
+
+- For an independent and identically distributed sequence of random variables $Y:=X_1, X_2, ..., X_n$ the MGF of the sum becomes
+\begin{align*}
+M_Y(t) & = M_{X_1}(t)M_{X_2}(t)...M_{X_n}(t) 
+       & =[M_X(t)]^n 
+\end{align*}
+
+
+
+
+## Where the multiplication comes from {.smaller}
+
+- Consider two independent random variables $X$ and $Y$
+- The mgf of the sum $M_{X+Y}(t)$ is equal $E[e^{t(X+Y)}]=E[e^{tX}e^{tY}]$
+- Now $X$ and $Y$ are independent from each other. Therefore $e^{tX}$ and $e^{tY}$ are also independent from each other
+- For independent random variables $X$ and $Y$ we have $E[XY]=E[X]E[Y]$ so we must also have
+\begin{align*}
+E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
+                & = M_X(t)M_Y(t)
+\end{align*}
+
+
+
+
+
+
+# Part 2: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -91,5 +457,191 @@ Check
 
 :::
 
+
+
+
+## Mean and variance of sums of random variables {.smaller}
+
+- Consider random variables $X_1$, $X_2$, ..., $X_n$ with means $\mu_i$ and variances $\sigma^2_i$
+$$
+E[X_1+...+X_n]=\mu_1+\mu_2+...\mu_n
+$$
+$$
+\mbox{Var}[X_1+...+X_n]=\sigma^2_1+\sigma^2_2+...+\sigma^2_n+2\sum_{i{\neq}j}\mbox{Cov}(X_i, X_j)
+$$
+
+- **The mean is linear but the variance is quadratic**
+
+- Some further simplification is possible in the case of independently and identically distributed random variables when in this case
+$$
+E[X_1+...+X_n]=n\mu,\ \mbox{Var}[X_1+...+X_n]=n\sigma^2
+$$
+
+
+
+
+
+## Additional linear and quadratic nature of mean and variance {.smaller}
+
+- For constants $a$ and $b$
+$$
+\Expect[aX+b]=a \Expect[X]+b
+$$
+$$
+\Var [aX+b] = a^2 \Var [X]
+$$
+$$
+\Cov (aX, bY)=ab \Cov(X, Y)
+$$
+
+
+
+## Estimating the mean and the variance {.smaller}
+
+- Suppose you have an iid sample $X_1$, $X_2$, ... $X_n$ with mean $\mu$ and variance $\sigma^2$
+- Want to estimate the mean and the variance
+- It is obvious that the sample mean is the best thing to use
+- It is less obvious that the best estimator of the variance is the unbiased estimator
+$$
+s^2=\frac{\sum_i(x_i-\overline{x})^2}{n-1}=\frac{\sum_ix_i^2-n{\overline{x}^2}}{n-1}
+$$
+
+
+
+## Unbiased estimator {.smaller}
+
+Define estimators and unbiassed ones
+
+
+## The sample mean is unbiased {.smaller}
+
+- Define $\overline{X}=\frac{\sum_{i=1}^nX_i}{n}$
+$$
+E[\overline{X}]=E\frac{\sum_{i=1}^nX_i}{n}=\frac{\sum_{i=1}^nE[X_i]}{n}=\frac{n\mu}{n}=\mu
+$$
+
+- A related result we shall need later is
+$$
+\mbox{Var}[\overline{X}]=\mbox{Var}\frac{\sum_{i=1}^nX_i}{n}
+$$
+$$
+\mbox{Var}[\overline{X}]=\frac{1}{n^2}\mbox{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}n\sigma^2=\frac{\sigma^2}{n}
+$$
+
+
+
+
+
+## The sample variance is unbiased {.smaller}
+
+- Consider $E[\sum_{i=1}^nX^2_i-n\overline{X}^2].$ (Dividing this term by $n-1$ then gives the unbiased variance estimator $S^2$)
+
+- For the first term we have
+$$
+E[X_i]=\mu,\ \mbox{Var}[X_i]=\sigma^2
+$$
+$$
+E[X^2_i]=(E[X_i])^2+\mbox{Var}(X_i)=\mu^2+\sigma^2
+$$
+$$
+E[\sum_{i=1}^nX_i^2]=\sum_{i=1}^nE[X_i^2]=n(\mu^2+\sigma^2)
+$$
+
+
+
+## The sample variance is unbiased {.smaller}
+
+- Re-write $n\overline{X}^2=(\sqrt{n}\overline{X})^2$
+- We have that 
+$$
+E[\sqrt{n}\overline{X}]=\sqrt{n}\mu
+$$
+\begin{align*}
+\mbox{Var}[\sqrt{n}\overline{X}] 
+=(\sqrt{n})^2\mbox{Var}(\overline{X})
+=n\frac{\sigma^2}{n}=\sigma^2
+\end{align*}
+
+- This gives
+\begin{eqnarray*}
+E[(\sqrt{n}\overline{X})^2] & = & (E[\sqrt{n}\overline{X}])^2+\mbox{Var}(\sqrt{n}\overline{X})\\
+& = & n\mu^2+\sigma^2
+\end{eqnarray*}
+
+
+
+
+
+## The unbiased variance estimator really is unbiased {.smaller}
+$\bullet$ Combining Slides 4.5-4.6 gives
+\begin{eqnarray*}
+E[\sum_{i=1}^nX^2_i-n\overline{X}^2] & = & n(\mu^2+\sigma^2)-(n\mu^2+\sigma^2) \\
+& = & (n-1)\sigma^2\\
+E[S^2] & = & \frac{1}{n-1}E[\sum_{i=1}^nX^2_i-n\overline{X}^2]\\
+& = & \frac{(n-1)}{(n-1)}\sigma^2=\sigma^2
+\end{eqnarray*}
+$$
+E[S^2]=\frac{1}{n-1}[n\sigma^2+\sigma^2-2\sigma^2]=\sigma^2
+$$
+
+
+
+## Additional note {.smaller}
+
+$\bullet$ The $n-1$ that occurs in the denominator of the sample variance estimator is caused by a loss of precision associated with the fact that we have to estimate $\mu$ with the sample mean $\overline{x}$\\
+$\bullet$ This leads to a general statistical rule we shall use later
+$$
+\mbox{Lose 1 degree of freedom for each parameter estimated}
+$$
+$\bullet$ In this case we have to estimate one parameter (the sample mean) so we are left with 
+\begin{eqnarray*}
+\mbox{degrees of freedom} & = & \mbox{No. in sample}-\mbox{No. of estimated parameters}\\
+& = & n-1
+\end{eqnarray*}
+
+
+
+## Example calculation {.smaller}
+
+- Wage data on 10 Advertising Professionals Accountants
+- Want to estimate the mean and the variance
+
+
+|**Professional**| $x_1$ | $x_2$| $x_3$ | $x_4$ | $x_5$ | $x_6$ | $x_7$ | $x_8$ | $x_9$ |$x_{10}$|
+|:--------------:|:-----:|:----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|
+|     **Wage**   |   36  |  40  |  46  |  54  |  57  |  58  |  59  |  60  |  62  |  63  |
+
+
+
+
+## Solution to the example {.smaller}
+
+- \textbf{Number} $n_1$=No. of advertising professionals=10\\
+- **Mean**
+\begin{eqnarray*}
+\bar{x}=\frac{36+40+46+{\dots}+62+63}{10}=\frac{535}{10}=53.5
+\end{eqnarray*}
+- **Variance**
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  s^2 &=& \frac{\sum\ x_{1, i}^2-n\bar{x}_1^2}{n_1-1} \\
+  \sum\ x_{1, i}^2 &=& 36^2+40^2+46^2+{\ldots}+62^2+63^2=29435 \\
+  s^2 &=& \frac{29435-10(53.5)^2}{9}=90.2778
+\end{eqnarray*}
+
+
+
+
+
+
+
+# Thank you! {background-color="#cc0164" visibility="uncounted"}
+
+
+::: footer
+
+<div color="#cc0164"> </div>
+
+:::
 
 
