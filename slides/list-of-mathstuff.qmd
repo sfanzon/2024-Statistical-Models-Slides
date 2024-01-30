@@ -11,6 +11,18 @@
 
  [**Theorem**](#Theorem*-2.6)\Pageref{Theorem*-2.6}
 
- [**Theorem**](#Theorem*-2.7)\Pageref{Theorem*-2.7}
+ [**Definition**](#Definition*-2.7)\Pageref{Definition*-2.7}
 
- [**Proof**](#Proof*-2.8)\Pageref{Proof*-2.8}
+ [**Definition**](#Definition*-2.8)\Pageref{Definition*-2.8}
+
+ [**Definition**](#Definition*-2.9)\Pageref{Definition*-2.9}
+
+ [**Definition**](#Definition*-2.10)\Pageref{Definition*-2.10}
+
+ [**Theorem**](#Theorem*-2.11)\Pageref{Theorem*-2.11}
+
+ [**Theorem**](#Theorem*-2.12)\Pageref{Theorem*-2.12}
+
+ [**Theorem**](#Theorem*-3.1)\Pageref{Theorem*-3.1}
+
+ [**Proof**](#Proof*-3.2)\Pageref{Proof*-3.2}

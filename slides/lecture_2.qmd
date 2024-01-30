@@ -41,7 +41,8 @@ $
 ## Outline of Lecture 2
 
 1. Multiple random variables
-2. Unbiased estimators
+2. Conditional distributions
+3. Unbiased estimators
 
 
 
@@ -178,7 +179,7 @@ $$
 
 :::
 
-**Note**: The marginals of $X$ and $Y$ are just the usual pmfs of $X$ and $Y$
+**Note**: The **marginal pmfs** of $X$ and $Y$ are just the usual **pmfs** of $X$ and $Y$
 
 
 
@@ -187,11 +188,11 @@ $$
 ### Marginals
 
 
-Marginals of $X$ and $Y$ can be computed from the joint distribution $f_{X,Y}$ 
+Marginals of $X$ and $Y$ can be computed from the joint pmf $f_{X,Y}$ 
 
 ::: Theorem
 
-Let $(X,Y)$ be a discrete random vector.
+Let $(X,Y)$ be a discrete random vector with joint pmf $f_{X,Y}$.
 The **marginal pmfs** of $X$ and $Y$ are given by
 $$
 f_X(x) = \sum_{y \in \R} f_{X,Y}(x,y) \quad \text{ and }
@@ -248,9 +249,7 @@ $$
 ### Computing joint pmf
 
 
-- Note that $f_{X,Y}(x,y)=0$ for most of the pairs $(x,y)$
-
-- Indeed $f_{X,Y}(x,y)=0$ if
+- $f_{X,Y}(x,y)=0$ for most of the pairs $(x,y)$. Indeed $f_{X,Y}(x,y)=0$ if
 $$
 x \notin X(\Omega)  \quad \text{ or } \quad  y \notin Y(\Omega)
 $$
@@ -379,6 +378,185 @@ $$
 
 
 
+
+
+## Continuous random vectors {.smaller}
+
+
+::: Definition
+
+The random vector $(X,Y)$ is **continuous** if $X$ and $Y$ are continuous rv
+
+:::
+
+::: Definition
+
+The **joint probability density function** or **joint pdf** of a continuous
+random vector $(X,Y)$ is a function $f_{X,Y} \colon \R^2 \to \R$ s.t.
+$$
+P((X,Y) \in A) = \int_{A} f_{X,Y}(x,y) \, dxdy
+$$
+
+:::
+
+
+
+- $\int_A$ is a double integral over $A$, like the ones you saw in Calculus
+- The joint pdf is defined over the whole $\R^2$
+
+
+
+
+
+## Continuous random vectors {.smaller}
+### Expected value
+
+- Suppose $(X,Y) \colon \Omega \to \R^2$ continuous random vector and $g \colon \R^2 \to \R$ function
+- Then $g(X,Y) \colon \Omega \to \R$ is random variable
+
+
+::: Definition
+
+The **expected value** of the random variable $g(X,Y)$ is
+$$
+\Expect[g(X,Y)] := \int_{\R^2} g(x,y) f_{X,Y}(x,y) \, dxdy
+$$
+
+:::
+
+
+**Notation**:The symbol $\int_{\R^2}$ denotes the double integral $\int_{-\infty}^\infty\int_{-\infty}^\infty$
+
+
+
+## Continuous random vectors {.smaller}
+### Marginals
+
+
+::: Definition
+
+Let $(X,Y)$ be a continuous random vector.
+The **marginal pdfs** of $X$ and $Y$ are functions 
+$f_X,f_Y \colon \R \to \R$ s.t.
+$$
+P(a \leq X \leq b)  =  \int_{a}^b f_X (x) \,dx  \quad \text{ and } \quad 
+P(a \leq Y \leq b)  =  \int_{a}^b f_Y (y) \,dy 
+$$
+
+:::
+
+**Note**: The **marginal pdfs** of $X$ and $Y$ are just the usual **pdfs** of $X$ and $Y$
+
+
+
+
+## Continuous random vectors {.smaller}
+### Marginals
+
+
+Marginals of $X$ and $Y$ can be computed from the joint pdf $f_{X,Y}$ 
+
+::: Theorem
+
+Let $(X,Y)$ be a discrete random vector with joint pdf $f_{X,Y}$.
+The **marginal pdfs** of $X$ and $Y$ are given by
+$$
+f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x,y) \,dy \quad \text{ and }
+\quad 
+f_Y(y) = \int_{-\infty}^\infty f_{X,Y}(x,y) \, dx
+$$
+
+:::
+
+
+
+
+## Characterization of joint pmf and pdf {.smaller}
+
+
+::: Theorem
+
+Let $f \colon \R^2 \to \R$. Then $f$ is **joint pmf** or **joint pdf** of a random vector $(X,Y)$ iff
+
+1. $f(x,y) \geq 0$ for all $(x,y) \in \R^2$
+2. $\sum_{(x,y) \in \R^2} f(x,y) = 1 \,\,\,$ (joint pmf) $\quad$ or $\quad$ $\int_{\R^2} f(x,y) \,dxdy = 1 \,\,\,$ (joint pdf)
+
+:::
+
+In the above setting:
+
+- The random vector $(X,Y)$ has **distribution**
+    * $P(X=x,Y=y ) = f(x,y)   \,\,\,\text{ (joint pmf)}$
+    * $P((X,Y) \in A) = \int_A f (x,y) \, dxdy  \,\,\, \text{ (joint pdf)}$
+
+- The symbol $(X,Y) \sim f$ denotes that $(X,Y)$ has distribution $f$
+
+
+
+
+
+
+## Summary - Random Vectors {.smaller}
+
+
+
+| $(X,Y)$ discrete random vector       |  $(X,Y)$ continuous random vector         |
+|--------------                        |----------------                           |
+| $X$ and $Y$ discrete                 |  $X$ and $Y$ continuous                   |
+|**Joint pmf**                         |**Joint pdf**                              |
+| $f_{X,Y}(x,y) := P(X=x,Y=y)$         | $P((X,Y) \in A) = \int_A f_X(x,y) \,dxdy$ |  
+| $f_{X,Y} \geq 0$                     |  $f_{X,Y} \geq 0$                         |
+|$\sum_{(x,y)\in \R^2} f_{X,Y}(x,y)=1$ | $\int_{\R^2} f_{X,Y}(x,y) \, dxdy= 1$     |
+|**Marginal pmfs**                     | **Marginal pdfs**                         |
+| $f_X (x) := P(X=x)$                  |$P(a \leq X \leq b) = \int_a^b f_X(x) \,dx$|
+| $f_Y (y) := P(Y=y)$                  |$P(a \leq Y \leq b) = \int_a^b f_Y(y) \,dy$|
+|$f_X (x)=\sum_{y \in \R} f_{X,Y}(x,y)$|$f_X(x) = \int_{\R} f_{X,Y}(x,y) \,dy$     |
+|$f_Y (y)=\sum_{x \in \R} f_{X,Y}(x,y)$|$f_Y(y) = \int_{\R} f_{X,Y}(x,y) \,dx$     |
+
+
+
+
+
+
+
+# Part 2: <br>Conditional distributions {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+## Conditional distributions  {.smaller}
+### Discrete random variables
+
+- Suppose given a discrete random vector $(X,Y)$
+
+- It might happen that the event $\{X=x\}$ depends on $\{Y=y\}$ 
+
+- If $P(Y=y)>0$ we can define the **conditional probability**
+
+$$
+P(X=x|Y=y) := \frac{P(X=x,Y=y)}{P(Y=y)} = \frac{f_{X,Y}(x,y)}{f_Y(y)}
+$$
+
+where $f_{X,Y}$ is **joint pmf** and $f_Y$ the **marginal pmf** of $Y$
+
+
+
+
+
+
+
+
+
+
+
 ## Examples of Continuous RV {.smaller}
 
 
@@ -449,7 +627,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 2: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 

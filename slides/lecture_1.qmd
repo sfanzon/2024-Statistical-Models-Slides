@@ -1926,10 +1926,10 @@ $$
 
 ::: Theorem
 
-Let $f_X \colon \mathbb{R} \to \mathbb{R}$. Then $f_X$ is pmf or pdf of a RV $X$ iff
+Let $f \colon \mathbb{R} \to \mathbb{R}$. Then $f$ is pmf or pdf of a RV $X$ iff
 
-1. $f_X(x) \geq 0$ for all $x \in \mathbb{R}$
-2. $\sum_{x=-\infty}^\infty f_X(x) = 1 \,\,\,$ (pmf) $\quad$ or $\quad$ $\int_{-\infty}^\infty f(x) \, dx =1\,\,\,$ (pdf)
+1. $f(x) \geq 0$ for all $x \in \mathbb{R}$
+2. $\sum_{x=-\infty}^\infty f(x) = 1 \,\,\,$ (pmf) $\quad$ or $\quad$ $\int_{-\infty}^\infty f(x) \, dx = 1\,\,\,$ (pdf)
 
 :::
 
@@ -1937,11 +1937,11 @@ In the above setting:
 
 - The RV $X$ has **distribution**
 $$
-P(X = x) = f_X(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
-P(a \leq X \leq b) = \int_a^b f_X(t) \, dt   \,\,\, \text{ (pdf)}
+P(X = x) = f(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
+P(a \leq X \leq b) = \int_a^b f(t) \, dt   \,\,\, \text{ (pdf)}
 $$
 
-- We denote that $X$ has distribution $f_X$ by the symbol $X \sim f_X$
+- The symbol $X \sim f$ denotes that $X$ has distribution $f$
 
 
 
@@ -2163,37 +2163,16 @@ $$
 ## Expected Value  {.smaller}
 ### Properties
 
-$X,Y$ rv and $a \in \mathbb{R}$. The expected value is:
+$X,Y$ rv and $a,b \in \mathbb{R}$. The expected value is:
 
-- **Linear**:
-$$
-\Expect [X + Y] = \Expect [X] + \Expect [Y]  \,, \qquad \Expect [aX] = a \Expect [X]  
-$$
+- **Linear**: $\Expect [aX + b] = a\Expect [X] + b$
 
 
-- **Monotone**:
-$$
-X \leq Y  \quad \implies \quad \Expect [X] \leq  \Expect [Y] 
-$$
+- **Monotone**: $X \leq Y  \quad \implies \quad \Expect [X] \leq  \Expect [Y]$
 
-- **Non-degenerate**:
-$$
-\Expect[|X|] = 0 \quad \implies \quad X = 0
-$$
-
-
-
-## Expected Value  {.smaller}
-### Properties
-
-
-$X,Y$ rv and $a \in \mathbb{R}$. Then
+- **Non-degenerate**: $\Expect[|X|] = 0 \quad \implies \quad X = 0$
 
 - $X=Y \quad \implies \quad \Expect[X]=\Expect[Y]$ 
-
-- $X=a \quad \implies \quad \Expect[X]=a$
-
-- $\Expect[ \Expect[X]]= \Expect[X]$
 
 
 
@@ -2240,6 +2219,33 @@ $$
         & = \Expect[X^2] - 2 \Expect[X]^2 + \Expect[X]^2 \\
         & = \Expect[X^2] - \Expect[X]^2
 \end{align*}
+
+
+
+
+
+## Variance {.smaller}
+### Variance is quadratic
+
+::: Proposition
+
+$X$ rv and $a,b \in \R$. Then
+$$
+\Var[a X + b] = a^2 \Var[X] 
+$$
+
+:::
+
+
+**Proof:** Using linearity of $\Expect$ and the fact that $\Expect[c]=c$ for constants:
+\begin{align*}
+\Var[a X + b] & = \Expect[ (aX + b)^2 ] - \Expect[ aX + b ]^2 \\
+              & = \Expect[ a^2X^2 + b^2 + 2abX ] - ( a\Expect[X]  + b)^2 \\
+              & = a^2 \Expect[ X^2 ] + b^2 + 2ab \Expect[X] - 
+                  a^2 \Expect[X]^2   - b^2 - 2ab \Expect[X] \\
+              & = a^2 ( \Expect[ X^2 ] - \Expect[ X ]^2 ) = a^2 \Var[X]
+\end{align*}
+
 
 
 
@@ -2517,29 +2523,6 @@ and the variance is
 
 
 
-
-
-## Variance {.smaller}
-### Properties
-
-::: Proposition
-
-$X$ rv and $a,b \in \R$. Then
-$$
-\Var[a X + b] = a^2 \Var[X] 
-$$
-
-:::
-
-
-**Proof:** Using linearity of $\Expect$ and the fact that $\Expect[c]=c$ for constants:
-\begin{align*}
-\Var[a X + b] & = \Expect[ (aX + b)^2 ] - \Expect[ aX + b ]^2 \\
-              & = \Expect[ a^2X^2 + b^2 + 2abX ] - ( a\Expect[X]  + b)^2 \\
-              & = a^2 \Expect[ X^2 ] + b^2 + 2ab \Expect[X] - 
-                  a^2 \Expect[X]^2   - b^2 - 2ab \Expect[X] \\
-              & = a^2 ( \Expect[ X^2 ] - \Expect[ X ]^2 ) = a^2 \Var[X]
-\end{align*}
 
 
 

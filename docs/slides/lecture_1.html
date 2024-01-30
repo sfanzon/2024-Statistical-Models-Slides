@@ -361,11 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
-  .Conjecture {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -373,9 +377,25 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Proposition {
     --color1: #f4cce0;
@@ -385,45 +405,25 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Important {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Theorem {
     --color1: #f4cce0;
@@ -2121,20 +2121,20 @@ R_{\rm Begin} = 1000, \quad  R_{\rm IM}=2400 , \quad E_{\rm Begin} = \frac{1}{1 
 <h2>Characterization of pmf and pdf</h2>
 <div id="Theorem*-4.24" class="Theorem">
 <details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>
-<p>Let <span class="math inline">f_X \colon \mathbb{R} \to \mathbb{R}</span>. Then <span class="math inline">f_X</span> is pmf or pdf of a RV <span class="math inline">X</span> iff</p>
+<p>Let <span class="math inline">f \colon \mathbb{R} \to \mathbb{R}</span>. Then <span class="math inline">f</span> is pmf or pdf of a RV <span class="math inline">X</span> iff</p>
 <ol type="1">
-<li><span class="math inline">f_X(x) \geq 0</span> for all <span class="math inline">x \in \mathbb{R}</span></li>
-<li><span class="math inline">\sum_{x=-\infty}^\infty f_X(x) = 1 \,\,\,</span> (pmf) <span class="math inline">\quad</span> or <span class="math inline">\quad</span> <span class="math inline">\int_{-\infty}^\infty f(x) \, dx =1\,\,\,</span> (pdf)</li>
+<li><span class="math inline">f(x) \geq 0</span> for all <span class="math inline">x \in \mathbb{R}</span></li>
+<li><span class="math inline">\sum_{x=-\infty}^\infty f(x) = 1 \,\,\,</span> (pmf) <span class="math inline">\quad</span> or <span class="math inline">\quad</span> <span class="math inline">\int_{-\infty}^\infty f(x) \, dx = 1\,\,\,</span> (pdf)</li>
 </ol>
 </div></details>
 </div>
 <p>In the above setting:</p>
 <ul>
 <li><p>The RV <span class="math inline">X</span> has <strong>distribution</strong> <span class="math display">
-P(X = x) = f_X(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
-P(a \leq X \leq b) = \int_a^b f_X(t) \, dt   \,\,\, \text{ (pdf)}
+P(X = x) = f(x)  \,\,\, \text{ (pmf) } \quad  \text{ or }  \quad
+P(a \leq X \leq b) = \int_a^b f(t) \, dt   \,\,\, \text{ (pdf)}
 </span></p></li>
-<li><p>We denote that <span class="math inline">X</span> has distribution <span class="math inline">f_X</span> by the symbol <span class="math inline">X \sim f_X</span></p></li>
+<li><p>The symbol <span class="math inline">X \sim f</span> denotes that <span class="math inline">X</span> has distribution <span class="math inline">f</span></p></li>
 </ul>
 </section>
 <section id="summary---random-variables" class="slide level2 smaller">
@@ -2320,27 +2320,12 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 <section id="expected-value-2" class="slide level2 smaller">
 <h2>Expected Value</h2>
 <h3 id="properties-3">Properties</h3>
-<p><span class="math inline">X,Y</span> rv and <span class="math inline">a \in \mathbb{R}</span>. The expected value is:</p>
+<p><span class="math inline">X,Y</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. The expected value is:</p>
 <ul>
-<li><p><strong>Linear</strong>: <span class="math display">
-{\rm I\kern-.3em E}[X + Y] = {\rm I\kern-.3em E}[X] + {\rm I\kern-.3em E}[Y]  \,, \qquad {\rm I\kern-.3em E}[aX] = a {\rm I\kern-.3em E}[X]  
-</span></p></li>
-<li><p><strong>Monotone</strong>: <span class="math display">
-X \leq Y  \quad \implies \quad {\rm I\kern-.3em E}[X] \leq  {\rm I\kern-.3em E}[Y]
-</span></p></li>
-<li><p><strong>Non-degenerate</strong>: <span class="math display">
-{\rm I\kern-.3em E}[|X|] = 0 \quad \implies \quad X = 0
-</span></p></li>
-</ul>
-</section>
-<section id="expected-value-3" class="slide level2 smaller">
-<h2>Expected Value</h2>
-<h3 id="properties-4">Properties</h3>
-<p><span class="math inline">X,Y</span> rv and <span class="math inline">a \in \mathbb{R}</span>. Then</p>
-<ul>
+<li><p><strong>Linear</strong>: <span class="math inline">{\rm I\kern-.3em E}[aX + b] = a{\rm I\kern-.3em E}[X] + b</span></p></li>
+<li><p><strong>Monotone</strong>: <span class="math inline">X \leq Y  \quad \implies \quad {\rm I\kern-.3em E}[X] \leq  {\rm I\kern-.3em E}[Y]</span></p></li>
+<li><p><strong>Non-degenerate</strong>: <span class="math inline">{\rm I\kern-.3em E}[|X|] = 0 \quad \implies \quad X = 0</span></p></li>
 <li><p><span class="math inline">X=Y \quad \implies \quad {\rm I\kern-.3em E}[X]={\rm I\kern-.3em E}[Y]</span></p></li>
-<li><p><span class="math inline">X=a \quad \implies \quad {\rm I\kern-.3em E}[X]=a</span></p></li>
-<li><p><span class="math inline">{\rm I\kern-.3em E}[ {\rm I\kern-.3em E}[X]]= {\rm I\kern-.3em E}[X]</span></p></li>
 </ul>
 </section>
 <section id="variance" class="slide level2 smaller">
@@ -2377,6 +2362,23 @@ X \leq Y  \quad \implies \quad {\rm I\kern-.3em E}[X] \leq  {\rm I\kern-.3em E}[
 \end{align*}</span></p>
 </section>
 <section id="variance-3" class="slide level2 smaller">
+<h2>Variance</h2>
+<h3 id="variance-is-quadratic">Variance is quadratic</h3>
+<div id="Proposition*-5.4" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math inline">X</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. Then <span class="math display">
+{\rm Var}[a X + b] = a^2 {\rm Var}[X]
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Proof:</strong> Using linearity of <span class="math inline">{\rm I\kern-.3em E}</span> and the fact that <span class="math inline">{\rm I\kern-.3em E}[c]=c</span> for constants: <span class="math display">\begin{align*}
+{\rm Var}[a X + b] &amp; = {\rm I\kern-.3em E}[ (aX + b)^2 ] - {\rm I\kern-.3em E}[ aX + b ]^2 \\
+              &amp; = {\rm I\kern-.3em E}[ a^2X^2 + b^2 + 2abX ] - ( a{\rm I\kern-.3em E}[X]  + b)^2 \\
+              &amp; = a^2 {\rm I\kern-.3em E}[ X^2 ] + b^2 + 2ab {\rm I\kern-.3em E}[X] -
+                  a^2 {\rm I\kern-.3em E}[X]^2   - b^2 - 2ab {\rm I\kern-.3em E}[X] \\
+              &amp; = a^2 ( {\rm I\kern-.3em E}[ X^2 ] - {\rm I\kern-.3em E}[ X ]^2 ) = a^2 {\rm Var}[X]
+\end{align*}</span></p>
+</section>
+<section id="variance-4" class="slide level2 smaller">
 <h2>Variance</h2>
 <h3 id="how-to-compute-the-variance">How to compute the Variance</h3>
 <p>We have <span class="math display">
@@ -2445,7 +2447,7 @@ f_X(x) =
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="example---gamma-distribution-4" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-4">Expected value</h3>
+<h3 id="expected-value-3">Expected value</h3>
 <p>Let <span class="math inline">X \sim \Gamma(\alpha,\beta)</span>. We have: <span class="math display">\begin{align*}
 {\rm I\kern-.3em E}[X] &amp; = \int_{-\infty}^\infty x f_X(x) \, dx  \\
             &amp; = \int_0^\infty  x \, \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
@@ -2455,7 +2457,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-5" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-5">Expected value</h3>
+<h3 id="expected-value-4">Expected value</h3>
 <p>Recall previous calculation: <span class="math display">
 {\rm I\kern-.3em E}[X] = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
             \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
@@ -2468,7 +2470,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-6" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-6">Expected value</h3>
+<h3 id="expected-value-5">Expected value</h3>
 <p>Therefore <span class="math display">\begin{align*}
 {\rm I\kern-.3em E}[X] &amp; = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
             \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx \\
@@ -2481,7 +2483,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-7" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="variance-4">Variance</h3>
+<h3 id="variance-5">Variance</h3>
 <p>We want to compute <span class="math display">
 {\rm Var}[X] = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
 </span></p>
@@ -2492,7 +2494,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-8" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="variance-5">Variance</h3>
+<h3 id="variance-6">Variance</h3>
 <p>Proceeding similarly we have:</p>
 <p><span class="math display">\begin{align*}
 {\rm I\kern-.3em E}[X^2] &amp; = \int_{-\infty}^{\infty} x^2 f_X(x) \, dx \\
@@ -2502,7 +2504,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-9" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="variance-6">Variance</h3>
+<h3 id="variance-7">Variance</h3>
 <p>Recall previous calculation: <span class="math display">
 {\rm I\kern-.3em E}[X^2] =  \frac{\beta^{\alpha}}{\Gamma(\alpha)} \int_{0}^{\infty}  x^{\alpha+1} e^{- \beta x} \, dx
 </span> Change variable <span class="math inline">y=\beta x</span> and recall definition of <span class="math inline">\Gamma</span>: <span class="math display">\begin{align*}
@@ -2514,7 +2516,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-10" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="variance-7">Variance</h3>
+<h3 id="variance-8">Variance</h3>
 <p>Therefore <span class="math display">
 {\rm I\kern-.3em E}[X^2]  = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
             \int_0^\infty  x^{\alpha+1} e^{-\beta{x}}  \, dx
@@ -2528,7 +2530,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-11" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="variance-8">Variance</h3>
+<h3 id="variance-9">Variance</h3>
 <p>Therefore <span class="math display">
 {\rm I\kern-.3em E}[X] = \frac{\alpha}{\beta}  \quad \qquad
 {\rm I\kern-.3em E}[X^2] = \frac{(\alpha+1) \alpha}{\beta^2}
@@ -2536,23 +2538,6 @@ f_X(x) =
 {\rm Var}[X] &amp; = {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2 \\
         &amp; = \frac{(\alpha+1) \alpha}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
         &amp; = \frac{\alpha}{\beta^2}
-\end{align*}</span></p>
-</section>
-<section id="variance-9" class="slide level2 smaller">
-<h2>Variance</h2>
-<h3 id="properties-5">Properties</h3>
-<div id="Proposition*-5.4" class="Proposition">
-<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math inline">X</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. Then <span class="math display">
-{\rm Var}[a X + b] = a^2 {\rm Var}[X]
-</span><p></p>
-</div></details>
-</div>
-<p><strong>Proof:</strong> Using linearity of <span class="math inline">{\rm I\kern-.3em E}</span> and the fact that <span class="math inline">{\rm I\kern-.3em E}[c]=c</span> for constants: <span class="math display">\begin{align*}
-{\rm Var}[a X + b] &amp; = {\rm I\kern-.3em E}[ (aX + b)^2 ] - {\rm I\kern-.3em E}[ aX + b ]^2 \\
-              &amp; = {\rm I\kern-.3em E}[ a^2X^2 + b^2 + 2abX ] - ( a{\rm I\kern-.3em E}[X]  + b)^2 \\
-              &amp; = a^2 {\rm I\kern-.3em E}[ X^2 ] + b^2 + 2ab {\rm I\kern-.3em E}[X] -
-                  a^2 {\rm I\kern-.3em E}[X]^2   - b^2 - 2ab {\rm I\kern-.3em E}[X] \\
-              &amp; = a^2 ( {\rm I\kern-.3em E}[ X^2 ] - {\rm I\kern-.3em E}[ X ]^2 ) = a^2 {\rm Var}[X]
 \end{align*}</span></p>
 </section>
 <section id="moment-generating-function" class="slide level2 smaller">

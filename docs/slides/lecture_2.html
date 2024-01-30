@@ -341,35 +341,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Corollary {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -377,11 +353,35 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,7 +389,15 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Problem {
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -397,15 +405,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,6 +458,7 @@
 <h2>Outline of Lecture 2</h2>
 <ol type="1">
 <li>Multiple random variables</li>
+<li>Conditional distributions</li>
 <li>Unbiased estimators</li>
 </ol>
 </section></section>
@@ -557,14 +558,14 @@ f_Y(y) := P(Y = y)
 </span><p></p>
 </div></details>
 </div>
-<p><strong>Note</strong>: The marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> are just the usual pmfs of <span class="math inline">X</span> and <span class="math inline">Y</span></p>
+<p><strong>Note</strong>: The <strong>marginal pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are just the usual <strong>pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span></p>
 </section>
 <section id="discrete-random-vectors-4" class="slide level2 smaller">
 <h2>Discrete random vectors</h2>
 <h3 id="marginals-1">Marginals</h3>
-<p>Marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> can be computed from the joint distribution <span class="math inline">f_{X,Y}</span></p>
+<p>Marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> can be computed from the joint pmf <span class="math inline">f_{X,Y}</span></p>
 <div id="Theorem*-2.6" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a discrete random vector. The <strong>marginal pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are given by <span class="math display">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a discrete random vector with joint pmf <span class="math inline">f_{X,Y}</span>. The <strong>marginal pmfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are given by <span class="math display">
 f_X(x) = \sum_{y \in \mathbb{R}} f_{X,Y}(x,y) \quad \text{ and }
 \quad
 f_Y(y) = \sum_{x \in \mathbb{R}} f_{X,Y}(x,y)
@@ -608,8 +609,7 @@ f_{X,Y}(5,2) = P(X=5,Y=2) = P(\{(4,1)\} \cup \{(1,4)\})
 <h2>Example - Discrete random vector</h2>
 <h3 id="computing-joint-pmf-1">Computing joint pmf</h3>
 <ul>
-<li><p>Note that <span class="math inline">f_{X,Y}(x,y)=0</span> for most of the pairs <span class="math inline">(x,y)</span></p></li>
-<li><p>Indeed <span class="math inline">f_{X,Y}(x,y)=0</span> if <span class="math display">
+<li><p><span class="math inline">f_{X,Y}(x,y)=0</span> for most of the pairs <span class="math inline">(x,y)</span>. Indeed <span class="math inline">f_{X,Y}(x,y)=0</span> if <span class="math display">
 x \notin X(\Omega)  \quad \text{ or } \quad  y \notin Y(\Omega)
 </span></p></li>
 <li><p>We have <span class="math inline">X(\Omega)=\{2,3,4,5,6,7,8,9,10,11,12\}</span></p></li>
@@ -857,16 +857,173 @@ f_Y(5) = \frac{1}{18}  \,, \quad
 \sum_{y \in \mathbb{R}} f_Y(y) = \sum_{y=0}^5 f_Y(y) = 1
 </span></p>
 </section>
+<section id="continuous-random-vectors" class="slide level2 smaller">
+<h2>Continuous random vectors</h2>
+<div id="Definition*-2.7" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The random vector <span class="math inline">(X,Y)</span> is <strong>continuous</strong> if <span class="math inline">X</span> and <span class="math inline">Y</span> are continuous rv<p></p>
+</div></details>
+</div>
+<div id="Definition*-2.8" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>joint probability density function</strong> or <strong>joint pdf</strong> of a continuous random vector <span class="math inline">(X,Y)</span> is a function <span class="math inline">f_{X,Y} \colon \mathbb{R}^2 \to \mathbb{R}</span> s.t. <span class="math display">
+P((X,Y) \in A) = \int_{A} f_{X,Y}(x,y) \, dxdy
+</span><p></p>
+</div></details>
+</div>
+<ul>
+<li><span class="math inline">\int_A</span> is a double integral over <span class="math inline">A</span>, like the ones you saw in Calculus</li>
+<li>The joint pdf is defined over the whole <span class="math inline">\mathbb{R}^2</span></li>
+</ul>
+</section>
+<section id="continuous-random-vectors-1" class="slide level2 smaller">
+<h2>Continuous random vectors</h2>
+<h3 id="expected-value-3">Expected value</h3>
+<ul>
+<li>Suppose <span class="math inline">(X,Y) \colon \Omega \to \mathbb{R}^2</span> continuous random vector and <span class="math inline">g \colon \mathbb{R}^2 \to \mathbb{R}</span> function</li>
+<li>Then <span class="math inline">g(X,Y) \colon \Omega \to \mathbb{R}</span> is random variable</li>
+</ul>
+<div id="Definition*-2.9" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>expected value</strong> of the random variable <span class="math inline">g(X,Y)</span> is <span class="math display">
+{\rm I\kern-.3em E}[g(X,Y)] := \int_{\mathbb{R}^2} g(x,y) f_{X,Y}(x,y) \, dxdy
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Notation</strong>:The symbol <span class="math inline">\int_{\mathbb{R}^2}</span> denotes the double integral <span class="math inline">\int_{-\infty}^\infty\int_{-\infty}^\infty</span></p>
+</section>
+<section id="continuous-random-vectors-2" class="slide level2 smaller">
+<h2>Continuous random vectors</h2>
+<h3 id="marginals-5">Marginals</h3>
+<div id="Definition*-2.10" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a continuous random vector. The <strong>marginal pdfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are functions <span class="math inline">f_X,f_Y \colon \mathbb{R}\to \mathbb{R}</span> s.t. <span class="math display">
+P(a \leq X \leq b)  =  \int_{a}^b f_X (x) \,dx  \quad \text{ and } \quad
+P(a \leq Y \leq b)  =  \int_{a}^b f_Y (y) \,dy
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Note</strong>: The <strong>marginal pdfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are just the usual <strong>pdfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span></p>
+</section>
+<section id="continuous-random-vectors-3" class="slide level2 smaller">
+<h2>Continuous random vectors</h2>
+<h3 id="marginals-6">Marginals</h3>
+<p>Marginals of <span class="math inline">X</span> and <span class="math inline">Y</span> can be computed from the joint pdf <span class="math inline">f_{X,Y}</span></p>
+<div id="Theorem*-2.11" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Let <span class="math inline">(X,Y)</span> be a discrete random vector with joint pdf <span class="math inline">f_{X,Y}</span>. The <strong>marginal pdfs</strong> of <span class="math inline">X</span> and <span class="math inline">Y</span> are given by <span class="math display">
+f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x,y) \,dy \quad \text{ and }
+\quad
+f_Y(y) = \int_{-\infty}^\infty f_{X,Y}(x,y) \, dx
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="characterization-of-joint-pmf-and-pdf" class="slide level2 smaller">
+<h2>Characterization of joint pmf and pdf</h2>
+<div id="Theorem*-2.12" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>
+<p>Let <span class="math inline">f \colon \mathbb{R}^2 \to \mathbb{R}</span>. Then <span class="math inline">f</span> is <strong>joint pmf</strong> or <strong>joint pdf</strong> of a random vector <span class="math inline">(X,Y)</span> iff</p>
+<ol type="1">
+<li><span class="math inline">f(x,y) \geq 0</span> for all <span class="math inline">(x,y) \in \mathbb{R}^2</span></li>
+<li><span class="math inline">\sum_{(x,y) \in \mathbb{R}^2} f(x,y) = 1 \,\,\,</span> (joint pmf) <span class="math inline">\quad</span> or <span class="math inline">\quad</span> <span class="math inline">\int_{\mathbb{R}^2} f(x,y) \,dxdy = 1 \,\,\,</span> (joint pdf)</li>
+</ol>
+</div></details>
+</div>
+<p>In the above setting:</p>
+<ul>
+<li>The random vector <span class="math inline">(X,Y)</span> has <strong>distribution</strong>
+<ul>
+<li><span class="math inline">P(X=x,Y=y ) = f(x,y)   \,\,\,\text{ (joint pmf)}</span></li>
+<li><span class="math inline">P((X,Y) \in A) = \int_A f (x,y) \, dxdy  \,\,\, \text{ (joint pdf)}</span></li>
+</ul></li>
+<li>The symbol <span class="math inline">(X,Y) \sim f</span> denotes that <span class="math inline">(X,Y)</span> has distribution <span class="math inline">f</span></li>
+</ul>
+</section>
+<section id="summary---random-vectors" class="slide level2 smaller">
+<h2>Summary - Random Vectors</h2>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">(X,Y)</span> discrete random vector</th>
+<th><span class="math inline">(X,Y)</span> continuous random vector</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">X</span> and <span class="math inline">Y</span> discrete</td>
+<td><span class="math inline">X</span> and <span class="math inline">Y</span> continuous</td>
+</tr>
+<tr class="even">
+<td><strong>Joint pmf</strong></td>
+<td><strong>Joint pdf</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">f_{X,Y}(x,y) := P(X=x,Y=y)</span></td>
+<td><span class="math inline">P((X,Y) \in A) = \int_A f_X(x,y) \,dxdy</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_{X,Y} \geq 0</span></td>
+<td><span class="math inline">f_{X,Y} \geq 0</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\sum_{(x,y)\in \mathbb{R}^2} f_{X,Y}(x,y)=1</span></td>
+<td><span class="math inline">\int_{\mathbb{R}^2} f_{X,Y}(x,y) \, dxdy= 1</span></td>
+</tr>
+<tr class="even">
+<td><strong>Marginal pmfs</strong></td>
+<td><strong>Marginal pdfs</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">f_X (x) := P(X=x)</span></td>
+<td><span class="math inline">P(a \leq X \leq b) = \int_a^b f_X(x) \,dx</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_Y (y) := P(Y=y)</span></td>
+<td><span class="math inline">P(a \leq Y \leq b) = \int_a^b f_Y(y) \,dy</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">f_X (x)=\sum_{y \in \mathbb{R}} f_{X,Y}(x,y)</span></td>
+<td><span class="math inline">f_X(x) = \int_{\mathbb{R}} f_{X,Y}(x,y) \,dy</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">f_Y (y)=\sum_{x \in \mathbb{R}} f_{X,Y}(x,y)</span></td>
+<td><span class="math inline">f_Y(y) = \int_{\mathbb{R}} f_{X,Y}(x,y) \,dx</span></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="part-2-conditional-distributions" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Conditional distributions</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="conditional-distributions" class="slide level2 smaller">
+<h2>Conditional distributions</h2>
+<h3 id="discrete-random-variables">Discrete random variables</h3>
+<ul>
+<li><p>Suppose given a discrete random vector <span class="math inline">(X,Y)</span></p></li>
+<li><p>It might happen that the event <span class="math inline">\{X=x\}</span> depends on <span class="math inline">\{Y=y\}</span></p></li>
+<li><p>If <span class="math inline">P(Y=y)&gt;0</span> we can define the <strong>conditional probability</strong></p></li>
+</ul>
+<p><span class="math display">
+P(X=x|Y=y) := \frac{P(X=x,Y=y)}{P(Y=y)} = \frac{f_{X,Y}(x,y)}{f_Y(y)}
+</span></p>
+<p>where <span class="math inline">f_{X,Y}</span> is <strong>joint pmf</strong> and <span class="math inline">f_Y</span> the <strong>marginal pmf</strong> of <span class="math inline">Y</span></p>
+</section>
 <section id="examples-of-continuous-rv" class="slide level2 smaller">
 <h2>Examples of Continuous RV</h2>
-<div id="Theorem*-2.7" class="Theorem">
+<div id="Theorem*-3.1" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
 Z := \frac{X-\mu}{\sigma}
 </span><p></p>
 </div></details>
 </div>
 <p>Check</p>
-<div id="Proof*-2.8" class="Proof">
+<div id="Proof*-3.2" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
 </div></details>
 </div>
@@ -905,8 +1062,8 @@ E[e^{tX}e^{tY}] &amp; = E[e^{tX}]E[e^{tY}] \\
 </ul>
 </section></section>
 <section>
-<section id="part-2-unbiased-estimators" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Unbiased estimators</h1>
+<section id="part-3-unbiased-estimators" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Unbiased estimators</h1>
 <div class="footer">
 <div color="#cc0164">
 
