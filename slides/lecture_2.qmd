@@ -686,69 +686,73 @@ $$
 ## Conditional distribution - Example  {.smaller}
 
 
+
 - Continuous random vector $(X,Y)$ with **joint pdf**
 $$
-f_{X,Y}(x,y) := 
-\begin{cases}
-e^{-y} & \text{ if } 0 < x < y \\
-0      & \text{ otherwise}
-\end{cases}
+f_{X,Y}(x,y) := e^{-y}  \,\, \text{ if } \,\, 0 < x < y  \,, \quad 
+f_{X,Y}(x,y) :=0    \,\, \text{ otherwise}
 $$
 
 
-```{python}
-# Plotting a Torus with Plotly
 
-# Import "numpy" and the "graph_objects" module from Plotly
-import numpy as np
-import plotly.graph_objects as go
+```{r}
 
-# Generates coordinates u and v by dividing
-# the interval (0,2pi) in 100 parts
-u = np.linspace(0, 2*np.pi, 100)
-v = np.linspace(0, 2*np.pi, 100)
+library(plotly)
 
-# Generates grid [U,V] from the coordinates u, v
-U, V = np.meshgrid(u, v)
+# Define the function
+f <- function(x, y) {
+  if (0 < x && x < y) {
+    return(exp(-y))
+  } else {
+    return(0)
+  }
+}
 
-# Computes the torus on grid [U,V]
-# with radii r = 1 and R = 2
-R = 2
-r = 1
+# Generate data for the surface plot
+x_vals <- seq(0, 2, length.out = 200)
+y_vals <- seq(0, 2, length.out = 200)
 
-x = (R + r * np.cos(U)) * np.cos(V)
-y = (R + r * np.cos(U)) * np.sin(V)
-z = r * np.sin(U)
+z_matrix <- outer(x_vals, y_vals, Vectorize(function(x, y) f(x, y)))
 
-# Generate and empty figure object with Plotly
-# and saves it to the variable called "fig"
-fig = go.Figure()
+# Create a 3D surface plot using plot_ly
+plot_ly(
+  x = x_vals,
+  y = y_vals,
+  z = z_matrix,
+  type = "surface",
+  colors = "viridis",
+  showscale = FALSE
+) %>% 
+    layout(
+    scene = list(
+      xaxis = list(title = "x"),
+      yaxis = list(title = "y"),
+      zaxis = list(title = "f_XY"),
+      camera = list(
+        eye = list(x = 1.87, y = 0.88, z = 0.64)
+      )
+    ),
+    width = 800,
+    height = 600
+  )
 
-# Plot the torus with go.Surface and store it
-# in the variable "data". We also do now show the
-# plot scale, and set the color map to "teal"
-data = go.Surface(
-    x = x , y = y, z = z, 
-    showscale = False, 
-    colorscale='teal'
-    )
 
-# Add the plot stored in "data" to the figure "fig"
-# This is done with the command add_trace
-fig.add_trace(data)
-
-# Set the title of the figure in "fig"
-fig.update_layout(title_text="Plotting a Torus with Plotly")
-
-# Show the figure
-fig.show()
 ```
 
 
 
-## Conditional distribution  {.smaller}
-### Example
+::: footer
 
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+## Conditional distribution - Example  {.smaller}
 
 - We compute $f_X$, the **marginal pdf of $X$**:
   * If $x \leq 0$ then $f_{X,Y}(x,y)=0$. Therefore
@@ -765,29 +769,138 @@ fig.show()
 
 
 
-## Conditional distribution  {.smaller}
-### Example
 
 
-- The **marginal pdf of $X$** is then
+## Conditional distribution - Example  {.smaller}
+
+
+- The **marginal pdf of $X$** has then **exponential distribution**
 $$
 f_{X}(x) = 
 \begin{cases}
-e^{-x} \text{ if } x > 0 \\
-0 \text{ if } x \leq 0 \\
+e^{-x} & \text{ if } x > 0 \\
+0      & \text{ if } x \leq 0 
 \end{cases}
 $$
-  
 
 
-## Conditional distribution  {.smaller}
-### Example
+```{r}
+
+# Define the probability density function (PDF)
+f_X <- function(x) {
+  exp(-x)
+}
+
+# Generate x values for plotting
+x_values <- seq(0, 4, length.out = 100)
+
+# Calculate corresponding y values
+y_values <- f_X(x_values)
+
+# Plot the distribution using base R plot function
+plot(x_values, 
+    y_values, 
+    type = "l", 
+    col = "blue", 
+    lwd = 4,
+    xlab = "", 
+    ylab = "")
+
+mtext("x", side=1, line=3, cex=2)
+mtext("f_X", side=2, line=2.5, cex=2)
+
+
+# Add a grid for better visualization
+grid()
+
+```
 
 
 
 
-## Conditional distribution  {.smaller}
-### Example
+## Conditional distribution - Example  {.smaller}
+
+
+- We now compute $f(y|x)$, the **conditional pdf of $Y$ given $X=x$**:
+    * Note that $f_X(x)>0$ for all $x>0$
+    * Hence assume fixed some $x>0$
+    * If $y>x$ we have $f_{X,Y}(x,y)=e^{-y}$. Hence
+    $$
+    f(y|x) := \frac{f_{X,Y}(x,y)}{f_X(x)} = \frac{e^{-y}}{e^{-x}} = e^{-(y-x)}
+    $$
+    * If $y \leq x$ we have $f_{X,Y}(x,y)=0$. Hence
+    $$
+    f(y|x) := \frac{f_{X,Y}(x,y)}{f_X(x)} = \frac{0}{e^{-x}} = 0
+    $$
+
+
+
+## Conditional distribution - Example  {.smaller}
+
+
+- The **conditional distribution** of $Y$ given $X=x$ is therefore **exponential**
+$$
+f(y|x) = 
+\begin{cases}
+e^{-(y-x)} & \text{ if } y > x \\
+0      & \text{ if } y \leq x 
+\end{cases}
+$$
+
+- The **conditional expectation** of $Y$ given $X=x$ is
+\begin{align*}
+\Expect[Y|x] & = \int_{-\infty}^\infty y f(y|x) \, dy 
+               = \int_{x}^\infty y e^{-(y-x)} \, dy \\
+             & = -(y+1) e^{-(y-x)} \bigg|_{x}^\infty =  x + 1  
+\end{align*}
+where we integrated by parts
+
+
+
+
+
+## Conditional distribution - Example  {.smaller}
+
+
+- Therefore **conditional expectation** of $Y$ given $X=x$ is
+$$
+\Expect[Y|x] = x + 1  
+$$
+
+- This can also be interpreted as the random variable
+$$
+\Expect[Y|X] = X + 1  
+$$
+
+
+
+
+
+## Conditional distribution - Example  {.smaller}
+
+
+- The **conditional second moment** of $Y$ given $X=x$ is
+\begin{align*}
+\Expect[Y^2|x] & = \int_{-\infty}^\infty y^2 f(y|x) \, dy 
+               = \int_{x}^\infty y^2 e^{-(y-x)} \, dy \\
+             & = (y^2+2y+2) e^{-(y-x)} \bigg|_{x}^\infty = x^2 + 2x + 2 
+\end{align*}
+where we integrated by parts
+
+- The **conditional variance** of $Y$ given $X=x$ is
+$$
+\Var[Y|x] = \Expect[Y^2|x] - \Expect[Y|x]^2 = x^2 + 2x + 2 - (x+1)^2 = 1
+$$
+
+- This can also be interpreted as the random variable
+$$
+\Var[Y|X] = 1
+$$
+
+
+
+
+
 
 
 ## Examples of Continuous RV {.smaller}

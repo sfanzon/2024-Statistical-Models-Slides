@@ -1869,8 +1869,6 @@ mtext("f_X", side=2, line=2.5, cex=2)
 # Add a grid for better visualization
 grid()
 
-
-
 ```
 
 
