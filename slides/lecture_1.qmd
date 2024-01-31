@@ -2191,7 +2191,7 @@ In particular the expected value of a constant is the constant itself:
 & = a \Expect[X] + b
 \end{align*}
 
-- If $X$ is discrete just replace series with integrals in the above argument
+- If $X$ is discrete just replace integrals with series in the above argument
 
 
 
