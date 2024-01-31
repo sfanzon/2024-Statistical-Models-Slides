@@ -73,6 +73,7 @@ $
 
 
 ## Random vectors {.smaller}
+### Definition
 
 **Recall**: a random variable is a **measurable** function
 $$
@@ -109,6 +110,7 @@ with $X,Y \colon \Omega \to \R$ random variables
 
 
 ## Discrete random vectors {.smaller}
+### Main definitions
 
 ::: Definition
 
@@ -205,6 +207,7 @@ $$
 
 
 ## Example - Discrete random vector {.smaller}
+### Setting
 
 - Consider experiment of tossing two dice. Then sample space is
 $$
@@ -683,7 +686,7 @@ $$
 
 
 
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 
 
@@ -752,7 +755,7 @@ plot_ly(
 
 
 
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 - We compute $f_X$, the **marginal pdf of $X$**:
   * If $x \leq 0$ then $f_{X,Y}(x,y)=0$. Therefore
@@ -770,8 +773,7 @@ plot_ly(
 
 
 
-
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 
 - The **marginal pdf of $X$** has then **exponential distribution**
@@ -818,7 +820,7 @@ grid()
 
 
 
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 
 - We now compute $f(y|x)$, the **conditional pdf of $Y$ given $X=x$**:
@@ -835,7 +837,9 @@ grid()
 
 
 
-## Conditional distribution - Example  {.smaller}
+
+
+## Example - Conditional distribution  {.smaller}
 
 
 - The **conditional distribution** of $Y$ given $X=x$ is therefore **exponential**
@@ -859,7 +863,7 @@ where we integrated by parts
 
 
 
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 
 - Therefore **conditional expectation** of $Y$ given $X=x$ is
@@ -876,7 +880,7 @@ $$
 
 
 
-## Conditional distribution - Example  {.smaller}
+## Example - Conditional distribution  {.smaller}
 
 
 - The **conditional second moment** of $Y$ given $X=x$ is
@@ -899,6 +903,54 @@ $$
 
 
 
+
+## Independence of random variables  {.smaller}
+### Intuition
+
+- In previous example: the conditional distribution of $Y$ given $X=x$ was
+$$
+f(y|x) = 
+\begin{cases}
+e^{-(y-x)} & \text{ if } y > x \\
+0      & \text{ if } y \leq x 
+\end{cases}
+$$
+
+- In particular $f(y|x)$ depends on $x$
+
+- This means that knowledge of $X$ gives information on $Y$
+
+- When $X$ does not give any information on $Y$ we say that 
+$X$ and $Y$ are **independent**
+
+
+
+
+
+## Independence of random variables {.smaller}
+### Formal definition
+
+::: Definition
+
+$(X,Y)$ random vector with joint pdf or pmf $f_{X,Y}$ and marginal pdfs or pmfs $f_X,f_Y$. We say that $X$ and $Y$ are **independent** random variables if
+$$
+f_{X,Y}(x,y)  =  f_X(x)f_Y(y) \,, \quad \forall \, (x,y) \in \R^2 
+$$
+
+:::
+
+
+
+
+## Independence of random variables {.smaller}
+### Conditional distributions and probabilities
+
+
+If $X$ and $Y$ are **independent** then $X$ gives no information on $Y$ (and vice-versa):
+
+- Conditional distribution:
+
+- Conditional probabilities:
 
 
 

@@ -661,8 +661,8 @@ knitr::kable(
 data1 <- read.table("datasets/L3eg1data.txt")
 realgoldprice<-data1[,1]
 realstockprice<-data1[,2]
-plot(realstockprice, 
-  realgoldprice, 
+plot(realgoldprice,
+  realstockprice, 
   xlab="", 
   ylab="")
 

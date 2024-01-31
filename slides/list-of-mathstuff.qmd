@@ -31,6 +31,8 @@
 
  [**Definition**](#Definition*-3.4)\Pageref{Definition*-3.4}
 
- [**Theorem**](#Theorem*-3.5)\Pageref{Theorem*-3.5}
+ [**Definition**](#Definition*-3.5)\Pageref{Definition*-3.5}
 
- [**Proof**](#Proof*-3.6)\Pageref{Proof*-3.6}
+ [**Theorem**](#Theorem*-3.6)\Pageref{Theorem*-3.6}
+
+ [**Proof**](#Proof*-3.7)\Pageref{Proof*-3.7}
