@@ -361,15 +361,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Lemma {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -377,33 +373,13 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Problem {
     --color1: #f4cce0;
@@ -413,21 +389,45 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Conjecture {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -2320,13 +2320,43 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 <section id="expected-value-2" class="slide level2 smaller">
 <h2>Expected Value</h2>
 <h3 id="properties-3">Properties</h3>
-<p><span class="math inline">X,Y</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. The expected value is:</p>
+<div id="Theorem*-5.2" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div><span class="math inline">X</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. The expected value is <strong>linear</strong> <span class="math display">\begin{equation} \tag{1}
+{\rm I\kern-.3em E}[aX + b] = a{\rm I\kern-.3em E}[X] + b
+\end{equation}</span> In particular the expected value of a constant is the constant itself: <span class="math display">\begin{equation} \tag{2}
+{\rm I\kern-.3em E}[b] = b
+\end{equation}</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="expected-value-3" class="slide level2 smaller">
+<h2>Expected Value</h2>
+<h3 id="proof-of-theorem">Proof of Theorem</h3>
 <ul>
-<li><p><strong>Linear</strong>: <span class="math inline">{\rm I\kern-.3em E}[aX + b] = a{\rm I\kern-.3em E}[X] + b</span></p></li>
+<li><p>Note that (2) follows from (1) by setting <span class="math inline">a=0</span></p></li>
+<li><p>We now show (1). Suppose <span class="math inline">X</span> is continuous and set <span class="math inline">g(x):=ax+b</span>. Then <span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[aX + b] &amp; = {\rm I\kern-.3em E}[g(X)] = \int_{\mathbb{R}} g(x) f_X(x) \, dx \\
+&amp; = \int_{\mathbb{R}} (ax + b) f_X(x) \, dx  \\
+&amp; = a\int_{\mathbb{R}} x f_X(x) \, dx  + b\int_{\mathbb{R}} f_X(x) \, dx  \\
+&amp; = a {\rm I\kern-.3em E}[X] + b
+\end{align*}</span></p></li>
+<li><p>If <span class="math inline">X</span> is discrete just replace series with integrals in the above argument</p></li>
+</ul>
+</section>
+<section id="expected-value-4" class="slide level2 smaller">
+<h2>Expected Value</h2>
+<h3 id="further-properties">Further Properties</h3>
+<p>Below are further properties of <span class="math inline">{\rm I\kern-.3em E}</span>, which we do not prove</p>
+<div id="Theorem*-5.3" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>
+<p>Suppose <span class="math inline">X</span> and <span class="math inline">Y</span> are rv. The expected value is:</p>
+<ul>
 <li><p><strong>Monotone</strong>: <span class="math inline">X \leq Y  \quad \implies \quad {\rm I\kern-.3em E}[X] \leq  {\rm I\kern-.3em E}[Y]</span></p></li>
 <li><p><strong>Non-degenerate</strong>: <span class="math inline">{\rm I\kern-.3em E}[|X|] = 0 \quad \implies \quad X = 0</span></p></li>
 <li><p><span class="math inline">X=Y \quad \implies \quad {\rm I\kern-.3em E}[X]={\rm I\kern-.3em E}[Y]</span></p></li>
 </ul>
+</div></details>
+</div>
 </section>
 <section id="variance" class="slide level2 smaller">
 <h2>Variance</h2>
@@ -2347,7 +2377,7 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 <section id="variance-2" class="slide level2 smaller">
 <h2>Variance</h2>
 <h3 id="equivalent-formula">Equivalent formula</h3>
-<div id="Proposition*-5.3" class="Proposition">
+<div id="Proposition*-5.5" class="Proposition">
 <p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math display">
 {\rm Var}[X] =  {\rm I\kern-.3em E}[X^2] - {\rm I\kern-.3em E}[X]^2
 </span><p></p>
@@ -2364,7 +2394,7 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 <section id="variance-3" class="slide level2 smaller">
 <h2>Variance</h2>
 <h3 id="variance-is-quadratic">Variance is quadratic</h3>
-<div id="Proposition*-5.4" class="Proposition">
+<div id="Proposition*-5.6" class="Proposition">
 <p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div><span class="math inline">X</span> rv and <span class="math inline">a,b \in \mathbb{R}</span>. Then <span class="math display">
 {\rm Var}[a X + b] = a^2 {\rm Var}[X]
 </span><p></p>
@@ -2447,7 +2477,7 @@ f_X(x) =
 <img data-src="lecture_1_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="example---gamma-distribution-4" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-3">Expected value</h3>
+<h3 id="expected-value-5">Expected value</h3>
 <p>Let <span class="math inline">X \sim \Gamma(\alpha,\beta)</span>. We have: <span class="math display">\begin{align*}
 {\rm I\kern-.3em E}[X] &amp; = \int_{-\infty}^\infty x f_X(x) \, dx  \\
             &amp; = \int_0^\infty  x \, \frac{x^{\alpha-1} e^{-\beta{x}} \beta^{\alpha}}{\Gamma(\alpha)} \, dx \\
@@ -2457,7 +2487,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-5" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-4">Expected value</h3>
+<h3 id="expected-value-6">Expected value</h3>
 <p>Recall previous calculation: <span class="math display">
 {\rm I\kern-.3em E}[X] = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
             \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx
@@ -2470,7 +2500,7 @@ f_X(x) =
 </section>
 <section id="example---gamma-distribution-6" class="slide level2 smaller">
 <h2>Example - Gamma distribution</h2>
-<h3 id="expected-value-5">Expected value</h3>
+<h3 id="expected-value-7">Expected value</h3>
 <p>Therefore <span class="math display">\begin{align*}
 {\rm I\kern-.3em E}[X] &amp; = \frac{ \beta^{\alpha} }{ \Gamma(\alpha) }
             \int_0^\infty  x^{\alpha} e^{-\beta{x}}  \, dx \\
@@ -2551,7 +2581,7 @@ f_X(x) =
 </section>
 <section id="moment-generating-function-1" class="slide level2 smaller">
 <h2>Moment generating function</h2>
-<div id="Definition*-5.5" class="Definition">
+<div id="Definition*-5.7" class="Definition">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>moment generating function</strong> or <strong>MGF</strong> of a rv <span class="math inline">X</span> is <span class="math display">
 M_X(t) := {\rm I\kern-.3em E}[e^{tX}] \,, \quad \forall \, t \in \mathbb{R}
 </span><p></p>
@@ -2575,8 +2605,8 @@ M_X(t) = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
 </section>
 <section id="moment-generating-function-2" class="slide level2 smaller">
 <h2>Moment generating function</h2>
-<h3 id="main-theorem">Main Theorem</h3>
-<div id="Theorem*-5.6" class="Theorem">
+<h3 id="computing-moments">Computing moments</h3>
+<div id="Theorem*-5.8" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X</span> has MGF <span class="math inline">M_X</span> then <span class="math display">
 {\rm I\kern-.3em E}[X^n] = M_X^{(n)} (0)
 </span> where we denote <span class="math display">
@@ -2588,7 +2618,7 @@ M_X^{(n)} (0) :=  \frac{d^n}{dt^n} M_X^{(n)}(t) \bigg|_{t=0}
 </section>
 <section id="moment-generating-function-3" class="slide level2 smaller">
 <h2>Moment generating function</h2>
-<h3 id="proof-of-theorem">Proof of Theorem</h3>
+<h3 id="proof-of-theorem-1">Proof of Theorem</h3>
 <p>Suppose <span class="math inline">X</span> continuous and that we can exchange derivative and integral: <span class="math display">\begin{align*}
 \frac{d}{dt} M_X(t) &amp; = \frac{d}{dt} \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
                       = \int_{-\infty}^\infty \left( \frac{d}{dt} e^{tx} \right) f_X(x) \, dx \\
@@ -2600,7 +2630,7 @@ M_X^{(n)} (0) :=  \frac{d^n}{dt^n} M_X^{(n)}(t) \bigg|_{t=0}
 </section>
 <section id="moment-generating-function-4" class="slide level2 smaller">
 <h2>Moment generating function</h2>
-<h3 id="proof-of-theorem-1">Proof of Theorem</h3>
+<h3 id="proof-of-theorem-2">Proof of Theorem</h3>
 <p>Proceeding by induction we obtain: <span class="math display">
 \frac{d^n}{dt^n} M_X(t) = {\rm I\kern-.3em E}(X^n e^{tX})
 </span> Evaluating at <span class="math inline">t = 0</span> yields the thesis: <span class="math display">
@@ -2815,15 +2845,30 @@ M_X''(t) = \alpha(\alpha+1)\beta^{\alpha}(\beta-t)^{-\alpha-2}
         &amp; = \frac{\alpha(\alpha + 1)}{\beta^2} - \frac{\alpha^2}{\beta^2} \\
         &amp; = \frac{\alpha}{\beta^2}
 \end{align*}</span></p>
-</section></section>
-<section>
-<section id="thank-you" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Thank you!</h1>
-<div class="footer">
-<div color="#cc0164">
-
+</section>
+<section id="moment-generating-function-13" class="slide level2 smaller">
+<h2>Moment generating function</h2>
+<h3 id="the-mgf-characterizes-a-distribution">The mgf characterizes a distribution</h3>
+<div id="Theorem*-5.9" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Let <span class="math inline">X</span> and <span class="math inline">Y</span> be random variables with mgfs <span class="math inline">M_X</span> and <span class="math inline">M_Y</span> respectively. Assume there exists <span class="math inline">\varepsilon&gt;0</span> such that <span class="math display">
+M_X(t) = M_Y(t) \,, \quad \forall \, t \in (-\varepsilon, \varepsilon)
+</span> Then <span class="math inline">X</span> and <span class="math inline">Y</span> have the same cdf <span class="math display">
+F_X(u) = F_Y(u) \,, \quad \forall \, x \in \mathbb{R}
+</span><p></p>
+</div></details>
 </div>
-</div>
+<p>In other words: <span class="math inline">\qquad</span> <strong>same mgf</strong> <span class="math inline">\quad \implies \quad</span> <strong>same distribution</strong></p>
+</section>
+<section id="example-2" class="slide level2 smaller">
+<h2>Example</h2>
+<ul>
+<li><p>Suppose <span class="math inline">X</span> is a random variable such that <span class="math display">
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+</span> As the above is the mgf of a normal distribution, by the previous Theorem we infer <span class="math inline">X \sim N(\mu,\sigma^2)</span></p></li>
+<li><p>Suppose <span class="math inline">Y</span> is a random variable such that <span class="math display">
+M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+</span> As the above is the mgf of a Gamma distribution, by the previous Theorem we infer <span class="math inline">Y \sim \Gamma(\alpha,\beta)</span></p></li>
+</ul>
 </section>
 <section id="references-3" class="slide level2 smaller scrollable">
 <h2>References</h2>

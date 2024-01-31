@@ -2161,16 +2161,61 @@ $$
 ## Expected Value  {.smaller}
 ### Properties
 
-$X,Y$ rv and $a,b \in \mathbb{R}$. The expected value is:
+::: Theorem
 
-- **Linear**: $\Expect [aX + b] = a\Expect [X] + b$
+$X$ rv and $a,b \in \mathbb{R}$. The expected value is **linear**
+\begin{equation} \tag{1}
+\Expect [aX + b] = a\Expect [X] + b
+\end{equation}
+In particular the expected value of a constant is the constant itself:
+\begin{equation} \tag{2}
+\Expect [b] = b
+\end{equation}
+:::
 
+
+
+
+
+## Expected Value  {.smaller}
+### Proof of Theorem
+
+
+- Note that (2) follows from (1) by setting $a=0$
+
+- We now show (1). Suppose $X$ is continuous and set $g(x):=ax+b$. Then 
+\begin{align*}
+\Expect [aX + b] & = \Expect [g(X)] = \int_{\R} g(x) f_X(x) \, dx \\
+& = \int_{\R} (ax + b) f_X(x) \, dx  \\
+& = a\int_{\R} x f_X(x) \, dx  + b\int_{\R} f_X(x) \, dx  \\
+& = a \Expect[X] + b
+\end{align*}
+
+- If $X$ is discrete just replace series with integrals in the above argument
+
+
+
+
+
+
+
+## Expected Value  {.smaller}
+### Further Properties
+
+Below are further properties of $\Expect$, which we do not prove
+
+::: Theorem
+
+Suppose $X$ and $Y$ are rv. The expected value is:
 
 - **Monotone**: $X \leq Y  \quad \implies \quad \Expect [X] \leq  \Expect [Y]$
 
 - **Non-degenerate**: $\Expect[|X|] = 0 \quad \implies \quad X = 0$
 
 - $X=Y \quad \implies \quad \Expect[X]=\Expect[Y]$ 
+
+:::
+
 
 
 
@@ -2576,7 +2621,7 @@ $$
 
 
 ## Moment generating function {.smaller}
-### Main Theorem
+### Computing moments
 
 
 ::: Theorem
@@ -2979,17 +3024,46 @@ we can compute the variance
 
 
 
+## Moment generating function {.smaller}
+### The mgf characterizes a distribution
 
 
+::: Theorem
 
-# Thank you! {background-color="#cc0164" visibility="uncounted"}
-
-
-::: footer
-
-<div color="#cc0164"> </div>
+Let $X$ and $Y$ be random variables with mgfs $M_X$ and $M_Y$ respectively. Assume there exists $\e>0$ such that
+$$
+M_X(t) = M_Y(t) \,, \quad \forall \, t \in (-\e , \e)
+$$
+Then $X$ and $Y$ have the same cdf
+$$
+F_X(u) = F_Y(u) \,, \quad \forall \, x \in \R
+$$
 
 :::
+
+In other words: $\qquad$ **same mgf** $\quad \implies \quad$ **same distribution**
+
+
+
+
+## Example  {.smaller}
+
+- Suppose $X$ is a random variable such that
+$$
+M_X(t) = \exp \left( \mu t + \frac{t^2 \sigma^2}{2}  \right)
+$$
+As the above is the mgf of a normal distribution, by the previous Theorem we infer $X \sim N(\mu,\sigma^2)$
+
+- Suppose $Y$ is a random variable such that
+$$
+M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
+$$
+As the above is the mgf of a Gamma distribution, by the previous Theorem we infer $Y \sim \Gamma(\alpha,\beta)$
+
+
+
+
+
 
 
 
@@ -3004,6 +3078,21 @@ we can compute the variance
 
 
 ::: {.content-hidden}
+
+
+
+
+# Thank you! {background-color="#cc0164" visibility="uncounted"}
+
+
+::: footer
+
+<div color="#cc0164"> </div>
+
+:::
+
+
+
 
 
 ## Real data example
