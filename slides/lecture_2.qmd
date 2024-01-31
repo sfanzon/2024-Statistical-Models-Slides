@@ -948,9 +948,59 @@ $$
 
 If $X$ and $Y$ are **independent** then $X$ gives no information on $Y$ (and vice-versa):
 
-- Conditional distribution:
+- Conditional distribution: 
+$$
+f(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)} = \frac{f_X(x)f_Y(y)}{f_X(x)} = f_Y(y)
+$$
 
-- Conditional probabilities:
+- Conditional probabilities: From the above we also obtain
+\begin{align*}
+P(Y \in A | x) & = \sum_{y \in A} f(y|x) = \sum_{y \in A} f_Y(y) = P(Y \in A)  & \, \text{ discrete rv} \\
+P(Y \in A | x) & = \int_{y \in A} f(y|x) \, dy = \int_{y \in A} f_Y(y) \, dy = P(Y \in A)  &  \, \text{ continuous rv}
+\end{align*}
+
+
+
+
+
+## Independence of random variables {.smaller}
+### Characterization of independence - Densities
+
+::: Theorem
+
+$(X,Y)$ random vector with joint pdf or pmf $f_{X,Y}$. They are equivalent:
+
+- $X$ and $Y$ are independent random variables
+- There exist functions $g(x)$ and $h(y)$ such that
+$$
+f_{X,Y}(x,y) = g(x)h(y) \,, \quad \forall \, (x,y) \in \R^2
+$$
+
+::: 
+
+
+
+
+
+## Independence of random variables {.smaller}
+### Consequences of independence
+
+::: Theorem
+
+Suppose $X$ and $Y$ are independent random variables. Then
+
+- For any $A,B \subset \R$ we have
+$$
+P(X \in A, Y \in B) = P(X \in A) P(Y \in B)
+$$
+
+- Suppose $g(x)$ is a function of (only) $x$,
+$h(y)$ is a function of (only) $y$. Then
+$$
+\Expect[g(X)h(Y)] = \Expect[g(X)]\Expect[h(Y)]  
+$$
+
+::: 
 
 
 

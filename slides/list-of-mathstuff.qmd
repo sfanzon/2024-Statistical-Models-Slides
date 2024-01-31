@@ -35,4 +35,8 @@
 
  [**Theorem**](#Theorem*-3.6)\Pageref{Theorem*-3.6}
 
- [**Proof**](#Proof*-3.7)\Pageref{Proof*-3.7}
+ [**Theorem**](#Theorem*-3.7)\Pageref{Theorem*-3.7}
+
+ [**Theorem**](#Theorem*-3.8)\Pageref{Theorem*-3.8}
+
+ [**Proof**](#Proof*-3.9)\Pageref{Proof*-3.9}
