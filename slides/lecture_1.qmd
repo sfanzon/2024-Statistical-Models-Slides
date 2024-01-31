@@ -2163,14 +2163,15 @@ $$
 
 ::: Theorem
 
-$X$ rv and $a,b \in \mathbb{R}$. The expected value is **linear**
+$X$ rv, $g,h \colon \R \to \R$ functions and $a,b,c \in \mathbb{R}$. The expected value is **linear**
 \begin{equation} \tag{1}
-\Expect [aX + b] = a\Expect [X] + b
+\Expect [a g(X) + b h(X) + c] = a\Expect [g(X)] + b \Expect [h(X)] + c
 \end{equation}
-In particular the expected value of a constant is the constant itself:
-\begin{equation} \tag{2}
-\Expect [b] = b
-\end{equation}
+In particular
+\begin{align} \tag{2}
+\Expect[aX] & = a \Expect[X] \\
+\Expect [c] & = c \tag{3}
+\end{align}
 :::
 
 
@@ -2180,15 +2181,16 @@ In particular the expected value of a constant is the constant itself:
 ## Expected Value  {.smaller}
 ### Proof of Theorem
 
+- Equation (2) follows from (1) by setting $g(x)=x$ and $b=c=0$
 
-- Note that (2) follows from (1) by setting $a=0$
+- Equation (3) follows from (1) by setting $a=b=0$
 
-- We now show (1). Suppose $X$ is continuous and set $g(x):=ax+b$. Then 
+- To show (1), suppose $X$ is continuous and set $p(x):=ag(x)+bh(x)+c$
 \begin{align*}
-\Expect [aX + b] & = \Expect [g(X)] = \int_{\R} g(x) f_X(x) \, dx \\
-& = \int_{\R} (ax + b) f_X(x) \, dx  \\
-& = a\int_{\R} x f_X(x) \, dx  + b\int_{\R} f_X(x) \, dx  \\
-& = a \Expect[X] + b
+\Expect [ag(X) + & b h(X) + c]  = \Expect [p(X)] = \int_{\R} p(x) f_X(x) \, dx \\
+& = \int_{\R} (ag(x) + bh(x) + c) f_X(x) \, dx  \\
+& = a\int_{\R} g(x) f_X(x) \, dx  + b\int_{\R} h(x) f_X(x) \, dx +  c\int_{\R} f_X(x) \, dx  \\
+& = a \Expect[g(X)] + b \Expect[h(X)] + c
 \end{align*}
 
 - If $X$ is discrete just replace integrals with series in the above argument

@@ -41,11 +41,12 @@ $
 ## Outline of Lecture 2
 
 1. Multiple random variables
-1. Bivariate random vectors
-2. Conditional distributions
-3. Covariance and correlation
-4. Multivariate random vectors
-5. Unbiased estimators
+2. Bivariate random vectors
+3. Conditional distributions
+4. Independence
+5. Covariance and correlation
+6. Multivariate random vectors
+7. Unbiased estimators
 
 
 
@@ -541,6 +542,32 @@ In the above setting:
 
 
 
+## Linearity of Expected Value {.smaller}
+
+
+::: Theorem
+
+$(X,Y)$ random vector, $g,h \colon \R^2 \to \R$ functions and $a,b,c \in \R$. The expectation is linear:
+\begin{equation} \tag{1}
+\Expect( a g (X,Y) + b h(X,Y)+ c ) = a \Expect[g(X,Y)] + b \Expect[h(X,Y)] + c
+\end{equation}
+In particular
+\begin{equation} \tag{2}
+\Expect[a X + b Y] = a\Expect[X] + b\Expect[Y]
+\end{equation}
+
+:::
+
+
+- Proof of (1) follows by definition (see also argument in Slide 89 in Lecture 1)
+- Equation (2) follows from (1) by setting 
+$$ 
+c=0 \,, \quad  g(x,y)=x \,, \qquad h(x,y)=y
+$$
+
+
+
+
 
 
 # Part 3: <br>Conditional distributions {background-color="#cc0164" visibility="uncounted"}
@@ -604,7 +631,9 @@ $$
 
 - Similar reasoning yields that also $f(x|y)$ is a **pmf**
 
-
+- **Notation**: We will often write
+    * $X|Y$ to denote the distribution $f(x|y)$
+    * $Y|X$ to denote the distribution $f(y|x)$
 
 
 
@@ -925,6 +954,58 @@ $$
 
 
 
+## Conditional Expectation {.smaller}
+### A useful formula
+
+::: Theorem
+
+$(X,Y)$ random vector. Then
+$$
+\Expect[X] = \Expect[ \Expect[X|Y] ]
+$$
+
+:::
+
+**Note**: Above formula contains abuse of notation
+
+- The first expectation is with respect to the marginal of $X$
+- The second expectation is with respect to the marginal of $Y$
+- The third expectation is with respect to the conditional distribution $X|Y$
+
+
+
+## Conditional Expectation {.smaller}
+### Proof of Theorem
+
+
+
+
+
+
+## Conditional Expectation {.smaller}
+### Example
+
+
+
+
+
+
+
+
+# Part 4: <br>Independence {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+
 ## Independence of random variables  {.smaller}
 ### Intuition
 
@@ -1214,7 +1295,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 4: <br>Covariance and correlation {background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>Covariance and correlation {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1230,7 +1311,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 5: <br>Multivariate random vectors {background-color="#cc0164" visibility="uncounted"}
+# Part 6: <br>Multivariate random vectors {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1244,7 +1325,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 6: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+# Part 7: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
