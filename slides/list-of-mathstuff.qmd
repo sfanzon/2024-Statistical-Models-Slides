@@ -43,6 +43,14 @@
 
  [**Theorem**](#Theorem*-4.4)\Pageref{Theorem*-4.4}
 
- [**Theorem**](#Theorem*-4.5)\Pageref{Theorem*-4.5}
+ [**Question**](#Question*-5.1)\Pageref{Question*-5.1}
 
- [**Proof**](#Proof*-4.6)\Pageref{Proof*-4.6}
+ [**Definition**](#Definition*-5.2)\Pageref{Definition*-5.2}
+
+ [**Theorem**](#Theorem*-5.3)\Pageref{Theorem*-5.3}
+
+ [**Definition**](#Definition*-5.4)\Pageref{Definition*-5.4}
+
+ [**Theorem**](#Theorem*-7.1)\Pageref{Theorem*-7.1}
+
+ [**Proof**](#Proof*-7.2)\Pageref{Proof*-7.2}
