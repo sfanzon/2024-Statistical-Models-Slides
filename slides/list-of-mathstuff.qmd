@@ -1,5 +1,29 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
+ [**Definition**](#Definition*-1.1)\Pageref{Definition*-1.1}
+
  [**Definition**](#Definition*-2.1)\Pageref{Definition*-2.1}
+
+ [**Definition**](#Definition*-2.2)\Pageref{Definition*-2.2}
+
+ [**Definition**](#Definition*-2.3)\Pageref{Definition*-2.3}
+
+ [**Definition**](#Definition*-2.4)\Pageref{Definition*-2.4}
+
+ [**Theorem**](#Theorem*-2.5)\Pageref{Theorem*-2.5}
+
+ [**Definition**](#Definition*-2.6)\Pageref{Definition*-2.6}
+
+ [**Definition**](#Definition*-2.7)\Pageref{Definition*-2.7}
+
+ [**Definition**](#Definition*-2.8)\Pageref{Definition*-2.8}
+
+ [**Definition**](#Definition*-2.9)\Pageref{Definition*-2.9}
+
+ [**Theorem**](#Theorem*-2.10)\Pageref{Theorem*-2.10}
+
+ [**Theorem**](#Theorem*-2.11)\Pageref{Theorem*-2.11}
+
+ [**Theorem**](#Theorem*-2.12)\Pageref{Theorem*-2.12}
 
  [**Definition**](#Definition*-3.1)\Pageref{Definition*-3.1}
 
@@ -11,38 +35,14 @@
 
  [**Theorem**](#Theorem*-3.5)\Pageref{Theorem*-3.5}
 
- [**Definition**](#Definition*-3.6)\Pageref{Definition*-3.6}
-
- [**Definition**](#Definition*-3.7)\Pageref{Definition*-3.7}
-
- [**Definition**](#Definition*-3.8)\Pageref{Definition*-3.8}
-
- [**Definition**](#Definition*-3.9)\Pageref{Definition*-3.9}
-
- [**Theorem**](#Theorem*-3.10)\Pageref{Theorem*-3.10}
-
- [**Theorem**](#Theorem*-3.11)\Pageref{Theorem*-3.11}
-
- [**Theorem**](#Theorem*-3.12)\Pageref{Theorem*-3.12}
-
  [**Definition**](#Definition*-4.1)\Pageref{Definition*-4.1}
 
- [**Definition**](#Definition*-4.2)\Pageref{Definition*-4.2}
+ [**Theorem**](#Theorem*-4.2)\Pageref{Theorem*-4.2}
 
- [**Definition**](#Definition*-4.3)\Pageref{Definition*-4.3}
+ [**Theorem**](#Theorem*-4.3)\Pageref{Theorem*-4.3}
 
- [**Definition**](#Definition*-4.4)\Pageref{Definition*-4.4}
+ [**Theorem**](#Theorem*-4.4)\Pageref{Theorem*-4.4}
 
  [**Theorem**](#Theorem*-4.5)\Pageref{Theorem*-4.5}
 
- [**Definition**](#Definition*-5.1)\Pageref{Definition*-5.1}
-
- [**Theorem**](#Theorem*-5.2)\Pageref{Theorem*-5.2}
-
- [**Theorem**](#Theorem*-5.3)\Pageref{Theorem*-5.3}
-
- [**Theorem**](#Theorem*-5.4)\Pageref{Theorem*-5.4}
-
- [**Theorem**](#Theorem*-5.5)\Pageref{Theorem*-5.5}
-
- [**Proof**](#Proof*-5.6)\Pageref{Proof*-5.6}
+ [**Proof**](#Proof*-4.6)\Pageref{Proof*-4.6}

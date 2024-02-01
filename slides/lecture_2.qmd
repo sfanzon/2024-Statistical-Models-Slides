@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 2: <br>Normal distribution family and<br> Hypothesis Tests{background-color="#cc0164" visibility="uncounted"}
+# Lecture 2: <br>Multivariate distributions<br>{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,31 +40,23 @@ $
 
 ## Outline of Lecture 2
 
-1. Multiple random variables
-2. Bivariate random vectors
-3. Conditional distributions
-4. Independence
-5. Covariance and correlation
-6. Multivariate random vectors
-7. Unbiased estimators
+1. Bivariate random vectors
+2. Conditional distributions
+3. Independence
+4. Covariance and correlation
+5. Multivariate random vectors
+6. Unbiased estimators
 
 
 
 
 
 
-# Part 1: <br>Multiple random variables {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
 
 
 
 
-## Univariate vs Multivariate {.smaller}
+## Univariate vs Bivariate vs Multivariate {.smaller}
 
 - Probability models seen so far only involve 1 random variable
     * These are called **univariate models**
@@ -119,7 +111,7 @@ with $X,Y \colon \Omega \to \R$ random variables
 
 
 
-# Part 2: <br>Bivariate random vectors {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>Bivariate random vectors {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -559,7 +551,7 @@ In particular
 :::
 
 
-- Proof of (1) follows by definition (see also argument in Slide 89 in Lecture 1)
+- Proof of (1) follows by definition (see also argument in Slide 90 in Lecture 1)
 - Equation (2) follows from (1) by setting 
 $$ 
 c=0 \,, \quad  g(x,y)=x \,, \qquad h(x,y)=y
@@ -570,7 +562,7 @@ $$
 
 
 
-# Part 3: <br>Conditional distributions {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>Conditional distributions {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -627,7 +619,7 @@ $$
   - $f(y|x) \geq 0$
   - $\sum_{y} f(y|x) = \dfrac{\sum_{y} f_{X,Y}(x,y)}{f_X(x)} = \dfrac{f_X(x)}{f_X(x)} = 1$
   - Hence there exists a discrete rv $Z$ whose pmf is $f(y|x)$
-  - This is true by the Theorem in Slide 78 in Lecture 1
+  - This is true by the Theorem in Slide 80 in Lecture 1
 
 - Similar reasoning yields that also $f(x|y)$ is a **pmf**
 
@@ -683,7 +675,7 @@ $$
   - $f(y|x) \geq 0$
   - $\int_{y \in \R} f(y|x) \, dy = \dfrac{\int_{y \in \R} f_{X,Y}(x,y) \, dy}{f_X(x)} = \dfrac{f_X(x)}{f_X(x)} = 1$
   - Hence there exists a continuous rv $Z$ whose pdf is $f(y|x)$
-  - This is true by the Theorem in Slide 78 in Lecture 1
+  - This is true by the Theorem in Slide 80 in Lecture 1
 
 - Similar reasoning yields that also $f(x|y)$ is a **pdf**
 
@@ -705,11 +697,7 @@ $(X,Y)$ random vector and $g \colon \R \to \R$ function. The **conditional expec
 :::
 
 - $\Expect [g(Y) | x]$ is a real number for all $x \in \R$
-- $\Expect [g(Y) | X]$ denotes the Random Variable $\Expect [g(Y) | X] \colon \Omega \to \R$ defined by
-$$
-\Expect [g(Y) | X] (\omega) :=  \Expect [g(Y) | x] \,, \qquad x:=X(\omega) \,,
-\qquad \forall \, \omega \in \Omega
-$$
+- $\Expect [g(Y) | X]$ denotes the Random Variable $h(X)$ where $h(x):=\Expect [g(Y) | x]$
 
 
 
@@ -892,7 +880,7 @@ grid()
 ## Example - Conditional distribution  {.smaller}
 
 
-- The **conditional distribution** of $Y$ given $X=x$ is therefore **exponential**
+- The conditional distribution $Y|X$ is therefore **exponential**
 $$
 f(y|x) = 
 \begin{cases}
@@ -966,24 +954,80 @@ $$
 
 :::
 
-**Note**: Above formula contains abuse of notation
+**Note**: The above formula contains abuse of notation -- $\Expect$ has 3 meanings
 
-- The first expectation is with respect to the marginal of $X$
-- The second expectation is with respect to the marginal of $Y$
-- The third expectation is with respect to the conditional distribution $X|Y$
+- First $\Expect$ is with respect to the marginal of $X$
+- Second $\Expect$ is with respect to the marginal of $Y$
+- Third $\Expect$ is with respect to the conditional distribution $X|Y$
 
 
 
 ## Conditional Expectation {.smaller}
 ### Proof of Theorem
 
+- Recall that $\Expect[X|Y]$ denotes the random variable $g(Y)$ with 
+$$
+g(y):= \Expect[X|y] := \int_{\R} xf(x|y) \, dx
+$$
 
+- Therefore
+$$
+\Expect[\Expect[X|Y]] 
+= \int_{\R} y g(y) \, dy 
+= \int_{\R} y \left(  \int_{\R} xf(x|y) \, dx   \right) \, dy
+= \int_{\R^2}  xy f(x|y) \, dx dy
+$$
+
+- By definition we have 
+$$
+f(x|y):=\frac{f_{X,Y}(x,y)}{f_Y(y)}
+$$
+
+- Therefore ...
+
+- Proof if $(X,Y)$ discrete is the smae
+
+
+## Conditional Expectation {.smaller}
+### Example - Application of the formula
+
+
+- Consider again the continuous random vector $(X,Y)$ with **joint pdf**
+$$
+f_{X,Y}(x,y) := e^{-y}  \,\, \text{ if } \,\, 0 < x < y  \,, \quad 
+f_{X,Y}(x,y) :=0    \,\, \text{ otherwise}
+$$
+
+-  We have proven that 
+$$
+\Expect[Y|X] = X + 1  
+$$
+
+- We have also shown that $f_X$ is exponential
+$$
+f_{X}(x) = 
+\begin{cases}
+e^{-x} & \text{ if } x > 0 \\
+0      & \text{ if } x \leq 0 
+\end{cases}
+$$
 
 
 
 
 ## Conditional Expectation {.smaller}
-### Example
+### Example - Application of the formula
+
+
+- From the knowledge of $f_X$ we can compute $\Expect[X]$
+$$
+\Expect[X] = \int_0^\infty x e^{-x} \, dx = -(x+1)e^{-x} \bigg|_{x=0}^{x=\infty} = 1
+$$
+
+- Using the Theorem we can compute $\Expect[Y]$ **without** computing $f_Y$:
+$$
+\Expect[Y] = \Expect[ \Expect[Y|X] ] = \Expect[X + 1] = \Expect[X] + 1 = 1 + 1 = 2
+$$
 
 
 
@@ -991,8 +1035,7 @@ $$
 
 
 
-
-# Part 4: <br>Independence {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>Independence {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1050,7 +1093,7 @@ $$
 
 If $X$ and $Y$ are **independent** then $X$ gives no information on $Y$ (and vice-versa):
 
-- Conditional distribution: 
+- Conditional distribution: $Y|X$ is same as $Y$
 $$
 f(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)} = \frac{f_X(x)f_Y(y)}{f_X(x)} = f_Y(y)
 $$
@@ -1180,7 +1223,7 @@ $$
 - Suppose $X \sim N (\mu_1, \sigma_1^2)$ and $Y \sim N (\mu_2, \sigma_2^2)$ 
 are independent normal random variables
 
-- We have seen in Slide 117 in Lecture 1 that for normal distributions
+- We have seen in Slide 119 in Lecture 1 that for normal distributions
 $$
 M_X(t) = \exp \left( \mu_1 t + \frac{t^2 \sigma_1^2}{2} \right) \,, \qquad
 M_Y(t) = \exp \left( \mu_2 t + \frac{t^2 \sigma_2^2}{2} \right)
@@ -1210,7 +1253,7 @@ $$
 \text{mean }\quad \mu_1 + \mu_2 \quad \text{ and variance} \quad  \sigma_1^2 + \sigma_2^2
 $$
 
-- By the Theorem in Slide 130 of Lecture 1 we have
+- By the Theorem in Slide 132 of Lecture 1 we have
 $$
 Z \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)
 $$
@@ -1295,7 +1338,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 5: <br>Covariance and correlation {background-color="#cc0164" visibility="uncounted"}
+# Part 4: <br>Covariance and correlation {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1311,7 +1354,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 6: <br>Multivariate random vectors {background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>Multivariate random vectors {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1325,7 +1368,7 @@ E[e^{tX}e^{tY}] & = E[e^{tX}]E[e^{tY}] \\
 
 
 
-# Part 7: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+# Part 6: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 

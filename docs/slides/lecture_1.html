@@ -361,23 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -385,41 +377,13 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .DONE {
     --color1: #cce7b1;
@@ -428,6 +392,42 @@
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -1458,8 +1458,18 @@ P(A|B) := \frac{P(A \cap B)}{P(B)}
 </span><p></p>
 </div></details>
 </div>
+</section>
+<section id="conditional-probability-2" class="slide level2 smaller">
+<h2>Conditional Probability</h2>
+<h3 id="intuition">Intuition</h3>
+<p>The conditional probability <span class="math display">
+P(A|B) = \frac{P( A \cap B)}{P(B)}
+</span> represents the probability of <span class="math inline">A</span>, knowing that <span class="math inline">B</span> has happened:</p>
 <ul>
-<li><span class="math inline">P(A|B)</span> represents the probability of <span class="math inline">A</span>, knowing that <span class="math inline">B</span> happened</li>
+<li>If <span class="math inline">B</span> has happened, then <span class="math inline">B</span> is the <em>new sample space</em></li>
+<li>Therefore <span class="math inline">A \cap B^c</span> cannot happen, and we are only interested in <span class="math inline">A \cap B</span></li>
+<li>Hence it makes sense to define <span class="math inline">P(A|B) \propto P(A \cap B)</span></li>
+<li>We divide <span class="math inline">P(A\cap B)</span> by <span class="math inline">P(B)</span> so that <span class="math inline">P(A|B) \in [0,1]</span> is still a probability</li>
 <li>The function <span class="math inline">A \mapsto P(A|B)</span> is a probability measure on <span class="math inline">\Omega</span></li>
 </ul>
 </section>
@@ -1806,12 +1816,26 @@ F_X(x) := P_X (X \leq x)
 </span><p></p>
 </div></details>
 </div>
-<p><strong>Intuition</strong>:</p>
+</section>
+<section id="cumulative-distribution-function-1" class="slide level2 smaller">
+<h2>Cumulative Distribution Function</h2>
+<h3 id="intuition-1">Intuition</h3>
 <ul>
-<li><span class="math inline">F_X</span> is the <em>primitive</em> of <span class="math inline">P_X</span></li>
-<li><span class="math inline">P_X</span> will be the <em>derivative</em> of <span class="math inline">F_X</span><sup>1</sup></li>
+<li><span class="math inline">F_X</span> is the <em>primitive</em> of <span class="math inline">P_X</span>:
+<ul>
+<li>Recall from Analysis: The primitive of a continuous function <span class="math inline">g \colon \mathbb{R}\to \mathbb{R}</span> is <span class="math display">
+  G(x):=\int_{-\infty}^x g(y) \,dy
+  </span></li>
+<li>Note that <span class="math inline">P_X</span> is not a function but a <strong>distribution</strong></li>
+<li>However the definition of cdf as a primitive still makes sense</li>
+</ul></li>
+<li><span class="math inline">P_X</span> will be the <em>derivative</em> of <span class="math inline">F_X</span> - In a suitable generalized sense
+<ul>
+<li>Recall from Analysis: Fundamental Theorem of Calculus says <span class="math inline">G'(x)=g(x)</span></li>
+<li>Since <span class="math inline">F_X</span> is the primitive of <span class="math inline">P_X</span>, it will still hold <span class="math inline">F_X'=P_X</span> in the <strong>sense of distributions</strong></li>
+</ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>In a suitable generalized sense</p></li></ol></aside></section>
+</section>
 <section id="distribution-function" class="slide level2 smaller">
 <h2>Distribution Function</h2>
 <h3 id="example">Example</h3>
@@ -1869,7 +1893,7 @@ F_X(2.1) &amp; = P(X \leq 2.1) \\
 </ul>
 </div>
 </section>
-<section id="cumulative-distribution-function-1" class="slide level2 smaller">
+<section id="cumulative-distribution-function-2" class="slide level2 smaller">
 <h2>Cumulative Distribution Function</h2>
 <h3 id="example-1">Example</h3>
 
@@ -2316,7 +2340,7 @@ F_Y(y) = \int_{\{ x \in \mathbb{R} \colon g(x) \leq y \}} f_X(t) \, dt
 {\rm I\kern-.3em E}[X] = \int_{-\infty}^{\infty} x f_X(x) \, dx
 </span></p></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>These follow by taking <span class="math inline">g(x)=x</span> in previous definitions, so that <span class="math inline">g(X) = X</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>These follow by taking <span class="math inline">g(x)=x</span> in previous definitions, so that <span class="math inline">g(X) = X</span></p></li></ol></aside></section>
 <section id="expected-value-2" class="slide level2 smaller">
 <h2>Expected Value</h2>
 <h3 id="properties-3">Properties</h3>

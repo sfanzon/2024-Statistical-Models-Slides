@@ -1121,8 +1121,8 @@ $$
 
 Let $A,B$ be events in $\Omega$ with 
 $$
-P(B)>0
-$$
+P(B)>0 
+$$ 
 The **conditional probability** of $A$ given $B$ is
 $$
 P(A|B) := \frac{P(A \cap B)}{P(B)} 
@@ -1131,7 +1131,21 @@ $$
 :::
 
 
-- $P(A|B)$ represents the probability of $A$, knowing that $B$ happened
+
+
+## Conditional Probability {.smaller}
+### Intuition
+
+The conditional probability
+$$
+P(A|B) = \frac{P( A \cap B)}{P(B)}
+$$ 
+represents the probability of $A$, knowing that $B$ has happened:
+
+- If $B$ has happened, then $B$ is the *new sample space* 
+- Therefore $A \cap B^c$ cannot happen, and we are only interested in $A \cap B$
+- Hence it makes sense to define $P(A|B) \propto P(A \cap B)$
+- We divide $P(A\cap B)$ by $P(B)$ so that $P(A|B) \in [0,1]$ is still a probability
 - The function $A \mapsto P(A|B)$ is a probability measure on $\Omega$
 
 
@@ -1446,10 +1460,24 @@ $$
 :::
 
 
-**Intuition**: 
+## Cumulative Distribution Function {.smaller}
+### Intuition
 
-- $F_X$ is the *primitive* of $P_X$
-- $P_X$ will be the *derivative* of $F_X$^[In a suitable generalized sense]
+- $F_X$ is the *primitive* of $P_X$:
+    * Recall from Analysis: The primitive of a continuous function $g \colon \R \to \R$ is 
+    $$
+    G(x):=\int_{-\infty}^x g(y) \,dy
+    $$
+    * Note that $P_X$ is not a function but a **distribution**
+    * However the definition of cdf as a primitive still makes sense
+
+
+- $P_X$ will be the *derivative* of $F_X$ - In a suitable generalized sense
+    * Recall from Analysis: Fundamental Theorem of Calculus says 
+    $G'(x)=g(x)$
+    * Since $F_X$ is the primitive of $P_X$, it will still hold
+    $F_X'=P_X$ in the **sense of distributions**
+    
 
 
 
