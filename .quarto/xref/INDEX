@@ -31,5 +31,29 @@
   },
   "slides/lecture_3.qmd": {
     "lecture_3.html": "0df597f5"
+  },
+  "slides/lecture_4.qmd": {
+    "lecture_4.html": "f844c110"
+  },
+  "slides/lecture_11.qmd": {
+    "lecture_11.html": "ff63205e"
+  },
+  "slides/lecture_10.qmd": {
+    "lecture_10.html": "a2230e49"
+  },
+  "slides/lecture_6.qmd": {
+    "lecture_6.html": "4cd60b84"
+  },
+  "slides/lecture_7.qmd": {
+    "lecture_7.html": "554c889c"
+  },
+  "slides/lecture_5.qmd": {
+    "lecture_5.html": "9234866d"
+  },
+  "slides/lecture_9.qmd": {
+    "lecture_9.html": "7e8a379d"
+  },
+  "slides/lecture_8.qmd": {
+    "lecture_8.html": "8a4908d3"
   }
 }
