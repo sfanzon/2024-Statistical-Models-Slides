@@ -1741,6 +1741,15 @@ $$
 :::
 
 
+::: Proposition
+
+If $X_1,\ldots,X_n$ are mutually independent then for all $A_i \subset \R$
+$$
+P(X_1 \in A_1 , \ldots , X_n \in A_n) = \prod_{i=1}^n P(X_i \in A_i)
+$$
+
+:::
+
 
 
 
