@@ -51,6 +51,38 @@
 
  [**Definition**](#Definition*-5.4)\Pageref{Definition*-5.4}
 
- [**Theorem**](#Theorem*-7.1)\Pageref{Theorem*-7.1}
+ [**Theorem**](#Theorem*-5.5)\Pageref{Theorem*-5.5}
 
- [**Proof**](#Proof*-7.2)\Pageref{Proof*-7.2}
+ [**Theorem**](#Theorem*-5.6)\Pageref{Theorem*-5.6}
+
+ [**Theorem**](#Theorem*-5.7)\Pageref{Theorem*-5.7}
+
+ [**Definition**](#Definition*-6.1)\Pageref{Definition*-6.1}
+
+ [**Definition**](#Definition*-6.2)\Pageref{Definition*-6.2}
+
+ [**Definition**](#Definition*-6.3)\Pageref{Definition*-6.3}
+
+ [**Definition**](#Definition*-6.4)\Pageref{Definition*-6.4}
+
+ [**Definition**](#Definition*-6.5)\Pageref{Definition*-6.5}
+
+ [**Definition**](#Definition*-6.6)\Pageref{Definition*-6.6}
+
+ [**Definition**](#Definition*-6.7)\Pageref{Definition*-6.7}
+
+ [**Definition**](#Definition*-6.8)\Pageref{Definition*-6.8}
+
+ [**Definition**](#Definition*-6.9)\Pageref{Definition*-6.9}
+
+ [**Theorem**](#Theorem*-6.10)\Pageref{Theorem*-6.10}
+
+ [**Theorem**](#Theorem*-6.11)\Pageref{Theorem*-6.11}
+
+ [**Theorem**](#Theorem*-6.12)\Pageref{Theorem*-6.12}
+
+ [**Theorem**](#Theorem*-6.13)\Pageref{Theorem*-6.13}
+
+ [**Theorem**](#Theorem*-6.14)\Pageref{Theorem*-6.14}
+
+ [**Theorem**](#Theorem*-6.15)\Pageref{Theorem*-6.15}

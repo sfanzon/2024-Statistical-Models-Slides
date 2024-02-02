@@ -1913,7 +1913,7 @@ $$
 
 - The **cdf** can be computed to be
 $$
-F_X(x) = \int_{-\infty}^\infty f_X(t) \, dt = \frac{1}{1+e^{-x}}
+F_X(x) = \int_{-\infty}^x f_X(t) \, dt = \frac{1}{1+e^{-x}}
 $$
 
 

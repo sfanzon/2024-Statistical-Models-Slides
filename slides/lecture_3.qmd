@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 2: <br>Multivariate distributions<br>{background-color="#cc0164" visibility="uncounted"}
+# Lecture 3: <br>Normal distribution family and<br>Hypothesis Tests{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -38,13 +38,236 @@ $
 
 
 
-## Outline of Lecture 2
+## Outline of Lecture 3
 
-1. Bivariate random vectors
-2. Conditional distributions
-3. Independence
-4. Covariance and correlation
-5. Multivariate random vectors
+1. Unbiased estimators
+
+
+
+
+
+
+
+
+# Part 6: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+
+
+## Examples of Continuous RV {.smaller}
+
+
+::: Theorem
+
+If $X \sim N(\mu,\sigma^2)$ then $Z \sim N(0,1)$ where
+$$
+Z := \frac{X-\mu}{\sigma}
+$$
+:::
+
+Check
+
+::: Proof
+
+Check
+
+:::
+
+
+
+
+
+
+
+
+
+## Identically distributed random variables {.smaller}
+
+
+
+
+
+
+
+
+## Mean and variance of sums of random variables {.smaller}
+
+- Consider random variables $X_1$, $X_2$, ..., $X_n$ with means $\mu_i$ and variances $\sigma^2_i$
+$$
+E[X_1+...+X_n]=\mu_1+\mu_2+...\mu_n
+$$
+$$
+\mbox{Var}[X_1+...+X_n]=\sigma^2_1+\sigma^2_2+...+\sigma^2_n+2\sum_{i{\neq}j}\mbox{Cov}(X_i, X_j)
+$$
+
+- **The mean is linear but the variance is quadratic**
+
+- Some further simplification is possible in the case of independently and identically distributed random variables when in this case
+$$
+E[X_1+...+X_n]=n\mu,\ \mbox{Var}[X_1+...+X_n]=n\sigma^2
+$$
+
+
+
+
+
+## Additional linear and quadratic nature of mean and variance {.smaller}
+
+- For constants $a$ and $b$
+$$
+\Expect[aX+b]=a \Expect[X]+b
+$$
+$$
+\Var [aX+b] = a^2 \Var [X]
+$$
+$$
+\Cov (aX, bY)=ab \Cov(X, Y)
+$$
+
+
+
+## Estimating the mean and the variance {.smaller}
+
+- Suppose you have an iid sample $X_1$, $X_2$, ... $X_n$ with mean $\mu$ and variance $\sigma^2$
+- Want to estimate the mean and the variance
+- It is obvious that the sample mean is the best thing to use
+- It is less obvious that the best estimator of the variance is the unbiased estimator
+$$
+s^2=\frac{\sum_i(x_i-\overline{x})^2}{n-1}=\frac{\sum_ix_i^2-n{\overline{x}^2}}{n-1}
+$$
+
+
+
+## Unbiased estimator {.smaller}
+
+Define estimators and unbiassed ones
+
+
+## The sample mean is unbiased {.smaller}
+
+- Define $\overline{X}=\frac{\sum_{i=1}^nX_i}{n}$
+$$
+E[\overline{X}]=E\frac{\sum_{i=1}^nX_i}{n}=\frac{\sum_{i=1}^nE[X_i]}{n}=\frac{n\mu}{n}=\mu
+$$
+
+- A related result we shall need later is
+$$
+\mbox{Var}[\overline{X}]=\mbox{Var}\frac{\sum_{i=1}^nX_i}{n}
+$$
+$$
+\mbox{Var}[\overline{X}]=\frac{1}{n^2}\mbox{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}n\sigma^2=\frac{\sigma^2}{n}
+$$
+
+
+
+
+
+## The sample variance is unbiased {.smaller}
+
+- Consider $E[\sum_{i=1}^nX^2_i-n\overline{X}^2].$ (Dividing this term by $n-1$ then gives the unbiased variance estimator $S^2$)
+
+- For the first term we have
+$$
+E[X_i]=\mu,\ \mbox{Var}[X_i]=\sigma^2
+$$
+$$
+E[X^2_i]=(E[X_i])^2+\mbox{Var}(X_i)=\mu^2+\sigma^2
+$$
+$$
+E[\sum_{i=1}^nX_i^2]=\sum_{i=1}^nE[X_i^2]=n(\mu^2+\sigma^2)
+$$
+
+
+
+## The sample variance is unbiased {.smaller}
+
+- Re-write $n\overline{X}^2=(\sqrt{n}\overline{X})^2$
+- We have that 
+$$
+E[\sqrt{n}\overline{X}]=\sqrt{n}\mu
+$$
+\begin{align*}
+\mbox{Var}[\sqrt{n}\overline{X}] 
+=(\sqrt{n})^2\mbox{Var}(\overline{X})
+=n\frac{\sigma^2}{n}=\sigma^2
+\end{align*}
+
+- This gives
+\begin{eqnarray*}
+E[(\sqrt{n}\overline{X})^2] & = & (E[\sqrt{n}\overline{X}])^2+\mbox{Var}(\sqrt{n}\overline{X})\\
+& = & n\mu^2+\sigma^2
+\end{eqnarray*}
+
+
+
+
+
+## The unbiased variance estimator really is unbiased {.smaller}
+$\bullet$ Combining Slides 4.5-4.6 gives
+\begin{eqnarray*}
+E[\sum_{i=1}^nX^2_i-n\overline{X}^2] & = & n(\mu^2+\sigma^2)-(n\mu^2+\sigma^2) \\
+& = & (n-1)\sigma^2\\
+E[S^2] & = & \frac{1}{n-1}E[\sum_{i=1}^nX^2_i-n\overline{X}^2]\\
+& = & \frac{(n-1)}{(n-1)}\sigma^2=\sigma^2
+\end{eqnarray*}
+$$
+E[S^2]=\frac{1}{n-1}[n\sigma^2+\sigma^2-2\sigma^2]=\sigma^2
+$$
+
+
+
+## Additional note {.smaller}
+
+$\bullet$ The $n-1$ that occurs in the denominator of the sample variance estimator is caused by a loss of precision associated with the fact that we have to estimate $\mu$ with the sample mean $\overline{x}$\\
+$\bullet$ This leads to a general statistical rule we shall use later
+$$
+\mbox{Lose 1 degree of freedom for each parameter estimated}
+$$
+$\bullet$ In this case we have to estimate one parameter (the sample mean) so we are left with 
+\begin{eqnarray*}
+\mbox{degrees of freedom} & = & \mbox{No. in sample}-\mbox{No. of estimated parameters}\\
+& = & n-1
+\end{eqnarray*}
+
+
+
+## Example calculation {.smaller}
+
+- Wage data on 10 Advertising Professionals Accountants
+- Want to estimate the mean and the variance
+
+
+|**Professional**| $x_1$ | $x_2$| $x_3$ | $x_4$ | $x_5$ | $x_6$ | $x_7$ | $x_8$ | $x_9$ |$x_{10}$|
+|:--------------:|:-----:|:----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|
+|     **Wage**   |   36  |  40  |  46  |  54  |  57  |  58  |  59  |  60  |  62  |  63  |
+
+
+
+
+## Solution to the example {.smaller}
+
+- \textbf{Number} $n_1$=No. of advertising professionals=10\\
+- **Mean**
+\begin{eqnarray*}
+\bar{x}=\frac{36+40+46+{\dots}+62+63}{10}=\frac{535}{10}=53.5
+\end{eqnarray*}
+- **Variance**
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  s^2 &=& \frac{\sum\ x_{1, i}^2-n\bar{x}_1^2}{n_1-1} \\
+  \sum\ x_{1, i}^2 &=& 36^2+40^2+46^2+{\ldots}+62^2+63^2=29435 \\
+  s^2 &=& \frac{29435-10(53.5)^2}{9}=90.2778
+\end{eqnarray*}
 
 
 
@@ -1899,7 +2122,5 @@ $$
 
 
 
-
-## References
 
 
