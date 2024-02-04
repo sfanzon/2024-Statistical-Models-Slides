@@ -1807,8 +1807,7 @@ $$
 
 
 
-## Independence {.smaller}
-### Sum of independent Normal random variables
+## Sum of independent Normals {.smaller}
 
 
 ::: Theorem
@@ -1832,7 +1831,7 @@ $$
 
 
 
-## Independence {.smaller}
+## Sum of independent Normals {.smaller}
 ### Proof of Theorem
 
 
@@ -1850,7 +1849,7 @@ M_{Z}(t) & = \prod_{i=1}^n M_{X_i}(t) =
 \end{align*}
 
 
-## Independence {.smaller}
+## Sum of independent Normals {.smaller}
 ### Proof of Theorem
 
 - Therefore $Z$ has moment generating function
@@ -1867,6 +1866,76 @@ $$
 $$
 Z \sim N(\mu, \sigma^2 )
 $$
+
+
+
+
+## Sum of independent Gammas {.smaller}
+
+::: Theorem
+
+Let $X_1,\ldots,X_n$ be mutually independent random variables with Gamma distribution $X_i \sim \Gamma (\alpha_i,\beta)$. Define
+$$
+Z := X_1 + \ldots + X_n
+$$
+and
+$$
+\alpha :=\alpha_1 + \ldots + \alpha_n 
+$$
+Then $Z$ has Gamma distribution
+$$
+Z \sim \Gamma(\alpha,\beta)
+$$
+
+:::
+
+
+
+
+
+
+
+
+## Sum of independent Gammas {.smaller}
+### Proof of Theorem
+
+
+- We have seen in Slide 126 in Lecture 1 that if $X_i \sim \Gamma(\alpha_i,\beta)$ then
+$$
+M_{X_i}(t) = \frac{\beta^{\alpha_i}}{(\beta-t)^{\alpha_i}}
+$$
+
+- Since $X_1,\ldots,X_n$ are mutually independent we get
+\begin{align*}
+M_{Z}(t) & = \prod_{i=1}^n M_{X_i}(t) = 
+\prod_{i=1}^n \frac{\beta^{\alpha_i}}{(\beta-t)^{\alpha_i}} \\
+& = \frac{\beta^{(\alpha_1 + \ldots + \alpha_n)}}{(\beta-t)^{(\alpha_1 + \ldots + \alpha_n)}} \\
+& = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}} 
+\end{align*}
+
+
+
+
+## Sum of independent Gammas {.smaller}
+### Proof of Theorem
+
+- Therefore $Z$ has moment generating function
+$$
+M_{Z}(t) = \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}} 
+$$
+
+- The above is the mgf of a **Gamma distribution** with 
+$$
+\text{mean }\quad \alpha  \quad \text{ and variance} \quad  \beta 
+$$
+
+- Since mgfs characterize distributions (see Theorem in Slide 132 of Lecture 1), we conclude
+$$
+Z \sim \Gamma(\alpha, \beta )
+$$
+
+
+
 
 
 

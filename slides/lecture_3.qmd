@@ -24,7 +24,7 @@ $
 :::
 
 
-# Lecture 3: <br>Normal distribution family and<br>Hypothesis Tests{background-color="#cc0164" visibility="uncounted"}
+# Lecture 3: <br>Random samples and <br>Normal distribution family{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,6 +40,7 @@ $
 
 1. Random samples
 2. Unbiased estimators
+3. Chi squared distribution
 
 
 
@@ -608,6 +609,27 @@ $$
 
 
 
+
+# Part 3: <br>Chi squared distribution {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Overview {.smaller}
+
+Chi-squared distribution:
+
+- defined in terms of squares of $N(0, 1)$ random variables
+- designed to describe variance estimation
+- used to define other members of the normal family
+    * Student $t$ distribution
+    * $F$-distribution
 
 
 
