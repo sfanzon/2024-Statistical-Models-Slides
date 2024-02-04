@@ -38,22 +38,572 @@ $
 
 ## Outline of Lecture 3
 
-1. Unbiased estimators
+1. Random samples
+2. Unbiased estimators
 
 
 
 
 
-
-
-
-# Part 1: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>Random samples {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+
+## Independent identically distributed random variables {.smaller}
+
+
+::: Definition
+
+The random variables $X_1,\ldots,X_n$ are **independent identically distributed** or **iid** with pdf or pmf $f(x)$ if
+
+- $X_1,\ldots,X_n$ are mutually independent
+- The marginal pdf or pmf of each $X_i$ satisfies
+$$
+f_{X_i}(x) = f(x) \,, \quad \forall \, x \in \R
+$$
+
+:::
+
+
+
+
+## Random sample {.smaller}
+
+- Suppose the data in an experiment consists of **observations** on a **population**
+- Suppose the **population** has distribution $f(x)$
+- Each observation is labelled $X_i$
+- We always assume that the population is **infinite**
+- Therefore each $X_i$ has distribution $f(x)$
+- We also assume the observations are **independent**
+
+::: Definition
+
+The random variables $X_1,\ldots,X_n$ are a **random sample** of size $n$ from the population $f(x)$ if $X_1,\ldots,X_n$ are iid with pdf or pmf $f(x)$
+
+:::
+
+
+
+## Random sample {.smaller}
+
+
+**Remark**: Let $X_1,\ldots,X_n$ be a random sample of size $n$ from the population $f(x)$. Then the joint distribution of $\XX = (X_1,\ldots,X_n)$ is
+$$
+f_{\XX}(x_1,\ldots,x_n) = f(x_1) \cdot \ldots \cdot f(x_n) = \prod_{i=1}^n f(x_i)
+$$
+
+::: Definition
+
+We call $f_{\XX}$ the **joint sample distribution**
+
+:::
+
+
+
+
+## Random sample {.smaller}
+
+
+**Notation**: 
+
+- When the population distribution $f(x)$ depends on a parameter $\theta$ we write
+$$
+f = f(x|\theta)
+$$
+
+- In this case the joint sample distribution is 
+$$
+f_{\XX}(x_1,\ldots,x_n | \theta) =  \prod_{i=1}^n f(x_i | \theta)
+$$
+
+
+
+## Example {.smaller}
+
+- Suppose a population has $\exponential(\beta)$ distribution
+$$
+f(x|\beta) = \frac{1}{\beta} e^{-x/\beta}
+$$
+- Suppose $X_1,\ldots,X_n$ is random sample from the population $f(x|\beta)$
+- The joint sample distribution is then
+\begin{align*}
+f_{\XX}(x_1,\ldots,x_n | \beta) & = \prod_{i=1}^n f(x_i|\beta) \\
+                                & = \prod_{i=1}^n \frac{1}{\beta} e^{-x_i/\beta} \\
+                                & = \frac{1}{\beta^n} e^{-(x_1 + \ldots + x_n)/\beta}
+\end{align*}
+
+
+
+
+## Example {.smaller}
+
+- We have 
+$$
+P(X_1 > 2) = \int_{2}^\infty f(x|\beta) \, dx 
+           = \int_{2}^\infty \frac{1}{\beta} e^{-x/\beta} \, dx = e^{-2/\beta}
+$$
+
+- Thanks to iid assumption we can easily compute
+\begin{align*}
+P(X_1 > 2 , \ldots, X_n > 2) & = \prod_{i=1}^n P(X_i > 2) \\
+                             & = \prod_{i=1}^n P(X_1 > 2) \\
+                             & = P(X_1 > 2)^n \\
+                             & = e^{-2n/\beta}
+\end{align*}
+
+
+
+
+
+
+# Part 2: <br>Unbiased estimators {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Point estimation {.smaller}
+
+Suppose to have a population with distribution
+$$
+f(x|\theta)
+$$
+
+- $\theta$ is generally **unknown**
+- Knowledge of $\theta$ is sufficient to characterize $f(x|\theta)$
+
+**Example**: A population could be normally distributed
+$$
+f(x|\mu,\sigma^2)
+$$
+
+- Here $\mu$ is the mean and $\sigma^2$ the variance
+- Knowing $\mu$ and $\sigma^2$ completely characterizes the normal distribution
+
+
+
+
+## Point estimation {.smaller}
+
+
+::: Definition 
+
+Suppose the population has distribution
+$$
+f(x|\theta)
+$$
+
+- **Point estimation** is the procedure of estimating $\theta$ from random sample
+- A **point estimator** is any function of a random sample
+$$
+W(X_1,\ldots,X_n)
+$$
+
+:::
+
+**Notation**: Point estimators are also called **statistics**
+
+
+
+
+
+## Unbiased estimator {.smaller}
+
+::: Definition
+
+Suppose $W$ is a point estimator of a parameter $\theta$
+
+- The **bias** of $W$ is the quantity $\rm{Bias}_{\theta} := \Expect[W] - \theta$
+
+- $W$ is an **unbiased estimator** if $\rm{Bias}_{\theta} = 0$, that is,
+$$
+\Expect[W] = \theta
+$$
+
+:::
+
+
+**Note**: A point estimator 
+$$
+W = W(X_1, \ldots, X_n)
+$$
+is itself a random variable. Thus $\Expect[W]$ is the mean of such random variable
+
+
+
+
+
+## Examples {.smaller}
+
+We give two examples of unbiased estimators:
+
+- Sample mean
+- Sample variance
+
+
+
+
+## Estimating the mean {.smaller}
+
+::: Problem
+
+Suppose to have a population 
+$$
+f(x|\theta)
+$$
+We want to estimate the **population mean**
+$$
+\mu := \int_{\R} x f(x|\theta) \, dx
+$$
+
+:::
+
+
+
+
+
+## Sample mean {.smaller}
+
+
+::: Definition
+
+The **sample mean** of a random sample $X_1,\ldots,X_n$ is the statistic
+$$
+W(X_1,\ldots,X_n) := \overline{X} := \frac{1}{n} \sum_{i=1}^n X_i
+$$
+
+:::
+
+
+
+
+## Sample mean {.smaller}
+### Sample mean is unbiased estimator of mean
+
+::: Theorem
+
+The sample mean $\overline{X}$ is an unbiased estimator of the population mean $\mu$, that is,
+$$
+\Expect[\overline{X}] = \mu
+$$
+
+:::
+
+
+
+## Sample mean {.smaller}
+### Proof of theorem
+
+
+- $X_1,\ldots,X_n$ is a random sample from $f(x|\theta)$
+- Therefore $X_i \sim f(x|\theta)$ and
+$$
+\Expect[X_i] = \int_{\R} x f(x|\theta) \, dx = \mu
+$$
+- By linearity of expectation we have
+$$
+\Expect[\overline{X}] = \frac{1}{n} \sum_{i=1}^n \Expect[X_i] 
+                      = \frac{1}{n} \sum_{i=1}^n \mu 
+                      = \mu
+$$
+
+
+
+
+## Sample mean {.smaller}
+### Computing the variance
+
+It is useful to compute the variance of the sample mean $\overline{X}$
+
+::: Lemma
+
+$X_1,\ldots,X_n$ random sample from population with mean $\mu$ and 
+variance $\sigma^2$. Then
+$$
+\Var[\overline{X}] = \frac{\sigma^2}{n}
+$$
+:::
+
+
+
+
+## Sample mean {.smaller}
+### Proof of Lemma
+
+- By assumption we have
+$$
+\Expect[X_i] = \mu \,, \quad \Var[X_i] = \sigma^2
+$$
+
+- Since the variance is quadratic and $X_i$ are independent
+\begin{align*}
+\Var[\overline{X}] & = \Var \left[ \frac{1}{n} \sum_{i=1}^n X_i \right] 
+                     = \frac{1}{n^2} \sum_{i=1}^n \Var[X_i] \\
+                   & = \frac{1}{n^2} \cdot n \sigma^2
+                     = \frac{\sigma^2}{n} 
+\end{align*}
+
+
+
+
+
+## Estimating the variance {.smaller}
+
+::: Problem
+
+Suppose to have a population 
+$$
+f(x|\theta)
+$$
+with mean $\mu$ and variance $\sigma^2$. We want to estimate the **population variance**
+
+:::
+
+
+
+
+## Sample variance {.smaller}
+
+::: Definition
+
+The **sample variance** of a random sample $X_1,\ldots,X_n$ is the statistic
+$$
+S^2 := \frac{1}{n-1} \sum_{i=1}^n \left( X_i - \overline{X}  \right)^2 
+$$
+where $\overline{X}$ is the sample mean
+$$
+\overline{X} := \frac{1}{n} \sum_{i=1}^n X_i
+$$
+
+:::
+
+
+
+## Sample variance {.smaller}
+### Equivalent formulation
+
+
+::: Proposition
+
+It holds that
+$$
+S^2 := \frac{ \sum_{i=1}^n \left( X_i - \overline{X}  \right)^2}{n-1}  = 
+\frac{ \sum_{i=1}^n  X_i^2  - n\overline{X}^2  }{n-1}
+$$
+
+:::
+
+
+
+## Sample variance {.smaller}
+### Proof of Proposition
+
+- We have
+\begin{align*}
+\sum_{i=1}^n \left( X_i - \overline{X}  \right)^2  & =
+\sum_{i=1}^n \left(X_i^2 + \overline{X}^2 - 2 X_i \overline{X}  \right) 
+ = \sum_{i=1}^n X_i^2 + n\overline{X}^2 - 2  \overline{X}  \sum_{i=1}^n X_i \\ 
+& = \sum_{i=1}^n X_i^2 + n\overline{X}^2 - 2 n \overline{X}^2 
+ = \sum_{i=1}^n X_i^2 -n \overline{X}^2 
+\end{align*}
+
+
+- Dividing by $n-1$ yields the desired identity
+$$
+S^2 = \frac{ \sum_{i=1}^n X_i^2 -n \overline{X}^2 }{n-1}
+$$
+
+
+
+
+
+## Sample variance {.smaller}
+### Sample variance is unbiased estimator of variance
+
+::: Theorem
+
+The sample variance $S^2$ is an unbiased estimator of the population variance $\sigma^2$, that is,
+$$
+\Expect[S^2] = \sigma^2
+$$
+
+:::
+
+
+
+
+
+
+## Sample variance {.smaller}
+### Proof of theorem
+
+
+- $X_1,\ldots,X_n$ is a random sample from $f(x|\theta)$
+
+
+- By linearity of expectation we infer
+\begin{align*}
+\Expect[(n-1)S^2] & = \Expect \left[  \sum_{i=1}^n X_i^2 - n\overline{X}^2  \right] \\
+                  & = \sum_{i=1}^n \Expect[X_i^2] - n \Expect[\overline{X}^2] 
+\end{align*}
+
+
+
+
+## Sample variance {.smaller}
+### Proof of theorem
+
+
+- Since $X_i \sim f(x|\theta)$, we have
+$$
+\Expect[X_i] = \mu \,, \quad \Var[X_i] = \sigma^2
+$$
+
+- Therefore by definition of variance we get
+$$
+\Expect[X_i^2] = \Var[X_i] + \Expect[X]^2 = \sigma^2 + \mu^2
+$$
+
+
+
+
+
+## Sample variance {.smaller}
+### Proof of theorem
+
+
+- Also recall that
+$$
+\Expect[\overline{X}] = \mu \,, \quad \Var[\overline{X}] = \frac{\sigma^2}{n} 
+$$
+
+
+- By definition of variance we get
+$$
+\Expect[\overline{X}^2] = \Var[\overline{X}] + \Expect[\overline{X}]^2
+                        = \frac{\sigma^2}{n} + \mu^2
+$$
+
+
+
+
+## Sample variance {.smaller}
+### Proof of theorem
+
+
+- Hence
+\begin{align*}
+\Expect[(n-1)S^2] & = \sum_{i=1}^n \Expect[X_i^2] - n \Expect[\overline{X}^2] \\
+                  & = \sum_{i=1}^n \left( \mu^2 + \sigma^2 \right) - 
+                      n \left(  \mu^2 + \frac{\sigma^2}{n}  \right)  \\
+                  & = n\mu^2 + n\sigma^2 - 
+                      n \mu^2 - \sigma^2   \\
+                  & = (n-1) \sigma^2
+\end{align*}
+
+- Dividing both sides by $(n-1)$ yields the thesis
+$$
+\Expect[S^2] = \sigma^2
+$$
+
+
+
+
+
+
+
+
+## Notation {.smaller}
+
+
+- The realization of a random sample $X_1,\ldots,X_n$ is denoted by
+$$
+x_1, \ldots, x_n
+$$
+
+- The realization of the sample mean $\overline{X}$ is denoted
+$$
+\overline{x} := \frac{1}{n} \sum_{i=1}^n x_i
+$$
+
+- The realization of the sample variance $S^2$ is denoted 
+$$
+s^2=\frac{\sum_{i=1}{n}(x_i-\overline{x})^2}{n-1}=\frac{\sum_{i=1}^n x_i^2-n{\overline{x}^2}}{n-1}
+$$
+
+
+
+
+
+
+## Additional note {.smaller}
+
+- The $n-1$ factor in the denominator of the sample variance estimator
+$$
+s^2=\frac{\sum_{i=1}{n}(x_i-\overline{x})^2}{n-1}=\frac{\sum_{i=1}^n x_i^2-n{\overline{x}^2}}{n-1}
+$$
+is caused by a loss of precision:
+    * We have to estimate $\mu$ with the sample mean $\overline{x}$
+
+- This leads to a general statistical rule:
+$$
+\text{Lose 1 degree of freedom for each parameter estimated}
+$$
+
+- In this we have to estimate one parameter (the sample mean \overline{x}). Hence
+\begin{align*}
+\text{degrees of freedom} & = \text{Sample size}-\text{No. of estimated parameters} \\
+                          & = n-1
+\end{align*}
+
+
+
+
+## Example calculation {.smaller}
+
+- Wage data on 10 Advertising Professionals Accountants
+
+|**Professional**| $x_1$ | $x_2$| $x_3$ | $x_4$ | $x_5$ | $x_6$ | $x_7$ | $x_8$ | $x_9$ |$x_{10}$|
+|:--------------:|:-----:|:----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|
+|     **Wage**   |   36  |  40  |  46  |  54  |  57  |  58  |  59  |  60  |  62  |  63  |
+
+
+<br>
+
+- **Task**: Estimate **population mean** and **variance**
+
+
+
+
+## Solution to the example {.smaller}
+
+- **Number** of advertising professionals $n=10$
+
+- **Sample Mean:**
+$$
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i = \frac{36+40+46+{\dots}+62+63}{10}=\frac{535}{10}=53.5
+$$
+
+- **Sample Variance**:
+\begin{align*}
+  s^2 &  = \frac{\sum_{i=1}^n  x_{i}^2 - n \overline{x}^2}{n-1} \\
+  \sum_{i=1}^n x_i^2 & = 36^2+40^2+46^2+{\ldots}+62^2+63^2 = 29435 \\
+  s^2 & = \frac{29435-10(53.5)^2}{9} = 90.2778
+\end{align*}
+
+
 
 
 
@@ -80,189 +630,3 @@ Check
 Check
 
 :::
-
-
-
-
-
-
-
-
-
-## Identically distributed random variables {.smaller}
-
-
-
-
-
-
-
-
-## Mean and variance of sums of random variables {.smaller}
-
-- Consider random variables $X_1$, $X_2$, ..., $X_n$ with means $\mu_i$ and variances $\sigma^2_i$
-$$
-E[X_1+...+X_n]=\mu_1+\mu_2+...\mu_n
-$$
-$$
-\mbox{Var}[X_1+...+X_n]=\sigma^2_1+\sigma^2_2+...+\sigma^2_n+2\sum_{i{\neq}j}\mbox{Cov}(X_i, X_j)
-$$
-
-- **The mean is linear but the variance is quadratic**
-
-- Some further simplification is possible in the case of independently and identically distributed random variables when in this case
-$$
-E[X_1+...+X_n]=n\mu,\ \mbox{Var}[X_1+...+X_n]=n\sigma^2
-$$
-
-
-
-
-
-## Additional linear and quadratic nature of mean and variance {.smaller}
-
-- For constants $a$ and $b$
-$$
-\Expect[aX+b]=a \Expect[X]+b
-$$
-$$
-\Var [aX+b] = a^2 \Var [X]
-$$
-$$
-\Cov (aX, bY)=ab \Cov(X, Y)
-$$
-
-
-
-## Estimating the mean and the variance {.smaller}
-
-- Suppose you have an iid sample $X_1$, $X_2$, ... $X_n$ with mean $\mu$ and variance $\sigma^2$
-- Want to estimate the mean and the variance
-- It is obvious that the sample mean is the best thing to use
-- It is less obvious that the best estimator of the variance is the unbiased estimator
-$$
-s^2=\frac{\sum_i(x_i-\overline{x})^2}{n-1}=\frac{\sum_ix_i^2-n{\overline{x}^2}}{n-1}
-$$
-
-
-
-## Unbiased estimator {.smaller}
-
-Define estimators and unbiassed ones
-
-
-## The sample mean is unbiased {.smaller}
-
-- Define $\overline{X}=\frac{\sum_{i=1}^nX_i}{n}$
-$$
-E[\overline{X}]=E\frac{\sum_{i=1}^nX_i}{n}=\frac{\sum_{i=1}^nE[X_i]}{n}=\frac{n\mu}{n}=\mu
-$$
-
-- A related result we shall need later is
-$$
-\mbox{Var}[\overline{X}]=\mbox{Var}\frac{\sum_{i=1}^nX_i}{n}
-$$
-$$
-\mbox{Var}[\overline{X}]=\frac{1}{n^2}\mbox{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}n\sigma^2=\frac{\sigma^2}{n}
-$$
-
-
-
-
-
-## The sample variance is unbiased {.smaller}
-
-- Consider $E[\sum_{i=1}^nX^2_i-n\overline{X}^2].$ (Dividing this term by $n-1$ then gives the unbiased variance estimator $S^2$)
-
-- For the first term we have
-$$
-E[X_i]=\mu,\ \mbox{Var}[X_i]=\sigma^2
-$$
-$$
-E[X^2_i]=(E[X_i])^2+\mbox{Var}(X_i)=\mu^2+\sigma^2
-$$
-$$
-E[\sum_{i=1}^nX_i^2]=\sum_{i=1}^nE[X_i^2]=n(\mu^2+\sigma^2)
-$$
-
-
-
-## The sample variance is unbiased {.smaller}
-
-- Re-write $n\overline{X}^2=(\sqrt{n}\overline{X})^2$
-- We have that 
-$$
-E[\sqrt{n}\overline{X}]=\sqrt{n}\mu
-$$
-\begin{align*}
-\mbox{Var}[\sqrt{n}\overline{X}] 
-=(\sqrt{n})^2\mbox{Var}(\overline{X})
-=n\frac{\sigma^2}{n}=\sigma^2
-\end{align*}
-
-- This gives
-\begin{eqnarray*}
-E[(\sqrt{n}\overline{X})^2] & = & (E[\sqrt{n}\overline{X}])^2+\mbox{Var}(\sqrt{n}\overline{X})\\
-& = & n\mu^2+\sigma^2
-\end{eqnarray*}
-
-
-
-
-
-## The unbiased variance estimator really is unbiased {.smaller}
-$\bullet$ Combining Slides 4.5-4.6 gives
-\begin{eqnarray*}
-E[\sum_{i=1}^nX^2_i-n\overline{X}^2] & = & n(\mu^2+\sigma^2)-(n\mu^2+\sigma^2) \\
-& = & (n-1)\sigma^2\\
-E[S^2] & = & \frac{1}{n-1}E[\sum_{i=1}^nX^2_i-n\overline{X}^2]\\
-& = & \frac{(n-1)}{(n-1)}\sigma^2=\sigma^2
-\end{eqnarray*}
-$$
-E[S^2]=\frac{1}{n-1}[n\sigma^2+\sigma^2-2\sigma^2]=\sigma^2
-$$
-
-
-
-## Additional note {.smaller}
-
-$\bullet$ The $n-1$ that occurs in the denominator of the sample variance estimator is caused by a loss of precision associated with the fact that we have to estimate $\mu$ with the sample mean $\overline{x}$\\
-$\bullet$ This leads to a general statistical rule we shall use later
-$$
-\mbox{Lose 1 degree of freedom for each parameter estimated}
-$$
-$\bullet$ In this case we have to estimate one parameter (the sample mean) so we are left with 
-\begin{eqnarray*}
-\mbox{degrees of freedom} & = & \mbox{No. in sample}-\mbox{No. of estimated parameters}\\
-& = & n-1
-\end{eqnarray*}
-
-
-
-## Example calculation {.smaller}
-
-- Wage data on 10 Advertising Professionals Accountants
-- Want to estimate the mean and the variance
-
-
-|**Professional**| $x_1$ | $x_2$| $x_3$ | $x_4$ | $x_5$ | $x_6$ | $x_7$ | $x_8$ | $x_9$ |$x_{10}$|
-|:--------------:|:-----:|:----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:----:|:-----:|
-|     **Wage**   |   36  |  40  |  46  |  54  |  57  |  58  |  59  |  60  |  62  |  63  |
-
-
-
-
-## Solution to the example {.smaller}
-
-- \textbf{Number} $n_1$=No. of advertising professionals=10\\
-- **Mean**
-\begin{eqnarray*}
-\bar{x}=\frac{36+40+46+{\dots}+62+63}{10}=\frac{535}{10}=53.5
-\end{eqnarray*}
-- **Variance**
-\begin{eqnarray*}
-% \nonumber to remove numbering (before each equation)
-  s^2 &=& \frac{\sum\ x_{1, i}^2-n\bar{x}_1^2}{n_1-1} \\
-  \sum\ x_{1, i}^2 &=& 36^2+40^2+46^2+{\ldots}+62^2+63^2=29435 \\
-  s^2 &=& \frac{29435-10(53.5)^2}{9}=90.2778
-\end{eqnarray*}
