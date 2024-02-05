@@ -1787,6 +1787,27 @@ $$
 
 
 
+## Independence {.smaller}
+### A very useful theorem
+
+
+::: Theorem
+
+$X_1,\ldots,X_n$ be mutually independent random variables and $g_i(x_i)$ function only of $x_i$. Then the random variables
+$$
+g_1(X_1) \,, \ldots \,, g_n(X_n)
+$$
+are mutually independent
+
+:::
+
+**Proof**: Omitted. See [@casella-berger] page 184
+
+**Example**: $X_1,\ldots,X_n \,$ independent $\,\, \implies \,\, X_1^2, \ldots, X_n^2 \,$ independent
+
+
+
+
 
 
 ## Independence {.smaller}

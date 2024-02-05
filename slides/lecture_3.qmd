@@ -41,6 +41,7 @@ $
 1. Random samples
 2. Unbiased estimators
 3. Chi squared distribution
+4. Sampling from normal distribution
 
 
 
@@ -630,6 +631,354 @@ Chi-squared distribution:
 - used to define other members of the normal family
     * Student $t$ distribution
     * $F$-distribution
+
+
+
+
+
+## Why the normal family is important {.smaller}
+
+- Classical hypothesis testing and regression problems
+- The same maths solves apparently unrelated problems
+- Easy to compute
+    * Statistics tables
+    * Software
+- Enables the development of approximate methods in more complex (and interesting) problems
+
+
+
+
+
+## Reminder: Normal distribution {.smaller}
+
+
+- $X$ has **normal distribution** with mean $\mu$ and variance $\sigma^2$ if pdf is
+$$
+f(x) := \frac{1}{\sqrt{2\pi\sigma^2}} \, \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) \,, \quad x \in \R
+$$
+
+
+- In this case we write
+$$
+X \sim N(\mu,\sigma^2)
+$$ 
+
+- The **standard normal distribution** is denoted $N(0,1)$
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Definition
+
+::: Definition
+
+Let $Z_1,\ldots,Z_r$ be iid $N(0, 1)$ random variables. The **chi-squared distribution** with **$r$ degrees of freedom** is the distribution
+$$
+\chi^2_r \sim  Z^2_1+...+Z^2_r
+$$
+
+:::
+
+
+## Chi-squared distribution {.smaller}
+### Pdf characterization 
+
+
+::: Theorem
+
+The $\chi^2_r$ distribution is equivalent to a Gamma distribution
+$$
+\chi^2_r \sim \Gamma(r/2, 1/2)
+$$
+Therefore the pdf of $\chi^2_r$ can be written in closed form as
+$$
+f_{\chi^2_r}(x)=\frac{x^{(r/2)-1} \, e^{-x/2}}{\Gamma(r/2) 2^{r/2}} \,, \quad x>0
+$$
+
+:::
+
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Plots of chi-squared pdf for different choices of r
+
+
+```{r}
+# Set the degrees of freedom
+degree1 <- 1
+degree2 <- 3
+degree3 <- 6
+
+# Generate values for the x-axis
+x_values <- seq(0.1, 10, by = 0.1)
+
+# Calculate the probability density function (PDF) values for each x for the 3 distributions
+pdf_values1 <- dchisq(x_values, df = degree1)
+pdf_values2 <- dchisq(x_values, df = degree2)
+pdf_values3 <- dchisq(x_values, df = degree3)
+
+
+# Plot the gamma PDFs
+plot(x_values, 
+    pdf_values1, 
+    type = "l", 
+    col = "blue", lwd = 2,
+    xlab = "", 
+    ylab = "",
+    ylim = c(0, max(pdf_values2, pdf_values3) + 0.1))
+
+lines(x_values, 
+      pdf_values2, 
+      col = "red", 
+      lwd = 2)
+
+lines(x_values, 
+      pdf_values3, 
+      col = "black", 
+      lwd = 2)
+
+mtext("x", side=1, line=3, cex=2)
+mtext("pdf", side=2, line=2.5, cex=2)
+
+# Add a legend
+legend("topright", legend = c(paste("r =", degree1),
+                              paste("r =", degree2),
+                              paste("r =", degree3)),
+       col = c("blue", "red", "black"), lty = 1, lwd = 2, cex = 1.5)
+
+``` 
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- We start with case the $r=1$
+- Need to prove that
+$$
+\chi^2_1 \sim \Gamma(1/2, 1/2)
+$$
+- Therefore we need to show that the pdf of $\chi^2_1$ is
+$$
+f_{\chi^2_1}(x)=\frac{x^{-1/2} \, e^{-x/2}}{\Gamma(1/2) 2^{1/2}} \,, \quad x>0
+$$
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- To this end, notice that by definition
+$$
+\chi^2_1 \sim Z^2 \,, \qquad Z \sim N(0,1)
+$$
+- Hence, for $x>0$ we can compute **cdf** via
+\begin{align*}
+F_{\chi^2_1}(x) & = P(\chi^2_1 \leq x) \\
+                & = P(Z^2 \leq x ) \\
+                & = P(- \sqrt{x} \leq Z  \leq \sqrt{x} ) \\
+                & = 2 P (Z \leq \sqrt{x})
+\end{align*}
+where in the last equality we used symmetry of $Z$ around $x=0$
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- Recalling the definition of **standard normal pdf** we get
+\begin{align*}
+F_{\chi^2_1}(x) & = 2 P (Z \leq \sqrt{x}) \\
+                & = 2 \frac{1}{\sqrt{2\pi}} 
+                    \int_0^{\sqrt{x}} e^{-t^2/2} \, dt \\
+                & = 2 \frac{1}{\sqrt{2\pi}} G( \sqrt{x} )
+\end{align*}
+where we set 
+$$
+G(x) := \int_0^{x} e^{-t^2/2} \, dt
+$$
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- We can now compute pdf of $\chi_1^2$ by differentiating the cdf
+
+- By the Fundamental Theorem of Calculus we have
+$$
+G'(x) = \frac{d}{dx} \left( \int_0^{x} e^{-t^2/2} \, dt \right) = e^{-x^2/2} \quad \implies \quad 
+G'(\sqrt{x}) = e^{-x/2}
+$$
+
+- Chain rule yields
+\begin{align*}
+f_{\chi^2_1}(x) & = \frac{d}{dx} F_{\chi^2_1}(x) =
+\frac{d}{dx} \left(  2 \frac{1}{\sqrt{2\pi}} G( \sqrt{x} )  \right)  \\
+& = 2 \frac{1}{\sqrt{2\pi}} G'( \sqrt{x} ) \frac{x^{-1/2}}{2} 
+= \frac{x^{-1/2} e^{-x/2}}{2^{1/2} \sqrt{\pi}}
+\end{align*}
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- It is well known that 
+$$
+\Gamma(1/2) = \sqrt{\pi}
+$$
+- Hence we conclude
+$$
+f_{\chi^2_1}(x) = \frac{x^{-1/2} e^{-x/2}}{2^{1/2} \sqrt{pi}} = \frac{x^{-1/2} e^{-x/2}}{2^{1/2} \Gamma(1/2)}
+$$
+- This shows
+$$
+\chi_1^2 \sim \Gamma(1/2,1/2)
+$$
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+- Now consider the case $r \geq 2$. We need to prove that
+$\chi^2_r \sim \Gamma(r/2, 1/2)$
+
+- By definition
+$$
+\chi^2_r \sim Z^2_1 + \ldots + Z^2_r \,, \qquad 
+\chi^2_1 \sim Z_1^2
+$$
+- It follows that a $\chi^2_r$ random variable can be constructed as 
+$$
+\chi^2_r = \sum_{i=1}^r X_i, \qquad X_i \sim \chi^2_1
+$$
+- By the Theorem in Slide 80 in Lecture 2 we have 
+$$
+Z_1,\ldots,Z_r \,\,\, \text{iid} \quad \implies \quad
+Z_1^2,\ldots,Z_r^2 \,\,\, \text{iid} \quad \implies \quad
+X_1,\ldots,X_r \,\,\,  \text{iid}
+$$
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+
+- Therefore 
+$$
+\chi^2_r = \sum_{i=1}^r X_i \,, \qquad X_i \sim \chi_1^2 \,\, \,\text{ iid}
+$$ 
+
+- Recall that the MGF of sum of iid random variables is the product of the MGFs - see Theorem in Slide 81 of Lecture 2
+
+- Thus the MGF of $\chi^2_r$ can be calculated as 
+$$
+M_{\chi_r^2}(t) = \prod_{i=1}^r M_{X_i} (t) 
+=  \left[M_{\chi^2_1}(t) \right]^r
+$$
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+
+- We have proven that $\chi_1^2 \sim \Gamma(1/2,1/2)$
+
+- In Lecture 1 we have also computed that 
+$$
+Y \sim \Gamma(\alpha,\beta) \qquad \implies \qquad 
+M_Y(t) = \frac{\beta^\alpha}{(\beta - t)^\alpha}
+$$
+
+- Hence 
+$$
+M_{\chi_1^2}(t) =  \frac{2^{-1/2}}{(1/2 - t)^{1/2}}
+$$
+
+
+
+
+## Chi-squared distribution {.smaller}
+### Proof of Theorem
+
+
+- Therefore 
+$$
+M_{\chi_r^2}(t) = \left[M_{\chi^2_1}(t) \right]^r 
+                = \left[  
+                    \frac{2^{-1/2}}{ (1/2 - t)^{1/2}}
+                     \right]^r
+                = \frac{2^{-r/2}}{(1/2 - t)^{r/2}}
+$$
+
+- The above is the MGF of a $\Gamma(r/2,1/2)$
+
+- Since MGF characterizes a distribution, we conclude our thesis
+$$
+\chi_r^2 \sim \Gamma(r/2,1/2)
+$$
+
+
+
+
+
+# Part 4: <br>Sampling from normal distribution {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+## Sampling from Normal distribution {.smaller}
+
+
+**Sample mean and variance**: For a random sample $X_1,\ldots,X_n$ defined by
+$$
+S^2 := \frac{1}{n-1} \sum_{i=1}^n \left( X_i - \overline{X}  \right)^2 \,, \qquad 
+\overline{X} := \frac{1}{n} \sum_{i=1}^n X_i
+$$
+
+
+::: Question
+
+Assume the sample is normal
+$$
+X_i \sim N(\mu,\sigma^2) \,, \quad \forall \, i = 1 , \ldots, n
+$$
+What are the distributions of $\overline{X}$ and $S^2$?
+
+:::
+
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+
+::: Theorem
+
+Let $X_1,\ldots,X_n$ be a random sample from $N(\mu,\sigma^2)$. Then
+
+- $\overline{X}$ and $S^2$ are independent random variables
+- $\overline{X}$ and $S^2$ are distributed as follows
+$$
+\overline{X} \sim  N(\mu,\sigma^2/n) \,, \qquad
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+
+:::
 
 
 
