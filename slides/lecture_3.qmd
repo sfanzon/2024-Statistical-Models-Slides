@@ -1206,7 +1206,7 @@ $$
 T := \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
 $$
 
-- We know that $T \sim N(0,1)$
+- We know that $T \sim N(0,1)$ -- Because $\overline X \sim N(\mu,\sigma^2/n)$ as seen in Slide 48
 - If $\sigma$ is known, then the only unknown in $T$ is $\mu$ 
 - Therefore $T$ can be used to estimate $\mu$
 
@@ -1264,31 +1264,217 @@ Given the value $p := P(T \approx t)$ we have 2 options:
     * We conclude that our guess must be wrong $\quad \implies \quad \mu \neq \mu_0$
 
 - $p$ is large $\quad \implies \quad$  **do not reject** $\mu_0$
-    * $p$ small means that $t$ happens with reasonably high probability
+    * $p$ large means that $t$ happens with reasonably high probability
     * There is no reason to believe our guess $\mu_0$ was wrong
     * But we also do not have sufficient reason to believe $\mu_0$ was correct
 
 
 
-## Estimating the Mean  {.smaller}
-
-- We know that $T \sim N(0,1)$
-- Therefore we can compute
-$$
-p := P(T \geq t) + P(T \leq t)
-$$
-$$
-T = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
-$$
 
 
 ## Estimating the Mean  {.smaller}
+
+
+
+::: Important
+
+The key step in the **Hypothesis Testing Algorithm** is computing
+$$
+p = P(T \approx t)
+$$
+This is only possible if we know the distribution of 
+$$
+T = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+$$
+If we assume that the variance $\sigma^2$ is known, then 
+$$
+T \sim N(0,1)
+$$ 
+and $p$ is easily computed
+
+:::
+
+
+
+## Estimating the Mean  {.smaller}
+### Unknown variance
+
 
 ::: Problem
 
-In practice we often do not know the population variance $\sigma^2$
+In general the population variance $\sigma^2$ is unknown. What to do?
 
 :::
+
+
+**Idea**: We can replace $\sigma^2$ by the **sample variance**
+$$
+S^2 = \frac{\sum_{i=1}^n X_i^2 - n \overline{X}^2}{n-1}
+$$
+The new test statistic is hence
+$$
+T := \frac{\overline{X}-\mu}{S/\sqrt{n}}
+$$
+
+
+
+
+## Estimating the Mean  {.smaller}
+
+
+::: Question
+
+What is the distribution of
+
+$$
+T := \frac{\overline{X}-\mu}{S/\sqrt{n}} \qquad ?
+$$
+
+
+:::
+
+
+**Answer**: $T$ has $t$ distribution with $n-1$ degrees of freedom
+
+- This is also known as **Student's t distribution**
+- **Student** was the pen name under which **W.S. Gosset** was publishing his research
+- He was **head brewer** at Guinness, at the time the largest brewery in the world!
+- Used $t$ distribution to study chemical properties of barley from **low samples** [@student] (see original [paper](https://www.york.ac.uk/depts/maths/histstat/student.pdf)
+)
+
+
+
+
+
+## t distribution  {.smaller}
+### Definition
+
+
+::: Definition
+
+A random variable $T$ has **Student's t distribution** with
+**p degrees of freedom**, denoted by 
+$$
+T \sim t_p \,,
+$$
+if the pdf of $T$ is
+$$
+f_T(t) = \frac{\Gamma \left( \frac{p+1}{2} \right) }{\Gamma \left( \frac{p}{2} \right)} \, \frac{1}{(p\pi)^{1/2}} \,
+\frac{ 1  }{ (1 + t^2/p)^{(p+1)/2} } \,, \qquad 
+t \in \R 
+$$
+
+:::
+
+
+
+
+## t distribution  {.smaller}
+### Distribution of t statistic
+
+::: Theorem
+
+Let $X_1,\ldots,X_n$ be a random sample from $N(\mu,\sigma^2)$. Then the random variable 
+$$
+T = \frac{\overline{X}-\mu}{S/\sqrt{n}}
+$$
+has **t distribution** with $n-1$ degrees of freedom
+$$
+T \sim t_{n-1}
+$$
+:::
+
+
+
+
+
+## t distribution {.smaller}
+
+
+::: Proposition
+### Expectation and Variance of t distribution
+
+Suppose that $T \sim t_p$. We have: 
+
+- If $p>1$ then $\Expect[T] = 0$
+- If $p>2$ then $\Var[T] = \frac{p}{p-2}$
+
+:::
+
+**Notes:**
+
+- We have to assume $p>1$ otherwise $\Expect[T] = \infty$ for $p=1$
+- We have to assume $p>2$ otherwise $\Var[T] = \infty$ for $p=1,2$
+- $\Expect[T] = 0$ follows trivially from symmetry of the pdf $f_T(t)$ around $t=0$
+- Computing $\Var[T]$ is quite involved, and we skip it
+
+
+
+
+
+## t distribution {.smaller}
+### Comparison with Standard Normal
+
+The $t_p$ distribution generalizes standard normal $N(0,1)$:
+
+- $t_p$ it is symmetric around zero and bell-shaped, like $N(0,1)$
+- $t_p$ has **heavier tails** compared to $N(0,1)$
+- While the variance of $N(0,1)$ is $1$, the variance of $t_p$ is $\frac{p}{p-2}$
+- We have that 
+$$
+t_p \to N(0,1) \quad \text{as} \quad p \to \infty
+$$
+
+
+
+
+
+## t distribution {.smaller}
+### Plots: Comparison with Standard Normal
+
+
+```{r}
+
+# Set the degrees of freedom for t-distribution
+degree1 <- 3
+
+# Generate values for the x-axis
+x_values <- seq(-4, 4, by = 0.1)  # Adjusted for standard normal distribution
+
+# Calculate the probability density function (PDF) values for each x for the 3 distributions
+pdf_values1 <- dnorm(x_values)
+pdf_values2 <- dt(x_values, df = degree1)
+
+# Plot the standard normal and t-distributions
+plot(x_values, 
+     pdf_values1, 
+     type = "l", 
+     col = "blue", 
+     lwd = 2,
+     xlab = "", 
+     ylab = "",
+     ylim = c(0, max(pdf_values2, pdf_values3) + 0.1))
+
+lines(x_values, 
+      pdf_values2, 
+      col = "red", 
+      lwd = 2)
+
+
+mtext("x", side = 1, line = 3, cex = 2)
+mtext("pdf", side = 2, line = 2.5, cex = 2)
+
+# Add a legend
+legend("topright", 
+       legend = c("Standard Normal N(0,1)", 
+                  paste("t with", degree1, "deg of freedom")),
+       col = c("blue", "red"), 
+       lty = 1, 
+       lwd = 2, 
+       cex = 1.5)
+
+```
+
 
 
 
