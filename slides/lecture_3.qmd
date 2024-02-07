@@ -24,7 +24,7 @@ $
 :::
 
 
-# Lecture 3: <br>Random samples and <br>Normal distribution family{background-color="#cc0164" visibility="uncounted"}
+# Lecture 3: <br>Random samples{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -42,6 +42,9 @@ $
 2. Unbiased estimators
 3. Chi squared distribution
 4. Sampling from normal distribution
+5. t distribution
+6. t test
+7. R crash course
 
 
 
@@ -885,6 +888,7 @@ $$
 
 
 
+
 ## Chi-squared distribution {.smaller}
 ### Proof of Theorem
 
@@ -982,22 +986,351 @@ $$
 
 
 
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
 
-## Examples of Continuous RV {.smaller}
+- To prove independence of $\overline{X}$ and $S^2$ we make use of the following lemma
+- Proof of this Lemma is technical and omitted
+- For a proof see Lemma 5.3.3 in [@casella-berger]
 
+::: Lemma
 
-::: Theorem
-
-If $X \sim N(\mu,\sigma^2)$ then $Z \sim N(0,1)$ where
+Let $X$ and $Y$ be normal random variables. Then
 $$
-Z := \frac{X-\mu}{\sigma}
+X \text{ and } Y \text{ independent } \quad \iff \quad 
+\Cov(X,Y) = 0 
 $$
+
 :::
 
-Check
 
-::: Proof
 
-Check
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+
+- We now apply the Lemma to $X_i - \overline X$ and $\overline{X}$
+
+- Note that $X_i - \overline{X}$ and $\overline{X}$ are 
+normally distributed, being sums of iid normals
+
+- Therefore we can apply the Lemma
+
+- To this end, recall that $\Var[\overline X] = \sigma^2/n$
+
+- Also note that, by independence of $X_1,\ldots,X_n$
+$$
+\Cov(X_i,X_j) = 
+\begin{cases}
+\Var[X_i] & \text{ if } \, i = j \\
+0         & \text{ if } \, i \neq j \\
+\end{cases}
+$$
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+- Using bilinearity of covariance (i.e. linearity in both arguments)
+\begin{align*}
+\Cov(X_i - \overline X, \overline X) & = \Cov(X_i,\overline{X}) - \Cov(\overline X,\overline{X}) \\
+& = \frac{1}{n} \sum_{j=1}^n \Cov(X_i,X_j) - \Var[\overline X] \\
+& = \frac{1}{n} \Var[X_i] - \Var[\overline X] \\
+& = \frac{1}{n} \sigma^2 - \frac{\sigma^2}{n} = 0
+\end{align*}
+
+- By the Lemma we infer independence of $X_i - \overline X$ and $\overline X$
+
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+- We have shown 
+$$
+X_i - \overline X \quad \text{and} \quad  \overline X \quad 
+\text{independent}
+$$
+
+- By the Theorem in Slide 80 in Lecture 2 we hence have 
+$$
+(X_i - \overline X)^2 \quad \text{and} \quad  \overline X \quad 
+\text{independent}
+$$
+
+
+- By the same Theorem we also get
+$$
+\sum_{i=1}^n (X_i - \overline X)^2 = (n-1)S^2 \quad \text{and} \quad  \overline X \quad 
+\text{independent}
+$$
+
+- Again the same Theorem, finally implies independence of
+$S^2$ and $\overline X$
+
+
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+
+- We now want to show that $\overline{X} \sim  N(\mu,\sigma^2/n)$
+
+- We are assuming that $X_1,\ldots,X_n$ are iid with 
+$$
+\Expect[X_i] = \mu \,, \qquad \Var[X_i] = \sigma^2
+$$
+
+- We have already seen in Slides 15 and 17 that, in this case,
+$$
+\Expect[\overline X] = \mu \,, \quad \Var[\overline{X}] = \frac{\sigma^2}{n}
+$$
+
+- Sum of independent normals is normal (see Theorem in slide 82 in Lecture 2)
+
+- Therefore $\overline{X}$ is normal, with mean $\mu$ and variance $\sigma^2/n$
+
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+- We are left to prove that 
+$$
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+    * This is somewhat technical and we don't actually prove it 
+    * For a proof see Theorem 5.3.1 in [@casella-berger]
+    * We however want to provide some intuition on why it holds
+
+- Recall that the chi-squared distribution with $r$ degrees of freedom is
+$$
+\chi_r^2 \sim Z_1^2 + \ldots + Z_r^2
+$$
+with $Z_i$ iid and $N(0,1)$
+
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+- By definition of $S^2$ we have
+$$
+\frac{(n-1)S^2}{\sigma^2}  = 
+\sum_{i=1}^n \frac{(X_i - \overline X)^2}{\sigma^2}
+$$
+
+- If we replace the sample mean $\overline X$ with the actual mean $\mu$ we get the approximation
+$$
+\frac{(n-1)S^2}{\sigma^2}  = 
+\sum_{i=1}^n \frac{(X_i - \overline X)^2}{\sigma^2} \approx
+\sum_{i=1}^n \frac{(X_i - \mu)^2}{\sigma^2}
+$$
+
+
+
+## Properties of Sample Mean and Variance {.smaller}
+### Proof of Theorem
+
+- Since $X_i \sim N(\mu,\sigma^2)$, we have that
+$$
+Z_i := \frac{X_i - \mu}{\sigma} \sim N(0,1)
+$$
+
+- Therefore 
+$$
+\frac{(n-1)S^2}{\sigma^2}   \approx \sum_{i=1}^n \frac{(X_i - \mu)^2}{\sigma^2} = \sum_{i=1}^n Z_i^2 \sim \chi_n^2
+$$
+
+- This is just an approximation: Replacing $\mu$ with $\overline X$ **loses of 1 degree of freedom**
+$$
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+
+
+
+
+# Part 5: <br>t distribution{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
 
 :::
+
+
+
+## Estimating the Mean  {.smaller}
+
+::: Problem
+
+We want to estimate the mean $\mu$ of a **normal  population**
+
+:::
+
+**What to do?**
+
+- We can collect normal samples $X_1, \ldots, X_n$ with
+$X_i \sim N(\mu,\sigma^2)$
+
+- We then compute the sample mean
+$$
+\overline X := \frac{1}{n} \sum_{i=1}^n X_i
+$$
+- We know that $\Expect[\overline X] = \mu$
+
+
+
+## Estimating the Mean  {.smaller}
+
+
+Therefore we expect $\overline X$ to approximate $\mu$
+
+::: Question
+
+How good is this approximation? How to quantify it?
+
+:::
+
+
+**Answer**: We could look at the **Test Statistic**
+$$
+T := \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+$$
+
+- We know that $T \sim N(0,1)$
+- If $\sigma$ is known, then the only unknown in $T$ is $\mu$ 
+- Therefore $T$ can be used to estimate $\mu$
+
+
+
+
+
+## Estimating the Mean  {.smaller}
+
+::: Question
+
+In what way can we use the test statistic
+$$
+T = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+$$ 
+to estimate $\mu$?
+
+:::
+
+
+**Answer**: Hypothesis testing
+
+
+
+
+
+## Estimating the Mean  {.smaller}
+### Hypothesis testing algorithm
+
+- We suppose that $\mu=\mu_0$ for some guessed $\mu_0   \qquad$ ($\mu_0$ is called **null hypothesis**)
+- Using the data collected $\XX = (X_1,\ldots,X_n)$ we compute
+$$
+t := \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}} \,, \qquad 
+\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i
+$$
+- Since $T \sim N(0,1)$, we can compute the probability of $T$ being close to $t$
+$$
+p := P(T \approx t)
+$$
+
+
+
+
+
+## Estimating the Mean  {.smaller}
+### Hypothesis testing algorithm
+
+
+
+Given the value $p := P(T \approx t)$ we have 2 options:
+
+- $p$ is small $\quad \implies \quad$  **reject** $\mu_0$
+    * $p$ small means it is unlikely to observe such value of $t$
+    * Recall that $t$ depends on the data $\XX$ and our guess $\mu_0$
+    * We conclude that our guess must be wrong $\quad \implies \quad \mu \neq \mu_0$
+
+- $p$ is large $\quad \implies \quad$  **do not reject** $\mu_0$
+    * $p$ small means that $t$ happens with reasonably high probability
+    * There is no reason to believe our guess $\mu_0$ was wrong
+    * But we also do not have sufficient reason to believe $\mu_0$ was correct
+
+
+
+## Estimating the Mean  {.smaller}
+
+- We know that $T \sim N(0,1)$
+- Therefore we can compute
+$$
+p := P(T \geq t) + P(T \leq t)
+$$
+$$
+T = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+$$
+
+
+## Estimating the Mean  {.smaller}
+
+::: Problem
+
+In practice we often do not know the population variance $\sigma^2$
+
+:::
+
+
+
+
+
+# Part 6: <br>t test{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+
+
+# Part 7: <br>R crash course{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+
+[Install R](https://cloud.r-project.org)
+
+[RStudio](https://posit.co/download/rstudio-desktop/)
+
+[VisualStudio Code](https://code.visualstudio.com/docs/languages/r)
+
+
+
+
+
+## References

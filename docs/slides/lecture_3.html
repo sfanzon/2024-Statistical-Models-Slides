@@ -32,7 +32,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -341,47 +361,43 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Warning {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Important {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,19 +409,23 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -446,8 +466,8 @@
 
 </section>
 <section>
-<section id="lecture-3-random-samples-and-normal-distribution-family" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Lecture 3: <br>Random samples and <br>Normal distribution family</h1>
+<section id="lecture-3-random-samples" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Lecture 3: <br>Random samples</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -461,6 +481,9 @@
 <li>Unbiased estimators</li>
 <li>Chi squared distribution</li>
 <li>Sampling from normal distribution</li>
+<li>t distribution</li>
+<li>t test</li>
+<li>R crash course</li>
 </ol>
 </section></section>
 <section>
@@ -1151,23 +1174,266 @@ X_i \sim N(\mu,\sigma^2) \,, \quad \forall \, i = 1 , \ldots, n
 </div></details>
 </div>
 </section>
-<section id="examples-of-continuous-rv" class="slide level2 smaller">
-<h2>Examples of Continuous RV</h2>
-<div id="Theorem*-5.3" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>If <span class="math inline">X \sim N(\mu,\sigma^2)</span> then <span class="math inline">Z \sim N(0,1)</span> where <span class="math display">
-Z := \frac{X-\mu}{\sigma}
+<section id="properties-of-sample-mean-and-variance-1" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-14">Proof of Theorem</h3>
+<ul>
+<li>To prove independence of <span class="math inline">\overline{X}</span> and <span class="math inline">S^2</span> we make use of the following lemma</li>
+<li>Proof of this Lemma is technical and omitted</li>
+<li>For a proof see Lemma 5.3.3 in <span class="citation" data-cites="casella-berger">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span></li>
+</ul>
+<div id="Lemma*-5.3" class="Lemma">
+<p></p><details class="Lemma fbx-simplebox fbx-default" open=""><summary><strong>Lemma</strong></summary><div>Let <span class="math inline">X</span> and <span class="math inline">Y</span> be normal random variables. Then <span class="math display">
+X \text{ and } Y \text{ independent } \quad \iff \quad
+{\rm Cov}(X,Y) = 0
 </span><p></p>
 </div></details>
 </div>
-<p>Check</p>
-<div id="Proof*-5.4" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Check<p></p>
+</section>
+<section id="properties-of-sample-mean-and-variance-2" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-15">Proof of Theorem</h3>
+<ul>
+<li><p>We now apply the Lemma to <span class="math inline">X_i - \overline X</span> and <span class="math inline">\overline{X}</span></p></li>
+<li><p>Note that <span class="math inline">X_i - \overline{X}</span> and <span class="math inline">\overline{X}</span> are normally distributed, being sums of iid normals</p></li>
+<li><p>Therefore we can apply the Lemma</p></li>
+<li><p>To this end, recall that <span class="math inline">{\rm Var}[\overline X] = \sigma^2/n</span></p></li>
+<li><p>Also note that, by independence of <span class="math inline">X_1,\ldots,X_n</span> <span class="math display">
+{\rm Cov}(X_i,X_j) =
+\begin{cases}
+{\rm Var}[X_i] &amp; \text{ if } \, i = j \\
+0         &amp; \text{ if } \, i \neq j \\
+\end{cases}
+</span></p></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-3" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-16">Proof of Theorem</h3>
+<ul>
+<li><p>Using bilinearity of covariance (i.e.&nbsp;linearity in both arguments) <span class="math display">\begin{align*}
+{\rm Cov}(X_i - \overline X, \overline X) &amp; = {\rm Cov}(X_i,\overline{X}) - {\rm Cov}(\overline X,\overline{X}) \\
+&amp; = \frac{1}{n} \sum_{j=1}^n {\rm Cov}(X_i,X_j) - {\rm Var}[\overline X] \\
+&amp; = \frac{1}{n} {\rm Var}[X_i] - {\rm Var}[\overline X] \\
+&amp; = \frac{1}{n} \sigma^2 - \frac{\sigma^2}{n} = 0
+\end{align*}</span></p></li>
+<li><p>By the Lemma we infer independence of <span class="math inline">X_i - \overline X</span> and <span class="math inline">\overline X</span></p></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-4" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-17">Proof of Theorem</h3>
+<ul>
+<li><p>We have shown <span class="math display">
+X_i - \overline X \quad \text{and} \quad  \overline X \quad
+\text{independent}
+</span></p></li>
+<li><p>By the Theorem in Slide 80 in Lecture 2 we hence have <span class="math display">
+(X_i - \overline X)^2 \quad \text{and} \quad  \overline X \quad
+\text{independent}
+</span></p></li>
+<li><p>By the same Theorem we also get <span class="math display">
+\sum_{i=1}^n (X_i - \overline X)^2 = (n-1)S^2 \quad \text{and} \quad  \overline X \quad
+\text{independent}
+</span></p></li>
+<li><p>Again the same Theorem, finally implies independence of <span class="math inline">S^2</span> and <span class="math inline">\overline X</span></p></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-5" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-18">Proof of Theorem</h3>
+<ul>
+<li><p>We now want to show that <span class="math inline">\overline{X} \sim  N(\mu,\sigma^2/n)</span></p></li>
+<li><p>We are assuming that <span class="math inline">X_1,\ldots,X_n</span> are iid with <span class="math display">
+{\rm I\kern-.3em E}[X_i] = \mu \,, \qquad {\rm Var}[X_i] = \sigma^2
+</span></p></li>
+<li><p>We have already seen in Slides 15 and 17 that, in this case, <span class="math display">
+{\rm I\kern-.3em E}[\overline X] = \mu \,, \quad {\rm Var}[\overline{X}] = \frac{\sigma^2}{n}
+</span></p></li>
+<li><p>Sum of independent normals is normal (see Theorem in slide 82 in Lecture 2)</p></li>
+<li><p>Therefore <span class="math inline">\overline{X}</span> is normal, with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2/n</span></p></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-6" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-19">Proof of Theorem</h3>
+<ul>
+<li>We are left to prove that <span class="math display">
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+</span>
+<ul>
+<li>This is somewhat technical and we don’t actually prove it</li>
+<li>For a proof see Theorem 5.3.1 in <span class="citation" data-cites="casella-berger">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span></li>
+<li>We however want to provide some intuition on why it holds</li>
+</ul></li>
+<li>Recall that the chi-squared distribution with <span class="math inline">r</span> degrees of freedom is <span class="math display">
+\chi_r^2 \sim Z_1^2 + \ldots + Z_r^2
+</span> with <span class="math inline">Z_i</span> iid and <span class="math inline">N(0,1)</span></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-7" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-20">Proof of Theorem</h3>
+<ul>
+<li><p>By definition of <span class="math inline">S^2</span> we have <span class="math display">
+\frac{(n-1)S^2}{\sigma^2}  =
+\sum_{i=1}^n \frac{(X_i - \overline X)^2}{\sigma^2}
+</span></p></li>
+<li><p>If we replace the sample mean <span class="math inline">\overline X</span> with the actual mean <span class="math inline">\mu</span> we get the approximation <span class="math display">
+\frac{(n-1)S^2}{\sigma^2}  =
+\sum_{i=1}^n \frac{(X_i - \overline X)^2}{\sigma^2} \approx
+\sum_{i=1}^n \frac{(X_i - \mu)^2}{\sigma^2}
+</span></p></li>
+</ul>
+</section>
+<section id="properties-of-sample-mean-and-variance-8" class="slide level2 smaller">
+<h2>Properties of Sample Mean and Variance</h2>
+<h3 id="proof-of-theorem-21">Proof of Theorem</h3>
+<ul>
+<li><p>Since <span class="math inline">X_i \sim N(\mu,\sigma^2)</span>, we have that <span class="math display">
+Z_i := \frac{X_i - \mu}{\sigma} \sim N(0,1)
+</span></p></li>
+<li><p>Therefore <span class="math display">
+\frac{(n-1)S^2}{\sigma^2}   \approx \sum_{i=1}^n \frac{(X_i - \mu)^2}{\sigma^2} = \sum_{i=1}^n Z_i^2 \sim \chi_n^2
+</span></p></li>
+<li><p>This is just an approximation: Replacing <span class="math inline">\mu</span> with <span class="math inline">\overline X</span> <strong>loses of 1 degree of freedom</strong> <span class="math display">
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+</span></p></li>
+</ul>
+</section></section>
+<section>
+<section id="part-5-t-distribution" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>t distribution</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="estimating-the-mean-1" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<div id="Problem*-6.1" class="Problem">
+<p></p><details class="Problem fbx-simplebox fbx-default" open=""><summary><strong>Problem</strong></summary><div>We want to estimate the mean <span class="math inline">\mu</span> of a <strong>normal population</strong><p></p>
 </div></details>
 </div>
+<p><strong>What to do?</strong></p>
+<ul>
+<li><p>We can collect normal samples <span class="math inline">X_1, \ldots, X_n</span> with <span class="math inline">X_i \sim N(\mu,\sigma^2)</span></p></li>
+<li><p>We then compute the sample mean <span class="math display">
+\overline X := \frac{1}{n} \sum_{i=1}^n X_i
+</span></p></li>
+<li><p>We know that <span class="math inline">{\rm I\kern-.3em E}[\overline X] = \mu</span></p></li>
+</ul>
+</section>
+<section id="estimating-the-mean-2" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<p>Therefore we expect <span class="math inline">\overline X</span> to approximate <span class="math inline">\mu</span></p>
+<div id="Question*-6.2" class="Question">
+<p></p><details class="Question fbx-simplebox fbx-default" open=""><summary><strong>Question</strong></summary><div>How good is this approximation? How to quantify it?<p></p>
+</div></details>
+</div>
+<p><strong>Answer</strong>: We could look at the <strong>Test Statistic</strong> <span class="math display">
+T := \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+</span></p>
+<ul>
+<li>We know that <span class="math inline">T \sim N(0,1)</span></li>
+<li>If <span class="math inline">\sigma</span> is known, then the only unknown in <span class="math inline">T</span> is <span class="math inline">\mu</span></li>
+<li>Therefore <span class="math inline">T</span> can be used to estimate <span class="math inline">\mu</span></li>
+</ul>
+</section>
+<section id="estimating-the-mean-3" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<div id="Question*-6.3" class="Question">
+<p></p><details class="Question fbx-simplebox fbx-default" open=""><summary><strong>Question</strong></summary><div>In what way can we use the test statistic <span class="math display">
+T = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+</span> to estimate <span class="math inline">\mu</span>?<p></p>
+</div></details>
+</div>
+<p><strong>Answer</strong>: Hypothesis testing</p>
+</section>
+<section id="estimating-the-mean-4" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<h3 id="hypothesis-testing-algorithm">Hypothesis testing algorithm</h3>
+<ul>
+<li>We suppose that <span class="math inline">\mu=\mu_0</span> for some guessed <span class="math inline">\mu_0   \qquad</span> (<span class="math inline">\mu_0</span> is called <strong>null hypothesis</strong>)</li>
+<li>Using the data collected <span class="math inline">\mathbf{X}= (X_1,\ldots,X_n)</span> we compute <span class="math display">
+t := \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}} \,, \qquad
+\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i
+</span></li>
+<li>Since <span class="math inline">T \sim N(0,1)</span>, we can compute the probability of <span class="math inline">T</span> being close to <span class="math inline">t</span> <span class="math display">
+p := P(T \approx t)
+</span></li>
+</ul>
+</section>
+<section id="estimating-the-mean-5" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<h3 id="hypothesis-testing-algorithm-1">Hypothesis testing algorithm</h3>
+<p>Given the value <span class="math inline">p := P(T \approx t)</span> we have 2 options:</p>
+<ul>
+<li><span class="math inline">p</span> is small <span class="math inline">\quad \implies \quad</span> <strong>reject</strong> <span class="math inline">\mu_0</span>
+<ul>
+<li><span class="math inline">p</span> small means it is unlikely to observe such value of <span class="math inline">t</span></li>
+<li>Recall that <span class="math inline">t</span> depends on the data <span class="math inline">\mathbf{X}</span> and our guess <span class="math inline">\mu_0</span></li>
+<li>We conclude that our guess must be wrong <span class="math inline">\quad \implies \quad \mu \neq \mu_0</span></li>
+</ul></li>
+<li><span class="math inline">p</span> is large <span class="math inline">\quad \implies \quad</span> <strong>do not reject</strong> <span class="math inline">\mu_0</span>
+<ul>
+<li><span class="math inline">p</span> small means that <span class="math inline">t</span> happens with reasonably high probability</li>
+<li>There is no reason to believe our guess <span class="math inline">\mu_0</span> was wrong</li>
+<li>But we also do not have sufficient reason to believe <span class="math inline">\mu_0</span> was correct</li>
+</ul></li>
+</ul>
+</section>
+<section id="estimating-the-mean-6" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<ul>
+<li>We know that <span class="math inline">T \sim N(0,1)</span></li>
+<li>Therefore we can compute <span class="math display">
+p := P(T \geq t) + P(T \leq t)
+</span> <span class="math display">
+T = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+</span></li>
+</ul>
+</section>
+<section id="estimating-the-mean-7" class="slide level2 smaller">
+<h2>Estimating the Mean</h2>
+<div id="Problem*-6.4" class="Problem">
+<p></p><details class="Problem fbx-simplebox fbx-default" open=""><summary><strong>Problem</strong></summary><div>In practice we often do not know the population variance <span class="math inline">\sigma^2</span><p></p>
+</div></details>
+</div>
+</section></section>
+<section id="part-6-t-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 6: <br>t test</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
+<section>
+<section id="part-7-r-crash-course" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br>R crash course</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<p><a href="https://cloud.r-project.org">Install R</a></p>
+<p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></p>
+<p><a href="https://code.visualstudio.com/docs/languages/r">VisualStudio Code</a></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="../index.html">Homepage</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../license.html">License</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.silviofanzon.com/contact">Contact</a></p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-casella-berger" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.</div>
 </div>
 </div>
 </section></section>
