@@ -43,8 +43,7 @@ $
 3. Chi squared distribution
 4. Sampling from normal distribution
 5. t distribution
-6. t test
-7. R crash course
+6. Hypothesis testing
 
 
 
@@ -1480,7 +1479,7 @@ legend("topright",
 
 
 
-# Part 6: <br>t test{background-color="#cc0164" visibility="uncounted"}
+# Part 6: <br>Hypothesis testing{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1489,6 +1488,122 @@ legend("topright",
 :::
 
 
+
+## Hypothesis testing {.smaller}
+### Definition of Hypothesis
+
+::: Definition
+
+A **hypothesis** is a statement about a population parameter
+
+:::
+
+- Two hypotheses are **complementary** if exactly one of them can be true
+
+- Complementary hypotheses are called:
+    * $H_0$ the **null hypothesis** 
+    * $H_1$ the **alternative hypothesis**
+
+- **Goal**: Find a way to decide which between $H_0$ and $H_1$ is true
+
+
+
+
+## Hypothesis testing {.smaller}
+### How to model hypotheses
+
+We denote by:
+
+- $\theta$ a population parameter
+- $\Theta$ the space of all population parameters
+
+For $\Theta_0 \subset \Theta$ we define the associated 
+null and alternative hypotheses as
+\begin{align*}
+H_0 \colon & \theta \in \Theta_0  & \qquad \text{ null hypothesis} \\
+H_1 \colon & \theta \in \Theta_0^c  & \qquad \text{ alternative hypothesis}
+\end{align*}
+
+
+
+
+
+## Hypothesis testing {.smaller}
+### Definition of Hypothesis test
+
+
+::: Definition
+
+A **hypothesis test** is a rule to decide:
+
+- For which sample values we decide to **accept** $H_0$ as true
+- For which sample values we **reject** $H_0$ and accept $H_1$ as true
+
+:::
+
+The subset of the sample space for which:
+
+- $H_0$ is accepted is called **acceptance region**
+- $H_0$ is rejected is called **rejection region** or **critical region**
+
+
+
+
+## Hypothesis testing {.smaller}
+### Philosophical issues
+
+
+- $H_0$ is usually a **conservative hypothesis**
+- If a test indicates to **reject** $H_0$, people do that happily and accept $H_1$
+- If a test indicates to **accept** $H_0$ there are issues:
+    * Some people like to reject $H_1$ and accept $H_0$
+    * Some people like to reject $H_1$, but do not believe fully in $H_0$. They would like to reject $H_0$, but do not have enough evidence to do so
+
+- **Our position:** We do not care, and we either
+    * decide in favor of $H_0$ - or **accept** $H_0$
+    * decide in favor of $H_1$ - or **accept** $H_1$
+
+
+
+## Hypothesis testing {.smaller}
+### Example 1
+
+
+The *University of Cottingham Road* wants to advertise its MBA Program: 
+$$
+\text{ MBA } = \text{ higher salary }
+$$
+Is this a true or false statement? We set up a test:
+
+- $\theta =$ average change in salary after **completing the MBA program**
+
+- Decision is between:
+    * Null hypothesis: There is no change $\,\, \implies \,\, \theta=0$
+    * Alternative hypothesis: There is a change $\,\, \implies \,\, \theta \neq 0$
+
+**Hypothesis test**: 
+$\qquad \quad H_0 \colon \theta = 0 \,, \qquad 
+H_1 \colon \theta \neq 0$
+
+
+
+## Hypothesis testing {.smaller}
+### Example 2
+
+
+Manager at a *Computer Factory* wants to know the proportion of defective components produced
+
+- Testing is expensive and they can only test a limited sample
+- $\theta =$ proportion of defective components
+- Manager is happy if $\theta$ is less than some $\theta_0$
+- The decision is between:
+    * Null hypothesis: Defective components less than $\theta_0$ $\,\, \implies \,\, \theta < \theta_0$
+    * Alternative hypothesis: Defective components more than $\theta_0$ $\,\, \implies \,\, \theta \geq \theta_0$
+
+**Hypothesis test**:
+$\qquad \quad H_0 \colon \theta < \theta_0 \,, \qquad 
+H_1 \colon \theta \geq \theta_0$
+ 
 
 
 

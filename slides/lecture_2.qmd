@@ -1694,7 +1694,7 @@ f(x_1,\ldots,x_k) > 0 \,, \quad \forall \, (x_1,\ldots,x_k ) \in \R^k
 $$ 
 The **conditional pmf or pdf** of $(X_{k+1},\ldots,X_n)$ given $X_1 = x_1, \ldots , X_k = x_k$ is the function of $(x_{k+1},\ldots,x_{n})$ defined by
 $$
-f(x_{k+1},\ldots,x_n | x_1 , \ldots , x_n) := \frac{f_{\XX}(x_1,\ldots,x_n)}{f(x_1,\ldots,x_k)}
+f(x_{k+1},\ldots,x_n | x_1 , \ldots , x_k) := \frac{f_{\XX}(x_1,\ldots,x_n)}{f(x_1,\ldots,x_k)}
 $$
 
 :::
@@ -1708,9 +1708,9 @@ Similarly, we can define the conditional distribution given the $i$-th coordinat
 
 ::: Definition 
 
-Let $\XX$ be a random vector and suppose that
+Let $\XX$ be a random vector and suppose that for a given $x_i \in \R$
 $$
-f_{X_i}(x_i) > 0 \,, \quad \forall \, x_i \in \R
+f_{X_i}(x_i) > 0
 $$ 
 The **conditional pmf or pdf** of $\tilde{X}$ given $X_i = x_i$ is the function of $\tilde{x}$ defined by
 $$
