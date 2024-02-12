@@ -1235,7 +1235,8 @@ to estimate $\mu$?
 ## Estimating the Mean  {.smaller}
 ### Hypothesis testing algorithm
 
-- We suppose that $\mu=\mu_0$ for some guessed $\mu_0   \qquad$ ($\mu_0$ is called **null hypothesis**)
+- We suppose that $\mu=\mu_0$ for some guessed $\mu_0$
+- $\mu_0$ is called **null hypothesis**
 - Using the data collected $\XX = (X_1,\ldots,X_n)$ we compute
 $$
 t := \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}} \,, \qquad 
@@ -1752,7 +1753,10 @@ $$
 
 - **p-value** is a measure of how strange the data is in relation to the null hypothesis
 
-- **LOW** p-values would cause to reject the null hypothesis $H_0$
+
+- We have 2 options:
+    * **LOW** p-value $\quad \implies \quad$  **reject** $H_0$
+    * **HIGH** p-value $\quad \implies \quad$  **do not reject** $H_0$
 
 - In this course we reject $H_0$ for p-values 
 $$
@@ -1763,16 +1767,29 @@ $$
 
 
 ## One-sample Two-sided t-test {.smaller}
-
+### p-value
 
 - For two-sided t-test the p-value is defined as
 $$
-p := P(t_{n-1}> |t|)
+p := 2P(t_{n-1}> |t|)
 $$
 where $t_{n-1}$ is the t distribution with $n-1$ degrees of freedom
 
-- $p<0.05$ means that the test statistic $t$ is **extreme**
+- Therefore the p-value is
+$$
+p = 2P(\text{Observing t }| \, \mu=\mu_0)
+$$
 
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### p-value
+
+- $p<0.05$ means that the test statistic $t$ is **extreme**: $\,\, P(t_{n-1}> |t|)<0.025$
+
+- In this case $t$ falls in the **grey areas** in the $t_{n-1}$ plot below
 
 
 ```{r}
@@ -1814,7 +1831,7 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 
 
 - How to compute $p$?
-    * Use statistical tables
+    * Use statistical tables -- Available [here](files/Statistics_Tables.pdf)
     * Use R -- next lesson
 
 
@@ -1824,11 +1841,11 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 ### Reference statistical tables 
 
 
-- By using the tables in the file [Statistics_Tables.pdf](files/Statistics_Tables.pdf) we can estimate $p$
+- Tables [here](files/Statistics_Tables.pdf) allow us to **estimate** $p$
 
-- In the table **One-sided critical values of the student t distribution**
+- Find the table **One-sided critical values of the student t distribution**
     * Look at the row with Degree of Freedom $n-1$ (or its closest value)
-    * Look for the value $t^*$ in the column $0.025$
+    * Find **critical value** $t^*$ in column $0.025 \qquad\quad$ **Example**: $n=10$, DF $=9$, $t^*=2.262$
 
 ![](images/t_test_statistic_table.png){width=82%}
 
@@ -1840,7 +1857,7 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 ### Reference statistical tables 
 
 
-- The value $t^*$ found in the table satisfies
+- The critical value $t^*$ found in the table satisfies
 $$
 P(t_{n-1}>t^*) = 0.025
 $$
@@ -1850,12 +1867,172 @@ $$
 p := 2P(t_{n-1}>|t|) 
 $$
 
+- Therefore, for $|t|>t^*$
+\begin{align*}
+p & := 2P(t_{n-1}>|t|) \\
+  & <  2P(t_{n-1}>t^*) = 2 \cdot (0.025) = 0.05
+\end{align*}
+
+- **Conclusion**: $\qquad |t|>t^* \quad \iff \quad p<0.05$
+
+
+
+
+
 
 ## One-sample Two-sided t-test {.smaller}
-### Reference statistical tables 
+### Interpretation
+
+
+Recall that $p$ is the probability of observing $t$ given $H_0$
+We have two possibilities: 
+
+- $|t|>t^*$
+  * In this case $p<0.05$
+  * The observed statistic $t$ is very unlikely under $H_0$
+  * We **reject** $H_0$
+
+
+- $|t| \leq t^*$
+  * In this case $p>0.05$
+  * The observed statistic $t$ is not unlikely under $H_0$
+  * We **do not reject** $H_0$
+
+
+
+
+## Example: 2008 crisis {.smaller}
+
+- **Data:** Monthly Consumer Confidence Index (CCI) in 2007 and 2009
+- **Question:** Did the crash of 2008 have lasting impact upon CCI?
+- **Observation**: Data shows a massive drop in CCI between 2009 and 2007 
+- **Method:** Use $t$-test to see if data is sufficient to prove that CCI actually dropped
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
+| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+
+
+
+
+## Example: 2008 crisis {.smaller}
+
+- This is really a **two-sample** problem -- CCI data in 2 populations: 2007 and 2009 
+- It reduces to a **one-sample** problem because we have directly comparable units
+- If units cannot be compared, then we must use a two-sample approach
+- Two-sample approach will be discussed later
+
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
+| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+
+
+## Example: 2008 crisis {.smaller}
+### Setting up the test
+
+
+- We want to test if there was a change in CCI from 2007 to 2009
+- We are really only interested in the difference in CCI
+- Let $\mu$ be the (unknown) average difference in CCI
+- The **null hypothesis** is that there was (on average) no change in CCI
+$$
+H_0 \colon \mu = 0 
+$$
+- The **alternative hypothesis** is that there was some change:
+$$
+H_1 \colon \mu \neq 0 
+$$
+- Note that this is a **two-sided** test
+
+
+
+
+## Example: 2008 crisis {.smaller}
+### Calculation
+
+Using the available data, we need to compute:
+
+- Sample mean and standard deviation
+$$
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i \qquad 
+s = \sqrt{\frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}}
+$$
+
+- Test statistic
+$$
+t = \frac{\overline x - \mu_0}{s/\sqrt{n}}
+$$
+
+
+
+## Example: 2008 crisis {.smaller}
+### Calculation
+
+<br>
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+\begin{align*}
+\overline{x} & =\frac{1}{n} \sum_{i=1}^{n} x_i=\frac{1}{12} \left(62+64+67+{\ldots}+68+69\right)=\frac{868}{12}=72.33 \\
+\sum_{i=1}^{n} x_i^2 & = 62^2+64^2+67^2+{\ldots}+68^2+69^2 = 63260 \\
+s & = \sqrt{ \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1} } = \sqrt{\frac{63260-12\left(\frac{868}{12}\right)^2}{11}} = \sqrt{\frac{474.666}{11}} = 6.5689
+\end{align*}
+
+
+
+## Example: 2008 crisis {.smaller}
+### Calculation
+
+
+- The sample size is $n=12$
+- The sample mean is $\overline{x}=72.33$
+- The sample standard deviation is $s = 6.5689$
+- The **hypothesized mean** is $\mu_0 = 0$
+- The **t-statistic** is
+$$
+t = \frac{\overline{x} - \mu_0}{s/\sqrt{n}} =
+\frac{72.33 - 0}{6.5689/\sqrt{12}} = 38.145
+$$
+
+
+
+
+
+
+
+## Example: 2008 crisis {.smaller}
+### Reference statistical tables
+
+
+Find the [table](files/Statistics_Tables.pdf) **One-sided critical values of the student t distribution**
+
+- Find row with DF $= n-1$ (or closest). Find critical value $t^*$ in column $0.025$
+- In our case: $n=12$, DF $=11$, $t^*=2.201$
+
+![](images/t_test_statistic_table_bis.png){width=82%}
+
+
+
+
+
+
+## Example: 2008 crisis {.smaller}
+### Reference statistical tables
 
 - Plot of $t_{11}$ distribution. White area is $0.95$, shaded area is $0.05$
-- Any statistic $|t|>2.201$ happens with probability $0.05 \quad \implies \quad$ reject $H_0$
+- Any statistic $|t|>t^* = 2.201$ happens with probability $p<0.025$
 
 
 ```{r}
@@ -1894,126 +2071,38 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 
 
 
+## Example: 2008 crisis {.smaller}
+### Interpretation
 
-## One-sample Two-sided t-test {.smaller}
-### Reference statistical tables 
+- We have computed:
+  * Test statistic $t = 38.145$
+  * Critical value $t^* = 2.201$
 
-
-- For a two-sided test need values in the $0.025$ column of the **t-tables**
-
-
-
-
-
-## One-sample t-test {.smaller}
-
-
-- **Data:** Monthly Consumer Confidence Index (CCI) in 2007 and 2009
-- **Question:** Did the crash of 2008 have lasting impact upon CCI?
-- **Observation**: Data shows a massive drop in CCI between 2009 and 2007 
-- **Method:** Use $t$-test to see if data is sufficient to prove that CCI actually dropped
-
-|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
-|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
-| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
-| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
-
-
-
-
-
-
-## One-sample t-test {.smaller}
-
-
-- This is really a **two-sample** problem: We have CCI in 2 populations: 2007 and 2009 
-- It reduces to a **one-sample** problem because we  have directly comparable units
-- If the units cannot be compared one-to-one, then we must use a two-sample approach
-- Two-sample approach will be discussed later
-
-
-|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
-|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
-| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
-| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
-
-
-
-
-
-## One-sample t-test {.smaller}
-### Setting up the test
-
-
-- We want to test if there was a change in CCI from 2007 to 2009
-- We are really only interested in the difference in CCI
-- Let $\mu$ be the (unknown) average difference in CCI
-- The **null hypothesis** is that there was (on average) no change in CCI
+- Therefore
 $$
-H_0 \colon \mu = 0 
+|t| = 38.145 > 2.201 = t^*
 $$
-- The **alternative hypothesis** is that there was some change:
-$$
-H_1 \colon \mu \neq 0 
-$$
-- Note that this is a **two-sided** test
 
-
-
-
-## One-sample t-test {.smaller}
-### Computing the t-statistic
-
-Using the available data, we need to compute
+- This implies **rejecting** the null hypothesis
 $$
-t = \frac{\overline x - \mu}{s/\sqrt{n}}
-$$
-where the sample mean is
-$$
-\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
-$$
-and the sample variance is
-$$
-s^2 = \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}
+H_0 \colon \mu = 0
 $$
 
 
 
+## Example: 2008 crisis {.smaller}
+### Interpretation
 
-## One-sample t-test {.smaller}
-### Computing the t-statistic
-
-<br>
-
-|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
-|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
-
-
-\begin{align*}
-\overline{x} & =\frac{1}{n} \sum_{i=1}^{n} x_i=\frac{1}{12} \left(62+64+67+{\ldots}+68+69\right)=\frac{868}{12}=72.33 \\
-\sum_{i=1}^{n} x_i^2 & = 62^2+64^2+67^2+{\ldots}+68^2+69^2 = 63260 \\
-s & = \sqrt{ \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1} } = \sqrt{\frac{63260-12\left(\frac{868}{12}\right)^2}{11}} = \sqrt{\frac{474.666}{11}} = 6.5689
-\end{align*}
-
-
-
-## One-sample t-test {.smaller}
-### Computing the t-statistic
-
-
-- The sample size is $n=12$
-- The sample mean is $\overline{x}=72.33$
-- The sample standard deviation is $s = 6.5689$
-- The **estimated standard error** is $\ese = s/\sqrt{n} = 6.5689/\sqrt{12}$
-- The **hypothesized mean** is $\mu = 0$
-- The **t-statistic** is
+- Therefore the mean difference in CCI is 
 $$
-t = \frac{\overline{x} - \mu}{s/\sqrt{n}} =
-\frac{72.33 - 0}{6.5689/\sqrt{12}} = 38.145
+\mu \neq 0
 $$
+
+- The sample mean difference is positive ($\bar{x}=72.33$) 
+
+- **Conclusions**: 
+  * Consumer confidence is higher in 2007 than in 2009
+  * The 2008 crash has reduced consumer confidence
 
 
 

@@ -361,51 +361,23 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Conjecture {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Important {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -421,11 +393,39 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Corollary {
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1355,7 +1355,8 @@ T = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
 <h2>Estimating the Mean</h2>
 <h3 id="hypothesis-testing-algorithm">Hypothesis testing algorithm</h3>
 <ul>
-<li>We suppose that <span class="math inline">\mu=\mu_0</span> for some guessed <span class="math inline">\mu_0   \qquad</span> (<span class="math inline">\mu_0</span> is called <strong>null hypothesis</strong>)</li>
+<li>We suppose that <span class="math inline">\mu=\mu_0</span> for some guessed <span class="math inline">\mu_0</span></li>
+<li><span class="math inline">\mu_0</span> is called <strong>null hypothesis</strong></li>
 <li>Using the data collected <span class="math inline">\mathbf{X}= (X_1,\ldots,X_n)</span> we compute <span class="math display">
 t := \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}} \,, \qquad
 \overline{X} = \frac{1}{n} \sum_{i=1}^n X_i
@@ -1712,7 +1713,11 @@ t = \frac{\text{estimate } - \text{ hypothesised value}}{\mathop{\mathrm{e.s.e.}
 <ul>
 <li><p>After computing <strong>t-statistic</strong> we need to compute <strong>p-value</strong></p></li>
 <li><p><strong>p-value</strong> is a measure of how strange the data is in relation to the null hypothesis</p></li>
-<li><p><strong>LOW</strong> p-values would cause to reject the null hypothesis <span class="math inline">H_0</span></p></li>
+<li><p>We have 2 options:</p>
+<ul>
+<li><strong>LOW</strong> p-value <span class="math inline">\quad \implies \quad</span> <strong>reject</strong> <span class="math inline">H_0</span></li>
+<li><strong>HIGH</strong> p-value <span class="math inline">\quad \implies \quad</span> <strong>do not reject</strong> <span class="math inline">H_0</span></li>
+</ul></li>
 <li><p>In this course we reject <span class="math inline">H_0</span> for p-values <span class="math display">
 p&lt;0.05
 </span></p></li>
@@ -1720,68 +1725,87 @@ p&lt;0.05
 </section>
 <section id="one-sample-two-sided-t-test-5" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
+<h3 id="p-value-1">p-value</h3>
 <ul>
 <li><p>For two-sided t-test the p-value is defined as <span class="math display">
-p := P(t_{n-1}&gt; |t|)
+p := 2P(t_{n-1}&gt; |t|)
 </span> where <span class="math inline">t_{n-1}</span> is the t distribution with <span class="math inline">n-1</span> degrees of freedom</p></li>
-<li><p><span class="math inline">p&lt;0.05</span> means that the test statistic <span class="math inline">t</span> is <strong>extreme</strong></p></li>
+<li><p>Therefore the p-value is <span class="math display">
+p = 2P(\text{Observing t }| \, \mu=\mu_0)
+</span></p></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-6" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="p-value-2">p-value</h3>
+<ul>
+<li><p><span class="math inline">p&lt;0.05</span> means that the test statistic <span class="math inline">t</span> is <strong>extreme</strong>: <span class="math inline">\,\, P(t_{n-1}&gt; |t|)&lt;0.025</span></p></li>
+<li><p>In this case <span class="math inline">t</span> falls in the <strong>grey areas</strong> in the <span class="math inline">t_{n-1}</span> plot below</p></li>
 </ul>
 
 <img data-src="lecture_3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="one-sample-two-sided-t-test-6" class="slide level2 smaller">
+<section id="one-sample-two-sided-t-test-7" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
-<h3 id="p-value-1">p-value</h3>
+<h3 id="p-value-3">p-value</h3>
 <ul>
 <li>How to compute <span class="math inline">p</span>?
 <ul>
-<li>Use statistical tables</li>
+<li>Use statistical tables – Available <a href="files/Statistics_Tables.pdf">here</a></li>
 <li>Use R – next lesson</li>
 </ul></li>
 </ul>
 </section>
-<section id="one-sample-two-sided-t-test-7" class="slide level2 smaller">
+<section id="one-sample-two-sided-t-test-8" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
 <h3 id="reference-statistical-tables">Reference statistical tables</h3>
 <ul>
-<li><p>By using the tables in the file <a href="files/Statistics_Tables.pdf">Statistics_Tables.pdf</a> we can estimate <span class="math inline">p</span></p></li>
-<li><p>In the table <strong>One-sided critical values of the student t distribution</strong></p>
+<li><p>Tables <a href="files/Statistics_Tables.pdf">here</a> allow us to <strong>estimate</strong> <span class="math inline">p</span></p></li>
+<li><p>Find the table <strong>One-sided critical values of the student t distribution</strong></p>
 <ul>
 <li>Look at the row with Degree of Freedom <span class="math inline">n-1</span> (or its closest value)</li>
-<li>Look for the value <span class="math inline">t^*</span> in the column <span class="math inline">0.025</span></li>
+<li>Find <strong>critical value</strong> <span class="math inline">t^*</span> in column <span class="math inline">0.025 \qquad\quad</span> <strong>Example</strong>: <span class="math inline">n=10</span>, DF <span class="math inline">=9</span>, <span class="math inline">t^*=2.262</span></li>
 </ul></li>
 </ul>
 
 <img data-src="images/t_test_statistic_table.png" style="width:82.0%" class="r-stretch"></section>
-<section id="one-sample-two-sided-t-test-8" class="slide level2 smaller">
+<section id="one-sample-two-sided-t-test-9" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
 <h3 id="reference-statistical-tables-1">Reference statistical tables</h3>
 <ul>
-<li><p>The value <span class="math inline">t^*</span> found in the table satisfies <span class="math display">
+<li><p>The critical value <span class="math inline">t^*</span> found in the table satisfies <span class="math display">
 P(t_{n-1}&gt;t^*) = 0.025
 </span></p></li>
 <li><p>By definition of <span class="math inline">p</span>-value for two-sided t-test we have <span class="math display">
 p := 2P(t_{n-1}&gt;|t|)
 </span></p></li>
+<li><p>Therefore, for <span class="math inline">|t|&gt;t^*</span> <span class="math display">\begin{align*}
+p &amp; := 2P(t_{n-1}&gt;|t|) \\
+&amp; &lt;  2P(t_{n-1}&gt;t^*) = 2 \cdot (0.025) = 0.05
+\end{align*}</span></p></li>
+<li><p><strong>Conclusion</strong>: <span class="math inline">\qquad |t|&gt;t^* \quad \iff \quad p&lt;0.05</span></p></li>
 </ul>
 </section>
-<section id="one-sample-two-sided-t-test-9" class="slide level2 smaller">
-<h2>One-sample Two-sided t-test</h2>
-<h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
-<ul>
-<li>Plot of <span class="math inline">t_{11}</span> distribution. White area is <span class="math inline">0.95</span>, shaded area is <span class="math inline">0.05</span></li>
-<li>Any statistic <span class="math inline">|t|&gt;2.201</span> happens with probability <span class="math inline">0.05 \quad \implies \quad</span> reject <span class="math inline">H_0</span></li>
-</ul>
-
-<img data-src="lecture_3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="one-sample-two-sided-t-test-10" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
-<h3 id="reference-statistical-tables-3">Reference statistical tables</h3>
+<h3 id="interpretation">Interpretation</h3>
+<p>Recall that <span class="math inline">p</span> is the probability of observing <span class="math inline">t</span> given <span class="math inline">H_0</span> We have two possibilities:</p>
 <ul>
-<li>For a two-sided test need values in the <span class="math inline">0.025</span> column of the <strong>t-tables</strong></li>
+<li><span class="math inline">|t|&gt;t^*</span>
+<ul>
+<li>In this case <span class="math inline">p&lt;0.05</span></li>
+<li>The observed statistic <span class="math inline">t</span> is very unlikely under <span class="math inline">H_0</span></li>
+<li>We <strong>reject</strong> <span class="math inline">H_0</span></li>
+</ul></li>
+<li><span class="math inline">|t| \leq t^*</span>
+<ul>
+<li>In this case <span class="math inline">p&gt;0.05</span></li>
+<li>The observed statistic <span class="math inline">t</span> is not unlikely under <span class="math inline">H_0</span></li>
+<li>We <strong>do not reject</strong> <span class="math inline">H_0</span></li>
+</ul></li>
 </ul>
 </section>
-<section id="one-sample-t-test" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
+<section id="example-2008-crisis" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
 <ul>
 <li><strong>Data:</strong> Monthly Consumer Confidence Index (CCI) in 2007 and 2009</li>
 <li><strong>Question:</strong> Did the crash of 2008 have lasting impact upon CCI?</li>
@@ -1870,12 +1894,12 @@ p := 2P(t_{n-1}&gt;|t|)
 </tbody>
 </table>
 </section>
-<section id="one-sample-t-test-1" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
+<section id="example-2008-crisis-1" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
 <ul>
-<li>This is really a <strong>two-sample</strong> problem: We have CCI in 2 populations: 2007 and 2009</li>
+<li>This is really a <strong>two-sample</strong> problem – CCI data in 2 populations: 2007 and 2009</li>
 <li>It reduces to a <strong>one-sample</strong> problem because we have directly comparable units</li>
-<li>If the units cannot be compared one-to-one, then we must use a two-sample approach</li>
+<li>If units cannot be compared, then we must use a two-sample approach</li>
 <li>Two-sample approach will be discussed later</li>
 </ul>
 <table style="width:100%;">
@@ -1960,8 +1984,8 @@ p := 2P(t_{n-1}&gt;|t|)
 </tbody>
 </table>
 </section>
-<section id="one-sample-t-test-2" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
+<section id="example-2008-crisis-2" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
 <h3 id="setting-up-the-test">Setting up the test</h3>
 <ul>
 <li>We want to test if there was a change in CCI from 2007 to 2009</li>
@@ -1976,20 +2000,23 @@ H_1 \colon \mu \neq 0
 <li>Note that this is a <strong>two-sided</strong> test</li>
 </ul>
 </section>
-<section id="one-sample-t-test-3" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
-<h3 id="computing-the-t-statistic">Computing the t-statistic</h3>
-<p>Using the available data, we need to compute <span class="math display">
-t = \frac{\overline x - \mu}{s/\sqrt{n}}
-</span> where the sample mean is <span class="math display">
-\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
-</span> and the sample variance is <span class="math display">
-s^2 = \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}
-</span></p>
+<section id="example-2008-crisis-3" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="calculation-2">Calculation</h3>
+<p>Using the available data, we need to compute:</p>
+<ul>
+<li><p>Sample mean and standard deviation <span class="math display">
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i \qquad
+s = \sqrt{\frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}}
+</span></p></li>
+<li><p>Test statistic <span class="math display">
+t = \frac{\overline x - \mu_0}{s/\sqrt{n}}
+</span></p></li>
+</ul>
 </section>
-<section id="one-sample-t-test-4" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
-<h3 id="computing-the-t-statistic-1">Computing the t-statistic</h3>
+<section id="example-2008-crisis-4" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="calculation-3">Calculation</h3>
 <p><br></p>
 <table style="width:100%;">
 <colgroup>
@@ -2048,19 +2075,69 @@ s^2 = \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}
 s &amp; = \sqrt{ \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1} } = \sqrt{\frac{63260-12\left(\frac{868}{12}\right)^2}{11}} = \sqrt{\frac{474.666}{11}} = 6.5689
 \end{align*}</span></p>
 </section>
-<section id="one-sample-t-test-5" class="slide level2 smaller">
-<h2>One-sample t-test</h2>
-<h3 id="computing-the-t-statistic-2">Computing the t-statistic</h3>
+<section id="example-2008-crisis-5" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="calculation-4">Calculation</h3>
 <ul>
 <li>The sample size is <span class="math inline">n=12</span></li>
 <li>The sample mean is <span class="math inline">\overline{x}=72.33</span></li>
 <li>The sample standard deviation is <span class="math inline">s = 6.5689</span></li>
-<li>The <strong>estimated standard error</strong> is <span class="math inline">\mathop{\mathrm{e.s.e.}}= s/\sqrt{n} = 6.5689/\sqrt{12}</span></li>
-<li>The <strong>hypothesized mean</strong> is <span class="math inline">\mu = 0</span></li>
+<li>The <strong>hypothesized mean</strong> is <span class="math inline">\mu_0 = 0</span></li>
 <li>The <strong>t-statistic</strong> is <span class="math display">
-t = \frac{\overline{x} - \mu}{s/\sqrt{n}} =
+t = \frac{\overline{x} - \mu_0}{s/\sqrt{n}} =
 \frac{72.33 - 0}{6.5689/\sqrt{12}} = 38.145
 </span></li>
+</ul>
+</section>
+<section id="example-2008-crisis-6" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
+<p>Find the <a href="files/Statistics_Tables.pdf">table</a> <strong>One-sided critical values of the student t distribution</strong></p>
+<ul>
+<li>Find row with DF <span class="math inline">= n-1</span> (or closest). Find critical value <span class="math inline">t^*</span> in column <span class="math inline">0.025</span></li>
+<li>In our case: <span class="math inline">n=12</span>, DF <span class="math inline">=11</span>, <span class="math inline">t^*=2.201</span></li>
+</ul>
+
+<img data-src="images/t_test_statistic_table_bis.png" style="width:82.0%" class="r-stretch"></section>
+<section id="example-2008-crisis-7" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="reference-statistical-tables-3">Reference statistical tables</h3>
+<ul>
+<li>Plot of <span class="math inline">t_{11}</span> distribution. White area is <span class="math inline">0.95</span>, shaded area is <span class="math inline">0.05</span></li>
+<li>Any statistic <span class="math inline">|t|&gt;t^* = 2.201</span> happens with probability <span class="math inline">p&lt;0.025</span></li>
+</ul>
+
+<img data-src="lecture_3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="example-2008-crisis-8" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="interpretation-1">Interpretation</h3>
+<ul>
+<li><p>We have computed:</p>
+<ul>
+<li>Test statistic <span class="math inline">t = 38.145</span></li>
+<li>Critical value <span class="math inline">t^* = 2.201</span></li>
+</ul></li>
+<li><p>Therefore <span class="math display">
+|t| = 38.145 &gt; 2.201 = t^*
+</span></p></li>
+<li><p>This implies <strong>rejecting</strong> the null hypothesis <span class="math display">
+H_0 \colon \mu = 0
+</span></p></li>
+</ul>
+</section>
+<section id="example-2008-crisis-9" class="slide level2 smaller">
+<h2>Example: 2008 crisis</h2>
+<h3 id="interpretation-2">Interpretation</h3>
+<ul>
+<li><p>Therefore the mean difference in CCI is <span class="math display">
+\mu \neq 0
+</span></p></li>
+<li><p>The sample mean difference is positive (<span class="math inline">\bar{x}=72.33</span>)</p></li>
+<li><p><strong>Conclusions</strong>:</p>
+<ul>
+<li>Consumer confidence is higher in 2007 than in 2009</li>
+<li>The 2008 crash has reduced consumer confidence</li>
+</ul></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
