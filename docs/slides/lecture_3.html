@@ -361,47 +361,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -409,11 +377,27 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -421,11 +405,27 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Corollary {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -483,6 +483,7 @@
 <li>Sampling from normal distribution</li>
 <li>t distribution</li>
 <li>Hypothesis testing</li>
+<li>t-test</li>
 </ol>
 </section></section>
 <section>
@@ -1501,10 +1502,23 @@ t_p \to N(0,1) \quad \text{as} \quad p \to \infty
 <section id="hypothesis-testing" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
 <h3 id="definition-of-hypothesis">Definition of Hypothesis</h3>
+<ul>
+<li><strong>Idea</strong>:
+<ul>
+<li>Interested in knowing a population parameter <span class="math inline">\theta</span></li>
+<li><span class="math inline">\theta</span> cannot be measured directly</li>
+<li>We can sample the population and draw conclusions on <span class="math inline">\theta</span></li>
+<li>Such conclusions are <strong>hypotheses</strong></li>
+</ul></li>
+</ul>
 <div id="Definition*-7.1" class="Definition">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>A <strong>hypothesis</strong> is a statement about a population parameter<p></p>
 </div></details>
 </div>
+</section>
+<section id="hypothesis-testing-1" class="slide level2 smaller">
+<h2>Hypothesis testing</h2>
+<h3 id="complementary-hypotheses">Complementary hypotheses</h3>
 <ul>
 <li><p>Two hypotheses are <strong>complementary</strong> if exactly one of them can be true</p></li>
 <li><p>Complementary hypotheses are called:</p>
@@ -1515,7 +1529,7 @@ t_p \to N(0,1) \quad \text{as} \quad p \to \infty
 <li><p><strong>Goal</strong>: Find a way to decide which between <span class="math inline">H_0</span> and <span class="math inline">H_1</span> is true</p></li>
 </ul>
 </section>
-<section id="hypothesis-testing-1" class="slide level2 smaller">
+<section id="hypothesis-testing-2" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
 <h3 id="how-to-model-hypotheses">How to model hypotheses</h3>
 <p>We denote by:</p>
@@ -1528,7 +1542,7 @@ H_0 \colon &amp; \theta \in \Theta_0  &amp; \qquad \text{ null hypothesis} \\
 H_1 \colon &amp; \theta \in \Theta_0^c  &amp; \qquad \text{ alternative hypothesis}
 \end{align*}</span></p>
 </section>
-<section id="hypothesis-testing-2" class="slide level2 smaller">
+<section id="hypothesis-testing-3" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
 <h3 id="definition-of-hypothesis-test">Definition of Hypothesis test</h3>
 <div id="Definition*-7.2" class="Definition">
@@ -1540,13 +1554,46 @@ H_1 \colon &amp; \theta \in \Theta_0^c  &amp; \qquad \text{ alternative hypothes
 </ul>
 </div></details>
 </div>
-<p>The subset of the sample space for which:</p>
+</section>
+<section id="hypothesis-testing-4" class="slide level2 smaller">
+<h2>Hypothesis testing</h2>
+<h3 id="acceptance-and-critical-regions">Acceptance and Critical regions</h3>
+<p>The sample space is partitioned into two regions:</p>
 <ul>
-<li><span class="math inline">H_0</span> is accepted is called <strong>acceptance region</strong></li>
-<li><span class="math inline">H_0</span> is rejected is called <strong>rejection region</strong> or <strong>critical region</strong></li>
+<li><strong>Acceptance region:</strong> For samples <span class="math inline">\mathbf{X}</span> in this region we <strong>accept</strong> <span class="math inline">H_0</span></li>
+<li><strong>Critical region:</strong> For samples <span class="math inline">\mathbf{X}</span> in this region we <strong>reject</strong> <span class="math inline">H_0</span></li>
+</ul>
+<p><strong>In most cases:</strong> Critical region is defined in terms of a statistic <span class="math inline">W(\mathbf{X})</span></p>
+<p><strong>Example</strong>: We could decide to reject <span class="math inline">H_0</span> if <span class="math display">
+W(\mathbf{X}) \in R
+</span> with <span class="math inline">R \subset \mathbb{R}</span> some rejection region</p>
+</section>
+<section id="hypothesis-testing-5" class="slide level2 smaller">
+<h2>Hypothesis testing</h2>
+<h3 id="one-sided-vs-two-sided-tests">One-sided vs Two-sided Tests</h3>
+<p>Let <span class="math inline">\theta</span> be one dimensional parameter. A hypothesis test is:</p>
+<ul>
+<li><p><strong>One-sided</strong> if the null hypotheses are of the form <span class="math display">
+H_0 \colon \theta \leq \theta_0
+\qquad
+\text{ or }
+\qquad
+H_0 \colon \theta \geq \theta_0
+</span> with corresponding one-sided alternative hypotheses <span class="math display">
+H_1 \colon \theta &gt; \theta_0
+\qquad
+\text{ or }
+\qquad
+H_1 \colon \theta &lt; \theta_0
+</span></p></li>
+<li><p><strong>Two-sided</strong> if the null and alternative hypotheses are of the form <span class="math display">
+H_0 \colon \theta = \theta_0  \qquad   
+\text{ and } \qquad
+H_1 \colon \theta \neq \theta_0
+</span></p></li>
 </ul>
 </section>
-<section id="hypothesis-testing-3" class="slide level2 smaller">
+<section id="hypothesis-testing-6" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
 <h3 id="philosophical-issues">Philosophical issues</h3>
 <ul>
@@ -1564,15 +1611,16 @@ H_1 \colon &amp; \theta \in \Theta_0^c  &amp; \qquad \text{ alternative hypothes
 </ul></li>
 </ul>
 </section>
-<section id="hypothesis-testing-4" class="slide level2 smaller">
+<section id="hypothesis-testing-7" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
-<h3 id="example-1-1">Example 1</h3>
+<h3 id="example-1---two-seded-test">Example 1 - Two-seded test</h3>
 <p>The <em>University of Cottingham Road</em> wants to advertise its MBA Program: <span class="math display">
 \text{ MBA } = \text{ higher salary }
-</span> Is this a true or false statement? We set up a test:</p>
+</span></p>
 <ul>
-<li><p><span class="math inline">\theta =</span> average change in salary after <strong>completing the MBA program</strong></p></li>
-<li><p>Decision is between:</p>
+<li><p>Is this a true or false statement?</p></li>
+<li><p>The University has only access to incomplete data (could not ask all former students). Need hypothesis testing</p></li>
+<li><p><span class="math inline">\theta =</span> average change in salary after <strong>completing the MBA program</strong></p>
 <ul>
 <li>Null hypothesis: There is no change <span class="math inline">\,\, \implies \,\, \theta=0</span></li>
 <li>Alternative hypothesis: There is a change <span class="math inline">\,\, \implies \,\, \theta \neq 0</span></li>
@@ -1581,9 +1629,9 @@ H_1 \colon &amp; \theta \in \Theta_0^c  &amp; \qquad \text{ alternative hypothes
 <p><strong>Hypothesis test</strong>: <span class="math inline">\qquad \quad H_0 \colon \theta = 0 \,, \qquad
 H_1 \colon \theta \neq 0</span></p>
 </section>
-<section id="hypothesis-testing-5" class="slide level2 smaller">
+<section id="hypothesis-testing-8" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
-<h3 id="example-2">Example 2</h3>
+<h3 id="example-2---one-sided-test">Example 2 - One-sided test</h3>
 <p>Manager at a <em>Computer Factory</em> wants to know the proportion of defective components produced</p>
 <ul>
 <li>Testing is expensive and they can only test a limited sample</li>
@@ -1599,16 +1647,421 @@ H_1 \colon \theta \neq 0</span></p>
 H_1 \colon \theta \geq \theta_0</span></p>
 </section></section>
 <section>
-<section id="part-7-r-crash-course" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 7: <br>R crash course</h1>
+<section id="part-7-t-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br>t-test</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
-<p><a href="https://cloud.r-project.org">Install R</a></p>
-<p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></p>
-<p><a href="https://code.visualstudio.com/docs/languages/r">VisualStudio Code</a></p>
+</section>
+<section id="one-sample-two-sided-t-test" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<p><strong>Goal</strong>: estimate the mean <span class="math inline">\mu</span> of a normal population <span class="math inline">N(\mu,\sigma^2)</span>. If <span class="math inline">\mu_0</span> is guess for <span class="math inline">\mu</span> <span class="math display">
+H_0 \colon \mu = \mu_0 \qquad H_1 \colon \mu \neq \mu_0
+</span></p>
+<ul>
+<li><strong>One-sample</strong> means we sample only from one population</li>
+<li>The variance <span class="math inline">\sigma</span> is unknown</li>
+<li>Suppose the sample size is <span class="math inline">n</span>, with sample <span class="math inline">X_1 ,\ldots,X_n</span></li>
+<li>We can estimate <span class="math inline">\mu</span> with the statistics <span class="math display">
+T = \frac{\overline{X}-\mu}{S/\sqrt{n}}
+</span></li>
+<li>Recall: <span class="math inline">T \sim t_{n-1}</span> Student’s t distribution with <span class="math inline">n-1</span> degrees of freedom</li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-1" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="procedure-for-all-tests">Procedure for all tests</h3>
+<ol type="1">
+<li>Calculation</li>
+<li>Reference statistical tables or numerical values</li>
+<li>Interpretation</li>
+</ol>
+</section>
+<section id="one-sample-two-sided-t-test-2" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="calculation">Calculation</h3>
+<ul>
+<li>We have <span class="math inline">n</span> samples available <span class="math inline">x_1,\ldots,x_n</span></li>
+<li>Compute <strong>sample mean</strong> <span class="math display">
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
+</span></li>
+<li>Compute the <strong>sample standard deviation</strong> <span class="math display">
+s = \sqrt{\frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}}
+</span></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-3" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="calculation-1">Calculation</h3>
+<ul>
+<li><p>Compute the <strong>estimated standard error</strong> <span class="math display">
+\mathop{\mathrm{e.s.e.}}= \frac{s}{\sqrt{n}}
+</span></p></li>
+<li><p>Compute the <strong>t-statistic</strong> <span class="math display">
+t = \frac{\text{estimate } - \text{ hypothesised value}}{\mathop{\mathrm{e.s.e.}}}
+= \frac{\overline x - \mu_0}{s/\sqrt{n}}
+</span></p></li>
+<li><p><span class="math inline">\mu_0</span> is the value of the null hypothesis <span class="math inline">H_0</span></p></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-4" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="p-value">p-value</h3>
+<ul>
+<li><p>After computing <strong>t-statistic</strong> we need to compute <strong>p-value</strong></p></li>
+<li><p><strong>p-value</strong> is a measure of how strange the data is in relation to the null hypothesis</p></li>
+<li><p><strong>LOW</strong> p-values would cause to reject the null hypothesis <span class="math inline">H_0</span></p></li>
+<li><p>In this course we reject <span class="math inline">H_0</span> for p-values <span class="math display">
+p&lt;0.05
+</span></p></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-5" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<ul>
+<li><p>For two-sided t-test the p-value is defined as <span class="math display">
+p := P(t_{n-1}&gt; |t|)
+</span> where <span class="math inline">t_{n-1}</span> is the t distribution with <span class="math inline">n-1</span> degrees of freedom</p></li>
+<li><p><span class="math inline">p&lt;0.05</span> means that the test statistic <span class="math inline">t</span> is <strong>extreme</strong></p></li>
+</ul>
+
+<img data-src="lecture_3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="one-sample-two-sided-t-test-6" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="p-value-1">p-value</h3>
+<ul>
+<li>How to compute <span class="math inline">p</span>?
+<ul>
+<li>Use statistical tables</li>
+<li>Use R – next lesson</li>
+</ul></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-7" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="reference-statistical-tables">Reference statistical tables</h3>
+<ul>
+<li><p>By using the tables in the file <a href="&quot;slides/files/Statistics_Tables.pdf&quot;">Statistics_Tables.pdf</a> we can estimate <span class="math inline">p</span></p></li>
+<li><p>In the table <strong>One-sided critical values of the student t distribution</strong></p>
+<ul>
+<li>Look at the row with Degree of Freedom <span class="math inline">n-1</span> (or its closest value)</li>
+<li>Look for the value <span class="math inline">t^*</span> in the column <span class="math inline">0.025</span></li>
+</ul></li>
+</ul>
+
+<img data-src="images/t_test_statistic_table.png" style="width:82.0%" class="r-stretch"></section>
+<section id="one-sample-two-sided-t-test-8" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="reference-statistical-tables-1">Reference statistical tables</h3>
+<ul>
+<li><p>The value <span class="math inline">t^*</span> found in the table satisfies <span class="math display">
+P(t_{n-1}&gt;t^*) = 0.025
+</span></p></li>
+<li><p>By definition of <span class="math inline">p</span>-value for two-sided t-test we have <span class="math display">
+p := 2P(t_{n-1}&gt;|t|)
+</span></p></li>
+</ul>
+</section>
+<section id="one-sample-two-sided-t-test-9" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
+<ul>
+<li>Plot of <span class="math inline">t_{11}</span> distribution. White area is <span class="math inline">0.95</span>, shaded area is <span class="math inline">0.05</span></li>
+<li>Any statistic <span class="math inline">|t|&gt;2.201</span> happens with probability <span class="math inline">0.05 \quad \implies \quad</span> reject <span class="math inline">H_0</span></li>
+</ul>
+
+<img data-src="lecture_3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="one-sample-two-sided-t-test-10" class="slide level2 smaller">
+<h2>One-sample Two-sided t-test</h2>
+<h3 id="reference-statistical-tables-3">Reference statistical tables</h3>
+<ul>
+<li>For a two-sided test need values in the <span class="math inline">0.025</span> column of the <strong>t-tables</strong></li>
+</ul>
+</section>
+<section id="one-sample-t-test" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<ul>
+<li><strong>Data:</strong> Monthly Consumer Confidence Index (CCI) in 2007 and 2009</li>
+<li><strong>Question:</strong> Did the crash of 2008 have lasting impact upon CCI?</li>
+<li><strong>Observation</strong>: Data shows a massive drop in CCI between 2009 and 2007</li>
+<li><strong>Method:</strong> Use <span class="math inline">t</span>-test to see if data is sufficient to prove that CCI actually dropped</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">S</th>
+<th style="text-align: center;">O</th>
+<th style="text-align: center;">N</th>
+<th style="text-align: center;">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2007</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2009</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Difference</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">69</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="one-sample-t-test-1" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<ul>
+<li>This is really a <strong>two-sample</strong> problem: We have CCI in 2 populations: 2007 and 2009</li>
+<li>It reduces to a <strong>one-sample</strong> problem because we have directly comparable units</li>
+<li>If the units cannot be compared one-to-one, then we must use a two-sample approach</li>
+<li>Two-sample approach will be discussed later</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">S</th>
+<th style="text-align: center;">O</th>
+<th style="text-align: center;">N</th>
+<th style="text-align: center;">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2007</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2009</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Difference</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">69</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="one-sample-t-test-2" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<h3 id="setting-up-the-test">Setting up the test</h3>
+<ul>
+<li>We want to test if there was a change in CCI from 2007 to 2009</li>
+<li>We are really only interested in the difference in CCI</li>
+<li>Let <span class="math inline">\mu</span> be the (unknown) average difference in CCI</li>
+<li>The <strong>null hypothesis</strong> is that there was (on average) no change in CCI <span class="math display">
+H_0 \colon \mu = 0
+</span></li>
+<li>The <strong>alternative hypothesis</strong> is that there was some change: <span class="math display">
+H_1 \colon \mu \neq 0
+</span></li>
+<li>Note that this is a <strong>two-sided</strong> test</li>
+</ul>
+</section>
+<section id="one-sample-t-test-3" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<h3 id="computing-the-t-statistic">Computing the t-statistic</h3>
+<p>Using the available data, we need to compute <span class="math display">
+t = \frac{\overline x - \mu}{s/\sqrt{n}}
+</span> where the sample mean is <span class="math display">
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
+</span> and the sample variance is <span class="math display">
+s^2 = \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}
+</span></p>
+</section>
+<section id="one-sample-t-test-4" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<h3 id="computing-the-t-statistic-1">Computing the t-statistic</h3>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">J</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">S</th>
+<th style="text-align: center;">O</th>
+<th style="text-align: center;">N</th>
+<th style="text-align: center;">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Difference</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">69</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\begin{align*}
+\overline{x} &amp; =\frac{1}{n} \sum_{i=1}^{n} x_i=\frac{1}{12} \left(62+64+67+{\ldots}+68+69\right)=\frac{868}{12}=72.33 \\
+\sum_{i=1}^{n} x_i^2 &amp; = 62^2+64^2+67^2+{\ldots}+68^2+69^2 = 63260 \\
+s &amp; = \sqrt{ \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1} } = \sqrt{\frac{63260-12\left(\frac{868}{12}\right)^2}{11}} = \sqrt{\frac{474.666}{11}} = 6.5689
+\end{align*}</span></p>
+</section>
+<section id="one-sample-t-test-5" class="slide level2 smaller">
+<h2>One-sample t-test</h2>
+<h3 id="computing-the-t-statistic-2">Computing the t-statistic</h3>
+<ul>
+<li>The sample size is <span class="math inline">n=12</span></li>
+<li>The sample mean is <span class="math inline">\overline{x}=72.33</span></li>
+<li>The sample standard deviation is <span class="math inline">s = 6.5689</span></li>
+<li>The <strong>estimated standard error</strong> is <span class="math inline">\mathop{\mathrm{e.s.e.}}= s/\sqrt{n} = 6.5689/\sqrt{12}</span></li>
+<li>The <strong>hypothesized mean</strong> is <span class="math inline">\mu = 0</span></li>
+<li>The <strong>t-statistic</strong> is <span class="math display">
+t = \frac{\overline{x} - \mu}{s/\sqrt{n}} =
+\frac{72.33 - 0}{6.5689/\sqrt{12}} = 38.145
+</span></li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

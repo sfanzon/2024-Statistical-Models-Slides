@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 4: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 4: <br>Hypothesis testing in R {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,7 +40,11 @@ $
 
 ## Outline of Lecture 4
 
-1. TBA
+1. F test
+2. R crash course
+3. ihsa
+4. oiwhq
+5. t test in R
 
 
 
@@ -48,8 +52,7 @@ $
 
 
 
-
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>R crash course {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -60,5 +63,169 @@ $
 
 
 
+## What is R? {.smaller}
 
-## TBA {.smaller}
+- R is a *high-level* programming language (like **Python**) 
+- This means R deals automatically with some details of computer execution:
+  * Memory allocation
+  * Resources allocation
+- R is focused on manipulating and analyzing data
+
+
+
+
+## Installing R {.smaller}
+
+- R is freely available on Windows, Mac OS and Linux
+- To install:
+  * Download R at this link [https://cloud.r-project.org](https://cloud.r-project.org)
+  * Make sure you choose the right version for your system
+  * Follow the instructions to install
+
+
+
+
+
+
+## How to use R? {.smaller}
+
+- We have installed R. What now?
+
+- The R console can be booted in two ways:
+  * Find the **R application** on your machine
+  * Open a terminal, type **R**, exectute
+
+
+
+
+
+
+## R application {.smaller}
+### This is how the R prompt looks on the Mac OS app
+
+![](images/R_Console.png){width=82%}
+
+
+
+## R from terminal {.smaller}
+### This is how the R prompt looks on the Mac Terminal
+
+![](images/R_Terminal.png){width=82%}
+
+
+
+
+## What can R do?  {.smaller}
+
+- R is waiting for commands
+    * Commands can be typed after the symbol $\, >$
+    * Press enter to execute a command
+    * To exit R, type $q()$ and enter
+    * R will ask if you want to *save the workspace*
+    * By saying yes, the workspace will be saved until next session
+
+
+
+
+
+## Example {.smaller}
+### Few lines of code can lead to impressive results 
+
+**Example**: Plotting 1000 values randomly generated from normal distribution 
+
+```{r}
+#| echo: true
+plot(rnorm(1000))
+```
+
+
+
+
+## R as a calculator {.smaller}
+
+R can perform basic mathematical operations:
+
+- Below you can see R code
+- and the corresponding answer given by R
+
+```{r}
+#| echo: true
+
+2+2
+2*3-1
+exp(-10)
+log(15)
+pi
+sin(pi/2)
+
+```
+
+
+
+## Plotting random numbers {.smaller}
+
+Let us go back to the example of the command 
+``plot(rnorm(1000))``
+
+The function ``rnorm(n)`` outputs $n$ randomly generated numbers from $N(0,1)$
+
+```{r}
+#| echo: true
+rnorm(5)
+```
+
+These can then be plotted by concatenating the plot command
+
+```{r}
+#| echo: true
+#| output-location: slide
+plot(rnorm(5))
+```
+
+**Note**: 
+
+- The values plotted (next slide) are, for sure, different from the ones listed above
+
+- This is because every time you call ``rnorm(5)`` new values are generated
+
+- We need to **store** the generated values if we want to re-use them
+
+
+
+## Assignments {.smaller}
+
+
+## Data {.smaller}
+
+
+- Just think of R or any other software package as a computer that's too big to fit in your pocket!
+$\bullet$ Two basic ways of reading data into R
+\begin{enumerate}
+\item Directly via the command line for trivial lecture examples
+\item Read in using the \texttt{read.table} command via the command line from a .txt file in notepad saved to your USB\\
+$\quad$ \textbf{-} Need to be able to write down the filepath. This is usually shortest and easiest if saved to a USB stick\\
+$\quad$ \textbf{-} The .txt file that includes the data has to contain equal numbers of evenly spaced columns. This can get a bit fiddly in large problems.
+\end{enumerate}
+
+
+
+
+
+## R Studio {.smaller}
+
+IDE
+
+[RStudio](https://posit.co/download/rstudio-desktop/)
+
+[VisualStudio Code](https://code.visualstudio.com/docs/languages/r)
+
+
+
+
+
+
+
+
+
+
+## References

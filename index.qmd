@@ -70,9 +70,9 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | **Slides** | **Title** | 
 |:------      |:------     |
 | <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
-| <a href="slides/lecture_2.qmd">Lecture 2</a>   | Multivariate distributions |
-| <a href="slides/lecture_3.qmd">Lecture 3</a>   | Random samples     |
-| <a href="slides/lecture_4.qmd">Lecture 4</a>   | TBA     |
+| <a href="slides/lecture_2.qmd">Lecture 2</a>   | Multivariate distributions        |
+| <a href="slides/lecture_3.qmd">Lecture 3</a>   | Random samples                    |
+| <a href="slides/lecture_4.qmd">Lecture 4</a>   | Hypothesis testing in R           |
 | <a href="slides/lecture_5.qmd">Lecture 5</a>   | TBA     |
 | <a href="slides/lecture_6.qmd">Lecture 6</a>   | TBA     |
 | <a href="slides/lecture_7.qmd">Lecture 7</a>   | TBA     |

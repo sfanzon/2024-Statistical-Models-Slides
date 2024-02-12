@@ -44,7 +44,7 @@ $
 4. Sampling from normal distribution
 5. t distribution
 6. Hypothesis testing
-
+7. t-test
 
 
 
@@ -1492,11 +1492,26 @@ legend("topright",
 ## Hypothesis testing {.smaller}
 ### Definition of Hypothesis
 
+
+- **Idea**:
+  * Interested in knowing a population parameter $\theta$
+  * $\theta$ cannot be measured directly
+  * We can sample the population and draw conclusions on $\theta$
+  * Such conclusions are **hypotheses**
+
+
 ::: Definition
 
 A **hypothesis** is a statement about a population parameter
 
 :::
+
+
+
+
+## Hypothesis testing {.smaller}
+### Complementary hypotheses
+
 
 - Two hypotheses are **complementary** if exactly one of them can be true
 
@@ -1541,17 +1556,59 @@ A **hypothesis test** is a rule to decide:
 
 :::
 
-The subset of the sample space for which:
 
-- $H_0$ is accepted is called **acceptance region**
-- $H_0$ is rejected is called **rejection region** or **critical region**
+## Hypothesis testing {.smaller}
+### Acceptance and Critical regions
 
+The sample space is partitioned into two regions:
+
+- **Acceptance region:** For samples $\XX$ in this region we **accept** $H_0$
+- **Critical region:** For samples $\XX$ in this region we **reject** $H_0$
+
+**In most cases:** Critical region is defined in terms of a statistic $W(\XX)$
+
+
+**Example**: We could decide to reject $H_0$ if 
+$$
+W(\XX) \in R
+$$ 
+with $R \subset \R$ some rejection region
+
+
+
+## Hypothesis testing {.smaller}
+### One-sided vs Two-sided Tests
+
+Let $\theta$ be one dimensional parameter. A hypothesis test is:
+
+- **One-sided** if the null hypotheses are of the form
+  $$ 
+  H_0 \colon \theta \leq \theta_0 
+  \qquad 
+  \text{ or } 
+  \qquad 
+  H_0 \colon \theta \geq \theta_0 
+  $$
+  with corresponding one-sided alternative hypotheses
+  $$ 
+  H_1 \colon \theta > \theta_0 
+  \qquad 
+  \text{ or } 
+  \qquad 
+  H_1 \colon \theta < \theta_0 
+  $$
+
+- **Two-sided** if the null and alternative hypotheses are of the form
+  $$ 
+  H_0 \colon \theta = \theta_0  \qquad   
+  \text{ and } \qquad 
+  H_1 \colon \theta \neq \theta_0 
+  $$
 
 
 
 ## Hypothesis testing {.smaller}
 ### Philosophical issues
-
 
 - $H_0$ is usually a **conservative hypothesis**
 - If a test indicates to **reject** $H_0$, people do that happily and accept $H_1$
@@ -1566,20 +1623,21 @@ The subset of the sample space for which:
 
 
 ## Hypothesis testing {.smaller}
-### Example 1
+### Example 1 - Two-seded test
 
 
 The *University of Cottingham Road* wants to advertise its MBA Program: 
 $$
 \text{ MBA } = \text{ higher salary }
 $$
-Is this a true or false statement? We set up a test:
+
+- Is this a true or false statement? 
+
+- The University has only access to incomplete data (could not ask all former students). Need hypothesis testing
 
 - $\theta =$ average change in salary after **completing the MBA program**
-
-- Decision is between:
-    * Null hypothesis: There is no change $\,\, \implies \,\, \theta=0$
-    * Alternative hypothesis: There is a change $\,\, \implies \,\, \theta \neq 0$
+  * Null hypothesis: There is no change $\,\, \implies \,\, \theta=0$
+  * Alternative hypothesis: There is a change $\,\, \implies \,\, \theta \neq 0$
 
 **Hypothesis test**: 
 $\qquad \quad H_0 \colon \theta = 0 \,, \qquad 
@@ -1588,7 +1646,7 @@ H_1 \colon \theta \neq 0$
 
 
 ## Hypothesis testing {.smaller}
-### Example 2
+### Example 2 - One-sided test
 
 
 Manager at a *Computer Factory* wants to know the proportion of defective components produced
@@ -1608,9 +1666,7 @@ H_1 \colon \theta \geq \theta_0$
 
 
 
-
-
-# Part 7: <br>R crash course{background-color="#cc0164" visibility="uncounted"}
+# Part 7: <br>t-test {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1619,16 +1675,346 @@ H_1 \colon \theta \geq \theta_0$
 :::
 
 
+## One-sample Two-sided t-test {.smaller}
+
+**Goal**: estimate the mean $\mu$ of a normal population $N(\mu,\sigma^2)$. If $\mu_0$ is guess for $\mu$
+$$
+H_0 \colon \mu = \mu_0 \qquad H_1 \colon \mu \neq \mu_0
+$$
+
+- **One-sample** means we sample only from one population
+- The variance $\sigma$ is unknown
+- Suppose the sample size is $n$, with sample $X_1 ,\ldots,X_n$
+- We can estimate $\mu$ with the statistics
+$$
+T = \frac{\overline{X}-\mu}{S/\sqrt{n}}
+$$
+- Recall: $T \sim t_{n-1}$ Student's t distribution with $n-1$ degrees of freedom
 
 
 
 
 
-[Install R](https://cloud.r-project.org)
 
-[RStudio](https://posit.co/download/rstudio-desktop/)
 
-[VisualStudio Code](https://code.visualstudio.com/docs/languages/r)
+## One-sample Two-sided t-test {.smaller}
+### Procedure for all tests
+
+1. Calculation
+2. Reference statistical tables or numerical values
+3. Interpretation
+
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### Calculation
+
+- We have $n$ samples available $x_1,\ldots,x_n$
+- Compute **sample mean**
+$$
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
+$$
+- Compute the **sample standard deviation**
+$$
+s = \sqrt{\frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}}
+$$
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### Calculation
+
+
+- Compute the **estimated standard error**
+$$
+\ese = \frac{s}{\sqrt{n}}
+$$
+
+- Compute the **t-statistic**
+$$
+t = \frac{\text{estimate } - \text{ hypothesised value}}{\ese}
+= \frac{\overline x - \mu_0}{s/\sqrt{n}}
+$$
+
+- $\mu_0$ is the value of the null hypothesis $H_0$ 
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### p-value
+
+
+- After computing **t-statistic** we need to compute **p-value**
+
+- **p-value** is a measure of how strange the data is in relation to the null hypothesis
+
+- **LOW** p-values would cause to reject the null hypothesis $H_0$
+
+- In this course we reject $H_0$ for p-values 
+$$
+p<0.05
+$$
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+
+
+- For two-sided t-test the p-value is defined as
+$$
+p := P(t_{n-1}> |t|)
+$$
+where $t_{n-1}$ is the t distribution with $n-1$ degrees of freedom
+
+- $p<0.05$ means that the test statistic $t$ is **extreme**
+
+
+
+```{r}
+# Degrees of freedom
+df <- 11
+
+# Values for x-axis
+x <- seq(-4, 4, length.out = 1000)
+
+# Calculate PDF of t-distribution
+pdf <- dt(x, df)
+
+# Plot PDF
+plot(x, pdf, type = "l", col = "blue", lwd = 2, xlab = "x", ylab = "Density")
+
+# Shade area where p-value < 0.025
+x_fill_left <- x[x <= qt(0.025, df)]
+y_fill_left <- pdf[x <= qt(0.025, df)]
+polygon(c(x_fill_left, rev(x_fill_left)), c(y_fill_left, rep(0, length(y_fill_left))), col = "gray", border = NA)
+
+# Shade area where p-value > 0.975
+x_fill_right <- x[x >= qt(0.975, df)]
+y_fill_right <- pdf[x >= qt(0.975, df)]
+polygon(c(x_fill_right, rev(x_fill_right)), c(y_fill_right, rep(0, length(y_fill_right))), col = "gray", border = NA)
+
+# Add legend
+legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.3)
+
+
+```
+
+
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### p-value
+
+
+- How to compute $p$?
+    * Use statistical tables
+    * Use R -- next lesson
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### Reference statistical tables 
+
+
+- By using the tables in the file [Statistics_Tables.pdf]("slides/files/Statistics_Tables.pdf") we can estimate $p$
+
+- In the table **One-sided critical values of the student t distribution**
+    * Look at the row with Degree of Freedom $n-1$ (or its closest value)
+    * Look for the value $t^*$ in the column $0.025$
+
+![](images/t_test_statistic_table.png){width=82%}
+
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### Reference statistical tables 
+
+
+- The value $t^*$ found in the table satisfies
+$$
+P(t_{n-1}>t^*) = 0.025
+$$
+
+- By definition of $p$-value for two-sided t-test we have
+$$
+p := 2P(t_{n-1}>|t|) 
+$$
+
+
+## One-sample Two-sided t-test {.smaller}
+### Reference statistical tables 
+
+- Plot of $t_{11}$ distribution. White area is $0.95$, shaded area is $0.05$
+- Any statistic $|t|>2.201$ happens with probability $0.05 \quad \implies \quad$ reject $H_0$
+
+
+```{r}
+# Degrees of freedom
+df <- 11
+
+# Values for x-axis
+x <- seq(-4, 4, length.out = 1000)
+
+# Calculate PDF of t-distribution
+pdf <- dt(x, df)
+
+# Plot PDF
+plot(x, pdf, type = "l", col = "blue", lwd = 2, xlab = "x", ylab = "Density")
+
+# Shade area where p-value < 0.025
+x_fill_left <- x[x <= qt(0.025, df)]
+y_fill_left <- pdf[x <= qt(0.025, df)]
+polygon(c(x_fill_left, rev(x_fill_left)), c(y_fill_left, rep(0, length(y_fill_left))), col = "gray", border = NA)
+
+# Shade area where p-value > 0.975
+x_fill_right <- x[x >= qt(0.975, df)]
+y_fill_right <- pdf[x >= qt(0.975, df)]
+polygon(c(x_fill_right, rev(x_fill_right)), c(y_fill_right, rep(0, length(y_fill_right))), col = "gray", border = NA)
+
+# Add annotations for p value = 0.025 on both sides
+text(qt(0.025, df), dt(qt(0.025, df), df) + 0.05, paste("p = 0.025\n t =", round(qt(0.025, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(8.5, 4.5))
+text(qt(0.975, df), dt(qt(0.975, df), df) + 0.05, paste("p = 0.975\n t =", round(qt(0.975, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(5.5, 4.5))
+
+# Add legend
+legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.3)
+
+
+```
+
+
+
+
+
+## One-sample Two-sided t-test {.smaller}
+### Reference statistical tables 
+
+
+- For a two-sided test need values in the $0.025$ column of the **t-tables**
+
+
+
+
+
+## One-sample t-test {.smaller}
+
+
+- **Data:** Monthly Consumer Confidence Index (CCI) in 2007 and 2009
+- **Question:** Did the crash of 2008 have lasting impact upon CCI?
+- **Observation**: Data shows a massive drop in CCI between 2009 and 2007 
+- **Method:** Use $t$-test to see if data is sufficient to prove that CCI actually dropped
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
+| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+
+
+
+
+## One-sample t-test {.smaller}
+
+
+- This is really a **two-sample** problem: We have CCI in 2 populations: 2007 and 2009 
+- It reduces to a **one-sample** problem because we  have directly comparable units
+- If the units cannot be compared one-to-one, then we must use a two-sample approach
+- Two-sample approach will be discussed later
+
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 2007                     |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
+| 2009                     |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+
+
+
+## One-sample t-test {.smaller}
+### Setting up the test
+
+
+- We want to test if there was a change in CCI from 2007 to 2009
+- We are really only interested in the difference in CCI
+- Let $\mu$ be the (unknown) average difference in CCI
+- The **null hypothesis** is that there was (on average) no change in CCI
+$$
+H_0 \colon \mu = 0 
+$$
+- The **alternative hypothesis** is that there was some change:
+$$
+H_1 \colon \mu \neq 0 
+$$
+- Note that this is a **two-sided** test
+
+
+
+
+## One-sample t-test {.smaller}
+### Computing the t-statistic
+
+Using the available data, we need to compute
+$$
+t = \frac{\overline x - \mu}{s/\sqrt{n}}
+$$
+where the sample mean is
+$$
+\overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
+$$
+and the sample variance is
+$$
+s^2 = \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}
+$$
+
+
+
+
+## One-sample t-test {.smaller}
+### Computing the t-statistic
+
+<br>
+
+|CCI                       | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Difference               |62 | 64| 67| 69| 80| 79| 80| 78| 78| 74| 68| 69|
+
+
+\begin{align*}
+\overline{x} & =\frac{1}{n} \sum_{i=1}^{n} x_i=\frac{1}{12} \left(62+64+67+{\ldots}+68+69\right)=\frac{868}{12}=72.33 \\
+\sum_{i=1}^{n} x_i^2 & = 62^2+64^2+67^2+{\ldots}+68^2+69^2 = 63260 \\
+s & = \sqrt{ \frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1} } = \sqrt{\frac{63260-12\left(\frac{868}{12}\right)^2}{11}} = \sqrt{\frac{474.666}{11}} = 6.5689
+\end{align*}
+
+
+
+## One-sample t-test {.smaller}
+### Computing the t-statistic
+
+
+- The sample size is $n=12$
+- The sample mean is $\overline{x}=72.33$
+- The sample standard deviation is $s = 6.5689$
+- The **estimated standard error** is $\ese = s/\sqrt{n} = 6.5689/\sqrt{12}$
+- The **hypothesized mean** is $\mu = 0$
+- The **t-statistic** is
+$$
+t = \frac{\overline{x} - \mu}{s/\sqrt{n}} =
+\frac{72.33 - 0}{6.5689/\sqrt{12}} = 38.145
+$$
+
 
 
 

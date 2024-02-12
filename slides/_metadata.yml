@@ -13,6 +13,8 @@ format:
       history: true
       html-math-method: katex
       keyboard: true
+      code-block-background: true
+      code-block-border-left: "#31BAE9"
       toc: false
       include-in-header:
         - text: |
