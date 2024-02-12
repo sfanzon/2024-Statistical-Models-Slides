@@ -85,6 +85,12 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 
 
 
+# Supplementary Material
+
+- Statistical Tables: [Link](slides/files/Statistics_Tables.pdf)
+- Lecture 3: Codes, Dataset
+
+
 
 # Readings
 

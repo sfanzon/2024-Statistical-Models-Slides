@@ -1824,7 +1824,7 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 ### Reference statistical tables 
 
 
-- By using the tables in the file [Statistics_Tables.pdf]("slides/files/Statistics_Tables.pdf") we can estimate $p$
+- By using the tables in the file [Statistics_Tables.pdf](files/Statistics_Tables.pdf) we can estimate $p$
 
 - In the table **One-sided critical values of the student t distribution**
     * Look at the row with Degree of Freedom $n-1$ (or its closest value)
