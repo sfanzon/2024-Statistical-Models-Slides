@@ -97,7 +97,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -406,11 +426,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -418,19 +434,55 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -441,38 +493,6 @@
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   </style>
 </head>
@@ -522,16 +542,24 @@
 <section id="outline-of-lecture-4" class="slide level2">
 <h2>Outline of Lecture 4</h2>
 <ol type="1">
-<li>F test</li>
+<li>F-test</li>
 <li>R crash course</li>
-<li>ihsa</li>
-<li>oiwhq</li>
-<li>t test in R</li>
+<li>t-test in R</li>
+<li>F-test in R</li>
 </ol>
 </section></section>
+<section id="part-1-f-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>F-test</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
 <section>
-<section id="part-1-r-crash-course" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>R crash course</h1>
+<section id="part-2-r-crash-course" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>R crash course</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -550,13 +578,28 @@
 <li>R is focused on manipulating and analyzing data</li>
 </ul>
 </section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<h3 id="for-all-matters-r">For all matters R</h3>
+<div class="column" style="width:49%&quot;;">
+<ul>
+<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-1" role="doc-biblioref" onclick="">1</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R</em> <br> Second Edition, Springer, 2008</p></li>
+<li><p><span class="citation" data-cites="davies">[<a href="#/references-1" role="doc-biblioref" onclick="">2</a>]</span> Davies, T.M. <br> <em>The book of R</em> <br> No Starch Press, 2016</p></li>
+</ul>
+</div>
+<div class="column" style="width:35%;">
+<p><strong>Concise Statistics with R</strong></p>
+<p><br></p>
+<p><strong>Comprehensive R manual</strong></p>
+</div>
+</section>
 <section id="installing-r" class="slide level2 smaller">
 <h2>Installing R</h2>
 <ul>
 <li>R is freely available on Windows, Mac OS and Linux</li>
 <li>To install:
 <ul>
-<li>Download R at this link <a href="https://cloud.r-project.org">https://cloud.r-project.org</a></li>
+<li>Download R from CRAN <a href="https://cran.r-project.org">https://cran.r-project.org</a></li>
 <li>Make sure you choose the right version for your system</li>
 <li>Follow the instructions to install</li>
 </ul></li>
@@ -575,12 +618,12 @@
 </section>
 <section id="r-application" class="slide level2 smaller">
 <h2>R application</h2>
-<h3 id="this-is-how-the-r-prompt-looks-on-the-mac-os-app">This is how the R prompt looks on the Mac OS app</h3>
+<h3 id="this-is-how-the-r-console-looks-on-the-mac-os-app">This is how the R Console looks on the Mac OS app</h3>
 
 <img data-src="images/R_Console.png" style="width:82.0%" class="r-stretch"></section>
 <section id="r-from-terminal" class="slide level2 smaller">
 <h2>R from terminal</h2>
-<h3 id="this-is-how-the-r-prompt-looks-on-the-mac-terminal">This is how the R prompt looks on the Mac Terminal</h3>
+<h3 id="this-is-how-the-r-console-looks-on-the-mac-terminal">This is how the R Console looks on the Mac Terminal</h3>
 
 <img data-src="images/R_Terminal.png" style="width:82.0%" class="r-stretch"></section>
 <section id="what-can-r-do" class="slide level2 smaller">
@@ -607,11 +650,8 @@
 <img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
 <section id="r-as-a-calculator" class="slide level2 smaller">
 <h2>R as a calculator</h2>
-<p>R can perform basic mathematical operations:</p>
-<ul>
-<li>Below you can see R code</li>
-<li>and the corresponding answer given by R</li>
-</ul>
+<h3 id="r-can-perform-basic-mathematical-operations">R can perform basic mathematical operations</h3>
+<p>Below you can see R code and the corresponding answer</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -625,9 +665,9 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.539993e-05</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">log</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">log</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.70805</code></pre>
+<pre><code>[1] 0.6931472</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -639,19 +679,67 @@
 </div>
 </div>
 </section>
+<section id="working-directory" class="slide level2 smaller">
+<h2>Working Directory</h2>
+<ul>
+<li><p>R session has a working directory associated with it</p></li>
+<li><p>Unless specified, R will use a <strong>default</strong> working directory</p></li>
+<li><p>To check the location of the working directory, use the <code>getwd</code> function</p></li>
+<li><p>On my MacOS system I get <span class="math inline">\qquad</span> <img data-src="images/r_working_directory.png" style="width:32.0%"></p></li>
+<li><p>File paths are always enclosed in double quotation marks</p></li>
+<li><p>Note that R uses <strong>forward slashes</strong> (not backslashes) for paths</p></li>
+<li><p>You can change the default working directory using the function <code>setwd</code></p></li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">setwd</span>(<span class="st">"/folder1/folder2/folder3/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>File path can be relative to current working directory or full (system root drive)</li>
+</ul>
+</section>
+<section id="comments" class="slide level2 smaller">
+<h2>Comments</h2>
+<ul>
+<li>It is good practice to <strong>document</strong> your code</li>
+<li>This means adding comments directly in the code</li>
+<li>Comments should be brief and explain what a chunk of code does</li>
+<li>To insert a comment just preface the line with a hash mark #</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># This is a comment in R</span></span>
+<span id="cb15-2"><a></a><span class="co"># Comments are ignored by R</span></span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span> <span class="co"># This works out the result of one plus one!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="r-packages" class="slide level2 smaller">
+<h2>R Packages</h2>
+<ul>
+<li><p>The base installation of R comes ready with:</p>
+<ul>
+<li>Commands for numeric calculations</li>
+<li>Common statistical analyses</li>
+<li>Plotting and visualization</li>
+</ul></li>
+<li><p>More specialized techniques and data sets are contained in <strong>packages</strong> (libraries)</p></li>
+<li><p><strong>Installing packages</strong></p></li>
+<li><p><strong>Loading packages</strong></p></li>
+</ul>
+</section>
 <section id="plotting-random-numbers" class="slide level2 smaller">
 <h2>Plotting random numbers</h2>
 <p>Let us go back to the example of the command <code>plot(rnorm(1000))</code></p>
 <p>The function <code>rnorm(n)</code> outputs <span class="math inline">n</span> randomly generated numbers from <span class="math inline">N(0,1)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.6324574 -0.8053566  1.2763341 -1.0419067 -0.3645747</code></pre>
+<pre><code>[1] -0.05654028  0.76736932 -0.96307819 -1.14485886  0.25916769</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <p><strong>Note</strong>:</p>
@@ -665,12 +753,15 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="assignments" class="slide level2 smaller">
 <h2>Assignments</h2>
+</section>
+<section id="r-scripts" class="slide level2 smaller">
+<h2>R Scripts</h2>
 </section>
 <section id="data" class="slide level2 smaller">
 <h2>Data</h2>
@@ -683,13 +774,39 @@
 <p>IDE</p>
 <p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></p>
 <p><a href="https://code.visualstudio.com/docs/languages/r">VisualStudio Code</a></p>
+</section></section>
+<section id="part-3-t-test-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>t-test in R</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
 </section>
-<section id="references" class="slide level2">
+
+<section>
+<section id="part-4-f-test-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>F-test in R</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="references-1" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="../index.html">Homepage</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../license.html">License</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.silviofanzon.com/contact">Contact</a></p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-dalgaard" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
+</div>
+<div id="ref-davies" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Davies, Tilman M., The book of <span>R</span>, No Starch Press, 2016.</div>
 </div>
 </div>
 </section></section>

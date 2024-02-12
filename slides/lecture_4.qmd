@@ -40,19 +40,27 @@ $
 
 ## Outline of Lecture 4
 
-1. F test
+1. F-test
 2. R crash course
-3. ihsa
-4. oiwhq
-5. t test in R
+3. t-test in R
+3. F-test in R
+
+
+
+
+# Part 1: <br>F-test {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
 
 
-
-
-# Part 1: <br>R crash course {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>R crash course {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -73,12 +81,43 @@ $
 
 
 
+## References {.smaller}
+### For all matters R
+
+
+::: {.column width=49%"}
+
+- [@dalgaard] Dalgaard, P. 
+<br> *Introductory statistics with R*
+<br> Second Edition, Springer, 2008   
+
+
+- [@davies] Davies, T.M.
+<br> *The book of R*
+<br> No Starch Press, 2016   
+
+:::
+
+
+::: {.column width="35%"}
+
+**Concise Statistics with R**
+
+<br>
+
+**Comprehensive R manual**
+
+:::
+
+
+
+
 
 ## Installing R {.smaller}
 
 - R is freely available on Windows, Mac OS and Linux
 - To install:
-  * Download R at this link [https://cloud.r-project.org](https://cloud.r-project.org)
+  * Download R from CRAN [https://cran.r-project.org](https://cran.r-project.org)
   * Make sure you choose the right version for your system
   * Follow the instructions to install
 
@@ -101,14 +140,14 @@ $
 
 
 ## R application {.smaller}
-### This is how the R prompt looks on the Mac OS app
+### This is how the R Console looks on the Mac OS app
 
 ![](images/R_Console.png){width=82%}
 
 
 
 ## R from terminal {.smaller}
-### This is how the R prompt looks on the Mac Terminal
+### This is how the R Console looks on the Mac Terminal
 
 ![](images/R_Terminal.png){width=82%}
 
@@ -142,11 +181,9 @@ plot(rnorm(1000))
 
 
 ## R as a calculator {.smaller}
+### R can perform basic mathematical operations
 
-R can perform basic mathematical operations:
-
-- Below you can see R code
-- and the corresponding answer given by R
+Below you can see R code and the corresponding answer
 
 ```{r}
 #| echo: true
@@ -154,11 +191,67 @@ R can perform basic mathematical operations:
 2+2
 2*3-1
 exp(-10)
-log(15)
+log(2)
 pi
 sin(pi/2)
 
 ```
+
+
+
+
+## Working Directory {.smaller}
+
+- R session has a working directory associated with it 
+- Unless specified, R will use a **default** working directory
+- To check the location of the working directory, use the ``getwd`` function
+- On my MacOS system I get $\qquad$
+![](images/r_working_directory.png){width=32%}
+
+- File paths are always enclosed in double quotation marks
+- Note that R uses **forward slashes** (not backslashes) for paths
+- You can change the default working directory using the function ```setwd```
+
+```r
+setwd("/folder1/folder2/folder3/")
+
+```
+
+- File path can be relative to current working directory or full (system root drive)
+
+
+
+## Comments {.smaller}
+
+- It is good practice to **document** your code
+- This means adding comments directly in the code
+- Comments should be brief and explain what a chunk of code does
+- To insert a comment just preface the line with a hash mark \#
+
+```{r}
+#| echo: true
+
+# This is a comment in R
+# Comments are ignored by R
+
+1+1 # This works out the result of one plus one!
+```
+
+
+
+## R Packages {.smaller}
+
+- The base installation of R comes ready with:
+  * Commands for numeric calculations
+  * Common statistical analyses
+  * Plotting and visualization
+  
+- More specialized techniques and data sets are contained in **packages** (libraries)
+
+- **Installing packages**
+
+- **Loading packages**
+
 
 
 
@@ -195,6 +288,13 @@ plot(rnorm(5))
 ## Assignments {.smaller}
 
 
+
+
+## R Scripts {.smaller}
+
+
+
+
 ## Data {.smaller}
 
 
@@ -223,6 +323,28 @@ IDE
 
 
 
+
+
+# Part 3: <br>t-test in R {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+# Part 4: <br>F-test in R {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
