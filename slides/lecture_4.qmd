@@ -156,12 +156,9 @@ $
 
 ## What can R do?  {.smaller}
 
-- R is waiting for commands
-    * Commands can be typed after the symbol $\, >$
-    * Press enter to execute a command
-    * To exit R, type $q()$ and enter
-    * R will ask if you want to *save the workspace*
-    * By saying yes, the workspace will be saved until next session
+- R Console is waiting for commands
+    * Commands can be typed after the symbol ``>``
+    * Press ``Enter`` to execute a command
 
 
 
@@ -188,14 +185,45 @@ Below you can see R code and the corresponding answer
 ```{r}
 #| echo: true
 
-2+2
-2*3-1
+2 + 2
+2 * 3 - 1 + 2 ^ 7
 exp(-10)
 log(2)
 pi
 sin(pi/2)
 
 ```
+
+
+
+
+## More complex code {.smaller}
+
+- R Console is fine for short codes
+
+- For longer code and function authoring use **R scripts**
+  * Write your code in a text editor
+  * Save your code to a **plain text** file with ``.txt`` or ``.R`` extension
+  * Execute your code in the R Console when you are done
+
+- Examples of text editors
+  * TextPad (Windows)
+  * TextEdit (MacOS)
+  * [VisualStudio Code](https://code.visualstudio.com/docs/languages/r) (Cross platform)
+
+
+
+
+## RStudio {.smaller}
+
+- RStudio is an alternative to R Console and text editors: Download [here](https://posit.co/download/rstudio-desktop/)
+
+- RStudio includes: 
+  * Direct-submission code editor
+  * Separate point-and-click panes for files, objects, and project management 
+  * Creation of markup documents incorporating R code
+  
+
 
 
 
@@ -221,12 +249,24 @@ setwd("/folder1/folder2/folder3/")
 
 
 
+
+## Working Directory {.smaller}
+### RStudio
+
+
+In RStudio you can set the working directory from the menu bar:
+
+- Session ``->`` Set Working Directory ``->`` Choose Directory
+
+
+
+
 ## Comments {.smaller}
 
 - It is good practice to **document** your code
 - This means adding comments directly in the code
 - Comments should be brief and explain what a chunk of code does
-- To insert a comment just preface the line with a hash mark \#
+- To insert a comment preface the line with a hash mark ``#``
 
 ```{r}
 #| echo: true
@@ -239,6 +279,86 @@ setwd("/folder1/folder2/folder3/")
 
 
 
+
+## Example - Your first R code {.smaller}
+
+1. Open a text editor and copy paste the below code
+
+```r
+# This codes sums two numbers and prints result on screen
+
+# Here is a function to sum two numbers
+
+sum_numbers <- function(num1, num2) {
+  return(num1 + num2)
+}
+
+# Call the function with arguments 2 and 1
+# The result of the sum 2 + 1 is stored in result
+
+result <- sum_numbers(2, 1)
+
+# Print the result on screen
+
+print(result)
+```
+
+
+
+## Example - Your first R code {.smaller}
+
+2. Save to a **plain text** file named either
+    * ``my_first_code.R``
+    * ``my_first_code.txt``
+
+3. Move this file to **Desktop**
+
+4. Open the R Console and change working directory to **Desktop**
+
+```r
+# In MacOS type
+setwd("~/Desktop")
+
+# In Windows type
+setwd("C:/Users/YourUsername/Desktop")
+```
+
+
+
+## Example - Your first R code {.smaller}
+
+5. Run your code in the R Console by typying either
+
+```r
+my_first_code.R
+my_first_code.txt
+```
+
+6. You should get the following output
+
+```{r}
+# This codes sums two numbers and prints result on screen
+
+# Here is a function to sum two numbers
+
+sum_numbers <- function(num1, num2) {
+  return(num1 + num2)
+}
+
+# Call the function with arguments 2 and 1
+# The result of the sum 2 + 1 is stored in result
+
+result <- sum_numbers(2, 1)
+
+# Print the result on screen
+
+print(result)
+```
+
+
+
+
+
 ## R Packages {.smaller}
 
 - The base installation of R comes ready with:
@@ -248,10 +368,71 @@ setwd("/folder1/folder2/folder3/")
   
 - More specialized techniques and data sets are contained in **packages** (libraries)
 
-- **Installing packages**
 
-- **Loading packages**
+```r
+# To install a package run
+install.packages("package_name")
 
+# To load a package into your code type
+library("package_name")
+
+# To update all the packages intalled type
+update.packages()
+```
+
+
+
+
+
+## Help! {.smaller}
+
+- R comes with **help files** that you can use to search for particular functionality
+- For example you can check out how to precisely use a given function
+- To call for help type ``help(object_name)``
+
+
+```r
+help(mean)
+```
+
+![](images/R_help.png){width=62%}
+
+
+
+
+## Further Help {.smaller}
+
+- Sometimes the output of ``help()`` can be cryptic
+- You can always search using Google
+  * Qualify the search with **R** or the name of an R package
+  * Paste an error message -- chances are somebody has already solved your problem
+- Even better, there are internet search sites that are specialized for R searches
+  * [search.r-project.org](https://search.r-project.org)
+  * [Rseek.org](https://rseek.org)
+
+<details>
+  <summary>Click here for Secret Tip</summary>
+
+Large language models are quite good at coding in R and explaining code
+
+</details>
+
+
+
+
+
+## Exiting R and Saving {.smaller}
+
+To quit the R Console type ``q()``
+
+- You will be asked if you want to save your session
+- If you say yes, the session will be saved in a ``.RData`` file in the working directory
+- Such file can be loaded later to resume where you left
+
+The above saved session is **irrelevant**:
+
+- You should be writing code in R Scripts
+- Code should be save in ``.txt`` or ``.R`` files
 
 
 
@@ -287,10 +468,363 @@ plot(rnorm(5))
 
 ## Assignments {.smaller}
 
+- Values can be stored in **symbolic variables** or **objects**
+- To store values into variables we use **assignments**
+- The **assignment operator** in R is denoted by ``<-``
+- The (single) symbol ``<-`` denotes an arrow pointing to the variable to which the value is assigned
 
 
 
-## R Scripts {.smaller}
+## Assignments {.smaller}
+### Example
+
+- To assign the value ``2`` to the variable ``x`` enter ``x <- 2``
+- To recover the value in ``x`` just type ``x``
+
+```{r}
+#| echo: true
+x <- 2
+x
+```
+
+
+## Assignments {.smaller}
+### Example
+
+- From now on, ``x`` has the value ``2`` 
+- The variable ``x`` can be used in subsequent operations
+- Such operations do not alter the value of ``x``
+
+```{r}
+#| echo: true
+x <- 2
+x + x
+x
+```
+
+
+
+## Vectorized arithmetic {.smaller}
+
+
+
+
+
+
+
+
+
+## Style guide {.smaller}
+
+- Styling your code is optional
+- However it is considered good manners to do so
+- Good coding style makes code more readable
+- Highly recommended, especially for assignments
+- The next few slides on Style are based on these two posts:
+  * Style Guide by Hadley Wickham ([link](http://adv-r.had.co.nz/Style.html#:~:text=When%20indenting%20your%20code%2C%20use,definition%20runs%20over%20multiple%20lines.))
+  * Google's R Style Guide ([link](https://google.github.io/styleguide/Rguide.html))
+
+
+## Style guide {.smaller}
+### File names
+
+They should be meaningful and end in .R
+
+```r
+# Good
+football-models.R  
+utility-functions.R
+homework_1.R
+homework1.R
+
+# Bad
+footballmodels.r # Hard to read
+stuff.r          # What is inside this file?
+code.r           # Same as above
+
+```
+
+
+## Style guide {.smaller}
+### Objects names
+
+- Objects names shoulde be lowercase
+- Use an underscore (``_``) to separate words within a name
+- Variable names should be nouns, not verbs
+- Come up with names that are concise and meaningful
+
+```r
+# Good
+day_one  # This will clearly store the value of first day
+day_1    # Still clear
+
+
+# Bad
+first_day_of_the_month  # Too long
+dayone                  # Hard to read
+DayOne                  # Mix of upper and lower case
+fdm                     # Hard to guess what this means
+```
+
+
+## Style guide {.smaller}
+### Functions names
+
+- Name functions with ``BigCamelCase`` ([link](https://en.wikipedia.org/wiki/Camel_case))
+- This is to clearly distinguish functions from other objects
+- Functions names should be verbs
+- Come up with names that are concise and meaningful
+
+```r
+# Good
+DoNothing <- function() {
+  return(invisible(NULL))
+}
+
+# Bad
+donothing <- function() {
+  return(invisible(NULL))
+}
+```
+
+
+## Style guide {.smaller}
+### Object and functions names
+
+If possible avoid using names of existing functions and variables
+
+
+```r
+# Bad
+T <- FALSE                  # T is reserved for the boolean TRUE
+c <- 10                     # c denotes the concatenation operator
+mean <- function(x) sum(x)  # mean already denotes a built in function
+```
+
+
+
+## Style guide {.smaller}
+### Assignment
+
+Use ``<-`` and not ``=`` for assignment
+
+```r 
+# Good
+x <- 5
+
+# Bad
+x = 5
+```
+
+
+
+
+## Style guide {.smaller}
+### Spacing
+
+- Spacing is **really** something you should be careful about
+- Place spaces around all infix operators (``=``, ``+``, ``-``, ``<-``, etc.) 
+- Place spaces around ``=`` when calling a function 
+- Always put a space after a comma, never before (like in regular English)
+
+```r 
+# Good
+average <- mean(feet / 12 + inches, na.rm = TRUE)
+
+# Bad
+average<-mean(feet/12+inches,na.rm=TRUE)
+```
+
+
+
+
+## Style guide {.smaller}
+### Spacing with Brackets
+
+- Do not place spaces around code in parentheses or square brackets
+- Unless there is a comma
+
+```r
+# Good
+if (condition) do(x)
+diamonds[5, ]
+
+# Bad
+if ( condition ) do(x)  # No spaces around condition
+x[1,]                   # Needs a space after the comma
+x[1 ,]                  # Space goes after comma not before
+```
+
+
+
+
+## Style guide {.smaller}
+### Spacing - Exceptions
+
+- Symbols ``:``, ``::`` and ``:::`` do not need spacing
+
+```r
+# Good
+x <- 1:10
+
+# Bad
+x <- 1 : 10
+```
+
+- Place a space before left parentheses, except in a function call
+
+```r
+#Good
+if (condition) do(x)
+plot(x, y)
+
+# Bad
+if(condition)do(x)    # (condition) needs spacing
+plot (x, y)           # This does not need spacing
+```
+
+
+
+## Style guide {.smaller}
+### Extra Spacing
+
+Extra spacing is ok if it improves alignment of ``=`` or ``<-``
+
+```r
+list(
+  total = a + b + c, 
+  mean  = (a + b + c) / n
+)
+```
+
+
+
+## Style guide {.smaller}
+### Curly braces
+
+- An opening curly brace should never go on its own line 
+- An opening curly brace should always be followed by a new line
+- Always **indent** the code inside curly braces
+
+
+::: {.column width="45%"}
+
+```r
+# Good
+
+if (y < 0 && debug) {
+  message("Y is negative")
+}
+
+if (y == 0) {
+  log(x)
+} 
+```
+
+:::
+
+
+::: {.column width="45%"}
+
+```r
+# Bad
+
+if (y < 0 && debug)
+message("Y is negative")
+
+
+if (y == 0) 
+{
+  log(x)} 
+```
+
+:::
+
+
+
+
+
+## Style guide {.smaller}
+### Line length
+
+- Limit code to 80 characters per line
+- This fits comfortably on a printed page 
+- If you run out of room, encapsulate some of the work in separate function
+
+
+
+
+## Style guide {.smaller}
+### Indentation
+
+- When indenting your code, use two spaces
+- Never use tabs or mix tabs and spaces
+- Indentation should be used for **functions**, **if**, **for**, etc.
+
+```r
+SumTwoNumbers <- function(x, y) {
+  s = x + y
+  return(s)
+}
+```
+
+
+
+## Style guide {.smaller}
+### Indentation - Exception
+
+If a function definition runs over multiple lines, indent the second line to where the definition starts
+
+```r
+long_function_name <- function(a = "a long argument", 
+                               b = "another argument",
+                               c = "another long argument") {
+  # As usual code is indented by two spaces.
+}
+```
+
+
+## Style guide {.smaller}
+### Use explicit returns
+
+- Functions can return objects
+- R has an implicit return feature
+- Do not rely on this feature, but explicitly mention ``return(object)``
+
+```r
+# Good
+AddValues <- function(x, y) {
+  return(x + y)                     # Function returns x+y
+}
+
+# Bad
+AddValues <- function(x, y) {
+  x + y                             # Function still returns x+y
+}                                   # but it is not immediate to see it
+```
+
+
+
+## Style guide {.smaller}
+### Comments
+
+- **Most importantly**: Comment your code
+- Each line of a comment should begin with comment symbol ``#`` and a single space
+
+```r 
+# Here we sum two numbers  
+x+y
+```
+
+
+- Use commented lines of ``-`` and ``=`` to break up code into easily readable chunks
+
+```r
+# Load data ---------------------------
+
+# Plot data ---------------------------
+```
+
 
 
 
@@ -306,19 +840,6 @@ $\bullet$ Two basic ways of reading data into R
 $\quad$ \textbf{-} Need to be able to write down the filepath. This is usually shortest and easiest if saved to a USB stick\\
 $\quad$ \textbf{-} The .txt file that includes the data has to contain equal numbers of evenly spaced columns. This can get a bit fiddly in large problems.
 \end{enumerate}
-
-
-
-
-
-## R Studio {.smaller}
-
-IDE
-
-[RStudio](https://posit.co/download/rstudio-desktop/)
-
-[VisualStudio Code](https://code.visualstudio.com/docs/languages/r)
-
 
 
 

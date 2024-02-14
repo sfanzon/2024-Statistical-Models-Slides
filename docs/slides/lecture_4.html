@@ -426,7 +426,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Problem {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -434,31 +434,7 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Conjecture {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,33 +442,57 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -629,13 +629,10 @@
 <section id="what-can-r-do" class="slide level2 smaller">
 <h2>What can R do?</h2>
 <ul>
-<li>R is waiting for commands
+<li>R Console is waiting for commands
 <ul>
-<li>Commands can be typed after the symbol <span class="math inline">\, &gt;</span></li>
-<li>Press enter to execute a command</li>
-<li>To exit R, type <span class="math inline">q()</span> and enter</li>
-<li>R will ask if you want to <em>save the workspace</em></li>
-<li>By saying yes, the workspace will be saved until next session</li>
+<li>Commands can be typed after the symbol <code>&gt;</code></li>
+<li>Press <code>Enter</code> to execute a command</li>
 </ul></li>
 </ul>
 </section>
@@ -653,13 +650,13 @@
 <h3 id="r-can-perform-basic-mathematical-operations">R can perform basic mathematical operations</h3>
 <p>Below you can see R code and the corresponding answer</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="dv">2</span><span class="sc">*</span><span class="dv">3-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">^</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 133</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -679,6 +676,36 @@
 </div>
 </div>
 </section>
+<section id="more-complex-code" class="slide level2 smaller">
+<h2>More complex code</h2>
+<ul>
+<li><p>R Console is fine for short codes</p></li>
+<li><p>For longer code and function authoring use <strong>R scripts</strong></p>
+<ul>
+<li>Write your code in a text editor</li>
+<li>Save your code to a <strong>plain text</strong> file with <code>.txt</code> or <code>.R</code> extension</li>
+<li>Execute your code in the R Console when you are done</li>
+</ul></li>
+<li><p>Examples of text editors</p>
+<ul>
+<li>TextPad (Windows)</li>
+<li>TextEdit (MacOS)</li>
+<li><a href="https://code.visualstudio.com/docs/languages/r">VisualStudio Code</a> (Cross platform)</li>
+</ul></li>
+</ul>
+</section>
+<section id="rstudio" class="slide level2 smaller">
+<h2>RStudio</h2>
+<ul>
+<li><p>RStudio is an alternative to R Console and text editors: Download <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
+<li><p>RStudio includes:</p>
+<ul>
+<li>Direct-submission code editor</li>
+<li>Separate point-and-click panes for files, objects, and project management</li>
+<li>Creation of markup documents incorporating R code</li>
+</ul></li>
+</ul>
+</section>
 <section id="working-directory" class="slide level2 smaller">
 <h2>Working Directory</h2>
 <ul>
@@ -695,13 +722,21 @@
 <li>File path can be relative to current working directory or full (system root drive)</li>
 </ul>
 </section>
+<section id="working-directory-1" class="slide level2 smaller">
+<h2>Working Directory</h2>
+<h3 id="rstudio-1">RStudio</h3>
+<p>In RStudio you can set the working directory from the menu bar:</p>
+<ul>
+<li>Session <code>-&gt;</code> Set Working Directory <code>-&gt;</code> Choose Directory</li>
+</ul>
+</section>
 <section id="comments" class="slide level2 smaller">
 <h2>Comments</h2>
 <ul>
 <li>It is good practice to <strong>document</strong> your code</li>
 <li>This means adding comments directly in the code</li>
 <li>Comments should be brief and explain what a chunk of code does</li>
-<li>To insert a comment just preface the line with a hash mark #</li>
+<li>To insert a comment preface the line with a hash mark <code>#</code></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># This is a comment in R</span></span>
@@ -713,18 +748,125 @@
 </div>
 </div>
 </section>
+<section id="example---your-first-r-code" class="slide level2 smaller">
+<h2>Example - Your first R code</h2>
+<ol type="1">
+<li>Open a text editor and copy paste the below code</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># This codes sums two numbers and prints result on screen</span></span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="co"># Here is a function to sum two numbers</span></span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a>sum_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num1, num2) {</span>
+<span id="cb17-6"><a></a>  <span class="fu">return</span>(num1 <span class="sc">+</span> num2)</span>
+<span id="cb17-7"><a></a>}</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a><span class="co"># Call the function with arguments 2 and 1</span></span>
+<span id="cb17-10"><a></a><span class="co"># The result of the sum 2 + 1 is stored in result</span></span>
+<span id="cb17-11"><a></a></span>
+<span id="cb17-12"><a></a>result <span class="ot">&lt;-</span> <span class="fu">sum_numbers</span>(<span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb17-13"><a></a></span>
+<span id="cb17-14"><a></a><span class="co"># Print the result on screen</span></span>
+<span id="cb17-15"><a></a></span>
+<span id="cb17-16"><a></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example---your-first-r-code-1" class="slide level2 smaller">
+<h2>Example - Your first R code</h2>
+<ol start="2" type="1">
+<li><p>Save to a <strong>plain text</strong> file named either</p>
+<ul>
+<li><code>my_first_code.R</code></li>
+<li><code>my_first_code.txt</code></li>
+</ul></li>
+<li><p>Move this file to <strong>Desktop</strong></p></li>
+<li><p>Open the R Console and change working directory to <strong>Desktop</strong></p></li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># In MacOS type</span></span>
+<span id="cb18-2"><a></a><span class="fu">setwd</span>(<span class="st">"~/Desktop"</span>)</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="co"># In Windows type</span></span>
+<span id="cb18-5"><a></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourUsername/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example---your-first-r-code-2" class="slide level2 smaller">
+<h2>Example - Your first R code</h2>
+<ol start="5" type="1">
+<li>Run your code in the R Console by typying either</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>my_first_code.R</span>
+<span id="cb19-2"><a></a>my_first_code.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li>You should get the following output</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</section>
 <section id="r-packages" class="slide level2 smaller">
 <h2>R Packages</h2>
 <ul>
-<li><p>The base installation of R comes ready with:</p>
+<li>The base installation of R comes ready with:
 <ul>
 <li>Commands for numeric calculations</li>
 <li>Common statistical analyses</li>
 <li>Plotting and visualization</li>
 </ul></li>
-<li><p>More specialized techniques and data sets are contained in <strong>packages</strong> (libraries)</p></li>
-<li><p><strong>Installing packages</strong></p></li>
-<li><p><strong>Loading packages</strong></p></li>
+<li>More specialized techniques and data sets are contained in <strong>packages</strong> (libraries)</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># To install a package run</span></span>
+<span id="cb21-2"><a></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span>
+<span id="cb21-3"><a></a></span>
+<span id="cb21-4"><a></a><span class="co"># To load a package into your code type</span></span>
+<span id="cb21-5"><a></a><span class="fu">library</span>(<span class="st">"package_name"</span>)</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a><span class="co"># To update all the packages intalled type</span></span>
+<span id="cb21-8"><a></a><span class="fu">update.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="help" class="slide level2 smaller">
+<h2>Help!</h2>
+<ul>
+<li>R comes with <strong>help files</strong> that you can use to search for particular functionality</li>
+<li>For example you can check out how to precisely use a given function</li>
+<li>To call for help type <code>help(object_name)</code></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="images/R_help.png" style="width:62.0%" class="r-stretch"></section>
+<section id="further-help" class="slide level2 smaller">
+<h2>Further Help</h2>
+<ul>
+<li>Sometimes the output of <code>help()</code> can be cryptic</li>
+<li>You can always search using Google
+<ul>
+<li>Qualify the search with <strong>R</strong> or the name of an R package</li>
+<li>Paste an error message – chances are somebody has already solved your problem</li>
+</ul></li>
+<li>Even better, there are internet search sites that are specialized for R searches
+<ul>
+<li><a href="https://search.r-project.org">search.r-project.org</a></li>
+<li><a href="https://rseek.org">Rseek.org</a></li>
+</ul></li>
+</ul>
+<details>
+<summary>
+Click here for Secret Tip
+</summary>
+<p>Large language models are quite good at coding in R and explaining code</p>
+</details>
+</section>
+<section id="exiting-r-and-saving" class="slide level2 smaller">
+<h2>Exiting R and Saving</h2>
+<p>To quit the R Console type <code>q()</code></p>
+<ul>
+<li>You will be asked if you want to save your session</li>
+<li>If you say yes, the session will be saved in a <code>.RData</code> file in the working directory</li>
+<li>Such file can be loaded later to resume where you left</li>
+</ul>
+<p>The above saved session is <strong>irrelevant</strong>:</p>
+<ul>
+<li>You should be writing code in R Scripts</li>
+<li>Code should be save in <code>.txt</code> or <code>.R</code> files</li>
 </ul>
 </section>
 <section id="plotting-random-numbers" class="slide level2 smaller">
@@ -732,14 +874,14 @@
 <p>Let us go back to the example of the command <code>plot(rnorm(1000))</code></p>
 <p>The function <code>rnorm(n)</code> outputs <span class="math inline">n</span> randomly generated numbers from <span class="math inline">N(0,1)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.05654028  0.76736932 -0.96307819 -1.14485886  0.25916769</code></pre>
+<pre><code>[1]  1.043947176 -0.178716492 -0.003835753 -0.621680845 -0.656773307</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <p><strong>Note</strong>:</p>
@@ -753,27 +895,308 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="assignments" class="slide level2 smaller">
 <h2>Assignments</h2>
+<ul>
+<li>Values can be stored in <strong>symbolic variables</strong> or <strong>objects</strong></li>
+<li>To store values into variables we use <strong>assignments</strong></li>
+<li>The <strong>assignment operator</strong> in R is denoted by <code>&lt;-</code></li>
+<li>The (single) symbol <code>&lt;-</code> denotes an arrow pointing to the variable to which the value is assigned</li>
+</ul>
 </section>
-<section id="r-scripts" class="slide level2 smaller">
-<h2>R Scripts</h2>
+<section id="assignments-1" class="slide level2 smaller">
+<h2>Assignments</h2>
+<h3 id="example-1">Example</h3>
+<ul>
+<li>To assign the value <code>2</code> to the variable <code>x</code> enter <code>x &lt;- 2</code></li>
+<li>To recover the value in <code>x</code> just type <code>x</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb26-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="assignments-2" class="slide level2 smaller">
+<h2>Assignments</h2>
+<h3 id="example-2">Example</h3>
+<ul>
+<li>From now on, <code>x</code> has the value <code>2</code></li>
+<li>The variable <code>x</code> can be used in subsequent operations</li>
+<li>Such operations do not alter the value of <code>x</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb28-2"><a></a>x <span class="sc">+</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="vectorized-arithmetic" class="slide level2 smaller">
+<h2>Vectorized arithmetic</h2>
+</section>
+<section id="style-guide" class="slide level2 smaller">
+<h2>Style guide</h2>
+<ul>
+<li>Styling your code is optional</li>
+<li>However it is considered good manners to do so</li>
+<li>Good coding style makes code more readable</li>
+<li>Highly recommended, especially for assignments</li>
+<li>The next few slides on Style are based on these two posts:
+<ul>
+<li>Style Guide by Hadley Wickham (<a href="http://adv-r.had.co.nz/Style.html#:~:text=When%20indenting%20your%20code%2C%20use,definition%20runs%20over%20multiple%20lines.">link</a>)</li>
+<li>Google’s R Style Guide (<a href="https://google.github.io/styleguide/Rguide.html">link</a>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="style-guide-1" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="file-names">File names</h3>
+<p>They should be meaningful and end in .R</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="co"># Good</span></span>
+<span id="cb32-2"><a></a>football<span class="sc">-</span>models.R  </span>
+<span id="cb32-3"><a></a>utility<span class="sc">-</span>functions.R</span>
+<span id="cb32-4"><a></a>homework_1.R</span>
+<span id="cb32-5"><a></a>homework1.R</span>
+<span id="cb32-6"><a></a></span>
+<span id="cb32-7"><a></a><span class="co"># Bad</span></span>
+<span id="cb32-8"><a></a>footballmodels.r <span class="co"># Hard to read</span></span>
+<span id="cb32-9"><a></a>stuff.r          <span class="co"># What is inside this file?</span></span>
+<span id="cb32-10"><a></a>code.r           <span class="co"># Same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-2" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="objects-names">Objects names</h3>
+<ul>
+<li>Objects names shoulde be lowercase</li>
+<li>Use an underscore (<code>_</code>) to separate words within a name</li>
+<li>Variable names should be nouns, not verbs</li>
+<li>Come up with names that are concise and meaningful</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Good</span></span>
+<span id="cb33-2"><a></a>day_one  <span class="co"># This will clearly store the value of first day</span></span>
+<span id="cb33-3"><a></a>day_1    <span class="co"># Still clear</span></span>
+<span id="cb33-4"><a></a></span>
+<span id="cb33-5"><a></a></span>
+<span id="cb33-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb33-7"><a></a>first_day_of_the_month  <span class="co"># Too long</span></span>
+<span id="cb33-8"><a></a>dayone                  <span class="co"># Hard to read</span></span>
+<span id="cb33-9"><a></a>DayOne                  <span class="co"># Mix of upper and lower case</span></span>
+<span id="cb33-10"><a></a>fdm                     <span class="co"># Hard to guess what this means</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-3" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="functions-names">Functions names</h3>
+<ul>
+<li>Name functions with <code>BigCamelCase</code> (<a href="https://en.wikipedia.org/wiki/Camel_case">link</a>)</li>
+<li>This is to clearly distinguish functions from other objects</li>
+<li>Functions names should be verbs</li>
+<li>Come up with names that are concise and meaningful</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co"># Good</span></span>
+<span id="cb34-2"><a></a>DoNothing <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb34-3"><a></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>))</span>
+<span id="cb34-4"><a></a>}</span>
+<span id="cb34-5"><a></a></span>
+<span id="cb34-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb34-7"><a></a>donothing <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb34-8"><a></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>))</span>
+<span id="cb34-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-4" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="object-and-functions-names">Object and functions names</h3>
+<p>If possible avoid using names of existing functions and variables</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb35-2"><a></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span>                  <span class="co"># T is reserved for the boolean TRUE</span></span>
+<span id="cb35-3"><a></a>c <span class="ot">&lt;-</span> <span class="dv">10</span>                     <span class="co"># c denotes the concatenation operator</span></span>
+<span id="cb35-4"><a></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)  <span class="co"># mean already denotes a built in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-5" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="assignment">Assignment</h3>
+<p>Use <code>&lt;-</code> and not <code>=</code> for assignment</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Good</span></span>
+<span id="cb36-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb36-3"><a></a></span>
+<span id="cb36-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb36-5"><a></a>x <span class="ot">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-6" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="spacing">Spacing</h3>
+<ul>
+<li>Spacing is <strong>really</strong> something you should be careful about</li>
+<li>Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.)</li>
+<li>Place spaces around <code>=</code> when calling a function</li>
+<li>Always put a space after a comma, never before (like in regular English)</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="co"># Good</span></span>
+<span id="cb37-2"><a></a>average <span class="ot">&lt;-</span> <span class="fu">mean</span>(feet <span class="sc">/</span> <span class="dv">12</span> <span class="sc">+</span> inches, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-3"><a></a></span>
+<span id="cb37-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb37-5"><a></a>average<span class="ot">&lt;-</span><span class="fu">mean</span>(feet<span class="sc">/</span><span class="dv">12</span><span class="sc">+</span>inches,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-7" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="spacing-with-brackets">Spacing with Brackets</h3>
+<ul>
+<li>Do not place spaces around code in parentheses or square brackets</li>
+<li>Unless there is a comma</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="co"># Good</span></span>
+<span id="cb38-2"><a></a><span class="cf">if</span> (condition) <span class="fu">do</span>(x)</span>
+<span id="cb38-3"><a></a>diamonds[<span class="dv">5</span>, ]</span>
+<span id="cb38-4"><a></a></span>
+<span id="cb38-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb38-6"><a></a><span class="cf">if</span> ( condition ) <span class="fu">do</span>(x)  <span class="co"># No spaces around condition</span></span>
+<span id="cb38-7"><a></a>x[<span class="dv">1</span>,]                   <span class="co"># Needs a space after the comma</span></span>
+<span id="cb38-8"><a></a>x[<span class="dv">1</span> ,]                  <span class="co"># Space goes after comma not before</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-8" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="spacing---exceptions">Spacing - Exceptions</h3>
+<ul>
+<li>Symbols <code>:</code>, <code>::</code> and <code>:::</code> do not need spacing</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># Good</span></span>
+<span id="cb39-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb39-3"><a></a></span>
+<span id="cb39-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb39-5"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">:</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Place a space before left parentheses, except in a function call</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co">#Good</span></span>
+<span id="cb40-2"><a></a><span class="cf">if</span> (condition) <span class="fu">do</span>(x)</span>
+<span id="cb40-3"><a></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb40-4"><a></a></span>
+<span id="cb40-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb40-6"><a></a><span class="cf">if</span>(condition)<span class="fu">do</span>(x)    <span class="co"># (condition) needs spacing</span></span>
+<span id="cb40-7"><a></a><span class="fu">plot</span> (x, y)           <span class="co"># This does not need spacing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-9" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="extra-spacing">Extra Spacing</h3>
+<p>Extra spacing is ok if it improves alignment of <code>=</code> or <code>&lt;-</code></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">list</span>(</span>
+<span id="cb41-2"><a></a>  <span class="at">total =</span> a <span class="sc">+</span> b <span class="sc">+</span> c, </span>
+<span id="cb41-3"><a></a>  <span class="at">mean  =</span> (a <span class="sc">+</span> b <span class="sc">+</span> c) <span class="sc">/</span> n</span>
+<span id="cb41-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-10" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="curly-braces">Curly braces</h3>
+<ul>
+<li>An opening curly brace should never go on its own line</li>
+<li>An opening curly brace should always be followed by a new line</li>
+<li>Always <strong>indent</strong> the code inside curly braces</li>
+</ul>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="co"># Good</span></span>
+<span id="cb42-2"><a></a></span>
+<span id="cb42-3"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> debug) {</span>
+<span id="cb42-4"><a></a>  <span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb42-5"><a></a>}</span>
+<span id="cb42-6"><a></a></span>
+<span id="cb42-7"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb42-8"><a></a>  <span class="fu">log</span>(x)</span>
+<span id="cb42-9"><a></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb43-2"><a></a></span>
+<span id="cb43-3"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> debug)</span>
+<span id="cb43-4"><a></a><span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb43-5"><a></a></span>
+<span id="cb43-6"><a></a></span>
+<span id="cb43-7"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) </span>
+<span id="cb43-8"><a></a>{</span>
+<span id="cb43-9"><a></a>  <span class="fu">log</span>(x)} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="style-guide-11" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="line-length">Line length</h3>
+<ul>
+<li>Limit code to 80 characters per line</li>
+<li>This fits comfortably on a printed page</li>
+<li>If you run out of room, encapsulate some of the work in separate function</li>
+</ul>
+</section>
+<section id="style-guide-12" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="indentation">Indentation</h3>
+<ul>
+<li>When indenting your code, use two spaces</li>
+<li>Never use tabs or mix tabs and spaces</li>
+<li>Indentation should be used for <strong>functions</strong>, <strong>if</strong>, <strong>for</strong>, etc.</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>SumTwoNumbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb44-2"><a></a>  s <span class="ot">=</span> x <span class="sc">+</span> y</span>
+<span id="cb44-3"><a></a>  <span class="fu">return</span>(s)</span>
+<span id="cb44-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-13" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="indentation---exception">Indentation - Exception</h3>
+<p>If a function definition runs over multiple lines, indent the second line to where the definition starts</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>, </span>
+<span id="cb45-2"><a></a>                               <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
+<span id="cb45-3"><a></a>                               <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
+<span id="cb45-4"><a></a>  <span class="co"># As usual code is indented by two spaces.</span></span>
+<span id="cb45-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-14" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="use-explicit-returns">Use explicit returns</h3>
+<ul>
+<li>Functions can return objects</li>
+<li>R has an implicit return feature</li>
+<li>Do not rely on this feature, but explicitly mention <code>return(object)</code></li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="co"># Good</span></span>
+<span id="cb46-2"><a></a>AddValues <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb46-3"><a></a>  <span class="fu">return</span>(x <span class="sc">+</span> y)                     <span class="co"># Function returns x+y</span></span>
+<span id="cb46-4"><a></a>}</span>
+<span id="cb46-5"><a></a></span>
+<span id="cb46-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb46-7"><a></a>AddValues <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb46-8"><a></a>  x <span class="sc">+</span> y                             <span class="co"># Function still returns x+y</span></span>
+<span id="cb46-9"><a></a>}                                   <span class="co"># but it is not immediate to see it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="style-guide-15" class="slide level2 smaller">
+<h2>Style guide</h2>
+<h3 id="comments-1">Comments</h3>
+<ul>
+<li><strong>Most importantly</strong>: Comment your code</li>
+<li>Each line of a comment should begin with comment symbol <code>#</code> and a single space</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="co"># Here we sum two numbers  </span></span>
+<span id="cb47-2"><a></a>x<span class="sc">+</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use commented lines of <code>-</code> and <code>=</code> to break up code into easily readable chunks</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="co"># Load data ---------------------------</span></span>
+<span id="cb48-2"><a></a></span>
+<span id="cb48-3"><a></a><span class="co"># Plot data ---------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="data" class="slide level2 smaller">
 <h2>Data</h2>
 <ul>
 <li>Just think of R or any other software package as a computer that’s too big to fit in your pocket! <span class="math inline">\bullet</span> Two basic ways of reading data into R</li>
 </ul>
-</section>
-<section id="r-studio" class="slide level2 smaller">
-<h2>R Studio</h2>
-<p>IDE</p>
-<p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></p>
-<p><a href="https://code.visualstudio.com/docs/languages/r">VisualStudio Code</a></p>
 </section></section>
 <section id="part-3-t-test-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 3: <br>t-test in R</h1>
