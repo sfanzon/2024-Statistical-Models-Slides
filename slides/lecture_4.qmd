@@ -221,14 +221,14 @@ legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.
 
 
 ## One-sample Two-sided t-test {.smaller}
-### Reference statistical tables 
+### Reference statistical tables (download [here](files/Statistics_Tables.pdf))
 
 
 - Tables [here](files/Statistics_Tables.pdf) allow us to **estimate** $p$
 
 - Find the table **One-sided critical values of the student t distribution**
     * Look at the row with Degree of Freedom $n-1$ (or its closest value)
-    * Find **critical value** $t^*$ in column $0.025 \qquad\quad$ **Example**: $n=10$, DF $=9$, $t^*=2.262$
+    * Find **critical value** $t^*$ in column $0.025 \qquad$ **Example**: $n=10$, DF $=9$, $t^*=2.262$
 
 ![](images/t_test_statistic_table.png){width=82%}
 

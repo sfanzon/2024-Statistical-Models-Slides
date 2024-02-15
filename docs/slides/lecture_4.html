@@ -426,11 +426,23 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -438,27 +450,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Axiom {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,7 +458,15 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Corollary {
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -474,25 +474,25 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
+  .Example {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -658,20 +658,20 @@ p = 2P(\text{Observing t }| \, \mu=\mu_0)
 </section>
 <section id="one-sample-two-sided-t-test-8" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
-<h3 id="reference-statistical-tables">Reference statistical tables</h3>
+<h3 id="reference-statistical-tables-download-here">Reference statistical tables (download <a href="files/Statistics_Tables.pdf">here</a>)</h3>
 <ul>
 <li><p>Tables <a href="files/Statistics_Tables.pdf">here</a> allow us to <strong>estimate</strong> <span class="math inline">p</span></p></li>
 <li><p>Find the table <strong>One-sided critical values of the student t distribution</strong></p>
 <ul>
 <li>Look at the row with Degree of Freedom <span class="math inline">n-1</span> (or its closest value)</li>
-<li>Find <strong>critical value</strong> <span class="math inline">t^*</span> in column <span class="math inline">0.025 \qquad\quad</span> <strong>Example</strong>: <span class="math inline">n=10</span>, DF <span class="math inline">=9</span>, <span class="math inline">t^*=2.262</span></li>
+<li>Find <strong>critical value</strong> <span class="math inline">t^*</span> in column <span class="math inline">0.025 \qquad</span> <strong>Example</strong>: <span class="math inline">n=10</span>, DF <span class="math inline">=9</span>, <span class="math inline">t^*=2.262</span></li>
 </ul></li>
 </ul>
 
 <img data-src="images/t_test_statistic_table.png" style="width:82.0%" class="r-stretch"></section>
 <section id="one-sample-two-sided-t-test-9" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
-<h3 id="reference-statistical-tables-1">Reference statistical tables</h3>
+<h3 id="reference-statistical-tables">Reference statistical tables</h3>
 <ul>
 <li><p>The critical value <span class="math inline">t^*</span> found in the table satisfies <span class="math display">
 P(t_{n-1}&gt;t^*) = 0.025
@@ -992,7 +992,7 @@ t = \frac{\overline{x} - \mu_0}{s/\sqrt{n}} =
 </section>
 <section id="example-2008-crisis-6" class="slide level2 smaller">
 <h2>Example: 2008 crisis</h2>
-<h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
+<h3 id="reference-statistical-tables-1">Reference statistical tables</h3>
 <p>Find the <a href="files/Statistics_Tables.pdf">table</a> <strong>One-sided critical values of the student t distribution</strong></p>
 <ul>
 <li>Find row with DF <span class="math inline">= n-1</span> (or closest). Find critical value <span class="math inline">t^*</span> in column <span class="math inline">0.025</span></li>
@@ -1002,7 +1002,7 @@ t = \frac{\overline{x} - \mu_0}{s/\sqrt{n}} =
 <img data-src="images/t_test_statistic_table_bis.png" style="width:82.0%" class="r-stretch"></section>
 <section id="example-2008-crisis-7" class="slide level2 smaller">
 <h2>Example: 2008 crisis</h2>
-<h3 id="reference-statistical-tables-3">Reference statistical tables</h3>
+<h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
 <ul>
 <li>Plot of <span class="math inline">t_{11}</span> distribution. White area is <span class="math inline">0.95</span>, shaded area is <span class="math inline">0.05</span></li>
 <li>Any statistic <span class="math inline">|t|&gt;t^* = 2.201</span> happens with probability <span class="math inline">p&lt;0.025</span></li>
@@ -1354,7 +1354,7 @@ H_0 \colon \mu = 0
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.7762606 -0.2868114  1.3658552  0.6257997  0.4830610</code></pre>
+<pre><code>[1]  0.5817658  0.2214454 -1.9782978  0.9272747  0.5254621</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
