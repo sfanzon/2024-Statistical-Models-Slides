@@ -41,10 +41,13 @@ $
 ## Outline of Lecture 5
 
 1. Functions in R
-2. More Vectors
-3. Data Management
-4. R Style Guide
-5. F-test
+2. More on Vectors
+3. Lists
+4. Data Frames
+5. Importing Data
+6. Distributions in R
+7. R Style Guide
+8. F-test
 
 
 
@@ -225,7 +228,7 @@ print(y)
 
 
 
-# Part 2: <br>More Vectors{background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>More on Vectors{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -235,7 +238,7 @@ print(y)
 
 
 
-## More vectors {.smaller}
+## More on vectors {.smaller}
 
 - Vectors of numbers are objects
 - Further type of vectors are:
@@ -606,12 +609,82 @@ print(y)
 
 
 
+## Indexing vectors {.smaller}
+
+- Elements of a vector can be retrieved by **indexing**
+
+- ``vector[k]`` returns k-th component of ``vector``
+
+<br>
+
+```{r}
+#| echo: true
+
+vector <- c("Cat", "Dog", "Mouse")
+
+second_element <- vector[2]
+
+print(second_element)
+```
 
 
 
 
+## Replacing vector elements {.smaller}
 
-# Part 3: <br>Data Management {background-color="#cc0164" visibility="uncounted"}
+To modify an element of a vector use the following:
+
+- ``vector[k] <- value`` stores ``value`` in k-th component of ``vector``
+
+<br>
+
+```{r}
+#| echo: true
+
+vector <- c("Cat", "Dog", "Mouse")
+
+vector[2] <- "Horse"
+
+print(vector)
+```
+
+
+
+## Vector slicing {.smaller}
+
+Returning multiple items of a vactor is known as **slicing**
+
+- ``vector[c(k1, ..., kn)]`` returns components ``k1, ..., kn``
+- ``vector[k1:k2]`` returns components ``k1`` to ``k2``
+
+```{r}
+#| echo: true
+
+vector <- c(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+
+first_third_fifth <- vector[c(1, 3, 5)]
+
+print(first_third_fifth)
+
+```
+
+
+## Vector slicing {.smaller}
+
+```{r}
+#| echo: true
+
+vector <- c(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+
+second_to_seventh <- vector[2:7]
+
+print(second_to_seventh)
+
+```
+
+
+
+# Part 3: <br>Lists {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -621,8 +694,193 @@ print(y)
 
 
 
+## Lists {.smaller}
 
 
+- Vectors can contain only one data type (number, character, boolean)
+
+- Lists are data structures that can contain **any R object**
+
+- Lists can be created similarly to vectors, with the command ``list()``
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F,T,T), "hello")
+
+print(my_list)
+
+```
+
+
+
+
+## Retrieving elements {.smaller}
+
+Elements of a list can be retrieved by **indexing**
+
+- ``my_list[[k]]`` returns k-th component of ``my_list``
+
+<br>
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F,T,T), "hello")
+
+second_element <- my_list[[2]]
+
+print(second_element)
+
+```
+
+
+
+## List slicing {.smaller}
+
+
+Returning multiple items of a list is known as **slicing**
+
+- ``my_list[c(k1, ..., kn)]`` returns ``k1, ..., kn`` components of ``my_list``
+- ``my_list[k1:k2]`` returns components ``k1`` to ``k2``
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F), "Cat", "Dog", pi, 42)
+
+first_third_fifth <- my_list[c(1, 3, 5)]
+
+print(first_third_fifth)
+
+```
+
+
+## List slicing {.smaller}
+
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F), "Cat", "Dog", pi, 42)
+
+second_to_fourth <- my_list[2:4]
+
+print(second_to_fourth)
+
+```
+
+
+## Naming {.smaller}
+
+- Components of a list can be **named**
+- This makes components more recognizable
+- Names can be assigned to ``my_list`` with the command
+    * ``names(my_list) <- c("name_1", ..., "name_k")``
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F,T,T), "hello")
+
+names(my_list) <- c("number", "true_false", "string")
+
+print(my_list)
+
+```
+
+
+
+## Accessing a name {.smaller}
+
+- A component of ``my_list`` named ``my_name`` can be accessed by
+    * ``my_list$my_name``
+
+```{r}
+#| echo: true
+
+my_list <- list(2, c(T,F,T,T), "hello")
+
+names(my_list) <- c("number", "true_false", "string")
+
+second_component <- my_list$true_false
+
+print(second_component)
+
+```
+
+
+
+
+# Part 4: <br>Data Frames {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Data Frames {.smaller}
+
+- Data Frames are the best way of presenting a data set in R:
+    * Each variable has assigned a collection of recorded observations
+
+- Data frames can contain any R object
+
+- Data Frames are similar to Lists, with the difference that:
+    * Members of a Data Frame must all be vectors of equal length
+
+
+
+
+
+## Constructing a Data Frame {.smaller}
+
+- Data frames are creating similarly to lists, using ``data.frame()``
+
+- **Important**: Elements of data frame must be vectors of the same length
+
+
+```r
+my_data <- data.frame(
+  person = c("Peter", "Lois", "Meg", "Chris", "Stewie"),
+  age = c(42, 40, 17, 14, 1),
+  sex = c("M", "F" , "F", "M", "M")
+)
+```
+
+
+
+## Printing a Data Frame {.smaller}
+
+::: {.column width="46%"}
+
+- R prints data frames like matrices
+- First row contains vector names
+
+:::
+
+::: {.column width="52%"}
+
+- First column contains row names
+- Data are paired: e.g. Peter is 42 and Male
+
+:::
+
+```{r}
+#| echo: true
+
+my_data <- data.frame(
+  person = c("Peter", "Lois", "Meg", "Chris", "Stewie"),
+  age = c(42, 40, 17, 14, 1),
+  sex = c("M", "F" , "F", "M", "M")
+)
+
+print(my_data)
+
+```
 
 
 
