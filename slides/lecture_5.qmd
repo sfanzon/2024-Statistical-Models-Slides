@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 5: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 5: <br>Hypothesis tests in R <br>Part 2 {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,7 +40,569 @@ $
 
 ## Outline of Lecture 5
 
-1. TBA
+1. Functions in R
+2. More Vectors
+3. Data Management
+4. R Style Guide
+5. F-test
+
+
+
+
+
+
+
+# Part 1: <br>Functions in R {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Expressions and objects {.smaller}
+
+- Basic way to interact with R is through **expression evaluation**:
+  * You enter an epression
+  * The system evaluates it and prints the result
+
+- Expressions work on **objects**
+- **Object**: anything that can be assigned to a variable
+- Objects encountered so far are:
+  * Scalars
+  * Vectors
+
+
+
+## Functions and arguments {.smaller}
+
+- **Functions** are a class of objects
+
+- Format of a function is **name** followed by parentheses containing **arguments**
+
+- Functions take **arguments** and **return** a result
+
+- We already encountered several built in functions:
+  * ``plot(x, y)``
+  * ``lines(x, y)``
+  * ``seq(x)``
+  * ``print("Stats is great!")``
+  * ``cat("R is great!")``
+  * ``mean(x)``
+  * ``sin(x)``
+
+
+## Functions and arguments {.smaller}
+
+- Functions have **actual arguments** and **formal arguments**
+- Example: 
+  * ``plot(x, y)`` has formal arguments two vectors ``x`` and ``y``
+  * ``plot(height, weight)`` has actual arguments ``height`` and ``weight``
+
+- When you write ``plot(height, weight)`` the arguments are matched:
+  * ``height`` corresponds to x-variable
+  * ``weight`` corresponds to y-variable
+  * This is called **positional matching**
+  
+  
+
+## Functions and arguments {.smaller}
+
+- If a function has a lot of arguments, positional matching is tedious
+
+- For example ``plot()`` accepts the following (and more!) arguments
+
+| Argument |                        Description    |
+|:--------:|:-------------------------------------:|
+| ``x``    | x coordinate of points in the plot    |
+| ``y``    | y coordinate of points in the plot    |
+| ``type`` | Type of plot to be drawn              |
+| ``main`` | Title of the plot                     |
+| ``xlab`` | Label of x axis                       |
+| ``ylab`` | Label of y axis                       | 
+| ``pch``  | Shape of points                       |
+
+
+
+
+
+## Functions and arguments {.smaller}
+
+Issue with having too many arguments is the following:
+
+- We might want to specify ``pch = 2``
+- But then we would have to match all the arguments preceding
+``pch``
+  * ``x``
+  * ``y``
+  * ``type``
+  * ``xlab``
+  * ``ylab``
+
+
+
+## Functions and arguments {.smaller}
+
+- Thankfully we can use **named actual arguments**:
+  * The name of a formal argument can be matched to an actual argument
+  * This is independent of position
+
+- For example we can specify ``pch = 2`` by the call
+  * ``plot(weight, height, pch = 2)``
+
+- In the above:
+  * ``weight`` is implicitly matched to ``x``
+  * ``height`` is implicitly matched to ``y``
+  * ``pch`` is explicitly matched to ``2``
+  
+- Note that the following call would give same output
+  * ``plot(x = weight, y = height, pch = 2)``
+
+
+
+
+
+
+## Functions and arguments {.smaller}
+
+- Named actual arguments **override** positional arguments
+- Example: The following commands yield the same plot
+  * ``plot(height, weight)``
+  * ``plot(x = height, y = weight)``
+  * ``plot(y = weight, x = height)``
+
+
+
+
+
+## Functions and arguments {.smaller}
+
+We have already seen another example of **named actual arguments**
+
+- ``seq(from = 1, to = 11, by = 2)``
+- ``seq(1, 11, 2)``
+- These yield the same output. Why?
+- Because in this case **named actual arguments** match **positional arguments**
+
+
+
+
+## Functions and arguments {.smaller}
+
+If however we want to divide the interval $[1, 11]$ in $5$ equal parts:
+
+- Have to use ``seq(1, 11, length.out = 6)``
+- This is different from ``seq(1, 11, 6)``
+
+```{r}
+#| echo: true
+x <- seq(1, 11, length.out = 6)
+print(x)
+y <- seq(1, 11, 6)
+print(y)
+```
+
+
+- This is because:
+  * The 3rd positional argument of ``seq()`` is ``by``
+  * The 4th positional argument is ``length.out``
+
+
+
+## Functions and arguments {.smaller}
+### Warning
+
+- You can call functions without specifying arguments
+- However you have to use brackets ``()``
+- Example:
+  * ``getwd()`` -- which outputs current working directory
+  * ``ls()`` -- which outputs names of objects currently in memory
+
+
+
+
+
+
+# Part 2: <br>More Vectors{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## More vectors {.smaller}
+
+- Vectors of numbers are objects
+- Further type of vectors are:
+  * Character vectors
+  * Logical vectors
+
+
+## Character vectors {.smaller}
+
+- A character vector is a vector of text strings
+- Elements are specified and printed in quotes
+
+```{r}
+#| echo: true
+x <- c("Red", "Green", "Blue")
+print(x)
+```
+
+- You can use single- or double-quote symbols to specify strings
+- This is as long as the left quote is the same as the right quote
+
+```{r}
+#| echo: true
+x <- c('Red', 'Green', 'Blue')
+print(x)
+```
+
+
+
+## Character vectors {.smaller}
+
+``Print`` and ``cat`` produce different output on character vectors:
+
+- ``print(x)`` prints all the strings in ``x`` separately
+- ``cat(x)`` concatenates strings. There is no way to tell how many were there
+
+
+::: {.column width="45%"}
+
+```r
+x <- c("Red", "Green", "Blue")
+print(x)
+cat(x)
+```
+
+```{r}
+x <- c("Red", "Green", "Blue")
+print(x)
+cat(x)
+```
+
+:::
+
+
+
+::: {.column width="45%"}
+
+```r
+y <- c("Red Green", "Blue")
+print(y)
+cat(y)
+```
+
+```{r}
+y <- c("Red Green", "Blue")
+print(y)
+cat(y)
+```
+
+:::
+
+
+## Logical vectors {.smaller}
+
+- Logical vectors can take the values ``TRUE``, ``FALSE`` or ``NA``
+- ``TRUE`` and ``FALSE`` can be abbreviated with ``T`` and ``F``
+
+```{r}
+#| echo: true
+x <- c(T,T,F,T)
+print(x)
+```
+
+
+## Logical vectors {.smaller}
+
+- Logical vectors are extremely useful to evaluate conditions
+
+- Example:
+  * given a numerical vector ``x``
+  * we want to count how many entries are above a value ``t``
+
+
+```{r}
+#| echo: true
+x <- seq(from = 1 , to = 10, by = 1)
+print(x)
+
+y <- ( x > 5 )
+print(y)
+```
+
+
+## Logical vectors {.smaller}
+### Application
+
+- Generate a vector of 1000 numbers from $N(0,1)$
+- Count how many entries are above the mean $0$
+- Since there are many (1000) entries, we expect a result close to 500
+
+**Question**: How to do this?
+
+**Hint**: When you sum ``T`` and ``F`` they are interpreted as ``1`` and ``0``
+
+```{r}
+#| echo: true
+T + T
+T + F
+F + F
+```
+
+
+## Logical vectors {.smaller}
+### Application
+
+
+- The function ``sum(x)`` sums the entries of a vector ``x``
+- We can use ``sum(x)`` to count the number of ``T`` entries in a logical vector ``x``
+
+
+
+```r
+# Generate vector with 1000 normal entries
+x <- rnorm(1000)
+
+# Generate logical vector of entries above 0
+y <- (x > 0)
+
+# Count entries above zero
+above_zero <- sum(y)
+cat("Number of entries above average 0 is", above_zero)
+cat("This is pretty close to 500!")
+```
+
+
+```{r}
+# Generate vector with 1000 normal entries
+x <- rnorm(1000)
+
+# Generate logical vector of entries above 0
+y <- (x > 0)
+
+# Count entries above zero
+above_zero <- sum(y)
+
+cat("Number of entries above average 0 is", above_zero)
+cat("This is pretty close to 500!")
+```
+
+
+## Missing values {.smaller}
+
+- In practical data analysis, a data point is frequently unavailable
+- Statistical software needs ways to deal with this
+- R allows vectors to contain a special ``NA`` value - Not Available
+- ``NA`` is carried through in computations: operations on ``NA`` yield ``NA`` as the result
+
+
+```{r}
+#| echo: true
+
+2 * NA
+NA + NA
+T + NA
+```
+
+
+
+
+## Functions that create vectors {.smaller}
+
+The main functions to generate vectors are
+
+- ``c()`` concatenate
+- ``seq()`` sequence
+- ``rep()`` replicate
+
+We have already met ``c()`` and ``seq()`` but there are more details to discuss
+
+
+
+
+## Functions that create vectors {.smaller}
+### Concatenate
+
+- ``c()`` generates a vector containing the input values
+
+```{r}
+#| echo: true
+x <- c(1, 2, 3, 4, 5)
+print(x)
+```
+
+
+- ``c()`` can also concatenate vectors 
+
+```{r}
+#| echo: true
+x <- c(1, 2, 3, 4, 5)
+y <- c(6, 7, 8)
+
+z <- c(x, y, 9)
+print(z)
+```
+
+
+
+## Functions that create vectors {.smaller}
+### Concatenate
+
+
+- You can assign names to vector elements
+
+- This modiﬁes the way the vector is printed
+
+```{r}
+#| echo: true
+
+x <- c(first = "Red", second = "Green", third = "Blue")
+print(x)
+```
+
+- The names can be extracted with ``names(x)``
+- The values can be extracted with ``unname(x)``
+
+```r
+print( names(x) )
+print( unname(x) )
+```
+
+
+```{r}
+x <- c(first = "Red", second = "Green", third = "Blue")
+print( names(x) )
+print( unname(x) )
+```
+
+
+## Functions that create vectors {.smaller}
+### Concatenate
+
+- All elements of a vector have the **same** type
+- Concatenating vectors of different types leads to conversion
+
+
+```{r}
+#| echo: true
+
+c(FALSE, 2)
+```
+
+
+```{r}
+#| echo: true
+
+c(pi, "stats")
+
+```
+
+
+```{r}
+#| echo: true
+
+c(TRUE, "stats")
+```
+
+
+
+
+## Functions that create vectors {.smaller}
+### Sequence
+
+- Recall the syntax of ``seq`` is
+  * ``seq(from =, to =, by =, length.out =)``
+
+- Omitting the third argument assumes that ``by = 1``
+
+```{r}
+#| echo: true
+
+x <- seq(1, 6)
+print(x)
+```
+
+
+- The same output of ``seq(x1, x2)`` is obtained with ``x1:x2``
+
+```{r}
+#| echo: true
+
+y <- 1:6
+print(y)
+```
+
+- Syntax ``x1:x2`` is **preferred** to ``seq(x1, x2)``
+
+
+
+
+## Functions that create vectors {.smaller}
+### Replicate
+
+
+``rep`` generates repeated values from a vector:
+
+- ``x`` vector 
+- ``n`` integer
+- Then ``rep(x, n)`` repeats vector ``x`` n times
+
+```{r}
+#| echo: true
+
+x <- c(2, 1, 3)
+y <- rep(x, 4)
+
+print(y)
+```
+  
+
+## Functions that create vectors {.smaller}
+### Replicate
+
+
+The second argument of ``rep()`` can also be a vector:
+
+- ``x`` vector
+- ``y`` vector
+- ``rep(x, y)`` repeats entries of ``x`` as many times as corresponding entries of ``y``
+
+
+```{r}
+#| echo: true
+
+x <- c(2, 1, 3)
+y <- c(1, 2, 3)
+
+z <- rep(x, y)
+
+print(z)
+```
+
+
+## Functions that create vectors {.smaller}
+### Replicate
+
+- ``rep`` can be useful to create a vector of labels
+- **Example**: Suppose we want to collect some numeric data on 3 Cats and 4 Dogs
+
+
+```{r}
+#| echo: true
+
+x <- c("Cat", "Dog")
+y <- rep(x, c(3, 4))
+
+print(y)
+```
 
 
 
@@ -49,7 +611,7 @@ $
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>Data Management {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -61,4 +623,373 @@ $
 
 
 
-## TBA {.smaller}
+
+
+
+
+
+# Part 4: <br>R Style Guide {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+## R Style Guide {.smaller}
+
+- Styling your code is optional
+- However it is considered good manners to do so
+- Good coding style makes code more readable
+- Highly recommended, especially for assignments
+- The next few slides on Style are based on these two posts:
+  * Style Guide by Hadley Wickham ([link](http://adv-r.had.co.nz/Style.html#:~:text=When%20indenting%20your%20code%2C%20use,definition%20runs%20over%20multiple%20lines.))
+  * Google's R Style Guide ([link](https://google.github.io/styleguide/Rguide.html))
+
+
+
+## R Style guide {.smaller}
+### File names
+
+They should be meaningful and end in .R
+
+```r
+# Good
+football-models.R  
+utility-functions.R
+homework_1.R
+homework1.R
+
+# Bad
+footballmodels.r # Hard to read
+stuff.r          # What is inside this file?
+code.r           # Same as above
+
+```
+
+
+## R Style guide {.smaller}
+### Objects names
+
+- Objects names shoulde be lowercase
+- Use an underscore (``_``) to separate words within a name
+- Variable names should be nouns, not verbs
+- Come up with names that are concise and meaningful
+
+```r
+# Good
+day_one  # This will clearly store the value of first day
+day_1    # Still clear
+
+
+# Bad
+first_day_of_the_month  # Too long
+dayone                  # Hard to read
+DayOne                  # Mix of upper and lower case
+fdm                     # Hard to guess what this means
+```
+
+
+
+
+## R Style guide {.smaller}
+### Functions names
+
+- Name functions with ``BigCamelCase`` ([link](https://en.wikipedia.org/wiki/Camel_case))
+- This is to clearly distinguish functions from other objects
+- Functions names should be verbs
+- Come up with names that are concise and meaningful
+
+```r
+# Good
+DoNothing <- function() {
+  return(invisible(NULL))
+}
+
+# Bad
+donothing <- function() {
+  return(invisible(NULL))
+}
+```
+
+
+
+
+## R Style guide {.smaller}
+### Object and functions names
+
+If possible avoid using names of existing functions and variables
+
+
+```r
+# Bad
+T <- FALSE                  # T is reserved for the boolean TRUE
+c <- 10                     # c denotes the concatenation operator
+mean <- function(x) sum(x)  # mean already denotes a built in function
+```
+
+
+
+## R Style guide {.smaller}
+### Assignment
+
+Use ``<-`` and not ``=`` for assignment
+
+```r 
+# Good
+x <- 5
+
+# Bad
+x = 5
+```
+
+
+
+
+## R Style guide {.smaller}
+### Spacing
+
+- Spacing is **really** something you should be careful about
+- Place spaces around all infix operators (``=``, ``+``, ``-``, ``<-``, etc.) 
+- Place spaces around ``=`` when calling a function 
+- Always put a space after a comma, never before (like in regular English)
+
+```r 
+# Good
+average <- mean(feet / 12 + inches, na.rm = TRUE)
+
+# Bad
+average<-mean(feet/12+inches,na.rm=TRUE)
+```
+
+
+
+
+## R Style guide {.smaller}
+### Spacing with Brackets
+
+- Do not place spaces around code in parentheses or square brackets
+- Unless there is a comma
+
+```r
+# Good
+if (condition) do(x)
+diamonds[5, ]
+
+# Bad
+if ( condition ) do(x)  # No spaces around condition
+x[1,]                   # Needs a space after the comma
+x[1 ,]                  # Space goes after comma not before
+```
+
+
+
+
+## R Style guide {.smaller}
+### Spacing - Exceptions
+
+- Symbols ``:``, ``::`` and ``:::`` do not need spacing
+
+```r
+# Good
+x <- 1:10
+
+# Bad
+x <- 1 : 10
+```
+
+- Place a space before left parentheses, except in a function call
+
+```r
+#Good
+if (condition) do(x)
+plot(x, y)
+
+# Bad
+if(condition)do(x)    # (condition) needs spacing
+plot (x, y)           # This does not need spacing
+```
+
+
+
+## R Style guide {.smaller}
+### Extra Spacing
+
+Extra spacing is ok if it improves alignment of ``=`` or ``<-``
+
+```r
+list(
+  total = a + b + c, 
+  mean  = (a + b + c) / n
+)
+```
+
+
+
+## R Style guide {.smaller}
+### Curly braces
+
+- An opening curly brace should never go on its own line 
+- An opening curly brace should always be followed by a new line
+- Always **indent** the code inside curly braces
+
+
+::: {.column width="45%"}
+
+```r
+# Good
+
+if (y < 0 && debug) {
+  message("Y is negative")
+}
+
+if (y == 0) {
+  log(x)
+} 
+```
+
+:::
+
+
+::: {.column width="45%"}
+
+```r
+# Bad
+
+if (y < 0 && debug)
+message("Y is negative")
+
+
+if (y == 0) 
+{
+  log(x)} 
+```
+
+:::
+
+
+
+
+
+## R Style guide {.smaller}
+### Line length
+
+- Limit code to 80 characters per line
+- This fits comfortably on a printed page 
+- If you run out of room, encapsulate some of the work in separate function
+
+
+
+
+## R Style guide {.smaller}
+### Indentation
+
+- When indenting your code, use two spaces
+- Never use tabs or mix tabs and spaces
+- Indentation should be used for **functions**, **if**, **for**, etc.
+
+```r
+SumTwoNumbers <- function(x, y) {
+  s = x + y
+  return(s)
+}
+```
+
+
+
+## R Style guide {.smaller}
+### Indentation - Exception
+
+If a function definition runs over multiple lines, indent the second line to where the definition starts
+
+```r
+long_function_name <- function(a = "a long argument", 
+                               b = "another argument",
+                               c = "another long argument") {
+  # As usual code is indented by two spaces.
+}
+```
+
+
+
+## R Style guide {.smaller}
+### Named arguments
+
+- Often you can call a function without explicitly naming arguments:
+  * ``plot(height, weight)``
+  * ``mean(weight)``
+
+- This might be fine for ``plot()`` or ``mean``
+
+- However for less common functions:
+  * One might struggle to remember the meaning of **arguments positions**
+  * It is therefore good practice to **name arguments**
+
+```r
+# Good
+seq(from = 1, to = 11, by = 1)
+
+# Bad
+seq(1, 11, 1)
+```
+
+
+
+## R Style guide {.smaller}
+### Use explicit returns
+
+- Functions can return objects
+- R has an implicit return feature
+- Do not rely on this feature, but explicitly mention ``return(object)``
+
+```r
+# Good
+AddValues <- function(x, y) {
+  return(x + y)                     # Function returns x+y
+}
+
+# Bad
+AddValues <- function(x, y) {
+  x + y                             # Function still returns x+y
+}                                   # but it is not immediate to see it
+```
+
+
+
+## R Style guide {.smaller}
+### Comments
+
+- **Most importantly**: Comment your code
+- Each line of a comment should begin with comment symbol ``#`` and a single space
+
+```r 
+# Here we sum two numbers  
+x+y
+```
+
+
+- Use commented lines of ``-`` and ``=`` to break up code into easily readable chunks
+
+```r
+# Load data ---------------------------
+
+# Plot data ---------------------------
+```
+
+
+
+
+
+# Part 5: <br>F-test {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## References

@@ -32,8 +32,89 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -325,6 +406,38 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
@@ -333,39 +446,11 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Warning {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Lemma {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -377,21 +462,17 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -430,8 +511,8 @@
 
 </section>
 <section>
-<section id="lecture-5-tba-tba" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Lecture 5: <br>TBA<br>TBA</h1>
+<section id="lecture-5-hypothesis-tests-in-r-part-2" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Lecture 5: <br>Hypothesis tests in R <br>Part 2</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -441,20 +522,888 @@
 <section id="outline-of-lecture-5" class="slide level2">
 <h2>Outline of Lecture 5</h2>
 <ol type="1">
-<li>TBA</li>
+<li>Functions in R</li>
+<li>More Vectors</li>
+<li>Data Management</li>
+<li>R Style Guide</li>
+<li>F-test</li>
 </ol>
 </section></section>
 <section>
-<section id="part-1-tba" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>TBA</h1>
+<section id="part-1-functions-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>Functions in R</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="tba" class="slide level2 smaller">
-<h2>TBA</h2>
+<section id="expressions-and-objects" class="slide level2 smaller">
+<h2>Expressions and objects</h2>
+<ul>
+<li>Basic way to interact with R is through <strong>expression evaluation</strong>:
+<ul>
+<li>You enter an epression</li>
+<li>The system evaluates it and prints the result</li>
+</ul></li>
+<li>Expressions work on <strong>objects</strong></li>
+<li><strong>Object</strong>: anything that can be assigned to a variable</li>
+<li>Objects encountered so far are:
+<ul>
+<li>Scalars</li>
+<li>Vectors</li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<ul>
+<li><p><strong>Functions</strong> are a class of objects</p></li>
+<li><p>Format of a function is <strong>name</strong> followed by parentheses containing <strong>arguments</strong></p></li>
+<li><p>Functions take <strong>arguments</strong> and <strong>return</strong> a result</p></li>
+<li><p>We already encountered several built in functions:</p>
+<ul>
+<li><code>plot(x, y)</code></li>
+<li><code>lines(x, y)</code></li>
+<li><code>seq(x)</code></li>
+<li><code>print("Stats is great!")</code></li>
+<li><code>cat("R is great!")</code></li>
+<li><code>mean(x)</code></li>
+<li><code>sin(x)</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-1" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<ul>
+<li>Functions have <strong>actual arguments</strong> and <strong>formal arguments</strong></li>
+<li>Example:
+<ul>
+<li><code>plot(x, y)</code> has formal arguments two vectors <code>x</code> and <code>y</code></li>
+<li><code>plot(height, weight)</code> has actual arguments <code>height</code> and <code>weight</code></li>
+</ul></li>
+<li>When you write <code>plot(height, weight)</code> the arguments are matched:
+<ul>
+<li><code>height</code> corresponds to x-variable</li>
+<li><code>weight</code> corresponds to y-variable</li>
+<li>This is called <strong>positional matching</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-2" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<ul>
+<li><p>If a function has a lot of arguments, positional matching is tedious</p></li>
+<li><p>For example <code>plot()</code> accepts the following (and more!) arguments</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Argument</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>x</code></td>
+<td style="text-align: center;">x coordinate of points in the plot</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>y</code></td>
+<td style="text-align: center;">y coordinate of points in the plot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>type</code></td>
+<td style="text-align: center;">Type of plot to be drawn</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>main</code></td>
+<td style="text-align: center;">Title of the plot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>xlab</code></td>
+<td style="text-align: center;">Label of x axis</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>ylab</code></td>
+<td style="text-align: center;">Label of y axis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>pch</code></td>
+<td style="text-align: center;">Shape of points</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions-and-arguments-3" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<p>Issue with having too many arguments is the following:</p>
+<ul>
+<li>We might want to specify <code>pch = 2</code></li>
+<li>But then we would have to match all the arguments preceding <code>pch</code>
+<ul>
+<li><code>x</code></li>
+<li><code>y</code></li>
+<li><code>type</code></li>
+<li><code>xlab</code></li>
+<li><code>ylab</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-4" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<ul>
+<li>Thankfully we can use <strong>named actual arguments</strong>:
+<ul>
+<li>The name of a formal argument can be matched to an actual argument</li>
+<li>This is independent of position</li>
+</ul></li>
+<li>For example we can specify <code>pch = 2</code> by the call
+<ul>
+<li><code>plot(weight, height, pch = 2)</code></li>
+</ul></li>
+<li>In the above:
+<ul>
+<li><code>weight</code> is implicitly matched to <code>x</code></li>
+<li><code>height</code> is implicitly matched to <code>y</code></li>
+<li><code>pch</code> is explicitly matched to <code>2</code></li>
+</ul></li>
+<li>Note that the following call would give same output
+<ul>
+<li><code>plot(x = weight, y = height, pch = 2)</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-5" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<ul>
+<li>Named actual arguments <strong>override</strong> positional arguments</li>
+<li>Example: The following commands yield the same plot
+<ul>
+<li><code>plot(height, weight)</code></li>
+<li><code>plot(x = height, y = weight)</code></li>
+<li><code>plot(y = weight, x = height)</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-6" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<p>We have already seen another example of <strong>named actual arguments</strong></p>
+<ul>
+<li><code>seq(from = 1, to = 11, by = 2)</code></li>
+<li><code>seq(1, 11, 2)</code></li>
+<li>These yield the same output. Why?</li>
+<li>Because in this case <strong>named actual arguments</strong> match <strong>positional arguments</strong></li>
+</ul>
+</section>
+<section id="functions-and-arguments-7" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<p>If however we want to divide the interval <span class="math inline">[1, 11]</span> in <span class="math inline">5</span> equal parts:</p>
+<ul>
+<li>Have to use <code>seq(1, 11, length.out = 6)</code></li>
+<li>This is different from <code>seq(1, 11, 6)</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="at">length.out =</span> <span class="dv">6</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  3  5  7  9 11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">6</span>)</span>
+<span id="cb3-2"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 7</code></pre>
+</div>
+</div>
+<ul>
+<li>This is because:
+<ul>
+<li>The 3rd positional argument of <code>seq()</code> is <code>by</code></li>
+<li>The 4th positional argument is <code>length.out</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-and-arguments-8" class="slide level2 smaller">
+<h2>Functions and arguments</h2>
+<h3 id="warning">Warning</h3>
+<ul>
+<li>You can call functions without specifying arguments</li>
+<li>However you have to use brackets <code>()</code></li>
+<li>Example:
+<ul>
+<li><code>getwd()</code> – which outputs current working directory</li>
+<li><code>ls()</code> – which outputs names of objects currently in memory</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="part-2-more-vectors" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>More Vectors</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="more-vectors" class="slide level2 smaller">
+<h2>More vectors</h2>
+<ul>
+<li>Vectors of numbers are objects</li>
+<li>Further type of vectors are:
+<ul>
+<li>Character vectors</li>
+<li>Logical vectors</li>
+</ul></li>
+</ul>
+</section>
+<section id="character-vectors" class="slide level2 smaller">
+<h2>Character vectors</h2>
+<ul>
+<li>A character vector is a vector of text strings</li>
+<li>Elements are specified and printed in quotes</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Blue"</span>)</span>
+<span id="cb5-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Red"   "Green" "Blue" </code></pre>
+</div>
+</div>
+<ul>
+<li>You can use single- or double-quote symbols to specify strings</li>
+<li>This is as long as the left quote is the same as the right quote</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Red'</span>, <span class="st">'Green'</span>, <span class="st">'Blue'</span>)</span>
+<span id="cb7-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Red"   "Green" "Blue" </code></pre>
+</div>
+</div>
+</section>
+<section id="character-vectors-1" class="slide level2 smaller">
+<h2>Character vectors</h2>
+<p><code>Print</code> and <code>cat</code> produce different output on character vectors:</p>
+<ul>
+<li><code>print(x)</code> prints all the strings in <code>x</code> separately</li>
+<li><code>cat(x)</code> concatenates strings. There is no way to tell how many were there</li>
+</ul>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Blue"</span>)</span>
+<span id="cb9-2"><a></a><span class="fu">print</span>(x)</span>
+<span id="cb9-3"><a></a><span class="fu">cat</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Red"   "Green" "Blue" </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Red Green Blue</code></pre>
+</div>
+</div>
+</div>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Red Green"</span>, <span class="st">"Blue"</span>)</span>
+<span id="cb12-2"><a></a><span class="fu">print</span>(y)</span>
+<span id="cb12-3"><a></a><span class="fu">cat</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Red Green" "Blue"     </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Red Green Blue</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="logical-vectors" class="slide level2 smaller">
+<h2>Logical vectors</h2>
+<ul>
+<li>Logical vectors can take the values <code>TRUE</code>, <code>FALSE</code> or <code>NA</code></li>
+<li><code>TRUE</code> and <code>FALSE</code> can be abbreviated with <code>T</code> and <code>F</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(T,T,F,T)</span>
+<span id="cb15-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-vectors-1" class="slide level2 smaller">
+<h2>Logical vectors</h2>
+<ul>
+<li><p>Logical vectors are extremely useful to evaluate conditions</p></li>
+<li><p>Example:</p>
+<ul>
+<li>given a numerical vector <code>x</code></li>
+<li>we want to count how many entries are above a value <code>t</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span> , <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>y <span class="ot">&lt;-</span> ( x <span class="sc">&gt;</span> <span class="dv">5</span> )</span>
+<span id="cb19-2"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-vectors-2" class="slide level2 smaller">
+<h2>Logical vectors</h2>
+<h3 id="application">Application</h3>
+<ul>
+<li>Generate a vector of 1000 numbers from <span class="math inline">N(0,1)</span></li>
+<li>Count how many entries are above the mean <span class="math inline">0</span></li>
+<li>Since there are many (1000) entries, we expect a result close to 500</li>
+</ul>
+<p><strong>Question</strong>: How to do this?</p>
+<p><strong>Hint</strong>: When you sum <code>T</code> and <code>F</code> they are interpreted as <code>1</code> and <code>0</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>T <span class="sc">+</span> T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>T <span class="sc">+</span> F</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>F <span class="sc">+</span> F</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-vectors-3" class="slide level2 smaller">
+<h2>Logical vectors</h2>
+<h3 id="application-1">Application</h3>
+<ul>
+<li>The function <code>sum(x)</code> sums the entries of a vector <code>x</code></li>
+<li>We can use <code>sum(x)</code> to count the number of <code>T</code> entries in a logical vector <code>x</code></li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Generate vector with 1000 normal entries</span></span>
+<span id="cb27-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb27-3"><a></a></span>
+<span id="cb27-4"><a></a><span class="co"># Generate logical vector of entries above 0</span></span>
+<span id="cb27-5"><a></a>y <span class="ot">&lt;-</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a><span class="co"># Count entries above zero</span></span>
+<span id="cb27-8"><a></a>above_zero <span class="ot">&lt;-</span> <span class="fu">sum</span>(y)</span>
+<span id="cb27-9"><a></a><span class="fu">cat</span>(<span class="st">"Number of entries above average 0 is"</span>, above_zero)</span>
+<span id="cb27-10"><a></a><span class="fu">cat</span>(<span class="st">"This is pretty close to 500!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of entries above average 0 is 516</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is pretty close to 500!</code></pre>
+</div>
+</div>
+</section>
+<section id="missing-values" class="slide level2 smaller">
+<h2>Missing values</h2>
+<ul>
+<li>In practical data analysis, a data point is frequently unavailable</li>
+<li>Statistical software needs ways to deal with this</li>
+<li>R allows vectors to contain a special <code>NA</code> value - Not Available</li>
+<li><code>NA</code> is carried through in computations: operations on <code>NA</code> yield <code>NA</code> as the result</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="dv">2</span> <span class="sc">*</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="cn">NA</span> <span class="sc">+</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>T <span class="sc">+</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<p>The main functions to generate vectors are</p>
+<ul>
+<li><code>c()</code> concatenate</li>
+<li><code>seq()</code> sequence</li>
+<li><code>rep()</code> replicate</li>
+</ul>
+<p>We have already met <code>c()</code> and <code>seq()</code> but there are more details to discuss</p>
+</section>
+<section id="functions-that-create-vectors-1" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="concatenate">Concatenate</h3>
+<ul>
+<li><code>c()</code> generates a vector containing the input values</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb36-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
+<ul>
+<li><code>c()</code> can also concatenate vectors</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb38-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb38-3"><a></a></span>
+<span id="cb38-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(x, y, <span class="dv">9</span>)</span>
+<span id="cb38-5"><a></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6 7 8 9</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors-2" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="concatenate-1">Concatenate</h3>
+<ul>
+<li><p>You can assign names to vector elements</p></li>
+<li><p>This modiﬁes the way the vector is printed</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">first =</span> <span class="st">"Red"</span>, <span class="at">second =</span> <span class="st">"Green"</span>, <span class="at">third =</span> <span class="st">"Blue"</span>)</span>
+<span id="cb40-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  first  second   third 
+  "Red" "Green"  "Blue" </code></pre>
+</div>
+</div>
+<ul>
+<li>The names can be extracted with <code>names(x)</code></li>
+<li>The values can be extracted with <code>unname(x)</code></li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">print</span>( <span class="fu">names</span>(x) )</span>
+<span id="cb42-2"><a></a><span class="fu">print</span>( <span class="fu">unname</span>(x) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "first"  "second" "third" </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Red"   "Green" "Blue" </code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors-3" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="concatenate-2">Concatenate</h3>
+<ul>
+<li>All elements of a vector have the <strong>same</strong> type</li>
+<li>Concatenating vectors of different types leads to conversion</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">c</span>(pi, <span class="st">"stats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "3.14159265358979" "stats"           </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="st">"stats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "TRUE"  "stats"</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors-4" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="sequence">Sequence</h3>
+<ul>
+<li>Recall the syntax of <code>seq</code> is
+<ul>
+<li><code>seq(from =, to =, by =, length.out =)</code></li>
+</ul></li>
+<li>Omitting the third argument assumes that <code>by = 1</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb51-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<ul>
+<li>The same output of <code>seq(x1, x2)</code> is obtained with <code>x1:x2</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb53-2"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<ul>
+<li>Syntax <code>x1:x2</code> is <strong>preferred</strong> to <code>seq(x1, x2)</code></li>
+</ul>
+</section>
+<section id="functions-that-create-vectors-5" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="replicate">Replicate</h3>
+<p><code>rep</code> generates repeated values from a vector:</p>
+<ul>
+<li><code>x</code> vector</li>
+<li><code>n</code> integer</li>
+<li>Then <code>rep(x, n)</code> repeats vector <code>x</code> n times</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb55-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, <span class="dv">4</span>)</span>
+<span id="cb55-3"><a></a></span>
+<span id="cb55-4"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2 1 3 2 1 3 2 1 3 2 1 3</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors-6" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="replicate-1">Replicate</h3>
+<p>The second argument of <code>rep()</code> can also be a vector:</p>
+<ul>
+<li><code>x</code> vector</li>
+<li><code>y</code> vector</li>
+<li><code>rep(x, y)</code> repeats entries of <code>x</code> as many times as corresponding entries of <code>y</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb57-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb57-3"><a></a></span>
+<span id="cb57-4"><a></a>z <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, y)</span>
+<span id="cb57-5"><a></a></span>
+<span id="cb57-6"><a></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 1 1 3 3 3</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-that-create-vectors-7" class="slide level2 smaller">
+<h2>Functions that create vectors</h2>
+<h3 id="replicate-2">Replicate</h3>
+<ul>
+<li><code>rep</code> can be useful to create a vector of labels</li>
+<li><strong>Example</strong>: Suppose we want to collect some numeric data on 3 Cats and 4 Dogs</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cat"</span>, <span class="st">"Dog"</span>)</span>
+<span id="cb59-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb59-3"><a></a></span>
+<span id="cb59-4"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cat" "Cat" "Cat" "Dog" "Dog" "Dog" "Dog"</code></pre>
+</div>
+</div>
+</section></section>
+<section id="part-3-data-management" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Data Management</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
+<section>
+<section id="part-4-r-style-guide" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>R Style Guide</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="r-style-guide" class="slide level2 smaller">
+<h2>R Style Guide</h2>
+<ul>
+<li>Styling your code is optional</li>
+<li>However it is considered good manners to do so</li>
+<li>Good coding style makes code more readable</li>
+<li>Highly recommended, especially for assignments</li>
+<li>The next few slides on Style are based on these two posts:
+<ul>
+<li>Style Guide by Hadley Wickham (<a href="http://adv-r.had.co.nz/Style.html#:~:text=When%20indenting%20your%20code%2C%20use,definition%20runs%20over%20multiple%20lines.">link</a>)</li>
+<li>Google’s R Style Guide (<a href="https://google.github.io/styleguide/Rguide.html">link</a>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="r-style-guide-1" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="file-names">File names</h3>
+<p>They should be meaningful and end in .R</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="co"># Good</span></span>
+<span id="cb61-2"><a></a>football<span class="sc">-</span>models.R  </span>
+<span id="cb61-3"><a></a>utility<span class="sc">-</span>functions.R</span>
+<span id="cb61-4"><a></a>homework_1.R</span>
+<span id="cb61-5"><a></a>homework1.R</span>
+<span id="cb61-6"><a></a></span>
+<span id="cb61-7"><a></a><span class="co"># Bad</span></span>
+<span id="cb61-8"><a></a>footballmodels.r <span class="co"># Hard to read</span></span>
+<span id="cb61-9"><a></a>stuff.r          <span class="co"># What is inside this file?</span></span>
+<span id="cb61-10"><a></a>code.r           <span class="co"># Same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-2" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="objects-names">Objects names</h3>
+<ul>
+<li>Objects names shoulde be lowercase</li>
+<li>Use an underscore (<code>_</code>) to separate words within a name</li>
+<li>Variable names should be nouns, not verbs</li>
+<li>Come up with names that are concise and meaningful</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="co"># Good</span></span>
+<span id="cb62-2"><a></a>day_one  <span class="co"># This will clearly store the value of first day</span></span>
+<span id="cb62-3"><a></a>day_1    <span class="co"># Still clear</span></span>
+<span id="cb62-4"><a></a></span>
+<span id="cb62-5"><a></a></span>
+<span id="cb62-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb62-7"><a></a>first_day_of_the_month  <span class="co"># Too long</span></span>
+<span id="cb62-8"><a></a>dayone                  <span class="co"># Hard to read</span></span>
+<span id="cb62-9"><a></a>DayOne                  <span class="co"># Mix of upper and lower case</span></span>
+<span id="cb62-10"><a></a>fdm                     <span class="co"># Hard to guess what this means</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-3" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="functions-names">Functions names</h3>
+<ul>
+<li>Name functions with <code>BigCamelCase</code> (<a href="https://en.wikipedia.org/wiki/Camel_case">link</a>)</li>
+<li>This is to clearly distinguish functions from other objects</li>
+<li>Functions names should be verbs</li>
+<li>Come up with names that are concise and meaningful</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="co"># Good</span></span>
+<span id="cb63-2"><a></a>DoNothing <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb63-3"><a></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>))</span>
+<span id="cb63-4"><a></a>}</span>
+<span id="cb63-5"><a></a></span>
+<span id="cb63-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb63-7"><a></a>donothing <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb63-8"><a></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>))</span>
+<span id="cb63-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-4" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="object-and-functions-names">Object and functions names</h3>
+<p>If possible avoid using names of existing functions and variables</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb64-2"><a></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span>                  <span class="co"># T is reserved for the boolean TRUE</span></span>
+<span id="cb64-3"><a></a>c <span class="ot">&lt;-</span> <span class="dv">10</span>                     <span class="co"># c denotes the concatenation operator</span></span>
+<span id="cb64-4"><a></a>mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x)  <span class="co"># mean already denotes a built in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-5" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="assignment">Assignment</h3>
+<p>Use <code>&lt;-</code> and not <code>=</code> for assignment</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="co"># Good</span></span>
+<span id="cb65-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb65-3"><a></a></span>
+<span id="cb65-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb65-5"><a></a>x <span class="ot">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-6" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="spacing">Spacing</h3>
+<ul>
+<li>Spacing is <strong>really</strong> something you should be careful about</li>
+<li>Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.)</li>
+<li>Place spaces around <code>=</code> when calling a function</li>
+<li>Always put a space after a comma, never before (like in regular English)</li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="co"># Good</span></span>
+<span id="cb66-2"><a></a>average <span class="ot">&lt;-</span> <span class="fu">mean</span>(feet <span class="sc">/</span> <span class="dv">12</span> <span class="sc">+</span> inches, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-3"><a></a></span>
+<span id="cb66-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb66-5"><a></a>average<span class="ot">&lt;-</span><span class="fu">mean</span>(feet<span class="sc">/</span><span class="dv">12</span><span class="sc">+</span>inches,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-7" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="spacing-with-brackets">Spacing with Brackets</h3>
+<ul>
+<li>Do not place spaces around code in parentheses or square brackets</li>
+<li>Unless there is a comma</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="co"># Good</span></span>
+<span id="cb67-2"><a></a><span class="cf">if</span> (condition) <span class="fu">do</span>(x)</span>
+<span id="cb67-3"><a></a>diamonds[<span class="dv">5</span>, ]</span>
+<span id="cb67-4"><a></a></span>
+<span id="cb67-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb67-6"><a></a><span class="cf">if</span> ( condition ) <span class="fu">do</span>(x)  <span class="co"># No spaces around condition</span></span>
+<span id="cb67-7"><a></a>x[<span class="dv">1</span>,]                   <span class="co"># Needs a space after the comma</span></span>
+<span id="cb67-8"><a></a>x[<span class="dv">1</span> ,]                  <span class="co"># Space goes after comma not before</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-8" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="spacing---exceptions">Spacing - Exceptions</h3>
+<ul>
+<li>Symbols <code>:</code>, <code>::</code> and <code>:::</code> do not need spacing</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="co"># Good</span></span>
+<span id="cb68-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb68-3"><a></a></span>
+<span id="cb68-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb68-5"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">:</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Place a space before left parentheses, except in a function call</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="co">#Good</span></span>
+<span id="cb69-2"><a></a><span class="cf">if</span> (condition) <span class="fu">do</span>(x)</span>
+<span id="cb69-3"><a></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb69-4"><a></a></span>
+<span id="cb69-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb69-6"><a></a><span class="cf">if</span>(condition)<span class="fu">do</span>(x)    <span class="co"># (condition) needs spacing</span></span>
+<span id="cb69-7"><a></a><span class="fu">plot</span> (x, y)           <span class="co"># This does not need spacing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-9" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="extra-spacing">Extra Spacing</h3>
+<p>Extra spacing is ok if it improves alignment of <code>=</code> or <code>&lt;-</code></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="fu">list</span>(</span>
+<span id="cb70-2"><a></a>  <span class="at">total =</span> a <span class="sc">+</span> b <span class="sc">+</span> c, </span>
+<span id="cb70-3"><a></a>  <span class="at">mean  =</span> (a <span class="sc">+</span> b <span class="sc">+</span> c) <span class="sc">/</span> n</span>
+<span id="cb70-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-10" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="curly-braces">Curly braces</h3>
+<ul>
+<li>An opening curly brace should never go on its own line</li>
+<li>An opening curly brace should always be followed by a new line</li>
+<li>Always <strong>indent</strong> the code inside curly braces</li>
+</ul>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="co"># Good</span></span>
+<span id="cb71-2"><a></a></span>
+<span id="cb71-3"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> debug) {</span>
+<span id="cb71-4"><a></a>  <span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb71-5"><a></a>}</span>
+<span id="cb71-6"><a></a></span>
+<span id="cb71-7"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb71-8"><a></a>  <span class="fu">log</span>(x)</span>
+<span id="cb71-9"><a></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="column" style="width:45%;">
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb72-2"><a></a></span>
+<span id="cb72-3"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> debug)</span>
+<span id="cb72-4"><a></a><span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb72-5"><a></a></span>
+<span id="cb72-6"><a></a></span>
+<span id="cb72-7"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) </span>
+<span id="cb72-8"><a></a>{</span>
+<span id="cb72-9"><a></a>  <span class="fu">log</span>(x)} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-style-guide-11" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="line-length">Line length</h3>
+<ul>
+<li>Limit code to 80 characters per line</li>
+<li>This fits comfortably on a printed page</li>
+<li>If you run out of room, encapsulate some of the work in separate function</li>
+</ul>
+</section>
+<section id="r-style-guide-12" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="indentation">Indentation</h3>
+<ul>
+<li>When indenting your code, use two spaces</li>
+<li>Never use tabs or mix tabs and spaces</li>
+<li>Indentation should be used for <strong>functions</strong>, <strong>if</strong>, <strong>for</strong>, etc.</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>SumTwoNumbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb73-2"><a></a>  s <span class="ot">=</span> x <span class="sc">+</span> y</span>
+<span id="cb73-3"><a></a>  <span class="fu">return</span>(s)</span>
+<span id="cb73-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-13" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="indentation---exception">Indentation - Exception</h3>
+<p>If a function definition runs over multiple lines, indent the second line to where the definition starts</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>, </span>
+<span id="cb74-2"><a></a>                               <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
+<span id="cb74-3"><a></a>                               <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
+<span id="cb74-4"><a></a>  <span class="co"># As usual code is indented by two spaces.</span></span>
+<span id="cb74-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-14" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="named-arguments">Named arguments</h3>
+<ul>
+<li><p>Often you can call a function without explicitly naming arguments:</p>
+<ul>
+<li><code>plot(height, weight)</code></li>
+<li><code>mean(weight)</code></li>
+</ul></li>
+<li><p>This might be fine for <code>plot()</code> or <code>mean</code></p></li>
+<li><p>However for less common functions:</p>
+<ul>
+<li>One might struggle to remember the meaning of <strong>arguments positions</strong></li>
+<li>It is therefore good practice to <strong>name arguments</strong></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="co"># Good</span></span>
+<span id="cb75-2"><a></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">11</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb75-3"><a></a></span>
+<span id="cb75-4"><a></a><span class="co"># Bad</span></span>
+<span id="cb75-5"><a></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-15" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="use-explicit-returns">Use explicit returns</h3>
+<ul>
+<li>Functions can return objects</li>
+<li>R has an implicit return feature</li>
+<li>Do not rely on this feature, but explicitly mention <code>return(object)</code></li>
+</ul>
+<div class="sourceCode" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="co"># Good</span></span>
+<span id="cb76-2"><a></a>AddValues <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb76-3"><a></a>  <span class="fu">return</span>(x <span class="sc">+</span> y)                     <span class="co"># Function returns x+y</span></span>
+<span id="cb76-4"><a></a>}</span>
+<span id="cb76-5"><a></a></span>
+<span id="cb76-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb76-7"><a></a>AddValues <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb76-8"><a></a>  x <span class="sc">+</span> y                             <span class="co"># Function still returns x+y</span></span>
+<span id="cb76-9"><a></a>}                                   <span class="co"># but it is not immediate to see it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-style-guide-16" class="slide level2 smaller">
+<h2>R Style guide</h2>
+<h3 id="comments">Comments</h3>
+<ul>
+<li><strong>Most importantly</strong>: Comment your code</li>
+<li>Each line of a comment should begin with comment symbol <code>#</code> and a single space</li>
+</ul>
+<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="co"># Here we sum two numbers  </span></span>
+<span id="cb77-2"><a></a>x<span class="sc">+</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use commented lines of <code>-</code> and <code>=</code> to break up code into easily readable chunks</li>
+</ul>
+<div class="sourceCode" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="co"># Load data ---------------------------</span></span>
+<span id="cb78-2"><a></a></span>
+<span id="cb78-3"><a></a><span class="co"># Plot data ---------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="part-5-f-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>F-test</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -653,6 +1602,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
