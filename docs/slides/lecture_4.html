@@ -426,58 +426,6 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
@@ -486,13 +434,65 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   </style>
 </head>
@@ -1278,19 +1278,19 @@ H_0 \colon \mu = 0
 <li>For example you can check out how to precisely use a given function</li>
 <li>To call for help type <code>help(object_name)</code></li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">help</span>(mean)     <span class="co"># Mean is R function to compute average of some values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/R_help.png" style="width:62.0%" class="r-stretch"></section>
 <section id="further-help" class="slide level2 smaller">
 <h2>Further Help</h2>
 <ul>
 <li>Sometimes the output of <code>help()</code> can be cryptic</li>
-<li>You can always search using Google
+<li>Seek help through <strong>Google</strong>
 <ul>
 <li>Qualify the search with <strong>R</strong> or the name of an R package</li>
-<li>Paste an error message – chances are somebody has already solved your problem</li>
+<li>Paste an error message – chances are it is common error</li>
 </ul></li>
-<li>Even better, there are internet search sites that are specialized for R searches
+<li>Even better: Internet search sites specialized for R searches
 <ul>
 <li><a href="https://search.r-project.org">search.r-project.org</a></li>
 <li><a href="https://rseek.org">Rseek.org</a></li>
@@ -1304,7 +1304,7 @@ H_0 \colon \mu = 0
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.9100246  0.3470005 -0.2194783  1.5012549  0.4988067</code></pre>
+<pre><code>[1]  1.0123510 -0.1736944 -0.1320391 -0.2511567  0.7059700</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
@@ -1374,13 +1374,14 @@ H_0 \colon \mu = 0
 <section id="print-and-cat" class="slide level2 smaller">
 <h2>Print and Cat</h2>
 <ul>
-<li>If you save the following code in a <code>.R</code> file and run it, you will obtain no output</li>
+<li><p>If you save the following code in a <code>.R</code> file and run it, you will obtain no output</p></li>
+<li><p>This is because you need to tell R to print <code>x</code> to screen</p></li>
 </ul>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb28-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
 <ul>
-<li>This is because you need to tell R to print <code>x</code> to screen</li>
-<li>You can achieve this by using the function <code>print()</code></li>
+<li>To print a variable to screen use the function <code>print()</code></li>
 </ul>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb29-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1409,20 +1410,41 @@ H_0 \colon \mu = 0
 <li>If now we wish to print the string <code>sentence</code> to screen we can use</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sentence <span class="ot">=</span> <span class="st">"Stats is great!"</span></span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sentence <span class="ot">&lt;-</span> <span class="st">"Stats is great!"</span></span>
 <span id="cb32-2"><a></a><span class="fu">print</span>(sentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Stats is great!"</code></pre>
 </div>
 </div>
+<p><br></p>
 <ul>
 <li>To avoid R displaying the quotation marks, we can instead use <code>cat()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>sentence <span class="ot">=</span> <span class="st">"Stats is great!"</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>sentence <span class="ot">&lt;-</span> <span class="st">"Stats is great!"</span></span>
 <span id="cb34-2"><a></a><span class="fu">cat</span>(sentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Stats is great!</code></pre>
+</div>
+</div>
+</section>
+<section id="print-and-cat-3" class="slide level2 smaller">
+<h2>Print and Cat</h2>
+<ul>
+<li><code>cat</code> can be used to combine strings and variables in a single output</li>
+</ul>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Store the result of 2 + 2 in variable two.plus.two</span></span>
+<span id="cb36-2"><a></a></span>
+<span id="cb36-3"><a></a>two.plus.two <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb36-4"><a></a></span>
+<span id="cb36-5"><a></a><span class="co"># We want to print to screen the following message:</span></span>
+<span id="cb36-6"><a></a><span class="co"># "The result of 2 + 2 is two.plus.two"</span></span>
+<span id="cb36-7"><a></a></span>
+<span id="cb36-8"><a></a><span class="fu">cat</span>(<span class="st">"The result of 2 + 2 is"</span>, two.plus.two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The result of 2 + 2 is 4</code></pre>
 </div>
 </div>
 </section>
@@ -1431,15 +1453,15 @@ H_0 \colon \mu = 0
 <ol type="1">
 <li>Open a text editor and copy paste the below code</li>
 </ol>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># This codes sums two numbers and prints result on screen</span></span>
-<span id="cb36-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb36-3"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb36-4"><a></a></span>
-<span id="cb36-5"><a></a>result <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb36-6"><a></a></span>
-<span id="cb36-7"><a></a><span class="co"># Print the result on screen</span></span>
-<span id="cb36-8"><a></a><span class="fu">cat</span>(<span class="st">"Code run successfully!"</span>)</span>
-<span id="cb36-9"><a></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="co"># This codes sums two numbers and prints result on screen</span></span>
+<span id="cb38-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb38-3"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb38-4"><a></a></span>
+<span id="cb38-5"><a></a>result <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb38-6"><a></a></span>
+<span id="cb38-7"><a></a><span class="co"># Print the result on screen</span></span>
+<span id="cb38-8"><a></a><span class="fu">cat</span>(<span class="st">"Code run successfully!"</span>)</span>
+<span id="cb38-9"><a></a><span class="fu">cat</span>(<span class="st">"The sum of"</span>, x , <span class="st">"and"</span>, y, <span class="st">"is"</span>, result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example---your-first-r-code-1" class="slide level2 smaller">
 <h2>Example - Your first R code</h2>
@@ -1452,19 +1474,19 @@ H_0 \colon \mu = 0
 <li><p>Move this file to <strong>Desktop</strong></p></li>
 <li><p>Open the R Console and change working directory to <strong>Desktop</strong></p></li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="co"># In MacOS type</span></span>
-<span id="cb37-2"><a></a><span class="fu">setwd</span>(<span class="st">"~/Desktop"</span>)</span>
-<span id="cb37-3"><a></a></span>
-<span id="cb37-4"><a></a><span class="co"># In Windows type</span></span>
-<span id="cb37-5"><a></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourUsername/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># In MacOS type</span></span>
+<span id="cb39-2"><a></a><span class="fu">setwd</span>(<span class="st">"~/Desktop"</span>)</span>
+<span id="cb39-3"><a></a></span>
+<span id="cb39-4"><a></a><span class="co"># In Windows type</span></span>
+<span id="cb39-5"><a></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourUsername/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example---your-first-r-code-2" class="slide level2 smaller">
 <h2>Example - Your first R code</h2>
 <ol start="5" type="1">
 <li>Run your code in the R Console by typying either</li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">source</span>(<span class="st">"my_first_code.R"</span>)</span>
-<span id="cb38-2"><a></a><span class="fu">source</span>(<span class="st">"my_first_code.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">source</span>(<span class="st">"my_first_code.R"</span>)</span>
+<span id="cb40-2"><a></a><span class="fu">source</span>(<span class="st">"my_first_code.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="6" type="1">
 <li>You should get the following output</li>
 </ol>
@@ -1473,7 +1495,7 @@ H_0 \colon \mu = 0
 <pre><code>Code run successfully!</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>The sum of 1 and 2 is 3</code></pre>
 </div>
 </div>
 </section>
@@ -1481,14 +1503,20 @@ H_0 \colon \mu = 0
 <h2>The workspace</h2>
 <ul>
 <li>Variables created in a session are stored in a <strong>Workspace</strong></li>
-<li>To display stored variables use <code>ls()</code></li>
+<li>To display stored variables use
+<ul>
+<li><code>ls()</code></li>
+</ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb41-2"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
-<span id="cb41-3"><a></a>z <span class="ot">&lt;-</span> pi</span>
-<span id="cb41-4"><a></a></span>
-<span id="cb41-5"><a></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="co"># Create 3 variables x, y, z</span></span>
+<span id="cb43-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb43-3"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
+<span id="cb43-4"><a></a>z <span class="ot">&lt;-</span> pi</span>
+<span id="cb43-5"><a></a></span>
+<span id="cb43-6"><a></a><span class="co"># Workspace contains variables x, y, z</span></span>
+<span id="cb43-7"><a></a><span class="co"># This can be displayed by using ls()</span></span>
+<span id="cb43-8"><a></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x" "y" "z"</code></pre>
 </div>
@@ -1496,14 +1524,21 @@ H_0 \colon \mu = 0
 </section>
 <section id="the-workspace-1" class="slide level2 smaller">
 <h2>The workspace</h2>
-<p>You can remove variables from workspace by using <code>rm()</code></p>
+<p>You can remove variables from workspace by using</p>
+<ul>
+<li><code>rm()</code></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb43-2"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
-<span id="cb43-3"><a></a>z <span class="ot">&lt;-</span> pi</span>
-<span id="cb43-4"><a></a></span>
-<span id="cb43-5"><a></a><span class="fu">rm</span>(x)</span>
-<span id="cb43-6"><a></a><span class="fu">ls</span>( )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="co"># Create 3 variables x, y, z</span></span>
+<span id="cb45-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb45-3"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
+<span id="cb45-4"><a></a>z <span class="ot">&lt;-</span> pi</span>
+<span id="cb45-5"><a></a></span>
+<span id="cb45-6"><a></a><span class="co"># Remove x from workspace</span></span>
+<span id="cb45-7"><a></a><span class="fu">rm</span>(x)</span>
+<span id="cb45-8"><a></a></span>
+<span id="cb45-9"><a></a><span class="co"># Now the workspace contains only y and z</span></span>
+<span id="cb45-10"><a></a><span class="fu">ls</span>( )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "y" "z"</code></pre>
 </div>
@@ -1511,14 +1546,21 @@ H_0 \colon \mu = 0
 </section>
 <section id="the-workspace-2" class="slide level2 smaller">
 <h2>The workspace</h2>
-<p>To completely clear the workspace use <code>rm(list = ls())</code></p>
+<p>To completely clear the workspace use</p>
+<ul>
+<li><code>rm(list = ls())</code></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb45-2"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
-<span id="cb45-3"><a></a>z <span class="ot">&lt;-</span> pi</span>
-<span id="cb45-4"><a></a></span>
-<span id="cb45-5"><a></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb45-6"><a></a><span class="fu">ls</span>( )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="co"># Create 3 variables x, y, z</span></span>
+<span id="cb47-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb47-3"><a></a>y <span class="ot">&lt;-</span> <span class="st">"Dog"</span></span>
+<span id="cb47-4"><a></a>z <span class="ot">&lt;-</span> pi</span>
+<span id="cb47-5"><a></a></span>
+<span id="cb47-6"><a></a><span class="co"># Remove all variables from workspace</span></span>
+<span id="cb47-7"><a></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb47-8"><a></a></span>
+<span id="cb47-9"><a></a><span class="co"># Let us check that the workspace is empty</span></span>
+<span id="cb47-10"><a></a><span class="fu">ls</span>( )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>character(0)</code></pre>
 </div>
@@ -1593,11 +1635,11 @@ H_0 \colon \mu = 0
 <li>Vectors can be constructed via the command <code>c()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="co"># Constuct a vector and store it in variable "a"</span></span>
-<span id="cb47-2"><a></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
-<span id="cb47-3"><a></a></span>
-<span id="cb47-4"><a></a><span class="co"># Print vector a</span></span>
-<span id="cb47-5"><a></a><span class="fu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="co"># Constuct a vector and store it in variable "vector"</span></span>
+<span id="cb49-2"><a></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
+<span id="cb49-3"><a></a></span>
+<span id="cb49-4"><a></a><span class="co"># Print vector</span></span>
+<span id="cb49-5"><a></a><span class="fu">print</span>(vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 60 72 57 90 95 72</code></pre>
 </div>
@@ -1608,48 +1650,46 @@ H_0 \colon \mu = 0
 <ul>
 <li>A vector is handled by R as a <strong>single</strong> object</li>
 <li>You can do calculations with vectors, as long as they are of the same length</li>
+<li><strong>Important</strong>: Operations are exectuted component-wise</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="co"># Constuct two vectors of radius and height of 6 cylinders</span></span>
-<span id="cb49-2"><a></a>radius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
-<span id="cb49-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.7</span>, <span class="fl">1.8</span>, <span class="fl">1.6</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">1.9</span>)</span>
-<span id="cb49-4"><a></a></span>
-<span id="cb49-5"><a></a><span class="co"># Compute Volume and store it in "volume"</span></span>
-<span id="cb49-6"><a></a>volume <span class="ot">&lt;-</span> pi <span class="sc">*</span> radius<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> height</span>
-<span id="cb49-7"><a></a></span>
-<span id="cb49-8"><a></a><span class="co"># Print volume</span></span>
-<span id="cb49-9"><a></a>volume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="co"># Constuct two vectors of radius and height of 6 cylinders</span></span>
+<span id="cb51-2"><a></a>radius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
+<span id="cb51-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.7</span>, <span class="fl">1.8</span>, <span class="fl">1.6</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">1.9</span>)</span>
+<span id="cb51-4"><a></a></span>
+<span id="cb51-5"><a></a><span class="co"># Compute the volume of each cylinder and store it in "volume"</span></span>
+<span id="cb51-6"><a></a>volume <span class="ot">&lt;-</span> pi <span class="sc">*</span> radius<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> height</span>
+<span id="cb51-7"><a></a></span>
+<span id="cb51-8"><a></a><span class="co"># Print volume</span></span>
+<span id="cb51-9"><a></a><span class="fu">print</span>(volume)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 192.2655 277.0885 125.6637 508.9380 254.4690 292.4823</code></pre>
 </div>
 </div>
-<ul>
-<li>Notice that operations are exectuted component-wise</li>
-</ul>
 </section>
 <section id="vectorized-arithmetic-1" class="slide level2 smaller">
 <h2>Vectorized arithmetic</h2>
 <ul>
-<li>If two vectors do not have the same length then the shorter vector is <strong>cycled</strong></li>
+<li>If 2 vectors do not have the same length then the shorter vector is <strong>cycled</strong></li>
 <li>This is called <strong>broadcasting</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb51-2"><a></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb51-3"><a></a></span>
-<span id="cb51-4"><a></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb53-2"><a></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb53-3"><a></a></span>
+<span id="cb53-4"><a></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 3 3 5 5 7</code></pre>
+<pre><code>[1] 1 3 3 5 5 7 7</code></pre>
 </div>
 </div>
 <ul>
-<li>In the example the vector <code>a</code> has 6 components while <code>b</code> has 2 components</li>
-<li>The operation <code>a+b</code> is executed as follows:
+<li>In the example the vector <code>a</code> has 7 components while <code>b</code> has 2 components</li>
+<li>The operation <code>a + b</code> is executed as follows:
 <ul>
-<li><code>b</code> is copied 3 times to match the length of <code>a</code></li>
-<li><code>a + b</code> is then obtained by summing <span class="math display">
-a + \tilde{b} = (1, 2, 3, 4, 5, 6) + (0, 1, 0, 1, 0, 1) =
-(1, 3, 3, 5, 5, 7)
+<li><code>b</code> is copied 4 times to match the length of <code>a</code></li>
+<li><code>a + b</code> is then obtained by <span class="math display">
+a + \tilde{b} = (1, 2, 3, 4, 5, 6, 7) + (0, 1, 0, 1, 0, 1, 0) =
+(1, 3, 3, 5, 5, 7, 7)
 </span></li>
 </ul></li>
 </ul>
@@ -1662,16 +1702,16 @@ a + \tilde{b} = (1, 2, 3, 4, 5, 6) + (0, 1, 0, 1, 0, 1) =
 <li>Adding a scalar to each component of a vector</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb53-2"><a></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb53-3"><a></a></span>
-<span id="cb53-4"><a></a><span class="co"># Multuplication by scalar</span></span>
-<span id="cb53-5"><a></a>a <span class="sc">*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb55-2"><a></a>scalar <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb55-3"><a></a></span>
+<span id="cb55-4"><a></a><span class="co"># Multiplication of vector by a scalar</span></span>
+<span id="cb55-5"><a></a>vector <span class="sc">*</span> scalar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  2  4  6  8 10 12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="co"># Summing a scalar component-wise</span></span>
-<span id="cb55-2"><a></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="co"># Summing a scalar to each component of a vector</span></span>
+<span id="cb57-2"><a></a>vector <span class="sc">+</span> scalar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 4 5 6 7 8</code></pre>
 </div>
@@ -1684,15 +1724,23 @@ a + \tilde{b} = (1, 2, 3, 4, 5, 6) + (0, 1, 0, 1, 0, 1) =
 <li><code>sum(x)</code> which returns the sum of the components of <code>x</code></li>
 <li><code>length(x)</code> which returns the length of <code>x</code></li>
 </ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb59-2"><a></a></span>
+<span id="cb59-3"><a></a>sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb59-4"><a></a>length <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb59-5"><a></a></span>
+<span id="cb59-6"><a></a><span class="fu">cat</span>(<span class="st">"Here is the vector x:"</span>, x)</span>
+<span id="cb59-7"><a></a><span class="fu">cat</span>(<span class="st">"The components of vector x sum to"</span>, sum)</span>
+<span id="cb59-8"><a></a><span class="fu">cat</span>(<span class="st">"The length of vector x is"</span>, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb57-2"><a></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
+<pre><code>Here is the vector x: ( 1 2 3 4 5 )</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>The components of vector x sum to 15</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The length of vector x is 5</code></pre>
 </div>
 </div>
 </section>
@@ -1703,13 +1751,13 @@ a + \tilde{b} = (1, 2, 3, 4, 5, 6) + (0, 1, 0, 1, 0, 1) =
 \overline{x} = \frac{1}{n} \sum_{i=1}^n x_i \,, \qquad
 s^2 =  \frac{\sum_{i=1}^n (x_i -  \overline{x})^2 }{n-1}  
 </span></p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="co"># Computing sample mean of vector x</span></span>
-<span id="cb61-2"><a></a>xbar <span class="ot">=</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
-<span id="cb61-3"><a></a></span>
-<span id="cb61-4"><a></a></span>
-<span id="cb61-5"><a></a><span class="co"># Computing sample variance of vector x</span></span>
-<span id="cb61-6"><a></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb61-7"><a></a>s2 <span class="ot">=</span> <span class="fu">sum</span>( (x <span class="sc">-</span> barx)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="co"># Computing sample mean of vector x</span></span>
+<span id="cb63-2"><a></a>xbar <span class="ot">=</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb63-3"><a></a></span>
+<span id="cb63-4"><a></a></span>
+<span id="cb63-5"><a></a><span class="co"># Computing sample variance of vector x</span></span>
+<span id="cb63-6"><a></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb63-7"><a></a>s2 <span class="ot">=</span> <span class="fu">sum</span>( (x <span class="sc">-</span> barx)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="computing-sample-mean-and-variance-1" class="slide level2 smaller">
 <h2>Computing sample mean and variance</h2>
@@ -1784,19 +1832,19 @@ s^2 =  \frac{\sum_{i=1}^n (x_i -  \overline{x})^2 }{n-1}
 <section id="computing-sample-mean-and-variance-3" class="slide level2 smaller">
 <h2>Computing sample mean and variance</h2>
 <h3 id="example-4">Example</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="co"># First store the wage data into a vector</span></span>
-<span id="cb62-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
-<span id="cb62-3"><a></a></span>
-<span id="cb62-4"><a></a><span class="co"># Let us compute the mean by using the formula</span></span>
-<span id="cb62-5"><a></a>xbar <span class="ot">=</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
-<span id="cb62-6"><a></a></span>
-<span id="cb62-7"><a></a><span class="co"># Compute the mean by using the built in R function</span></span>
-<span id="cb62-8"><a></a>xbar_check <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb62-9"><a></a></span>
-<span id="cb62-10"><a></a><span class="co"># We now print both results to screen</span></span>
-<span id="cb62-11"><a></a><span class="fu">cat</span>(<span class="st">"Sample mean computed with formula is"</span>, xbar)</span>
-<span id="cb62-12"><a></a><span class="fu">cat</span>(<span class="st">"Sample mean computed by R is"</span>, xbar_check)</span>
-<span id="cb62-13"><a></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a><span class="co"># First store the wage data into a vector</span></span>
+<span id="cb64-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
+<span id="cb64-3"><a></a></span>
+<span id="cb64-4"><a></a><span class="co"># Compute the sample mean using formula</span></span>
+<span id="cb64-5"><a></a>xbar <span class="ot">=</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb64-6"><a></a></span>
+<span id="cb64-7"><a></a><span class="co"># Compute the sample mean using built in R function</span></span>
+<span id="cb64-8"><a></a>xbar_check <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb64-9"><a></a></span>
+<span id="cb64-10"><a></a><span class="co"># We now print both results to screen</span></span>
+<span id="cb64-11"><a></a><span class="fu">cat</span>(<span class="st">"Sample mean computed with formula is"</span>, xbar)</span>
+<span id="cb64-12"><a></a><span class="fu">cat</span>(<span class="st">"Sample mean computed by R is"</span>, xbar_check)</span>
+<span id="cb64-13"><a></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample mean computed with formula is 53.5</code></pre>
@@ -1812,18 +1860,18 @@ s^2 =  \frac{\sum_{i=1}^n (x_i -  \overline{x})^2 }{n-1}
 <section id="computing-sample-mean-and-variance-4" class="slide level2 smaller">
 <h2>Computing sample mean and variance</h2>
 <h3 id="example-5">Example</h3>
-<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="co"># Compute the sample variance using formula</span></span>
-<span id="cb66-2"><a></a>xbar <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb66-3"><a></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb66-4"><a></a>s2 <span class="ot">=</span> <span class="fu">sum</span>( (x <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) </span>
-<span id="cb66-5"><a></a></span>
-<span id="cb66-6"><a></a><span class="co"># Compute the sample variance using built in R function</span></span>
-<span id="cb66-7"><a></a>s2_check <span class="ot">=</span> <span class="fu">sd</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb66-8"><a></a></span>
-<span id="cb66-9"><a></a><span class="co"># We now print both results to screen</span></span>
-<span id="cb66-10"><a></a><span class="fu">cat</span>(<span class="st">"Sample variance computed with formula is"</span>, s2)</span>
-<span id="cb66-11"><a></a><span class="fu">cat</span>(<span class="st">"Sample variance computed by R is"</span>, s2_check)</span>
-<span id="cb66-12"><a></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="co"># Compute the sample variance using formula</span></span>
+<span id="cb68-2"><a></a>xbar <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb68-3"><a></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb68-4"><a></a>s2 <span class="ot">=</span> <span class="fu">sum</span>( (x <span class="sc">-</span> xbar)<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) </span>
+<span id="cb68-5"><a></a></span>
+<span id="cb68-6"><a></a><span class="co"># Compute the sample variance using built in R function</span></span>
+<span id="cb68-7"><a></a>s2_check <span class="ot">=</span> <span class="fu">sd</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb68-8"><a></a></span>
+<span id="cb68-9"><a></a><span class="co"># We now print both results to screen</span></span>
+<span id="cb68-10"><a></a><span class="fu">cat</span>(<span class="st">"Sample variance computed with formula is"</span>, s2)</span>
+<span id="cb68-11"><a></a><span class="fu">cat</span>(<span class="st">"Sample variance computed by R is"</span>, s2_check)</span>
+<span id="cb68-12"><a></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample variance computed with formula is 90.27778</code></pre>
@@ -2101,19 +2149,19 @@ H_1 \colon \mu \neq 0
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="co"># Enter CCI data using c()</span></span>
-<span id="cb70-2"><a></a>score_2007 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">99</span>, <span class="dv">97</span>, <span class="dv">97</span>, <span class="dv">96</span>, <span class="dv">99</span>, <span class="dv">97</span>, <span class="dv">90</span>, <span class="dv">90</span>)</span>
-<span id="cb70-3"><a></a>score_2009 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">21</span>)</span>
-<span id="cb70-4"><a></a></span>
-<span id="cb70-5"><a></a><span class="co"># Compute vector of differences in CCI</span></span>
-<span id="cb70-6"><a></a>difference <span class="ot">&lt;-</span> score_2007 <span class="sc">-</span> score_2009</span>
-<span id="cb70-7"><a></a></span>
-<span id="cb70-8"><a></a><span class="co"># Perform t-test with null hypothesis mu0 = 0</span></span>
-<span id="cb70-9"><a></a><span class="fu">t.test</span>(difference, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="co"># Enter CCI data in 2 vectors using function c()</span></span>
+<span id="cb72-2"><a></a>score_2007 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">99</span>, <span class="dv">97</span>, <span class="dv">97</span>, <span class="dv">96</span>, <span class="dv">99</span>, <span class="dv">97</span>, <span class="dv">90</span>, <span class="dv">90</span>)</span>
+<span id="cb72-3"><a></a>score_2009 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">21</span>)</span>
+<span id="cb72-4"><a></a></span>
+<span id="cb72-5"><a></a><span class="co"># Compute vector of differences in CCI</span></span>
+<span id="cb72-6"><a></a>difference <span class="ot">&lt;-</span> score_2007 <span class="sc">-</span> score_2009</span>
+<span id="cb72-7"><a></a></span>
+<span id="cb72-8"><a></a><span class="co"># Perform t-test with null hypothesis mu0 = 0</span></span>
+<span id="cb72-9"><a></a><span class="fu">t.test</span>(difference, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-2008-crisis-13" class="slide level2 smaller">
 <h2>Example: 2008 crisis</h2>
-<h3 id="output">Output</h3>
+<h3 id="output-of-t.test">Output of t.test</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2142,7 +2190,7 @@ mean of x
 <p><br></p>
 <ul>
 <li>Description of the test that we have asked for</li>
-<li>Note that <code>t.test</code> has automatically found out that a one-sample test is desired</li>
+<li>Note: <code>t.test</code> has automatically assumed that a one-sample test is desired</li>
 </ul>
 </section>
 <section id="example-2008-crisis-15" class="slide level2 smaller">
@@ -2325,54 +2373,25 @@ t = \frac{\overline{x}-\mu}{\mathop{\mathrm{e.s.e.}}}
 <h2>Graphics</h2>
 <h3 id="scatter-plot">Scatter plot</h3>
 <ul>
-<li>Suppose given to vectors <code>x</code> and <code>y</code> of the same length</li>
+<li>Suppose given 2 vectors <code>x</code> and <code>y</code> of same length</li>
 <li>The scatter plot of pairs <span class="math inline">(x_i,y_i)</span> can be generated with <code>plot(x, y)</code></li>
 </ul>
 <p><strong>Example</strong>: Suppose to have data of <strong>weights</strong> and <strong>heights</strong> of 6 people</p>
 <ul>
 <li>To plot <strong>weight</strong> against <strong>height</strong> code is as follows</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a><span class="co"># Store weight and height data into vectors</span></span>
-<span id="cb85-2"><a></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
-<span id="cb85-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.80</span>, <span class="fl">1.65</span>, <span class="fl">1.90</span>, <span class="fl">1.74</span>, <span class="fl">1.91</span>)</span>
-<span id="cb85-4"><a></a></span>
-<span id="cb85-5"><a></a><span class="co"># Plot weight against height</span></span>
-<span id="cb85-6"><a></a><span class="fu">plot</span>(weight, height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-<ul>
 <li>When you run <code>plot()</code> in R Console the plot will appear in a pop-up window</li>
 </ul>
-</section>
-<section id="graphics-1-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="graphics-2" class="slide level2 smaller">
-<h2>Graphics</h2>
-<h3 id="scatter-plot---options">Scatter plot - Options</h3>
-<ul>
-<li>You can customize your plot in many ways</li>
-<li>Example: you can represent the point <span class="math inline">(x_i,y_i)</span> with a triangle instead of a circle</li>
-<li>This can be done by adding the command <code>pch = 2</code></li>
-<li><code>pch</code> stands for <strong>plotting character</strong></li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a><span class="co"># Store weight and height data into vectors</span></span>
-<span id="cb86-2"><a></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
-<span id="cb86-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.80</span>, <span class="fl">1.65</span>, <span class="fl">1.90</span>, <span class="fl">1.74</span>, <span class="fl">1.91</span>)</span>
-<span id="cb86-4"><a></a></span>
-<span id="cb86-5"><a></a><span class="co"># Plot weight against height using little triangles</span></span>
-<span id="cb86-6"><a></a><span class="fu">plot</span>(weight, height, <span class="at">pch =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="co"># Store weight and height data in 2 vectors</span></span>
+<span id="cb87-2"><a></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
+<span id="cb87-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.80</span>, <span class="fl">1.65</span>, <span class="fl">1.90</span>, <span class="fl">1.74</span>, <span class="fl">1.91</span>)</span>
+<span id="cb87-4"><a></a></span>
+<span id="cb87-5"><a></a><span class="co"># Plot weight against height</span></span>
+<span id="cb87-6"><a></a><span class="fu">plot</span>(weight, height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
-<section id="graphics-2-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
+<section id="graphics-1-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2380,19 +2399,54 @@ t = \frac{\overline{x}-\mu}{\mathop{\mathrm{e.s.e.}}}
 </figure>
 </div>
 </div>
+</div></section><section id="graphics-2" class="slide level2 smaller">
+<h2>Graphics</h2>
+<h3 id="scatter-plot-options">Scatter plot – Options</h3>
+<ul>
+<li>You can customize your plot in many ways</li>
+<li>Example: you can represent points <span class="math inline">(x_i,y_i)</span> with triangles instead of circles</li>
+<li>This can be done by including the command
+<ul>
+<li><code>pch = 2</code></li>
+</ul></li>
+<li><code>pch</code> stands for <strong>plotting character</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a><span class="co"># Store weight and height data in 2 vectors</span></span>
+<span id="cb88-2"><a></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">57</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">72</span>)</span>
+<span id="cb88-3"><a></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.80</span>, <span class="fl">1.65</span>, <span class="fl">1.90</span>, <span class="fl">1.74</span>, <span class="fl">1.91</span>)</span>
+<span id="cb88-4"><a></a></span>
+<span id="cb88-5"><a></a><span class="co"># Plot weight against height using little triangles</span></span>
+<span id="cb88-6"><a></a><span class="fu">plot</span>(weight, height, <span class="at">pch =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+<section id="graphics-2-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+</figure>
+</div>
+</div>
 </div></section><section id="graphics-3" class="slide level2 smaller">
 <h2>Graphics</h2>
-<h3 id="plotting-functions">Plotting functions</h3>
-<p>To plot a 1D function <span class="math inline">f(x)</span> you can:</p>
+<h3 id="plotting-1d-function-fx">Plotting 1D function f(x)</h3>
 <ul>
 <li>Create a grid of <span class="math inline">x</span> values <span class="math display">
 x = (x_1, \ldots, x_n)
 </span></li>
-<li>Compute the vector <span class="math inline">f(x)</span> <span class="math display">
+<li>Evaluate <span class="math inline">f</span> on such grid. This yields a vector <span class="math display">
 y = (f(x_1), \ldots, f(x_n))
 </span></li>
-<li>Generate a scatter plot with <code>plot(x, y)</code></li>
-<li>Use the function <code>lines</code> to linearly interpolate the scatter plot, via <code>lines(x, y)</code></li>
+<li>Generate a scatter plot with
+<ul>
+<li><code>plot(x, y)</code></li>
+</ul></li>
+<li>Use the function <code>lines</code> to linearly interpolate the scatter plot:
+<ul>
+<li><code>lines(x, y)</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="graphics-4" class="slide level2 smaller">
@@ -2402,17 +2456,17 @@ y = (f(x_1), \ldots, f(x_n))
 y = x^2 \,, \qquad x \in [-1,1]
 </span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="co"># Input vector of x coordinates</span></span>
-<span id="cb87-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span>
-<span id="cb87-3"><a></a></span>
-<span id="cb87-4"><a></a><span class="co"># Compute the function y=x^2</span></span>
-<span id="cb87-5"><a></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb87-6"><a></a></span>
-<span id="cb87-7"><a></a><span class="co"># Generate scatter plot of (x,y)</span></span>
-<span id="cb87-8"><a></a><span class="fu">plot</span>(x, y)</span>
-<span id="cb87-9"><a></a></span>
-<span id="cb87-10"><a></a><span class="co"># Add linear interpolation</span></span>
-<span id="cb87-11"><a></a><span class="fu">lines</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a><span class="co"># Input vector for grid of x coordinates</span></span>
+<span id="cb89-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span>
+<span id="cb89-3"><a></a></span>
+<span id="cb89-4"><a></a><span class="co"># Compute the function y=x^2 on the grid</span></span>
+<span id="cb89-5"><a></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb89-6"><a></a></span>
+<span id="cb89-7"><a></a><span class="co"># Generate scatter plot of (x,y)</span></span>
+<span id="cb89-8"><a></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb89-9"><a></a></span>
+<span id="cb89-10"><a></a><span class="co"># Add linear interpolation</span></span>
+<span id="cb89-11"><a></a><span class="fu">lines</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -2420,7 +2474,7 @@ y = x^2 \,, \qquad x \in [-1,1]
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2428,55 +2482,62 @@ y = x^2 \,, \qquad x \in [-1,1]
 <h2>Graphics</h2>
 <h3 id="plotting-functions---example-1">Plotting functions - Example</h3>
 <ul>
-<li>The previous plot was quite rough, since we only computed <span class="math inline">y=x^2</span> on the grid <span class="math display">
+<li><p>The previous plot was quite rough</p></li>
+<li><p>This is because we only computed <span class="math inline">y=x^2</span> on the grid <span class="math display">
 x = (-1, -0.5, 0, 0.5, 1)
-</span></li>
-<li>We could refine the grid by hand, but this is not practical</li>
-<li>To generate a finer grid R has the built in function <code>seq()</code></li>
+</span></p></li>
+<li><p>We could refine the grid by hand, but this is not practical</p></li>
+<li><p>To generate a finer grid we can use the built in R function</p>
+<ul>
+<li><code>seq()</code></li>
+</ul></li>
 </ul>
 </section>
-<section id="graphics-6" class="slide level2 smaller">
-<h2>Graphics</h2>
-<h3 id="seq-function">Seq function</h3>
-<p><code>seq(from, to, by, length.out)</code> generates a vector containing a squence:</p>
+<section id="seq-function" class="slide level2 smaller">
+<h2>Seq function</h2>
+<p><code>seq(from, to, by, length.out)</code> generates a vector containing a sequence:</p>
 <ul>
-<li><code>from =</code> the beginning number of the sequence</li>
-<li><code>to =</code> the ending number of the sequence</li>
-<li><code>by =</code> the step-size of the sequence (the increment)</li>
-<li><code>length.out =</code> the total length of the sequence</li>
+<li><code>from</code> – The beginning number of the sequence</li>
+<li><code>to</code> – The ending number of the sequence</li>
+<li><code>by</code> – The step-size of the sequence (the increment)</li>
+<li><code>length.out</code> – The total length of the sequence</li>
 </ul>
 <p><strong>Example</strong>: Generate the vector of even numbers from 2 to 20</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb88-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb90-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
 </div>
 </div>
 </section>
-<section id="graphics-7" class="slide level2 smaller">
-<h2>Graphics</h2>
-<h3 id="seq-function-1">Seq function</h3>
+<section id="seq-function-1" class="slide level2 smaller">
+<h2>Seq function</h2>
 <p><strong>Note</strong>: The following commands are equivalent:</p>
 <ul>
 <li><code>seq(from = x1, to = x2, by = s)</code></li>
 <li><code>seq(x1, x2, s)</code></li>
 </ul>
 <p><strong>Example</strong>: Generate the vector of odd numbers from 1 to 11</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">11</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb92-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
+<span id="cb92-3"><a></a></span>
+<span id="cb92-4"><a></a><span class="fu">cat</span>(<span class="st">"Vector x is: ("</span>, x, <span class="st">")"</span>)</span>
+<span id="cb92-5"><a></a><span class="fu">cat</span>(<span class="st">"Vector y is: ("</span>, y, <span class="st">")"</span>)</span>
+<span id="cb92-6"><a></a><span class="fu">cat</span>(<span class="st">"They are the same!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">11</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb90-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  3  5  7  9 11</code></pre>
+<pre><code>Vector x is: ( 1 3 5 7 9 11 )</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
-<span id="cb92-2"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  3  5  7  9 11</code></pre>
+<pre><code>Vector y is: ( 1 3 5 7 9 11 )</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>They are the same!</code></pre>
 </div>
 </div>
 </section>
-<section id="graphics-8" class="slide level2 smaller">
+<section id="graphics-6" class="slide level2 smaller">
 <h2>Graphics</h2>
 <h3 id="plotting-functions---example-2">Plotting functions - Example</h3>
 <ul>
@@ -2491,52 +2552,52 @@ y = x^2 \,, \qquad x \in [-1, 1]
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.2</span>)</span>
-<span id="cb94-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
+<span id="cb96-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -1.0 -0.8 -0.6 -0.4 -0.2  0.0  0.2  0.4  0.6  0.8  1.0</code></pre>
 </div>
 </div>
 </section>
-<section id="graphics-9" class="slide level2 smaller">
+<section id="graphics-7" class="slide level2 smaller">
 <h2>Graphics</h2>
 <h3 id="plotting-functions---example-3">Plotting functions - Example</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a><span class="co"># Use seq() to generate x grid</span></span>
-<span id="cb96-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
-<span id="cb96-3"><a></a></span>
-<span id="cb96-4"><a></a><span class="co"># Plot the function y=x^2</span></span>
-<span id="cb96-5"><a></a><span class="fu">plot</span>(x, x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb96-6"><a></a><span class="fu">lines</span>(x, x<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a><span class="co"># Use seq() to generate x grid</span></span>
+<span id="cb98-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
+<span id="cb98-3"><a></a></span>
+<span id="cb98-4"><a></a><span class="co"># Plot the function y=x^2</span></span>
+<span id="cb98-5"><a></a><span class="fu">plot</span>(x, x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb98-6"><a></a><span class="fu">lines</span>(x, x<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"></section>
-<section id="graphics-10" class="slide level2 smaller">
+<img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section>
+<section id="graphics-8" class="slide level2 smaller">
 <h2>Graphics</h2>
 <h3 id="scatter-plot---example">Scatter plot - Example</h3>
 <p>Let us go back to the example of plotting random normal values</p>
 <ul>
-<li>First we generate a vector <code>y</code> with 1000 random normal values</li>
-<li>Then we plot <code>y</code> via <code>plot(y)</code></li>
-<li>The command <code>plot(y)</code> implicitly assumes that:
+<li>First we generate a vector <code>x</code> with 1000 random normal values</li>
+<li>Then we plot <code>x</code> via <code>plot(x)</code></li>
+<li>The command <code>plot(x)</code> implicitly assumes that:
 <ul>
-<li><code>y</code> is the second argument</li>
-<li>The first argument <code>x</code> is the vector <code>seq(1, 1000)</code></li>
-<li>Note that <code>x = seq(1, 1000)</code> is the vector of <strong>components numbers</strong> of <code>y</code></li>
+<li><code>x</code> is the second argument: Values to plot on <span class="math inline">y</span>-axis</li>
+<li>The first argument is the vector <code>seq(1, 1000)</code></li>
+<li>Note that <code>seq(1, 1000)</code> is the vector of <strong>components numbers</strong> of <code>x</code></li>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb97-2"><a></a></span>
-<span id="cb97-3"><a></a><span class="fu">plot</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb99-2"><a></a></span>
+<span id="cb99-3"><a></a><span class="fu">plot</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
-<section id="graphics-10-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
+<section id="graphics-8-output" class="slide level2 smaller output-location-slide"><h2>Graphics</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+<p><img data-src="lecture_4_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
 </figure>
 </div>
 </div>

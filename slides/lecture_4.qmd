@@ -764,7 +764,7 @@ update.packages()
 
 
 ```r
-help(mean)
+help(mean)     # Mean is R function to compute average of some values
 ```
 
 ![](images/R_help.png){width=62%}
@@ -775,10 +775,10 @@ help(mean)
 ## Further Help {.smaller}
 
 - Sometimes the output of ``help()`` can be cryptic
-- You can always search using Google
+- Seek help through **Google**
   * Qualify the search with **R** or the name of an R package
-  * Paste an error message -- chances are somebody has already solved your problem
-- Even better, there are internet search sites that are specialized for R searches
+  * Paste an error message -- chances are it is common error
+- Even better: Internet search sites specialized for R searches
   * [search.r-project.org](https://search.r-project.org)
   * [Rseek.org](https://rseek.org)
 
@@ -862,13 +862,17 @@ x
 - If you save the following code in a ``.R`` file and run it,
 you will obtain no output
 
+- This is because you need to tell R to print ``x`` to screen
+
 ```r
 x <- 2
 x
 ```
 
-- This is because you need to tell R to print ``x`` to screen
-- You can achieve this by using the function ``print()``
+
+<br>
+
+- To print a variable to screen use the function ``print()``
 
 
 ```r
@@ -901,18 +905,41 @@ sentence = "Stats is great!"
 
 ```{r}
 #| echo: true
-sentence = "Stats is great!"
+sentence <- "Stats is great!"
 print(sentence)
 ```
+
+<br>
 
 - To avoid R displaying the quotation marks, we can instead
 use ``cat()``
 
 ```{r}
 #| echo: true
-sentence = "Stats is great!"
+sentence <- "Stats is great!"
 cat(sentence)
 ```
+
+
+## Print and Cat {.smaller}
+
+- ``cat`` can be used to combine strings and variables in a single output
+
+<br>
+
+```{r}
+#| echo: true
+
+# Store the result of 2 + 2 in variable two.plus.two
+
+two.plus.two <- 2 + 2
+
+# We want to print to screen the following message:
+# "The result of 2 + 2 is two.plus.two"
+
+cat("The result of 2 + 2 is", two.plus.two)
+```
+
 
 
 
@@ -929,7 +956,7 @@ result <- x + y
 
 # Print the result on screen
 cat("Code run successfully!")
-print(result)
+cat("The sum of", x , "and", y, "is", result)
 ```
 
 
@@ -967,7 +994,6 @@ source("my_first_code.txt")
 
 ```{r}
 # This codes sums two numbers and prints result on screen
-
 x <- 1
 y <- 2
 
@@ -975,7 +1001,7 @@ result <- x + y
 
 # Print the result on screen
 cat("Code run successfully!")
-print(result)
+cat("The sum of", x , "and", y, "is", result)
 ```
 
 
@@ -985,7 +1011,8 @@ print(result)
 ## The workspace {.smaller}
 
 - Variables created in a session are stored in a **Workspace**
-- To display stored variables use ``ls()``
+- To display stored variables use 
+    * ``ls()``
 
 ```{r}
 rm(list = ls())
@@ -993,10 +1020,14 @@ rm(list = ls())
 
 ```{r}
 #| echo: true
+
+# Create 3 variables x, y, z
 x <- 2
 y <- "Dog"
 z <- pi
 
+# Workspace contains variables x, y, z
+# This can be displayed by using ls()
 ls()
 ```
 
@@ -1004,15 +1035,22 @@ ls()
 
 ## The workspace {.smaller}
 
-You can remove variables from workspace by using ``rm()``
+You can remove variables from workspace by using 
+
+- ``rm()``
 
 ```{r}
 #| echo: true
+
+# Create 3 variables x, y, z
 x <- 2
 y <- "Dog"
 z <- pi
 
+# Remove x from workspace
 rm(x)
+
+# Now the workspace contains only y and z
 ls( )
 ```
 
@@ -1021,16 +1059,22 @@ ls( )
 
 ## The workspace {.smaller}
 
-To completely clear the workspace use ``rm(list = ls())``
+To completely clear the workspace use 
+
+- ``rm(list = ls())``
 
 ```{r}
 #| echo: true
 
+# Create 3 variables x, y, z
 x <- 2
 y <- "Dog"
 z <- pi
 
+# Remove all variables from workspace
 rm(list = ls())
+
+# Let us check that the workspace is empty
 ls( )
 ```
 
@@ -1116,11 +1160,11 @@ To quit the R Console type ``q()``
 ```{r}
 #| echo: true
 
-# Constuct a vector and store it in variable "a"
-a <- c(60, 72, 57, 90, 95, 72)
+# Constuct a vector and store it in variable "vector"
+vector <- c(60, 72, 57, 90, 95, 72)
 
-# Print vector a
-print(a)
+# Print vector
+print(vector)
 ```
 
 
@@ -1135,6 +1179,7 @@ print(a)
 
 - A vector is handled by R as a **single** object
 - You can do calculations with vectors, as long as they are of the same length
+- **Important**: Operations are exectuted component-wise
 
 ```{r}
 #| echo: true
@@ -1143,38 +1188,37 @@ print(a)
 radius <- c(6, 7, 5, 9, 9, 7)
 height <- c(1.7, 1.8, 1.6, 2, 1, 1.9)
 
-# Compute Volume and store it in "volume"
+# Compute the volume of each cylinder and store it in "volume"
 volume <- pi * radius^2 * height
 
 # Print volume
-volume
+print(volume)
 ```
 
-- Notice that operations are exectuted component-wise
 
 
 
 ## Vectorized arithmetic {.smaller}
 
-- If two vectors do not have the same length then the shorter vector is **cycled**
+- If 2 vectors do not have the same length then the shorter vector is **cycled**
 - This is called **broadcasting**
 
 ```{r}
 #| echo: true
 
-a <- c(1, 2, 3, 4, 5, 6)
+a <- c(1, 2, 3, 4, 5, 6, 7)
 b <- c(0, 1)
 
 a + b
 ```
 
-- In the example the vector ``a`` has 6 components while ``b`` has 2 components
-- The operation ``a+b`` is executed as follows:
-  * ``b`` is copied 3 times to match the length of ``a``
-  * ``a + b`` is then obtained by summing
+- In the example the vector ``a`` has 7 components while ``b`` has 2 components
+- The operation ``a + b`` is executed as follows:
+  * ``b`` is copied 4 times to match the length of ``a``
+  * ``a + b`` is then obtained by
   $$
-  a + \tilde{b} = (1, 2, 3, 4, 5, 6) + (0, 1, 0, 1, 0, 1) = 
-  (1, 3, 3, 5, 5, 7)
+  a + \tilde{b} = (1, 2, 3, 4, 5, 6, 7) + (0, 1, 0, 1, 0, 1, 0) = 
+  (1, 3, 3, 5, 5, 7, 7)
   $$
 
 
@@ -1188,14 +1232,14 @@ Useful applications of broadcasting are:
 ```{r}
 #| echo: true
 
-a <- c(1, 2, 3, 4, 5, 6)
-b <- 2
+vector <- c(1, 2, 3, 4, 5, 6)
+scalar <- 2
 
-# Multuplication by scalar
-a * b
+# Multiplication of vector by a scalar
+vector * scalar
 
-# Summing a scalar component-wise
-a + b
+# Summing a scalar to each component of a vector
+vector + scalar
 ```
 
 
@@ -1208,16 +1252,27 @@ Two very useful vector operators are:
 - ``length(x)`` which returns the length of ``x``
 
 
-```{r}
-#| echo: true
-
+```r
 x <- c(1, 2, 3, 4, 5)
-sum(x)
-length(x)
 
+sum <- sum(x)
+length <- length(x)
+
+cat("Here is the vector x:", x)
+cat("The components of vector x sum to", sum)
+cat("The length of vector x is", length)
 ```
 
+```{r}
+x <- c(1, 2, 3, 4, 5)
 
+sum <- sum(x)
+length <- length(x)
+
+cat("Here is the vector x: (", x, ")")
+cat("The components of vector x sum to", sum)
+cat("The length of vector x is", length)
+```
 
 
 ## Computing sample mean and variance {.smaller}
@@ -1279,10 +1334,10 @@ s2 = sum( (x - barx)^2 ) / (n - 1)
 # First store the wage data into a vector
 x <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
 
-# Let us compute the mean by using the formula
+# Compute the sample mean using formula
 xbar = sum(x) / length(x)
 
-# Compute the mean by using the built in R function
+# Compute the sample mean using built in R function
 xbar_check = mean(x)
 
 # We now print both results to screen
@@ -1507,7 +1562,7 @@ $$
 
 
 ```r
-# Enter CCI data using c()
+# Enter CCI data in 2 vectors using function c()
 score_2007 <- c(86, 86, 88, 90, 99, 97, 97, 96, 99, 97, 90, 90)
 score_2009 <- c(24, 22, 21, 21, 19, 18, 17, 18, 21, 23, 22, 21)
 
@@ -1522,7 +1577,7 @@ t.test(difference, mu = 0)
 
 
 ## Example: 2008 crisis {.smaller}
-### Output
+### Output of t.test
 
 ```{r}
 # Enter CCI data using c()
@@ -1564,7 +1619,7 @@ cat(output[2])
 
 
 - Description of the test that we have asked for
-- Note that ``t.test`` has automatically found out that a one-sample test is desired
+- Note: ``t.test`` has automatically assumed that a one-sample test is desired
 
 
 
@@ -1859,18 +1914,19 @@ R has extensive built in graphing functions:
 ### Scatter plot
 
 
-- Suppose given to vectors ``x`` and ``y`` of the same length 
+- Suppose given 2 vectors ``x`` and ``y`` of same length 
 - The scatter plot of pairs $(x_i,y_i)$ can be generated with ``plot(x, y)``
 
 **Example**: Suppose to have data of **weights** and **heights** of 6 people
 
 - To plot **weight** against **height** code is as follows
+- When you run ``plot()`` in R Console the plot will appear in a pop-up window
 
 ```{r}
 #| echo: true
 #| output-location: slide
 
-# Store weight and height data into vectors
+# Store weight and height data in 2 vectors
 weight <- c(60, 72, 57, 90, 95, 72)
 height <- c(1.75, 1.80, 1.65, 1.90, 1.74, 1.91)
 
@@ -1878,18 +1934,19 @@ height <- c(1.75, 1.80, 1.65, 1.90, 1.74, 1.91)
 plot(weight, height)
 ```
 
-- When you run ``plot()`` in R Console the plot will appear in a pop-up window
+
 
 
 
 
 ## Graphics {.smaller}
-### Scatter plot - Options
+### Scatter plot -- Options
 
 
 - You can customize your plot in many ways
-- Example: you can represent the point $(x_i,y_i)$ with a triangle instead of a circle
-- This can be done by adding the command ``pch = 2``
+- Example: you can represent points $(x_i,y_i)$ with triangles instead of circles
+- This can be done by including the command 
+    * ``pch = 2``
 - ``pch`` stands for **plotting character**
 
 
@@ -1897,7 +1954,7 @@ plot(weight, height)
 #| echo: true
 #| output-location: slide
 
-# Store weight and height data into vectors
+# Store weight and height data in 2 vectors
 weight <- c(60, 72, 57, 90, 95, 72)
 height <- c(1.75, 1.80, 1.65, 1.90, 1.74, 1.91)
 
@@ -1910,20 +1967,20 @@ plot(weight, height, pch = 2)
 
 
 ## Graphics {.smaller}
-### Plotting functions
-
-To plot a 1D function $f(x)$ you can:
+### Plotting 1D function f(x)
 
 - Create a grid of $x$ values
 $$
 x = (x_1, \ldots, x_n)
 $$
-- Compute the vector $f(x)$
+- Evaluate $f$ on such grid. This yields a vector
 $$
 y = (f(x_1), \ldots, f(x_n))
 $$
-- Generate a scatter plot with ``plot(x, y)``
-- Use the function ``lines`` to linearly interpolate the scatter plot, via ``lines(x, y)``
+- Generate a scatter plot with 
+    * ``plot(x, y)``
+- Use the function ``lines`` to linearly interpolate the scatter plot:
+    * ``lines(x, y)``
 
 
 
@@ -1941,10 +1998,10 @@ $$
 #| echo: true
 #| output-location: slide
 
-# Input vector of x coordinates
+# Input vector for grid of x coordinates
 x <- c(-1, -0.5, 0, 0.5, 1)
 
-# Compute the function y=x^2
+# Compute the function y=x^2 on the grid
 y <- x^2
 
 # Generate scatter plot of (x,y)
@@ -1961,23 +2018,25 @@ lines(x, y)
 ## Graphics {.smaller}
 ### Plotting functions - Example
 
-- The previous plot was quite rough, since we only computed $y=x^2$ on the grid
+- The previous plot was quite rough
+
+- This is because we only computed $y=x^2$ on the grid
 $$
 x = (-1, -0.5, 0, 0.5, 1)
 $$
 - We could refine the grid by hand, but this is not practical
-- To generate a finer grid R has the built in function ``seq()``
+- To generate a finer grid we can use the built in R function
+    * ``seq()``
 
 
-## Graphics {.smaller}
-### Seq function
+## Seq function {.smaller}
 
-``seq(from, to, by, length.out)`` generates a vector containing a squence:
+``seq(from, to, by, length.out)`` generates a vector containing a sequence:
 
-- ``from = `` the beginning number of the sequence
-- ``to = `` the ending number of the sequence
-- ``by = `` the step-size of the sequence (the increment)
-- ``length.out = `` the total length of the sequence
+- ``from`` -- The beginning number of the sequence
+- ``to`` -- The ending number of the sequence
+- ``by`` -- The step-size of the sequence (the increment)
+- ``length.out`` -- The total length of the sequence
   
 **Example**: Generate the vector of even numbers from 2 to 20 
 
@@ -1988,8 +2047,7 @@ print(x)
 ```
 
 
-## Graphics {.smaller}
-### Seq function
+## Seq function {.smaller}
 
 **Note**: The following commands are equivalent:
 
@@ -1999,13 +2057,23 @@ print(x)
 
 **Example**: Generate the vector of odd numbers from 1 to 11
 
-```{r}
-#| echo: true
+```r
 x <- seq(from = 1, to = 11, by = 2)
-print(x)
-
 y <- seq(1, 11, 2)
-print(y)
+
+cat("Vector x is: (", x, ")")
+cat("Vector y is: (", y, ")")
+cat("They are the same!")
+```
+
+
+```{r}
+x <- seq(from = 1, to = 11, by = 2)
+y <- seq(1, 11, 2)
+
+cat("Vector x is: (", x, ")")
+cat("Vector y is: (", y, ")")
+cat("They are the same!")
 ```
 
 
@@ -2027,7 +2095,7 @@ $$
 ```{r}
 #| echo: true
 
-x <- seq(-1, 1, 0.2)
+x <- seq(from = -1, to = 1, by = 0.2)
 print(x)
 ```
 
@@ -2057,20 +2125,20 @@ lines(x, x^2)
 
 Let us go back to the example of plotting random normal values
 
-- First we generate a vector ``y`` with 1000 random normal values
-- Then we plot ``y`` via ``plot(y)``
-- The command ``plot(y)`` implicitly assumes that:
-  * ``y`` is the second argument
-  * The first argument ``x`` is the vector ``seq(1, 1000)``
-  * Note that ``x = seq(1, 1000)`` is the vector of **components numbers** of ``y``
+- First we generate a vector ``x`` with 1000 random normal values
+- Then we plot ``x`` via ``plot(x)``
+- The command ``plot(x)`` implicitly assumes that:
+  * ``x`` is the second argument: Values to plot on $y$-axis
+  * The first argument is the vector ``seq(1, 1000)``
+  * Note that ``seq(1, 1000)`` is the vector of **components numbers** of ``x``
 
 ```{r}
 #| echo: true
 #| output-location: slide
 
-y <- rnorm(1000)
+x <- rnorm(1000)
 
-plot(rnorm(1000))
+plot(x)
 ```
 
 
