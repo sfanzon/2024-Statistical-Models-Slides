@@ -224,6 +224,91 @@ seq(1, 11, 6)
 
 
 
+## Custom functions {.smaller}
+
+- You can define your own functions in R
+- Syntax for definining custom function ``my_function`` is below
+- You can call your custom function by typing
+    * ``my_function(arguments)``
+
+```r
+my_function <- function(first = "1st argument", 
+                        ... ,
+                        nth = "n-th argument") {
+  
+  # Code here: This is where you tell the function what to do
+
+  return(object)      # Object to be returned  
+}
+```
+
+
+## Custom functions -- Example {.smaller}
+
+- The R function ``mean(x)`` computes the sample mean of vector ``x``
+- We want to define our own function to compute the mean
+
+- **Example:** The mean of ``x`` could be computed via
+    * ``sum(x) / length(x)``
+- We want to implement this code into the function ``my_mean(x)``
+    * ``my_mean`` takes vector ``x`` as argument
+    * ``my_mean`` returns a scalar -- the mean of ``x``
+
+```r
+# Definition of custom function my_mean(x)
+my_mean <- function(vector = x) {
+  
+  mean_of_x <- sum(x) / length(x)
+  
+  return(mean_of_x)  
+}
+```
+
+
+
+## Custom functions -- Example {.smaller}
+
+
+- Let us use our function ``my_mean`` on an example
+
+```r
+# Generate a random vector of 1000 entries from N(0,1)
+x <- rnorm(1000)
+
+# Compute mean of x with my_mean
+xbar <- my_mean(x)
+
+# Compute mean of x with built in function mean
+xbar_check <- mean(x)
+  
+cat("Mean of x computed with my_mean is:", xbar)
+cat("Mean of x computed with R mean is:", xbar_check)
+cat("They coincide!")
+```
+
+```{r}
+my_mean <- function(vector = x) {
+  
+  mean_of_x <- sum(x) / length(x)
+  
+  return(mean_of_x)  
+}
+
+# Generate a random vector of 1000 entries from N(0,1)
+x <- rnorm(1000)
+
+# Compute mean of x with my_mean
+xbar <- my_mean(x)
+
+# Compute mean of x with built in function mean
+xbar_check <- mean(x)
+  
+cat("Mean of x computed with my_mean is:", xbar)
+cat("Mean of x computed with R mean is:", xbar_check)
+cat("They coincide!")
+```
+
+
 
 
 # Part 2: <br>More on Vectors{background-color="#cc0164" visibility="uncounted"}
@@ -313,10 +398,15 @@ cat(y)
 
 - Logical vectors can take the values ``TRUE``, ``FALSE`` or ``NA``
 - ``TRUE`` and ``FALSE`` can be abbreviated with ``T`` and ``F``
+- ``NA`` stands for **not available**
 
 ```{r}
 #| echo: true
-x <- c(T,T,F,T)
+
+# Create logical vector
+x <- c(T, T, F, T, NA)
+
+# Print the logical vector
 print(x)
 ```
 
@@ -330,38 +420,64 @@ print(x)
   * we want to count how many entries are above a value ``t``
 
 
-```{r}
-#| echo: true
-x <- seq(from = 1 , to = 10, by = 1)
-print(x)
+```r
+# Generate a vector containing sequence 1 to 8
+x <- seq(from = 1 , to = 8, by = 1)
 
+# Generate vector of flags for entries strictly above 5
 y <- ( x > 5 )
-print(y)
+
+cat("Vector x is: (", x, ")")
+cat("Entries above 5 are: (", y, ")")
 ```
 
 
-## Logical vectors {.smaller}
-### Application
+```{r}
+# Generate a vector containing sequence 1 to 8
+x <- seq(from = 1 , to = 8, by = 1)
+
+# Generate vector of flags for entries strictly above 5
+y <- ( x > 5 )
+
+cat("Vector x is: (", x, ")")
+cat("Entries above 5 are: (", y, ")")
+```
+
+
+
+## Logical vectors -- Application {.smaller}
 
 - Generate a vector of 1000 numbers from $N(0,1)$
 - Count how many entries are above the mean $0$
 - Since there are many (1000) entries, we expect a result close to 500
+    * This is because *sample mean* converges to *true mean* $0$
 
 **Question**: How to do this?
 
-**Hint**: When you sum ``T`` and ``F`` they are interpreted as ``1`` and ``0``
+**Hint**: ``T/F`` are interpreted as ``1/0`` in arithmetic operations
 
+
+::: {.column width="45%"}
 ```{r}
 #| echo: true
 T + T
 T + F
-F + F
 ```
 
+:::
 
-## Logical vectors {.smaller}
-### Application
+::: {.column width="45%"}
+```{r}
+#| echo: true
+F + F
+F + T + 3
+```
 
+:::
+
+
+
+## Logical vectors -- Application {.smaller}
 
 - The function ``sum(x)`` sums the entries of a vector ``x``
 - We can use ``sum(x)`` to count the number of ``T`` entries in a logical vector ``x``
@@ -395,6 +511,7 @@ cat("This is pretty close to 500!")
 ```
 
 
+
 ## Missing values {.smaller}
 
 - In practical data analysis, a data point is frequently unavailable
@@ -411,201 +528,6 @@ NA + NA
 T + NA
 ```
 
-
-
-
-## Functions that create vectors {.smaller}
-
-The main functions to generate vectors are
-
-- ``c()`` concatenate
-- ``seq()`` sequence
-- ``rep()`` replicate
-
-We have already met ``c()`` and ``seq()`` but there are more details to discuss
-
-
-
-
-## Functions that create vectors {.smaller}
-### Concatenate
-
-- ``c()`` generates a vector containing the input values
-
-```{r}
-#| echo: true
-x <- c(1, 2, 3, 4, 5)
-print(x)
-```
-
-
-- ``c()`` can also concatenate vectors 
-
-```{r}
-#| echo: true
-x <- c(1, 2, 3, 4, 5)
-y <- c(6, 7, 8)
-
-z <- c(x, y, 9)
-print(z)
-```
-
-- This was you can **add** entries to **existing vector**
-
-
-## Functions that create vectors {.smaller}
-### Concatenate
-
-
-- You can assign names to vector elements
-
-- This modiﬁes the way the vector is printed
-
-```{r}
-#| echo: true
-
-x <- c(first = "Red", second = "Green", third = "Blue")
-print(x)
-```
-
-- The names can be extracted with ``names(x)``
-- The values can be extracted with ``unname(x)``
-
-```r
-print( names(x) )
-print( unname(x) )
-```
-
-
-```{r}
-x <- c(first = "Red", second = "Green", third = "Blue")
-print( names(x) )
-print( unname(x) )
-```
-
-
-## Functions that create vectors {.smaller}
-### Concatenate
-
-- All elements of a vector have the **same** type
-- Concatenating vectors of different types leads to conversion
-
-
-```{r}
-#| echo: true
-
-c(FALSE, 2)        # Converts FALSE to 0
-```
-
-
-```{r}
-#| echo: true
-
-c(pi, "stats")     # Converts pi to string 
-
-```
-
-
-```{r}
-#| echo: true
-
-c(TRUE, "stats")   # Converts TRUE to string
-```
-
-
-
-
-## Functions that create vectors {.smaller}
-### Sequence
-
-- Recall the syntax of ``seq`` is
-  * ``seq(from =, to =, by =, length.out =)``
-
-- Omitting the third argument assumes that ``by = 1``
-
-```{r}
-#| echo: true
-
-x <- seq(1, 6)
-print(x)
-```
-
-
-- The same output of ``seq(x1, x2)`` is obtained with ``x1:x2``
-
-```{r}
-#| echo: true
-
-y <- 1:6
-print(y)
-```
-
-- Syntax ``x1:x2`` is **preferred** to ``seq(x1, x2)``
-
-
-
-
-## Functions that create vectors {.smaller}
-### Replicate
-
-
-``rep`` generates repeated values from a vector:
-
-- ``x`` vector 
-- ``n`` integer
-- Then ``rep(x, n)`` repeats vector ``x`` n times
-
-```{r}
-#| echo: true
-
-x <- c(2, 1, 3)
-y <- rep(x, 4)
-
-print(y)
-```
-  
-
-## Functions that create vectors {.smaller}
-### Replicate
-
-
-The second argument of ``rep()`` can also be a vector:
-
-- ``x`` vector
-- ``y`` vector
-- ``rep(x, y)`` repeats entries of ``x`` as many times as corresponding entries of ``y``
-
-
-```{r}
-#| echo: true
-
-x <- c(2, 1, 3)         # Vector to replicate
-y <- c(1, 2, 3)         # Vector saying how to replicate 
-
-z <- rep(x, y)          # 1st entry of x is replicated 1 time
-                        # 2nd entry of x is replicated 2 times
-                        # 3rd entry of x is replicated 3 times
-print(z)
-```
-
-
-## Functions that create vectors {.smaller}
-### Replicate
-
-- ``rep`` can be useful to create a vector of labels
-- **Example**: Suppose we want to collect some numeric data on 3 Cats and 4 Dogs
-
-
-```{r}
-#| echo: true
-
-x <- c("Cat", "Dog")     # Vector to replicate
-
-y <- rep(x, c(3, 4))     # 1st entry of x is replicated 3 times
-                         # 2nd entry of x is replicated 4 times
-
-print(y)
-```
 
 
 
@@ -686,6 +608,429 @@ print(slice)
 
 
 
+## Logical Subsetting {.smaller}
+
+
+- You can index or slice vectors by entering explicit indices
+- You can also index vectors, or **subset**, by using **logical flag vectors**:
+    * Element is extracted if corresponding entry in the flag vector is TRUE 
+    * Logical flag vectors should be the same length as vector to subset
+
+**Code**: Suppose given a vector ``x``
+
+- Create a flag vector by using 
+    * ``flag <- condition(x)``
+
+- ``condition()`` is any function which returns ``T/F`` vector of same length as ``x``
+
+- Subset ``x`` by using 
+    * ``x[flag]``  
+
+
+
+
+## Logical Subsetting {.smaller}
+### Example
+
+- The following code extracts negative components from a numeric vector
+- This can be done by using
+    * ``x[ x < 0 ]``
+
+```r
+# Create numeric vector x
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
+
+# Get negative components from x and store them in neg_x
+neg_x <- x[ x < 0 ]
+
+cat("Vector x is:", x)
+cat("Negative components of x are:", neg_x)
+```
+
+
+```{r} 
+# Create numeric vector x
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
+
+# Get negative components from x and store them in neg_x
+neg_x <- x[ x < 0 ]
+
+cat("Vector x is:", x)
+cat("Negative components of x are:", neg_x)
+```
+
+
+
+## Logical Subsetting {.smaller}
+### Example
+
+- The following code extracts components falling between ``a`` and ``b``
+- This can be done by using logical operator and ``&``
+    * ``x[ (x > a) & (x < b) ]``
+
+```r
+# Create numeric vector
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
+
+# Get components between 0 and 100
+range_x <- x[ (x > 0) & (x < 100) ]
+
+cat("Vector x is:", x)
+cat("Components of x between 0 and 100 are:", range_x)
+```
+
+
+```{r} 
+# Create numeric vector
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
+
+# Get components between 0 and 100
+range_x <- x[ (x > 0) & (x < 100) ]
+
+cat("Vector x is:", x)
+cat("Components of x between 0 and 100 are:", range_x)
+```
+
+
+
+## The function Which {.smaller}
+
+- ``which()`` allows to convert a logical vector ``flag`` into a numeric index vector 
+    * ``which(flag)`` is vector of indices of ``flag`` which correspond to ``TRUE``
+
+
+```r
+# Create a logical flag vector
+flag <- c(T, F, F, T, F)
+
+# Indices for  flag which
+true_flag <- which(flag)
+
+cat("Flag vector is:", flag)
+cat("Positions for which Flag is TRUE are:", true_flag)
+```
+
+
+```{r}
+# Create a logical flag vector
+flag <- c(T, F, F, T, F)
+
+# Indices for  flag which
+true_flag <- which(flag)
+
+cat("Flag vector is:", flag)
+cat("Positions for which Flag is TRUE are:", true_flag)
+```
+
+
+
+## The function Which -- Application {.smaller}
+
+``which()`` can be used to delete certain entries from a vector ``x``
+
+- 
+allows to convert a logical vector ``flag`` into a numeric index vector 
+    * ``which(flag)`` is vector of indices of ``flag`` which correspond to ``TRUE``
+
+
+```r
+# Create a logical flag vector
+flag <- c(T, F, F, T, F)
+
+# Indices for  flag which
+true_flag <- which(flag)
+
+cat("Flag vector is:", flag)
+cat("Positions for which Flag is TRUE are:", true_flag)
+```
+
+
+```{r}
+# Create a logical flag vector
+flag <- c(T, F, F, T, F)
+
+# Indices for  flag which
+true_flag <- which(flag)
+
+cat("Flag vector is:", flag)
+cat("Positions for which Flag is TRUE are:", true_flag)
+```
+
+
+
+
+
+## Functions that create vectors {.smaller}
+
+The main functions to generate vectors are
+
+- ``c()`` concatenate
+- ``seq()`` sequence
+- ``rep()`` replicate
+
+We have already met ``c()`` and ``seq()`` but there are more details to discuss
+
+
+
+## Concatenate {.smaller}
+
+**Recall:** ``c()`` generates a vector containing the input values
+
+```{r}
+#| echo: true
+
+# Generate a vector of values 1, 2, 3, 4, 5
+x <- c(1, 2, 3, 4, 5)
+
+# Print the vector
+print(x)
+```
+
+
+## Concatenate {.smaller}
+
+- ``c()`` can also concatenate vectors 
+- This was you can **add** entries to an **existing vector**
+
+```{r}
+#| echo: true
+
+# Create 2 vectors
+x <- c(1, 2, 3, 4, 5)
+y <- c(6, 7, 8)
+
+# Concatenate vectors x and y, and also add element 9
+z <- c(x, y, 9)
+
+# Print the resulting vector
+print(z)
+```
+
+
+
+
+## Concatenate {.smaller}
+
+
+- You can assign names to vector elements
+
+- This modiﬁes the way the vector is printed
+
+```{r}
+#| echo: true
+
+# We specify a vector with 3 named entries
+x <- c(first = "Red", second = "Green", third = "Blue")
+
+# Print the named vector
+print(x)
+```
+
+
+## Concatenate {.smaller}
+
+Given a named vector ``x``
+
+- Names can be extracted with ``names(x)``
+- Values can be extracted with ``unname(x)``
+
+```r
+# Create named vector
+x <- c(first = "Red", second = "Green", third = "Blue")
+
+# Access names of x via names(x)
+names_x <- names(x)
+
+# Access values of x via unname(x)
+values_x <- unname(x)
+
+cat("Names of x are:", names(x))
+cat("Values of x are:", unname(x))
+```
+
+
+```{r}
+# Create named vector
+x <- c(first = "Red", second = "Green", third = "Blue")
+
+# Names of componenents of x are accessed via names(x)
+names_x <- names(x)
+
+# Values of componenents of x are accessed via unname(x)
+values_x <- unname(x)
+
+cat("Names of x are:", names(x))
+cat("Values of x are:", unname(x))
+```
+
+
+## Concatenate {.smaller}
+
+- All elements of a vector have the **same** type
+- Concatenating vectors of different types leads to conversion
+
+
+```{r}
+#| echo: true
+
+c(FALSE, 2)        # Converts FALSE to 0
+```
+
+<br>
+
+```{r}
+#| echo: true
+
+c(pi, "stats")     # Converts pi to string 
+
+```
+
+<br>
+
+```{r}
+#| echo: true
+
+c(TRUE, "stats")   # Converts TRUE to string
+```
+
+
+
+## Sequence {.smaller}
+
+- Recall the syntax of ``seq`` is
+  * ``seq(from =, to =, by =, length.out =)``
+
+- Omitting the third argument assumes that ``by = 1``
+
+```{r}
+#| echo: true
+
+# The following generates a vector of integers from 1 to 6
+x <- seq(1, 6)
+
+print(x)
+```
+
+
+## Sequence {.smaller}
+
+
+- ``seq(x1, x2)`` is equivalent to ``x1:x2``
+- Syntax ``x1:x2`` is **preferred** to ``seq(x1, x2)``
+
+
+```r
+# Generate two vectors of integers from 1 to 6
+x <- seq(1, 6)
+y <- 1:6
+
+cat("Vector x is:", x)
+cat("Vector y is:", y)
+cat("They are the same!")
+```
+
+
+```{r}
+# Generate two vectors of integers from 1 to 6
+x <- seq(1, 6)
+y <- 1:6
+
+cat("Vector x is:", x)
+cat("Vector y is:", y)
+cat("They are the same!")
+```
+
+
+
+
+
+
+## Replicate {.smaller}
+
+``rep`` generates repeated values from a vector:
+
+- ``x`` vector 
+- ``n`` integer
+- ``rep(x, n)`` repeats ``n`` times the vector ``x``
+
+```r
+# Create a vector with 3 components
+x <- c(2, 1, 3)
+
+# Repeats 4 times the vector x
+y <- rep(x, 4)
+
+cat("Original vector is:", x)
+cat("Original vector repeated 4 times:", y)
+```
+
+```{r}
+# Create a vector with 3 components
+x <- c(2, 1, 3)
+
+# Repeats 4 times the vector x
+y <- rep(x, 4)
+
+cat("Original vector is:", x)
+cat("Original vector repeated 4 times:", y)
+```
+  
+
+## Replicate {.smaller}
+
+
+The second argument of ``rep()`` can also be a vector:
+
+- Given ``x`` and ``y`` vectors
+- ``rep(x, y)`` repeats entries of ``x`` as many times as corresponding entries of ``y``
+
+
+```r
+x <- c(2, 1, 3)         # Vector to replicate
+y <- c(1, 2, 3)         # Vector saying how to replicate 
+
+z <- rep(x, y)          # 1st entry of x is replicated 1 time
+                        # 2nd entry of x is replicated 2 times
+                        # 3rd entry of x is replicated 3 times
+
+cat("Original vector is:", x)
+cat("Original vector repeated is:", z)
+```
+
+
+```{r}
+x <- c(2, 1, 3)         # Vector to replicate
+y <- c(1, 2, 3)         # Vector saying how to replicate 
+
+z <- rep(x, y)          # 1st entry of x is replicated 1 time
+                        # 2nd entry of x is replicated 2 times
+                        # 3rd entry of x is replicated 3 times
+
+cat("Original vector is:", x)
+cat("Original vector repeated is:", z)
+```
+
+## Replicate {.smaller}
+
+- ``rep()`` can be useful to create vectors of labels
+- **Example**: Suppose we want to collect some numeric data on 3 Cats and 4 Dogs
+
+
+```{r}
+#| echo: true
+
+x <- c("Cat", "Dog")     # Vector to replicate
+
+y <- rep(x, c(3, 4))     # 1st entry of x is replicated 3 times
+                         # 2nd entry of x is replicated 4 times
+
+cat("Vector of labels is:", y)
+```
+
+
+
+
+
 # Part 3: <br>Lists {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
@@ -711,6 +1056,7 @@ print(slice)
 # List containing a number, a vector, and a string
 my_list <- list(2, c(T,F,T,T), "hello")
 
+# Print the list
 print(my_list)
 ```
 
@@ -1238,6 +1584,17 @@ print(family)
 
 
 
+## Logical Record Subsets {.smaller}
+
+- In Slide 20 we saw how to use **logical vectors** to subset vectors
+
+- We can use logical vectors to subset data frames as well
+
+- In Slide 19 we saw how to use **logical vectors** to flag components of vectors
+In Section 4.1.5, you saw how to use logical flag vectors to subset data struc- tures. This is a particularly useful technique with data frames, where you’ll often want to examine a subset of entries that meet certain criteria. For example, when working with data from a clinical drug trial, a researcher might want to examine the results for just male participants and compare them to the results for females. Or the researcher might want to look at the characteristics of individuals who responded most positively to the drug.
+Let’s continue to work with mydata. Say you want to examine all records corresponding to males. From Section 4.3.1, you know that the following line will identify the relevant positions in the sex factor vector:
+
+
 
 
 # Part 5: <br>Importing Data {background-color="#cc0164" visibility="uncounted"}
@@ -1528,6 +1885,28 @@ long_function_name <- function(a = "a long argument",
 
 
 
+
+## Use explicit returns {.smaller}
+
+- Functions can return objects
+- R has an implicit return feature
+- Do not rely on this feature, but explicitly mention ``return(object)``
+
+```r
+# Good
+AddValues <- function(x, y) {
+  return(x + y)                     # Function returns x+y
+}
+
+# Bad
+AddValues <- function(x, y) {
+  x + y                             # Function still returns x+y
+}                                   # but it is not immediate to see it
+```
+
+
+
+
 ## Named arguments {.smaller}
 
 - Often you can call a function without explicitly naming arguments:
@@ -1546,26 +1925,6 @@ seq(from = 1, to = 11, by = 1)
 
 # Bad
 seq(1, 11, 1)
-```
-
-
-
-## Use explicit returns {.smaller}
-
-- Functions can return objects
-- R has an implicit return feature
-- Do not rely on this feature, but explicitly mention ``return(object)``
-
-```r
-# Good
-AddValues <- function(x, y) {
-  return(x + y)                     # Function returns x+y
-}
-
-# Bad
-AddValues <- function(x, y) {
-  x + y                             # Function still returns x+y
-}                                   # but it is not immediate to see it
 ```
 
 
