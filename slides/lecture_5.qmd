@@ -323,7 +323,7 @@ cat("They coincide!")
 
 ## More on vectors {.smaller}
 
-- Vectors of numbers are objects
+- We have seen vectors of numbers
 - Further type of vectors are:
   * Character vectors
   * Logical vectors
@@ -573,6 +573,7 @@ print(vector)
 
 
 
+
 ## Vector slicing {.smaller}
 
 Returning multiple items of a vactor is known as **slicing**
@@ -604,6 +605,42 @@ vector <- c(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
 slice <- vector[2:7]
 
 print(slice)
+```
+
+
+
+## Deleting vector elements {.smaller}
+
+- Elements of a vector ``x`` can be deleted by using
+    * ``x[ -c(k1, ..., kn) ]`` which deletes entries ``k1, ..., kn``
+    
+```r
+# Create a vector x
+x <- c(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+
+# Print vector x
+cat("Vector x is:", x)
+
+# Delete 2nd, 3rd and 7th entries of x
+x <- x[ -c(2, 3, 7) ]
+
+# Print x again
+cat("Vector x with 2nd, 3rd and 7th entries removed:", x)
+```
+
+
+```{r}
+# Create a vector x
+x <- c(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+
+# Print vector x
+cat("Vector x is:", x)
+
+# Delete 2nd, 3rd and 7th entries of x
+x <- x[ -c(2, 3, 7) ]
+
+# Print x again
+cat("Vector x with 2nd, 3rd and 7th entries removed:", x)
 ```
 
 
@@ -728,32 +765,53 @@ cat("Positions for which Flag is TRUE are:", true_flag)
 
 ``which()`` can be used to delete certain entries from a vector ``x``
 
-- 
-allows to convert a logical vector ``flag`` into a numeric index vector 
-    * ``which(flag)`` is vector of indices of ``flag`` which correspond to ``TRUE``
+- Create a flag vector by using 
+    * ``flag <- condition(x)``
 
+- ``condition()`` is any function which returns ``T/F`` vector of same length as ``x``
+
+- Delete entries flagged by ``condition`` using the code
+    * ``x[ -which(flag) ]``
+
+
+
+
+## The function Which -- Application {.smaller}
+### Example
 
 ```r
-# Create a logical flag vector
-flag <- c(T, F, F, T, F)
+# Create numeric vector x
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
 
-# Indices for  flag which
-true_flag <- which(flag)
+# Print x
+cat("Vector x is:", x)
 
-cat("Flag vector is:", flag)
-cat("Positions for which Flag is TRUE are:", true_flag)
+# Flag positive components of x
+flag_pos_x <- (x > 0)
+
+# Remove positive components from x
+ x <- x[ -which(flag_pos_x) ]
+
+# Print x again
+cat("Vector x with positive components removed:", x)
 ```
 
 
-```{r}
-# Create a logical flag vector
-flag <- c(T, F, F, T, F)
+```{r} 
+# Create numeric vector x
+x <- c(5, -2.3, 4, 4, 4, 6, 8, 10, 40221, -8)
 
-# Indices for  flag which
-true_flag <- which(flag)
+# Print x
+cat("Vector x is:", x)
 
-cat("Flag vector is:", flag)
-cat("Positions for which Flag is TRUE are:", true_flag)
+# Flag positive components of x
+flag_pos_x <- (x > 0)
+
+# Remove positive components from x
+ x <- x[ -which(flag_pos_x) ]
+
+# Print x again
+cat("Vector x with positive components removed:", x)
 ```
 
 
