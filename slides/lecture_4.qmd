@@ -1306,7 +1306,7 @@ s2 = sum( (x - barx)^2 ) / (n - 1)
 - There are built in functions to compute sample mean and variance:
   * ``mean(x)`` computes the sample mean of ``x``
   * ``sd(x)`` computes the sample standard deviation of ``x``
-  * ``sd(x)^2`` computes the sample variance of ``x``
+  * ``var(x)`` computes the sample variance of ``x``
 
 
 
@@ -1376,7 +1376,7 @@ n = length(x)
 s2 = sum( (x - xbar)^2 ) / (n - 1) 
 
 # Compute the sample variance using built in R function
-s2_check = sd(x)^2
+s2_check = var(x)
 
 # We now print both results to screen
 cat("Sample variance computed with formula is", s2)
@@ -1394,7 +1394,7 @@ n = length(x)
 s2 = sum( (x - xbar)^2 ) / (n - 1) 
 
 # Compute the sample variance using built in R function
-s2_check = sd(x)^2
+s2_check = var(x)
 
 # We now print both results to screen
 cat("Sample variance computed with formula is", s2)
@@ -1574,6 +1574,7 @@ difference <- score_2007 - score_2009
 t.test(difference, mu = 0)
 ```
 
+- Code can be downloaded here [one_sample_t_test.R](codes/one_sample_t_test.R)
 
 
 
