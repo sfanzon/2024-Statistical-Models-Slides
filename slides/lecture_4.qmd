@@ -822,7 +822,7 @@ plot(rnorm(5))
 - Values can be stored in **symbolic variables** or **objects**
 - To store values into variables we use **assignments**
 - The **assignment operator** in R is denoted by `` <-``
-- Symbol ``<-`` denotes an arrow pointing to the variable to which the value is assigned
+- ``<-`` denotes an arrow pointing to the variable to which the value is assigned
 
 
 
