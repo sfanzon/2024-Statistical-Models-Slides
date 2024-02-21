@@ -172,7 +172,7 @@ $$
 
 - $p<0.05$ means that the test statistic $t$ is **extreme**: $\,\, P(t_{n-1}> |t|)<0.025$
 
-- In this case $t$ falls in the **grey areas** in the $t_{n-1}$ plot below
+- $t$ falls in the **grey areas** in the $t_{n-1}$ plot below: Each grey area measures $0.025$
 
 
 ```{r}
@@ -199,7 +199,7 @@ y_fill_right <- pdf[x >= qt(0.975, df)]
 polygon(c(x_fill_right, rev(x_fill_right)), c(y_fill_right, rep(0, length(y_fill_right))), col = "gray", border = NA)
 
 # Add legend
-legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.3)
+legend("topright", legend = c("area = 0.025 x 2"), fill = "gray", cex = 1.3)
 
 
 ```
@@ -414,8 +414,9 @@ Find the [table](files/Statistics_Tables.pdf) **One-sided critical values of the
 ## Example: 2008 crisis {.smaller}
 ### Reference statistical tables
 
-- Plot of $t_{11}$ distribution. White area is $0.95$, shaded area is $0.05$
-- Any statistic $|t|>t^* = 2.201$ happens with probability $p<0.025$
+- Plot of $t_{11}$ distribution. White area is $0.95$, total shaded area is $0.05$
+- Probability of observing $|t|>t^* = 2.201$ is $p$ with 
+$p<0.025$
 
 
 ```{r}
@@ -442,11 +443,11 @@ y_fill_right <- pdf[x >= qt(0.975, df)]
 polygon(c(x_fill_right, rev(x_fill_right)), c(y_fill_right, rep(0, length(y_fill_right))), col = "gray", border = NA)
 
 # Add annotations for p value = 0.025 on both sides
-text(qt(0.025, df), dt(qt(0.025, df), df) + 0.05, paste("p = 0.025\n t =", round(qt(0.025, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(8.5, 4.5))
-text(qt(0.975, df), dt(qt(0.975, df), df) + 0.05, paste("p = 0.975\n t =", round(qt(0.975, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(5.5, 4.5))
+text(qt(0.025, df), dt(qt(0.025, df), df) + 0.05, paste("t* =", round(qt(0.025, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(8.5, 4.5))
+text(qt(0.975, df), dt(qt(0.975, df), df) + 0.05, paste("t* =", round(qt(0.975, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(5.5, 4.5))
 
 # Add legend
-legend("topright", legend = c("p < 0.025", "p > 0.975"), fill = "gray", cex = 1.3)
+legend("topright", legend = c("area = 0.025 x 2"), fill = "gray", cex = 1.3)
 
 
 ```
