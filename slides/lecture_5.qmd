@@ -44,10 +44,9 @@ $
 2. More on Vectors
 3. Lists
 4. Data Frames
-5. Importing Data
+5. Data Entry
 6. R Style Guide
-7. t-test revisited
-8. F-test
+7. F-test
 
 
 
@@ -1398,13 +1397,13 @@ print(sex_age)
 
 ## Extracting data {.smaller}
 
-Use vector names to access data frame columns
+Use dollar operator to access data frame columns
 
-- ``my_data$vector_name`` accesses column ``vector_name``
-- ``my_data$vector_name`` is a vector
+- Suppose data set ``my_data`` contains a variable called ``my_variable``
+- ``my_data$my_variable`` accesses column ``my_variable``
+- ``my_data$my_variable`` is a vector
 
 **Example**: To access *age* in the ``family`` data frame type
-
 
 ```r
 ages <- family$age        # Stores ages in a vector
@@ -1597,8 +1596,8 @@ Instead of using ``cbind`` we can add a new varibale using dollar operator:
     
 
 
-## Adding a new variable: alternative way {.smaller}
 
+## Adding a new variable: alternative way {.smaller}
 
 **Example**: 
 
@@ -1644,18 +1643,73 @@ print(family)
 
 ## Logical Record Subsets {.smaller}
 
-- In Slide 20 we saw how to use **logical vectors** to subset vectors
+- We saw how to use **logical flag vectors** to subset vectors
 
-- We can use logical vectors to subset data frames as well
+- We can use logical flag vectors to subset data frames as well
 
-- In Slide 19 we saw how to use **logical vectors** to flag components of vectors
-In Section 4.1.5, you saw how to use logical flag vectors to subset data struc- tures. This is a particularly useful technique with data frames, where you’ll often want to examine a subset of entries that meet certain criteria. For example, when working with data from a clinical drug trial, a researcher might want to examine the results for just male participants and compare them to the results for females. Or the researcher might want to look at the characteristics of individuals who responded most positively to the drug.
-Let’s continue to work with mydata. Say you want to examine all records corresponding to males. From Section 4.3.1, you know that the following line will identify the relevant positions in the sex factor vector:
+- Suppose to have data frame ``my_data`` containing a variable ``my_variable``
+
+- Want to subset records in ``my_data`` for which  ``my_variable`` satisfies a condition
+
+- Use commands
+    * ``flag <- condition(my_data$my_variable)``
+    * ``my_data[flag, ]``
+ 
+
+
+
+## Logical Record Subsets {.smaller}
+
+**Example**:
+
+- Consider again the **Family Guy** data frame ``family``
+- We subset Male characters using flag ``family$sex == "M"``
+
+
+
+```r
+# Create flag vector for male Family Guy characters
+flag <- (family$sex == "M")
+
+# Subset data frame "family" and store in data frame "subset"
+subset <- family[flag, ]
+
+# Print subset
+print(subset)
+```
+
+```{r}
+family <- data.frame(
+  person = c("Peter", "Lois", "Meg", "Chris", "Stewie"),
+  age = c(42, 40, 17, 14, 1),
+  sex = c("M", "F" , "F", "M", "M")
+)
+
+new_record <- data.frame(
+  person = "Brian",
+  age = 7,
+  sex = "M"
+)
+
+family <- rbind(family, new_record)
+
+funny <- c("High", "High", "Low", "Med", "High", "Med")
+
+family <- cbind(family, funny)
+
+family$age.months <- family$age * 12
+
+flag <- (family$sex == "M")
+subset <- family[flag, ]
+print(subset)
+```
 
 
 
 
-# Part 5: <br>Importing Data {background-color="#cc0164" visibility="uncounted"}
+
+
+# Part 5: <br>Data Entry {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1664,6 +1718,273 @@ Let’s continue to work with mydata. Say you want to examine all records corres
 :::
 
 
+
+## Reading data from files {.smaller}
+
+- R has a many functions for reading **characters** from stored **files** 
+
+- We will see how to read **Table-Format** files
+
+- **Table-Formats** are just tables stored in plain-text files
+
+- Typical file estensions are:
+    * ``.txt`` for plain-text files
+    * ``.csv`` for comma-separated values
+
+
+- **Table-Formats** can be read into R with the command
+    * ``read.table()``
+
+
+
+
+## Table-Formats {.smaller}
+### 4 key features
+    
+1. **Header**: 
+    * If present, header should be the first line of the file
+    * Header is used to provide names for each column of data
+    * If a header is present, you need to tell this to R when importing
+    * If not, R cannot tell if first line is a header or observed data values
+
+
+
+
+## Table-Formats {.smaller}
+### 4 key features
+
+2. **Delimiter**: 
+    * A character used to separate the entries in each line
+    * Delimiter character cannot be used for anything else in the file
+    * Delimiter tells R when a specific entry begins and ends
+    * Default delimiter is **whitespace**
+
+
+
+## Table-Formats {.smaller}
+### 4 key features
+
+3. **Missing value**: 
+    * Character string used exclusively to denote a missing value
+    * When reading the file, R will turn these entries into ``NA``
+
+
+
+## Table-Formats {.smaller}
+### 4 key features
+
+4. **Comments**:
+    * Table files can include comments
+    * Comment lines start with $\quad$ ``#``
+    * R ignores such comments
+
+
+
+
+## Table-Formats {.smaller}
+### Example
+
+- Table-Format for **Family Guy** characters can be downloaded here [family_guy.txt](datasets/family_guy.txt)
+
+
+::: {.column width="54%"}
+
+- The text file looks like this
+
+![](images/family_guy.png){width=78%}
+
+:::
+
+::: {.column width="44%"}
+
+- Remarks:
+    * Header is present
+    * Delimiter is **whitespace**
+    * Missing values denoted by ``*``
+
+:::
+
+
+
+## read.table command {.smaller}
+
+- Table-Formats can be read via ``read.table()``
+    * This reads a ``.txt`` or ``.csv`` file and outputs a data frame
+- Options of ``read.table()``
+    * ``header = T/F`` -- Tells R if a header is present
+    * ``na.strings = "string"`` -- Tells R that ``"string"`` means ``NA``
+
+
+
+## Reading our first Table-Format file {.smaller}
+
+To read ``family_guy.txt`` into R proceed as follows:
+
+1. Download [family_guy.txt](datasets/family_guy.txt) and move file to Desktop
+
+2. Open the R Console and change working directory to **Desktop**
+
+```r
+# In MacOS type
+setwd("~/Desktop")
+
+# In Windows type
+setwd("C:/Users/YourUsername/Desktop")
+```
+
+
+## Reading our first Table-Format file {.smaller}
+
+
+3. Read ``family_guy.txt`` into R and store it in data frame ``family`` with code
+
+```r
+family = read.table(file = "family_guy.txt",
+                    header = TRUE,
+                    na.strings = "*"
+                    )
+```
+
+4. Note that we are telling ``read.table()`` that
+    * ``family_guy.txt`` has a header
+    * Missing values are denoted by ``*``
+
+
+
+## Reading our first Table-Format file {.smaller}
+
+
+::: {.column width="48%"}
+5. Print data frame ``family`` to screen
+
+```r
+print(family)
+```
+
+```{r}
+family = read.table(file = "datasets/family_guy.txt",
+                    header = TRUE,
+                    na.strings = "*"
+                    )
+print(family)
+```
+
+:::
+
+::: {.column width="48%"}
+
+- For comparison this is the ``.txt`` file
+
+![](images/family_guy.png){width=85%}
+
+:::
+
+
+
+
+
+## Application: t-test {.smaller}
+
+**Example**: Analysis of Consumer Confidence Index for 2008 crisis from Lecture 4
+
+- We imported data into R using ``c()``
+- This is ok for small datasets
+- Suppose the CCI data is stored in a ``.txt`` file instead
+
+
+**Goal**: Perform t-test on CCI difference for mean difference $\mu = 0$
+
+- By reading CCI data into R using ``read.table()``
+- By manipulating CCI data using **data frames**
+
+
+
+
+## Application: t-test {.smaller}
+
+- The CCI dataset can be downloaded here [2008_crisis.txt](datasets/2008_crisis.txt)
+
+- The text file looks like this
+
+![](images/2008_crisis.png){width=78%}
+
+
+
+## Application: t-test {.smaller}
+
+To perform the t-test on data ``2008_crisis.txt`` we proceed as follows:
+
+1. Download dataset [2008_crisis.txt](datasets/2008_crisis.txt) and move file to Desktop
+
+2. Open the R Console and change working directory to **Desktop**
+
+```r
+# In MacOS type
+setwd("~/Desktop")
+
+# In Windows type
+setwd("C:/Users/YourUsername/Desktop")
+```
+
+3. Read ``2008_crisis.txt`` into R and store it in data frame ``scores`` with code
+
+```r
+scores = read.table(file = "2008_crisis",
+                    header = TRUE
+                    )
+```
+
+
+## Application: t-test {.smaller}
+
+4. Store 2nd and 3rd columns of ``scores`` into 2 vectors
+
+```r
+# CCI from 2007 is stored in 2nd column
+score_2007 <- scores[, 2]
+
+# CCI from 2009 is stored in 3nd column
+score_2009 <- scores[, 3]
+```
+
+
+5. Now the t-test can be performed as done in Lecture 4
+
+```r
+# Compute vector of differences
+difference <- score_2007 - score_2009
+
+# Perform t-test on difference with null hypothesis mu = 0
+t.test(difference, mu = 0)
+```
+
+
+
+## Application: t-test {.smaller}
+
+6. We obtain the same result of Lecture 4
+    * p-value is $p < 0.05$
+    * Reject $H_0$: The mean difference is not $0$
+    * In details, the output of ``t.test`` is below
+
+- For convenience you can download the full code [2008_crisis_code.R](codes/2008_crisis_code.R)
+
+```{r}
+# Read ``2008_crisis.txt`` into R and store in "scores"
+scores = read.table(file = "datasets/2008_crisis.txt",
+                    header = TRUE
+                    )
+
+# Extract scores of 2007 and 2009 in 2 vectors
+score_2007 <- scores[, 2]
+score_2009 <- scores[, 3]
+
+# Compute difference
+difference <- score_2007 - score_2009
+
+# Perform t-test on difference with null hypothesis mu = 0
+t.test(difference, mu = 0)
+```
 
 
 
@@ -2009,27 +2330,7 @@ x+y
 
 
 
-
-# Part 7: <br>t-test revisited {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-
-## t-test in R {.smaller}
-
-- We go back to example on Consumer Confidence Index from Lecture 4
-- Now that we know data frames and how to import data, 
-we want to do that on this example
-- Include file as download and usual table here
-
-
-
-# Part 8: <br>F-test {background-color="#cc0164" visibility="uncounted"}
+# Part 7: <br>F-test {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 

@@ -72,8 +72,8 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
 | <a href="slides/lecture_2.qmd">Lecture 2</a>   | Multivariate distributions        |
 | <a href="slides/lecture_3.qmd">Lecture 3</a>   | Random samples                    |
-| <a href="slides/lecture_4.qmd">Lecture 4</a>   | Hypothesis tests in R - Part 1        |
-| <a href="slides/lecture_5.qmd">Lecture 5</a>   | Hypothesis tests in R - Part 2        |
+| <a href="slides/lecture_4.qmd">Lecture 4</a>   | Hypothesis tests in R -- Part 1        |
+| <a href="slides/lecture_5.qmd">Lecture 5</a>   | Hypothesis tests in R -- Part 2        |
 | <a href="slides/lecture_6.qmd">Lecture 6</a>   | TBA     |
 | <a href="slides/lecture_7.qmd">Lecture 7</a>   | TBA     |
 | <a href="slides/lecture_8.qmd">Lecture 8</a>   | TBA     |
@@ -88,7 +88,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 # Supplementary Material
 
 - Statistical Tables: [Link](slides/files/Statistics_Tables.pdf)
-- Lecture 3: Codes, Dataset
+- Lecture 5: [Family Guy Dataset](slides/datasets/family_guy.txt), [2008 Crisis Code](codes/2008_crisis_code.R), [2008 Crisis Dataset](datasets/2008_crisis.txt)
 
 
 

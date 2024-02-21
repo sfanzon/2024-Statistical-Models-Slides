@@ -232,7 +232,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/bingham_fry.png){width=82%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
+[![](images/bingham_fry.png){width=80%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
 
 :::
 
@@ -258,7 +258,7 @@ Slides are self-contained and based on the book
 
 ::: {.column width="38%"}
 
-[![](images/fry_burke.png){width=87%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
+[![](images/fry_burke.png){width=80%}](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
 
 :::
 
@@ -281,11 +281,6 @@ Slides are self-contained and based on the book
 *Probability and Statistics.* 
 <br> Fourth Edition, Addison-Wesley, 2012
 
-
-- [@dalgaard] Dalgaard, P. 
-<br> *Introductory statistics with R.*
-<br> Second Edition, Springer, 2008   
-
 :::
 
 
@@ -295,7 +290,31 @@ Slides are self-contained and based on the book
 
 **Easier Probability & Statistics manual**
 
-**R manual**
+:::
+
+
+
+## References
+### Secondary References 
+
+::: {.column width="69%"}
+- [@dalgaard] Dalgaard, P. <br>
+*Introductory statistics with R.*
+<br> Second Edition, Springer, 2008
+
+
+- [@davies] Davies, T. M. <br> 
+*The book of R.* 
+<br> No Starch Press, 2016
+
+:::
+
+
+::: {.column width="30%"}
+
+**Concise Statistics with R**
+
+**Comprehensive R manual**
 
 :::
 

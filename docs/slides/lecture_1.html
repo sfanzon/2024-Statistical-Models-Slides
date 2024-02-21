@@ -361,27 +361,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
   .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,23 +369,35 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -413,21 +405,29 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Corollary {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -693,11 +693,11 @@
 <p><br></p>
 <p>Slides are self-contained and based on the book</p>
 <ul>
-<li><span class="citation" data-cites="bingham-fry">[<a href="#/references-3" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
+<li><span class="citation" data-cites="bingham-fry">[<a href="#/references-4" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
 </ul>
 </div>
 <div class="column" style="width:38%;">
-<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:82.0%"></a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:80.0%"></a></p>
 </div>
 </section>
 <section id="references-1" class="slide level2">
@@ -707,11 +707,11 @@
 <p><br></p>
 <p>.. and also on the book</p>
 <ul>
-<li><span class="citation" data-cites="fry-burke">[<a href="#/references-3" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
+<li><span class="citation" data-cites="fry-burke">[<a href="#/references-4" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
 </ul>
 </div>
 <div class="column" style="width:38%;">
-<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:87.0%"></a></p>
+<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:80.0%"></a></p>
 </div>
 </section>
 <section id="references-2" class="slide level2">
@@ -719,15 +719,27 @@
 <h3 id="secondary-references">Secondary References</h3>
 <div class="column" style="width:69%;">
 <ul>
-<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-3" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
-<li><p><span class="citation" data-cites="degroot">[<a href="#/references-3" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
-<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-3" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
+<li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-4" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
+<li><p><span class="citation" data-cites="degroot">[<a href="#/references-4" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
 </ul>
 </div>
 <div class="column" style="width:30%;">
 <p><strong>Probability &amp; Statistics manual</strong></p>
 <p><strong>Easier Probability &amp; Statistics manual</strong></p>
-<p><strong>R manual</strong></p>
+</div>
+</section>
+<section id="references-3" class="slide level2">
+<h2>References</h2>
+<h3 id="secondary-references-1">Secondary References</h3>
+<div class="column" style="width:69%;">
+<ul>
+<li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-4" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
+<li><p><span class="citation" data-cites="davies">[<a href="#/references-4" role="doc-biblioref" onclick="">6</a>]</span> Davies, T. M. <br> <em>The book of R.</em> <br> No Starch Press, 2016</p></li>
+</ul>
+</div>
+<div class="column" style="width:30%;">
+<p><strong>Concise Statistics with R</strong></p>
+<p><strong>Comprehensive R manual</strong></p>
 </div>
 </section></section>
 <section>
@@ -1377,7 +1389,7 @@ A_1,A_2 , \ldots \in \mathcal{B} \quad \implies \quad \cap_{i=1}^\infty A_i \in 
 <details class="Warning fbx-simplebox fbx-default" open=""><summary><strong>Warning</strong></summary><div>
 <ul>
 <li>I only told you that the Lebsesgue <span class="math inline">\sigma</span>-algebra <span class="math inline">\mathcal{L}</span> <strong>exists</strong></li>
-<li>Explicitly showing that <span class="math inline">\mathcal{L}</span> exists is not easy, see <span class="citation" data-cites="rosenthal">[<a href="#/references-3" role="doc-biblioref" onclick="">6</a>]</span></li>
+<li>Explicitly showing that <span class="math inline">\mathcal{L}</span> exists is not easy, see <span class="citation" data-cites="rosenthal">[<a href="#/references-4" role="doc-biblioref" onclick="">7</a>]</span></li>
 </ul>
 </div></details>
 </div>
@@ -2896,7 +2908,7 @@ M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
 </span> As the above is the mgf of a Gamma distribution, by the previous Theorem we infer <span class="math inline">Y \sim \Gamma(\alpha,\beta)</span></p></li>
 </ul>
 </section>
-<section id="references-3" class="slide level2 smaller scrollable">
+<section id="references-4" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
 <div class="quarto-auto-generated-content">
@@ -2920,8 +2932,11 @@ M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
 <div id="ref-dalgaard" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
 </div>
+<div id="ref-davies" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Davies, Tilman M., The book of <span>R</span>, No Starch Press, 2016.</div>
+</div>
 <div id="ref-rosenthal" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Rosenthal, Jeffrey S., A first look at rigorous probability theory, Second Edition, World Scientific Publishing, 2006.</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Rosenthal, Jeffrey S., A first look at rigorous probability theory, Second Edition, World Scientific Publishing, 2006.</div>
 </div>
 </div>
 </section></section>

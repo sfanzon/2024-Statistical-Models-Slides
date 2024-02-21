@@ -1569,7 +1569,7 @@ score_2009 <- c(24, 22, 21, 21, 19, 18, 17, 18, 21, 23, 22, 21)
 # Compute vector of differences in CCI
 difference <- score_2007 - score_2009
 
-# Perform t-test with null hypothesis mu0 = 0
+# Perform t-test on difference with null hypothesis mu = 0
 t.test(difference, mu = 0)
 ```
 
