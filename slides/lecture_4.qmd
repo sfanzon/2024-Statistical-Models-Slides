@@ -1681,11 +1681,11 @@ cat(output[5])
 
 ::: {.column width="48%"}
 
-**The most interesting part:**
+**This is the best part:**
 
-- The t-statistic computed from data
-- The degrees of freedom
-- The exact p-value
+- $\texttt{t} = \,$ t-statistic from data
+- $\texttt{df} = \,$ degrees of freedom
+- $\texttt{p-value} = \,$ the exact p-value
 
 :::
 
