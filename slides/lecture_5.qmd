@@ -38,19 +38,112 @@ $
 
 
 
+
 ## Outline of Lecture 5
 
-1. Functions in R
-2. More on Vectors
-3. Lists
-4. Data Frames
-5. Data Entry
-6. R Style Guide
-7. F-test
+1. F-test
+2. Functions in R
+3. More on Vectors
+4. Lists
+5. Data Frames
+6. Data Entry
+7. R Style Guide
 
 
 
-# Part 1: <br>Functions in R {background-color="#cc0164" visibility="uncounted"}
+
+
+# Part 1: <br>F-test {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Chi-squared distribution {.smaller}
+
+**Recall**: Chi-squared distribution with $p$ degrees of freedom is
+$$
+\chi_p^2 = Z_1^2 + \ldots + Z_p^2
+$$
+where $Z_1, \ldots, Z_n$ are iid $N(0, 1)$
+
+
+
+
+## Chi-squared distribution {.smaller}
+
+We used $\chi_p^2$ to:
+
+- Describe distribution of sample variance $S^2$:
+$$
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+- Define t distribution:
+$$
+t_p \sim \frac{U}{\sqrt{V/p}}
+$$
+where $U \sim N(0,1)$ and $V \sim \chi_p^2$ 
+
+
+
+## F distribution {.smaller}
+
+F-distribution is:
+
+- Defined in terms of $\chi_p^2$
+- Describes **variance estimators** for independent samples
+
+
+
+
+## F distribution {.smaller}
+
+Suppose given random samples from 2 normal populations:
+
+- $X_1, \ldots, X_n$ iid random sample from $N(\mu_X, \sigma_X^2)$
+- $Y_1, \ldots, Y_m$ iid random sample from $N(\mu_Y, \sigma_Y^2)$
+
+
+**Problem**:
+
+- We want to compare **variability** of the 2 populations
+- A way to do it is by estimating the variances ratio
+$$
+\frac{\sigma_X^2}{\sigma_Y^2}
+$$
+
+
+
+## F distribution {.smaller}
+
+**Question**: 
+
+- Suppose the variances $\sigma_X^2$ and $\sigma_Y^2$ are **unknown**
+- How can we estimate the ratio $\sigma_X^2 /\sigma_Y^2 \,$ ?
+
+. . . 
+
+**Answer**: 
+
+- Estimate the ratio $\sigma_X^2 /\sigma_Y^2 \,$ using sample variances
+$$
+S^2_X / S^2_Y
+$$
+
+- The F-distribution allows to compare the quantities 
+$$
+\sigma_X^2 /\sigma_Y^2 \qquad \text{and} \qquad S^2_X / S^2_Y
+$$
+
+
+
+
+# Part 2: <br>Functions in R {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -310,7 +403,7 @@ cat("They coincide!")
 
 
 
-# Part 2: <br>More on Vectors{background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>More on R {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1088,7 +1181,7 @@ cat("Vector of labels is:", y)
 
 
 
-# Part 3: <br>Lists {background-color="#cc0164" visibility="uncounted"}
+# Part 4: <br>Lists {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1224,7 +1317,7 @@ print(second_component)
 
 
 
-# Part 4: <br>Data Frames {background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>Data Frames {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1709,7 +1802,7 @@ print(subset)
 
 
 
-# Part 5: <br>Data Entry {background-color="#cc0164" visibility="uncounted"}
+# Part 6: <br>Data Entry {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1990,7 +2083,7 @@ t.test(difference, mu = 0)
 
 
 
-# Part 6: <br>R Style Guide {background-color="#cc0164" visibility="uncounted"}
+# Part 7: <br>R Style Guide {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -2326,17 +2419,6 @@ x+y
 
 # Plot data ---------------------------
 ```
-
-
-
-
-# Part 7: <br>F-test {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
 
 
 

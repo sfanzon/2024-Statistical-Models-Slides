@@ -406,51 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Proposition {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,21 +414,65 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -522,18 +522,87 @@
 <section id="outline-of-lecture-5" class="slide level2">
 <h2>Outline of Lecture 5</h2>
 <ol type="1">
+<li>F-test</li>
 <li>Functions in R</li>
 <li>More on Vectors</li>
 <li>Lists</li>
 <li>Data Frames</li>
 <li>Data Entry</li>
 <li>R Style Guide</li>
-<li>F-test</li>
 </ol>
 </section></section>
 <section>
-<section id="part-1-functions-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>Functions in R</h1>
+<section id="part-1-f-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>F-test</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="chi-squared-distribution" class="slide level2 smaller">
+<h2>Chi-squared distribution</h2>
+<p><strong>Recall</strong>: Chi-squared distribution with <span class="math inline">p</span> degrees of freedom is <span class="math display">
+\chi_p^2 = Z_1^2 + \ldots + Z_p^2
+</span> where <span class="math inline">Z_1, \ldots, Z_n</span> are iid <span class="math inline">N(0, 1)</span></p>
+</section>
+<section id="chi-squared-distribution-1" class="slide level2 smaller">
+<h2>Chi-squared distribution</h2>
+<p>We used <span class="math inline">\chi_p^2</span> to:</p>
+<ul>
+<li><p>Describe distribution of sample variance <span class="math inline">S^2</span>: <span class="math display">
+\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+</span></p></li>
+<li><p>Define t distribution: <span class="math display">
+t_p \sim \frac{U}{\sqrt{V/p}}
+</span> where <span class="math inline">U \sim N(0,1)</span> and <span class="math inline">V \sim \chi_p^2</span></p></li>
+</ul>
+</section>
+<section id="f-distribution" class="slide level2 smaller">
+<h2>F distribution</h2>
+<p>F-distribution is:</p>
+<ul>
+<li>Defined in terms of <span class="math inline">\chi_p^2</span></li>
+<li>Describes <strong>variance estimators</strong> for independent samples</li>
+</ul>
+</section>
+<section id="f-distribution-1" class="slide level2 smaller">
+<h2>F distribution</h2>
+<p>Suppose given random samples from 2 normal populations:</p>
+<ul>
+<li><span class="math inline">X_1, \ldots, X_n</span> iid random sample from <span class="math inline">N(\mu_X, \sigma_X^2)</span></li>
+<li><span class="math inline">Y_1, \ldots, Y_m</span> iid random sample from <span class="math inline">N(\mu_Y, \sigma_Y^2)</span></li>
+</ul>
+<p><strong>Problem</strong>:</p>
+<ul>
+<li>We want to compare <strong>variability</strong> of the 2 populations</li>
+<li>A way to do it is by estimating the variances ratio <span class="math display">
+\frac{\sigma_X^2}{\sigma_Y^2}
+</span></li>
+</ul>
+</section>
+<section id="f-distribution-2" class="slide level2 smaller">
+<h2>F distribution</h2>
+<p><strong>Question</strong>:</p>
+<ul>
+<li>Suppose the variances <span class="math inline">\sigma_X^2</span> and <span class="math inline">\sigma_Y^2</span> are <strong>unknown</strong></li>
+<li>How can we estimate the ratio <span class="math inline">\sigma_X^2 /\sigma_Y^2 \,</span> ?</li>
+</ul>
+<div class="fragment">
+<p><strong>Answer</strong>:</p>
+<ul>
+<li><p>Estimate the ratio <span class="math inline">\sigma_X^2 /\sigma_Y^2 \,</span> using sample variances <span class="math display">
+S^2_X / S^2_Y
+</span></p></li>
+<li><p>The F-distribution allows to compare the quantities <span class="math display">
+\sigma_X^2 /\sigma_Y^2 \qquad \text{and} \qquad S^2_X / S^2_Y
+</span></p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="part-2-functions-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Functions in R</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -801,10 +870,10 @@
 <span id="cb7-12"><a></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of x computed with my_mean is: 0.05498376</code></pre>
+<pre><code>Mean of x computed with my_mean is: 0.05338363</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of x computed with R mean is: 0.05498376</code></pre>
+<pre><code>Mean of x computed with R mean is: 0.05338363</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>They coincide!</code></pre>
@@ -812,8 +881,8 @@
 </div>
 </section></section>
 <section>
-<section id="part-2-more-on-vectors" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>More on Vectors</h1>
+<section id="part-3-more-on-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>More on R</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -988,7 +1057,7 @@
 <span id="cb34-8"><a></a><span class="fu">cat</span>(<span class="st">"This is pretty close to 500!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of entries which are above the average 0 is 530</code></pre>
+<pre><code>Number of entries which are above the average 0 is 526</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>This is pretty close to 500!</code></pre>
@@ -1489,8 +1558,8 @@
 </div>
 </section></section>
 <section>
-<section id="part-3-lists" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 3: <br>Lists</h1>
+<section id="part-4-lists" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>Lists</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -1643,8 +1712,8 @@ $string
 </div>
 </section></section>
 <section>
-<section id="part-4-data-frames" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 4: <br>Data Frames</h1>
+<section id="part-5-data-frames" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Data Frames</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -1996,8 +2065,8 @@ $string
 </div>
 </section></section>
 <section>
-<section id="part-5-data-entry" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 5: <br>Data Entry</h1>
+<section id="part-6-data-entry" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 6: <br>Data Entry</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -2253,8 +2322,8 @@ mean of x
 </div>
 </section></section>
 <section>
-<section id="part-6-r-style-guide" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 6: <br>R Style Guide</h1>
+<section id="part-7-r-style-guide" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br>R Style Guide</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -2512,15 +2581,6 @@ mean of x
 <div class="sourceCode" id="cb160"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a></a><span class="co"># Load data ---------------------------</span></span>
 <span id="cb160-2"><a></a></span>
 <span id="cb160-3"><a></a><span class="co"># Plot data ---------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
-<section>
-<section id="part-7-f-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 7: <br>F-test</h1>
-<div class="footer">
-<div color="#cc0164">
-
-</div>
-</div>
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>

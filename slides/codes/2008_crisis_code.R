@@ -15,4 +15,8 @@ score_2009 <- scores[, 3]
 difference <- score_2007 - score_2009
 
 # Perform t-test on difference with null hypothesis mu = 0
-t.test(difference, mu = 0)
+# Store answer in "answer"
+answer <- t.test(difference, mu = 0)
+
+# Print answer
+print(answer)
