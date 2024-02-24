@@ -88,8 +88,9 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 # Supplementary Material
 
 - Statistical Tables: [Link](slides/files/Statistics_Tables.pdf)
-- Lecture 4: [One-Sample t-test](codes/one_sample_t_test.R)
-- Lecture 5: [Family Guy Dataset](slides/datasets/family_guy.txt), [2008 Crisis Code](codes/2008_crisis_code.R), [2008 Crisis Dataset](datasets/2008_crisis.txt)
+- Lecture 4: [Code: One-Sample t-test](slides/codes/one_sample_t_test.R)
+- Lecture 5: [Code: 2008 Crisis](slides/codes/2008_crisis_code.R), [Dataset: 2008 Crisis](slides/datasets/2008_crisis.txt)
+- Lecture 11: [Dataset: Family Guy](slides/datasets/family_guy.txt)
 
 
 
