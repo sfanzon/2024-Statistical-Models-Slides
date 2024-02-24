@@ -426,17 +426,9 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Definition {
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   .Corollary {
     --color1: #f4cce0;
@@ -446,37 +438,21 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Warning {
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
   }
   .Remark {
     --color1: #bce5de;
@@ -486,11 +462,35 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -730,7 +730,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">Month</th>
 <th style="text-align: center;">J</th>
 <th style="text-align: center;">F</th>
 <th style="text-align: center;">M</th>
@@ -747,7 +747,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2007</td>
+<td style="text-align: center;">CCI 2007</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">88</td>
@@ -762,7 +762,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 <td style="text-align: center;">90</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2009</td>
+<td style="text-align: center;">CCI 2009</td>
 <td style="text-align: center;">24</td>
 <td style="text-align: center;">22</td>
 <td style="text-align: center;">21</td>
@@ -820,7 +820,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">Month</th>
 <th style="text-align: center;">J</th>
 <th style="text-align: center;">F</th>
 <th style="text-align: center;">M</th>
@@ -837,7 +837,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2007</td>
+<td style="text-align: center;">CCI 2007</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">88</td>
@@ -852,7 +852,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 <td style="text-align: center;">90</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2009</td>
+<td style="text-align: center;">CCI 2009</td>
 <td style="text-align: center;">24</td>
 <td style="text-align: center;">22</td>
 <td style="text-align: center;">21</td>
@@ -1304,7 +1304,7 @@ H_0 \colon \mu = 0
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.53527638  1.27906154 -0.45774298 -1.45260736 -0.08892417</code></pre>
+<pre><code>[1] -0.89093588 -0.06782298 -0.72054238 -0.63001667 -0.34471825</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
@@ -2002,7 +2002,7 @@ p = 2P(|t_{n-1}|&gt;t)
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">Month</th>
 <th style="text-align: center;">J</th>
 <th style="text-align: center;">F</th>
 <th style="text-align: center;">M</th>
@@ -2019,7 +2019,7 @@ p = 2P(|t_{n-1}|&gt;t)
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2007</td>
+<td style="text-align: center;">CCI 2007</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">88</td>
@@ -2034,7 +2034,7 @@ p = 2P(|t_{n-1}|&gt;t)
 <td style="text-align: center;">90</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2009</td>
+<td style="text-align: center;">CCI 2009</td>
 <td style="text-align: center;">24</td>
 <td style="text-align: center;">22</td>
 <td style="text-align: center;">21</td>
@@ -2101,7 +2101,7 @@ H_1 \colon \mu \neq 0
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">CCI</th>
+<th style="text-align: center;">Month</th>
 <th style="text-align: center;">J</th>
 <th style="text-align: center;">F</th>
 <th style="text-align: center;">M</th>
@@ -2118,7 +2118,7 @@ H_1 \colon \mu \neq 0
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2007</td>
+<td style="text-align: center;">CCI 2007</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">88</td>
@@ -2133,7 +2133,7 @@ H_1 \colon \mu \neq 0
 <td style="text-align: center;">90</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2009</td>
+<td style="text-align: center;">CCI 2009</td>
 <td style="text-align: center;">24</td>
 <td style="text-align: center;">22</td>
 <td style="text-align: center;">21</td>

@@ -189,7 +189,7 @@ $$
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### Critical values
+### Critical values of chi-squared
 
 - $x^* := \chi_{n-1}^2(0.05)$ is point on $x$-axis such that $P(\chi_{n-1}^2 > x^* ) = 0.05$
 
@@ -267,15 +267,7 @@ $$
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### Computing p-value in R
-
-- We need to compute p-value for chi-squared distribution
-- R has built in probability distrubutions accessible with commands:
-
-
-
-## One-sample one-sided variance ratio test {.smaller}
-### Conclusion
+### Procedure
 
 Suppose $\sigma_0$ is guess for $\sigma$. The one-sided hypothesis is
 $$
@@ -296,9 +288,9 @@ $$
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### Conclusion
+### Procedure
 
-2. **Tables or R**: Find either
+2. **Statistical Tables or R**: Find either
     * Critical value in [Table 13.5](files/Statistics_Tables.pdf)
     $$
     \chi_{n-1}^2(0.05)
@@ -312,7 +304,7 @@ $$
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### Conclusion
+### Procedure
 
 3. **Interpretation**:
     * Reject $H_0$ if 
@@ -329,129 +321,496 @@ $$
 
 
 
-## One-sample Two-sided t-test {.smaller}
-### p-value
+## Variance ratio test - Example {.smaller}
 
-- $p<0.05$ means that the test statistic $t$ is **extreme**: $\,\, P(t_{n-1}> |t|)<0.025$
 
-- $t$ falls in the **grey areas** in the $t_{n-1}$ plot below: Each grey area measures $0.025$
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Cons. Expectation        |66 | 53| 62| 61| 78| 72| 65| 64| 61| 50| 55| 51|
+| Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+
+<br>
+
+- **Data:** *Consumer Expectation* (CE) and *Consumer Spending* (CS) in 2011
+- **Assumption:** CE and CS are normally distributed
+
+
+
+
+
+## Variance ratio test - Example {.smaller}
+
+
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Cons. Expectation        |66 | 53| 62| 61| 78| 72| 65| 64| 61| 50| 55| 51|
+| Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+<br>
+
+- **Remark**: Monthly data on CE and CS can be matched 
+    * Hence consider: $\quad$ Difference $=$ CE $-$ CS 
+    * CE and CS normal $\quad \implies \quad$ Difference $\sim N(\mu,\sigma^2)$
+
+- **Question:** Test the following hypothesis:
+$$
+H_0 \colon \sigma \leq 1 \qquad 
+H_1 \colon \sigma > 1
+$$
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Motivation of test
+
+- If $X \sim N(\mu,\sigma^2)$ then
+$$
+P( \mu - 2 \sigma \leq X \leq \mu + 2\sigma ) \approx 0.95 
+$$
+
+- Recall: $\quad$ Difference $=$ (CE $-$ CS) $\sim N(\mu,\sigma^2)$
+
+- Hence if $\sigma = 1$
+$$
+P( \mu - 2 \leq {\rm CE} - {\rm CS} \leq \mu + 2 ) \approx 0.95 
+$$
+
+- **Meaning:** 
+$$
+\sigma=1
+\quad \implies \quad 
+\text{CS index is within } \pm{2\sigma} \text{ of CE index with probability } 0.95  
+$$
+
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test by hand
+
+
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+<br>
+
+1. **Calculations**: With data on Difference compute 
+
+- Sample mean:
+$$
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n} =  \frac{-6-2-7-4- \ldots -22-26}{12} = -\frac{138}{12} = -11.5
+$$
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test by hand
+
+
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+<br>
+
+1. **Calculations**: With data on Difference compute 
+
+- Sample variance:
+\begin{align*}
+\sum_{i=1}^{n} x_i^2 & = (-6)^2 + (-2)^2 + (-7)^2 + \ldots + (-22)^2 + (-26)^2 = 2432 \\
+s^2 & = \frac{\sum_{i=1}^n x^2_i- n \bar{x}^2}{n-1}
+      = \frac{2432-12(-11.5)^2}{11} = \frac{845}{11} = 76.8182
+\end{align*}
+
+
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test by hand
+
+
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+<br>
+
+1. **Calculations**: With data on Difference compute 
+
+- Chi-squared statistic:
+$$
+\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} 
+       = \frac{11 \left(\frac{845}{11}\right) }{1} 
+       = 845
+$$
+
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test by hand
+
+
+2. **Statistical Tables**: Find either
+    * We have $n = 12$
+    * In [Table 13.5](files/Statistics_Tables.pdf) find
+    $$
+    \chi_{11}^2(0.05) = 19.68
+    $$
+
+3. **Interpretation**:
+    * Test statistic is $\chi^2 = 845$
+    * We **reject** $H_0$ because
+    $$
+    \chi^2 = 845 > 19.68 = \chi_{n-1}^2(0.05)
+    $$
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test by hand
+
+4. **Conclusion**:
+    * We accept $H_1$: The standard deviation satisfies $\sigma > 1$
+    * A better estimate for $\sigma$ could be sample standard deviation
+    $$
+    s=\sqrt{\frac{845}{11}}=8.765
+    $$
+    * This suggests: With probability $0.95$
+    $$
+    \text{CS index is within } \pm{2 \times 8.765 = \pm 17.53 } \text{ of CE index}  
+    $$
+
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test in R
+
+
+**Goal**: Perform chi-squared variance ratio test in R
+
+- For this we need to compute p-value
+$$
+p = P(\chi_{n-1}^2 > \chi^2)
+$$
+
+- Thus, we need to compute probabilities for chi-squared distribution in R
+
+
+
+
+
+## Probability Distributions in R {.smaller}
+
+- R can natively do calculations with known probability distrubutions
+- Example: Let $X$ be r.v. with $N(\mu,\sigma^2)$ distribution
+
+| **R command**         |   **Meaning**                                |
+|:--------------------  |:------------------------------               |
+| ``pnorm(x, mean = mu, sd = sig)`` |   $P(X \leq x)$                              |
+| ``qnorm(p, mean = mu, sd = sig)`` |   $P(X \leq q) = p$                          |
+| ``dnorm(x, mean = mu, sd = sig)`` |   $f(x)$ where $f$ is distr. of $X$    |
+| ``rnorm(n, mean = mu, sd = sig)`` |   $n$ random samples from distr. of $X$|
+: {tbl-colwidths="[50,50]"}
+
+
+**Note**: Syntax of commands
+
+**norm** $=$ normal $\qquad$ **p** $=$ probability $\qquad$ **q** $=$ quantile 
+
+**d** $=$ distribution $\qquad$  **r** $=$ random
+  
+
+
+## Probability Distributions in R {.smaller}
+### Example
+
+- Suppose average height of women is normally distributed $N(\mu,\sigma^2)$
+- Assume mean $\mu = 163$ cm and standard deviation $\sigma = 8$ cm
+
+<br>
+
+```{r}
+#| echo: true
+
+# Probability woman exceeds 180cm in height
+# P(X > 180) = 1 - P(X <= 180)
+
+1 - pnorm(180, mean = 163, sd = 8)
+```
+
+
+## Probability Distributions in R {.smaller}
+### Example
+
+- Suppose average height of women is normally distributed $N(\mu,\sigma^2)$
+- Assume mean $\mu = 163$ cm and standard deviation $\sigma = 8$ cm
+
+<br>
 
 
 ```{r}
-# Degrees of freedom
-df <- 11
+#| echo: true
 
-# Values for x-axis
-x <- seq(-4, 4, length.out = 1000)
+# The upper 10th percentile for women height, that is,
+# height q such that P(X <= q) = 0.9
 
-# Calculate PDF of t-distribution
-pdf <- dt(x, df)
-
-# Plot PDF
-plot(x, pdf, type = "l", col = "blue", lwd = 2, xlab = "x", ylab = "Density")
-
-# Shade area where p-value < 0.025
-x_fill_left <- x[x <= qt(0.025, df)]
-y_fill_left <- pdf[x <= qt(0.025, df)]
-polygon(c(x_fill_left, rev(x_fill_left)), c(y_fill_left, rep(0, length(y_fill_left))), col = "gray", border = NA)
-
-# Shade area where p-value > 0.975
-x_fill_right <- x[x >= qt(0.975, df)]
-y_fill_right <- pdf[x >= qt(0.975, df)]
-polygon(c(x_fill_right, rev(x_fill_right)), c(y_fill_right, rep(0, length(y_fill_right))), col = "gray", border = NA)
-
-# Add critical value on plot
-text(qt(0.975, df), dt(qt(0.975, df), df) + 0.05, paste("x* =", round(qt(0.975, df), 4)), pos = 3, col = "red", cex = 1.3, adj = c(5.5, 4.5))
-
-# Add legend
-legend("topright", legend = c("area = 0.025 x 2"), fill = "gray", cex = 1.3)
+qnorm(0.90, mean = 163, sd = 8)
+```
 
 
+
+## Probability Distributions in R {.smaller}
+### Example
+
+- Suppose average height of women is normally distributed $N(\mu,\sigma^2)$
+- Assume mean $\mu = 163$ cm and standard deviation $\sigma = 8$ cm
+
+<br>
+
+```{r}
+#| echo: true
+
+# Value of density at 163
+
+dnorm(163, mean = 163, sd = 8)
+```
+
+
+## Probability Distributions in R {.smaller}
+### Example
+
+- Suppose average height of women is normally distributed $N(\mu,\sigma^2)$
+- Assume mean $\mu = 163$ cm and standard deviation $\sigma = 8$ cm
+
+<br>
+
+```{r}
+#| echo: true
+
+# Generate random sample of size 5
+
+rnorm(5, mean = 163, sd = 8)
+```
+
+
+
+## Probability Distributions in R {.smaller}
+### Chi-squared distribution
+
+- Commands for chi-squared distrubution are similar
+- ``df = n`` denotes $n$ degrees of feedom
+
+| **R command**         |   **Meaning**                                |
+|:--------------------  |:------------------------------               |
+| ``pchisq(x, df = n)`` |   $P(X \leq x)$                              |
+| ``qchisq(p, df = n)`` |   $P(X \leq q) = p$                          |
+| ``dchisq(x, df = n)``  |   $f(x)$ where $f$ is distr. of $X$    |
+| ``rchisq(m, df = n)``  |   $m$ random samples from distr. of $X$|
+: {tbl-colwidths="[40,60]"}
+
+
+
+## Probability Distributions in R {.smaller}
+### Example
+
+- From Tables we found quantile $\chi_{11}^2 (0.05) = 19.68$
+- Compute such quantile in R
+
+<br>
+
+```{r}
+#| echo: true
+# Compute 0.95 quantile for chi-squared with 11 degrees of freedom
+
+quantile <- qchisq(0.95, df = 11)
+
+cat("The 0.95 quantile for chi-squared with df = 11 is", quantile)
 ```
 
 
 
 
+## Probability Distributions in R {.smaller}
+### Example
 
+- The $\chi^2$ statistic for variance ratio test has distribution $\chi_{n-1}^2$
 
-## One-sample Two-sided t-test {.smaller}
-### p-value
-
-
-- How to compute $p$?
-    * Use statistical tables -- Available [here](files/Statistics_Tables.pdf)
-    * Use R -- Next sections
-
-
-
-
-## One-sample Two-sided t-test {.smaller}
-### Reference statistical tables
-
-
-Find the table **One-sided critical values of the student t distribution** in this
-[file](files/Statistics_Tables.pdf)
-
-- Look at the row with Degree of Freedom $n-1$ (or its closest value)
-- Find **critical value** $t^* := t_{n-1}(0.025)$ in column $0.025$
-- **Example**: $n=10$, DF $=9$, $t^*=t_{9}(0.025)=2.262$
-
-![](images/t_test_statistic_table.png){width=82%}
-
-
-
-
-
-## One-sample Two-sided t-test {.smaller}
-### Reference statistical tables 
-
-
-- The critical value $t^* = t_{n-1}(0.025)$ found in the table satisfies
+- Compute the p-value
 $$
-P(t_{n-1}>t^*) = 0.025
+p := P(\chi_{n-1}^2 > \chi^2) = 1 - P(\chi_{n-1}^2  \leq  \chi^2)
 $$
 
-- By definition of $p$-value for two-sided t-test we have
+
+
+## Probability Distributions in R {.smaller}
+### Example
+
+
+Suppose that
+
+- Degrees of freedom $= 18$
+- $\chi^2 = 56.88$
+
+<br>
+
+```{r}
+#| echo: true
+# Compute p-value for chi^2 = 56.88 and df = 18
+
+chi_squared <- 56.88
+
+p_value <- pchisq(chi_squared, df = 18)
+
+cat("The p-value for chi^2 =", chi_squared, "with df = 18 is", p_value)
+```
+
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test in R
+
+
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Cons. Expectation        |66 | 53| 62| 61| 78| 72| 65| 64| 61| 50| 55| 51|
+| Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+
+- Back to Example: Monthly data on CE and CS
+
+- **Question:** Test the following hypothesis:
 $$
-p := 2P(t_{n-1}>|t|) 
+H_0 \colon \sigma \leq 1 \qquad 
+H_1 \colon \sigma > 1
 $$
 
-- Therefore, for $|t|>t^*$
-\begin{align*}
-p & := 2P(t_{n-1}>|t|) \\
-  & <  2P(t_{n-1}>t^*) = 2 \cdot (0.025) = 0.05
-\end{align*}
-
-- **Conclusion**: $\qquad |t|>t^* \quad \iff \quad p<0.05$
 
 
 
-
-## One-sample Two-sided t-test {.smaller}
-### Interpretation
-
-
-Recall that $p = 2P ( \text{Observing t } | \mu = \mu_0)$. We have two possibilities: 
-
-- $|t|>t^*$
-  * In this case $p<0.05$
-  * The observed statistic $t$ is very unlikely under $H_0$
-  * We **reject** $H_0$
+## Variance ratio test - Example {.smaller}
+### Test in R
 
 
-- $|t| \leq t^*$
-  * In this case $p>0.05$
-  * The observed statistic $t$ is not unlikely under $H_0$
-  * We **do not reject** $H_0$
+| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
+|:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Cons. Expectation        |66 | 53| 62| 61| 78| 72| 65| 64| 61| 50| 55| 51|
+| Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
+| Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
+
+
+- Start by entering data into R
+
+```r
+# Enter Consumer Expectation and Consumer Spending data
+CE <- c(66, 53, 62, 61, 78, 72, 65, 64, 61, 50, 55, 51)
+CS <- c(72, 55, 69, 65, 82, 77, 72, 78, 77, 75, 77, 77)
+
+# Compute difference
+difference <- CE - CS
+``` 
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test in R
+
+
+- Compute chi-squared statistic
+$$
+\chi^2 = \frac{(n-1) s^2}{\sigma^2_0}
+$$
+
+
+```r
+# Compute sample size
+n <- length(difference)
+
+# Enter null hypothesis
+sigma_0 <- 1
+
+# Compute sample variance
+variance <- var(difference)
+
+# Compute chi-squared statistic
+chi_squared <- (n - 1) * variance / sigma_0 ^ 2
+```
+
+
+
+## Variance ratio test - Example {.smaller}
+### Test in R
+
+- Compute the p-value
+$$
+p = P(\chi_{n-1}^2 > \chi^2) = 1 - P(\chi_{n-1}^2 \leq \chi^2)
+$$
+
+
+```r
+# Compute p-value
+p_value <- 1 - pchisq(chi_squared, df = n - 1)
+
+# Print p-value
+cat("The p-value for one-sided variance test is", p_value)
+```
+
+
+
+## Variance ratio test - Example {.smaller}
+### Running the code
+
+- Full code be downloaded here [variance_ratio_test.R](codes/variance_ratio_test.R)
+
+- Running the code yields the output:
+
+```{r}
+# Enter Consumer Expectation and Consumer Spending data
+CE <- c(66, 53, 62, 61, 78, 72, 65, 64, 61, 50, 55, 51)
+CS <- c(72, 55, 69, 65, 82, 77, 72, 78, 77, 75, 77, 77)
+
+# Compute difference
+difference <- CE - CS
+
+# Compute sample size
+n <- length(difference)
+
+# Enter null hypothesis
+sigma_0 <- 1
+
+# Compute sample variance
+variance <- var(difference)
+
+# Compute chi-squared statistic
+chi_squared <- (n - 1) * variance / sigma_0 ^ 2
+
+# Compute p-value
+p_value <- 1 - pchisq(chi_squared, df = n - 1)
+
+# Print p-value
+cat("The p-value for one-sided variance test is", p_value)
+```
+
+- Since $p < 0.05$ we **reject** $H_0$
 
 
 
 
-
-
-
-
-# Part 2: <br>F distribution {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>F-distribution {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -491,7 +850,7 @@ where $U \sim N(0,1)$ and $V \sim \chi_p^2$
 
 
 
-## F distribution {.smaller}
+## F-distribution {.smaller}
 
 F-distribution is:
 
@@ -543,7 +902,7 @@ $$
 
 
 
-## F distribution {.smaller}
+## F-distribution {.smaller}
 
 ::: Definition
 
@@ -704,6 +1063,24 @@ $$
 
 
 
+
+
+
+## Properties of F-distribution {.smaller}
+
+$$
+\frac{1}{F_{r, s}}=\frac{\frac{V}{s}}{\frac{U}{t}}{\sim}F_{s, r}
+$$
+$$
+T^2_r=\left(\frac{X}{\sqrt{\frac{\chi^2_r}{r}}}\right)^2=\frac{\frac{X^2}{1}}{\frac{\chi^2_r}{r}}{\sim}F_{1, r}
+$$
+$$
+F_{r, \infty}\sim\chi^2_r
+$$
+$$
+F_{\infty, s}\sim\frac{s}{\chi^2_S}
+$$
+}
 
 
 
