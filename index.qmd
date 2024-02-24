@@ -121,6 +121,7 @@ Statistical Tables: [Download here](slides/files/Statistics_Tables.pdf)
 
 - **Probability & Statistics Manual**: Casella and Berger [@casella-berger]
 - **Easier Probability & Statistics Manual**: DeGroot and Schervish [@degroot]
-- **Manual of R**: Dalgaard [@dalgaard]
+- **Concise Statistics with R**: Dalgaard [@dalgaard]
+- **Comprehensive R manual**: Davies [@davies]
 
 
