@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 6: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 6: <br>Two-sample<br>hypothesis tests {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,7 +40,272 @@ $
 
 ## Outline of Lecture 6
 
-1. TBA
+1. Two-sample hypothesis tests
+2. Two-sample t-test
+3. Two-sample t-test: Example
+4. Two-sample F-test
+5. Two-sample F-test: Example
+
+
+
+
+
+# Part 3: <br>Two-sample<br> hypothesis tests {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Overview {.smaller}
+
+In Lecture 4:
+
+- Looked at data before and after the 2008 crash
+- In this case data for each month is directly comparable
+- Can then construct the difference between the 2007 and 2009 values
+- Analysis reduces from a two-sample to a one-sample problem
+
+::: Question
+
+How do we analyze two samples that cannot be paired together in this way?
+
+:::
+
+
+
+
+
+## Problem statement {.smaller}
+
+Want to compare the mean and the variance of 2 independent samples
+
+- First sample
+    * Sample size $n_1$, sample mean $\overline{x}_1$, sample variance $s^2_1$
+
+- Second sample
+    * Sample size $n_2$, sample mean $\overline{x}_2$, sample variance $s^2_2$
+
+- We may have $n_1 \neq n_2$ 
+    * Samples cannot be paired!
+
+What we can do:
+
+- Use a two-sample $t$-test to test for a difference in means
+- Use a two-sample $F$-test to test for a difference in variances
+
+
+
+
+## Why is this important? {.smaller}
+
+- Hypothesis testing starts to get interesting with 2 or more samples
+
+- t-test and F-test show the normal distribution family in action
+
+- This is also the maths behind regression
+    * Same method thus applies to seemingly unrelated problems
+    * Regression is a big subject in statistics
+
+
+
+
+## Normal distribution family in action {.smaller}
+### Two-sample t-test
+
+- Want to compare the means of two independent samples
+- At the same time variance is unknown
+- Therefore both variances are estimated with sample variance
+- Test statistic ends up being $t$-distribution linked to the total number of observations
+
+
+
+
+## Normal distribution family in action {.smaller}
+### Two-sample F-test
+
+- Want to compare the variance of two independent samples
+- This can be done by studying the ratio of the sample variances
+$$
+s^2_2/s^2_1
+$$
+
+- We have already shown that
+$$
+\frac{(n_1-1)S^2_1}{\sigma^2_1} \sim \chi^2_{n_1-1} \qquad 
+\frac{(n_2-1)S^2_2}{\sigma^2_2}\sim\chi^2_{n_2-1}
+$$
+
+
+
+## Normal distribution family in action {.smaller}
+### Two-sample F-test
+
+
+- Hence we can study statistic
+$$
+\frac{S^2_1 / \sigma_1^2}{S^2_2 / \sigma_2^2}
+$$
+
+- We will see that the above has F-distribution
+
+
+
+
+
+
+# Part 4: <br>Two-sample t-test {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## The two-sample t-test {.smaller}
+
+**Assumptions**: Suppose given samples from 2 normal populations
+
+- $X_1, \ldots ,X_n$ iid with distribution $N(\mu_X,\sigma^2)$
+- $Y_1, \ldots ,Y_m$ iid with distribution $N(\mu_Y,\sigma^2)$
+
+
+**Goal**: Compare means $\mu_X$ and $\mu_Y$. We consider test
+$$
+H_0 \colon \mu_X = \mu_Y \qquad  H_1 \colon \mu_X \neq \mu_Y
+$$
+
+
+**Note:**
+
+- In general $n \neq m$ so that one-sample t-test cannot be applied
+- The two populations have same variance $\sigma^2$
+
+
+
+## The two-sample t-test {.smaller}
+
+**t-statistic**: The general form is
+$$
+T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
+$$
+
+- In our case we can estimate $\mu_X - \mu_Y$ with the sample means
+$$
+\text{Estimate} = \overline{X} - \overline{Y}
+$$
+
+- Since we are testing for difference in mean, we have
+$$
+\text{Hypothesised value} = \mu_X - \mu_Y
+$$
+
+- The *Estimated Standard Error* is the standard deviation of estimator
+$$
+\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y} 
+$$
+
+
+
+## The two-sample t-statistic {.smaller}
+
+
+- Therefore the two-sample t-statistic is
+$$
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}}
+$$
+
+- Under the Null Hypothesis that $\mu_X = \mu_Y$ the t-statistic becomes
+$$
+T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
+$$
+
+
+
+
+## A note on the degrees of freedom (df) {.smaller}
+
+- The general rule is
+$$
+\text{df} = \text{Sample size} - \text{No. of estimated parameters}
+$$
+
+- Sample size in two-sample t-test:
+    * $n$ in the first sample
+    * $m$ in the second sample 
+    * Hence total number of observations is $n + m$
+
+- No. of estimated parameters is 2 -- $\mu_X$ and $\mu_Y$
+
+- Hence degree of freedoms in two-sample t-test is
+$$
+df= n + m - 2
+$$
+
+
+
+
+
+
+## The estimated standard error {.smaller}
+
+- Recall: We are assuming populations have same variance
+$$
+\sigma^2_X = \sigma^2_Y = \sigma^2
+$$
+
+- We need to compute the estimated standard error
+$$
+\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y} 
+$$
+
+- We have already computed the variance of the sample mean in the Lemma in Slide 17 Lecture 13 
+
+-  Since $\overline{X} \sim N(\mu_X,\sigma^2)$ and $\overline{Y} \sim N(\mu_Y,\sigma^2)$, by the Lemma we get
+$$
+\Var[\overline{X}] = \frac{\sigma^2}{n} \qquad
+\Var[\overline{Y}] = \frac{\sigma^2}{m}
+$$
+
+
+
+## The estimated standard error {.smaller}
+
+- Since $X_i$ and $Y_i$ are independent we get $\Cov(X_i,Y_j)=0$
+
+- By bilinearity of covariance we infer
+$$
+\Cov ( \overline{X} , \overline{Y} ) = \sum_{i=1}^n \sum_{j=1}^m \Cov (X_i,Y_j) = 0
+$$
+
+- We can then compute
+\begin{align*}
+\Var[ \overline{X} - \overline{Y} ] & = \Var[ \overline{X} ] + \Var [ \overline{Y} ] -
+                                        2 \Cov( \overline{X} , \overline{Y} ) \\
+                                    & = \Var[ \overline{X} ] + \Var [ \overline{Y} ] \\
+                                    & = \sigma^2 \left( \frac{1}{n} + \frac{1}{m}  \right)
+\end{align*}
+
+
+
+
+## The estimated standard error {.smaller}
+
+- Taking the square root gives
+$$
+\text{S.D.}(\overline{X} - \overline{Y} )= \sigma \ \sqrt{\frac{1}{n}+\frac{1}{m}}
+$$
+
+- Thus the form of the $t$-statistic becomes
+$$
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}} 
+  = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}}
+$$
 
 
 
@@ -49,7 +314,8 @@ $
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+
+# Part 4: <br>Two-sample F-test {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -61,4 +327,113 @@ $
 
 
 
-## TBA {.smaller}
+
+
+## Variance estimators {.smaller}
+
+Suppose given random samples from 2 normal populations:
+
+- $X_1, \ldots, X_n$ iid random sample from $N(\mu_X, \sigma_X^2)$
+- $Y_1, \ldots, Y_m$ iid random sample from $N(\mu_Y, \sigma_Y^2)$
+
+
+**Problem**:
+
+- We want to compare **variability** of the 2 populations
+- A way to do it is by estimating the variances ratio
+$$
+\frac{\sigma_X^2}{\sigma_Y^2}
+$$
+
+
+
+## Variance estimators {.smaller}
+
+**Question**: 
+
+- Suppose the variances $\sigma_X^2$ and $\sigma_Y^2$ are **unknown**
+- How can we estimate the ratio $\sigma_X^2 /\sigma_Y^2 \,$ ?
+
+. . . 
+
+**Answer**: 
+
+- Estimate the ratio $\sigma_X^2 /\sigma_Y^2 \,$ using sample variances
+$$
+S^2_X / S^2_Y
+$$
+
+- The F-distribution allows to compare the quantities 
+$$
+\sigma_X^2 /\sigma_Y^2 \qquad \text{and} \qquad S^2_X / S^2_Y
+$$
+
+
+
+
+## Variance ratio distribution {.smaller}
+
+::: Theorem
+
+Suppose given random samples from 2 normal populations:
+
+- $X_1, \ldots, X_n$ iid random sample from $N(\mu_X, \sigma_X^2)$
+- $Y_1, \ldots, Y_m$ iid random sample from $N(\mu_Y, \sigma_Y^2)$
+
+The random variable 
+$$
+F = \frac{ S_X^2 / \sigma_X^2  }{ S_Y^2 / \sigma_Y^2 }
+$$
+has F-distribution with $n-1$ and $m-1$ degrees of freedom.
+
+:::
+
+
+
+## Variance ratio distribution {.smaller}
+### Proof
+
+- We need to prove
+$$
+F = \frac{ S_X^2 / \sigma_X^2  }{ S_Y^2 / \sigma_Y^2 } \sim F_{n-1,m-1}
+$$
+
+
+- By the Theorem in Slide 48 Lecture 3 we have that
+$$
+ \frac{S_X^2}{ \sigma_X^2} \sim \frac{\chi_{n-1}^2}{n-1} \,, \qquad 
+ \frac{S_Y^2}{ \sigma_Y^2} \sim \frac{\chi_{m-1}^2}{m-1}
+$$
+
+
+## Variance ratio distribution {.smaller}
+### Proof
+
+- Therefore 
+$$
+F = \frac{ S_X^2 / \sigma_X^2  }{ S_Y^2 / \sigma_Y^2 } = \frac{U/p}{V/q}  
+$$
+where we have
+$$
+U \sim \chi_{p}^2 \,, \qquad 
+V \sim \chi_q^2 \,, \qquad 
+p = n-1 \,, \qquad
+q = m - 1
+$$
+
+
+- By the Theorem in Slide 43 we infer the thesis
+$$
+F = \frac{U/p}{V/q}   \sim F_{n-1,m-1}
+$$
+
+
+
+## Why good estimator? {.smaller}
+
+It is asymptotically unbiased. Show that
+$$
+\Expect \left[ \frac{S_X^2}{S_Y^2}  \right] = \frac{m-1}{m-3} \frac{\sigma_X^2}{\sigma_Y^2} \to \frac{\sigma_X^2}{\sigma_Y^2}
+$$
+as $m \to \infty$.
+Therefore the sample variance ratio $S_X^2 /S_Y^2$ is estimator for variance ratio $\sigma_X^2 /\sigma_Y^2$
