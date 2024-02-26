@@ -42,7 +42,7 @@ $
 2. Unbiased estimators
 3. Chi squared distribution
 4. Sampling from normal distribution
-5. t distribution
+5. t-distribution
 6. Hypothesis testing
 
 
@@ -630,8 +630,8 @@ Chi-squared distribution:
 - defined in terms of squares of $N(0, 1)$ random variables
 - designed to describe variance estimation
 - used to define other members of the normal family
-    * Student $t$ distribution
-    * $F$-distribution
+    * Student t-distribution
+    * F-distribution
 
 
 
@@ -1156,7 +1156,7 @@ $$
 
 
 
-# Part 5: <br>t distribution{background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>t-distribution{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1333,25 +1333,25 @@ $$
 :::
 
 
-**Answer**: $T$ has $t$ distribution with $n-1$ degrees of freedom
+**Answer**: $T$ has t-distribution with $n-1$ degrees of freedom
 
-- This is also known as **Student's t distribution**
+- This is also known as **Student's t-distribution**
 - **Student** was the pen name under which **W.S. Gosset** was publishing his research
 - He was **head brewer** at Guinness, at the time the largest brewery in the world!
-- Used $t$ distribution to study chemical properties of barley from **low samples** [@student] (see original [paper](https://www.york.ac.uk/depts/maths/histstat/student.pdf)
+- Used t-distribution to study chemical properties of barley from **low samples** [@student] (see original [paper](https://www.york.ac.uk/depts/maths/histstat/student.pdf)
 )
 
 
 
 
 
-## t distribution  {.smaller}
+## t-distribution  {.smaller}
 ### Definition
 
 
 ::: Definition
 
-A random variable $T$ has **Student's t distribution** with
+A random variable $T$ has **Student's t-distribution** with
 **p degrees of freedom**, denoted by 
 $$
 T \sim t_p \,,
@@ -1368,8 +1368,30 @@ $$
 
 
 
-## t distribution  {.smaller}
-### Distribution of t statistic
+## t-distribution  {.smaller}
+### Characterization
+
+::: Theorem
+
+Let $U \sim N(0,1)$ and $V \sim \chi_p^2$ be independent. The
+random variable
+$$
+T := \frac{U}{\sqrt{V/p}} 
+$$
+has t-distribution with $p$ degrees of freedom, that is, 
+$T \sim t_{p}$
+
+:::
+
+
+**Proof**: Given as exercise in Homework assignments
+
+
+
+
+## Distribution of t-statistic  {.smaller}
+
+As a consequence of the Theorem in previous slide we obtain:
 
 ::: Theorem
 
@@ -1377,21 +1399,51 @@ Let $X_1,\ldots,X_n$ be a random sample from $N(\mu,\sigma^2)$. Then the random 
 $$
 T = \frac{\overline{X}-\mu}{S/\sqrt{n}}
 $$
-has **t distribution** with $n-1$ degrees of freedom
+has **t-distribution** with $n-1$ degrees of freedom
 $$
 T \sim t_{n-1}
 $$
 :::
 
 
+## Distribution of t-statistic  {.smaller}
+### Proof of Theorem
+
+- Since $X_1,\ldots,X_n$ is random sample from $N(\mu,\sigma^2)$, we have shown that
+$$
+\overline{X} \sim N(\mu, \sigma^2/n)
+$$
+
+- Therefore we can renormalize and obtain
+$$
+U := \frac{ \overline{X} - \mu }{ \sigma/\sqrt{n} } \sim N(0,1)
+$$
 
 
 
-## t distribution {.smaller}
+## Distribution of t-statistic  {.smaller}
+### Proof of Theorem
 
+- We have also shown that
+$$
+V := \frac{ (n-1) S^2 }{ \sigma^2 } \sim \chi_{n-1}^2
+$$
+
+- Finally, we can rewrite $T$ as
+$$
+T = \frac{\overline{X}-\mu}{S/\sqrt{n}} = \frac{U}{ \sqrt{V/(n-1)} }
+$$
+
+- By the Theorem in Slide 66 we conclude that $T \sim t_{n-1}$
+
+
+
+
+
+## Properties of t-distribution {.smaller}
 
 ::: Proposition
-### Expectation and Variance of t distribution
+### Expectation and Variance of t-distribution
 
 Suppose that $T \sim t_p$. We have: 
 
@@ -1411,7 +1463,7 @@ Suppose that $T \sim t_p$. We have:
 
 
 
-## t distribution {.smaller}
+## t-distribution {.smaller}
 ### Comparison with Standard Normal
 
 The $t_p$ distribution generalizes standard normal $N(0,1)$:
@@ -1428,7 +1480,7 @@ $$
 
 
 
-## t distribution {.smaller}
+## t-distribution {.smaller}
 ### Plots: Comparison with Standard Normal
 
 

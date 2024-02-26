@@ -270,13 +270,23 @@ $$
 ## One-sample one-sided variance ratio test {.smaller}
 ### Procedure
 
-Suppose $\sigma_0$ is guess for $\sigma$. The one-sided hypothesis is
+Suppose given:
+
+- Data $x_1, \ldots, x_n$ from $N(\mu,\sigma^2)$ 
+- Guess $\sigma_0$ for $\sigma$
+
+The one-sided hypothesis test is
 $$
 H_0 \colon \sigma \leq \sigma_0 \qquad H_1 \colon \sigma > \sigma_0
 $$
-The **variance ratio test** or **chi-squared test** consists of 3 steps:
+The **variance ratio test** or **chi-squared test** consists of 3 steps
 
-1. **Calculation**: Compute the chi-squared statistics
+
+
+## One-sample one-sided variance ratio test {.smaller}
+### Procedure
+
+1. **Calculation**: Compute the chi-squared statistic
 $$
 \chi^2 = \frac{(n-1) s^2}{\sigma_0^2}
 $$
@@ -844,7 +854,7 @@ $$
 \frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
 $$
 
-- Define t distribution:
+- Define t-distribution:
 $$
 t_p \sim \frac{U}{\sqrt{V/p}}
 $$

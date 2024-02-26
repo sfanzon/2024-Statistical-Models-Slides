@@ -426,51 +426,23 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -482,7 +454,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -490,9 +466,33 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   </style>
 </head>
@@ -570,7 +570,7 @@ H_0 \colon \mu = \mu_0 \qquad H_1 \colon \mu \neq \mu_0
 <li>We consider the t-statistics <span class="math display">
 T = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}
 </span></li>
-<li>Recall: <span class="math inline">T \sim t_{n-1}</span> Student’s t distribution with <span class="math inline">n-1</span> degrees of freedom</li>
+<li>Recall: <span class="math inline">T \sim t_{n-1}</span> Student’s t-distribution with <span class="math inline">n-1</span> degrees of freedom</li>
 </ul>
 </section>
 <section id="one-sample-two-sided-t-test-1" class="slide level2 smaller">
@@ -631,7 +631,7 @@ p&lt;0.05
 <ul>
 <li><p>For two-sided t-test the p-value is defined as <span class="math display">
 p := 2P(t_{n-1}&gt; |t|)
-</span> where <span class="math inline">t_{n-1}</span> is the t distribution with <span class="math inline">n-1</span> degrees of freedom</p></li>
+</span> where <span class="math inline">t_{n-1}</span> is the t-distribution with <span class="math inline">n-1</span> degrees of freedom</p></li>
 <li><p>Therefore the p-value is <span class="math display">
 p = 2P(\text{Observing t }| \, \mu=\mu_0)
 </span></p></li>
@@ -660,7 +660,7 @@ p = 2P(\text{Observing t }| \, \mu=\mu_0)
 <section id="one-sample-two-sided-t-test-8" class="slide level2 smaller">
 <h2>One-sample Two-sided t-test</h2>
 <h3 id="reference-statistical-tables">Reference statistical tables</h3>
-<p>Find the table <strong>One-sided critical values of the student t distribution</strong> in this <a href="files/Statistics_Tables.pdf">file</a></p>
+<p>Find Table 13.1 in this <a href="files/Statistics_Tables.pdf">file</a></p>
 <ul>
 <li>Look at the row with Degree of Freedom <span class="math inline">n-1</span> (or its closest value)</li>
 <li>Find <strong>critical value</strong> <span class="math inline">t^* := t_{n-1}(0.025)</span> in column <span class="math inline">0.025</span></li>
@@ -992,7 +992,7 @@ t = \frac{\overline{x} - \mu_0}{s/\sqrt{n}} =
 <section id="example-2008-crisis-6" class="slide level2 smaller">
 <h2>Example: 2008 crisis</h2>
 <h3 id="reference-statistical-tables-2">Reference statistical tables</h3>
-<p>Find the <a href="files/Statistics_Tables.pdf">table</a> <strong>One-sided critical values of the student t distribution</strong></p>
+<p>Find Table 13.1 in this <a href="files/Statistics_Tables.pdf">file</a></p>
 <ul>
 <li>Find row with DF <span class="math inline">= n-1</span> (or closest). Find critical value <span class="math inline">t^*</span> in column <span class="math inline">0.025</span></li>
 <li>In our case: <span class="math inline">n=12</span>, DF <span class="math inline">=11</span>, <span class="math inline">t^*=  t_{11}(0.025) =2.201</span></li>
@@ -1304,7 +1304,7 @@ H_0 \colon \mu = 0
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.2371414 -0.7082133  1.0819063  1.7113014  1.9287481</code></pre>
+<pre><code>[1]  0.55366739 -0.87090395 -1.82676816 -0.66506909 -0.01742743</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
@@ -1917,7 +1917,7 @@ t = \frac{\text{estimate } - \text{ hypothesised value}}{\mathop{\mathrm{e.s.e.}
 \overline{x} = \frac{1}{n} \sum_{i=1}^n x_i \,, \qquad
 s = \sqrt{\frac{\sum_{i=1}^n x_i^2 - n \overline{x}^2}{n-1}}
 </span></p></li>
-<li><p>Find the critical value <span class="math inline">t^* = t_{n-1}(0.025)</span> on the appropriate <a href="files/Statistics_Tables.pdf">Statistical Table</a></p></li>
+<li><p>Find the critical value <span class="math inline">t^* = t_{n-1}(0.025)</span> in <a href="files/Statistics_Tables.pdf">Statistical Table 13.1</a></p></li>
 </ol>
 <ul>
 <li>If <span class="math inline">|t|&gt;t^*</span> reject <span class="math inline">H_0</span>. The mean is not <span class="math inline">\mu_0</span></li>
