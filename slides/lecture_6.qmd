@@ -587,7 +587,6 @@ $$
 
 
 
-
 ## The two-sample t-test {.smaller}
 ### Procedure
 
@@ -664,6 +663,110 @@ $$
 
 
 
+## The two-sample t-test in R {.smaller}
+### General commands
+
+1. Store the samples $x_1,\ldots,x_n$ and $y_1,\ldots,y_m$ in two R vectors
+    * ``x_sample <- c(x1, ..., xn)``
+    * ``y_sample <- c(y1, ..., ym)``
+
+2. Perform a two-sided two-sample t-test on ``x_sample`` and ``y_sample``
+    * ``t.test(x_sample, y_sample, var.equal = TRUE)``
+
+3. Read output
+    * Output is similar to one-sample t-test
+    * The main quantity of interest is p-value
+
+
+
+
+## t-test command options {.smaller}
+### Comments on command ``t.test(x, y)``
+
+1. R will perform a two-sample t-test on populations ``x`` and ``y``
+2. R implicitly assumes the null hypothesis is 
+$$
+H_0 \colon \mu_X = \mu_Y
+$$
+
+3. ``mu = mu0`` tells R to test null hypothesis:
+    $$
+    H_0 \colon \mu_X = \mu_Y + \mu_0
+    $$ 
+
+
+## t-test command options {.smaller}
+### Comments on command ``t.test(x, y)``
+
+
+4. One-sided two sample t-test can be performed by specifying
+    * ``alternative = "greater"`` which tests 
+    $$
+    H_0 \colon \mu_X > \mu_Y + \mu_0
+    $$ 
+    * ``alternative = "smaller"`` which tests 
+    $$
+    H_0 \colon \mu_X < \mu_Y + \mu_0
+    $$ 
+
+
+
+## t-test command options {.smaller}
+### Comments on command ``t.test(x, y)``
+
+
+5. ``var.equal = TRUE`` tells R to assume that populations have same variance
+$$
+\sigma_X^2 = \sigma^2_Y
+$$
+
+6. In this case R computes the t-statistic with formula discussed earlier
+    $$
+    t = \frac{ \overline{x} - \overline{y} }{s_p \sqrt{ \dfrac{1}{n} + \dfrac{1}{m} }}
+    $$
+
+
+
+
+
+## t-test command options {.smaller}
+### Comments on command ``t.test(x, y)``
+
+**Warning**: If ``var.equal = TRUE`` is **not** specified then
+
+- R assumes that populations have different variance
+    $\sigma_X^2 \neq \sigma^2_Y$
+- In this case the t-statistic 
+  $$
+    t = \frac{ \overline{x} - \overline{y} }{s_p \sqrt{ \dfrac{1}{n} + \dfrac{1}{m} }}
+  $$
+is **NOT** t-distributed
+
+- R performs the **Welch t-test** instead of the **classic t-test** 
+
+
+
+## t-test command options {.smaller}
+### Comments on command ``t.test(x, y)``
+
+
+- **Welch t-test** consists in computing the **Welch statistic**
+$$
+w = \frac{\overline{x} - \overline{y}}{ \sqrt{ \dfrac{s_X^2}{n} + \dfrac{s_Y^2}{m} } } 
+$$
+- If sample sizes $m,n > 5$ then $w$ is approximately t-distributed
+    * Degrees of freedom are not integer, and depend on $S_X, S_Y, n, m$
+
+
+**Bottom line:** 
+
+- p-value from Welch t-test is **similar** to p-value from two-sample t-test
+- Since p-values are similar, most times the 2 tests yield **same decision**
+
+
+
+
+
 
 
 # Part 3: <br>Two-sample t-test<br>Example {background-color="#cc0164" visibility="uncounted"}
@@ -675,7 +778,9 @@ $$
 :::
 
 
+
 ## Two-sample t-test {.smaller}
+### Example
 
 
 - **Samples:** Wage data on 10 Mathematicians and 13 Accountants
@@ -694,7 +799,6 @@ $$
 | Accountants |$y_1$|$y_2$|$y_3$|$y_4$|$y_5$|$y_6$|$y_7$|$y_8$|$y_9$|$y_{10}$|$y_{11}$|$y_{12}$|$y_{13}$|
 |:----------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:------:|:------:|:------:|:------:|
 |  Wages      | 37  | 37  | 42  |  44 |  46 |  48 |  54 |  56 |  59 | 60     |     60 |   64   |    64  |
-
 
 
 
@@ -764,6 +868,387 @@ t & = \frac{\bar{x} - \bar{y} }{s_p \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}} \\
   & = \frac{1.8846}{9.6648{\times}0.4206} \\
   & = 0.464 \,\, (3\ \text{d.p.})
 \end{align*}
+
+
+
+
+## Completing the t-test {.smaller}
+
+
+2. **Referencing Tables**:
+    * Degrees of freedom = $n + m - 2 = 10 + 13 - 2 = 21$
+    * Find corresponding critical value in [Table 13.1](files/Statistics_Tables.pdf)
+$$
+t_{21}(0.025) = 2.08
+$$
+
+
+
+
+## Completing the t-test {.smaller} 
+
+3. **Interpretation:**
+    * We have that 
+      $$
+|     t | = 0.464 < 2.08 = t_{21}(0.025) 
+      $$
+
+    * Therefore the p-value satisfies $p>0.05$
+    * There is no evidence ($p>0.05$) in favor of $H_1$
+    * Hence we accept that $\mu_X = \mu_Y$
+
+4. **Conclusion:** Average pay levels seem to be the same for both professions
+
+
+
+
+
+## Two-sample t-test in R: Code {.smaller}
+
+
+```r
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+- Code can be downloaded here [two_sample_t_test.R](codes/two_sample_t_test.R)
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Comments**: 
+
+1. First line: R tells us that a Two-Sample t-test is performed
+2. Second line: Data for t-test is ``mathematicians`` and ``accountants``
+
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Comments**: 
+
+3. The $t$ statistic computed is $t = 0.46359$
+    * **Note**: This coincides with the one computed by hand
+4. There are $21$ degrees of freedom and p-value is $p = 0.6477$
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Comments**: 
+
+5. Fourth line: The alternative hypothesis that the difference in means is not zero
+    * This translates to $H_1 \colon \mu_X \neq \mu_Y$
+    * **Warning**: This is not saying to reject $H_0$ -- R is just stating $H_1$
+
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Comments**: 
+
+6. Fifth line: R computes a $95 \%$ confidence interval for $\mu_X - \mu_Y$ 
+    * Based on the data, the set of hypothetical values for $\mu_X - \mu_Y$ is
+    $$
+    (\mu_X - \mu_Y) \in [-6.569496, 10.338727]
+    $$
+
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Comments**: 
+
+7. Seventh line: R computes sample mean for the two populations
+    * Sample mean for ``mathematicians`` is $53.5$
+    * Sample mean for ``accountants`` is $51.61538$
+
+
+
+
+
+## Two-sample t-test in R: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform two-sample t-test with null hypothesis mu_X = mu_Y
+# Specify that populations have same variance
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants, var.equal = TRUE)
+
+
+# Print answer
+print(answer)
+```
+
+
+**Conclusion**: The p-value is $p = 0.6477$
+
+- Since $p > 0.05$ we do not reject $H_0$
+- Hence $\mu_X$ and $\mu_Y$ appear to be similar
+- Average pay levels seem to be the same for both professions
+
+
+
+
+## t-test without assuming same variance {.smaller}
+
+- In the previous t-tests we assumed the populations have same variance
+$$
+\sigma_X^2 = \sigma_Y^2
+$$
+
+- R can also perform t-test without assuming $\sigma_X^2 = \sigma_Y^2$
+    * This is called **Welch Two-sample t-test**
+    * It can be performed with ``t.test(x, y)``
+    * Note that we are omitting the option ``var.equal = TRUE``
+
+
+## t-test without assuming same variance {.smaller}
+
+**Warnings**: 
+
+- The p-value obtained with **Welch t-test** is usually comparable to the one obtained with **classic t-test**
+
+- The t-statistic of **Welch t-test** is different from the one of the **classic t-test**
+    * Indeed **Welch t-test** and **classic t-test** compute statistics, respectively,
+   $$
+  w = \frac{\overline{x} - \overline{y}}{ \sqrt{ \dfrac{s_X^2}{n} + \dfrac{s_Y^2}{m} } }  \qquad \qquad 
+   t = \frac{ \overline{x} - \overline{y} }{s_p \sqrt{ \dfrac{1}{n} + \dfrac{1}{m} }}
+   $$
+
+
+
+## Welch two-sample t-test: Code {.smaller}
+
+```r
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants)
+
+
+# Print answer
+print(answer)
+```
+
+- **Note**: 
+    * This is almost the same code as in Slide 48
+    * We are only omitting the option ``var.equal = TRUE`` in ``t.test``
+
+
+
+
+
+## Welch two-sample t-test: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants)
+
+
+# Print answer
+print(answer)
+```
+
+**Comments**: 
+
+1. First line: R tells us that a Welch Two-Sample t-test is performed
+2. The rest of the output is similar to classic t-test
+3. Main difference is that p-value and t-statistic differ from classic t-test
+
+
+
+
+## Welch two-sample t-test: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants)
+
+
+# Print answer
+print(answer)
+```
+
+**Comments**: 
+
+4. Also note that degrees of freedom are fractionary:
+    * This is because the Welch statistic is approximately t-distributed
+    * In this example it can be approximated with $t_{n}$ with $n = 19.795$
+
+
+
+
+## Welch two-sample t-test: Output {.smaller}
+
+```{r}
+# Enter Wages data in 2 vectors using function c()
+
+mathematicians <- c(36, 40, 46, 54, 57, 58, 59, 60, 62, 63)
+accountants <- c(37, 37, 42, 44, 46, 48, 54, 56, 59, 60, 60, 64, 64)
+
+
+# Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y
+# Store result of t.test in answer
+
+answer <- t.test(mathematicians, accountants)
+
+
+# Print answer
+print(answer)
+```
+
+**Conclusion**: The p-values obtained with the 2 tests are very similar
+
+- Welch t-test: p-value $= 0.6467$
+- Classic t-test: p-value $= 0.6477$
+- Both test: $p > 0.05$ and therefore do not reject $H_0$
 
 
 

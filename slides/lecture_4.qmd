@@ -1419,7 +1419,7 @@ cat("They coincide!")
 
 
 
-## t-test {.smaller}
+## t-test in R {.smaller}
 
 - We are now ready to do some statistics in R
 - We start by looking at the **t-test**
@@ -1464,7 +1464,7 @@ $$
 
 
 
-## t-test with R {.smaller}
+## t-test {.smaller}
 
 
 1. Given the sample $x_1,\ldots,x_n$, R can compute the **t-statistic**
@@ -1481,6 +1481,8 @@ $$
   * If $p \geq 0.05$ do not reject $H_0$. There is not enough evidence
 
 
+**Note:** The above operations can be done at the same time by command ``t.test``
+
 
 ## t-test code in R {.smaller}
 
@@ -1489,7 +1491,7 @@ $$
     * ``data_vector <- c(x1, ..., xn)``
 
 2. Perform a two-sided t-test on ``data_vector`` with null hypothesis ``mu0`` using
-    * ``t.test(data, mu = mu0)``
+    * ``t.test(data_vector, mu = mu0)``
 
 3. Read output. R will tell you
     * t-statistic
@@ -1505,11 +1507,29 @@ $$
 
 Relevant options of ``t.test`` are
 
-- ``mu = mu0`` specifies null hypothesis $\mu_0$ (default is $\mu_0 = 0$)
-- Perform one-sided t-test against:
-  * alternatives greater than $\mu_0$ by using ``alternative = "greater"``
-  * alternatives smaller than $\mu_0$ by using ``alternative = "smaller"``
-- ``conf.level = n`` changes the confidence interval level to ``n`` (default is $0.95$)
+1. ``mu = mu0 `` tells R to test null hypothesis
+$$
+H_0 \colon \mu = \mu_0
+$$
+
+2. If ``mu = mu0`` is not specified, R assumes $\mu_0 = 0$
+
+3. ``alternative = "greater"`` tells R to perform one-sided t-test
+$$
+H_0 \colon \mu > \mu_0
+$$
+
+
+
+
+## t-test command {.smaller}
+
+4. ``alternative = "smaller"`` tells R to perform one-sided t-test
+$$
+H_0 \colon \mu < \mu_0
+$$
+
+5. ``conf.level = n`` changes the confidence interval level to ``n`` (default is $0.95$)
 
 
 
@@ -1556,11 +1576,6 @@ $$
 ## Example: 2008 crisis {.smaller}
 ### R code
 
-| Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
-|:------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| CCI 2007                 |86 | 86| 88| 90| 99| 97| 97| 96| 99| 97| 90| 90|
-| CCI 2009                 |24 | 22| 21| 21| 19| 18| 17| 18| 21| 23| 22| 21|
-
 
 ```r
 # Enter CCI data in 2 vectors using function c()
@@ -1571,7 +1586,11 @@ score_2009 <- c(24, 22, 21, 21, 19, 18, 17, 18, 21, 23, 22, 21)
 difference <- score_2007 - score_2009
 
 # Perform t-test on difference with null hypothesis mu = 0
-t.test(difference, mu = 0)
+# Store answer in "answer"
+answer -> t.test(difference, mu = 0)
+
+# Print the answer
+print(answer)
 ```
 
 - Code can be downloaded here [one_sample_t_test.R](codes/one_sample_t_test.R)
@@ -1725,10 +1744,12 @@ cat(output[6])
 <br> 
 
 
-This gives two informations: 
+- R tells us the alternative hypothesis is $\mu \neq 0$
+- Hence the Null hypothesis tested is $H_0 \colon \mu = 0$
 
-- The value of the Null Hypothesis is $\mu = 0$
-- The Alternative Hypothesis is that $\mu \neq 0$
+- **Warning**: 
+    * This message is **not** telling you to accept to alternative hypothesis
+    * This message is only stating the alternative hypothesis
 
 
 
