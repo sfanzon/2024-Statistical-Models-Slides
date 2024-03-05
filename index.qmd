@@ -93,7 +93,7 @@ Statistical Tables: [Download here](slides/files/Statistics_Tables.pdf)
 |:------      |:------                                                                                                        |
 | Lecture 4   | [Code: One-Sample t-test](slides/codes/one_sample_t_test.R)                                                   | 
 | Lecture 5   | [Code: Varance ratio test](slides/codes/variance_ratio_test.R)                                                |
-| Lecture 6   | [Code: Two-Sample t-test](slides/codes/two_sample_t_test.R)                                                   | 
+| Lecture 6   | [Code: Two-Sample t-test](slides/codes/two_sample_t_test.R) \| [Code: F-test Simple](slides/codes/F_test_simple.R) \| [Code: F-test First Principles](slides/codes/F_test_first_principles.R) | 
 | Lecture 11  | [Code: 2008 Crisis](slides/codes/2008_crisis_code.R) \| [Data: 2008 Crisis](slides/datasets/2008_crisis.txt) \| [Data: Family Guy](slides/datasets/family_guy.txt) |
 : {tbl-colwidths="[30,70]"}
 
@@ -102,7 +102,7 @@ Statistical Tables: [Download here](slides/files/Statistics_Tables.pdf)
 
 # Readings
 
-**Main textbooks**: These slides are self-contained and based on the books
+**Main textbooks**: These slides are self-contained and largely based on the books
 
 - Bingham and Fry [@bingham-fry]
 - Fry and Burke [@fry-burke]

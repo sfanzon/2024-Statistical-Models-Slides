@@ -272,7 +272,7 @@ $$
 
 Suppose given:
 
-- Data $x_1, \ldots, x_n$ from $N(\mu,\sigma^2)$ 
+- Sample $x_1, \ldots, x_n$ of size $n$ from $N(\mu,\sigma^2)$
 - Guess $\sigma_0$ for $\sigma$
 
 The one-sided hypothesis test is
