@@ -862,6 +862,7 @@ cat("The p-value for one-sided variance test is", p_value)
 
 
 ## Overview {.smaller}
+### Chi-squared distribution
 
 **Recall**: Chi-squared distribution with $p$ degrees of freedom is
 $$
@@ -873,6 +874,7 @@ where $Z_1, \ldots, Z_n$ are iid $N(0, 1)$
 
 
 ## Overview {.smaller}
+### Chi-squared distribution
 
 Chi-squared distribution was used to:
 

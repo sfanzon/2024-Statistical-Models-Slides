@@ -410,29 +410,25 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .Definition {
     --color1: #c6e6ed;
@@ -442,35 +438,39 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Problem {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1290,7 +1290,7 @@ p = P(\chi_{n-1}^2 &gt; \chi^2)
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">163</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 158.6307 175.0432 168.2630 160.8652 162.9485</code></pre>
+<pre><code>[1] 166.3278 148.5621 159.0385 143.8531 163.9494</code></pre>
 </div>
 </div>
 </section>
@@ -1633,12 +1633,14 @@ p = P(\chi_{n-1}^2 &gt; \chi^2) = 1 - P(\chi_{n-1}^2 \leq \chi^2)
 </section>
 <section id="overview" class="slide level2 smaller">
 <h2>Overview</h2>
+<h3 id="chi-squared-distribution-2">Chi-squared distribution</h3>
 <p><strong>Recall</strong>: Chi-squared distribution with <span class="math inline">p</span> degrees of freedom is <span class="math display">
 \chi_p^2 = Z_1^2 + \ldots + Z_p^2
 </span> where <span class="math inline">Z_1, \ldots, Z_n</span> are iid <span class="math inline">N(0, 1)</span></p>
 </section>
 <section id="overview-1" class="slide level2 smaller">
 <h2>Overview</h2>
+<h3 id="chi-squared-distribution-3">Chi-squared distribution</h3>
 <p>Chi-squared distribution was used to:</p>
 <ul>
 <li><p>Describe distribution of sample variance <span class="math inline">S^2</span>: <span class="math display">
