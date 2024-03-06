@@ -81,21 +81,21 @@ How do we analyze two samples that cannot be paired?
 
 ## Problem statement {.smaller}
 
-Want to compare the mean and the variance of 2 independent samples
+**Goal:** compare mean and variance of 2 independent samples
 
-- First sample
-    * Sample size $n_1$, sample mean $\overline{x}_1$, sample variance $s^2_1$
+- First sample:
+    * Sample size $n$, sample mean $\overline{x}$, sample variance $s^2_X$
 
-- Second sample
-    * Sample size $n_2$, sample mean $\overline{x}_2$, sample variance $s^2_2$
+- Second sample:
+    * Sample size $m$, sample mean $\overline{y}$, sample variance $s^2_Y$
 
-- We may have $n_1 \neq n_2$ 
+- We may have $n \neq m$ 
     * Samples cannot be paired!
 
-What we can do:
+**Tests available:**
 
-- Use a two-sample $t$-test to test for a difference in means
-- Use a two-sample $F$-test to test for a difference in variances
+- Two-sample $t$-test to test for difference in means
+- Two-sample $F$-test to test for difference in variances
 
 
 
@@ -107,7 +107,7 @@ What we can do:
 - t-test and F-test show the normal distribution family in action
 
 - This is also the maths behind regression
-    * Same method thus applies to seemingly unrelated problems
+    * Same methods apply to seemingly unrelated problems
     * Regression is a big subject in statistics
 
 
@@ -117,9 +117,9 @@ What we can do:
 ### Two-sample t-test
 
 - Want to compare the means of two independent samples
-- At the same time variance is unknown
-- Therefore both variances are estimated with sample variance
-- Test statistic ends up being $t$-distribution linked to the total number of observations
+- At the same time population variances are unknown
+- Therefore both variances are estimated with sample variances
+- Test statistic is $t_k$-distributed with $k$ linked to the total number of observations
 
 
 
@@ -130,13 +130,13 @@ What we can do:
 - Want to compare the variance of two independent samples
 - This can be done by studying the ratio of the sample variances
 $$
-s^2_2/s^2_1
+s^2_X/s^2_Y
 $$
 
 - We have already shown that
 $$
-\frac{(n_1-1)S^2_1}{\sigma^2_1} \sim \chi^2_{n_1-1} \qquad 
-\frac{(n_2-1)S^2_2}{\sigma^2_2}\sim\chi^2_{n_2-1}
+\frac{(n - 1) S^2_X}{\sigma^2_X} \sim \chi^2_{n - 1} \qquad 
+\frac{(m - 1) S^2_Y}{\sigma^2_Y} \sim \chi^2_{m - 1}
 $$
 
 
@@ -147,10 +147,10 @@ $$
 
 - Hence we can study statistic
 $$
-\frac{S^2_1 / \sigma_1^2}{S^2_2 / \sigma_2^2}
+F = \frac{S^2_X / \sigma_X^2}{S^2_Y / \sigma_Y^2}
 $$
 
-- We will see that the above has F-distribution
+- We will see that $F$ has F-distribution
 
 
 
@@ -175,14 +175,16 @@ $$
 - $Y_1, \ldots ,Y_m$ iid with distribution $N(\mu_Y,\sigma^2)$
 
 
-**Note**:
+**Further assumptions**:
 
 - In general $n \neq m$ so that one-sample t-test cannot be applied
 - The two populations have same variance 
 $$
 \sigma^2_X = \sigma^2_Y = \sigma^2
 $$
-- Assuming same variance is simplification (can also be removed)
+
+
+**Note:** Assuming same variance is simplification. Removing it leads to *Welch t-test*
 
 
 
@@ -219,7 +221,7 @@ $$
 \Expect[ \overline{Y} ] = \mu_Y
 $$
 
-- Therefore we can estimate $\mu_X - \mu_Y$ with the sample means
+- Therefore we can estimate $\mu_X - \mu_Y$ with the sample means, that is,
 $$
 \text{Estimate} = \overline{X} - \overline{Y}
 $$
@@ -244,7 +246,7 @@ $$
 
 - Therefore the two-sample t-statistic is
 $$
-T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}}
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e.}}
 $$
 
 - Under the Null Hypothesis that $\mu_X = \mu_Y$ the t-statistic becomes
@@ -267,11 +269,11 @@ $$
     * $m$ in the second sample 
     * Hence total number of observations is $n + m$
 
-- No. of estimated parameters is 2 -- $\mu_X$ and $\mu_Y$
+- No. of estimated parameters is 2: Namely $\mu_X$ and $\mu_Y$
 
 - Hence degree of freedoms in two-sample t-test is
 $$
-df= n + m - 2
+{\rm df} = n + m - 2
 $$
 
 
@@ -287,14 +289,14 @@ $$
 
 - We need to compute the estimated standard error
 $$
-\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y} 
+\text{e.s.e.} = \text{Standard Deviation of } \ \overline{X} -\overline{Y} 
 $$
 
-- We have already computed the variance of the sample mean in the Lemma in Slide 17 Lecture 3 
+- Variance of sample mean was computed in the Lemma in Slide 17 Lecture 3 
 
 -  Since $\overline{X} \sim N(\mu_X,\sigma^2)$ and $\overline{Y} \sim N(\mu_Y,\sigma^2)$, by the Lemma we get
 $$
-\Var[\overline{X}] = \frac{\sigma^2}{n} \qquad
+\Var[\overline{X}] = \frac{\sigma^2}{n} \,, \qquad \quad
 \Var[\overline{Y}] = \frac{\sigma^2}{m}
 $$
 
@@ -306,7 +308,7 @@ $$
 
 - By bilinearity of covariance we infer
 $$
-\Cov ( \overline{X} , \overline{Y} ) = \sum_{i=1}^n \sum_{j=1}^m \Cov (X_i,Y_j) = 0
+\Cov ( \overline{X} , \overline{Y} ) = \frac{1}{n \cdot m} \sum_{i=1}^n \sum_{j=1}^m \Cov (X_i,Y_j) = 0
 $$
 
 - We can then compute
@@ -341,7 +343,7 @@ $$
 
 ## Estimating the variance {.smaller}
 
-The t-statistic is
+The t-statistic is currently
 $$
 T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}}
 $$
@@ -351,8 +353,8 @@ $$
 - Define the sample variances
 
 $$
-S_X^2 = \frac{ \sum_{i=1}^n X_i - n \overline{X} }{n-1} \qquad \qquad
-S_Y^2 = \frac{ \sum_{i=1}^m Y_i - m \overline{Y} }{m-1}
+S_X^2 = \frac{ \sum_{i=1}^n X_i^2 - n \overline{X}^2 }{n-1} \qquad \qquad
+S_Y^2 = \frac{ \sum_{i=1}^m Y_i^2 - m \overline{Y}^2 }{m-1}
 $$
 
 
@@ -365,7 +367,7 @@ X_1, \ldots , X_n \sim N(\mu_X, \sigma^2) \qquad \qquad
 Y_1, \ldots , Y_m \sim N(\mu_Y, \sigma^2)
 $$
 
-- As shown in Lecture 3, this implies $S_X^2$ and $S_Y^2$ are unbiased estimators of $\sigma^2$
+- From Lecture 3 we know that $S_X^2$ and $S_Y^2$ are unbiased estimators of $\sigma^2$, e.g.
 $$
 \Expect[ S_X^2 ] = \Expect[ S_Y^2 ] = \sigma^2
 $$
@@ -409,7 +411,7 @@ $$
 
 - We have $\lambda_X + \lambda_Y = 1$
 
-- Denominator in $\lambda_X$ and $\lambda_Y$ are degrees of freedom ${\rm df } = n + m - 2$
+- Denominators in $\lambda_X$ and $\lambda_Y$ are degrees of freedom ${\rm df } = n + m - 2$
 
 - This choice is made so that $S^2$ has chi-squared distribution (more on this later) 
 
@@ -702,11 +704,11 @@ $$
 4. One-sided two sample t-test can be performed by specifying
     * ``alternative = "greater"`` which tests 
     $$
-    H_0 \colon \mu_X > \mu_Y + \mu_0
+    H_1 \colon \mu_X > \mu_Y + \mu_0
     $$ 
     * ``alternative = "smaller"`` which tests 
     $$
-    H_0 \colon \mu_X < \mu_Y + \mu_0
+    H_1 \colon \mu_X < \mu_Y + \mu_0
     $$ 
 
 
@@ -1360,7 +1362,7 @@ q = m - 1
 $$
 
 
-- By the Theorem in Slide 44 Lecture 5 we infer the thesis
+- By the Theorem in Slide 46 Lecture 5 we infer the thesis
 $$
 F = \frac{U/p}{V/q}   \sim F_{n-1,m-1}
 $$
@@ -1416,7 +1418,7 @@ $$
 **Goal**: Compare variances $\sigma_X^2$ and $\sigma_Y^2$. We consider the test
 $$
 H_0 \colon \sigma_X^2 = \sigma_Y^2  \qquad \qquad 
-H_1 \colon \sigma_X^2 \neq \sigma_Y^2
+H_1 \colon \sigma_X^2 > \sigma_Y^2
 $$
 
 

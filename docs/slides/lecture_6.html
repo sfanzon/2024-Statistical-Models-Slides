@@ -406,43 +406,23 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
   .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -450,15 +430,35 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,11 +466,11 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Question {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -554,25 +554,25 @@
 </section>
 <section id="problem-statement" class="slide level2 smaller">
 <h2>Problem statement</h2>
-<p>Want to compare the mean and the variance of 2 independent samples</p>
+<p><strong>Goal:</strong> compare mean and variance of 2 independent samples</p>
 <ul>
-<li>First sample
+<li>First sample:
 <ul>
-<li>Sample size <span class="math inline">n_1</span>, sample mean <span class="math inline">\overline{x}_1</span>, sample variance <span class="math inline">s^2_1</span></li>
+<li>Sample size <span class="math inline">n</span>, sample mean <span class="math inline">\overline{x}</span>, sample variance <span class="math inline">s^2_X</span></li>
 </ul></li>
-<li>Second sample
+<li>Second sample:
 <ul>
-<li>Sample size <span class="math inline">n_2</span>, sample mean <span class="math inline">\overline{x}_2</span>, sample variance <span class="math inline">s^2_2</span></li>
+<li>Sample size <span class="math inline">m</span>, sample mean <span class="math inline">\overline{y}</span>, sample variance <span class="math inline">s^2_Y</span></li>
 </ul></li>
-<li>We may have <span class="math inline">n_1 \neq n_2</span>
+<li>We may have <span class="math inline">n \neq m</span>
 <ul>
 <li>Samples cannot be paired!</li>
 </ul></li>
 </ul>
-<p>What we can do:</p>
+<p><strong>Tests available:</strong></p>
 <ul>
-<li>Use a two-sample <span class="math inline">t</span>-test to test for a difference in means</li>
-<li>Use a two-sample <span class="math inline">F</span>-test to test for a difference in variances</li>
+<li>Two-sample <span class="math inline">t</span>-test to test for difference in means</li>
+<li>Two-sample <span class="math inline">F</span>-test to test for difference in variances</li>
 </ul>
 </section>
 <section id="why-is-this-important" class="slide level2 smaller">
@@ -582,7 +582,7 @@
 <li><p>t-test and F-test show the normal distribution family in action</p></li>
 <li><p>This is also the maths behind regression</p>
 <ul>
-<li>Same method thus applies to seemingly unrelated problems</li>
+<li>Same methods apply to seemingly unrelated problems</li>
 <li>Regression is a big subject in statistics</li>
 </ul></li>
 </ul>
@@ -592,9 +592,9 @@
 <h3 id="two-sample-t-test">Two-sample t-test</h3>
 <ul>
 <li>Want to compare the means of two independent samples</li>
-<li>At the same time variance is unknown</li>
-<li>Therefore both variances are estimated with sample variance</li>
-<li>Test statistic ends up being <span class="math inline">t</span>-distribution linked to the total number of observations</li>
+<li>At the same time population variances are unknown</li>
+<li>Therefore both variances are estimated with sample variances</li>
+<li>Test statistic is <span class="math inline">t_k</span>-distributed with <span class="math inline">k</span> linked to the total number of observations</li>
 </ul>
 </section>
 <section id="normal-distribution-family-in-action-1" class="slide level2 smaller">
@@ -603,11 +603,11 @@
 <ul>
 <li><p>Want to compare the variance of two independent samples</p></li>
 <li><p>This can be done by studying the ratio of the sample variances <span class="math display">
-s^2_2/s^2_1
+s^2_X/s^2_Y
 </span></p></li>
 <li><p>We have already shown that <span class="math display">
-\frac{(n_1-1)S^2_1}{\sigma^2_1} \sim \chi^2_{n_1-1} \qquad
-\frac{(n_2-1)S^2_2}{\sigma^2_2}\sim\chi^2_{n_2-1}
+\frac{(n - 1) S^2_X}{\sigma^2_X} \sim \chi^2_{n - 1} \qquad
+\frac{(m - 1) S^2_Y}{\sigma^2_Y} \sim \chi^2_{m - 1}
 </span></p></li>
 </ul>
 </section>
@@ -616,9 +616,9 @@ s^2_2/s^2_1
 <h3 id="two-sample-f-test-1">Two-sample F-test</h3>
 <ul>
 <li><p>Hence we can study statistic <span class="math display">
-\frac{S^2_1 / \sigma_1^2}{S^2_2 / \sigma_2^2}
+F = \frac{S^2_X / \sigma_X^2}{S^2_Y / \sigma_Y^2}
 </span></p></li>
-<li><p>We will see that the above has F-distribution</p></li>
+<li><p>We will see that <span class="math inline">F</span> has F-distribution</p></li>
 </ul>
 </section></section>
 <section>
@@ -637,14 +637,14 @@ s^2_2/s^2_1
 <li><span class="math inline">X_1, \ldots ,X_n</span> iid with distribution <span class="math inline">N(\mu_X,\sigma^2)</span></li>
 <li><span class="math inline">Y_1, \ldots ,Y_m</span> iid with distribution <span class="math inline">N(\mu_Y,\sigma^2)</span></li>
 </ul>
-<p><strong>Note</strong>:</p>
+<p><strong>Further assumptions</strong>:</p>
 <ul>
 <li>In general <span class="math inline">n \neq m</span> so that one-sample t-test cannot be applied</li>
 <li>The two populations have same variance <span class="math display">
 \sigma^2_X = \sigma^2_Y = \sigma^2
 </span></li>
-<li>Assuming same variance is simplification (can also be removed)</li>
 </ul>
+<p><strong>Note:</strong> Assuming same variance is simplification. Removing it leads to <em>Welch t-test</em></p>
 </section>
 <section id="the-two-sample-t-test-1" class="slide level2 smaller">
 <h2>The two-sample t-test</h2>
@@ -667,7 +667,7 @@ T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
 {\rm I\kern-.3em E}[ \overline{X} ] = \mu_X   \qquad \qquad
 {\rm I\kern-.3em E}[ \overline{Y} ] = \mu_Y
 </span></p></li>
-<li><p>Therefore we can estimate <span class="math inline">\mu_X - \mu_Y</span> with the sample means <span class="math display">
+<li><p>Therefore we can estimate <span class="math inline">\mu_X - \mu_Y</span> with the sample means, that is, <span class="math display">
 \text{Estimate} = \overline{X} - \overline{Y}
 </span></p></li>
 </ul>
@@ -687,7 +687,7 @@ T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
 <h2>The two-sample t-statistic</h2>
 <ul>
 <li><p>Therefore the two-sample t-statistic is <span class="math display">
-T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}}
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e.}}
 </span></p></li>
 <li><p>Under the Null Hypothesis that <span class="math inline">\mu_X = \mu_Y</span> the t-statistic becomes <span class="math display">
 T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
@@ -706,9 +706,9 @@ T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
 <li><span class="math inline">m</span> in the second sample</li>
 <li>Hence total number of observations is <span class="math inline">n + m</span></li>
 </ul></li>
-<li><p>No.&nbsp;of estimated parameters is 2 – <span class="math inline">\mu_X</span> and <span class="math inline">\mu_Y</span></p></li>
+<li><p>No.&nbsp;of estimated parameters is 2: Namely <span class="math inline">\mu_X</span> and <span class="math inline">\mu_Y</span></p></li>
 <li><p>Hence degree of freedoms in two-sample t-test is <span class="math display">
-df= n + m - 2
+{\rm df} = n + m - 2
 </span></p></li>
 </ul>
 </section>
@@ -719,11 +719,11 @@ df= n + m - 2
 \sigma^2_X = \sigma^2_Y = \sigma^2
 </span></p></li>
 <li><p>We need to compute the estimated standard error <span class="math display">
-\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y}
+\text{e.s.e.} = \text{Standard Deviation of } \ \overline{X} -\overline{Y}
 </span></p></li>
-<li><p>We have already computed the variance of the sample mean in the Lemma in Slide 17 Lecture 3</p></li>
+<li><p>Variance of sample mean was computed in the Lemma in Slide 17 Lecture 3</p></li>
 <li><p>Since <span class="math inline">\overline{X} \sim N(\mu_X,\sigma^2)</span> and <span class="math inline">\overline{Y} \sim N(\mu_Y,\sigma^2)</span>, by the Lemma we get <span class="math display">
-{\rm Var}[\overline{X}] = \frac{\sigma^2}{n} \qquad
+{\rm Var}[\overline{X}] = \frac{\sigma^2}{n} \,, \qquad \quad
 {\rm Var}[\overline{Y}] = \frac{\sigma^2}{m}
 </span></p></li>
 </ul>
@@ -733,7 +733,7 @@ df= n + m - 2
 <ul>
 <li><p>Since <span class="math inline">X_i</span> and <span class="math inline">Y_i</span> are independent we get <span class="math inline">{\rm Cov}(X_i,Y_j)=0</span></p></li>
 <li><p>By bilinearity of covariance we infer <span class="math display">
-{\rm Cov}( \overline{X} , \overline{Y} ) = \sum_{i=1}^n \sum_{j=1}^m {\rm Cov}(X_i,Y_j) = 0
+{\rm Cov}( \overline{X} , \overline{Y} ) = \frac{1}{n \cdot m} \sum_{i=1}^n \sum_{j=1}^m {\rm Cov}(X_i,Y_j) = 0
 </span></p></li>
 <li><p>We can then compute <span class="math display">\begin{align*}
 {\rm Var}[ \overline{X} - \overline{Y} ] &amp; = {\rm Var}[ \overline{X} ] + {\rm Var}[ \overline{Y} ] -
@@ -757,7 +757,7 @@ T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}}
 </section>
 <section id="estimating-the-variance" class="slide level2 smaller">
 <h2>Estimating the variance</h2>
-<p>The t-statistic is <span class="math display">
+<p>The t-statistic is currently <span class="math display">
 T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}}
 </span></p>
 <ul>
@@ -765,8 +765,8 @@ T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1
 <li><p>Define the sample variances</p></li>
 </ul>
 <p><span class="math display">
-S_X^2 = \frac{ \sum_{i=1}^n X_i - n \overline{X} }{n-1} \qquad \qquad
-S_Y^2 = \frac{ \sum_{i=1}^m Y_i - m \overline{Y} }{m-1}
+S_X^2 = \frac{ \sum_{i=1}^n X_i^2 - n \overline{X}^2 }{n-1} \qquad \qquad
+S_Y^2 = \frac{ \sum_{i=1}^m Y_i^2 - m \overline{Y}^2 }{m-1}
 </span></p>
 </section>
 <section id="estimating-the-variance-1" class="slide level2 smaller">
@@ -776,7 +776,7 @@ S_Y^2 = \frac{ \sum_{i=1}^m Y_i - m \overline{Y} }{m-1}
 X_1, \ldots , X_n \sim N(\mu_X, \sigma^2) \qquad \qquad
 Y_1, \ldots , Y_m \sim N(\mu_Y, \sigma^2)
 </span></p></li>
-<li><p>As shown in Lecture 3, this implies <span class="math inline">S_X^2</span> and <span class="math inline">S_Y^2</span> are unbiased estimators of <span class="math inline">\sigma^2</span> <span class="math display">
+<li><p>From Lecture 3 we know that <span class="math inline">S_X^2</span> and <span class="math inline">S_Y^2</span> are unbiased estimators of <span class="math inline">\sigma^2</span>, e.g. <span class="math display">
 {\rm I\kern-.3em E}[ S_X^2 ] = {\rm I\kern-.3em E}[ S_Y^2 ] = \sigma^2
 </span></p></li>
 <li><p>Therefore both <span class="math inline">S_X^2</span> and <span class="math inline">S_Y^2</span> can be used to estimate <span class="math inline">\sigma^2</span></p></li>
@@ -808,7 +808,7 @@ S^2 := \lambda_X S_X^2 + \lambda_Y S_Y^2  \,, \qquad
 <p><strong>Notes</strong>:</p>
 <ul>
 <li><p>We have <span class="math inline">\lambda_X + \lambda_Y = 1</span></p></li>
-<li><p>Denominator in <span class="math inline">\lambda_X</span> and <span class="math inline">\lambda_Y</span> are degrees of freedom <span class="math inline">{\rm df } = n + m - 2</span></p></li>
+<li><p>Denominators in <span class="math inline">\lambda_X</span> and <span class="math inline">\lambda_Y</span> are degrees of freedom <span class="math inline">{\rm df } = n + m - 2</span></p></li>
 <li><p>This choice is made so that <span class="math inline">S^2</span> has chi-squared distribution (more on this later)</p></li>
 </ul>
 </section>
@@ -1044,10 +1044,10 @@ H_0 \colon \mu_X = \mu_Y + \mu_0
 <li>One-sided two sample t-test can be performed by specifying
 <ul>
 <li><code>alternative = "greater"</code> which tests <span class="math display">
-H_0 \colon \mu_X &gt; \mu_Y + \mu_0
+H_1 \colon \mu_X &gt; \mu_Y + \mu_0
 </span></li>
 <li><code>alternative = "smaller"</code> which tests <span class="math display">
-H_0 \colon \mu_X &lt; \mu_Y + \mu_0
+H_1 \colon \mu_X &lt; \mu_Y + \mu_0
 </span></li>
 </ul></li>
 </ol>
@@ -1677,7 +1677,7 @@ V \sim \chi_q^2 \,, \qquad
 p = n-1 \,, \qquad
 q = m - 1
 </span></p></li>
-<li><p>By the Theorem in Slide 44 Lecture 5 we infer the thesis <span class="math display">
+<li><p>By the Theorem in Slide 46 Lecture 5 we infer the thesis <span class="math display">
 F = \frac{U/p}{V/q}   \sim F_{n-1,m-1}
 </span></p></li>
 </ul>
@@ -1716,7 +1716,7 @@ F = \frac{U/p}{V/q}   \sim F_{n-1,m-1}
 </ul>
 <p><strong>Goal</strong>: Compare variances <span class="math inline">\sigma_X^2</span> and <span class="math inline">\sigma_Y^2</span>. We consider the test <span class="math display">
 H_0 \colon \sigma_X^2 = \sigma_Y^2  \qquad \qquad
-H_1 \colon \sigma_X^2 \neq \sigma_Y^2
+H_1 \colon \sigma_X^2 &gt; \sigma_Y^2
 </span></p>
 </section>
 <section id="two-sample-one-sided-f-test-1" class="slide level2 smaller">

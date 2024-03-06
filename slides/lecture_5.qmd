@@ -88,7 +88,7 @@ $
 $$
 \chi_p^2 = Z_1^2 + \ldots + Z_p^2
 $$
-where $Z_1, \ldots, Z_n$ are iid $N(0, 1)$
+where $Z_1, \ldots, Z_p$ are iid $N(0, 1)$
 
 
 
