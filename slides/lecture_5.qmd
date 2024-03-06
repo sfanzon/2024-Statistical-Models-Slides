@@ -42,7 +42,8 @@ $
 ## Outline of Lecture 5
 
 1. One-sample variance test
-2. F-distribution
+2. One-sample variance test: Example
+3. F-distribution
 
 
 
@@ -94,16 +95,20 @@ where $Z_1, \ldots, Z_n$ are iid $N(0, 1)$
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### Goal
- 
 
-- Estimate variance $\sigma^2$ of normal population $N(\mu,\sigma^2)$
+**Assumption:** Suppose given sample $X_1,\ldots, X_n$ iid from $N(\mu,\sigma^2)$
+
+
+**Goal:** Estimate variance $\sigma^2$ of population
+
+
+**Test:** 
 
 - Suppose $\sigma_0$ is guess for $\sigma$ 
 
-- The one-sided hypotheses test is
+- The one-sided hypothesis test for $\sigma$ is
 $$
-H_0 \colon \sigma \leq \sigma_0 \qquad H_1 \colon \sigma > \sigma_0
+H_0 \colon \sigma = \sigma_0 \qquad H_1 \colon \sigma > \sigma_0
 $$
 
 
@@ -111,26 +116,30 @@ $$
 ## One-sample one-sided variance ratio test {.smaller}
 ### What to do?
 
-- Consider the sample variance $S^2$
-
-- The sample variance $S^2$ cannot be too far from the true variance $\sigma$
-
-- Since we believe $H_0$, true variance is 
+- Consider the sample variance
 $$
-\sigma \leq \sigma_0
+S^2 = \frac{ \sum_{i=1}^n  X_i^2 - n \overline{X}^2 }{n-1}
 $$
+
+- Since we believe $H_0$, the variance is 
+$$
+\sigma = \sigma_0
+$$
+
+- $S^2$ cannot be too far from the true variance $\sigma$
 
 - Therefore we **cannot** have that 
 $$
-S^2 \gg \sigma_0^2
+S^2 \gg \sigma^2 = \sigma_0^2 
 $$
-(bacause then $S^2 \gg \sigma^2$)
 
 
 
 ## One-sample one-sided variance ratio test {.smaller}
 ### What to do?
 
+
+- If we observe $S^2 \gg \sigma_0^2$ then our guess $\sigma_0$ is probably wrong
 
 - Therefore we **reject** $H_0$ if
 $$
@@ -143,7 +152,7 @@ $$
 $$
 \frac{(n-1)S^2}{\sigma_0^2}  \gg 1
 $$
-
+where $n$ is the sample size
 
 
 
@@ -151,11 +160,22 @@ $$
 ### What to do?
 
 
-- Assuming $\sigma=\sigma_0$, the **rejection** condition becomes
+- We define our **test statistic** as
 $$
-\frac{(n-1)S^2}{\sigma_0^2} = \frac{(n-1)S^2}{\sigma^2}  \gg 1
+\chi^2 := \frac{(n-1)s^2}{\sigma_0^2}
 $$
 
+
+- The **rejection** condition is hence
+$$
+\chi^2 \gg 1
+$$
+
+
+
+
+## One-sample one-sided variance ratio test {.smaller}
+### What to do?
 
 - Recall that 
 $$
@@ -163,19 +183,24 @@ $$
 $$
 
 
+- Assuming $\sigma=\sigma_0$, we therefore have
+$$
+\chi^2 = \frac{(n-1)S^2}{\sigma_0^2} = \frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
 
 
 ## One-sample one-sided variance ratio test {.smaller}
-### What to do?
+### Summary
 
-- We define our **test statistic** as
+
+
+- We **reject** $H_0$ if 
 $$
-\chi^2 := \frac{(n-1)s^2}{\sigma_0^2}
+\chi^2 = \frac{(n-1)S^2}{\sigma_0^2} \gg 1 
 $$
 
-- We **reject** $H_0$ if $\chi^2$ is too large
-
-- As $\chi^2$ is observed from $\chi_{n-1}^2$, we decide to rejct if
+- As $\chi^2 \sim \chi_{n-1}^2$, we decide to rejct $H_0$ if
 $$
 \chi^2 > \chi_{n-1}^2(0.05)   
 $$
@@ -189,8 +214,7 @@ $$
 
 
 
-## One-sample one-sided variance ratio test {.smaller}
-### Critical values of chi-squared
+## Critical values of chi-squared {.smaller}
 
 - $x^* := \chi_{n-1}^2(0.05)$ is point on $x$-axis such that $P(\chi_{n-1}^2 > x^* ) = 0.05$
 
@@ -228,11 +252,9 @@ legend("topright", legend = c("area = 0.05"), fill = "gray", cex = 1.3)
 ```
 
 
+## Critical values of chi-squared -- Tables {.smaller}
 
-
-## One-sample one-sided variance ratio test {.smaller}
-### Critical values of chi-squared -- Table 13.5 ([file here](files/Statistics_Tables.pdf))
-
+- Find Table 13.5 in this [file](files/Statistics_Tables.pdf)
 - Look at the row with Degree of Freedom $n-1$ (or its closest value)
 - Find **critical value** $\chi^2_{n-1}(0.05)$ in column $\alpha = 0.05$
 - **Example**: $n=12$, DF $=11$, $\chi^2_{11}(0.05) = 19.68$
@@ -270,16 +292,16 @@ $$
 ## One-sample one-sided variance ratio test {.smaller}
 ### Procedure
 
-Suppose given:
+Suppose given
 
 - Sample $x_1, \ldots, x_n$ of size $n$ from $N(\mu,\sigma^2)$
 - Guess $\sigma_0$ for $\sigma$
 
 The one-sided hypothesis test is
 $$
-H_0 \colon \sigma \leq \sigma_0 \qquad H_1 \colon \sigma > \sigma_0
+H_0 \colon \sigma = \sigma_0 \qquad H_1 \colon \sigma > \sigma_0
 $$
-The **variance ratio test** or **chi-squared test** consists of 3 steps
+The **variance ratio test** consists of 3 steps
 
 
 
@@ -332,7 +354,17 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
+# Part 2: <br>One-sample variance test: Example {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## One-sample variance ratio test: Example {.smaller}
 
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
@@ -351,7 +383,7 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
+## One-sample variance ratio test: Example {.smaller}
 
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
@@ -368,15 +400,14 @@ $$
 
 - **Question:** Test the following hypothesis:
 $$
-H_0 \colon \sigma \leq 1 \qquad 
+H_0 \colon \sigma = 1 \qquad 
 H_1 \colon \sigma > 1
 $$
 
 
 
 
-## Variance ratio test - Example {.smaller}
-### Motivation of test
+## Motivation of test {.smaller}
 
 - If $X \sim N(\mu,\sigma^2)$ then
 $$
@@ -390,7 +421,7 @@ $$
 P( \mu - 2 \leq {\rm CE} - {\rm CS} \leq \mu + 2 ) \approx 0.95 
 $$
 
-- **Meaning:** 
+- **Meaning of variance ratio test:** 
 $$
 \sigma=1
 \quad \implies \quad 
@@ -401,8 +432,7 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test by hand
+## The variance ratio test {.smaller}
 
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
@@ -421,9 +451,7 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test by hand
-
+## The variance ratio test {.smaller}
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
 |:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -444,10 +472,7 @@ s^2 & = \frac{\sum_{i=1}^n x^2_i- n \bar{x}^2}{n-1}
 
 
 
-
-## Variance ratio test - Example {.smaller}
-### Test by hand
-
+## The variance ratio test {.smaller}
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
 |:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -468,12 +493,10 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test by hand
+## The variance ratio test {.smaller}
 
-
-2. **Statistical Tables**: Find either
-    * We have $n = 12$
+2. **Statistical Tables**:
+    * Sample size is $n = 12$
     * In [Table 13.5](files/Statistics_Tables.pdf) find
     $$
     \chi_{11}^2(0.05) = 19.68
@@ -488,8 +511,7 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test by hand
+## The variance ratio test {.smaller}
 
 4. **Conclusion**:
     * We accept $H_1$: The standard deviation satisfies $\sigma > 1$
@@ -506,9 +528,7 @@ $$
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test in R
-
+## The variance ratio test in R {.smaller}
 
 **Goal**: Perform chi-squared variance ratio test in R
 
@@ -635,10 +655,21 @@ rnorm(5, mean = 163, sd = 8)
 
 
 ## Probability Distributions in R {.smaller}
-### Example
+### Example 1
 
 - From Tables we found quantile $\chi_{11}^2 (0.05) = 19.68$
-- Compute such quantile in R
+- **Question:** Compute such quantile in R
+
+
+
+
+
+## Probability Distributions in R {.smaller}
+### Example 1 -- Solution
+
+- From Tables we found quantile $\chi_{11}^2 (0.05) = 19.68$
+- **Question:** Compute such quantile in R
+
 
 <br>
 
@@ -652,47 +683,44 @@ cat("The 0.95 quantile for chi-squared with df = 11 is", quantile)
 ```
 
 
-
-
 ## Probability Distributions in R {.smaller}
-### Example
+### Example 2
 
 - The $\chi^2$ statistic for variance ratio test has distribution $\chi_{n-1}^2$
 
-- Compute the p-value
+- **Question:** Compute the p-value
 $$
-p := P(\chi_{n-1}^2 > \chi^2) = 1 - P(\chi_{n-1}^2  \leq  \chi^2)
+p := P(\chi_{n-1}^2 > \chi^2)
 $$
 
 
 
 ## Probability Distributions in R {.smaller}
-### Example
+### Example 2 -- Solution
+
+- The $\chi^2$ statistic for variance ratio test has distribution $\chi_{n-1}^2$
+
+- **Question:** Compute the p-value
+$$
+p := P(\chi_{n-1}^2 > \chi^2)
+$$
 
 
-Suppose that
+- Observe that
+$p := P(\chi_{n-1}^2 > \chi^2) = 1 - P(\chi_{n-1}^2  \leq  \chi^2)$
 
-- Degrees of freedom $= 18$
-- $\chi^2 = 56.88$
+- The code is therefore
 
-<br>
+```r
+# Compute p-value for chi^2 = chi_squared and df = n
 
-```{r}
-#| echo: true
-# Compute p-value for chi^2 = 56.88 and df = 18
-
-chi_squared <- 56.88
-
-p_value <- pchisq(chi_squared, df = 18)
-
-cat("The p-value for chi^2 =", chi_squared, "with df = 18 is", p_value)
+p_value <- 1 - pchisq(chi_squared, df = n)
 ```
 
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test in R
+## The variance ratio test in R {.smaller}
 
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
@@ -701,21 +729,20 @@ cat("The p-value for chi^2 =", chi_squared, "with df = 18 is", p_value)
 | Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
 | Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
 
+<br>
 
-- Back to Example: Monthly data on CE and CS
+- **Back to Example:** Monthly data on CE and CS
 
 - **Question:** Test the following hypothesis:
 $$
-H_0 \colon \sigma \leq 1 \qquad 
+H_0 \colon \sigma = 1 \qquad 
 H_1 \colon \sigma > 1
 $$
 
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test in R
-
+## The variance ratio test in R {.smaller}
 
 | Month                    | J | F | M | A | M | J | J | A | S | O | N | D |
 |:------------------------ |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -723,6 +750,7 @@ $$
 | Cons. Spending           |72 | 55| 69| 65| 82| 77| 72| 78| 77| 75| 77| 77|
 | Difference               |-6 | -2| -7| -4| -4| -5| -7|-14|-16|-25|-22|-26|
 
+<br>
 
 - Start by entering data into R
 
@@ -737,9 +765,7 @@ difference <- CE - CS
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test in R
-
+## The variance ratio test in R {.smaller}
 
 - Compute chi-squared statistic
 $$
@@ -763,8 +789,7 @@ chi_squared <- (n - 1) * variance / sigma_0 ^ 2
 
 
 
-## Variance ratio test - Example {.smaller}
-### Test in R
+## The variance ratio test in R {.smaller}
 
 - Compute the p-value
 $$
@@ -780,15 +805,15 @@ p_value <- 1 - pchisq(chi_squared, df = n - 1)
 cat("The p-value for one-sided variance test is", p_value)
 ```
 
+<br>
+
+- The full code can be downloaded here [variance_ratio_test.R](codes/variance_ratio_test.R)
 
 
-## Variance ratio test - Example {.smaller}
-### Running the code
 
-- Full code be downloaded here [variance_ratio_test.R](codes/variance_ratio_test.R)
+## Running the code {.smaller}
 
-- Running the code yields the output:
-
+- Running [variance_ratio_test.R](codes/variance_ratio_test.R) gives the following output:
 ```{r}
 # Enter Consumer Expectation and Consumer Spending data
 CE <- c(66, 53, 62, 61, 78, 72, 65, 64, 61, 50, 55, 51)
@@ -816,15 +841,17 @@ p_value <- 1 - pchisq(chi_squared, df = n - 1)
 cat("The p-value for one-sided variance test is", p_value)
 ```
 
+<br>
+
 - Since $p < 0.05$ we **reject** $H_0$
+- Therefore the true variance seems to be $\sigma^2 > 1$
 
 
 
 
 
 
-
-# Part 2: <br>F-distribution {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>F-distribution {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
