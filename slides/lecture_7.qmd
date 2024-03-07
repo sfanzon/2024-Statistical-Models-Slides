@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 7: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 7: <br>The chi-squared test{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -38,18 +38,22 @@ $
 
 
 
-## Outline of Lecture 6
+## Outline of Lecture 7
 
-1. TBA
-
-
-
-
-
-
+1. Overview
+2. The chi-squared goodness of fit test
+3. The chi-squared test of independence/no association
+4. Computational Example 1
+5. Computational Example 2
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+
+
+
+
+
+
+# Part 1: <br>Overview {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -62,3 +66,13 @@ $
 
 
 ## TBA {.smaller}
+
+
+
+| Manager | Played  |     Won |  Drawn  | Lost    |
+|:-------:|:-------:|:-------:|:-------:|:-------:|
+|  Moyes  |    51   |   27    | 9       |   15    |
+|Van Gaal | 103     |   54    |  25     |   24    |
+| Mourinho|  144    |   84    |  32     |   28    |
+|Solskjaer|  168    |    91   |   37    |   40    |
+Relative performance of Man Utd managers
