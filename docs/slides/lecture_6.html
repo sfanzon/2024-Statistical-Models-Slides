@@ -406,63 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
+  .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
@@ -470,9 +418,61 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -652,7 +652,7 @@ F = \frac{S^2_X / \sigma_X^2}{S^2_Y / \sigma_Y^2}
 H_0 \colon \mu_X = \mu_Y \qquad  H_1 \colon \mu_X \neq \mu_Y
 </span></p>
 <p><strong>t-statistic</strong>: The general form is <span class="math display">
-T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
+T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e.}}
 </span></p>
 </section>
 <section id="the-two-sample-t-statistic" class="slide level2 smaller">
@@ -679,7 +679,7 @@ T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
 \text{Hypothesised value} = \mu_X - \mu_Y
 </span></p></li>
 <li><p>The <em>Estimated Standard Error</em> is the standard deviation of estimator <span class="math display">
-\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y}
+\text{e.s.e.} = \text{Standard Deviation of } \overline{X} -\overline{Y}
 </span></p></li>
 </ul>
 </section>
@@ -690,7 +690,7 @@ T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
 T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e.}}
 </span></p></li>
 <li><p>Under the Null Hypothesis that <span class="math inline">\mu_X = \mu_Y</span> the t-statistic becomes <span class="math display">
-T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
+T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e.}}
 </span></p></li>
 </ul>
 </section>
@@ -750,7 +750,7 @@ T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
 \text{S.D.}(\overline{X} - \overline{Y} )= \sigma \ \sqrt{\frac{1}{n}+\frac{1}{m}}
 </span></p></li>
 <li><p>Thus the form of the t-statistic becomes <span class="math display">
-T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}}
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e.}}
 = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}}
 </span></p></li>
 </ul>

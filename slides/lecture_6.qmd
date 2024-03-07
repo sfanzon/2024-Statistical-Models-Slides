@@ -201,7 +201,7 @@ $$
 
 **t-statistic**: The general form is
 $$
-T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e}}
+T = \frac{\text{Estimate}-\text{Hypothesised value}}{\text{e.s.e.}}
 $$
 
 
@@ -238,7 +238,7 @@ $$
 
 - The *Estimated Standard Error* is the standard deviation of estimator
 $$
-\text{e.s.e} = \text{Standard Deviation of } \overline{X} -\overline{Y} 
+\text{e.s.e.} = \text{Standard Deviation of } \overline{X} -\overline{Y} 
 $$
 
 
@@ -251,7 +251,7 @@ $$
 
 - Under the Null Hypothesis that $\mu_X = \mu_Y$ the t-statistic becomes
 $$
-T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e}}
+T = \frac{\overline{X} - \overline{Y} }{\text{e.s.e.}}
 $$
 
 
@@ -332,7 +332,7 @@ $$
 
 - Thus the form of the t-statistic becomes
 $$
-T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e}} 
+T = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\text{e.s.e.}} 
   = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{\sigma \ \sqrt{\dfrac{1}{n}+\dfrac{1}{m}}}
 $$
 
