@@ -406,31 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Example {
+  .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -438,27 +418,11 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,13 +430,49 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -935,7 +935,7 @@ T &amp; = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{ S_p \ \sqrt{\dfr
 <li><p>We conclude that <span class="math inline">U</span> and <span class="math inline">V</span> are independent</p></li>
 <li><p>We have shown that <span class="math display">
 T = \frac{U}{\sqrt{V/(n+m-2)}} \,, \qquad
-V \sim N(0,1) \,, \qquad V \sim \chi_{n + m - 2}^2
+U \sim N(0,1) \,, \qquad V \sim \chi_{n + m - 2}^2
 </span></p></li>
 <li><p>By the Theorem in Slide 66 of Lecture 3 we conclude that <span class="math display">
 T \sim t_{n+m-2}

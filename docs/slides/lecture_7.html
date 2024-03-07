@@ -34,6 +34,22 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -325,19 +341,35 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Theorem {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Question {
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -345,35 +377,7 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -385,11 +389,23 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -457,8 +473,58 @@
 </div>
 </div>
 </section>
-<section id="tba" class="slide level2 smaller">
-<h2>TBA</h2>
+<section id="problem-statement" class="slide level2 smaller">
+<h2>Problem statement</h2>
+<p><strong>Data:</strong> in the form of <strong>numerical counts</strong></p>
+<p><strong>Test:</strong> difference between observed counts and predictions of theoretical model</p>
+<p><strong>Example</strong>: Blood counts</p>
+<ul>
+<li><p>Suppose to have counts of blood type for some people</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">AB</th>
+<th style="text-align: center;">O</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2162</td>
+<td style="text-align: center;">738</td>
+<td style="text-align: center;">228</td>
+<td style="text-align: center;">2876</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>We want to compare the above to the probability model</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">AB</th>
+<th style="text-align: center;">O</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1/3</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/24</td>
+<td style="text-align: center;">1/2</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</section>
+<section id="counts-with-multiple-factors" class="slide level2 smaller">
+<h2>Counts with multiple factors</h2>
+<p><strong>Example:</strong> Relative performance of Man Utd managers</p>
+<ul>
+<li>Each football manager has Win, Draw and Loss count</li>
+</ul>
 <table>
 <thead>
 <tr class="header">
@@ -500,7 +566,174 @@
 </tr>
 </tbody>
 </table>
-<p>Relative performance of Man Utd managers</p>
+<p><strong>Questions:</strong></p>
+<ul>
+<li>Is the number of Wins, Draws and Losses uniformly distributed?</li>
+<li>Are there differences between the performances of each manager?</li>
+</ul>
+</section>
+<section id="chi-squared-test" class="slide level2 smaller">
+<h2>Chi-squared test</h2>
+<ul>
+<li><p>Hypothesis testing for counts can be done using chi-squared test</p></li>
+<li><p>Chi-squared test is simple to use for real-world project datasets (e.g.&nbsp;dissertations)</p></li>
+<li><p>Potentially applicable to a whole range of different models</p></li>
+<li><p>Easy to compute by hand/software</p></li>
+<li><p>Motivates the more advanced study of contingency tables</p></li>
+</ul>
+</section></section>
+<section>
+<section id="part-2-chi-squared-goodness-of-fit-test" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Chi-squared <br> goodness of fit test</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="chi-squared-goodness-of-fit-test" class="slide level2 smaller">
+<h2>Chi-squared goodness of fit test</h2>
+<p><strong>Categorical Data:</strong></p>
+<ul>
+<li>Finite number of possible categories or types</li>
+<li>Observations can only belong to one category</li>
+<li><span class="math inline">O_i</span> refers to observed count of category <span class="math inline">i</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type <span class="math inline">1</span></th>
+<th style="text-align: center;">Type <span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;">Type <span class="math inline">n</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">O_1</span></td>
+<td style="text-align: center;"><span class="math inline">O_2</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_n</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">E_i</span> refers to <strong>expected count</strong> of category <span class="math inline">i</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type <span class="math inline">1</span></th>
+<th style="text-align: center;">Type <span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;">Type <span class="math inline">n</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">E_1</span></td>
+<td style="text-align: center;"><span class="math inline">E_2</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_n</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="chi-squared-goodness-of-fit-test-1" class="slide level2 smaller">
+<h2>Chi-squared goodness of fit test</h2>
+<p><strong>Goal:</strong> Compare expected counts <span class="math inline">E_i</span> with observed counts <span class="math inline">O_i</span></p>
+<p><strong>Method:</strong></p>
+<ul>
+<li>Start with null hypothesis that theoretical model is correct</li>
+<li>Look for evidence against the null hypothesis</li>
+<li>Null hypothesis is wrong
+<ul>
+<li>if distance between observed counts and expected counts is large</li>
+<li>For example if <span class="math display">
+  (O_i - E_i)^2 \geq c
+  </span> for some chosen constant <span class="math inline">c</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="chi-squared-statistic" class="slide level2 smaller">
+<h2>Chi-squared statistic</h2>
+<div id="Definition*-3.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Global distance between observed and expected counts is defined as <span class="math display">
+\chi^2 := \sum_{i=1}^n \frac{(O_i-E_i)^2}{E_i}
+</span> The above is called <strong>chi-squared statistic</strong><p></p>
+</div></details>
+</div>
+<p><strong>Note:</strong> We have that <span class="math display">
+\chi^2 = 0 \qquad \iff \qquad O_i = E_i  \,\,\,\, \text{ for all } \,\,\,\, i = 1 , \, \ldots , \, n
+</span></p>
+</section>
+<section id="chi-squared-statistic-1" class="slide level2 smaller">
+<h2>Chi-squared statistic</h2>
+<p><strong>Remarks:</strong></p>
+<ul>
+<li>We expect small differences between <span class="math inline">O_i</span> and <span class="math inline">E_i</span>
+<ul>
+<li>Therefore <span class="math inline">\chi^2 &gt; 0</span></li>
+</ul></li>
+<li>However <span class="math inline">O_i</span> should not be too far away from <span class="math inline">E_i</span>
+<ul>
+<li>Therefore <span class="math inline">\chi^2</span> should not be too large</li>
+</ul></li>
+<li>The above imply that tests on <span class="math inline">\chi^2</span> should be one-sided</li>
+</ul>
+</section>
+<section id="multinomial-distribution" class="slide level2 smaller">
+<h2>Multinomial distribution</h2>
+<p>Multinomial distribution is a model for the following experiment:</p>
+<ul>
+<li>The experiment consists of <span class="math inline">m</span> independent trials</li>
+<li>Each trial results in one of <span class="math inline">n</span> distinct possible outcomes</li>
+<li>The probability of the <span class="math inline">i</span>-th outcome is <span class="math inline">p_i</span> on every trial</li>
+<li><span class="math inline">X_i</span> is the count of the number of times the <span class="math inline">i</span>-th outcome occurred in the m trials</li>
+<li>For <span class="math inline">n = 2</span> this is a binomial experiment
+<ul>
+<li>Each trial has <span class="math inline">n = 2</span> possible outcomes</li>
+<li><span class="math inline">X_1</span> counts the number of <em>successes</em></li>
+<li><span class="math inline">X_2 = m − X_1</span> counts the number of <em>failures</em> in <span class="math inline">m</span> trials</li>
+</ul></li>
+</ul>
+</section>
+<section id="multinomial-distribution-1" class="slide level2 smaller">
+<h2>Multinomial distribution</h2>
+<div id="Definition*-3.2" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Let <span class="math inline">m,n \in \mathbb{N}</span> and <span class="math inline">p_1, \ldots, p_n</span> numbers such that <span class="math display">
+0 \leq p_i \leq 1 \,, \qquad \quad
+\sum_{i=1}^n p_i = 1
+</span> The random vector <span class="math inline">(X_1, \ldots, X_n)</span> has <strong>multinomial distribution</strong> with <span class="math inline">m</span> trials and cell probabilities <span class="math inline">p_1,\ldots,p_n</span> if joint pmf if <span class="math display">
+f (x_1, \ldots , x_n) = \frac{m!}{x_1 ! \cdot \ldots \cdot x_n !} \, p_1^{x_1} \cdot \ldots \cdot p_n^{x_n}
+</span> whenever <span class="math inline">x_1 + \ldots + x_n = m</span>. We denote <span class="math inline">\mathbf{X}\sim \mathop{\mathrm{Mult}}(m,p_1,\ldots,p_n)</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="multinomial-distribution-2" class="slide level2 smaller">
+<h2>Multinomial distribution</h2>
+<h3 id="properties">Properties</h3>
+<p>Suppose that <span class="math inline">\mathbf{X}\sim \mathop{\mathrm{Mult}}(m,p_1,\ldots,p_n)</span></p>
+<ul>
+<li>Then <span class="math inline">X_i</span> is binomial with <span class="math inline">m</span> trials and probability <span class="math inline">p_i</span></li>
+<li>In this case we write <span class="math inline">X_i \sim \mathop{\mathrm{Bin}}(m,p_i)</span></li>
+<li>The pmf is <span class="math display">
+f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{x_i}
+</span> for all <span class="math inline">x_i = 0 , \ldots , m</span>.</li>
+<li>We have <span class="math display">
+{\rm I\kern-.3em E}[X_i] = m p_i \qquad \qquad
+{\rm Var}[X_i] = m p_i (1-p_i)
+</span></li>
+</ul>
+</section>
+<section id="theorem" class="slide level2 smaller">
+<h2>Theorem</h2>
+<ul>
+<li><p>Chi-squared statistics is due to Karl Pearson in 1900 paper <a href="https://www.tandfonline.com/doi/abs/10.1080/14786440009463897">link</a></p></li>
+<li><p>Proof of Theorem is technical and incomprehensible on Pearson’s paper</p></li>
+<li><p>Seven different proofs are presented in this paper <a href="https://arxiv.org/abs/1808.09171">link</a></p></li>
+</ul>
+<p>this section and the next four sections, we shall consider statistical problems based on data such that each observation can be classified as belonging to one of a finite number of possible categories or types. Observations of this type are called categorical data. Since there are only a finite number of possible categories in these problems, and since we are int</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

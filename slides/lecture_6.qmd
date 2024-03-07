@@ -578,7 +578,7 @@ T & = \frac{\overline{X} - \overline{Y} - (\mu_X - \mu_Y)}{ S_p \ \sqrt{\dfrac{1
 - We have shown that
 $$
 T = \frac{U}{\sqrt{V/(n+m-2)}} \,, \qquad 
-V \sim N(0,1) \,, \qquad V \sim \chi_{n + m - 2}^2
+U \sim N(0,1) \,, \qquad V \sim \chi_{n + m - 2}^2
 $$
 
 - By the Theorem in Slide 66 of Lecture 3 we conclude that
