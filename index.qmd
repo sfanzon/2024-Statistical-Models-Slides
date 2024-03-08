@@ -75,7 +75,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | <a href="slides/lecture_4.qmd">Lecture 4</a>   | Hypothesis tests in R -- Part 1   |
 | <a href="slides/lecture_5.qmd">Lecture 5</a>   | Hypothesis tests in R -- Part 2   |
 | <a href="slides/lecture_6.qmd">Lecture 6</a>   | Two-sample hypothesis tests       |
-| <a href="slides/lecture_7.qmd">Lecture 7</a>   | TBA     |
+| <a href="slides/lecture_7.qmd">Lecture 7</a>   | The chi-squared test              |
 | <a href="slides/lecture_8.qmd">Lecture 8</a>   | TBA     |
 | <a href="slides/lecture_9.qmd">Lecture 9</a>   | TBA     |
 | <a href="slides/lecture_10.qmd">Lecture 10</a> | TBA     |

@@ -406,11 +406,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Lemma {
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -418,7 +422,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -430,6 +434,34 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
@@ -438,39 +470,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Question {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -944,16 +944,16 @@ Area \ = \ \pi \ \approx \frac{\text{Number of points } (x_i,y_i) \text{ inside 
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations area is 3.15400000, error is 0.01240735
-After    20000 iterations area is 3.16360000, error is 0.02200735
-After    30000 iterations area is 3.15400000, error is 0.01240735
-After    40000 iterations area is 3.15250000, error is 0.01090735
-After    50000 iterations area is 3.15376000, error is 0.01216735
-After    60000 iterations area is 3.15480000, error is 0.01320735
-After    70000 iterations area is 3.14891429, error is 0.00732163
-After    80000 iterations area is 3.15000000, error is 0.00840735
-After    90000 iterations area is 3.14888889, error is 0.00729624
-After   100000 iterations area is 3.14940000, error is 0.00780735</code></pre>
+<pre><code>After    10000 iterations area is 3.12320000, error is 0.01839265
+After    20000 iterations area is 3.11960000, error is 0.02199265
+After    30000 iterations area is 3.12080000, error is 0.02079265
+After    40000 iterations area is 3.13290000, error is 0.00869265
+After    50000 iterations area is 3.13488000, error is 0.00671265
+After    60000 iterations area is 3.13333333, error is 0.00825932
+After    70000 iterations area is 3.13405714, error is 0.00753551
+After    80000 iterations area is 3.13080000, error is 0.01079265
+After    90000 iterations area is 3.13542222, error is 0.00617043
+After   100000 iterations area is 3.13500000, error is 0.00659265</code></pre>
 </div>
 </div>
 
