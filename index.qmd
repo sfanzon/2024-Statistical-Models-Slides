@@ -1,129 +1,140 @@
 ---
-title: Statistical Models
-subtitle: Lecture Slides
+title: Faster identification of faster Formula 1 drivers via time-rank duality
+subtitle: Companion R code and data
 author: 
-  - name: Dr Silvio Fanzon
-    affiliations: 
-      - name: University of Hull
-        department: Department of Mathematics
-        state: United Kingdom
-    email: S.Fanzon@hull.ac.uk
-    url: https://www.silviofanzon.com
-  - name: Dr John Fry
+  - name: John Fry
     affiliations: 
       - name: University of Hull
         department: Department of Mathematics
         state: United Kingdom
     email: J.M.Fry@hull.ac.uk
     url: https://www.hull.ac.uk/staff-directory/john-fry
-date: 2024-01-15 
+  - name: Tom Brighton
+    affiliations:
+      - name: University of Hull
+        department: Department of Mathematics
+        state: United Kingdom
+    email: thomasbrighton02@gmail.com 
+  - name: Silvio Fanzon
+    affiliations: 
+      - name: University of Hull
+        department: Department of Mathematics
+        state: United Kingdom
+    email: S.Fanzon@hull.ac.uk
+    url: https://www.silviofanzon.com
+  
+
+  
+date: 2024-03-08 
 # To enter today's date replace by today
 # Enter date formatted as dd MM yyyy
 date-format: "D MMM YYYY"
 ---
 
 
-# Welcome 
+## Introduction
+
+
+This page contains the R code and data to reproduce the statistical analysis in 
+the paper [@f1-paper] named **Faster identification of faster Formula 1 drivers via time-rank duality** by John Fry, Tom Brighton and Silvio Fanzon.
+
+The code should be simple to understand and comments are provided throughout.
+For a deeper understanding of the ranking model proposed, and the underlying mathematical analysis, please refer to the paper [@f1-paper]. 
+
+You are free to use and modify the code in accordance with the license 
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+We kindly ask our work is credited by citing the paper [@f1-paper]. 
+You can download the Bibdesk citation [here](citation.bib). 
 
 
 
-These are the Slides of the module **Statistical Models 551305** for T2 2023/24 at the University of Hull. 
-If you have any question or find any typo, please email me at
+
+## The data
+
+Data used for the statistical analysis in the paper [@f1-paper] can be downloaded [here](data/f1seconddata.txt). The latter contains placements of 20 pilots for the **25??? races** in the 2022 F1 Season. 
 
 
-::: {.content-visible when-format="html"}
-<div style="text-align: center;">
-**[S.Fanzon@hull.ac.uk](mailto: S.Fanzon@hull.ac.uk)**
-</div>
+## The R code 
+
+The code given below reproduces the statistical analysis in 
+the paper [@f1-paper]. The code is mix of R scripts and interactive R console work.
+
+### Requirements
+The code runs in [R version 4.3.3](https://www.r-project.org) and above with
+no additional packages.
+
+### Functions
+
+The following function does ...
+
+```r
+
+#input is the vector of win probabilities
+#output is the estimated lambda values
+
+lambdaest4 <- function(x){
+
+input <- c(0.031655049, 0.031655049, 0.673389233, 0.063310099, 
+           0.031655049, 0.028380389, 0.063310099, 0.048413605, 
+           0.001642777, 0.001642777, 0.01016088, 0.001642777, 
+           0.001642777, 0.001642777, 0.001642777, 0.001642777, 
+           0.001642777, 0.001642777, 0.001642777, 0.001642777)
+
+#given 7 input values
+
+target<-sort(input)
+lambda<-rep(c(x[1], x[2], x[3], x[4], x[5], x[6], x[7]), 
+            rle(target)$lengths)
+
+#lambda<-c(x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[9], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10])
+
+pred <- lambda / sum(lambda)
+distance <- sum( (target - pred )^2 )
+
+return(distance)
+
+}
+```
+
+
+## License & Attribution
+
+
+::: {.column width="60%"}
+This work is licensed under [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)
 :::
 
 
-Up to date information about the module will be published on the University of Hull **Canvas Webpage**
-
-
-::: {.content-visible when-format="html"}
-<div style="text-align: center;">
-**[canvas.hull.ac.uk/courses/70065](https://canvas.hull.ac.uk/courses/70065)**
-</div>
+::: {.column width="38%"}
+![](/by-nc.png){width=2.1in}
 :::
 
 
-and on the **Course Webpage** hosted on my website
+This license enables reusers to distribute, remix, adapt, and build upon 
+the material in any medium or format for noncommercial purposes only, 
+and only so long as attribution is given to the creator. 
+We kindly ask our work is credited by citing the paper [@f1-paper] as shown below
+
+> Fry, John and Brighton, Tom and Fanzon, Silvio. *Faster identification of faster Formula 1 drivers via time-rank duality*, Preprint arXiv.2312.14637. (2024)  
+[https://doi.org/10.48550/arXiv.2312.14637](https://doi.org/10.48550/arXiv.2312.14637)
 
 
-::: {.content-visible when-format="html"}
-<div style="text-align: center;">
-**[silviofanzon.com/blog/2024/Statistical-Models/](https://www.silviofanzon.com/blog/2024/Statistical-Models/)**
-</div>
-:::
+**BibTex citation:** Download [here](citation.bib) or copy from box below
 
 
-
-
-
-# Slides
-
-
-There are 11 lectures in this module. Links to the slides and lecture titles are below.
-
-
-| **Slides** | **Title** | 
-|:------      |:------     |
-| <a href="slides/lecture_1.qmd">Lecture 1</a>   | An introduction to Statistics     | 
-| <a href="slides/lecture_2.qmd">Lecture 2</a>   | Multivariate distributions        |
-| <a href="slides/lecture_3.qmd">Lecture 3</a>   | Random samples                    |
-| <a href="slides/lecture_4.qmd">Lecture 4</a>   | Hypothesis tests in R -- Part 1   |
-| <a href="slides/lecture_5.qmd">Lecture 5</a>   | Hypothesis tests in R -- Part 2   |
-| <a href="slides/lecture_6.qmd">Lecture 6</a>   | Two-sample hypothesis tests       |
-| <a href="slides/lecture_7.qmd">Lecture 7</a>   | TBA     |
-| <a href="slides/lecture_8.qmd">Lecture 8</a>   | TBA     |
-| <a href="slides/lecture_9.qmd">Lecture 9</a>   | TBA     |
-| <a href="slides/lecture_10.qmd">Lecture 10</a> | TBA     |
-| <a href="slides/lecture_11.qmd">Lecture 11</a> | TBA     |
-| <a href="slides/lecture_12.qmd">Appendix</a>   | More on R                         |
-: {tbl-colwidths="[30,70]"}
+```bibtex
+@article{2024-Fry-Bri-Fan,
+  author = {Fry, John and Brighton, Tom and Fanzon, Silvio},
+  title = {Faster identification of faster Formula 1 drivers via 
+           time-rank duality},
+  journal = {Preprint},
+  year = {2024},
+  doi = {10.48550/arXiv.2312.14637}
+}
+```
 
 
 
 
-# Supplementary Material
-
-Statistical Tables: [Download here](slides/files/Statistics_Tables.pdf)
-
-| **Lecture** | **Material**                                                                                                  | 
-|:------      |:------                                                                                                        |
-| Lecture 4   | [Code: One-Sample t-test](slides/codes/one_sample_t_test.R)                                                   | 
-| Lecture 5   | [Code: Varance ratio test](slides/codes/variance_ratio_test.R)                                                |
-| Lecture 6   | [Code: Two-Sample t-test](slides/codes/two_sample_t_test.R) \| [Code: F-test Simple](slides/codes/F_test_simple.R) \| [Code: F-test First Principles](slides/codes/F_test_first_principles.R) | 
-| Appendix    | [Code: 2008 Crisis](slides/codes/2008_crisis_code.R) \| [Data: 2008 Crisis](slides/datasets/2008_crisis.txt) \| [Data: Family Guy](slides/datasets/family_guy.txt) |
-: {tbl-colwidths="[30,70]"}
-
-
-
-
-# Readings
-
-**Main textbooks**: These slides are self-contained and largely based on the books
-
-- Bingham and Fry [@bingham-fry]
-- Fry and Burke [@fry-burke]
-
-
-::: {.column width="45%"}
-[![](images/bingham_fry.png){width=97.9%}](https://link.springer.com/book/10.1007/978-1-84882-969-5)
-:::
-
-::: {.column width="45%"}
-[![](images/fry_burke.png)](https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group)
-:::
-
-
-**Secondary References**: In addition we reccomend the following
-
-
-- **Probability & Statistics Manual**: Casella and Berger [@casella-berger]
-- **Easier Probability & Statistics Manual**: DeGroot and Schervish [@degroot]
-- **Concise Statistics with R**: Dalgaard [@dalgaard]
-- **Comprehensive R manual**: Davies [@davies]
 
 

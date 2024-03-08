@@ -1,61 +1,30 @@
 project:
-  title: "Statistical Models"
+  title: "Formula 1 time-rank duality"
   type: website
   output-dir: docs
 
 
 
-bibliography: teaching.bib
+bibliography: bibliography.bib
 csl: elsevier-with-titles.csl
 
 
 website:
   
   favicon: favicon.png
-  search: false
+  search: 
+    location: navbar
+    type: overlay
   navbar:
     search: false
     pinned: false
     background: black
     foreground: "#E8E8E8"
-  sidebar:
-    style: "floating"
-    search: false
-    contents:
-      - href: index.qmd
-        text: Homepage
-      - section: "Slides"
-        contents:
-          - href: slides/lecture_1.qmd
-            text: Lecture 1
-          - href: slides/lecture_2.qmd
-            text: Lecture 2
-          - href: slides/lecture_3.qmd
-            text: Lecture 3
-          - href: slides/lecture_4.qmd
-            text: Lecture 4
-          - href: slides/lecture_5.qmd
-            text: Lecture 5
-          - href: slides/lecture_6.qmd
-            text: Lecture 6
-          - href: slides/lecture_7.qmd
-            text: Lecture 7
-          - href: slides/lecture_8.qmd
-            text: Lecture 8
-          - href: slides/lecture_9.qmd
-            text: Lecture 9
-          - href: slides/lecture_10.qmd
-            text: Lecture 10
-          - href: slides/lecture_11.qmd
-            text: Lecture 11
-          - href: slides/lecture_12.qmd
-            text: Appendix
-      - href: license.qmd
-        text: License
+  sidebar: false
   page-footer:
     center: 
-      - text: "License"
-        href: license.qmd
+      - text: "Link to paper"
+        href: https://doi.org/10.48550/arXiv.2312.14637
       - text: "Contact" 
         href: https://www.silviofanzon.com/contact
 
