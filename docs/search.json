@@ -1,37 +1,42 @@
 [
   {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License\n\n\n\n\n\n\n\nFor attribution, please cite this work as:\n\nFanzon, Silvio and Fry, John (2024). Lecture Slides on Statistical Models.\nhttps://www.silviofanzon.com/2024-Statistical-Models-Slides/\n\nBibTex citation:\n@electronic{Fanzon-Fry-Statistical-Models-2024,\n    author = {Fanzon, Silvio and Fry, John},\n    title = {Lecture Slides on Statistical Models},\n    url = {https://www.silviofanzon.com/2024-Statistical-Models-Slides/},\n    year = {2024}}",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
+    "objectID": "license.html#reuse",
+    "href": "license.html#reuse",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
+    "objectID": "license.html#citation",
+    "href": "license.html#citation",
+    "title": "License",
+    "section": "",
+    "text": "For attribution, please cite this work as:\n\nFanzon, Silvio and Fry, John (2024). Lecture Slides on Statistical Models.\nhttps://www.silviofanzon.com/2024-Statistical-Models-Slides/\n\nBibTex citation:\n@electronic{Fanzon-Fry-Statistical-Models-2024,\n    author = {Fanzon, Silvio and Fry, John},\n    title = {Lecture Slides on Statistical Models},\n    url = {https://www.silviofanzon.com/2024-Statistical-Models-Slides/},\n    year = {2024}}",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Faster identification of faster Formula 1 drivers via time-rank duality",
+    "title": "Statistical Models",
     "section": "",
-    "text": "This page contains the R code and data to reproduce the statistical analysis in the paper [1] named Faster identification of faster Formula 1 drivers via time-rank duality by John Fry, Tom Brighton and Silvio Fanzon.\nThe code should be simple to understand and comments are provided throughout. For a deeper understanding of the ranking model proposed, and the underlying mathematical analysis, please refer to the paper [1].\nYou are free to use and modify the code in accordance with the license CC BY-NC 4.0. We kindly ask our work is credited by citing the paper [1]. You can download the Bibdesk citation here."
-  },
-  {
-    "objectID": "index.html#introduction",
-    "href": "index.html#introduction",
-    "title": "Faster identification of faster Formula 1 drivers via time-rank duality",
-    "section": "",
-    "text": "This page contains the R code and data to reproduce the statistical analysis in the paper [1] named Faster identification of faster Formula 1 drivers via time-rank duality by John Fry, Tom Brighton and Silvio Fanzon.\nThe code should be simple to understand and comments are provided throughout. For a deeper understanding of the ranking model proposed, and the underlying mathematical analysis, please refer to the paper [1].\nYou are free to use and modify the code in accordance with the license CC BY-NC 4.0. We kindly ask our work is credited by citing the paper [1]. You can download the Bibdesk citation here."
-  },
-  {
-    "objectID": "index.html#the-data",
-    "href": "index.html#the-data",
-    "title": "Faster identification of faster Formula 1 drivers via time-rank duality",
-    "section": "The data",
-    "text": "The data\nData used for the statistical analysis in the paper [1] can be downloaded here. The latter contains placements of 20 pilots for the 25??? races in the 2022 F1 Season."
-  },
-  {
-    "objectID": "index.html#the-r-code",
-    "href": "index.html#the-r-code",
-    "title": "Faster identification of faster Formula 1 drivers via time-rank duality",
-    "section": "The R code",
-    "text": "The R code\nThe code given below reproduces the statistical analysis in the paper [1]. The code is mix of R scripts and interactive R console work.\n\nRequirements\nThe code runs in R version 4.3.3 and above with no additional packages.\n\n\nFunctions\nThe following function does …\n\n#input is the vector of win probabilities\n#output is the estimated lambda values\n\nlambdaest4 &lt;- function(x){\n\ninput &lt;- c(0.031655049, 0.031655049, 0.673389233, 0.063310099, \n           0.031655049, 0.028380389, 0.063310099, 0.048413605, \n           0.001642777, 0.001642777, 0.01016088, 0.001642777, \n           0.001642777, 0.001642777, 0.001642777, 0.001642777, \n           0.001642777, 0.001642777, 0.001642777, 0.001642777)\n\n#given 7 input values\n\ntarget&lt;-sort(input)\nlambda&lt;-rep(c(x[1], x[2], x[3], x[4], x[5], x[6], x[7]), \n            rle(target)$lengths)\n\n#lambda&lt;-c(x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[9], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10])\n\npred &lt;- lambda / sum(lambda)\ndistance &lt;- sum( (target - pred )^2 )\n\nreturn(distance)\n\n}"
-  },
-  {
-    "objectID": "index.html#license-attribution",
-    "href": "index.html#license-attribution",
-    "title": "Faster identification of faster Formula 1 drivers via time-rank duality",
-    "section": "License & Attribution",
-    "text": "License & Attribution\n\nThis work is licensed under Creative Commons Attribution-NonCommercial 4.0 International License\n\n\n\n\nThis license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format for noncommercial purposes only, and only so long as attribution is given to the creator. We kindly ask our work is credited by citing the paper [1] as shown below\n\nFry, John and Brighton, Tom and Fanzon, Silvio. Faster identification of faster Formula 1 drivers via time-rank duality, Preprint arXiv.2312.14637. (2024)\nhttps://doi.org/10.48550/arXiv.2312.14637\n\nBibTex citation: Download here or copy from box below\n@article{2024-Fry-Bri-Fan,\n  author = {Fry, John and Brighton, Tom and Fanzon, Silvio},\n  title = {Faster identification of faster Formula 1 drivers via \n           time-rank duality},\n  journal = {Preprint},\n  year = {2024},\n  doi = {10.48550/arXiv.2312.14637}\n}"
+    "text": "Welcome\nThese are the Slides of the module Statistical Models 551305 for T2 2023/24 at the University of Hull. If you have any question or find any typo, please email me at\n\nS.Fanzon@hull.ac.uk\n\nUp to date information about the module will be published on the University of Hull Canvas Webpage\n\ncanvas.hull.ac.uk/courses/70065\n\nand on the Course Webpage hosted on my website\n\nsilviofanzon.com/blog/2024/Statistical-Models/\n\n\n\nSlides\nThere are 11 lectures in this module. Links to the slides and lecture titles are below.\n\n\n\n\n\n\n\nSlides\nTitle\n\n\n\n\nLecture 1\nAn introduction to Statistics\n\n\nLecture 2\nMultivariate distributions\n\n\nLecture 3\nRandom samples\n\n\nLecture 4\nHypothesis tests in R – Part 1\n\n\nLecture 5\nHypothesis tests in R – Part 2\n\n\nLecture 6\nTwo-sample hypothesis tests\n\n\nLecture 7\nTBA\n\n\nLecture 8\nTBA\n\n\nLecture 9\nTBA\n\n\nLecture 10\nTBA\n\n\nLecture 11\nTBA\n\n\nAppendix\nMore on R\n\n\n\n\n\nSupplementary Material\nStatistical Tables: Download here\n\n\n\n\n\n\n\nLecture\nMaterial\n\n\n\n\nLecture 4\nCode: One-Sample t-test\n\n\nLecture 5\nCode: Varance ratio test\n\n\nLecture 6\nCode: Two-Sample t-test | Code: F-test Simple | Code: F-test First Principles\n\n\nAppendix\nCode: 2008 Crisis | Data: 2008 Crisis | Data: Family Guy\n\n\n\n\n\nReadings\nMain textbooks: These slides are self-contained and largely based on the books\n\nBingham and Fry [1]\nFry and Burke [2]\n\n\n\n\n\n\n\nSecondary References: In addition we reccomend the following\n\nProbability & Statistics Manual: Casella and Berger [3]\nEasier Probability & Statistics Manual: DeGroot and Schervish [4]\nConcise Statistics with R: Dalgaard [5]\nComprehensive R manual: Davies [6]\n\n\n\n\n\n\nReferences\n\n[1] Bingham, Nicholas H., Fry, John M., Regression, linear models in statistics, Springer, 2010.\n\n\n[2] Fry, John M., Burke, Matt, Quantitative methods in finance using R, Open University Press, 2022.\n\n\n[3] Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.\n\n\n[4] DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.\n\n\n[5] Dalgaard, Peter, Introductory statistics with R, Second Edition, Springer, 2008.\n\n\n[6] Davies, Tilman M., The book of R, No Starch Press, 2016.",
+    "crumbs": [
+      "Homepage"
+    ]
   }
 ]

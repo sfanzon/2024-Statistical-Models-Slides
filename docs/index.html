@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="John Fry">
-<meta name="author" content="Tom Brighton">
-<meta name="author" content="Silvio Fanzon">
+<meta name="author" content="Dr Silvio Fanzon">
+<meta name="author" content="Dr John Fry">
+<meta name="dcterms.date" content="2024-01-15">
 
-<title>Formula 1 time-rank duality - Faster identification of faster Formula 1 drivers via time-rank duality</title>
+<title>Statistical Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -82,12 +48,8 @@ div.csl-indent {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,17 +62,6 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -129,7 +80,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -137,33 +88,140 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Formula 1 time-rank duality</span>
+    <span class="navbar-title">Statistical Models</span>
     </a>
   </div>
         <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Homepage</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Homepage</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Slides</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/lecture_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
-  <li><a href="#the-r-code" id="toc-the-r-code" class="nav-link" data-scroll-target="#the-r-code">The R code</a>
-  <ul class="collapse">
-  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  </ul></li>
-  <li><a href="#license-attribution" id="toc-license-attribution" class="nav-link" data-scroll-target="#license-attribution">License &amp; Attribution</a></li>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#supplementary-material" id="toc-supplementary-material" class="nav-link" data-scroll-target="#supplementary-material">Supplementary Material</a></li>
+  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
   </ul>
 </nav>
     </div>
@@ -172,8 +230,8 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Faster identification of faster Formula 1 drivers via time-rank duality</h1>
-<p class="subtitle lead">Companion R code and data</p>
+<h1 class="title">Statistical Models</h1>
+<p class="subtitle lead">Lecture Slides</p>
 </div>
 
 
@@ -182,7 +240,7 @@ div.csl-indent {
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.hull.ac.uk/staff-directory/john-fry">John Fry</a> <a href="mailto:J.M.Fry@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    <p class="author"><a href="https://www.silviofanzon.com">Dr Silvio Fanzon</a> <a href="mailto:S.Fanzon@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -190,15 +248,7 @@ div.csl-indent {
           </p>
       </div>
     <div class="quarto-title-meta-contents">
-    <p class="author">Tom Brighton <a href="mailto:thomasbrighton02@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of Hull
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.silviofanzon.com">Silvio Fanzon</a> <a href="mailto:S.Fanzon@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    <p class="author"><a href="https://www.hull.ac.uk/staff-directory/john-fry">Dr John Fry</a> <a href="mailto:J.M.Fry@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -213,7 +263,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">8 Mar 2024</p>
+      <p class="date">15 Jan 2024</p>
     </div>
   </div>
   
@@ -225,84 +275,164 @@ div.csl-indent {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This page contains the R code and data to reproduce the statistical analysis in the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span> named <strong>Faster identification of faster Formula 1 drivers via time-rank duality</strong> by John Fry, Tom Brighton and Silvio Fanzon.</p>
-<p>The code should be simple to understand and comments are provided throughout. For a deeper understanding of the ranking model proposed, and the underlying mathematical analysis, please refer to the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span>.</p>
-<p>You are free to use and modify the code in accordance with the license <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. We kindly ask our work is credited by citing the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span>. You can download the Bibdesk citation <a href="citation.bib">here</a>.</p>
-</section>
-<section id="the-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<p>Data used for the statistical analysis in the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span> can be downloaded <a href="data/f1seconddata.txt">here</a>. The latter contains placements of 20 pilots for the <strong>25??? races</strong> in the 2022 F1 Season.</p>
-</section>
-<section id="the-r-code" class="level2">
-<h2 class="anchored" data-anchor-id="the-r-code">The R code</h2>
-<p>The code given below reproduces the statistical analysis in the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span>. The code is mix of R scripts and interactive R console work.</p>
-<section id="requirements" class="level3">
-<h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
-<p>The code runs in <a href="https://www.r-project.org">R version 4.3.3</a> and above with no additional packages.</p>
-</section>
-<section id="functions" class="level3">
-<h3 class="anchored" data-anchor-id="functions">Functions</h3>
-<p>The following function does …</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#input is the vector of win probabilities</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#output is the estimated lambda values</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lambdaest4 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.031655049</span>, <span class="fl">0.031655049</span>, <span class="fl">0.673389233</span>, <span class="fl">0.063310099</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>           <span class="fl">0.031655049</span>, <span class="fl">0.028380389</span>, <span class="fl">0.063310099</span>, <span class="fl">0.048413605</span>, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>           <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, <span class="fl">0.01016088</span>, <span class="fl">0.001642777</span>, </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>           <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>           <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>, <span class="fl">0.001642777</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#given 7 input values</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>target<span class="ot">&lt;-</span><span class="fu">sort</span>(input)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>lambda<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">c</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>], x[<span class="dv">3</span>], x[<span class="dv">4</span>], x[<span class="dv">5</span>], x[<span class="dv">6</span>], x[<span class="dv">7</span>]), </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rle</span>(target)<span class="sc">$</span>lengths)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#lambda&lt;-c(x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[9], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10], x[10])</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> lambda <span class="sc">/</span> <span class="fu">sum</span>(lambda)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>distance <span class="ot">&lt;-</span> <span class="fu">sum</span>( (target <span class="sc">-</span> pred )<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(distance)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="license-attribution" class="level2">
-<h2 class="anchored" data-anchor-id="license-attribution">License &amp; Attribution</h2>
-<div class="column" style="width:60%;">
-<p>This work is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a></p>
+<section id="welcome" class="level1">
+<h1>Welcome</h1>
+<p>These are the Slides of the module <strong>Statistical Models 551305</strong> for T2 2023/24 at the University of Hull. If you have any question or find any typo, please email me at</p>
+<div style="text-align: center;">
+<p><strong><a href="mailto:%20S.Fanzon@hull.ac.uk">S.Fanzon@hull.ac.uk</a></strong></p>
 </div>
-<div class="column" style="width:38%;">
-<p><img src="./by-nc.png" class="img-fluid" style="width:2.1in"></p>
+<p>Up to date information about the module will be published on the University of Hull <strong>Canvas Webpage</strong></p>
+<div style="text-align: center;">
+<p><strong><a href="https://canvas.hull.ac.uk/courses/70065">canvas.hull.ac.uk/courses/70065</a></strong></p>
 </div>
-<p>This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format for noncommercial purposes only, and only so long as attribution is given to the creator. We kindly ask our work is credited by citing the paper <span class="citation" data-cites="f1-paper">[<a href="#ref-f1-paper" role="doc-biblioref">1</a>]</span> as shown below</p>
-<blockquote class="blockquote">
-<p>Fry, John and Brighton, Tom and Fanzon, Silvio. <em>Faster identification of faster Formula 1 drivers via time-rank duality</em>, Preprint arXiv.2312.14637. (2024)<br>
-<a href="https://doi.org/10.48550/arXiv.2312.14637">https://doi.org/10.48550/arXiv.2312.14637</a></p>
-</blockquote>
-<p><strong>BibTex citation:</strong> Download <a href="citation.bib">here</a> or copy from box below</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">2024</span>-<span class="ot">Fry</span>-<span class="ot">Bri</span>-<span class="ot">Fan</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Fry, John and Brighton, Tom and Fanzon, Silvio},</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Faster identification of faster Formula 1 drivers via </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           time-rank duality},</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span> = {Preprint},</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2024},</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">doi</span> = {10.48550/arXiv.2312.14637}</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and on the <strong>Course Webpage</strong> hosted on my website</p>
+<div style="text-align: center;">
+<p><strong><a href="https://www.silviofanzon.com/blog/2024/Statistical-Models/">silviofanzon.com/blog/2024/Statistical-Models/</a></strong></p>
+</div>
+</section>
+<section id="slides" class="level1">
+<h1>Slides</h1>
+<p>There are 11 lectures in this module. Links to the slides and lecture titles are below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Slides</strong></th>
+<th style="text-align: left;"><strong>Title</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_1.html">Lecture 1</a></td>
+<td style="text-align: left;">An introduction to Statistics</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_2.html">Lecture 2</a></td>
+<td style="text-align: left;">Multivariate distributions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_3.html">Lecture 3</a></td>
+<td style="text-align: left;">Random samples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_4.html">Lecture 4</a></td>
+<td style="text-align: left;">Hypothesis tests in R – Part 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_5.html">Lecture 5</a></td>
+<td style="text-align: left;">Hypothesis tests in R – Part 2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_6.html">Lecture 6</a></td>
+<td style="text-align: left;">Two-sample hypothesis tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_7.html">Lecture 7</a></td>
+<td style="text-align: left;">TBA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_8.html">Lecture 8</a></td>
+<td style="text-align: left;">TBA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_9.html">Lecture 9</a></td>
+<td style="text-align: left;">TBA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_10.html">Lecture 10</a></td>
+<td style="text-align: left;">TBA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/lecture_11.html">Lecture 11</a></td>
+<td style="text-align: left;">TBA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./slides/lecture_12.html">Appendix</a></td>
+<td style="text-align: left;">More on R</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="supplementary-material" class="level1">
+<h1>Supplementary Material</h1>
+<p>Statistical Tables: <a href="slides/files/Statistics_Tables.pdf">Download here</a></p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Lecture</strong></th>
+<th style="text-align: left;"><strong>Material</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lecture 4</td>
+<td style="text-align: left;"><a href="slides/codes/one_sample_t_test.R">Code: One-Sample t-test</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lecture 5</td>
+<td style="text-align: left;"><a href="slides/codes/variance_ratio_test.R">Code: Varance ratio test</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lecture 6</td>
+<td style="text-align: left;"><a href="slides/codes/two_sample_t_test.R">Code: Two-Sample t-test</a> | <a href="slides/codes/F_test_simple.R">Code: F-test Simple</a> | <a href="slides/codes/F_test_first_principles.R">Code: F-test First Principles</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Appendix</td>
+<td style="text-align: left;"><a href="slides/codes/2008_crisis_code.R">Code: 2008 Crisis</a> | <a href="slides/datasets/2008_crisis.txt">Data: 2008 Crisis</a> | <a href="slides/datasets/family_guy.txt">Data: Family Guy</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="readings" class="level1">
+<h1>Readings</h1>
+<p><strong>Main textbooks</strong>: These slides are self-contained and largely based on the books</p>
+<ul>
+<li>Bingham and Fry <span class="citation" data-cites="bingham-fry">[<a href="#ref-bingham-fry" role="doc-biblioref">1</a>]</span></li>
+<li>Fry and Burke <span class="citation" data-cites="fry-burke">[<a href="#ref-fry-burke" role="doc-biblioref">2</a>]</span></li>
+</ul>
+<div class="column" style="width:45%;">
+<p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img src="images/bingham_fry.png" class="img-fluid" style="width:97.9%"></a></p>
+</div>
+<div class="column" style="width:45%;">
+<p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img src="images/fry_burke.png" class="img-fluid"></a></p>
+</div>
+<p><strong>Secondary References</strong>: In addition we reccomend the following</p>
+<ul>
+<li><strong>Probability &amp; Statistics Manual</strong>: Casella and Berger <span class="citation" data-cites="casella-berger">[<a href="#ref-casella-berger" role="doc-biblioref">3</a>]</span></li>
+<li><strong>Easier Probability &amp; Statistics Manual</strong>: DeGroot and Schervish <span class="citation" data-cites="degroot">[<a href="#ref-degroot" role="doc-biblioref">4</a>]</span></li>
+<li><strong>Concise Statistics with R</strong>: Dalgaard <span class="citation" data-cites="dalgaard">[<a href="#ref-dalgaard" role="doc-biblioref">5</a>]</span></li>
+<li><strong>Comprehensive R manual</strong>: Davies <span class="citation" data-cites="davies">[<a href="#ref-davies" role="doc-biblioref">6</a>]</span></li>
+</ul>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-f1-paper" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Fry, John M., Brighton, Tom, Fanzon, Silvio, Faster identification of faster <span>F</span>ormula 1 drivers via time-rank duality, Preprint arXiv.2312.14637. (2024). https://doi.org/<a href="https://doi.org/10.48550/arXiv.2312.14637">10.48550/arXiv.2312.14637</a>.</div>
+<div id="ref-bingham-fry" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Bingham, Nicholas H., Fry, John M., Regression, linear models in statistics, Springer, 2010.</div>
+</div>
+<div id="ref-fry-burke" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Fry, John M., Burke, Matt, Quantitative methods in finance using <span>R</span>, Open University Press, 2022.</div>
+</div>
+<div id="ref-casella-berger" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.</div>
+</div>
+<div id="ref-degroot" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.</div>
+</div>
+<div id="ref-dalgaard" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Dalgaard, Peter, Introductory statistics with <span>R</span>, Second Edition, Springer, 2008.</div>
+</div>
+<div id="ref-davies" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Davies, Tilman M., The book of <span>R</span>, No Starch Press, 2016.</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -855,8 +985,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="https://doi.org/10.48550/arXiv.2312.14637">
-<p>Link to paper</p>
+    <a class="nav-link active" href="./license.html" aria-current="page">
+<p>License</p>
 </a>
   </li>  
     <li class="nav-item">
