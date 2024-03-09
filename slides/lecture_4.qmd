@@ -519,7 +519,7 @@ $$
 ### Slides are based on
 
 
-::: {.column width=49%"}
+::: {.column width="49%"}
 
 - [@dalgaard] Dalgaard, P. 
 <br> *Introductory statistics with R*

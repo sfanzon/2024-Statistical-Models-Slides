@@ -1766,7 +1766,7 @@ print(ans)
 ```
 
 - **Note**: ``accountants`` is first because it has larger variance
-- Code can be downloaded here [F_test_simple.R](codes/F_test_simple.R)
+- Code can be downloaded here [F_test.R](codes/F_test.R)
 
 
 

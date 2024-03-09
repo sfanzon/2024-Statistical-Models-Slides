@@ -41,13 +41,12 @@ $
 ## Outline of Lecture 7
 
 1. Overview
-2. The chi-squared goodness of fit test
-3. Computational Example 1
-4. The chi-squared test of independence/no association
-5. Computational Example 2
-
-
-
+2. The chi-squared goodness-of-fit test
+3. Goodness-of-fit test: Examples
+4. Monte Carlo simulations
+4. Computational Example 1
+5. The chi-squared test of independence/no association
+6. Computational Example 2
 
 
 
@@ -126,7 +125,7 @@ $
 
 
 
-# Part 2: <br>Chi-squared <br> goodness of fit test {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>Chi-squared <br> goodness-of-fit test {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -137,13 +136,13 @@ $
 
 
 
-## Chi-squared goodness of fit test {.smaller}
+## Chi-squared goodness-of-fit test {.smaller}
 
 **Categorical Data:** 
 
 - Finite number of possible categories or types
 - Observations can only belong to one category
-- $O_i$ refers to observed count of category $i$
+- $O_i$ refers to **observed count** of category $i$
 
 | Type $1$| Type $2$ |  $\ldots$ | Type $n$ |
 |:-------:|:--------:|:---------:|:--------:|
@@ -163,10 +162,10 @@ $
 
 **Method:**
 
-- Start with null hypothesis that theoretical model is correct
+- Null hypothesis: The theoretical model for expected counts is correct
 - Look for evidence against the null hypothesis
 - Null hypothesis is wrong
-    * if distance between observed counts and expected counts is large
+    * If distance between observed counts and expected counts is large
     * For example if
     $$
     (O_i - E_i)^2 \geq c
@@ -209,20 +208,55 @@ $$
 
 
 
-## Multinomial distribution {.smaller}
-
-**Goal:** Find a reasonable model for counts. We use the **multinomial distribution**
+## Modelling counts {.smaller}
 
 **Multinomial distribution:** is a model for the following experiment
   
 - The experiment consists of $m$ independent trials 
 - Each trial results in one of $n$ distinct possible outcomes
-- The probability of the $i$-th outcome is $p_i$ on every trial
-- $X_i$ is the count of the number of times the $i$-th outcome occurred in the m trials
-- For $n = 2$ this is a binomial experiment
-    * Each trial has $n = 2$ possible outcomes
-    * $X_1$ counts the number of *successes* 
-    * $X_2 = m − X_1$ counts the number of *failures* in $m$ trials
+- The probability of the $i$-th outcome is $p_i$ on every trial, with
+$$
+0 \leq p_i \leq 1 \qquad \qquad \sum_{i=1}^n p_i = 1
+$$
+- $X_i$ counts the number of times $i$-th outcome occurred in the m trials. It holds
+$$
+\sum_{i=1}^n X_i = m
+$$
+
+
+
+## Modelling counts {.smaller}
+
+**Multinomial distribution:** Schematic visualization
+
+<br>
+
+
+|  Outcome type | $1$  | $\ldots$ | $n$   | Total                   |
+|:-------------:|:----:|:--------:|:-----:|:-----------------------:|
+| Counts        |$X_1$ | $\ldots$ | $X_n$ | $X_1 + \ldots + X_n = m$|
+| Probabilities |$p_1$ | $\ldots$ | $p_n$ | $p_1 + \ldots + p_n = 1$|
+
+
+
+
+
+## Modelling counts {.smaller}
+
+For $n = 2$ the multinomial reduces to a binomial:
+
+- Each trial has $n = 2$ possible outcomes
+- $X_1$ counts the number of *successes* 
+- $X_2 = m − X_1$ counts the number of *failures* in $m$ trials
+- Probability of *success* is $p_1$
+- Probability of *failure* is $p_2 = 1 - p_1$
+
+
+| Outcome types | $1$     | $2$               |
+|:-------------:|:-------:|:-----------------:|
+| Counts        |$X_1$    |  $X_2 = m - X_1$  |
+| Probabilities |$p_1$    |  $p_2 = 1 - p_1$  |
+
 
 
 
@@ -254,7 +288,7 @@ Suppose that $\XX \sim \multinomial(m,p_1,\ldots,p_n)$
 - Then $X_i$ is binomial with $m$ trials and probability $p_i$
 - We write $X_i \sim \binomial(m,p_i)$ and the pmf is
 $$
-f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{x_i} 
+f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{1-x_i} 
 \qquad \forall \, x_i = 0 , \ldots , m 
 $$
 - We have
@@ -277,7 +311,9 @@ $$
 0 \leq p_i \leq 1 \,, \qquad \quad p_1 + \ldots + p_n = 1
 $$
 
-- If there is a total of $m$ observation we have that
+- Total number of observations is $m$
+
+- The counts are modelled by
 $$
 (O_1, \ldots, O_n) \sim \multinomial (m, p_1, \ldots, p_n)
 $$
@@ -287,24 +323,24 @@ $$
 
 ## Counts with Multinomial distribution {.smaller}
 
-- Therefore the observed count is
+Therefore the observed and expected counts are
 $$
-O_i \sim \binomial (m,p_i)
-$$
-
-- The expected count $E_i$ is hence
-$$
+O_i \sim \binomial (m,p_i) \qquad \qquad 
 E_i = \Expect[ O_i ] = m p_i
 $$
 
-- The chi-squared statistics becomes
+
+::: Definition
+
+The chi-squared statistic for multinomial counts is
 $$
 \chi^2 = \sum_{i=1}^n \frac{(O_i-E_i)^2}{E_i} 
        = \sum_{i=1}^n \frac{( O_i - m p_i )^2}{ m p_i }
 $$
 
+:::
 
-- **Question**: What is the distribution of $\chi^2 \,$?
+**Question**: What is the distribution of $\chi^2 \,$?
 
 
 
@@ -375,7 +411,7 @@ $$
 $$
 O_1 + \ldots + O_n = m
 $$
-has to hold, which leads to dependence
+holds, which leads to dependence
 
 - A rather technical proof is needed to prove the actual thesis that
 $$
@@ -384,15 +420,611 @@ $$
 
 
 
-## Distribution of chi-squared statistic {.smaller}
-### Further notes
+## Quality of chi-squared approximation {.smaller}
+
+- Define expected counts $E_i := m p_i$ 
+- Consider approximation from Theorem:
+$$
+\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i } \ \approx \ \chi_{n-1}^2  
+$$
+
+- The approximation is:
+  
+  | **Good**     |  $E_i \geq 5  \, \text{ for all } \, i = 1 , \ldots n$ |
+  |:------------ |:------------------------------------------------------ |
+  |**Acceptable**|              $E_i \geq 1.5 \,$ for all $\, i = 1 , \ldots n$ |
+  | **Bad**      |                $E_i < 1.5 \,$ for some $\, i = 1 , \ldots n$ |
+    
+
+- **Good** or **Acceptable**: Use $\chi_{n-1}^2$ approximation of $\chi^2$
+- **Bad**: Use Monte Carlo simulations (more on this later)
 
 
-- The approximation given in the Theorem, i.e.,
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+
+**Setting:** 
+
+- Population consists of items of $n$ different types
+- $p_i$ is probability that an item selected at random is of type $i$
+- $p_i$ is unknown and needs to be estimated
+
+- As guess for $p_1,\ldots,p_n$ we take $p_1^0, \ldots, p_n^0$ such that
 $$
-\chi^2 = \sum_{i=1}^n \frac{(O_i - m p_i)^2 }{ m p_i } \ \approx \ \chi_{n-1}^2  
+0 \leq p_i^0 \leq 1 \qquad \qquad \sum_{i=1}^n p_i^0 = 1
 $$
-is only good if it holds 
+
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+
+**Hypothesis Test:** We test for equality of $p_i$ to $p_i^0$
+\begin{align*}
+& H_0 \colon p_i = p_i^0 \qquad \text{ for all } \, i = 1, \ldots, n \\
+& H_1 \colon p_i \neq p_i^0 \qquad \text{ for at least one } \, i 
+\end{align*}
+
+
+**Sample**: 
+
+- We draw $m$ items from population
+- $O_i$ denotes the number of items of type $i$ drawn
+- Therefore $(O_1, \ldots, O_n) \sim \multinomial (m,p_1, \ldots, p_n)$
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+
+**Data**: Vector of counts $(o_1,\ldots,o_n)$
+
+**Schematically:** We can represent probabilities and counts in a table
+
+<br>
+
+|  Type      | $1$  | $\ldots$ | $n$   | Total                   |
+|:-----------:|:----:|:--------:|:-----:|:-----------------------:|
+| Counts      |$o_1$ | $\ldots$ | $o_n$ | $m$|
+|Probabilities|$p_1$ | $\ldots$ | $p_n$ | $1$|
+
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute total counts and expected counts
+    $$
+    m = \sum_{i=1}^n o_i \qquad \quad E_i = m p_i^0
+    $$ 
+    * Compute the chi-squared statistic
+    $$
+    \chi^2 = \sum_{i=1}^n \frac{ (o_i - E_i)^2 }{E_i}
+    $$
+
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+### Procedure
+
+2. **Statistical Tables or R**: 
+    * Check that $E_i \geq 1.5$ for all $i = 1, \ldots, n$
+    * In this case $\chi^2 \ \approx \ \chi_{n-1}^2$
+    * Find critical value in chi-squared [Table 13.5](files/Statistics_Tables.pdf)
+    $$
+    \chi^2_{n - 1} (0.05)
+    $$
+    * Alternatively, compute p-value in R
+    $$
+    p := P( \chi^2_{n - 1} > \chi^2 )
+    $$
+
+
+
+
+## The chi-squared goodness-of-fit test {.smaller}
+### Procedure
+
+3. **Interpretation**:
+    * Reject $H_0$ if 
+    $$
+    \chi^2 > \chi_{n - 1}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
+    $$
+    * Do not reject $H_0$ if 
+    $$
+    \chi^2 \leq \chi^2_{n - 1} (0.05)  \qquad \text{ or } \qquad 
+    p \geq 0.05
+    $$
+
+
+
+
+
+## The chi-squared goodness-of-fit test in R {.smaller}
+### General commands
+
+1. Store the counts $o_1,\ldots, o_n$ in R vector
+    * ``counts <- c(o1, ..., on)``
+
+2. Store the null hypothesis probabilities $p_1^0,\ldots, p_n^0$ in R vector
+    * ``null_probs <- c(p1, ..., pn)``
+
+3. Perform a goodness-of-fit test on ``counts`` with ``null_probs``
+    * ``chisq.test(counts, p = null_probs)``
+
+4. Read output
+    * Output is similar to t-test and F-test
+    * The main quantity of interest is p-value
+
+
+
+
+## Comments on ``chisq.test`` {.smaller}
+
+
+1. R performs a goodness-of-fit test on ``counts`` with ``null_probs`` with
+    * ``chisq.test(counts, p = null_probs)``
+
+2. R implicitly assumes the null hypothesis is 
+$$
+H_0 \colon p_i = p_i^0   \qquad \text{ for all } \, i = 1 , \ldots, n
+$$
+
+3. By default R computes p-value using $\chi_{n-1}^2$ approximation
+
+4. R can compute p-value with Monte Carlo simulation using option
+    * ``simulate.p.value = TRUE``
+
+
+
+# Part 3: <br>Goodness-of-fit test:<br> Examples {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Example: Blood counts {.smaller}
+
+- Suppose to have counts of blood type for some people
+
+    | A  |  B  |  AB  |  O  |
+    |:--:|:---:|:----:|:---:|
+    |2162| 738 | 228  |2876 |
+
+- We want to compare the above to the probability model
+
+    | A  |  B  |  AB  |  O  |
+    |:--:|:---:|:----:|:---:|
+    |1/3 | 1/8 |  1/24| 1/2 |
+
+
+- Hence the null hypothesis probabilities are 
+$$
+p_1^0 = \frac{1}{3} \qquad \quad   p_2^0 = \frac{1}{8} \qquad \quad
+p_3^0 = \frac{1}{24} \qquad \quad p_4^0 = \frac{1}{2}
+$$
+
+
+
+## Example: Blood counts {.smaller}
+### Goodness-of-fit test by hand
+
+1. **Calculation**: 
+    * Compute total counts
+    $$
+    m = \sum_{i=1}^n o_i = 2162 + 738 + 228 + 2876 = 6004
+    $$
+    
+    
+    
+## Example: Blood counts {.smaller}
+### Goodness-of-fit test by hand
+
+1. **Calculation**:     
+    * Compute expected counts
+    \begin{align*}
+    E_1 & = m p_1^0 = 6004 \times \frac{1}{3} = 2001.3  \\ 
+    E_2 & = m p_2^0 = 6004 \times \frac{1}{8} = 750.5   \\
+    E_3 & = m p_3^0 = 6004 \times \frac{1}{24} = 250.2   \\
+    E_4 & = m p_4^0 = 6004 \times \frac{1}{2} = 3002  
+    \end{align*}
+
+
+## Example: Blood counts {.smaller}
+### Goodness-of-fit test by hand
+
+1. **Calculation**: 
+    * Compute the chi-squared statistic
+    \begin{align*}
+    \chi^2 & = \sum_{i=1}^n \frac{ (o_i - E_i)^2 }{E_i} \\
+           & = \frac{ (2162 − 2001.3)^2 }{ 2001.3 } + 
+               \frac{ (738 − 750.5)^2 }{ 750.5 } \\
+           & \phantom{ = } + \frac{ (228 − 250.2)^2 }{ 250.2 } + 
+               \frac{ (2876 − 3002)^2 }{ 3002 } \\    
+           & = 20.37  
+    \end{align*}
+
+
+
+
+
+## Example: Blood counts {.smaller}
+### Goodness-of-fit test by hand
+
+2. **Statistical Tables**: 
+    * Degrees of freedom are $\, {\rm df} = n - 1 = 3$
+    * We have computed
+    $$
+    E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
+    $$
+    * Hence $E_i \geq 5$ for all $i = 1, \ldots, n$
+    * In this case $\chi^2 \ \approx \ \chi_{3}^2$
+    * In chi-squared [Table 13.5](files/Statistics_Tables.pdf) we find critical value
+    $$
+    \chi^2_{3} (0.05) = 7.81
+    $$
+    
+
+
+
+## Example: Blood counts {.smaller}
+### Goodness-of-fit test by hand
+
+
+3. **Interpretation:**
+    * We have that
+    $$
+    \chi^2 = 20.37  > 7.81 = \chi_{3}^2 (0.05)
+    $$
+    * Therefore we reject $H_0$
+
+4. **Conclusion:**
+    * Observed counts suggest at least one of null probabilities $p_i^0$ is wrong
+
+
+
+
+
+## Example: Fair die {.smaller}
+### Goodness-of-fit test in R
+
+- A die with $6$ faces is rolled $100$ times
+- Counts observed are
+
+| $1$| $2$ | $3$  | $4$ |  $5$|  $6$|
+|:--:|:---:|:----:|:---:|:---:|:---:|
+|13  | 17  | 9    | 17  | 18  | 26  |
+
+
+- **Exercise**: Is the die fair?
+    * Formulate appropriate goodness-of-fit test
+    * Implement this test in R
+
+
+
+
+## Example: Fair die {.smaller}
+### Solution
+
+- The die is fair if probability of rolling $i$ is $1/6$
+- Therefore we test the following hypothesis
+\begin{align*}
+& H_0 \colon p_i = \frac{1}{6} \qquad \text{ for all } \, i = 1, \ldots, n \\
+& H_1 \colon p_i \neq \frac{1}{6} \qquad \text{ for at least one } \, i 
+\end{align*}
+
+
+## Example: Fair die {.smaller}
+### Solution
+
+- Test can be performed using the code below
+- Code can be downloaded here [good_fit.R](codes/good_fit.R)
+
+```r
+# Enter counts and null hypothesis probabilities
+counts <- c(13, 17, 9, 17, 18, 26)
+null_probs <- rep(1/6, 6)
+
+# Perform goodness-of-fit test
+ans <- chisq.test(counts, p = null_probs)
+
+# Print answer
+print(ans)
+```
+
+
+
+## Example: Fair die {.smaller}
+### Solution
+
+- Running the code in previous slide we obtain
+
+
+```{r}
+# Enter counts and null hypothesis probabilities
+counts <- c(13, 17, 9, 17, 18, 26)
+null_probs <- rep(1/6, 6)
+
+# Perform goodness-of-fit test
+ans <- chisq.test(counts, p = null_probs)
+
+# Print answer
+print(ans)
+```
+
+<br>
+
+::: {.column width="49%"}
+
+- Chi-squared statistic is $\, \chi^2 = 9.68$
+
+- Degrees of freedom are $\, {\rm df} = 5$
+
+- p-value is $p \approx 0.08$
+
+:::
+
+
+::: {.column width="35%"}
+
+- Therefore $p > 0.05$ 
+
+- We cannot reject $H_0$
+
+- The die appears to be fair
+
+:::
+
+
+
+
+
+## Example: Voting data {.smaller}
+### Goodness-of-fit test in R
+
+- Assume there are two candidates: Republican and Democrat
+- Voter can choose one of these or be undecided
+- 100 people are surveyed and the results are 
+
+| Republican | Democrat | Undecided |
+|:----------:|:--------:|:---------:|
+|   35       |   40     |   25      |
+
+
+
+
+## Example: Voting data {.smaller}
+### Goodness-of-fit test in R
+
+- Hystorical data suggest that undecided voters are $30\%$ of population
+- **Exercise**: Is difference between Republican and Democratic significant?
+    * Formulate appropriate goodness-of-fit test
+    * Implement this test in R
+    * You are not allowed to use ``chisq.test``
+
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+- Hystorical data suggest that undecided voters are $30\%$ of population
+- Therefore we can assume that probability of undecided voter is
+$$
+p_3^0 = 0.3
+$$
+- Want to test if there is difference between Republican and Democrat
+- Hence null hypothesis is
+$$
+p_1^0 = p_2^0
+$$
+
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+- Recall that
+$$
+p_1^0 + p_2^0 + p_3^0 = 1
+$$
+
+- Hence we deduce 
+$$
+p_1^0 = 0.35 \qquad \quad  p_2^0 = 0.35 \qquad \quad p_3^0 = 0.3
+$$
+
+
+- We test the following hypothesis
+\begin{align*}
+& H_0 \colon p_i = p_i^0 \qquad \text{ for all } \, i = 1, \ldots, n \\
+& H_1 \colon p_i \neq p_i^0 \qquad \text{ for at least one } \, i 
+\end{align*}
+
+
+
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+- We want to perform goodness-of-fit test without using ``chisq.test``
+
+- First we enter the data
+
+```r
+# Enter counts and null hypothesis probabilities
+counts <- c(35, 40 , 25)
+null_probs <- c(0.35, 0.35, 0.3)
+```
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+- Compute the total number of counts $m = o_1 + \ldots + o_n$
+
+```r
+# Compute total counts
+m <- sum(counts)
+```
+
+<br>
+
+- Compute degrees of freedom $\, {\rm df} = n - 1$
+
+```r
+# Compute degrees of freedom
+degrees <- length(counts) - 1
+```
+
+
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+
+- Compute the expected counts $E_i = m p_i^0$
+
+```r
+# Compute expected counts
+exp_counts <- m * null_probs
+```
+
+
+
+- Compute chi-squared statistic 
+$$
+\chi^2 = \sum_{i=1}^n \frac{( o_i - E_i )^2}{E_i}
+$$
+
+
+
+```r
+# Compute chi-squared statistic
+chi_squared <- sum( (counts - exp_counts)^2 / exp_counts )
+```
+
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+- Finally compute the p-value
+$$
+p = P( \chi_{n-1}^2 > \chi^2 ) = 1 - P( \chi_{n-1}^2 \leq \chi^2 )
+$$
+
+```r
+# Compute p-value
+p_value <- 1 - pchisq(chi_squared, df = degrees)
+
+# Print p-value
+cat("The p-value is:", p_value)
+```
+
+<br>
+
+- The full code can be downloaded here [good_fit_first_principles.R](codes/good_fit_first_principles.R)
+
+
+## Example: Voting data {.smaller}
+### Solution
+
+
+- Running the code gives the following output
+
+```{r}
+# Enter counts and null hypothesis probabilities
+counts <- c(35, 40 , 25)
+null_probs <- c(0.35, 0.35, 0.3)
+
+# Compute total counts
+m <- sum(counts)
+
+# Compute degrees of freedom
+degrees <- length(counts) - 1
+
+# Compute expected counts
+exp_counts <- m * null_probs
+
+# Compute chi-squared statistic
+chi_squared <- sum( (counts - exp_counts)^2 / exp_counts )
+
+# Compute p-value
+p_value <- 1 - pchisq(chi_squared, df = degrees)
+
+# Print p-value
+cat("The p-value is:", p_value)
+```
+
+<br>
+
+- Therefore p-value is $p > 0.05$
+
+- We do not reject $H_0$
+
+- There is no reason to believe that Republican and Democrat are not tie
+
+
+
+
+# Part 4: <br>Monte Carlo <br> simulations {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Monte Carlo simulations {.smaller}
+
+- Recall the approximation
+$$
+\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i } \ \approx \ \chi_{n-1}^2  
+$$
+
+- Define expected counts $E_i := m p_i$ 
+
+- We said that
+    * $E_i < 5$ for some $i \quad \implies \quad$ approximation of $\chi^2$ with $\chi_{n-1}^2$ is bad
+    * In this case we use **Monte Carlo simulations**
+
+<br>
+
+- **Question:** What is a Monte Carlo simulation?
+
+
+
+
+
+## Monte Carlo methods {.smaller}
+
+
+- **Monte Carlo methods:** 
+    * Broad class of computational algorithms 
+    * They rely on repeated random sampling to obtain numerical results
+    * Principle: use randomness to solve problems which are deterministic
+
+- **Why the name?**
+    * Method was developed by [Stanislaw Ulam](https://en.wikipedia.org/wiki/Stanisław_Ulam)
+    * His uncle liked to gamble in the Monte--Carlo Casino in Monaco
+
+
+
+
+
+## Monte Carlo simulation: Example{.smaller}
+### Approximating $\pi$ 
+
+
+
 
 
 ## Monte Carlo simulation: Example{.smaller}
@@ -422,7 +1054,7 @@ x_i^2 + y_i^2 \leq 1
 $$
 - Can estimate area of circle with proportion of points falling inside circle:
 $$
-Area \ = \ \pi \ \approx \frac{\text{Number of points } (x_i,y_i) \text{ inside circle}}{N}
+\text{Area} \ = \ \pi \ \approx \ \frac{\text{Number of points } (x_i,y_i) \text{ inside circle}}{N}
 $$
 
 
