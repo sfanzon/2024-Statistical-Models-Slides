@@ -406,47 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
   .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,19 +418,59 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -523,11 +523,10 @@
 <h2>Outline of Lecture 7</h2>
 <ol type="1">
 <li>Overview</li>
-<li>The chi-squared goodness-of-fit test</li>
+<li>Chi-squared goodness-of-fit test</li>
 <li>Goodness-of-fit test: Examples</li>
 <li>Monte Carlo simulations</li>
-<li>Computational Example 1</li>
-<li>The chi-squared test of independence/no association</li>
+<li>Chi-squared test of independence</li>
 <li>Computational Example 2</li>
 </ol>
 </section></section>
@@ -958,17 +957,13 @@ O_1 + \ldots + O_n = m
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Acceptable</strong></td>
-<td style="text-align: left;"><span class="math inline">E_i \geq 1.5 \,</span> for all <span class="math inline">\, i = 1 , \ldots n</span></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><strong>Bad</strong></td>
-<td style="text-align: left;"><span class="math inline">E_i &lt; 1.5 \,</span> for some <span class="math inline">\, i = 1 , \ldots n</span></td>
+<td style="text-align: left;"><span class="math inline">E_i &lt; 5 \,</span> for some <span class="math inline">\, i = 1 , \ldots n</span></td>
 </tr>
 </tbody>
 </table></li>
-<li><p><strong>Good</strong> or <strong>Acceptable</strong>: Use <span class="math inline">\chi_{n-1}^2</span> approximation of <span class="math inline">\chi^2</span></p></li>
-<li><p><strong>Bad</strong>: Use Monte Carlo simulations (more on this later)</p></li>
+<li><p><strong>Good:</strong> Use <span class="math inline">\chi_{n-1}^2</span> approximation of <span class="math inline">\chi^2</span></p></li>
+<li><p><strong>Bad:</strong> Use Monte Carlo simulations (more on this later)</p></li>
 </ul>
 </section>
 <section id="the-chi-squared-goodness-of-fit-test" class="slide level2 smaller">
@@ -1050,7 +1045,7 @@ m = \sum_{i=1}^n o_i \qquad \quad E_i = m p_i^0
 <ol start="2" type="1">
 <li><strong>Statistical Tables or R</strong>:
 <ul>
-<li>Check that <span class="math inline">E_i \geq 1.5</span> for all <span class="math inline">i = 1, \ldots, n</span></li>
+<li>Check that <span class="math inline">E_i \geq 5</span> for all <span class="math inline">i = 1, \ldots, n</span></li>
 <li>In this case <span class="math inline">\chi^2 \ \approx \ \chi_{n-1}^2</span></li>
 <li>Find critical value in chi-squared <a href="files/Statistics_Tables.pdf">Table 13.5</a> <span class="math display">
 \chi^2_{n - 1} (0.05)
@@ -1509,7 +1504,6 @@ p = P( \chi_{n-1}^2 &gt; \chi^2 ) = 1 - P( \chi_{n-1}^2 \leq \chi^2 )
 <li><p>Recall the approximation <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i } \ \approx \ \chi_{n-1}^2  
 </span></p></li>
-<li><p>Define expected counts <span class="math inline">E_i := m p_i</span></p></li>
 <li><p>We said that</p>
 <ul>
 <li><span class="math inline">E_i &lt; 5</span> for some <span class="math inline">i \quad \implies \quad</span> approximation of <span class="math inline">\chi^2</span> with <span class="math inline">\chi_{n-1}^2</span> is bad</li>
@@ -1535,83 +1529,387 @@ p = P( \chi_{n-1}^2 &gt; \chi^2 ) = 1 - P( \chi_{n-1}^2 \leq \chi^2 )
 <li>Method was developed by <a href="https://en.wikipedia.org/wiki/Stanisław_Ulam">Stanislaw Ulam</a></li>
 <li>His uncle liked to gamble in the Monte–Carlo Casino in Monaco</li>
 </ul></li>
+<li><strong>Examples of applications:</strong>
+<ul>
+<li>First used to solve problem of neutron diffusion in Los Alamos 1946</li>
+<li>Can be used to compute p-values</li>
+<li>Can be used to compute integrals</li>
+</ul></li>
 </ul>
 </section>
 <section id="monte-carlo-simulation-example" class="slide level2 smaller">
 <h2>Monte Carlo simulation: Example</h2>
 <h3 id="approximating-pi">Approximating <span class="math inline">\pi</span></h3>
-</section>
+
+<img data-src="images/pi_monte_carlo.gif" style="width:82.0%" class="r-stretch"></section>
 <section id="monte-carlo-simulation-example-1" class="slide level2 smaller">
 <h2>Monte Carlo simulation: Example</h2>
-<h3 id="approximating-pi-1">Approximating <span class="math inline">\pi</span></h3>
+<h3 id="approximating-pi-summarizing-the-idea">Approximating <span class="math inline">\pi</span> – Summarizing the idea</h3>
 <ul>
-<li><p>We can approximate <span class="math inline">\pi</span> via Monte Carlo simulation</p></li>
-<li><p>Idea:</p>
-<ul>
-<li>Throw random points inside unit square</li>
+<li>Throw random points inside square of side <span class="math inline">2</span></li>
 <li>Count proportion of points falling inside unit circle</li>
 <li>Such proportion approximates the area of the circle</li>
 <li>Area of unit circle is <span class="math inline">\pi</span></li>
-</ul></li>
 </ul>
 </section>
 <section id="monte-carlo-simulation-example-2" class="slide level2 smaller">
 <h2>Monte Carlo simulation: Example</h2>
-<h3 id="approximating-pi-2">Approximating <span class="math inline">\pi</span></h3>
-<p>In practice, we do the following:</p>
+<h3 id="approximating-pi-concrete-steps">Approximating <span class="math inline">\pi</span> – Concrete steps</h3>
 <ul>
-<li>Draw <span class="math inline">x_1, \ldots, x_N, y_1, \ldots, y_N</span> from <span class="math inline">{\rm Uniform(-1,1)}</span></li>
-<li>Draw <span class="math inline">y_1, \ldots, y_N</span> from <span class="math inline">{\rm Uniform(-1,1)}</span></li>
-<li>Count the number of points <span class="math inline">(x_i,y_i)</span> falling inside circle of radius <span class="math inline">1</span></li>
-<li>These are points satisfying condition <span class="math display">
+<li><p>Draw <span class="math inline">x_1, \ldots, x_N</span> and <span class="math inline">y_1, \ldots, y_N</span> from <span class="math inline">{\rm Uniform(-1,1)}</span></p></li>
+<li><p>Count the number of points <span class="math inline">(x_i,y_i)</span> falling inside circle of radius <span class="math inline">1</span></p></li>
+<li><p>These are points satisfying condition <span class="math display">
 x_i^2 + y_i^2 \leq 1
-</span></li>
-<li>Can estimate area of circle with proportion of points falling inside circle: <span class="math display">
-\text{Area} \ = \ \pi \ \approx \ \frac{\text{Number of points } (x_i,y_i) \text{ inside circle}}{N}
-</span></li>
+</span></p></li>
+<li><p>Area of circle estimated with proportion of points falling inside circle: <span class="math display">
+\text{Area} \ = \ \pi \ \approx \ \frac{\text{Number of points } (x_i,y_i) \text{ inside circle}}{N}  \ \times \ 4
+</span></p></li>
+<li><p>Note: <span class="math inline">4</span> is the area of square of side <span class="math inline">2</span></p></li>
 </ul>
 </section>
-<section id="monte" class="slide level2 smaller">
-<h2>Monte</h2>
-<h3 id="plot-of-1000-random-points-uniformly-distributed-in-unit-square">Plot of 1000 random points uniformly distributed in unit square</h3>
+<section id="monte-carlo-simulation-example-3" class="slide level2 smaller">
+<h2>Monte Carlo simulation: Example</h2>
+<h3 id="plot-of-1000-random-points-in-square-of-side-2">Plot of 1000 random points in square of side 2</h3>
 
 <img data-src="lecture_7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="monte-carlo" class="slide level2 smaller">
-<h2>Monte carlo</h2>
-<h3 id="implementation-in-r">Implementation in R</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>niters <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb10-2"><a></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb10-3"><a></a>in_circle <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<section id="monte-carlo-simulation-example-4" class="slide level2 smaller">
+<h2>Monte Carlo simulation: Example</h2>
+<h3 id="implementation-in-r-download-code-monte_carlo_pi.r">Implementation in R – Download code <a href="codes/monte_carlo_pi.R">monte_carlo_pi.R</a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb10-2"><a></a>total <span class="ot">&lt;-</span> <span class="dv">0</span>      <span class="co"># Counts total number of points</span></span>
+<span id="cb10-3"><a></a>in_circle <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Counts points falling in circle</span></span>
 <span id="cb10-4"><a></a></span>
 <span id="cb10-5"><a></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb10-6"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>niters) {</span>
-<span id="cb10-7"><a></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>); y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>);</span>
-<span id="cb10-8"><a></a>    <span class="cf">if</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb10-9"><a></a>      in_circle <span class="ot">&lt;-</span> in_circle <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb10-7"><a></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>); y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>);  <span class="co"># sample point (x,y)</span></span>
+<span id="cb10-8"><a></a>    <span class="cf">if</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">1</span>) {    </span>
+<span id="cb10-9"><a></a>      in_circle <span class="ot">&lt;-</span> in_circle <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># If (x,y) in circle increase counter</span></span>
 <span id="cb10-10"><a></a>    }</span>
-<span id="cb10-11"><a></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-11"><a></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># Increase total counter</span></span>
 <span id="cb10-12"><a></a>  }</span>
 <span id="cb10-13"><a></a>  </span>
-<span id="cb10-14"><a></a>  area <span class="ot">&lt;-</span> in_circle <span class="sc">/</span> total</span>
-<span id="cb10-15"><a></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"After %8d iterations area is %.08f, error is %.08f</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb10-16"><a></a>     (j <span class="sc">*</span> niters), area, <span class="fu">abs</span>(area <span class="sc">-</span> pi)))</span>
-<span id="cb10-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-14"><a></a>  pi_approx <span class="ot">&lt;-</span> ( in_circle <span class="sc">/</span> total ) <span class="sc">*</span> <span class="dv">4</span>  <span class="co"># Compute approximate area</span></span>
+<span id="cb10-15"><a></a></span>
+<span id="cb10-16"><a></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"After %8d iterations pi is %.08f, error is %.08f</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb10-17"><a></a>     (j <span class="sc">*</span> N), pi_approx, <span class="fu">abs</span>(pi_approx <span class="sc">-</span> pi)))</span>
+<span id="cb10-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="monte-carlo-1" class="slide level2 smaller">
-<h2>Monte carlo</h2>
+<section id="monte-carlo-simulation-example-5" class="slide level2 smaller">
+<h2>Monte Carlo simulation: Example</h2>
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations area is 3.13200000, error is 0.00959265
-After    20000 iterations area is 3.13220000, error is 0.00939265
-After    30000 iterations area is 3.13026667, error is 0.01132599
-After    40000 iterations area is 3.12860000, error is 0.01299265
-After    50000 iterations area is 3.13176000, error is 0.00983265
-After    60000 iterations area is 3.13313333, error is 0.00845932
-After    70000 iterations area is 3.13388571, error is 0.00770694
-After    80000 iterations area is 3.13565000, error is 0.00594265
-After    90000 iterations area is 3.13680000, error is 0.00479265
-After   100000 iterations area is 3.13720000, error is 0.00439265</code></pre>
+<pre><code>After    10000 iterations pi is 3.16040000, error is 0.01880735
+After    20000 iterations pi is 3.15220000, error is 0.01060735
+After    30000 iterations pi is 3.15386667, error is 0.01227401
+After    40000 iterations pi is 3.15350000, error is 0.01190735
+After    50000 iterations pi is 3.15176000, error is 0.01016735
+After    60000 iterations pi is 3.14926667, error is 0.00767401
+After    70000 iterations pi is 3.14702857, error is 0.00543592
+After    80000 iterations pi is 3.14800000, error is 0.00640735
+After    90000 iterations pi is 3.14662222, error is 0.00502957
+After   100000 iterations pi is 3.14588000, error is 0.00428735</code></pre>
+</div>
+</div>
+</section>
+<section id="monte-carlo-p-value" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<p><strong>Goal:</strong> use Monte Carlo simulations to compute p-value of goodness-of-fit test</p>
+<ul>
+<li>Consider data counts</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+<th style="text-align: center;"><span class="math inline">1</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Observed counts</td>
+<td style="text-align: center;"><span class="math inline">o_1</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">o_n</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Null hypothesis Probabilities</td>
+<td style="text-align: center;"><span class="math inline">p_1^0</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_n^0</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The expected counts are <span class="math inline">E_i = m p_i^0</span></p></li>
+<li><p>Under the null hypothesis, the observed counts <span class="math inline">(o_1, \ldots, o_n)</span> come from <span class="math display">
+(O_1 , \ldots, O_n) \sim \mathop{\mathrm{Mult}}(m, p_1^0, \ldots, p_n^0)
+</span></p></li>
+</ul>
+</section>
+<section id="monte-carlo-p-value-1" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<ul>
+<li><p>The chi-squared statistic random variable is <span class="math display">
+\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i }
+</span></p></li>
+<li><p>The observed chi-squared statistics is <span class="math display">
+\chi^2_{\rm obs} = \sum_{i=1}^n \frac{(o_i - E_i)^2 }{ E_i }
+</span></p></li>
+<li><p>The p-value is defined as <span class="math display">
+p = P( \chi^2 &gt; \chi^2_{\rm obs} )
+</span></p></li>
+</ul>
+</section>
+<section id="monte-carlo-p-value-2" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="problem">Problem</h3>
+<ul>
+<li>Suppose <span class="math inline">E_i &lt; 5</span> for some <span class="math inline">i</span></li>
+<li>Then the distribution of chi-squared random variable is unknown <span class="math display">
+\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i }  \ \, \sim \ \, ???
+</span></li>
+<li>How do we compute the p-value <span class="math display">
+p = P( \chi^2 &gt; \chi^2_{\rm obs} )  \ \ ???
+</span></li>
+</ul>
+<p><strong>Exercise</strong>: Think of Monte Carlo simulation to approximate <span class="math inline">p</span></p>
+</section>
+<section id="monte-carlo-p-value-3" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-10">Solution</h3>
+<ol type="1">
+<li><p>Simulate counts <span class="math inline">(o_1^{\rm sim},\ldots,o_n^{\rm sim})</span> from <span class="math inline">\mathop{\mathrm{Mult}}(m, p_1^0, \ldots, p_n^0)</span></p></li>
+<li><p>Compute the corresponding simulated chi-squared statistic <span class="math display">
+\chi^2_{\rm sim} = \sum_{i=1}^n \frac{ (o_i^{\rm sim} - E_i)^2 }{E_i}
+</span></p></li>
+<li><p>The simulated chi-squared statistic is <strong>extreme</strong> if <span class="math inline">\, \chi^2_{\rm sim} &gt; \chi^2_{\rm obs}</span></p></li>
+<li><p>We estimate theoretical p-value in the following way <span class="math display">
+p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number of simulations} }
+</span></p></li>
+</ol>
+</section>
+<section id="monte-carlo-p-value-4" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="exercise">Exercise</h3>
+<p><strong>Data:</strong> Number of defects in printed circuit boards</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"># Defects</th>
+<th style="text-align: center;"><span class="math inline">0</span></th>
+<th style="text-align: center;"><span class="math inline">1</span></th>
+<th style="text-align: center;"><span class="math inline">2</span></th>
+<th style="text-align: center;"><span class="math inline">3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Counts</td>
+<td style="text-align: center;"><span class="math inline">32</span></td>
+<td style="text-align: center;"><span class="math inline">15</span></td>
+<td style="text-align: center;"><span class="math inline">9</span></td>
+<td style="text-align: center;"><span class="math inline">4</span></td>
+</tr>
+</tbody>
+</table>
+<p>Null hypothesis probabilities are</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">p_1^0</span></th>
+<th style="text-align: center;"><span class="math inline">p_2^0</span></th>
+<th style="text-align: center;"><span class="math inline">p_3^0</span></th>
+<th style="text-align: center;"><span class="math inline">p_4^0</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">0.5</span></td>
+<td style="text-align: center;"><span class="math inline">0.3</span></td>
+<td style="text-align: center;"><span class="math inline">0.15</span></td>
+<td style="text-align: center;"><span class="math inline">0.05</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="monte-carlo-p-value-5" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="exercise-1">Exercise</h3>
+<ul>
+<li>Total number of counts is <span class="math inline">m = 60</span>. Expected counts are <span class="math inline">E_i = m p_i^0</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">E_1</span></th>
+<th style="text-align: center;"><span class="math inline">E_2</span></th>
+<th style="text-align: center;"><span class="math inline">E_3</span></th>
+<th style="text-align: center;"><span class="math inline">E_4</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">30</span></td>
+<td style="text-align: center;"><span class="math inline">18</span></td>
+<td style="text-align: center;"><span class="math inline">9</span></td>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Note: <span class="math inline">E_4 = 3 &lt; 5</span>
+<ul>
+<li>Therefore the distribution of <span class="math inline">\chi^2</span> is unknown</li>
+</ul></li>
+<li><strong>Exercise</strong>: Write an R code for goodness-of-fit test on above data
+<ul>
+<li>You may not use the function <code>chisq.test</code></li>
+<li>p-value should be computed by Monte Carlo simulations</li>
+<li>Use the ideas in Slide 60</li>
+</ul></li>
+</ul>
+</section>
+<section id="monte-carlo-p-value-6" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-11">Solution</h3>
+<ul>
+<li>The first part of the code is the same as in Slides 44–46
+<ul>
+<li>Enter observed counts and null probabilities</li>
+<li>Compute total counts, expected counts and observed chi-squared statistic</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
+<span id="cb12-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">4</span>)</span>
+<span id="cb12-3"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>, <span class="fl">0.05</span>)</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a><span class="co"># Compute total counts</span></span>
+<span id="cb12-6"><a></a>m <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a><span class="co"># Compute expected counts</span></span>
+<span id="cb12-9"><a></a>exp_counts <span class="ot">&lt;-</span> m <span class="sc">*</span> null_probs</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="co"># Compute the observed chi-squared statistic</span></span>
+<span id="cb12-12"><a></a>obs_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (counts <span class="sc">-</span> exp_counts)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="monte-carlo-p-value-7" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-12">Solution</h3>
+<ul>
+<li>We approximate the p-value using ideas in Slide 60</li>
+<li>We perform <span class="math inline">N</span> Monte Carlo simulations</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># Number of Monte Carlo simulations</span></span>
+<span id="cb13-2"><a></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>To count extreme statistics we initialize a counter</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Initialize counter for extreme statistics</span></span>
+<span id="cb14-2"><a></a>count_extreme_statistics <span class="ot">&lt;-</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="monte-carlo-p-value-8" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-13">Solution</h3>
+<ul>
+<li>For each simulation we do
+<ul>
+<li>Simulate counts <span class="math inline">(o_1^{\rm sim},\ldots,o_n^{\rm sim})</span> from <span class="math inline">\mathop{\mathrm{Mult}}(m, p_1^0, \ldots, p_n^0)</span></li>
+<li>Compute the corresponding simulated chi-squared statistic <span class="math display">
+  \chi^2_{\rm sim} = \sum_{i=1}^n \frac{ (o_i^{\rm sim} - E_i)^2 }{E_i}
+  </span></li>
+<li>Check if simulated statistic <span class="math inline">\chi^2_{\rm sim}</span> is <strong>extreme</strong>, that is, if <span class="math display">
+  \chi^2_{\rm sim} &gt; \chi^2_{\rm obs}
+  </span></li>
+<li>If <span class="math inline">\chi^2_{\rm sim}</span> is <strong>extreme</strong> we increase the counter</li>
+</ul></li>
+</ul>
+</section>
+<section id="monte-carlo-p-value-9" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-14">Solution</h3>
+<ul>
+<li>The procedure discussed in the previous slide is coded below</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Perform Monte Carlo simulations</span></span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb15-4"><a></a>  <span class="co"># Simulate multinomial counts under null hypothesis</span></span>
+<span id="cb15-5"><a></a>  simul_counts <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">1</span>, m, null_probs)</span>
+<span id="cb15-6"><a></a>  </span>
+<span id="cb15-7"><a></a>  <span class="co"># Compute chi-squared statistic for the simulated counts</span></span>
+<span id="cb15-8"><a></a>  simul_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (simul_counts <span class="sc">-</span> exp_counts )<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts)</span>
+<span id="cb15-9"><a></a>  </span>
+<span id="cb15-10"><a></a>  <span class="co"># Check if simulated chi-squared statistic is extreme</span></span>
+<span id="cb15-11"><a></a>  <span class="cf">if</span> (simul_chi_squared <span class="sc">&gt;=</span> obs_chi_squared) {</span>
+<span id="cb15-12"><a></a>    count_extreme_statistics <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb15-13"><a></a>  }</span>
+<span id="cb15-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="monte-carlo-p-value-10" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-15">Solution</h3>
+<ul>
+<li>We compute the Monte Carlo p-value using the below formula <span class="math display">
+p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number of simulations} }
+</span></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Compute Monte Carlo p-value</span></span>
+<span id="cb16-2"><a></a>monte_carlo_p_value <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="monte-carlo-p-value-11" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-16">Solution</h3>
+<ul>
+<li>To check our procedure we also compute Monte-Carlo p-value with <code>chisq.test</code></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Perform chi-squared test using built-in R function</span></span>
+<span id="cb17-2"><a></a>chi_squared_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs, </span>
+<span id="cb17-3"><a></a>                               <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a><span class="co"># Extract p-value from chi-squared test result</span></span>
+<span id="cb17-6"><a></a>chisq_p_value <span class="ot">&lt;-</span> chi_squared_test<span class="sc">$</span>p.value</span>
+<span id="cb17-7"><a></a></span>
+<span id="cb17-8"><a></a><span class="co"># Print p-values for comparison</span></span>
+<span id="cb17-9"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Custom Monte Carlo p-value:"</span>, monte_carlo_p_value)</span>
+<span id="cb17-10"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">R Monte Carlo p-value:"</span>, chisq_p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="monte-carlo-p-value-12" class="slide level2 smaller">
+<h2>Monte Carlo p-value</h2>
+<h3 id="solution-17">Solution</h3>
+<ul>
+<li><p>The previous code can be downloaded here <a href="codes/monte_carlo_p_value.R">monte_carlo_p_value.R</a></p></li>
+<li><p>Running the code yields the following output</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Custom Monte Carlo p-value: 0.82018</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+R Monte Carlo p-value: 0.8175912</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Notes</strong>:
+<ul>
+<li><code>chisq.test</code> runs a more refined Monte Carlo algorithm for p-value</li>
+<li>Even if our algorithm is quite elementary, the two p-values are close!</li>
+<li>In particular <span class="math inline">p &gt; 0.05</span> and we do not reject <span class="math inline">H_0</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section id="part-5-chi-squared-test-of-independence" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Chi-squared test <br>of independence</h1>
+<div class="footer">
+<div color="#cc0164">
+
 </div>
 </div>
 
@@ -1620,7 +1918,7 @@ After   100000 iterations area is 3.13720000, error is 0.00439265</code></pre>
 <p><a href="../index.html">Homepage</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../license.html">License</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.silviofanzon.com/contact">Contact</a></p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
