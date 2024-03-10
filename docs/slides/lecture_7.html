@@ -406,15 +406,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -422,31 +426,23 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
   .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
@@ -458,11 +454,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,7 +470,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -526,8 +526,9 @@
 <li>Chi-squared goodness-of-fit test</li>
 <li>Goodness-of-fit test: Examples</li>
 <li>Monte Carlo simulations</li>
+<li>Contingency tables</li>
 <li>Chi-squared test of independence</li>
-<li>Computational Example 2</li>
+<li>Chi-squared test of homogeneity</li>
 </ol>
 </section></section>
 <section>
@@ -1599,16 +1600,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.16040000, error is 0.01880735
-After    20000 iterations pi is 3.15220000, error is 0.01060735
-After    30000 iterations pi is 3.15386667, error is 0.01227401
-After    40000 iterations pi is 3.15350000, error is 0.01190735
-After    50000 iterations pi is 3.15176000, error is 0.01016735
-After    60000 iterations pi is 3.14926667, error is 0.00767401
-After    70000 iterations pi is 3.14702857, error is 0.00543592
-After    80000 iterations pi is 3.14800000, error is 0.00640735
-After    90000 iterations pi is 3.14662222, error is 0.00502957
-After   100000 iterations pi is 3.14588000, error is 0.00428735</code></pre>
+<pre><code>After    10000 iterations pi is 3.14320000, error is 0.00160735
+After    20000 iterations pi is 3.14860000, error is 0.00700735
+After    30000 iterations pi is 3.14733333, error is 0.00574068
+After    40000 iterations pi is 3.14970000, error is 0.00810735
+After    50000 iterations pi is 3.15080000, error is 0.00920735
+After    60000 iterations pi is 3.15166667, error is 0.01007401
+After    70000 iterations pi is 3.14531429, error is 0.00372163
+After    80000 iterations pi is 3.14525000, error is 0.00365735
+After    90000 iterations pi is 3.14755556, error is 0.00596290
+After   100000 iterations pi is 3.14616000, error is 0.00456735</code></pre>
 </div>
 </div>
 </section>
@@ -1889,11 +1890,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.82018</code></pre>
+Custom Monte Carlo p-value: 0.81936</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8175912</code></pre>
+R Monte Carlo p-value: 0.8170915</code></pre>
 </div>
 </div>
 <ul>
@@ -1905,8 +1906,1331 @@ R Monte Carlo p-value: 0.8175912</code></pre>
 </ul></li>
 </ul>
 </section></section>
-<section id="part-5-chi-squared-test-of-independence" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 5: <br>Chi-squared test <br>of independence</h1>
+<section>
+<section id="part-5-contingency-tables" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Contingency tables</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="contingency-tables-example" class="slide level2 smaller">
+<h2>Contingency tables: Example</h2>
+<p><strong>Two-way Contigency Tables:</strong> Table in which each observation is classified in 2 ways</p>
+<p><strong>Example:</strong> Relative performance of Man Utd managers</p>
+<ul>
+<li>Two classifications are considered for each game:
+<ul>
+<li>Result and Manager in charge</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Manager</th>
+<th style="text-align: left;">Won</th>
+<th style="text-align: left;">Drawn</th>
+<th style="text-align: left;">Lost</th>
+<th style="text-align: left;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Moyes</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Van Gaal</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mourinho</td>
+<td style="text-align: left;">84</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">144</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Solskjaer</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">168</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Totals</td>
+<td style="text-align: left;">256</td>
+<td style="text-align: left;">103</td>
+<td style="text-align: left;">107</td>
+<td style="text-align: left;">466</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="contingency-tables-general-case" class="slide level2 smaller">
+<h2>Contingency tables: General case</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each observation
+<ul>
+<li>has attached two categories <span class="math inline">X</span> and <span class="math inline">Y</span></li>
+<li>can only belong to one category <span class="math inline">(X,Y) = (i,j)</span></li>
+</ul></li>
+<li><span class="math inline">O_{ij}</span> is the <strong>count</strong> of observations with <span class="math inline">(X,Y) = (i,j)</span></li>
+<li>Table has <span class="math inline">R</span> rows and <span class="math inline">C</span> columns for total of <span class="math inline">n = RC</span> categories</li>
+</ul>
+</section>
+<section id="contingency-tables-general-case-1" class="slide level2 smaller">
+<h2>Contingency tables: General case</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>plus</em> symbol in subscript denotes sum over that subscript. Example</li>
+</ul>
+<p><span class="math display">
+O_{R+} = \sum_{j=1}^C O_{Rj} \qquad \quad
+O_{+2} = \sum_{i=1}^R O_{i2}
+</span></p>
+</section>
+<section id="contingency-tables-general-case-2" class="slide level2 smaller">
+<h2>Contingency tables: General case</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The total count is</li>
+</ul>
+<p><span class="math display">
+m = O_{++} = \sum_{i=1}^R \sum_{j=1}^C O_{ij}
+</span></p>
+</section>
+<section id="contingency-tables-general-case-3" class="slide level2 smaller">
+<h2>Contingency tables: General case</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The marginal counts sum to <span class="math inline">m</span> as well</li>
+</ul>
+<p><span class="math display">
+\sum_{i=1}^R O_{i+} = \sum_{i=1}^R \sum_{j=1}^C O_{ij} = m
+</span></p>
+</section>
+<section id="contingency-tables-general-case-4" class="slide level2 smaller">
+<h2>Contingency tables: General case</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The marginal counts sum to <span class="math inline">m</span> as well</li>
+</ul>
+<p><span class="math display">
+\sum_{j=1}^C O_{+j} = \sum_{j=1}^C \sum_{i=1}^R  O_{ij} = m
+</span></p>
+</section>
+<section id="contingency-tables-probabilities" class="slide level2 smaller">
+<h2>Contingency tables: Probabilities</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">p_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Observation in cell <span class="math inline">(i,j)</span> happens with probability</li>
+</ul>
+<p><span class="math display">
+p_{ij} := P(X = i , Y = j)
+</span></p>
+</section>
+<section id="contingency-tables-probabilities-1" class="slide level2 smaller">
+<h2>Contingency tables: Probabilities</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">p_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The marginal probabilities that <span class="math inline">X = i</span> or <span class="math inline">Y = j</span> are at the margins of table</li>
+</ul>
+<p><span class="math display">
+P(X = i) = \sum_{j=1}^C P(X = i , Y = j) = \sum_{j=1}^C p_{ij} = p_{i+}
+</span></p>
+</section>
+<section id="contingency-tables-probabilities-2" class="slide level2 smaller">
+<h2>Contingency tables: Probabilities</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">p_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The marginal probabilities that <span class="math inline">X = i</span> or <span class="math inline">Y = j</span> are at the margins of table</li>
+</ul>
+<p><span class="math display">
+P(Y = j) = \sum_{i=1}^R P(X = i , Y = j) = \sum_{i=1}^R p_{ij} = p_{+j}
+</span></p>
+</section>
+<section id="contingency-tables-probabilities-3" class="slide level2 smaller">
+<h2>Contingency tables: Probabilities</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">p_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Marginal probabilities sum to <span class="math inline">1</span></li>
+</ul>
+<p><span class="math display">
+\sum_{i=1}^R p_{i+} = \sum_{i=1}^R  P(X = i) = \sum_{i=1}^R \sum_{j=1}^C P(X = i , Y = j) = 1
+</span></p>
+</section>
+<section id="contingency-tables-probabilities-4" class="slide level2 smaller">
+<h2>Contingency tables: Probabilities</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">p_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Marginal probabilities sum to <span class="math inline">1</span></li>
+</ul>
+<p><span class="math display">
+\sum_{j=1}^C p_{+j} = \sum_{j=1}^C  P(X = j) = \sum_{j=1}^R \sum_{j=1}^C P(X = i , Y = j) = 1
+</span></p>
+</section>
+<section id="multinomial-distribution-2" class="slide level2 smaller">
+<h2>Multinomial distribution</h2>
+<ul>
+<li><p>Counts <span class="math inline">O_{ij}</span> and probabilities <span class="math inline">p_{ij}</span> can be assembled into <span class="math inline">R \times C</span> matrices <span class="math display">
+O =
+\left(
+\begin{array}{ccc}
+O_{11} &amp; \ldots &amp; O_{1C} \\
+\vdots &amp; \ddots &amp; \vdots \\
+O_{R1} &amp; \ldots &amp; O_{RC} \\
+\end{array}
+\right)
+\qquad \qquad
+p =
+\left(
+\begin{array}{ccc}
+p_{11} &amp; \ldots &amp; p_{1C} \\
+\vdots &amp; \ddots &amp; \vdots \\
+p_{R1} &amp; \ldots &amp; p_{RC} \\
+\end{array}
+\right)
+</span></p></li>
+<li><p>This way the random matrix <span class="math inline">O</span> has multinomial distribution <span class="math display">
+O \sim \mathop{\mathrm{Mult}}(m,p)
+</span></p></li>
+<li><p>The counts <span class="math inline">O_{ij}</span> are therefore binomial <span class="math display">
+O_{ij} \sim \mathop{\mathrm{Bin}}(m,p_{ij})
+</span></p></li>
+</ul>
+</section>
+<section id="multinomial-distribution-3" class="slide level2 smaller">
+<h2>Multinomial distribution</h2>
+<ul>
+<li><p>We can also consider the marginal random vectors <span class="math display">
+(O_{1+}, \ldots, O_{R+}) \qquad \qquad (O_{+1}, \ldots, O_{+C})
+</span></p></li>
+<li><p>These have also multinomial distribution <span class="math display">
+(O_{1+}, \ldots, O_{R+})  \sim \mathop{\mathrm{Mult}}(m, p_{1+}, \ldots, p_{R+})
+</span> <span class="math display">
+(O_{+1}, \ldots, O_{+C}) \sim \mathop{\mathrm{Mult}}(m, p_{+1}, \ldots, p_{+C})
+</span></p></li>
+</ul>
+</section>
+<section id="expected-counts" class="slide level2 smaller">
+<h2>Expected counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We have that <span class="math inline">O_{ij} \sim \mathop{\mathrm{Bin}}(m,p_{ij})</span></li>
+<li>Therefore the <strong>expected counts</strong> for category <span class="math inline">(i,j)</span> is <span class="math display">
+E_{ij} = {\rm I\kern-.3em E}[O_{ij}] =  m p_{ij}
+</span></li>
+</ul>
+</section>
+<section id="marginal-expected-counts" class="slide level2 smaller">
+<h2>Marginal expected counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">E_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">E_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">E_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Due to linearity of expectation, it makes sense to define marginal counts <span class="math display">
+E_{i+} := \sum_{j=1}^C E_{ij}
+\qquad \qquad
+E_{+j} := \sum_{i=1}^R  E_{ij}
+</span></li>
+</ul>
+</section>
+<section id="marginal-expected-counts-1" class="slide level2 smaller">
+<h2>Marginal expected counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">E_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">E_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">E_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">E_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">E_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Marginal expected counts sum to <span class="math inline">m</span>. For example: <span class="math display">
+\sum_{i=1}^R E_{i+} = \sum_{i=1}^R \sum_{j=1}^C E_{ij} =  m \sum_{i=1}^R \sum_{j=1}^C p_{ij} = m
+</span></li>
+</ul>
+</section>
+<section id="the-chi-squared-statistic" class="slide level2 smaller">
+<h2>The chi-squared statistic</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">Y = 2</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{12}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = 2</span></td>
+<td style="text-align: center;"><span class="math inline">O_{21}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{22}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{2+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+2}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<div id="Definition*-6.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The chi-squared statistic associated to the above contingency table is <span class="math display">
+\chi^2 := \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } =
+\sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} }
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="distribution-of-chi-squared-statistic-4" class="slide level2 smaller">
+<h2>Distribution of chi-squared statistic</h2>
+<div id="Theorem*-6.2" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>
+<p>Suppose the counts <span class="math inline">O \sim \mathop{\mathrm{Mult}}(m,p)</span>. Then <span class="math display">
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} } \
+\stackrel{ {\rm d} }{ \longrightarrow } \ \chi_{RC - 1 - {\rm fitted} }^2  
+</span> when <span class="math inline">m = RC \to \infty</span>, where convergence is in distribution and</p>
+<ul>
+<li><span class="math inline">\rm fitted = \,</span> # of parameters used to estimate cell probabilities <span class="math inline">p_{ij}</span></li>
+</ul>
+</div></details>
+</div>
+<p><strong>Quality of approximation:</strong> The chi-squared approximation is good if <span class="math display">
+E_{ij} = m p_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
+j = 1, \ldots, C
+</span></p>
+</section></section>
+<section>
+<section id="part-6-chi-squared-test-of-independence" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 6: <br>Chi-squared test <br>of independence</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="testing-for-independence" class="slide level2 smaller">
+<h2>Testing for independence</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>Owner Occupied</strong></th>
+<th style="text-align: center;"><strong>Rented</strong></th>
+<th style="text-align: center;"><strong>Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>North West</strong></td>
+<td style="text-align: center;"><span class="math inline">2180</span></td>
+<td style="text-align: center;"><span class="math inline">871</span></td>
+<td style="text-align: center;"><span class="math inline">3051</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>London</strong></td>
+<td style="text-align: center;"><span class="math inline">1820</span></td>
+<td style="text-align: center;"><span class="math inline">1400</span></td>
+<td style="text-align: center;"><span class="math inline">3220</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>South West</strong></td>
+<td style="text-align: center;"><span class="math inline">1703</span></td>
+<td style="text-align: center;"><span class="math inline">614</span></td>
+<td style="text-align: center;"><span class="math inline">2317</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">5703</span></td>
+<td style="text-align: center;"><span class="math inline">2885</span></td>
+<td style="text-align: center;"><span class="math inline">8588</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Consider a two-way contingency table as above</p></li>
+<li><p>To each person we associate two categories:</p>
+<ul>
+<li>House Occupancy: Renter or Owner</li>
+<li>Region in which they live: NW, London, SW</li>
+</ul></li>
+</ul>
+</section>
+<section id="testing-for-independence-1" class="slide level2 smaller">
+<h2>Testing for independence</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>Owner Occupied</strong></th>
+<th style="text-align: center;"><strong>Rented</strong></th>
+<th style="text-align: center;"><strong>Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>North West</strong></td>
+<td style="text-align: center;"><span class="math inline">2180</span></td>
+<td style="text-align: center;"><span class="math inline">871</span></td>
+<td style="text-align: center;"><span class="math inline">3051</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>London</strong></td>
+<td style="text-align: center;"><span class="math inline">1820</span></td>
+<td style="text-align: center;"><span class="math inline">1400</span></td>
+<td style="text-align: center;"><span class="math inline">3220</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>South West</strong></td>
+<td style="text-align: center;"><span class="math inline">1703</span></td>
+<td style="text-align: center;"><span class="math inline">614</span></td>
+<td style="text-align: center;"><span class="math inline">2317</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">5703</span></td>
+<td style="text-align: center;"><span class="math inline">2885</span></td>
+<td style="text-align: center;"><span class="math inline">8588</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>One possible question is:
+<ul>
+<li>Does type of House Occupancy depend on Region?</li>
+<li>In other words: Are rows and columns dependent?</li>
+</ul></li>
+</ul>
+</section>
+<section id="testing-for-independence-2" class="slide level2 smaller">
+<h2>Testing for independence</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>Owner Occupied</strong></th>
+<th style="text-align: center;"><strong>Rented</strong></th>
+<th style="text-align: center;"><strong>Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>North West</strong></td>
+<td style="text-align: center;"><span class="math inline">2180</span></td>
+<td style="text-align: center;"><span class="math inline">871</span></td>
+<td style="text-align: center;"><span class="math inline">3051</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>London</strong></td>
+<td style="text-align: center;"><span class="math inline">1820</span></td>
+<td style="text-align: center;"><span class="math inline">1400</span></td>
+<td style="text-align: center;"><span class="math inline">3220</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>South West</strong></td>
+<td style="text-align: center;"><span class="math inline">1703</span></td>
+<td style="text-align: center;"><span class="math inline">614</span></td>
+<td style="text-align: center;"><span class="math inline">2317</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">5703</span></td>
+<td style="text-align: center;"><span class="math inline">2885</span></td>
+<td style="text-align: center;"><span class="math inline">8588</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Looking at the data, it seems clear that:
+<ul>
+<li>Renters in London are almost comparable to Owner occupiers</li>
+<li>Renters in NW and SW are almost a third of number of Owner occupiers</li>
+<li>It appears House Occupancy and Region are dependent quantities</li>
+</ul></li>
+<li><strong>Goal:</strong> Formulate test for independence</li>
+</ul>
+</section>
+<section id="independent-counts" class="slide level2 smaller">
+<h2>Independent counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Consider the general two-way contingency table as above</p></li>
+<li><p>They are equivalent:</p>
+<ul>
+<li>Rows and columns are independent</li>
+<li>Random variables <span class="math inline">X</span> and <span class="math inline">Y</span> are independent</li>
+</ul></li>
+</ul>
+</section>
+<section id="independent-counts-1" class="slide level2 smaller">
+<h2>Independent counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">O_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">O_{R+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">O_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">O_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">m</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Hence, testing for independece means testing following hypothesis: <span class="math display">\begin{align*}
+&amp; H_0 \colon X \, \text{ and } \, Y \, \text{ are independent } \\
+&amp; H_1 \colon X \, \text{ and } \, Y \, \text{ are not independent }
+\end{align*}</span></p></li>
+<li><p>We need to quantify <span class="math inline">H_0</span> and <span class="math inline">H_1</span></p></li>
+</ul>
+</section>
+<section id="independent-counts-2" class="slide level2 smaller">
+<h2>Independent counts</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">Y = 1</span></th>
+<th style="text-align: center;"><span class="math inline">\ldots</span></th>
+<th style="text-align: center;"><span class="math inline">Y = C</span></th>
+<th style="text-align: center;">Totals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = 1</span></td>
+<td style="text-align: center;"><span class="math inline">p_{11}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1C}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{1+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+<td style="text-align: center;"><span class="math inline">\cdots</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">X = R</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{RC}</span></td>
+<td style="text-align: center;"><span class="math inline">p_{R+}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Totals</strong></td>
+<td style="text-align: center;"><span class="math inline">p_{+1}</span></td>
+<td style="text-align: center;"><span class="math inline">\ldots</span></td>
+<td style="text-align: center;"><span class="math inline">p_{+C}</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>R.v. <span class="math inline">X</span> and <span class="math inline">Y</span> are independent iff cell probabilities factor into marginals <span class="math display">
+p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
+</span></p></li>
+<li><p>Therefore the hypothesis test for independence becomes <span class="math display">\begin{align*}
+&amp; H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
+\, \text{ and } \, j = 1 ,\ldots C \\
+&amp; H_1 \colon p_{ij} = p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+\end{align*}</span></p></li>
+</ul>
+</section></section>
+<section id="part-7-chi-squared-test-of-homogeneity" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br>Chi-squared test <br>of homogeneity</h1>
 <div class="footer">
 <div color="#cc0164">
 

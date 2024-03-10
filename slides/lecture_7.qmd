@@ -44,8 +44,9 @@ $
 2. Chi-squared goodness-of-fit test
 3. Goodness-of-fit test: Examples
 4. Monte Carlo simulations
-5. Chi-squared test of independence
-6. Computational Example 2
+5. Contingency tables
+6. Chi-squared test of independence
+7. Chi-squared test of homogeneity
 
 
 
@@ -1443,7 +1444,530 @@ cat("\nR Monte Carlo p-value:", chisq_p_value)
     * In particular $p > 0.05$ and we do not reject $H_0$ 
 
 
-# Part 5: <br>Chi-squared test <br>of independence {background-color="#cc0164" visibility="uncounted"}
+
+
+
+# Part 5: <br>Contingency tables {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+## Contingency tables: Example {.smaller}
+
+**Two-way Contigency Tables:** Table in which each observation is classified in 2 ways
+
+**Example:** Relative performance of Man Utd managers
+
+- Two classifications are considered for each game:
+    * Result and Manager in charge
+
+| Manager |     Won |  Drawn  | Lost    | Totals  |
+|:------- |:------- |:------- |:------- |:------- |
+|  Moyes  |   27    | 9       |   15    |     51  | 
+|Van Gaal |   54    |  25     |   24    | 103     |
+| Mourinho|   84    |  32     |   28    |   144   |
+|Solskjaer|    91   |   37    |   40    |  168    |
+| Totals  | 256     | 103     |  107    |  466    |
+
+
+
+
+
+
+## Contingency tables: General case {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- Each observation
+    * has attached two categories $X$ and $Y$
+    * can only belong to one category $(X,Y) = (i,j)$
+
+- $O_{ij}$ is the **count** of observations with $(X,Y) = (i,j)$
+- Table has $R$ rows and $C$ columns for total of $n = RC$ categories
+
+
+
+## Contingency tables: General case {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- *plus* symbol in subscript denotes sum over
+that subscript. Example
+
+$$
+O_{R+} = \sum_{j=1}^C O_{Rj} \qquad \quad 
+O_{+2} = \sum_{i=1}^R O_{i2}
+$$
+
+
+
+
+## Contingency tables: General case {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- The total count is
+
+$$
+m = O_{++} = \sum_{i=1}^R \sum_{j=1}^C O_{ij}
+$$
+
+
+
+
+
+## Contingency tables: General case {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- The marginal counts sum to $m$ as well
+
+$$
+\sum_{i=1}^R O_{i+} = \sum_{i=1}^R \sum_{j=1}^C O_{ij} = m
+$$
+
+
+
+## Contingency tables: General case {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- The marginal counts sum to $m$ as well
+
+$$
+\sum_{j=1}^C O_{+j} = \sum_{j=1}^C \sum_{i=1}^R  O_{ij} = m
+$$
+
+
+
+
+## Contingency tables: Probabilities {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $p_{12}$  | $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$X = 2$   |  $p_{21}$| $p_{22}$  | $\ldots$ | $p_{2C}$ | $p_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $p_{R2}$  | $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $p_{+2}$  | $\ldots$ | $p_{+C}$ | $1$     |
+
+
+- Observation in cell $(i,j)$ happens with probability
+
+$$
+p_{ij} := P(X = i , Y = j)
+$$
+
+
+## Contingency tables: Probabilities {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $p_{12}$  | $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$X = 2$   |  $p_{21}$| $p_{22}$  | $\ldots$ | $p_{2C}$ | $p_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $p_{R2}$  | $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $p_{+2}$  | $\ldots$ | $p_{+C}$ | $1$     |
+
+- The marginal probabilities that $X = i$ or $Y = j$ are at the margins of table
+
+$$
+P(X = i) = \sum_{j=1}^C P(X = i , Y = j) = \sum_{j=1}^C p_{ij} = p_{i+}
+$$
+
+
+## Contingency tables: Probabilities {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $p_{12}$  | $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$X = 2$   |  $p_{21}$| $p_{22}$  | $\ldots$ | $p_{2C}$ | $p_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $p_{R2}$  | $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $p_{+2}$  | $\ldots$ | $p_{+C}$ | $1$     |
+
+- The marginal probabilities that $X = i$ or $Y = j$ are at the margins of table
+
+$$
+P(Y = j) = \sum_{i=1}^R P(X = i , Y = j) = \sum_{i=1}^R p_{ij} = p_{+j}
+$$
+
+
+
+## Contingency tables: Probabilities {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $p_{12}$  | $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$X = 2$   |  $p_{21}$| $p_{22}$  | $\ldots$ | $p_{2C}$ | $p_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $p_{R2}$  | $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $p_{+2}$  | $\ldots$ | $p_{+C}$ | $1$     |
+
+- Marginal probabilities sum to $1$
+
+$$
+\sum_{i=1}^R p_{i+} = \sum_{i=1}^R  P(X = i) = \sum_{i=1}^R \sum_{j=1}^C P(X = i , Y = j) = 1
+$$
+
+
+
+## Contingency tables: Probabilities {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $p_{12}$  | $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$X = 2$   |  $p_{21}$| $p_{22}$  | $\ldots$ | $p_{2C}$ | $p_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $p_{R2}$  | $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $p_{+2}$  | $\ldots$ | $p_{+C}$ | $1$     |
+
+- Marginal probabilities sum to $1$
+
+$$
+\sum_{j=1}^C p_{+j} = \sum_{j=1}^C  P(X = j) = \sum_{j=1}^R \sum_{j=1}^C P(X = i , Y = j) = 1
+$$
+
+
+
+## Multinomial distribution {.smaller}
+
+- Counts $O_{ij}$ and probabilities $p_{ij}$ can be assembled into $R \times C$ matrices
+$$
+O = 
+\left(
+\begin{array}{ccc}
+O_{11} & \ldots & O_{1C} \\
+\vdots & \ddots & \vdots \\
+O_{R1} & \ldots & O_{RC} \\
+\end{array}
+\right) 
+\qquad \qquad 
+p = 
+\left(
+\begin{array}{ccc}
+p_{11} & \ldots & p_{1C} \\
+\vdots & \ddots & \vdots \\
+p_{R1} & \ldots & p_{RC} \\
+\end{array}
+\right)
+$$
+
+
+- This way the random matrix $O$ has multinomial distribution 
+$$
+O \sim \multinomial (m,p)
+$$
+
+- The counts $O_{ij}$ are therefore binomial
+$$
+O_{ij} \sim \binomial (m,p_{ij})
+$$
+
+
+
+
+## Multinomial distribution {.smaller}
+
+
+- We can also consider the marginal random vectors
+$$
+(O_{1+}, \ldots, O_{R+}) \qquad \qquad (O_{+1}, \ldots, O_{+C})
+$$
+
+- These have also multinomial distribution
+$$
+(O_{1+}, \ldots, O_{R+})  \sim \multinomial (m, p_{1+}, \ldots, p_{R+})
+$$
+$$
+(O_{+1}, \ldots, O_{+C}) \sim \multinomial (m, p_{+1}, \ldots, p_{+C})
+$$
+
+
+
+
+
+## Expected counts {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+- We have that $O_{ij} \sim \binomial (m,p_{ij})$
+- Therefore the **expected counts** for category $(i,j)$ is 
+$$
+E_{ij} = \Expect[O_{ij}] =  m p_{ij}
+$$
+
+
+
+## Marginal expected counts {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $E_{11}$| $E_{12}$  | $\ldots$ | $E_{1C}$ | $E_{1+}$|
+|$X = 2$   |  $E_{21}$| $E_{22}$  | $\ldots$ | $E_{2C}$ | $E_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $E_{R1}$| $E_{R2}$  | $\ldots$ | $E_{RC}$ | $E_{R+}$|
+|**Totals**| $E_{+1}$ | $E_{+2}$  | $\ldots$ | $E_{+C}$ | $m$     |
+
+- Due to linearity of expectation, it makes sense to define marginal counts
+$$
+E_{i+} := \sum_{j=1}^C E_{ij} 
+\qquad \qquad 
+E_{+j} := \sum_{i=1}^R  E_{ij} 
+$$
+
+
+
+## Marginal expected counts {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $E_{11}$| $E_{12}$  | $\ldots$ | $E_{1C}$ | $E_{1+}$|
+|$X = 2$   |  $E_{21}$| $E_{22}$  | $\ldots$ | $E_{2C}$ | $E_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $E_{R1}$| $E_{R2}$  | $\ldots$ | $E_{RC}$ | $E_{R+}$|
+|**Totals**| $E_{+1}$ | $E_{+2}$  | $\ldots$ | $E_{+C}$ | $m$     |
+
+- Marginal expected counts sum to $m$. For example:
+$$
+\sum_{i=1}^R E_{i+} = \sum_{i=1}^R \sum_{j=1}^C E_{ij} =  m \sum_{i=1}^R \sum_{j=1}^C p_{ij} = m
+$$
+
+
+
+
+## The chi-squared statistic {.smaller}
+
+|          | $Y = 1$  | $Y = 2$   | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:---------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $O_{12}$  | $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$X = 2$   |  $O_{21}$| $O_{22}$  | $\ldots$ | $O_{2C}$ | $O_{2+}$|
+|$\cdots$  |  $\cdots$| $\cdots$  | $\ldots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $O_{R2}$  | $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $O_{+2}$  | $\ldots$ | $O_{+C}$ | $m$     |
+
+
+::: Definition 
+
+The chi-squared statistic associated to the above contingency table is
+$$
+\chi^2 := \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } = 
+\sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} }
+$$
+
+:::
+
+
+
+
+## Distribution of chi-squared statistic {.smaller}
+
+::: Theorem
+
+Suppose the counts $O \sim \multinomial (m,p)$. Then
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} } \ 
+\stackrel{ {\rm d} }{ \longrightarrow } \ \chi_{RC - 1 - {\rm fitted} }^2  
+$$
+when $m = RC \to \infty$, where convergence is in distribution and
+
+- $\rm fitted = \,$ \# of parameters used to estimate cell probabilities $p_{ij}$
+
+:::
+
+
+**Quality of approximation:** The chi-squared approximation is good if
+$$
+E_{ij} = m p_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
+j = 1, \ldots, C 
+$$
+
+
+
+
+# Part 6: <br>Chi-squared test <br>of independence {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Testing for independence {.smaller}
+
+
+|               | **Owner Occupied** | **Rented** | **Total** |
+|:---------     |:----------:        |:--------:  |:---:      |
+|**North West** | $2180$             | $871$      | $3051$    |
+| **London**    | $1820$             | $1400$     | $3220$    |
+| **South West**| $1703$             | $614$      | $2317$    |
+| **Total**     | $5703$             | $2885$     | $8588$    |
+
+
+
+- Consider a two-way contingency table as above
+
+- To each person we associate two categories:
+    * House Occupancy: Renter or Owner
+    * Region in which they live: NW, London, SW
+
+
+
+## Testing for independence {.smaller}
+
+
+|               | **Owner Occupied** | **Rented** | **Total** |
+|:---------     |:----------:        |:--------:  |:---:      |
+|**North West** | $2180$             | $871$      | $3051$    |
+| **London**    | $1820$             | $1400$     | $3220$    |
+| **South West**| $1703$             | $614$      | $2317$    |
+| **Total**     | $5703$             | $2885$     | $8588$    |
+
+
+- One possible question is:
+    * Does type of House Occupancy depend on Region?
+    * In other words: Are rows and columns dependent?
+
+
+
+## Testing for independence {.smaller}
+
+
+|               | **Owner Occupied** | **Rented** | **Total** |
+|:---------     |:----------:        |:--------:  |:---:      |
+|**North West** | $2180$             | $871$      | $3051$    |
+| **London**    | $1820$             | $1400$     | $3220$    |
+| **South West**| $1703$             | $614$      | $2317$    |
+| **Total**     | $5703$             | $2885$     | $8588$    |
+
+
+- Looking at the data, it seems clear that:
+    * Renters in London are almost comparable to Owner occupiers
+    * Renters in NW and SW are almost a third of number of Owner occupiers
+    * It appears House Occupancy and Region are dependent quantities
+
+- **Goal:** Formulate test for independence
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $\ldots$ | $O_{+C}$ | $m$     |
+
+- Consider the general two-way contingency table as above
+
+- They are equivalent:
+    * Rows and columns are independent
+    * Random variables $X$ and $Y$ are independent
+
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $\ldots$ | $O_{+C}$ | $m$     |
+
+- Hence, testing for independece means testing following hypothesis:
+\begin{align*}
+& H_0 \colon X \, \text{ and } \, Y \, \text{ are independent } \\
+& H_1 \colon X \, \text{ and } \, Y \, \text{ are not independent }
+\end{align*}
+
+
+- We need to quantify $H_0$ and $H_1$
+
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $\ldots$ | $p_{+C}$ | $1$     |
+
+- R.v. $X$ and $Y$ are independent iff cell probabilities factor into marginals
+$$
+p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
+$$
+
+- Therefore the hypothesis test for independence becomes
+\begin{align*}
+& H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C \\
+& H_1 \colon p_{ij} = p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+\end{align*}
+
+
+
+
+
+
+# Part 7: <br>Chi-squared test <br>of homogeneity{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
