@@ -1818,7 +1818,7 @@ $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} } \ 
 \stackrel{ {\rm d} }{ \longrightarrow } \ \chi_{RC - 1 - {\rm fitted} }^2  
 $$
-when $m = RC \to \infty$, where convergence is in distribution and
+when $n = RC \to \infty$, where convergence is in distribution and
 
 - $\rm fitted = \,$ \# of parameters used to estimate cell probabilities $p_{ij}$
 
@@ -1848,19 +1848,19 @@ $$
 ## Testing for independence {.smaller}
 
 
-|               | **Owner Occupied** | **Rented** | **Total** |
-|:---------     |:----------:        |:--------:  |:---:      |
-|**North West** | $2180$             | $871$      | $3051$    |
-| **London**    | $1820$             | $1400$     | $3220$    |
-| **South West**| $1703$             | $614$      | $2317$    |
-| **Total**     | $5703$             | $2885$     | $8588$    |
+|               | **Owned**  | **Rented** | **Total** |
+|:---------     |:----------:|:--------:  |:---:      |
+|**North West** | $2180$     | $871$      | $3051$    |
+| **London**    | $1820$     | $1400$     | $3220$    |
+| **South West**| $1703$     | $614$      | $2317$    |
+| **Total**     | $5703$     | $2885$     | $8588$    |
 
 
 
 - Consider a two-way contingency table as above
 
 - To each person we associate two categories:
-    * House Occupancy: Renter or Owner
+    * Residential Status: Rental or Owned
     * Region in which they live: NW, London, SW
 
 
@@ -1868,16 +1868,16 @@ $$
 ## Testing for independence {.smaller}
 
 
-|               | **Owner Occupied** | **Rented** | **Total** |
-|:---------     |:----------:        |:--------:  |:---:      |
-|**North West** | $2180$             | $871$      | $3051$    |
-| **London**    | $1820$             | $1400$     | $3220$    |
-| **South West**| $1703$             | $614$      | $2317$    |
-| **Total**     | $5703$             | $2885$     | $8588$    |
+|               | **Owned**  | **Rented** | **Total** |
+|:---------     |:----------:|:--------:  |:---:      |
+|**North West** | $2180$     | $871$      | $3051$    |
+| **London**    | $1820$     | $1400$     | $3220$    |
+| **South West**| $1703$     | $614$      | $2317$    |
+| **Total**     | $5703$     | $2885$     | $8588$    |
 
 
 - One possible question is:
-    * Does type of House Occupancy depend on Region?
+    * Does Residential Status depend on Region?
     * In other words: Are rows and columns dependent?
 
 
@@ -1885,18 +1885,18 @@ $$
 ## Testing for independence {.smaller}
 
 
-|               | **Owner Occupied** | **Rented** | **Total** |
-|:---------     |:----------:        |:--------:  |:---:      |
-|**North West** | $2180$             | $871$      | $3051$    |
-| **London**    | $1820$             | $1400$     | $3220$    |
-| **South West**| $1703$             | $614$      | $2317$    |
-| **Total**     | $5703$             | $2885$     | $8588$    |
+|               | **Owned**  | **Rented** | **Total** |
+|:---------     |:----------:|:--------:  |:---:      |
+|**North West** | $2180$     | $871$      | $3051$    |
+| **London**    | $1820$     | $1400$     | $3220$    |
+| **South West**| $1703$     | $614$      | $2317$    |
+| **Total**     | $5703$     | $2885$     | $8588$    |
 
 
 - Looking at the data, it seems clear that:
-    * Renters in London are almost comparable to Owner occupiers
-    * Renters in NW and SW are almost a third of number of Owner occupiers
-    * It appears House Occupancy and Region are dependent quantities
+    * London: Rentals are almost comparable to Owned
+    * NW and SW: Rentals are almost a third of Owned
+    * It appears Residential Status and Region are dependent features
 
 - **Goal:** Formulate test for independence
 
@@ -1964,6 +1964,327 @@ $$
 
 
 
+
+## Expected counts {.smaller}
+
+- Assume the null hypothesis is true
+$$
+H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C
+$$
+
+- Under $H_0$ the expected counts become
+$$
+E_{ij} = m p_{ij} = p_{i+}p_{j+}
+$$
+
+- We need a way to estimate the marginal probabilities $p_{i+}$ and $p_{j+}$
+
+
+
+## Estimating marginal probabilities {.smaller}
+
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+
+- By definition we have
+$$
+p_{i+} = P( X = i )
+$$
+
+- Hence $p_{i+}$ is probability of and observation to be classified in $i$-th row
+
+- Estimate $p_{i+}$ with the proportion of observations classified in $i$-th row
+$$
+p_{i+} := \frac{o_{i+}}{m} = \frac{ \text{Number of observations in } \, i\text{-th row} }{ \text{ Total number of observations} }
+$$
+
+
+
+## Estimating marginal probabilities {.smaller}
+
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+
+- Similarly, by definition
+$$
+p_{+j} = P( Y = j )
+$$
+
+- Hence $p_{+j}$ is probability of and observation to be classified in $j$-th column
+
+- Estimate $p_{+j}$ with the proportion of observations classified in $j$-th column
+$$
+p_{+j} := \frac{o_{+j}}{m} = \frac{ \text{Number of observations in } \, j\text{-th column} }{ \text{ Total number of observations} }
+$$
+
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+
+- Summary: The marginal probabilities are estimated with
+$$
+p_{i+} := \frac{o_{i+}}{m}
+\qquad \qquad p_{+j} := \frac{o_{+j}}{m}
+$$
+
+- Therefore the expected counts become
+$$
+E_{ij} = m p_{ij} = m p_{i+} p_{+j} = m \left( \frac{o_{i+}}{m}  \right) \left( \frac{o_{+j}}{m}  \right) = \frac{o_{i+} \, o_{+j}}{m}
+$$
+
+- By the Theorem in Slide 87 the chi-squared statistics satisfies
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } \ \approx \ 
+\chi^2_{RC - 1 - {\rm fitted}}
+$$
+
+- We need to compute the number of **fitted parameters**
+
+
+
+## Number of fitted parameters {.smaller}
+
+- We have set 
+$$
+p_{i+} := \frac{o_{i+}}{m}
+$$
+
+- Substituting the definition of $p_{i+}$ the above reads
+\begin{equation} \tag{1}
+p_{i1} + p_{i2} + \ldots + p_{iC} = \frac{o_{i+}}{m}
+\end{equation}
+
+- Choose $C-1$ cell probabilities $p_{i1}, p_{i2}, \ldots, p_{i(C-1)}$
+
+- Then the last cell probability $p_{iC}$ is obtained by inverting (1)
+$$
+p_{iC} = \frac{o_{i+}}{m} - p_{i1} - \ldots - p_{i(C-1)}
+$$
+
+
+## Number of fitted parameters {.smaller}
+
+- Therefore we need to estimate $(C-1)$ parameters to estimate $p_{i+}$
+
+- The marginals $p_{i+}$ sum to $1$, that is,
+\begin{equation} \tag{2}
+p_{1+} + p_{2+} + \ldots + p_{R+} = 1
+\end{equation}
+
+- Suppose we estimate $R-1$ marginals $p_{1+}, p_{2+}, \ldots, p_{(R-1)+}$
+
+- Then the last marginal $p_{R+}$ is obtained by inverting (2)
+$$
+p_{R+} = 1 - p_{1+} -  \ldots - p_{(R-1)+}
+$$
+
+
+
+## Number of fitted parameters {.smaller}
+
+**Summary:**
+
+- To estimate the marginal $p_{i+}$ we need $(C-1)$ parameters
+- We need to estimate $(R-1)$ marginals $p_{i+}$
+- In total we estimate $(R-1)(C-1)$ parameters, so that
+$$
+{\rm fitted} = (R-1)(C-1)
+$$
+- Therefore
+\begin{align*}
+RC - 1 - {\rm fitted} & = RC - 1 - (R-1)(C-1) \\
+                      & = RC - 1 - RC + R + C - 1 \\
+                      & = R + C - 2
+\end{align*}
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+### Conclusion
+
+
+- Assume the null hypothesis of row and column independence
+$$
+H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C
+$$
+
+- Suppose the counts are $O \sim \multinomial (m,p)$ and expected counts are
+$$
+E_{ij} = \frac{o_{i+} \, o_{+j}}{m} 
+$$
+
+- By the previous slides and Theorem in Slide 87 we have that
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
+\approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{R + C - 2}^2  
+$$
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+### Quality of approximation
+
+The chi-squared approximation
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
+\approx \  \chi_{R + C - 2}^2  
+$$
+is good if
+$$
+E_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
+j = 1, \ldots, C 
+$$
+
+
+
+## The chi-squared test of independence {.smaller}
+
+**Sample:**
+
+- We draw $m$ items from population
+
+- Each item can be of type $(i,j)$ where
+    * $i = 1 , \ldots ,R$
+    * $j = 1 , \ldots ,C$
+    * Total of $n = RC$ types
+
+- $O_{ij}$ denotes the number of items of type $(i,j)$ drawn
+
+- $p_{ij}$ is probability of observing type $(i,j)$ 
+
+- $p = (p_{ij})_{ij}$ is probability matrix
+
+- The matrix of counts $O = (o_{ij})_{ij}$ has multinomial distribution $\multinomial (m,p)$ 
+
+
+## The chi-squared test of independence {.smaller}
+
+**Data:** Matrix of counts, represented by two-way contigency table
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $o_{11}$| $\ldots$ | $o_{1C}$ | $o_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $o_{R1}$| $\ldots$ | $o_{RC}$ | $o_{R+}$|
+|**Totals**| $o_{+1}$ | $\ldots$ | $o_{+C}$ | $m$     |
+
+
+**Hypothesis test:** We test for independence of rows and columns
+\begin{align*}
+& H_0 \colon X \, \text{ and } \, Y \, \text{ are independent } \\
+& H_1 \colon X \, \text{ and } \, Y \, \text{ are not independent }
+\end{align*}
+
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute total counts
+    $$
+    m = \sum_{i=1}^R \sum_{j=1}^C o_{ij}
+    $$ 
+    * Compute marginal counts
+    $$
+    o_{i+} := \sum_{j=1}^C o_{ij} \qquad \qquad  o_{+j} := \sum_{i=1}^R o_{ij}
+    $$
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute estimated expected counts
+    $$
+    E_{ij} = \frac{o_{i+} \, o_{+j} }{ m }
+    $$
+    * Compute the chi-squared statistic
+    $$
+    \chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}}
+    $$
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+2. **Statistical Tables or R**: 
+    * Check that $E_{ij} \geq 5$ for all $i$ and $j$
+    * In this case $\chi^2 \ \approx \ \chi_{R + C - 2}^2$
+    * Find critical value in chi-squared [Table 13.5](files/Statistics_Tables.pdf)
+    $$
+    \chi^2_{R + C - 2} (0.05)
+    $$
+    * Alternatively, compute p-value in R
+    $$
+    p := P( \chi^2_{R + C - 2} > \chi^2 )
+    $$
+
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+3. **Interpretation**:
+    * Reject $H_0$ if 
+    $$
+    \chi^2 > \chi_{R + C - 2}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
+    $$
+    * Do not reject $H_0$ if 
+    $$
+    \chi^2 \leq \chi^2_{R + C - 2} (0.05)  \qquad \text{ or } \qquad 
+    p \geq 0.05
+    $$
+
+
+
+
+
+## The chi-squared test of independence in R {.smaller}
+### General commands
+
+1. Store each row of counts $(o_{i1}, o_{i2}, \ldots, o_{iC})$ in R vector
+    * ``row_i <- c(o_i1, o_i2, ..., o_iC)``
+
+2. Assemble the rows into an R matrix
+    * ``counts <- rbind(row_1, ..., row_R)``
+    * ``counts`` models the matrix of counts $o = (o_{ij})_{ij}$
+
+3. Perform a chi-squared test of independence on ``counts``
+    * ``chisq.test(counts)``
+
+4. Read output: In particular look for the p-value
+
+**Note:** Compute Monte Carlo p-value with option ``simulate.p.value = TRUE``
+
+
+
+## Example: Residential Status and Region {.smaller}
+
+
+|               | **Owned**  | **Rented** | **Total** |
+|:---------     |:----------:|:--------:  |:---:      |
+|**North West** | $2180$     | $871$      | $3051$    |
+| **London**    | $1820$     | $1400$     | $3220$    |
+| **South West**| $1703$     | $614$      | $2317$    |
+| **Total**     | $5703$     | $2885$     | $8588$    |
+
+
+- People are sampled at random in NW, London and SW
+
+- To each person we associate two categories:
+    * Residential Status: Rental or Owned
+    * Region in which they live: NW, London, SW
+
+- **Exercise:** Test for independence of Residential Status and Region
 
 
 
