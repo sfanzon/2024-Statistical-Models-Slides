@@ -90,7 +90,7 @@ $
 
 ## Counts with multiple factors {.smaller}
 
-**Example:** Relative performance of Man Utd managers
+**Example:** Relative performance of Manchester United managers
 
 - Each football manager has Win, Draw and Loss count
 
@@ -518,13 +518,7 @@ $$
     $$
 
 
-
-
-## The chi-squared goodness-of-fit test {.smaller}
-### Procedure
-
-3. **Interpretation**:
-    * Reject $H_0$ if 
+3. **Interpretation**: Reject $H_0$ if 
     $$
     \chi^2 > \chi_{n - 1}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
     $$
@@ -2045,57 +2039,55 @@ $$
 
 ## Number of fitted parameters {.smaller}
 
-- We have set 
+- We have to estimate the row marginals $p_{i+}$
+
+- We estimate the first $R-1$ row marginals by
 $$
-p_{i+} := \frac{o_{i+}}{m}
+p_{i+} := \frac{o_{i+}}{m} \,, \qquad i = 1 , \ldots, R - 1
 $$
 
-- Substituting the definition of $p_{i+}$ the above reads
-\begin{equation} \tag{1}
-p_{i1} + p_{i2} + \ldots + p_{iC} = \frac{o_{i+}}{m}
-\end{equation}
-
-- Choose $C-1$ cell probabilities $p_{i1}, p_{i2}, \ldots, p_{i(C-1)}$
-
-- Then the last cell probability $p_{iC}$ is obtained by inverting (1)
+- Since the marginals $p_{i+}$ sum to $1$, we can obtain $p_{R+}$ by
 $$
-p_{iC} = \frac{o_{i+}}{m} - p_{i1} - \ldots - p_{i(C-1)}
+p_{R+} = 1 - p_{1+} - \ldots - p_{(R-1)+} 
+       = 1 - \frac{o_{1+}}{m} - \ldots - \frac{o_{(R-1)+}}{m}
 $$
 
 
 ## Number of fitted parameters {.smaller}
 
-- Therefore we need to estimate $(C-1)$ parameters to estimate $p_{i+}$
-
-- The marginals $p_{i+}$ sum to $1$, that is,
-\begin{equation} \tag{2}
-p_{1+} + p_{2+} + \ldots + p_{R+} = 1
-\end{equation}
-
-- Suppose we estimate $R-1$ marginals $p_{1+}, p_{2+}, \ldots, p_{(R-1)+}$
-
-- Then the last marginal $p_{R+}$ is obtained by inverting (2)
+- Similarly, we estimate the first $C-1$ column marginals by
 $$
-p_{R+} = 1 - p_{1+} -  \ldots - p_{(R-1)+}
+p_{j+} = \frac{o_{j+}}{m} \,, \qquad j = 1, \ldots, C - 1
 $$
+
+- Since the marginals $p_{+j}$ sum to $1$, we can obtain $p_{+C}$ by
+$$
+p_{+C} = 1 - p_{+1} - \ldots - p_{+(C-1)} 
+       = 1 - \frac{o_{+1}}{m} - \ldots - \frac{o_{+(C-1)}}{m}
+$$
+
+
+- In total we only have to estimate
+$$
+(R - 1) + (C - 1 ) = R + C - 2
+$$
+parameters
 
 
 
 ## Number of fitted parameters {.smaller}
 
-**Summary:**
 
-- To estimate the marginal $p_{i+}$ we need $(C-1)$ parameters
-- We need to estimate $(R-1)$ marginals $p_{i+}$
-- In total we estimate $(R-1)(C-1)$ parameters, so that
+- In total we estimate $R + C -2$ parameters, so that
 $$
-{\rm fitted} = (R-1)(C-1)
+{\rm fitted} = R + C - 2
 $$
-- Therefore
+
+- Therefore the degrees of freedom are
 \begin{align*}
-RC - 1 - {\rm fitted} & = RC - 1 - (R-1)(C-1) \\
-                      & = RC - 1 - RC + R + C - 1 \\
-                      & = R + C - 2
+RC - 1 - {\rm fitted} & = RC - 1 - R - C + 2  \\
+                      & = RC - R - C + 1 \\
+                      & = (R - 1)(C - 1)
 \end{align*}
 
 
@@ -2119,7 +2111,7 @@ $$
 - By the previous slides and Theorem in Slide 87 we have that
 $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
-\approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{R + C - 2}^2  
+\approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{(R-1)(C-1)}^2  
 $$
 
 
@@ -2131,7 +2123,7 @@ $$
 The chi-squared approximation
 $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
-\approx \  \chi_{R + C - 2}^2  
+\approx \  \chi_{(R-1)(C-1)}^2  
 $$
 is good if
 $$
@@ -2217,14 +2209,17 @@ $$
 
 2. **Statistical Tables or R**: 
     * Check that $E_{ij} \geq 5$ for all $i$ and $j$
-    * In this case $\chi^2 \ \approx \ \chi_{R + C - 2}^2$
+    * In this case 
+    $$
+    \chi^2 \ \approx \ \chi_{(R-1)(C-1)}^2
+    $$
     * Find critical value in chi-squared [Table 13.5](files/Statistics_Tables.pdf)
     $$
-    \chi^2_{R + C - 2} (0.05)
+    \chi^2_{(R-1)(C-1)} (0.05)
     $$
     * Alternatively, compute p-value in R
     $$
-    p := P( \chi^2_{R + C - 2} > \chi^2 )
+    p := P( \chi^2_{(R-1)(C-1)} > \chi^2 )
     $$
 
 
@@ -2236,11 +2231,11 @@ $$
 3. **Interpretation**:
     * Reject $H_0$ if 
     $$
-    \chi^2 > \chi_{R + C - 2}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
+    \chi^2 > \chi_{(R-1)(C-1)}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
     $$
     * Do not reject $H_0$ if 
     $$
-    \chi^2 \leq \chi^2_{R + C - 2} (0.05)  \qquad \text{ or } \qquad 
+    \chi^2 \leq \chi^2_{(R-1)(C-1)} (0.05)  \qquad \text{ or } \qquad 
     p \geq 0.05
     $$
 
@@ -2288,6 +2283,168 @@ $$
 
 
 
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Rows are $R = 3$ and columns are $C = 2$
+    * Total and marginal counts are already provided in the table
+    
+|         | **Owned**       | **Rented**      | **Tot**            |
+|:------- |:---------------:|:--------:       |:---:               |
+|**NW**   | $2180$          | $871$           | $o_{1+} = 3051$    |
+| **Lon** | $1820$          | $1400$          | $o_{2+} = 3220$    |
+| **SW**  | $1703$          | $614$           | $o_{2+} = 2317$    |
+| **Tot** | $o_{+1} = 5703$ | $o_{+2} = 2885$ | $m = 8588$         |
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the estimated expected counts $E_{ij} = \dfrac{o_{i+} \, o_{+j} }{ m }$
+   
+|         | **Owned**                                   | **Rented**                                  | **Tot**            |
+|:------- |:---------------:                            |:--------:                                   |:---:               |
+|**NW**   | $\frac{3051{\times}5703}{8588} \approx 2026$|$\frac{3051{\times}2885}{8588} \approx 1025$ | $o_{1+} = 3051$    |
+| **Lon** | $\frac{3220{\times}5703}{8588} \approx 2138$| $\frac{3220{\times}2885}{8588} \approx 1082$| $o_{2+} = 3220$    |
+| **SW**  | $\frac{2317{\times}5703}{8588} \approx 1539$| $\frac{2317{\times}1885}{8588} \approx 778$ | $o_{2+} = 2317$    |
+| **Tot** | $o_{+1} = 5703$                             | $o_{+2} = 2885$                             | $m = 8588$         |
+: {tbl-colwidths="[10,30,30,30]"}
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the chi-squared statistic
+    \begin{align*}
+    \chi^2 & = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}} \\
+           & = \frac{(2180-2026.066)^2}{2026.066} + \frac{(871-1024.934)^2}{1024.934} \\
+           & \, + \frac{(1820-2138.293)^2}{2138.293}+\frac{(1400-1081.707)^2}{1081.707} \\
+           & \, + \frac{(1703-1538.641)^2}{1538.641}+\frac{(614-778.359)^2}{778.359} \\
+    \end{align*}
+    
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the chi-squared statistic
+    \begin{align*}
+    \chi^2 & = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}} \\
+           & = 11.695+23.119 \\
+           & \, + 47.379+93.658 \\
+           & \, + 17.557+34.707 \\
+           & = 228.12 \qquad (2\ \text{d.p.})
+    \end{align*}
+
+
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+2. **Statistical Tables**:
+    * Degrees of freedom are $\, {\rm df} = (R - 1)(C - 1) = 2$
+    * We clearly have $E_{ij} \geq 5$ for all $i$ and $j$
+    * Therefore the following approximation holds 
+    $$
+    \chi^2 \ \approx \ \chi_{(R - 1)(C - 1)}^2 = \chi_{2}^2
+    $$
+    * In chi-squared [Table 13.5](files/Statistics_Tables.pdf) we find critical value
+    $$
+    \chi^2_{2} (0.05) = 5.99
+    $$
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+3. **Interpretation**:
+    * We have that 
+    $$
+    \chi^2 = 228.12 > 5.99 = \chi_{2}^2 (0.05)
+    $$
+    * Therefore we rejct $H_0$, meaning that rows and columns are dependent
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+4. **Conclusion:** 
+- There is evidence $(p < 0.05)$ that Residential Status depends on Region
+- By rescaling table values, we can compute the table of percentages
+
+
+|               | **Owned**  | **Rented** |
+|:---------     |:----------:|:--------:  |
+|**North West** | $71.5\%$   | $28.5\%$   |
+| **London**    | $56.5\%$   | $43.5\%$   |
+| **South West**| $73.5\%$   | $26.5\%$   |
+
+
+- The above suggests that in London fewer homes are Owned and more Rented
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence in R
+
+- Test can be performed using code [independence_test.R](codes/independence_test.R)
+
+```r
+# Store each row into and R vector
+row_1 <- c(2180, 871)
+row_2 <- c(1820, 1400)
+row_3 <- c(1703, 614)
+
+# Assemble the rows into an R matrix
+counts <- rbind(row_1, row_2, row_3)
+
+# Perform chi-squared test of independence
+ans <- chisq.test(counts)
+
+# Print answer
+print(ans)
+```
+
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence in R
+
+- Running the code we obtain
+
+```{r}
+# Store each row into and R vector
+row_1 <- c(2180, 871)
+row_2 <- c(1820, 1400)
+row_3 <- c(1703, 614)
+
+# Assemble the rows into an R matrix
+counts <- rbind(row_1, row_2, row_3)
+
+# Perform chi-squared test of independence
+ans <- chisq.test(counts)
+
+# Print answer
+print(ans)
+```
+
+- This confirms the chi-squared statistic computed by hand $\chi^2  = 228.11$
+- It also confirms the degrees of freedom $\, {\rm df} = 2$
+- The p-value is $p \approx 0 < 0.05$
+- Therefore $H_0$ is rejected and Residential Status depends on Region
+
+
+
+
 # Part 7: <br>Chi-squared test <br>of homogeneity{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
@@ -2295,3 +2452,585 @@ $$
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+## Testing for homogeneity {.smaller}
+
+
+| Manager     |     Won |  Drawn  | Lost    | Total   |
+|:-----------:|:-------:|:-------:|:-------:|:-------:|
+| **Moyes**   |   27    | 9       |   15    |   51    |
+|**Van Gaal** |   54    |  25     |   24    |  103    | 
+|**Mourinho** |   84    |  32     |   28    |  144    |
+|**Solskjaer**|    91   |   37    |   40    | 168     |
+|**Total**    | 256     | 103     |  107    |  466    |
+
+
+- Consider the above two-way contingency table
+
+- To each football game we associate two categories:
+    * Manager: Moyes, Van Gaal, Mourinho, Solskjaer
+    * Region in which they live: NW, London, SW
+
+
+**Questions:**
+
+- Is the number of Wins, Draws and Losses uniformly distributed?
+- Are there differences between the performances of each manager?
+
+
+- Looking at the data, it seems clear that:
+    * London: Rentals are almost comparable to Owned
+    * NW and SW: Rentals are almost a third of Owned
+    * It appears Residential Status and Region are dependent features
+
+- **Goal:** Formulate test for independence
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $\ldots$ | $O_{+C}$ | $m$     |
+
+- Consider the general two-way contingency table as above
+
+- They are equivalent:
+    * Rows and columns are independent
+    * Random variables $X$ and $Y$ are independent
+
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $O_{11}$| $\ldots$ | $O_{1C}$ | $O_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $O_{R1}$| $\ldots$ | $O_{RC}$ | $O_{R+}$|
+|**Totals**| $O_{+1}$ | $\ldots$ | $O_{+C}$ | $m$     |
+
+- Hence, testing for independece means testing following hypothesis:
+\begin{align*}
+& H_0 \colon X \, \text{ and } \, Y \, \text{ are independent } \\
+& H_1 \colon X \, \text{ and } \, Y \, \text{ are not independent }
+\end{align*}
+
+
+- We need to quantify $H_0$ and $H_1$
+
+
+
+
+## Independent counts {.smaller}
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $p_{11}$| $\ldots$ | $p_{1C}$ | $p_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $p_{R1}$| $\ldots$ | $p_{RC}$ | $p_{R+}$|
+|**Totals**| $p_{+1}$ | $\ldots$ | $p_{+C}$ | $1$     |
+
+- R.v. $X$ and $Y$ are independent iff cell probabilities factor into marginals
+$$
+p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
+$$
+
+- Therefore the hypothesis test for independence becomes
+\begin{align*}
+& H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C \\
+& H_1 \colon p_{ij} = p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+\end{align*}
+
+
+
+
+## Expected counts {.smaller}
+
+- Assume the null hypothesis is true
+$$
+H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C
+$$
+
+- Under $H_0$ the expected counts become
+$$
+E_{ij} = m p_{ij} = p_{i+}p_{j+}
+$$
+
+- We need a way to estimate the marginal probabilities $p_{i+}$ and $p_{j+}$
+
+
+
+## Estimating marginal probabilities {.smaller}
+
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+
+- By definition we have
+$$
+p_{i+} = P( X = i )
+$$
+
+- Hence $p_{i+}$ is probability of and observation to be classified in $i$-th row
+
+- Estimate $p_{i+}$ with the proportion of observations classified in $i$-th row
+$$
+p_{i+} := \frac{o_{i+}}{m} = \frac{ \text{Number of observations in } \, i\text{-th row} }{ \text{ Total number of observations} }
+$$
+
+
+
+## Estimating marginal probabilities {.smaller}
+
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+
+- Similarly, by definition
+$$
+p_{+j} = P( Y = j )
+$$
+
+- Hence $p_{+j}$ is probability of and observation to be classified in $j$-th column
+
+- Estimate $p_{+j}$ with the proportion of observations classified in $j$-th column
+$$
+p_{+j} := \frac{o_{+j}}{m} = \frac{ \text{Number of observations in } \, j\text{-th column} }{ \text{ Total number of observations} }
+$$
+
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+
+- Summary: The marginal probabilities are estimated with
+$$
+p_{i+} := \frac{o_{i+}}{m}
+\qquad \qquad p_{+j} := \frac{o_{+j}}{m}
+$$
+
+- Therefore the expected counts become
+$$
+E_{ij} = m p_{ij} = m p_{i+} p_{+j} = m \left( \frac{o_{i+}}{m}  \right) \left( \frac{o_{+j}}{m}  \right) = \frac{o_{i+} \, o_{+j}}{m}
+$$
+
+- By the Theorem in Slide 87 the chi-squared statistics satisfies
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } \ \approx \ 
+\chi^2_{RC - 1 - {\rm fitted}}
+$$
+
+- We need to compute the number of **fitted parameters**
+
+
+
+## Number of fitted parameters {.smaller}
+
+- We have to estimate the row marginals $p_{i+}$
+
+- We estimate the first $R-1$ row marginals by
+$$
+p_{i+} := \frac{o_{i+}}{m} \,, \qquad i = 1 , \ldots, R - 1
+$$
+
+- Since the marginals $p_{i+}$ sum to $1$, we can obtain $p_{R+}$ by
+$$
+p_{R+} = 1 - p_{1+} - \ldots - p_{(R-1)+} 
+       = 1 - \frac{o_{1+}}{m} - \ldots - \frac{o_{(R-1)+}}{m}
+$$
+
+
+## Number of fitted parameters {.smaller}
+
+- Similarly, we estimate the first $C-1$ column marginals by
+$$
+p_{j+} = \frac{o_{j+}}{m} \,, \qquad j = 1, \ldots, C - 1
+$$
+
+- Since the marginals $p_{+j}$ sum to $1$, we can obtain $p_{+C}$ by
+$$
+p_{+C} = 1 - p_{+1} - \ldots - p_{+(C-1)} 
+       = 1 - \frac{o_{+1}}{m} - \ldots - \frac{o_{+(C-1)}}{m}
+$$
+
+
+- In total we only have to estimate
+$$
+(R - 1) + (C - 1 ) = R + C - 2
+$$
+parameters
+
+
+
+## Number of fitted parameters {.smaller}
+
+
+- In total we estimate $R + C -2$ parameters, so that
+$$
+{\rm fitted} = R + C - 2
+$$
+
+- Therefore the degrees of freedom are
+\begin{align*}
+RC - 1 - {\rm fitted} & = RC - 1 - R - C + 2  \\
+                      & = RC - R - C + 1 \\
+                      & = (R - 1)(C - 1)
+\end{align*}
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+### Conclusion
+
+
+- Assume the null hypothesis of row and column independence
+$$
+H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+\, \text{ and } \, j = 1 ,\ldots C
+$$
+
+- Suppose the counts are $O \sim \multinomial (m,p)$ and expected counts are
+$$
+E_{ij} = \frac{o_{i+} \, o_{+j}}{m} 
+$$
+
+- By the previous slides and Theorem in Slide 87 we have that
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
+\approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{(R-1)(C-1)}^2  
+$$
+
+
+
+
+## $\chi^2$ statistic for testing independence {.smaller}
+### Quality of approximation
+
+The chi-squared approximation
+$$
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
+\approx \  \chi_{(R-1)(C-1)}^2  
+$$
+is good if
+$$
+E_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
+j = 1, \ldots, C 
+$$
+
+
+
+## The chi-squared test of independence {.smaller}
+
+**Sample:**
+
+- We draw $m$ items from population
+
+- Each item can be of type $(i,j)$ where
+    * $i = 1 , \ldots ,R$
+    * $j = 1 , \ldots ,C$
+    * Total of $n = RC$ types
+
+- $O_{ij}$ denotes the number of items of type $(i,j)$ drawn
+
+- $p_{ij}$ is probability of observing type $(i,j)$ 
+
+- $p = (p_{ij})_{ij}$ is probability matrix
+
+- The matrix of counts $O = (o_{ij})_{ij}$ has multinomial distribution $\multinomial (m,p)$ 
+
+
+## The chi-squared test of independence {.smaller}
+
+**Data:** Matrix of counts, represented by two-way contigency table
+
+|          | $Y = 1$  | $\ldots$ | $Y = C$  | Totals  |
+|:--------:|:--------:|:--------:|:--------:|:-------:|
+|$X = 1$   |  $o_{11}$| $\ldots$ | $o_{1C}$ | $o_{1+}$|
+|$\cdots$  |  $\cdots$| $\cdots$ | $\cdots$ | $\cdots$|
+|$X = R$   |  $o_{R1}$| $\ldots$ | $o_{RC}$ | $o_{R+}$|
+|**Totals**| $o_{+1}$ | $\ldots$ | $o_{+C}$ | $m$     |
+
+
+**Hypothesis test:** We test for independence of rows and columns
+\begin{align*}
+& H_0 \colon X \, \text{ and } \, Y \, \text{ are independent } \\
+& H_1 \colon X \, \text{ and } \, Y \, \text{ are not independent }
+\end{align*}
+
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute total counts
+    $$
+    m = \sum_{i=1}^R \sum_{j=1}^C o_{ij}
+    $$ 
+    * Compute marginal counts
+    $$
+    o_{i+} := \sum_{j=1}^C o_{ij} \qquad \qquad  o_{+j} := \sum_{i=1}^R o_{ij}
+    $$
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute estimated expected counts
+    $$
+    E_{ij} = \frac{o_{i+} \, o_{+j} }{ m }
+    $$
+    * Compute the chi-squared statistic
+    $$
+    \chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}}
+    $$
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+2. **Statistical Tables or R**: 
+    * Check that $E_{ij} \geq 5$ for all $i$ and $j$
+    * In this case 
+    $$
+    \chi^2 \ \approx \ \chi_{(R-1)(C-1)}^2
+    $$
+    * Find critical value in chi-squared [Table 13.5](files/Statistics_Tables.pdf)
+    $$
+    \chi^2_{(R-1)(C-1)} (0.05)
+    $$
+    * Alternatively, compute p-value in R
+    $$
+    p := P( \chi^2_{(R-1)(C-1)} > \chi^2 )
+    $$
+
+
+
+
+## The chi-squared test of independence {.smaller}
+### Procedure
+
+3. **Interpretation**:
+    * Reject $H_0$ if 
+    $$
+    \chi^2 > \chi_{(R-1)(C-1)}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
+    $$
+    * Do not reject $H_0$ if 
+    $$
+    \chi^2 \leq \chi^2_{(R-1)(C-1)} (0.05)  \qquad \text{ or } \qquad 
+    p \geq 0.05
+    $$
+
+
+
+
+
+## The chi-squared test of independence in R {.smaller}
+### General commands
+
+1. Store each row of counts $(o_{i1}, o_{i2}, \ldots, o_{iC})$ in R vector
+    * ``row_i <- c(o_i1, o_i2, ..., o_iC)``
+
+2. Assemble the rows into an R matrix
+    * ``counts <- rbind(row_1, ..., row_R)``
+    * ``counts`` models the matrix of counts $o = (o_{ij})_{ij}$
+
+3. Perform a chi-squared test of independence on ``counts``
+    * ``chisq.test(counts)``
+
+4. Read output: In particular look for the p-value
+
+**Note:** Compute Monte Carlo p-value with option ``simulate.p.value = TRUE``
+
+
+
+## Example: Residential Status and Region {.smaller}
+
+
+|               | **Owned**  | **Rented** | **Total** |
+|:---------     |:----------:|:--------:  |:---:      |
+|**North West** | $2180$     | $871$      | $3051$    |
+| **London**    | $1820$     | $1400$     | $3220$    |
+| **South West**| $1703$     | $614$      | $2317$    |
+| **Total**     | $5703$     | $2885$     | $8588$    |
+
+
+- People are sampled at random in NW, London and SW
+
+- To each person we associate two categories:
+    * Residential Status: Rental or Owned
+    * Region in which they live: NW, London, SW
+
+- **Exercise:** Test for independence of Residential Status and Region
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Rows are $R = 3$ and columns are $C = 2$
+    * Total and marginal counts are already provided in the table
+    
+|         | **Owned**       | **Rented**      | **Tot**            |
+|:------- |:---------------:|:--------:       |:---:               |
+|**NW**   | $2180$          | $871$           | $o_{1+} = 3051$    |
+| **Lon** | $1820$          | $1400$          | $o_{2+} = 3220$    |
+| **SW**  | $1703$          | $614$           | $o_{2+} = 2317$    |
+| **Tot** | $o_{+1} = 5703$ | $o_{+2} = 2885$ | $m = 8588$         |
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the estimated expected counts $E_{ij} = \dfrac{o_{i+} \, o_{+j} }{ m }$
+   
+|         | **Owned**                                   | **Rented**                                  | **Tot**            |
+|:------- |:---------------:                            |:--------:                                   |:---:               |
+|**NW**   | $\frac{3051{\times}5703}{8588} \approx 2026$|$\frac{3051{\times}2885}{8588} \approx 1025$ | $o_{1+} = 3051$    |
+| **Lon** | $\frac{3220{\times}5703}{8588} \approx 2138$| $\frac{3220{\times}2885}{8588} \approx 1082$| $o_{2+} = 3220$    |
+| **SW**  | $\frac{2317{\times}5703}{8588} \approx 1539$| $\frac{2317{\times}1885}{8588} \approx 778$ | $o_{2+} = 2317$    |
+| **Tot** | $o_{+1} = 5703$                             | $o_{+2} = 2885$                             | $m = 8588$         |
+: {tbl-colwidths="[10,30,30,30]"}
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the chi-squared statistic
+    \begin{align*}
+    \chi^2 & = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}} \\
+           & = \frac{(2180-2026.066)^2}{2026.066} + \frac{(871-1024.934)^2}{1024.934} \\
+           & \, + \frac{(1820-2138.293)^2}{2138.293}+\frac{(1400-1081.707)^2}{1081.707} \\
+           & \, + \frac{(1703-1538.641)^2}{1538.641}+\frac{(614-778.359)^2}{778.359} \\
+    \end{align*}
+    
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+1. **Calculation**: 
+    * Compute the chi-squared statistic
+    \begin{align*}
+    \chi^2 & = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}} \\
+           & = 11.695+23.119 \\
+           & \, + 47.379+93.658 \\
+           & \, + 17.557+34.707 \\
+           & = 228.12 \qquad (2\ \text{d.p.})
+    \end{align*}
+
+
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+2. **Statistical Tables**:
+    * Degrees of freedom are $\, {\rm df} = (R - 1)(C - 1) = 2$
+    * We clearly have $E_{ij} \geq 5$ for all $i$ and $j$
+    * Therefore the following approximation holds 
+    $$
+    \chi^2 \ \approx \ \chi_{(R - 1)(C - 1)}^2 = \chi_{2}^2
+    $$
+    * In chi-squared [Table 13.5](files/Statistics_Tables.pdf) we find critical value
+    $$
+    \chi^2_{2} (0.05) = 5.99
+    $$
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+3. **Interpretation**:
+    * We have that 
+    $$
+    \chi^2 = 228.12 > 5.99 = \chi_{2}^2 (0.05)
+    $$
+    * Therefore we rejct $H_0$, meaning that rows and columns are dependent
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence by hand
+
+4. **Conclusion:** 
+- There is evidence $(p < 0.05)$ that Residential Status depends on Region
+- By rescaling table values, we can compute the table of percentages
+
+
+|               | **Owned**  | **Rented** |
+|:---------     |:----------:|:--------:  |
+|**North West** | $71.5\%$   | $28.5\%$   |
+| **London**    | $56.5\%$   | $43.5\%$   |
+| **South West**| $73.5\%$   | $26.5\%$   |
+
+
+- The above suggests that in London fewer homes are Owned and more Rented
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence in R
+
+- Test can be performed using code [independence_test.R](codes/independence_test.R)
+
+```r
+# Store each row into and R vector
+row_1 <- c(2180, 871)
+row_2 <- c(1820, 1400)
+row_3 <- c(1703, 614)
+
+# Assemble the rows into an R matrix
+counts <- rbind(row_1, row_2, row_3)
+
+# Perform chi-squared test of independence
+ans <- chisq.test(counts)
+
+# Print answer
+print(ans)
+```
+
+
+
+
+## Example: Residential Status and Region {.smaller}
+### Chi-squared test of independence in R
+
+- Running the code we obtain
+
+```{r}
+# Store each row into and R vector
+row_1 <- c(2180, 871)
+row_2 <- c(1820, 1400)
+row_3 <- c(1703, 614)
+
+# Assemble the rows into an R matrix
+counts <- rbind(row_1, row_2, row_3)
+
+# Perform chi-squared test of independence
+ans <- chisq.test(counts)
+
+# Print answer
+print(ans)
+```
+
+- This confirms the chi-squared statistic computed by hand $\chi^2  = 228.11$
+- It also confirms the degrees of freedom $\, {\rm df} = 2$
+- The p-value is $p \approx 0 < 0.05$
+- Therefore $H_0$ is rejected and Residential Status depends on Region
