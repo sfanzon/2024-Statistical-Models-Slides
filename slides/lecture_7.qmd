@@ -298,7 +298,7 @@ We denote $\XX \sim \multinomial(m,p_1,\ldots,p_n)$
 ## Multinomial distribution {.smaller}
 ### Properties
 
-Suppose that $\XX \sim \multinomial(m,p_1,\ldots,p_n)$
+Suppose that $\XX = (X_1, \ldots, X_n) \sim \multinomial(m,p_1,\ldots,p_n)$
 
 - Then $X_i$ is binomial with $m$ trials and probability $p_i$
 - We write $X_i \sim \binomial(m,p_i)$ and the pmf is
@@ -306,7 +306,7 @@ $$
 f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{1-x_i} 
 \qquad \forall \, x_i = 0 , \ldots , m 
 $$
-- We have
+- Since $X_i \sim \binomial(m,p_i)$ it holds
 $$
 \Expect[X_i] = m p_i \qquad \qquad 
 \Var[X_i] = m p_i (1-p_i)
@@ -333,21 +333,28 @@ $$
 (O_1, \ldots, O_n) \sim \multinomial (m, p_1, \ldots, p_n)
 $$
 
+- The expected counts are modelled by
+$$
+E_i := \Expect[ O_i ] = m p_i
+$$
+
+
 
 
 
 ## Counts with Multinomial distribution {.smaller}
 
-Therefore the observed and expected counts are
+Consider counts and expected counts
 $$
-O_i \sim \binomial (m,p_i) \qquad \qquad 
-E_i = \Expect[ O_i ] = m p_i
+(O_1, \ldots, O_n) \sim \multinomial (m, p_1, \ldots, p_n)
+\qquad \qquad 
+E_i := m p_i
 $$
 
 
 ::: Definition
 
-The chi-squared statistic for multinomial counts is
+The chi-squared statistic for multinomial counts is defined by
 $$
 \chi^2 = \sum_{i=1}^n \frac{(O_i-E_i)^2}{E_i} 
        = \sum_{i=1}^n \frac{( O_i - m p_i )^2}{ m p_i }
@@ -368,7 +375,7 @@ Suppose the counts $(O_1, \ldots, O_n) \sim \multinomial (m,p_1, \ldots, p_n)$. 
 $$
 \chi^2 = \sum_{i=1}^n \frac{( O_i - m p_i )^2}{ m p_i } \ \stackrel{{\rm d}}{\longrightarrow} \ \chi_{n-1}^2
 $$
-when $m \to \infty$, where the convergence is in distribution
+when sample size $m \to \infty$, where the convergence is in distribution
 :::
 
 - Hence the distribution of $\chi^2$ is approximately $\chi_{n-1}^2$ when $m$ is large
@@ -393,7 +400,7 @@ as $m \to \infty$
 
 - In particular, since $(1-p_i)$ in constant, we have
 $$
- \frac{O_i - m p_i }{ \sqrt{m p_i } } \ \approx \ \frac{O_i - m p_i }{ \sqrt{m p_i(1 - p_i) } } \ \approx \ N(0,1) 
+\frac{O_i - m p_i }{ \sqrt{m p_i } } \ \approx \ \frac{O_i - m p_i }{ \sqrt{m p_i(1 - p_i) } } \ \approx \ N(0,1) 
 $$
 
 
@@ -414,21 +421,27 @@ $$
 $$
 
 
+- However the $O_i$ are not independent because of linear constraint
+$$
+O_1 + \ldots + O_n = m
+$$
+
+
 
 ## Distribution of chi-squared statistic {.smaller}
 ### Heuristic proof of Theorem
 
-- However the $O_i$ are not independent
 
-- This is because $O_i$ is marginal of multinomial distribution
+- The idea is that a priori there should be $n$ degrees of freedom
 
-- In particular the linear constraint 
+- However the linear constraint reduces degrees of freedom by $1$
+
+- This is because one can choose the first $n-1$ counts and the last one is given by
 $$
-O_1 + \ldots + O_n = m
+O_n = m - O_1 - \ldots - O_{n-1}
 $$
-holds, which leads to dependence
 
-- A rather technical proof is needed to prove the actual thesis that
+- A rather technical proof is needed to actually prove that
 $$
 \chi^2 = \sum_{i=1}^n \frac{(O_i - m p_i)^2 }{ m p_i } \ \approx \ \chi_{n-1}^2  
 $$
@@ -1477,8 +1490,7 @@ cat("\nR Monte Carlo p-value:", chisq_p_value)
 
 **Example:** Relative performance of Man Utd managers
 
-- Two classifications are considered for each game:
-    * Result and Manager in charge
+- Two classifications for each game: Result and Manager in charge
 
 | Manager     |     Won |  Drawn  | Lost    |
 |:-----------:|:-------:|:-------:|:-------:|
@@ -1754,9 +1766,9 @@ $$
 
 
 - We have that $O_{ij} \sim \binomial (m,p_{ij})$
-- Therefore the **expected counts** for category $(i,j)$ is 
+- Therefore we model the **expected counts** for category $(i,j)$ as
 $$
-E_{ij} = \Expect[O_{ij}] =  m p_{ij}
+E_{ij} := \Expect[O_{ij}] =  m p_{ij}
 $$
 
 
@@ -1831,7 +1843,7 @@ $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} } \ 
 \stackrel{ {\rm d} }{ \longrightarrow } \ \chi_{RC - 1 - {\rm fitted} }^2  
 $$
-when $n = RC \to \infty$, where convergence is in distribution and
+when sample size $m  \to \infty$. The convergence is in distribution and
 
 - $\rm fitted = \,$ \# of parameters used to estimate cell probabilities $p_{ij}$
 
@@ -1843,6 +1855,314 @@ $$
 E_{ij} = m p_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
 j = 1, \ldots, C 
 $$
+
+
+
+
+## Goodness-of-fit test for contingency tables {.smaller}
+
+**Setting:** 
+
+- Population consists of items of $n = R \times C$ different types
+- $p_{ij}$ is probability that an item selected at random is of type $(i,j)$
+- $p_{ij}$ is unknown and needs to be estimated
+
+- As guess for $p_{ij}$ we take $p_{ij}^0$ such that
+$$
+0 \leq p_{ij}^0 \leq 1 \qquad \qquad \sum_{i=1}^R \sum_{j=1}^C p_{ij}^0 = 1
+$$
+
+
+
+## Goodness-of-fit test for contingency tables {.smaller}
+
+**Hypothesis Test:** We test for equality of $p_{ij}$ to $p_{ij}^0$
+\begin{align*}
+& H_0 \colon p_{ij} = p_{ij}^0 \qquad \text{ for all } \, i = 1, \ldots, R  \,, \text{ and } \, j = 1 , \ldots, C \\
+& H_1 \colon p_{ij} \neq p_{ij}^0 \qquad \text{ for at least one pair } \, (i,j) 
+\end{align*}
+
+
+**Sample**: 
+
+- We draw $m$ items from population
+- $O_{ij}$ denotes the number of items of type $i$ drawn
+- Therefore $O = (O_{ij})_{ij}$ is $\multinomial (m,p)$ with $p = (p_{ij})_{ij}$
+
+**Data**: Matrix of counts $o = (o_{ij})_{ij}$
+
+
+
+
+## Goodness-of-fit test for contingency tables {.smaller}
+### Procedure
+
+1. **Calculation**: 
+    * Compute total counts and expected counts
+    $$
+    m = \sum_{i=1}^R \sum_{j=1}^C o_{ij} \qquad \quad E_{ij} = m p_{ij}^0
+    $$ 
+    * Compute the chi-squared statistic
+    $$
+    \chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}}
+    $$
+
+
+
+## Goodness-of-fit test for contingency tables {.smaller}
+### Procedure
+
+2. **Statistical Tables or R**: 
+    * Check that $E_i \geq 5$ for all $i, j$
+    * We did not fit any parameter. Hence the Theorem in Slide 88 gives
+    $$
+    {\rm degrees \,\, freedom} = RC - 1 \qquad \qquad  \chi^2 \ \approx \ \chi_{RC-1}^2
+    $$
+    * Find critical value in chi-squared [Table 13.5](files/Statistics_Tables.pdf)
+    $$
+    \chi^2_{RC - 1} (0.05)
+    $$
+    * Alternatively, compute p-value in R
+    $$
+    p := P( \chi^2_{RC - 1} > \chi^2 )
+    $$
+
+
+## Goodness-of-fit test for contingency tables {.smaller}
+### Procedure
+
+3. **Interpretation**: 
+    * Reject $H_0$ if 
+    $$
+    \chi^2 > \chi_{RC - 1}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
+    $$
+    * Do not reject $H_0$ if 
+    $$
+    \chi^2 \leq \chi^2_{RC - 1} (0.05)  \qquad \text{ or } \qquad 
+    p \geq 0.05
+    $$
+
+
+
+
+
+
+## Goodness-of-fit test in R {.smaller}
+### General commands
+
+1. Store the matrix of counts $O = (o_{ij})_{ij}$ into a single R vector, proceeding row-by-row 
+    * ``counts <- c(o_11, o_12, ..., o_RC)``
+
+2. Store the matrix of null probabilities $p = (p_{ij})_{ij}$ into a single R vector, proceeding row-by-row 
+    * ``null_probs_i <- c(p_11, p_12, ..., p_RC)``
+
+3. Perform a chi-squared goodness-of-fit test on ``counts`` with ``null_probs``
+    * ``chisq.test(counts, p = null_probs)``
+
+4. Read output: In particular look for the p-value
+
+**Note:** Compute Monte Carlo p-value with option ``simulate.p.value = TRUE``
+
+
+
+
+
+## Example: Manchester United performance {.smaller}
+
+
+**Background story:**
+
+- From 1992 to 2013 Man Utd won 13 Premier Leagues out of 21
+- This is the best performance in the Premier League era
+- This was under manager Sir Alex Ferguson
+- Ferguson stepped down in 2014
+- Since 2014 Man Utd has not won the PL and was managed by 6 different people (excluding interims)
+
+
+**Question:** Are the 6 managers to blame for worse Team Performance?
+
+
+
+
+## Example: Manchester United performance {.smaller}
+
+| Manager     |     Won |  Drawn  | Lost    |
+|:-----------:|:-------:|:-------:|:-------:|
+| **Moyes**   |   27    | 9       |   15    |
+|**Van Gaal** |   54    |  25     |   24    |
+|**Mourinho** |   84    |  32     |   28    |
+|**Solskjaer**|    91   |   37    |   40    |
+|**Rangnick** |    11   |   10    |   8     |
+|**ten Hag**  |    61   |   12    |   28    |
+
+- Table contains Man Utd games since 2014 season
+
+- To each Man Utd game in the sample we associate two categories:
+    * Manager and Result
+
+
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- **Question:** Is the number of Wins, Draws and Losses uniformly distributed?
+    * If Yes, this would suggest very poor performance
+
+
+- **Hypothesis Test:** To answer the question we perform a goodness-of-fit test on
+\begin{align*}
+& H_0 \colon p_{ij} = p_{ij}^0 \quad \text { for all pairs } \, (i,j)  \\
+& H_1 \colon p_{ij} \neq p_{ij}^0 \quad \text { for at least one pair } \, (i,j)  \\
+\end{align*}
+
+- **Null Probabilities:** 
+    * They have to model that Wins, Draws and Losses are uniformly distributed
+    * To compute them, we need to compute total number of games for each manager
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- We compute total number of games for each manager
+
+| Manager     |     Won |  Drawn  | Lost    |     Total     |
+|:-----------:|:-------:|:-------:|:-------:|:------------- |
+| **Moyes**   |   27    | 9       |   15    | $o_{1+} = 51$ |
+|**Van Gaal** |   54    |  25     |   24    | $o_{2+} = 103$|
+|**Mourinho** |   84    |  32     |   28    | $o_{3+} = 144$|
+|**Solskjaer**|    91   |   37    |   40    | $o_{4+} = 168$|
+|**Rangnick** |    11   |   10    |   8     | $o_{5+} = 29$ |
+|**ten Hag**  |    61   |   12    |   28    | $o_{6+} = 101$|
+
+- We also need the total number of games
+$$
+m = \sum_{i=1}^R o_{i+} = 596
+$$
+
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- If the results are uniformly distributed the expected scores are
+$$
+E_{ij} = \frac{o_{i+}}{3}
+$$
+
+- Recall that the expected scores are modelled as
+$$
+E_{ij} = m p_{ij}^0
+$$
+
+- We hence obtain
+$$
+p_{ij}^0 = \frac{o_{i+}}{3 m}
+$$
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- Using the values for $o_{i+}$ and $m$ we finally obtain the null probabilities
+
+\begin{align*}
+\text{Moyes: } \quad & p_{1j} = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\ 
+\text{Van Gaal: }\quad & p_{2j} = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
+\text{Mourinho: } \quad& p_{3j} = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
+\text{Solskjaer: } \quad& p_{4j} = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
+\text{Rangnick: }\quad & p_{5j} = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
+\text{ten Hag: }\quad & p_{6j} = \frac{ o_{6+} }{ 3m } =  101 \big/  1788 
+\end{align*}
+
+
+## Example: Manchester United performance {.smaller}
+
+- We are now ready to perform the goodness-of-fit test in R
+
+- We start by storing the matrix of counts into a single R vector, row-by-row
+
+```r
+# Store matrix of counts into single R vector
+counts <- c(27, 9, 15,
+            54, 25, 24,
+            84, 32, 28, 
+            91, 37, 40,
+            11, 10, 8,
+            61, 12, 28)
+```
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- Then we store the matrix of null probabilities into a single R vector, row-by-row
+- Null probabilities in each row are the same. Hence we can use the command ``rep``
+
+```r
+# Store matrix of null probabilities into single R vector
+# We use repeat to avoid copy pasting 
+lines_null_probs <- c(51/1788, 103/1788, 144/1788, 
+                      168/1788, 29/1788, 101/1788)
+
+null_probs <- rep(lines_null_probs, c(3, 3, 3, 3, 3, 3))
+```
+
+
+## Example: Manchester United performance {.smaller}
+
+- Finally we perform the goodness-of-fit test on ``counts`` and ``null_probs``
+
+```r
+# Perform goodness-of-fit test
+ans <- chisq.test(counts, p = null_probs)
+
+# Print answer
+print(ans)
+```
+
+
+- The code can be downloaded here [good_fit_contingency.R](codes/good_fit_contingency.R)
+
+
+
+
+## Example: Manchester United performance {.smaller}
+
+- Running the code we obtain
+
+```{r}
+# Store matrix of counts into single R vector
+counts <- c(27, 9, 15,
+            54, 25, 24,
+            84, 32, 28, 
+            91, 37, 40,
+            11, 10, 8,
+            61, 12, 28)
+
+# Store matrix of null probabilities into single R vector
+# We use repeat to avoid copy pasting 
+rows_null_probs <- c(51/1788, 103/1788, 144/1788, 
+                      168/1788, 29/1788, 101/1788)
+
+null_probs <- rep(rows_null_probs, c(3, 3, 3, 3, 3, 3))
+
+# Perform goodness-of-fit test
+ans <- chisq.test(counts, p = null_probs)
+
+# Print answer
+print(ans)
+```
+
+
+- p-value is $p \approx 0 < 0.05$
+- We therefore reject $H_0$
+- Significant evidence that results of Man Utd games are not uniformly distributed
+- Low goal-scoring rates in soccer mean roughly $1/3$ of games end in a draw
+- Hence Man Utd is not actually doing too bad
+
+
+
 
 
 
@@ -1972,7 +2292,7 @@ $$
 \begin{align*}
 & H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
 \, \text{ and } \, j = 1 ,\ldots C \\
-& H_1 \colon p_{ij} = p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+& H_1 \colon p_{ij} \neq p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
 \end{align*}
 
 
@@ -2046,7 +2366,7 @@ $$
 E_{ij} = m p_{ij} = m p_{i+} p_{+j} = m \left( \frac{o_{i+}}{m}  \right) \left( \frac{o_{+j}}{m}  \right) = \frac{o_{i+} \, o_{+j}}{m}
 $$
 
-- By the Theorem in Slide 87 the chi-squared statistics satisfies
+- By the Theorem in Slide 88 the chi-squared statistics satisfies
 $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } \ \approx \ 
 \chi^2_{RC - 1 - {\rm fitted}}
@@ -2127,7 +2447,7 @@ $$
 E_{ij} = \frac{o_{i+} \, o_{+j}}{m} 
 $$
 
-- By the previous slides and Theorem in Slide 87 we have that
+- By the previous slides and Theorem in Slide 88 we have that
 $$
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } 
 \approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{(R-1)(C-1)}^2  
@@ -2475,18 +2795,21 @@ print(ans)
 
 
 
+
+
+
 ## Example: Manchester United performance {.smaller}
 
-
-**Background story:**
+**Recap of Background story:**
 
 - From 1992 to 2013 Man Utd won 13 Premier Leagues out of 21
 - This is the best performance in the Premier League era
 - This was under manager Sir Alex Ferguson
 - Ferguson stepped down in 2014
-- Since 2014 Man Utd has not won the PL and changed 6 managers (excluding interims)
+- Since 2014 Man Utd has not won the PL and was managed by 6 different people (excluding interims)
 
-- **Question:** Are the managers to blame for worse Team Performance?
+
+**Question:** Are the 6 managers to blame for worse Team Performance?
 
 
 

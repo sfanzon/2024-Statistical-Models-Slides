@@ -406,7 +406,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Warning {
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -414,17 +422,17 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .TODO {
     --color1: #e7b1b4;
@@ -434,45 +442,37 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Proposition {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
   }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Theorem {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   </style>
 </head>
@@ -900,14 +900,14 @@ f (x_1, \ldots , x_n) = \frac{m!}{x_1 ! \cdot \ldots \cdot x_n !} \ p_1^{x_1} \c
 <section id="multinomial-distribution-1" class="slide level2 smaller">
 <h2>Multinomial distribution</h2>
 <h3 id="properties">Properties</h3>
-<p>Suppose that <span class="math inline">\mathbf{X}\sim \mathop{\mathrm{Mult}}(m,p_1,\ldots,p_n)</span></p>
+<p>Suppose that <span class="math inline">\mathbf{X}= (X_1, \ldots, X_n) \sim \mathop{\mathrm{Mult}}(m,p_1,\ldots,p_n)</span></p>
 <ul>
 <li>Then <span class="math inline">X_i</span> is binomial with <span class="math inline">m</span> trials and probability <span class="math inline">p_i</span></li>
 <li>We write <span class="math inline">X_i \sim \mathop{\mathrm{Bin}}(m,p_i)</span> and the pmf is <span class="math display">
 f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{1-x_i}
 \qquad \forall \, x_i = 0 , \ldots , m
 </span></li>
-<li>We have <span class="math display">
+<li>Since <span class="math inline">X_i \sim \mathop{\mathrm{Bin}}(m,p_i)</span> it holds <span class="math display">
 {\rm I\kern-.3em E}[X_i] = m p_i \qquad \qquad
 {\rm Var}[X_i] = m p_i (1-p_i)
 </span></li>
@@ -925,16 +925,20 @@ f(x_i) = P(X = x_i) = \frac{m!}{x_i! \cdot (1-x_i)!} \, p_i^{x_i} (1-p_i)^{1-x_i
 <li><p>The counts are modelled by <span class="math display">
 (O_1, \ldots, O_n) \sim \mathop{\mathrm{Mult}}(m, p_1, \ldots, p_n)
 </span></p></li>
+<li><p>The expected counts are modelled by <span class="math display">
+E_i := {\rm I\kern-.3em E}[ O_i ] = m p_i
+</span></p></li>
 </ul>
 </section>
 <section id="counts-with-multinomial-distribution-1" class="slide level2 smaller">
 <h2>Counts with Multinomial distribution</h2>
-<p>Therefore the observed and expected counts are <span class="math display">
-O_i \sim \mathop{\mathrm{Bin}}(m,p_i) \qquad \qquad
-E_i = {\rm I\kern-.3em E}[ O_i ] = m p_i
+<p>Consider counts and expected counts <span class="math display">
+(O_1, \ldots, O_n) \sim \mathop{\mathrm{Mult}}(m, p_1, \ldots, p_n)
+\qquad \qquad
+E_i := m p_i
 </span></p>
 <div id="Definition*-3.3" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The chi-squared statistic for multinomial counts is <span class="math display">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The chi-squared statistic for multinomial counts is defined by <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{(O_i-E_i)^2}{E_i}
        = \sum_{i=1}^n \frac{( O_i - m p_i )^2}{ m p_i }
 </span><p></p>
@@ -947,7 +951,7 @@ E_i = {\rm I\kern-.3em E}[ O_i ] = m p_i
 <div id="Theorem*-3.4" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Suppose the counts <span class="math inline">(O_1, \ldots, O_n) \sim \mathop{\mathrm{Mult}}(m,p_1, \ldots, p_n)</span>. Then <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{( O_i - m p_i )^2}{ m p_i } \ \stackrel{{\rm d}}{\longrightarrow} \ \chi_{n-1}^2
-</span> when <span class="math inline">m \to \infty</span>, where the convergence is in distribution<p></p>
+</span> when sample size <span class="math inline">m \to \infty</span>, where the convergence is in distribution<p></p>
 </div></details>
 </div>
 <ul>
@@ -979,18 +983,21 @@ E_i = {\rm I\kern-.3em E}[ O_i ] = m p_i
 <li><p>If the above random variables were pairwise independent, we would obtain <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{(O_i - m p_i)^2 }{ m p_i } \ \approx  \ \sum_{i=1}^n \chi_1^2 = \chi_n^2  
 </span></p></li>
+<li><p>However the <span class="math inline">O_i</span> are not independent because of linear constraint <span class="math display">
+O_1 + \ldots + O_n = m
+</span></p></li>
 </ul>
 </section>
 <section id="distribution-of-chi-squared-statistic-3" class="slide level2 smaller">
 <h2>Distribution of chi-squared statistic</h2>
 <h3 id="heuristic-proof-of-theorem-2">Heuristic proof of Theorem</h3>
 <ul>
-<li><p>However the <span class="math inline">O_i</span> are not independent</p></li>
-<li><p>This is because <span class="math inline">O_i</span> is marginal of multinomial distribution</p></li>
-<li><p>In particular the linear constraint <span class="math display">
-O_1 + \ldots + O_n = m
-</span> holds, which leads to dependence</p></li>
-<li><p>A rather technical proof is needed to prove the actual thesis that <span class="math display">
+<li><p>The idea is that a priori there should be <span class="math inline">n</span> degrees of freedom</p></li>
+<li><p>However the linear constraint reduces degrees of freedom by <span class="math inline">1</span></p></li>
+<li><p>This is because one can choose the first <span class="math inline">n-1</span> counts and the last one is given by <span class="math display">
+O_n = m - O_1 - \ldots - O_{n-1}
+</span></p></li>
+<li><p>A rather technical proof is needed to actually prove that <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{(O_i - m p_i)^2 }{ m p_i } \ \approx \ \chi_{n-1}^2  
 </span></p></li>
 </ul>
@@ -1657,16 +1664,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.14680000, error is 0.00520735
-After    20000 iterations pi is 3.14300000, error is 0.00140735
-After    30000 iterations pi is 3.13826667, error is 0.00332599
-After    40000 iterations pi is 3.14380000, error is 0.00220735
-After    50000 iterations pi is 3.14800000, error is 0.00640735
-After    60000 iterations pi is 3.14926667, error is 0.00767401
-After    70000 iterations pi is 3.14685714, error is 0.00526449
-After    80000 iterations pi is 3.14555000, error is 0.00395735
-After    90000 iterations pi is 3.14346667, error is 0.00187401
-After   100000 iterations pi is 3.14180000, error is 0.00020735</code></pre>
+<pre><code>After    10000 iterations pi is 3.17760000, error is 0.03600735
+After    20000 iterations pi is 3.16880000, error is 0.02720735
+After    30000 iterations pi is 3.16226667, error is 0.02067401
+After    40000 iterations pi is 3.15410000, error is 0.01250735
+After    50000 iterations pi is 3.14328000, error is 0.00168735
+After    60000 iterations pi is 3.14420000, error is 0.00260735
+After    70000 iterations pi is 3.14137143, error is 0.00022123
+After    80000 iterations pi is 3.14405000, error is 0.00245735
+After    90000 iterations pi is 3.14288889, error is 0.00129624
+After   100000 iterations pi is 3.13904000, error is 0.00255265</code></pre>
 </div>
 </div>
 </section>
@@ -1947,11 +1954,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.81987</code></pre>
+Custom Monte Carlo p-value: 0.82009</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8210895</code></pre>
+R Monte Carlo p-value: 0.8185907</code></pre>
 </div>
 </div>
 <ul>
@@ -1977,10 +1984,7 @@ R Monte Carlo p-value: 0.8210895</code></pre>
 <p><strong>Two-way Contigency Tables:</strong> Table in which each observation is classified in 2 ways</p>
 <p><strong>Example:</strong> Relative performance of Man Utd managers</p>
 <ul>
-<li>Two classifications are considered for each game:
-<ul>
-<li>Result and Manager in charge</li>
-</ul></li>
+<li>Two classifications for each game: Result and Manager in charge</li>
 </ul>
 <table>
 <thead>
@@ -2766,8 +2770,8 @@ O_{ij} \sim \mathop{\mathrm{Bin}}(m,p_{ij})
 </table>
 <ul>
 <li>We have that <span class="math inline">O_{ij} \sim \mathop{\mathrm{Bin}}(m,p_{ij})</span></li>
-<li>Therefore the <strong>expected counts</strong> for category <span class="math inline">(i,j)</span> is <span class="math display">
-E_{ij} = {\rm I\kern-.3em E}[O_{ij}] =  m p_{ij}
+<li>Therefore we model the <strong>expected counts</strong> for category <span class="math inline">(i,j)</span> as <span class="math display">
+E_{ij} := {\rm I\kern-.3em E}[O_{ij}] =  m p_{ij}
 </span></li>
 </ul>
 </section>
@@ -2968,7 +2972,7 @@ E_{+j} := \sum_{i=1}^R  E_{ij}
 <p>Suppose the counts <span class="math inline">O \sim \mathop{\mathrm{Mult}}(m,p)</span>. Then <span class="math display">
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - m p_{ij})^2 }{ m p_{ij} } \
 \stackrel{ {\rm d} }{ \longrightarrow } \ \chi_{RC - 1 - {\rm fitted} }^2  
-</span> when <span class="math inline">n = RC \to \infty</span>, where convergence is in distribution and</p>
+</span> when sample size <span class="math inline">m  \to \infty</span>. The convergence is in distribution and</p>
 <ul>
 <li><span class="math inline">\rm fitted = \,</span> # of parameters used to estimate cell probabilities <span class="math inline">p_{ij}</span></li>
 </ul>
@@ -2978,6 +2982,347 @@ E_{+j} := \sum_{i=1}^R  E_{ij}
 E_{ij} = m p_{ij} \geq 5  \quad \text{ for all } \,\, i = 1 , \ldots , R  \, \text{ and }
 j = 1, \ldots, C
 </span></p>
+</section>
+<section id="goodness-of-fit-test-for-contingency-tables" class="slide level2 smaller">
+<h2>Goodness-of-fit test for contingency tables</h2>
+<p><strong>Setting:</strong></p>
+<ul>
+<li><p>Population consists of items of <span class="math inline">n = R \times C</span> different types</p></li>
+<li><p><span class="math inline">p_{ij}</span> is probability that an item selected at random is of type <span class="math inline">(i,j)</span></p></li>
+<li><p><span class="math inline">p_{ij}</span> is unknown and needs to be estimated</p></li>
+<li><p>As guess for <span class="math inline">p_{ij}</span> we take <span class="math inline">p_{ij}^0</span> such that <span class="math display">
+0 \leq p_{ij}^0 \leq 1 \qquad \qquad \sum_{i=1}^R \sum_{j=1}^C p_{ij}^0 = 1
+</span></p></li>
+</ul>
+</section>
+<section id="goodness-of-fit-test-for-contingency-tables-1" class="slide level2 smaller">
+<h2>Goodness-of-fit test for contingency tables</h2>
+<p><strong>Hypothesis Test:</strong> We test for equality of <span class="math inline">p_{ij}</span> to <span class="math inline">p_{ij}^0</span> <span class="math display">\begin{align*}
+&amp; H_0 \colon p_{ij} = p_{ij}^0 \qquad \text{ for all } \, i = 1, \ldots, R  \,, \text{ and } \, j = 1 , \ldots, C \\
+&amp; H_1 \colon p_{ij} \neq p_{ij}^0 \qquad \text{ for at least one pair } \, (i,j)
+\end{align*}</span></p>
+<p><strong>Sample</strong>:</p>
+<ul>
+<li>We draw <span class="math inline">m</span> items from population</li>
+<li><span class="math inline">O_{ij}</span> denotes the number of items of type <span class="math inline">i</span> drawn</li>
+<li>Therefore <span class="math inline">O = (O_{ij})_{ij}</span> is <span class="math inline">\mathop{\mathrm{Mult}}(m,p)</span> with <span class="math inline">p = (p_{ij})_{ij}</span></li>
+</ul>
+<p><strong>Data</strong>: Matrix of counts <span class="math inline">o = (o_{ij})_{ij}</span></p>
+</section>
+<section id="goodness-of-fit-test-for-contingency-tables-2" class="slide level2 smaller">
+<h2>Goodness-of-fit test for contingency tables</h2>
+<h3 id="procedure-3">Procedure</h3>
+<ol type="1">
+<li><strong>Calculation</strong>:
+<ul>
+<li>Compute total counts and expected counts <span class="math display">
+m = \sum_{i=1}^R \sum_{j=1}^C o_{ij} \qquad \quad E_{ij} = m p_{ij}^0
+</span></li>
+<li>Compute the chi-squared statistic <span class="math display">
+\chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (o_{ij} - E_{ij})^2 }{E_{ij}}
+</span></li>
+</ul></li>
+</ol>
+</section>
+<section id="goodness-of-fit-test-for-contingency-tables-3" class="slide level2 smaller">
+<h2>Goodness-of-fit test for contingency tables</h2>
+<h3 id="procedure-4">Procedure</h3>
+<ol start="2" type="1">
+<li><strong>Statistical Tables or R</strong>:
+<ul>
+<li>Check that <span class="math inline">E_i \geq 5</span> for all <span class="math inline">i, j</span></li>
+<li>We did not fit any parameter. Hence the Theorem in Slide 88 gives <span class="math display">
+{\rm degrees \,\, freedom} = RC - 1 \qquad \qquad  \chi^2 \ \approx \ \chi_{RC-1}^2
+</span></li>
+<li>Find critical value in chi-squared <a href="files/Statistics_Tables.pdf">Table 13.5</a> <span class="math display">
+\chi^2_{RC - 1} (0.05)
+</span></li>
+<li>Alternatively, compute p-value in R <span class="math display">
+p := P( \chi^2_{RC - 1} &gt; \chi^2 )
+</span></li>
+</ul></li>
+</ol>
+</section>
+<section id="goodness-of-fit-test-for-contingency-tables-4" class="slide level2 smaller">
+<h2>Goodness-of-fit test for contingency tables</h2>
+<h3 id="procedure-5">Procedure</h3>
+<ol start="3" type="1">
+<li><strong>Interpretation</strong>:
+<ul>
+<li>Reject <span class="math inline">H_0</span> if <span class="math display">
+\chi^2 &gt; \chi_{RC - 1}^2 (0.05)  \qquad \text{ or } \qquad p &lt; 0.05
+</span></li>
+<li>Do not reject <span class="math inline">H_0</span> if <span class="math display">
+\chi^2 \leq \chi^2_{RC - 1} (0.05)  \qquad \text{ or } \qquad
+p \geq 0.05
+</span></li>
+</ul></li>
+</ol>
+</section>
+<section id="goodness-of-fit-test-in-r-3" class="slide level2 smaller">
+<h2>Goodness-of-fit test in R</h2>
+<h3 id="general-commands-1">General commands</h3>
+<ol type="1">
+<li>Store the matrix of counts <span class="math inline">O = (o_{ij})_{ij}</span> into a single R vector, proceeding row-by-row
+<ul>
+<li><code>counts &lt;- c(o_11, o_12, ..., o_RC)</code></li>
+</ul></li>
+<li>Store the matrix of null probabilities <span class="math inline">p = (p_{ij})_{ij}</span> into a single R vector, proceeding row-by-row
+<ul>
+<li><code>null_probs_i &lt;- c(p_11, p_12, ..., p_RC)</code></li>
+</ul></li>
+<li>Perform a chi-squared goodness-of-fit test on <code>counts</code> with <code>null_probs</code>
+<ul>
+<li><code>chisq.test(counts, p = null_probs)</code></li>
+</ul></li>
+<li>Read output: In particular look for the p-value</li>
+</ol>
+<p><strong>Note:</strong> Compute Monte Carlo p-value with option <code>simulate.p.value = TRUE</code></p>
+</section>
+<section id="example-manchester-united-performance" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<p><strong>Background story:</strong></p>
+<ul>
+<li>From 1992 to 2013 Man Utd won 13 Premier Leagues out of 21</li>
+<li>This is the best performance in the Premier League era</li>
+<li>This was under manager Sir Alex Ferguson</li>
+<li>Ferguson stepped down in 2014</li>
+<li>Since 2014 Man Utd has not won the PL and was managed by 6 different people (excluding interims)</li>
+</ul>
+<p><strong>Question:</strong> Are the 6 managers to blame for worse Team Performance?</p>
+</section>
+<section id="example-manchester-united-performance-1" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Manager</th>
+<th style="text-align: center;">Won</th>
+<th style="text-align: center;">Drawn</th>
+<th style="text-align: center;">Lost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Moyes</strong></td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Van Gaal</strong></td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Mourinho</strong></td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Solskjaer</strong></td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Rangnick</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>ten Hag</strong></td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">28</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Table contains Man Utd games since 2014 season</p></li>
+<li><p>To each Man Utd game in the sample we associate two categories:</p>
+<ul>
+<li>Manager and Result</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-manchester-united-performance-2" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li><p><strong>Question:</strong> Is the number of Wins, Draws and Losses uniformly distributed?</p>
+<ul>
+<li>If Yes, this would suggest very poor performance</li>
+</ul></li>
+<li><p><strong>Hypothesis Test:</strong> To answer the question we perform a goodness-of-fit test on <span class="math display">\begin{align*}
+&amp; H_0 \colon p_{ij} = p_{ij}^0 \quad \text { for all pairs } \, (i,j)  \\
+&amp; H_1 \colon p_{ij} \neq p_{ij}^0 \quad \text { for at least one pair } \, (i,j)  \\
+\end{align*}</span></p></li>
+<li><p><strong>Null Probabilities:</strong></p>
+<ul>
+<li>They have to model that Wins, Draws and Losses are uniformly distributed</li>
+<li>To compute them, we need to compute total number of games for each manager</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-manchester-united-performance-3" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li>We compute total number of games for each manager</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Manager</th>
+<th style="text-align: center;">Won</th>
+<th style="text-align: center;">Drawn</th>
+<th style="text-align: center;">Lost</th>
+<th style="text-align: left;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Moyes</strong></td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: left;"><span class="math inline">o_{1+} = 51</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Van Gaal</strong></td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: left;"><span class="math inline">o_{2+} = 103</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Mourinho</strong></td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: left;"><span class="math inline">o_{3+} = 144</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Solskjaer</strong></td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: left;"><span class="math inline">o_{4+} = 168</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Rangnick</strong></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><span class="math inline">o_{5+} = 29</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>ten Hag</strong></td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: left;"><span class="math inline">o_{6+} = 101</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We also need the total number of games <span class="math display">
+m = \sum_{i=1}^R o_{i+} = 596
+</span></li>
+</ul>
+</section>
+<section id="example-manchester-united-performance-4" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li><p>If the results are uniformly distributed the expected scores are <span class="math display">
+E_{ij} = \frac{o_{i+}}{3}
+</span></p></li>
+<li><p>Recall that the expected scores are modelled as <span class="math display">
+E_{ij} = m p_{ij}^0
+</span></p></li>
+<li><p>We hence obtain <span class="math display">
+p_{ij}^0 = \frac{o_{i+}}{3 m}
+</span></p></li>
+</ul>
+</section>
+<section id="example-manchester-united-performance-5" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li>Using the values for <span class="math inline">o_{i+}</span> and <span class="math inline">m</span> we finally obtain the null probabilities</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\text{Moyes: } \quad &amp; p_{1j} = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\
+\text{Van Gaal: }\quad &amp; p_{2j} = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
+\text{Mourinho: } \quad&amp; p_{3j} = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
+\text{Solskjaer: } \quad&amp; p_{4j} = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
+\text{Rangnick: }\quad &amp; p_{5j} = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
+\text{ten Hag: }\quad &amp; p_{6j} = \frac{ o_{6+} }{ 3m } =  101 \big/  1788
+\end{align*}</span></p>
+</section>
+<section id="example-manchester-united-performance-6" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li><p>We are now ready to perform the goodness-of-fit test in R</p></li>
+<li><p>We start by storing the matrix of counts into a single R vector, row-by-row</p></li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Store matrix of counts into single R vector</span></span>
+<span id="cb20-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>,</span>
+<span id="cb20-3"><a></a>            <span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>,</span>
+<span id="cb20-4"><a></a>            <span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>, </span>
+<span id="cb20-5"><a></a>            <span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>,</span>
+<span id="cb20-6"><a></a>            <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>,</span>
+<span id="cb20-7"><a></a>            <span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-manchester-united-performance-7" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li>Then we store the matrix of null probabilities into a single R vector, row-by-row</li>
+<li>Null probabilities in each row are the same. Hence we can use the command <code>rep</code></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Store matrix of null probabilities into single R vector</span></span>
+<span id="cb21-2"><a></a><span class="co"># We use repeat to avoid copy pasting </span></span>
+<span id="cb21-3"><a></a>lines_null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">103</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">144</span><span class="sc">/</span><span class="dv">1788</span>, </span>
+<span id="cb21-4"><a></a>                      <span class="dv">168</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">29</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">101</span><span class="sc">/</span><span class="dv">1788</span>)</span>
+<span id="cb21-5"><a></a></span>
+<span id="cb21-6"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">rep</span>(lines_null_probs, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-manchester-united-performance-8" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li>Finally we perform the goodness-of-fit test on <code>counts</code> and <code>null_probs</code></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Perform goodness-of-fit test</span></span>
+<span id="cb22-2"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs)</span>
+<span id="cb22-3"><a></a></span>
+<span id="cb22-4"><a></a><span class="co"># Print answer</span></span>
+<span id="cb22-5"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The code can be downloaded here <a href="codes/good_fit_contingency.R">good_fit_contingency.R</a></li>
+</ul>
+</section>
+<section id="example-manchester-united-performance-9" class="slide level2 smaller">
+<h2>Example: Manchester United performance</h2>
+<ul>
+<li>Running the code we obtain</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  counts
+X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<ul>
+<li>p-value is <span class="math inline">p \approx 0 &lt; 0.05</span></li>
+<li>We therefore reject <span class="math inline">H_0</span></li>
+<li>Significant evidence that results of Man Utd games are not uniformly distributed</li>
+<li>Low goal-scoring rates in soccer mean roughly <span class="math inline">1/3</span> of games end in a draw</li>
+<li>Hence Man Utd is not actually doing too bad</li>
+</ul>
 </section></section>
 <section>
 <section id="part-6-chi-squared-test-of-independence" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
@@ -3282,7 +3627,7 @@ p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
 <li><p>Therefore the hypothesis test for independence becomes <span class="math display">\begin{align*}
 &amp; H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
 \, \text{ and } \, j = 1 ,\ldots C \\
-&amp; H_1 \colon p_{ij} = p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+&amp; H_1 \colon p_{ij} \neq p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
 \end{align*}</span></p></li>
 </ul>
 </section>
@@ -3335,7 +3680,7 @@ p_{i+} := \frac{o_{i+}}{m}
 <li><p>Therefore the expected counts become <span class="math display">
 E_{ij} = m p_{ij} = m p_{i+} p_{+j} = m \left( \frac{o_{i+}}{m}  \right) \left( \frac{o_{+j}}{m}  \right) = \frac{o_{i+} \, o_{+j}}{m}
 </span></p></li>
-<li><p>By the Theorem in Slide 87 the chi-squared statistics satisfies <span class="math display">
+<li><p>By the Theorem in Slide 88 the chi-squared statistics satisfies <span class="math display">
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} } \ \approx \
 \chi^2_{RC - 1 - {\rm fitted}}
 </span></p></li>
@@ -3394,7 +3739,7 @@ H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
 <li><p>Suppose the counts are <span class="math inline">O \sim \mathop{\mathrm{Mult}}(m,p)</span> and expected counts are <span class="math display">
 E_{ij} = \frac{o_{i+} \, o_{+j}}{m}
 </span></p></li>
-<li><p>By the previous slides and Theorem in Slide 87 we have that <span class="math display">
+<li><p>By the previous slides and Theorem in Slide 88 we have that <span class="math display">
 \chi^2 = \sum_{i=1}^R \sum_{j=1}^C  \frac{ (O_{ij} - E_{ij})^2 }{ E_{ij} }
 \approx \ \chi_{RC - 1 - {\rm fitted} }^2 = \chi_{(R-1)(C-1)}^2  
 </span></p></li>
@@ -3479,7 +3824,7 @@ j = 1, \ldots, C
 </section>
 <section id="the-chi-squared-test-of-independence-2" class="slide level2 smaller">
 <h2>The chi-squared test of independence</h2>
-<h3 id="procedure-3">Procedure</h3>
+<h3 id="procedure-6">Procedure</h3>
 <ol type="1">
 <li><strong>Calculation</strong>:
 <ul>
@@ -3494,7 +3839,7 @@ o_{i+} := \sum_{j=1}^C o_{ij} \qquad \qquad  o_{+j} := \sum_{i=1}^R o_{ij}
 </section>
 <section id="the-chi-squared-test-of-independence-3" class="slide level2 smaller">
 <h2>The chi-squared test of independence</h2>
-<h3 id="procedure-4">Procedure</h3>
+<h3 id="procedure-7">Procedure</h3>
 <ol type="1">
 <li><strong>Calculation</strong>:
 <ul>
@@ -3509,7 +3854,7 @@ E_{ij} = \frac{o_{i+} \, o_{+j} }{ m }
 </section>
 <section id="the-chi-squared-test-of-independence-4" class="slide level2 smaller">
 <h2>The chi-squared test of independence</h2>
-<h3 id="procedure-5">Procedure</h3>
+<h3 id="procedure-8">Procedure</h3>
 <ol start="2" type="1">
 <li><strong>Statistical Tables or R</strong>:
 <ul>
@@ -3528,7 +3873,7 @@ p := P( \chi^2_{(R-1)(C-1)} &gt; \chi^2 )
 </section>
 <section id="the-chi-squared-test-of-independence-5" class="slide level2 smaller">
 <h2>The chi-squared test of independence</h2>
-<h3 id="procedure-6">Procedure</h3>
+<h3 id="procedure-9">Procedure</h3>
 <ol start="3" type="1">
 <li><strong>Interpretation</strong>:
 <ul>
@@ -3544,7 +3889,7 @@ p \geq 0.05
 </section>
 <section id="the-chi-squared-test-of-independence-in-r" class="slide level2 smaller">
 <h2>The chi-squared test of independence in R</h2>
-<h3 id="general-commands-1">General commands</h3>
+<h3 id="general-commands-2">General commands</h3>
 <ol type="1">
 <li>Store each row of counts <span class="math inline">(o_{i1}, o_{i2}, \ldots, o_{iC})</span> in R vector
 <ul>
@@ -3826,19 +4171,19 @@ p \geq 0.05
 <ul>
 <li>Test can be performed using code <a href="codes/independence_test.R">independence_test.R</a></li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Store each row into and R vector</span></span>
-<span id="cb20-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2180</span>, <span class="dv">871</span>)</span>
-<span id="cb20-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1820</span>, <span class="dv">1400</span>)</span>
-<span id="cb20-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1703</span>, <span class="dv">614</span>)</span>
-<span id="cb20-5"><a></a></span>
-<span id="cb20-6"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
-<span id="cb20-7"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3)</span>
-<span id="cb20-8"><a></a></span>
-<span id="cb20-9"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
-<span id="cb20-10"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
-<span id="cb20-11"><a></a></span>
-<span id="cb20-12"><a></a><span class="co"># Print answer</span></span>
-<span id="cb20-13"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Store each row into and R vector</span></span>
+<span id="cb24-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2180</span>, <span class="dv">871</span>)</span>
+<span id="cb24-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1820</span>, <span class="dv">1400</span>)</span>
+<span id="cb24-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1703</span>, <span class="dv">614</span>)</span>
+<span id="cb24-5"><a></a></span>
+<span id="cb24-6"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
+<span id="cb24-7"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3)</span>
+<span id="cb24-8"><a></a></span>
+<span id="cb24-9"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
+<span id="cb24-10"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
+<span id="cb24-11"><a></a></span>
+<span id="cb24-12"><a></a><span class="co"># Print answer</span></span>
+<span id="cb24-13"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-residential-status-and-region-9" class="slide level2 smaller">
 <h2>Example: Residential Status and Region</h2>
@@ -3862,19 +4207,19 @@ X-squared = 228.11, df = 2, p-value &lt; 2.2e-16</code></pre>
 <li>Therefore <span class="math inline">H_0</span> is rejected and Residential Status depends on Region</li>
 </ul>
 </section>
-<section id="example-manchester-united-performance" class="slide level2 smaller">
+<section id="example-manchester-united-performance-10" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
-<p><strong>Background story:</strong></p>
+<p><strong>Recap of Background story:</strong></p>
 <ul>
-<li><p>From 1992 to 2013 Man Utd won 13 Premier Leagues out of 21</p></li>
-<li><p>This is the best performance in the Premier League era</p></li>
-<li><p>This was under manager Sir Alex Ferguson</p></li>
-<li><p>Ferguson stepped down in 2014</p></li>
-<li><p>Since 2014 Man Utd has not won the PL and changed 6 managers (excluding interims)</p></li>
-<li><p><strong>Question:</strong> Are the managers to blame for worse Team Performance?</p></li>
+<li>From 1992 to 2013 Man Utd won 13 Premier Leagues out of 21</li>
+<li>This is the best performance in the Premier League era</li>
+<li>This was under manager Sir Alex Ferguson</li>
+<li>Ferguson stepped down in 2014</li>
+<li>Since 2014 Man Utd has not won the PL and was managed by 6 different people (excluding interims)</li>
 </ul>
+<p><strong>Question:</strong> Are the 6 managers to blame for worse Team Performance?</p>
 </section>
-<section id="example-manchester-united-performance-1" class="slide level2 smaller">
+<section id="example-manchester-united-performance-11" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
 <table>
 <thead>
@@ -3933,30 +4278,30 @@ X-squared = 228.11, df = 2, p-value &lt; 2.2e-16</code></pre>
 <li><p><strong>Question:</strong> Is there association between Manager and Team Performance?</p></li>
 </ul>
 </section>
-<section id="example-manchester-united-performance-2" class="slide level2 smaller">
+<section id="example-manchester-united-performance-12" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
 <ul>
 <li><p>To answer the question we perform chi-square test of independence in R</p></li>
 <li><p>Test can be performed by suitably modifying the code <a href="codes/independence_test.R">independence_test.R</a></p></li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Store each row into and R vector</span></span>
-<span id="cb22-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>)</span>
-<span id="cb22-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>) </span>
-<span id="cb22-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>) </span>
-<span id="cb22-5"><a></a>row_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>)</span>
-<span id="cb22-6"><a></a>row_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>)</span>
-<span id="cb22-7"><a></a>row_6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span>
-<span id="cb22-8"><a></a></span>
-<span id="cb22-9"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
-<span id="cb22-10"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3, row_4, row_5, row_6)</span>
-<span id="cb22-11"><a></a></span>
-<span id="cb22-12"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
-<span id="cb22-13"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
-<span id="cb22-14"><a></a></span>
-<span id="cb22-15"><a></a><span class="co"># Print answer</span></span>
-<span id="cb22-16"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># Store each row into and R vector</span></span>
+<span id="cb26-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>)</span>
+<span id="cb26-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>) </span>
+<span id="cb26-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>) </span>
+<span id="cb26-5"><a></a>row_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>)</span>
+<span id="cb26-6"><a></a>row_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>)</span>
+<span id="cb26-7"><a></a>row_6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span>
+<span id="cb26-8"><a></a></span>
+<span id="cb26-9"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
+<span id="cb26-10"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3, row_4, row_5, row_6)</span>
+<span id="cb26-11"><a></a></span>
+<span id="cb26-12"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
+<span id="cb26-13"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
+<span id="cb26-14"><a></a></span>
+<span id="cb26-15"><a></a><span class="co"># Print answer</span></span>
+<span id="cb26-16"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="example-manchester-united-performance-3" class="slide level2 smaller">
+<section id="example-manchester-united-performance-13" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
 <h3 id="chi-squared-test-of-independence-in-r-2">Chi-squared test of independence in R</h3>
 <ul>
