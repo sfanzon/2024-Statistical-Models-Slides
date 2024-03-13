@@ -549,7 +549,8 @@ $$
 ## The chi-squared goodness-of-fit test {.smaller}
 ### Procedure
 
-3. **Interpretation**: Reject $H_0$ if 
+3. **Interpretation**: 
+    * Reject $H_0$ if 
     $$
     \chi^2 > \chi_{n - 1}^2 (0.05)  \qquad \text{ or } \qquad p < 0.05
     $$

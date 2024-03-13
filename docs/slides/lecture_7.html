@@ -406,7 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Important {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -418,51 +418,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,7 +434,43 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
@@ -1126,10 +1126,11 @@ p := P( \chi^2_{n - 1} &gt; \chi^2 )
 <h2>The chi-squared goodness-of-fit test</h2>
 <h3 id="procedure-2">Procedure</h3>
 <ol start="3" type="1">
-<li><strong>Interpretation</strong>: Reject <span class="math inline">H_0</span> if <span class="math display">
-\chi^2 &gt; \chi_{n - 1}^2 (0.05)  \qquad \text{ or } \qquad p &lt; 0.05
-</span>
+<li><strong>Interpretation</strong>:
 <ul>
+<li>Reject <span class="math inline">H_0</span> if <span class="math display">
+\chi^2 &gt; \chi_{n - 1}^2 (0.05)  \qquad \text{ or } \qquad p &lt; 0.05
+</span></li>
 <li>Do not reject <span class="math inline">H_0</span> if <span class="math display">
 \chi^2 \leq \chi^2_{n - 1} (0.05)  \qquad \text{ or } \qquad
 p \geq 0.05
@@ -1664,16 +1665,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.17760000, error is 0.03600735
-After    20000 iterations pi is 3.16880000, error is 0.02720735
-After    30000 iterations pi is 3.16226667, error is 0.02067401
-After    40000 iterations pi is 3.15410000, error is 0.01250735
-After    50000 iterations pi is 3.14328000, error is 0.00168735
-After    60000 iterations pi is 3.14420000, error is 0.00260735
-After    70000 iterations pi is 3.14137143, error is 0.00022123
-After    80000 iterations pi is 3.14405000, error is 0.00245735
-After    90000 iterations pi is 3.14288889, error is 0.00129624
-After   100000 iterations pi is 3.13904000, error is 0.00255265</code></pre>
+<pre><code>After    10000 iterations pi is 3.15400000, error is 0.01240735
+After    20000 iterations pi is 3.14460000, error is 0.00300735
+After    30000 iterations pi is 3.15133333, error is 0.00974068
+After    40000 iterations pi is 3.14880000, error is 0.00720735
+After    50000 iterations pi is 3.14232000, error is 0.00072735
+After    60000 iterations pi is 3.14286667, error is 0.00127401
+After    70000 iterations pi is 3.14262857, error is 0.00103592
+After    80000 iterations pi is 3.14255000, error is 0.00095735
+After    90000 iterations pi is 3.13871111, error is 0.00288154
+After   100000 iterations pi is 3.13884000, error is 0.00275265</code></pre>
 </div>
 </div>
 </section>
@@ -1954,7 +1955,7 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.82009</code></pre>
+Custom Monte Carlo p-value: 0.8196</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>

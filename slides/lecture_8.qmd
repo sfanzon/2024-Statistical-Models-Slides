@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 8: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 8: <br>The maths of <br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -38,18 +38,21 @@ $
 
 
 
-## Outline of Lecture 6
+## Outline of Lecture 8
 
-1. TBA
-
-
-
-
-
+1. Simple linear regression
+2. Multiple linear regression
+3. Simple regression as a multiple regression
+4. Two sample t-test as multiple regression
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+
+
+
+
+
+# Part 1: <br>Simple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -61,4 +64,59 @@ $
 
 
 
-## TBA {.smaller}
+## Simple linear regression {.smaller}
+
+
+-  Important conceptually to illustrate the method of least squares
+
+- Shows where the A-level formulae come from
+
+
+- The simple linear regression model is
+$$
+y_i = \alpha+  \beta x_i + \e_i
+$$
+
+- The random errors $\e_i$ are iid $N(0, \sigma^2)$
+
+- This means that any observation errors are assumed to be independent of each other and have the same statistical description
+
+- This model formulation also means that the observed $y_i$ are also normally distributed
+$$
+y_i \sim N(\alpha + \beta x_i, \sigma^2)
+$$
+
+
+
+
+# Part 2: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+
+# Part 3: <br>Simple regression as<br> multiple regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+# Part 4: <br>Two sample t-test<br> as multiple regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
