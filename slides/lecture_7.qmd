@@ -1914,7 +1914,7 @@ $$
 ### Procedure
 
 2. **Statistical Tables or R**: 
-    * Check that $E_i \geq 5$ for all $i, j$
+    * Check that $E_{ij} \geq 5$ for all $i, j$
     * We did not fit any parameter. Hence the Theorem in Slide 88 gives
     $$
     {\rm degrees \,\, freedom} = RC - 1 \qquad \qquad  \chi^2 \ \approx \ \chi_{RC-1}^2
@@ -2065,15 +2065,15 @@ $$
 
 ## Example: Manchester United performance {.smaller}
 
-- Using the values for $o_{i+}$ and $m$ we finally obtain the null probabilities
+- Substituting the values of $o_{i+}$ and $m$ we finally obtain the null probabilities
 
 \begin{align*}
-\text{Moyes: } \quad & p_{1j} = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\ 
-\text{Van Gaal: }\quad & p_{2j} = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
-\text{Mourinho: } \quad& p_{3j} = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
-\text{Solskjaer: } \quad& p_{4j} = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
-\text{Rangnick: }\quad & p_{5j} = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
-\text{ten Hag: }\quad & p_{6j} = \frac{ o_{6+} }{ 3m } =  101 \big/  1788 
+\text{Moyes: } \quad & p_{1j}^0 = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\ 
+\text{Van Gaal: }\quad & p_{2j}^0 = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
+\text{Mourinho: } \quad& p_{3j}^0 = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
+\text{Solskjaer: } \quad& p_{4j}^0 = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
+\text{Rangnick: }\quad & p_{5j}^0 = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
+\text{ten Hag: }\quad & p_{6j}^0 = \frac{ o_{6+} }{ 3m } =  101 \big/  1788 
 \end{align*}
 
 

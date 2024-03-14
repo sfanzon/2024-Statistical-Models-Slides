@@ -406,43 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -450,15 +414,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,13 +426,53 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -1665,16 +1665,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.15400000, error is 0.01240735
-After    20000 iterations pi is 3.14460000, error is 0.00300735
-After    30000 iterations pi is 3.15133333, error is 0.00974068
-After    40000 iterations pi is 3.14880000, error is 0.00720735
-After    50000 iterations pi is 3.14232000, error is 0.00072735
-After    60000 iterations pi is 3.14286667, error is 0.00127401
-After    70000 iterations pi is 3.14262857, error is 0.00103592
-After    80000 iterations pi is 3.14255000, error is 0.00095735
-After    90000 iterations pi is 3.13871111, error is 0.00288154
-After   100000 iterations pi is 3.13884000, error is 0.00275265</code></pre>
+<pre><code>After    10000 iterations pi is 3.14960000, error is 0.00800735
+After    20000 iterations pi is 3.16320000, error is 0.02160735
+After    30000 iterations pi is 3.16013333, error is 0.01854068
+After    40000 iterations pi is 3.15390000, error is 0.01230735
+After    50000 iterations pi is 3.14464000, error is 0.00304735
+After    60000 iterations pi is 3.14553333, error is 0.00394068
+After    70000 iterations pi is 3.14245714, error is 0.00086449
+After    80000 iterations pi is 3.14265000, error is 0.00105735
+After    90000 iterations pi is 3.14244444, error is 0.00085179
+After   100000 iterations pi is 3.14176000, error is 0.00016735</code></pre>
 </div>
 </div>
 </section>
@@ -1955,11 +1955,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.8196</code></pre>
+Custom Monte Carlo p-value: 0.81733</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8185907</code></pre>
+R Monte Carlo p-value: 0.8170915</code></pre>
 </div>
 </div>
 <ul>
@@ -3031,7 +3031,7 @@ m = \sum_{i=1}^R \sum_{j=1}^C o_{ij} \qquad \quad E_{ij} = m p_{ij}^0
 <ol start="2" type="1">
 <li><strong>Statistical Tables or R</strong>:
 <ul>
-<li>Check that <span class="math inline">E_i \geq 5</span> for all <span class="math inline">i, j</span></li>
+<li>Check that <span class="math inline">E_{ij} \geq 5</span> for all <span class="math inline">i, j</span></li>
 <li>We did not fit any parameter. Hence the Theorem in Slide 88 gives <span class="math display">
 {\rm degrees \,\, freedom} = RC - 1 \qquad \qquad  \chi^2 \ \approx \ \chi_{RC-1}^2
 </span></li>
@@ -3251,15 +3251,15 @@ p_{ij}^0 = \frac{o_{i+}}{3 m}
 <section id="example-manchester-united-performance-5" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
 <ul>
-<li>Using the values for <span class="math inline">o_{i+}</span> and <span class="math inline">m</span> we finally obtain the null probabilities</li>
+<li>Substituting the values of <span class="math inline">o_{i+}</span> and <span class="math inline">m</span> we finally obtain the null probabilities</li>
 </ul>
 <p><span class="math display">\begin{align*}
-\text{Moyes: } \quad &amp; p_{1j} = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\
-\text{Van Gaal: }\quad &amp; p_{2j} = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
-\text{Mourinho: } \quad&amp; p_{3j} = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
-\text{Solskjaer: } \quad&amp; p_{4j} = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
-\text{Rangnick: }\quad &amp; p_{5j} = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
-\text{ten Hag: }\quad &amp; p_{6j} = \frac{ o_{6+} }{ 3m } =  101 \big/  1788
+\text{Moyes: } \quad &amp; p_{1j}^0 = \frac{ o_{1+} }{ 3m } = 51 \big/ 1788  \\
+\text{Van Gaal: }\quad &amp; p_{2j}^0 = \frac{ o_{2+} }{ 3m } = 103 \big/  1788  \\
+\text{Mourinho: } \quad&amp; p_{3j}^0 = \frac{ o_{3+} }{ 3m } =  144 \big/  1788  \\
+\text{Solskjaer: } \quad&amp; p_{4j}^0 = \frac{ o_{4+} }{ 3m } =  168 \big/ 1788 \\
+\text{Rangnick: }\quad &amp; p_{5j}^0 = \frac{ o_{5+} }{ 3m } =  29 \big/  1788  \\
+\text{ten Hag: }\quad &amp; p_{6j}^0 = \frac{ o_{6+} }{ 3m } =  101 \big/  1788
 \end{align*}</span></p>
 </section>
 <section id="example-manchester-united-performance-6" class="slide level2 smaller">
