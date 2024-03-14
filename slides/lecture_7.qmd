@@ -2286,14 +2286,14 @@ print(ans)
 
 - R.v. $X$ and $Y$ are independent iff cell probabilities factor into marginals
 $$
-p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
+p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{+j}
 $$
 
 - Therefore the hypothesis test for independence becomes
 \begin{align*}
-& H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+& H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R 
 \, \text{ and } \, j = 1 ,\ldots C \\
-& H_1 \colon p_{ij} \neq p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+& H_1 \colon p_{ij} \neq p_{i+}p_{+j}  \quad \text{ for some } \, (i,j)
 \end{align*}
 
 
@@ -2303,22 +2303,22 @@ $$
 
 - Assume the null hypothesis is true
 $$
-H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R 
 \, \text{ and } \, j = 1 ,\ldots C
 $$
 
 - Under $H_0$ the expected counts become
 $$
-E_{ij} = m p_{ij} = p_{i+}p_{j+}
+E_{ij} = m p_{ij} = p_{i+}p_{+j}
 $$
 
-- We need a way to estimate the marginal probabilities $p_{i+}$ and $p_{j+}$
+- We need a way to estimate the marginal probabilities $p_{i+}$ and $p_{+j}$
 
 
 
 ## Estimating marginal probabilities {.smaller}
 
-- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{+j}$
 
 - By definition we have
 $$
@@ -2336,7 +2336,7 @@ $$
 
 ## Estimating marginal probabilities {.smaller}
 
-- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{j+}$
+- **Goal:**  Estimate marginal probabilities $p_{i+}$ and $p_{+j}$
 
 - Similarly, by definition
 $$
@@ -2397,7 +2397,7 @@ $$
 
 - Similarly, we estimate the first $C-1$ column marginals by
 $$
-p_{j+} = \frac{o_{j+}}{m} \,, \qquad j = 1, \ldots, C - 1
+p_{+j} = \frac{o_{+j}}{m} \,, \qquad j = 1, \ldots, C - 1
 $$
 
 - Since the marginals $p_{+j}$ sum to $1$, we can obtain $p_{+C}$ by
@@ -2439,7 +2439,7 @@ RC - 1 - {\rm fitted} & = RC - 1 - R - C + 2  \\
 
 - Assume the null hypothesis of row and column independence
 $$
-H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R 
+H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R 
 \, \text{ and } \, j = 1 ,\ldots C
 $$
 

@@ -406,19 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -426,43 +414,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Theorem {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
   }
   .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,9 +426,53 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -1665,16 +1665,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.14960000, error is 0.00800735
-After    20000 iterations pi is 3.16320000, error is 0.02160735
-After    30000 iterations pi is 3.16013333, error is 0.01854068
-After    40000 iterations pi is 3.15390000, error is 0.01230735
-After    50000 iterations pi is 3.14464000, error is 0.00304735
-After    60000 iterations pi is 3.14553333, error is 0.00394068
-After    70000 iterations pi is 3.14245714, error is 0.00086449
-After    80000 iterations pi is 3.14265000, error is 0.00105735
-After    90000 iterations pi is 3.14244444, error is 0.00085179
-After   100000 iterations pi is 3.14176000, error is 0.00016735</code></pre>
+<pre><code>After    10000 iterations pi is 3.15720000, error is 0.01560735
+After    20000 iterations pi is 3.15660000, error is 0.01500735
+After    30000 iterations pi is 3.15106667, error is 0.00947401
+After    40000 iterations pi is 3.14750000, error is 0.00590735
+After    50000 iterations pi is 3.14328000, error is 0.00168735
+After    60000 iterations pi is 3.14413333, error is 0.00254068
+After    70000 iterations pi is 3.14354286, error is 0.00195020
+After    80000 iterations pi is 3.13975000, error is 0.00184265
+After    90000 iterations pi is 3.13635556, error is 0.00523710
+After   100000 iterations pi is 3.13500000, error is 0.00659265</code></pre>
 </div>
 </div>
 </section>
@@ -1955,11 +1955,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.81733</code></pre>
+Custom Monte Carlo p-value: 0.82055</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8170915</code></pre>
+R Monte Carlo p-value: 0.832084</code></pre>
 </div>
 </div>
 <ul>
@@ -3623,12 +3623,12 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </table>
 <ul>
 <li><p>R.v. <span class="math inline">X</span> and <span class="math inline">Y</span> are independent iff cell probabilities factor into marginals <span class="math display">
-p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
+p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{+j}
 </span></p></li>
 <li><p>Therefore the hypothesis test for independence becomes <span class="math display">\begin{align*}
-&amp; H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
+&amp; H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R
 \, \text{ and } \, j = 1 ,\ldots C \\
-&amp; H_1 \colon p_{ij} \neq p_{i+}p_{j+}  \quad \text{ for some } \, (i,j)
+&amp; H_1 \colon p_{ij} \neq p_{i+}p_{+j}  \quad \text{ for some } \, (i,j)
 \end{align*}</span></p></li>
 </ul>
 </section>
@@ -3636,19 +3636,19 @@ p_{ij} = P(X = i , Y = j) =  P(X = i) P (Y = j) = p_{i+}p_{j+}
 <h2>Expected counts</h2>
 <ul>
 <li><p>Assume the null hypothesis is true <span class="math display">
-H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
+H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R
 \, \text{ and } \, j = 1 ,\ldots C
 </span></p></li>
 <li><p>Under <span class="math inline">H_0</span> the expected counts become <span class="math display">
-E_{ij} = m p_{ij} = p_{i+}p_{j+}
+E_{ij} = m p_{ij} = p_{i+}p_{+j}
 </span></p></li>
-<li><p>We need a way to estimate the marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{j+}</span></p></li>
+<li><p>We need a way to estimate the marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{+j}</span></p></li>
 </ul>
 </section>
 <section id="estimating-marginal-probabilities" class="slide level2 smaller">
 <h2>Estimating marginal probabilities</h2>
 <ul>
-<li><p><strong>Goal:</strong> Estimate marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{j+}</span></p></li>
+<li><p><strong>Goal:</strong> Estimate marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{+j}</span></p></li>
 <li><p>By definition we have <span class="math display">
 p_{i+} = P( X = i )
 </span></p></li>
@@ -3661,7 +3661,7 @@ p_{i+} := \frac{o_{i+}}{m} = \frac{ \text{Number of observations in } \, i\text{
 <section id="estimating-marginal-probabilities-1" class="slide level2 smaller">
 <h2>Estimating marginal probabilities</h2>
 <ul>
-<li><p><strong>Goal:</strong> Estimate marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{j+}</span></p></li>
+<li><p><strong>Goal:</strong> Estimate marginal probabilities <span class="math inline">p_{i+}</span> and <span class="math inline">p_{+j}</span></p></li>
 <li><p>Similarly, by definition <span class="math display">
 p_{+j} = P( Y = j )
 </span></p></li>
@@ -3705,7 +3705,7 @@ p_{R+} = 1 - p_{1+} - \ldots - p_{(R-1)+}
 <h2>Number of fitted parameters</h2>
 <ul>
 <li><p>Similarly, we estimate the first <span class="math inline">C-1</span> column marginals by <span class="math display">
-p_{j+} = \frac{o_{j+}}{m} \,, \qquad j = 1, \ldots, C - 1
+p_{+j} = \frac{o_{+j}}{m} \,, \qquad j = 1, \ldots, C - 1
 </span></p></li>
 <li><p>Since the marginals <span class="math inline">p_{+j}</span> sum to <span class="math inline">1</span>, we can obtain <span class="math inline">p_{+C}</span> by <span class="math display">
 p_{+C} = 1 - p_{+1} - \ldots - p_{+(C-1)}
@@ -3734,7 +3734,7 @@ RC - 1 - {\rm fitted} &amp; = RC - 1 - R - C + 2  \\
 <h3 id="conclusion">Conclusion</h3>
 <ul>
 <li><p>Assume the null hypothesis of row and column independence <span class="math display">
-H_0 \colon p_{ij} = p_{i+}p_{j+} \quad \text{ for all } \, i = 1, \ldots , R
+H_0 \colon p_{ij} = p_{i+}p_{+j} \quad \text{ for all } \, i = 1, \ldots , R
 \, \text{ and } \, j = 1 ,\ldots C
 </span></p></li>
 <li><p>Suppose the counts are <span class="math inline">O \sim \mathop{\mathrm{Mult}}(m,p)</span> and expected counts are <span class="math display">
