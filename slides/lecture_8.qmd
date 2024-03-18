@@ -40,10 +40,431 @@ $
 
 ## Outline of Lecture 8
 
-1. Simple linear regression
-2. Multiple linear regression
-3. Simple regression as a multiple regression
-4. Two sample t-test as multiple regression
+
+1. Least squares
+2. Simple linear regression
+3. Multiple linear regression
+4. Simple regression as a multiple regression
+5. Two sample t-test as multiple regression
+
+
+
+
+
+
+# Part 1: <br>Least squares {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="58%"}
+
+$10$ patients are treated with Drug A and Drug B
+
+- These drugs cause change in blood pressure
+- Patients are given the drugs one at a time
+- Changes in blood pressure are recorded
+- For patient $i$ we denote by
+  * $x_i$ the change caused by Drug A
+  * $y_i$ the change caused by Drug B
+
+:::
+
+::: {.column width="40%"}
+
+
+| $i$   |  $x_i$  |  $y_i$ |
+|:-----:|:-------:|:------:|
+|  $1$  |  $1.9$  |  $0.7$ |
+|  $2$  |  $0.8$  |  $-1.0$|
+|  $3$  |  $1.1$  |  $-0.2$|
+|  $4$  |  $0.1$  |  $-1.2$|
+|  $5$  |  $-0.1$ |  $-0.1$|
+|  $6$  |  $4.4$  |  $3.4$ |
+|  $7$  |  $4.6$  |  $0.0$ |
+|  $8$  |  $1.6$  |  $0.8$ |
+|  $9$  |  $5.5$  |  $3.7$ |
+|  $10$ |  $3.4$  |  $2.0$ |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="50%"}
+
+**Goal:**
+
+- Predict reaction to Drug B, knowing reaction to Drug A
+- This means predict $y_i$ from $x_i$
+
+
+**Plot:**
+
+- To visualize data we can plot pairs $(x_i,y_i)$
+- Points seem to align
+- It seems there is a linear relation between $x_i$ and $y_i$
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+```
+
+:::
+
+
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="50%"}
+
+**Linear relation:**
+
+- Try to fit a line through the data
+- Line roughly predicts $y_i$ from $x_i$
+- However note the outlier 
+$$(x_7,y_7) = (4.6, 0)$$
+- How is such line constructed?
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+```
+
+:::
+
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="50%"}
+
+**Least Squares Line:**
+
+- A general line has equation
+$$
+y = \beta x + \alpha
+$$
+for some 
+  * **slope** $\beta$
+  * **intercept** $\alpha$
+
+- Value predicted by the line for $x_i$ is
+$$
+\hat{y}_i = \beta x_i + \alpha
+$$
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Calculate predicted values
+predicted <- predict(fit)
+
+# Plot vertical distances in gray
+segments(x, y, x, predicted, col = "gray", lwd = 2)
+```
+:::
+
+
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="50%"}
+
+**Least Squares Line:**
+
+- We would like predicted and actual value to be close
+$$
+\hat{y}_i \approx y_i
+$$
+
+
+- Hence the **vertical** difference has to be small
+$$
+y_i - \hat{y}_i \approx 0
+$$
+
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Calculate predicted values
+predicted <- predict(fit)
+
+# Plot vertical distances in gray
+segments(x, y, x, predicted, col = "gray", lwd = 2)
+```
+:::
+
+
+
+
+
+## Example: Blood Pressure {.smaller}
+
+::: {.column width="50%"}
+
+**Least Squares Line:**
+
+- We want 
+$$
+\hat{y}_i \approx y_i \,, \qquad \forall \, i
+$$
+
+- A way to ensure the above is by minimizing the sum of squares
+$$
+\min_{\alpha, \beta} \ \sum_{i} \ (y_i - \hat{y}_i)^2
+$$
+$$
+\hat{y}_i = \beta x_i + \alpha
+$$
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+
+# Calculate predicted values
+predicted <- predict(fit)
+
+# Plot vertical distances in gray
+segments(x, y, x, predicted, col = "gray", lwd = 2)
+```
+:::
+
+
+
+
+
+## Residual Sum of Squares {.smaller}
+
+::: Definition
+
+Let $(x_1,y_1), \ldots, (x_n, y_n)$ be a set of $n$ points. Consider the line
+$$
+y = \beta x + \alpha
+$$
+The Residual Sum of Squares associated to the line is
+$$
+\RSS (\alpha,\beta) := \sum_{i=1}^n (y_i-\alpha-{\beta}x_i)^2
+$$
+
+:::
+
+
+**Note:** $\RSS$ can be seen as a function
+$$
+\RSS \colon \R^2 \to \R   \qquad \quad \RSS = \RSS (\alpha,\beta)
+$$
+
+
+## $\RSS(\alpha,\beta)$ for Blood Pressure data {.smaller}
+
+```{r}
+library(plotly)
+
+# Function to calculate RSS
+calculate_RSS <- function(alpha, beta, x, y) {
+  y_pred <- alpha + beta * x
+  rss <- sum((y - y_pred)^2)
+  return(rss)
+}
+
+# Define a grid of alpha and beta values
+alpha <- seq(-2, 2, length.out = 100)
+beta <- seq(-2, 2, length.out = 100)
+
+# Create a grid of alpha and beta values
+grid <- expand.grid(alpha = alpha, beta = beta)
+
+# Calculate RSS for each combination of alpha and beta
+rss_values <- mapply(calculate_RSS, grid$alpha, grid$beta, MoreArgs = list(x = c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4), y = c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)))
+
+# Reshape RSS values to a matrix
+rss_matrix <- matrix(rss_values, nrow = length(alpha))
+
+# Define the data for the surface plot
+x_vals <- alpha
+y_vals <- beta
+z_matrix <- rss_matrix
+
+# Create a 3D surface plot using plot_ly
+plot_ly(
+  x = x_vals,
+  y = y_vals,
+  z = z_matrix,
+  type = "surface",
+  colors = "viridis",
+  showscale = FALSE
+) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = "Alpha"),
+      yaxis = list(title = "Beta"),
+      zaxis = list(title = "RSS"),
+      camera = list(
+        eye = list(x = 1.87, y = 0.88, z = 0.64)
+      )
+    ),
+    width = 800,
+    height = 600
+  )
+
+```
+
+
+
+
+
+## Summary statistics {.smaller}
+
+Suppose given the sample $(x_1,y_1), \ldots, (x_n, y_n)$
+
+- We want to minimize the associated RSS
+$$
+\min_{\alpha,\beta} \ \RSS (\alpha,\beta) = \min_{\alpha,\beta} \ \sum_{i=1}^n (y_i-\alpha-{\beta}x_i)^2
+$$
+
+
+- To this end we define the following quantities
 
 
 
@@ -52,7 +473,338 @@ $
 
 
 
-# Part 1: <br>Simple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+## Summary statistics {.smaller}
+
+Suppose given the sample $(x_1,y_1), \ldots, (x_n, y_n)$
+
+
+- **Sample Means:**
+$$
+\overline{x} := \frac{1}{n}  \sum_{i=1}^n x_i \qquad \quad 
+\overline{y} := \frac{1}{n}  \sum_{i=1}^n y_i
+$$
+
+
+- **Sums of squares:**
+$$
+S_{xx} :=   \sum_{i=1}^n ( x_i - \overline{x} )^2 \qquad \quad 
+S_{yy} :=   \sum_{i=1}^n ( y_i - \overline{y} )^2
+$$
+
+
+
+
+## Summary statistics {.smaller}
+
+Suppose given the sample $(x_1,y_1), \ldots, (x_n, y_n)$
+
+
+- **Sum of cross-products:**
+$$
+S_{xy} :=   \sum_{i=1}^n ( x_i - \overline{x} ) ( y_i - \overline{y} )
+$$
+
+
+
+
+
+## Minimizing the RSS {.smaller}
+
+::: Theorem
+
+Let $(x_1,y_1), \ldots, (x_n, y_n)$ be a set of $n$ points. Consider the minimization problem
+\begin{equation}   \tag{M}
+\min_{\alpha,\beta } \ \RSS =  \min_{\alpha,\beta} \ \sum_{i=1}^n (y_i-\alpha-{\beta}x_i)^2
+\end{equation}
+Then
+
+1. There exists a unique line solving (M)
+2. Such line has the form $y = \hat{\beta} x + \hat{\alpha}$ with
+$$
+\hat{\beta} = \frac{S_{xy}}{S_{xx}} \qquad \qquad 
+\hat{\alpha} = \overline{y} - \hat{\beta} \ \overline{x}
+$$
+:::
+
+
+
+
+
+## Positive definite matrix {.smaller}
+
+To prove the Theorem we need some background results
+
+- A symmetric matrix is **positive definite** if all the eigenvalues $\lambda_i$ satisfy 
+$$
+\lambda_i > 0
+$$
+
+- In particular the $2 \times 2$ matrix $A$ is **positive definite** iff
+$$
+\det A > 0 \,, \qquad \quad a_{11} > 0 
+$$
+
+
+
+
+## Positive definite Hessian {.smaller}
+
+
+- Suppose given a smooth function of 2 variables
+$$
+f \colon \R^2 \to \R \qquad \quad f = f (x,y)
+$$
+
+
+- The Hessian of $f$ is the matrix
+$$
+\nabla^2 f = 
+\left(  
+\begin{array}{cc}
+f_{xx} & f_{xy} \\
+f_{yx} & f_{yy} \\
+\end{array}
+\right)
+$$
+
+
+
+## Positive definite Hessian {.smaller}
+
+- In particular the Hessian is **positive definite** iff
+$$
+\det \nabla^2 f = f_{xx} f_{yy} - f_{xy}^2 > 0 \qquad \quad
+f_{xx} > 0
+$$
+
+
+- **Side Note:** It holds that
+$$
+\nabla^2 f \, \text{ positive definite} \qquad \implies \qquad  
+f \, \text{ strictly convex}
+$$
+
+
+
+
+## Optimality conditions {.smaller}
+
+::: Lemma
+
+Suppose $f \colon \R^2 \to \R$ has positive definite Hessian. They are equivalent
+
+1. The point $(\hat{x},\hat{y})$ is the unique minimizer of $f$, that is,
+$$
+f(\hat{x}, \hat{y}) = \min_{x,y} \ f(x,y)
+$$
+
+2. The point $(\hat{x},\hat{y})$ satisfies the **optimality conditions**
+$$
+\nabla f (\hat{x},\hat{y}) = 0
+$$
+
+:::
+
+
+**Note**: The proof of the above Lemma can be found in [@fusco-marcellini-sbordone]
+
+
+
+
+## Optimality conditions {.smaller}
+### Example
+
+- The main example of strictly convex function is 
+$$
+f(x,y) = x^2 + y^2
+$$
+
+
+- It is clear that
+$$
+\min_{x,y} \ f(x,y) = \min_{x,y} \ x^2 + y^2 = 0 
+$$
+with the only minimizer being $(0,0)$
+
+
+- However let us use the Lemma to prove this fact
+
+
+
+## Optimality conditions {.smaller}
+### Example
+
+- The gradient of $f = x^2 + y^2$ is
+$$
+\nabla f = (f_x,f_y) = (2x, 2y)
+$$
+
+- Therefore the optimality condition has unique solution
+$$
+\nabla f = 0 \qquad \iff \qquad x = y = 0
+$$
+
+
+
+## Optimality conditions {.smaller}
+### Example
+
+- The Hessian of $f$ is 
+$$
+\nabla^2 f =
+\left( 
+\begin{array}{cc}
+f_{xx} & f_{xy} \\
+f_{yx} & f_{yy}
+\end{array}
+\right) 
+=
+\left( 
+\begin{array}{cc}
+2 & 0 \\
+0 & 2
+\end{array}
+\right) 
+$$
+
+- The Hessian is positive definite since
+$$
+\det \nabla^2 f = 4 > 0 \qquad \qquad f_{xx} = 2 > 0
+$$
+
+- By the Lemma we conclude that $(0,0)$ is the unique minimizer of $f$, that is,
+$$
+0 = f(0,0) = \min_{x,y} \ f(x,y) 
+$$
+
+
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- We go back to proving the RSS Minimization Theorem
+
+- Suppose given data points $(x_1,y_1), \ldots, (x_n, y_n)$
+
+- We want to solve the minimization problem
+\begin{equation}   \tag{M}
+\min_{\alpha,\beta } \ \RSS =  \min_{\alpha,\beta} \ \sum_{i=1}^n (y_i-\alpha-{\beta}x_i)^2
+\end{equation}
+
+- In order to use the Lemma we need to compute
+$$
+\nabla \RSS  \quad \text{ and } \quad 
+\nabla^2 \RSS
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+
+- We first compute $\nabla \RSS$ and solve the optimality conditions
+$$
+\nabla \RSS (\alpha,\beta) = 0 
+$$
+
+- We have that
+$$
+\RSS_{\alpha} = 2\sum_{i=1}^n(y_i- \alpha- \beta x_i)
+$$
+$$
+\RSS_{\beta} = -2\sum_{i=1}^n x_i (y_i- \alpha - \beta x_i)
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Hence the optimality conditions are
+\begin{align}
+ 2\sum_{i=1}^n(y_i- \alpha- \beta x_i) & = 0  \tag{1} \\
+ -2\sum_{i=1}^n x_i (y_i- \alpha - \beta x_i) & = 0 \tag{2}
+\end{align}
+
+
+- Recall that 
+$$
+\overline{x} := \frac{\sum_{i=1}^nx_i}{n} \qquad \implies \qquad  \sum_{i=1}^n x_i =   n \overline{x}
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Similarly we have 
+$$
+\sum_{i=1}^n y_i =   n \overline{y}
+$$
+
+- Therefore Equation (1) gives
+$$
+0 = \sum_{i=1}^n(y_i- \alpha - \beta x_i) = n \overline{y} -n \alpha - n \beta \overline{x}
+$$
+
+- By simplifying and rearraging, we find that (1) is equivalent to
+$$
+\alpha =  \overline{y}- \beta \overline{x}
+$$
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Equation (2) is equivalent to
+\begin{align*}
+0 & = \sum_{i=1}^n x_i (y_i- \alpha - \beta x_i) \\
+  & = \sum_{i=1}^n x_i y_i - \alpha \sum_{i=1}^n x_i - \beta \sum_{i=1}^n x^2_i \\
+  & = \sum_{i=1}^n x_i y_i - \alpha n \overline{x}  - \beta \sum_{i=1}^n x^2_i
+\end{align*}
+
+- From the previous slide we have $\alpha =  \overline{y}- \beta \overline{x}$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Substituting in Equation (2) we get
+\begin{align*}
+0 & = \sum_{i=1}^n x_i y_i - \alpha n \overline{x}  - \beta \sum_{i=1}^n x^2_i \\
+  & = \sum_{i=1}^n x_i y_i - n \overline{x} \, \overline{y}  + \beta n \overline{x}^2 - \beta \sum_{i=1}^n x^2_i \\
+  & =  \sum_{i=1}^n (x_i y_i - \overline{x} \, \overline{y} ) - \beta   \sum_{i=1}^n (x^2_i - \overline{x}^2 )  \\
+  & = S_{xy} - \beta S_{xx} 
+\end{align*}
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Hence Equation (2) is equivalent to
+$$
+ \beta = \frac{S_{xy}}{ S_{xx} }
+$$
+
+- Also recall that Equation (1) is equivalent to
+$$
+\alpha =  \overline{y}- \beta \overline{x}
+$$
+
+- Therefore $(\alpha,\beta)$ solves the optimality conditions $\nabla \RSS = 0$ iff
+$$
+\alpha =  \overline{y}- \beta \overline{x} \,, \qquad \quad 
+\beta = \frac{S_{xy}}{ S_{xx} }
+$$
+
+
+# Part 2: <br>Simple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -66,6 +818,73 @@ $
 
 ## Simple linear regression {.smaller}
 
+
+Simple linear regression consists of a relationship of the form
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+- $Y_i$ is random variable -- called **response variable**
+- $x_i$ is an observable variable -- called **predictor variable**
+- $\e_i$ is a random variable -- called **error**
+- $\alpha$ is the **intercept**
+- $\beta$ is the **slope**
+
+
+
+## Simple linear regression {.smaller}
+
+**Goal**: Predict $Y_i$ from knowledge of $x_i$ using relation
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+
+- We assume that the error $\e_i$ satisfies
+$$
+\Expect[\e_i] = 0
+$$
+
+- This way we can predict the expected value of $Y_i$ given $x_i$
+$$
+\Expect[Y_i | x_i ] = \alpha + \beta x_i
+$$
+
+
+
+## What do we mean by linear? {.smaller}
+
+**Note:** By **linear regression** we mean that the relation
+$$
+\Expect[Y_i | x_i ] = \alpha + \beta x_i
+$$
+is linear with respect to the parameters $\alpha$ and $\beta$
+
+
+**Examples:**
+
+- Linear regression between $Y_i$ and $x_i^2$ is
+$$
+\Expect[Y_i | x_i ] = \alpha + \beta x_i^2
+$$
+
+- Linear regression between $\log Y_i$ and $1/x_i$ is
+$$
+\Expect[ \log Y_i | x_i ] = \alpha + \beta \frac{1}{ x_i }
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+## Simple linear regression {.smaller}
 
 -  Important conceptually to illustrate the method of least squares
 
@@ -89,7 +908,65 @@ $$
 
 
 
-# Part 2: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+
+## Example: Gold and Stock prices {.smaller}
+
+
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Plot Stock Price against Gold Price
+
+- As Stock price increases, Gold price decreases
+
+- Would like to find $\alpha$ and $\beta$ s.t.
+$$
+\Expect[Y_i | x_i] \approx \alpha_ + \beta x_i
+$$
+
+
+
+
+:::
+
+
+::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+data1 <- read.table("datasets/L3eg1data.txt")
+realgoldprice <- data1[,1]
+realstockprice <- data1[,2]
+
+# Create the plot
+plot(realgoldprice,
+     realstockprice, 
+     xlab="", 
+     ylab="")
+
+# Add labels
+mtext("Stock Price x_i", side=1, line=3, cex=2.1)
+mtext("Gold Price Y_i", side=2, line=2.5, cex=2.1)
+
+# Fit linear regression
+fit <- lm(realstockprice ~ realgoldprice)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 3)
+```
+
+:::
+
+:::::
+
+
+
+# Part 3: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -102,7 +979,7 @@ $$
 
 
 
-# Part 3: <br>Simple regression as<br> multiple regression {background-color="#cc0164" visibility="uncounted"}
+# Part 4: <br>Simple regression as<br> multiple regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -113,10 +990,14 @@ $$
 
 
 
-# Part 4: <br>Two sample t-test<br> as multiple regression {background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>Two sample t-test<br> as multiple regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+## References
