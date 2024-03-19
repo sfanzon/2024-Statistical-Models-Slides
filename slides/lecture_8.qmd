@@ -1539,7 +1539,7 @@ $$
 
 Let $Y_1, \ldots, Y_n$ be continuous rv with joint pdf $f$ depending on a parameter $\theta$. The likelihood function is 
 $$
-L \colon \R^n \to \R \,, \qquad \quad L(y_1,\ldots,y_n | \theta) := f(Y_1 = y_1, \ldots, Y_n = y_n | \theta)
+L \colon \R^n \to \R \,, \qquad \quad L(\theta | y_1,\ldots,y_n ) := f(Y_1 = y_1, \ldots, Y_n = y_n | \theta)
 $$
 
 :::
@@ -1549,7 +1549,7 @@ $$
 
 Suppose Assumptions 1--5 hold. Then
 $$
-L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
+L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
 $$
 
 :::
@@ -1580,7 +1580,7 @@ $$
 
 - Since $Y_1,\ldots, Y_n$ are independent we obtain
 \begin{align*}
-L(y_1, \ldots,y_n | \alpha,\beta,\sigma^2) & = f(y_1,\ldots,y_n) \\
+L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
                                   & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
                                   & = \prod_{i=1}^n 
                                   \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right) \\
@@ -1685,7 +1685,7 @@ $$
 
 - This is equivalent to maximizing the likelihood function
 $$
-\max_{\alpha,\beta,\sigma} \ L(y_1, \ldots, y_n | \alpha,\beta,\sigma^2)
+\max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
 
 
@@ -1700,7 +1700,7 @@ Suppose Assumptions 1--5 hold and assume given $n$ data pairs
 $(x_1,y_1), \ldots, (x_n,y_n)$. 
 The maximization problem
 $$
-\max_{\alpha,\beta,\sigma}  \ L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
+\max_{\alpha,\beta,\sigma}  \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
 $$
 admits the unique solution
 $$
@@ -1723,12 +1723,12 @@ $$
 - Therefore the problem
 
 $$
-\max_{\alpha,\beta,\sigma} \ L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2)
+\max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
 is equivalent to
 
 $$
-\max_{\alpha,\beta,\sigma} \ \log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2)
+\max_{\alpha,\beta,\sigma} \ \log L( \alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
 
 
@@ -1738,13 +1738,13 @@ $$
 
 - Recall that the likelihood is
 $$
-L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{\sum_{i=1}^n(y_i-\alpha - \beta x_i)^2}{2\sigma^2}      \right)
+L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{\sum_{i=1}^n(y_i-\alpha - \beta x_i)^2}{2\sigma^2}      \right)
 $$
 
 
 - Hence the log--likelihood is
 $$
-\log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
+\log L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
 = - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
 \frac{ \sum_{i=1}^n(y_i-\alpha - \beta x_i)^2 }{2 \sigma^2}
 $$
@@ -1778,8 +1778,8 @@ $$
 
 - Substituting $\hat \alpha$ and $\hat \beta$ we obtain
 \begin{align*}
-\max_{\alpha,\beta,\sigma} \ & \log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
-= \max_{\sigma} \ \log L(y_1, \ldots, y_n | \hat\alpha, \hat\beta, \sigma^2) \\
+\max_{\alpha,\beta,\sigma} \ & \log L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
+= \max_{\sigma} \ \log L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) \\
 & = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
 \frac{ \sum_{i=1}^n(y_i-\hat\alpha - \hat\beta x_i)^2 }{2 \sigma^2}  \right\}
 \end{align*}
