@@ -4,3 +4,17 @@
  [**Theorem**](#Theorem*-2.2)\Pageref{Theorem*-2.2}
 
  [**Lemma**](#Lemma*-2.3)\Pageref{Lemma*-2.3}
+
+ [**Definition**](#Definition*-2.4)\Pageref{Definition*-2.4}
+
+ [**Proposition**](#Proposition*-3.1)\Pageref{Proposition*-3.1}
+
+ [**Definition**](#Definition*-3.2)\Pageref{Definition*-3.2}
+
+ [**Proposition**](#Proposition*-3.3)\Pageref{Proposition*-3.3}
+
+ [**Problem**](#Problem*-3.4)\Pageref{Problem*-3.4}
+
+ [**Problem**](#Problem*-3.5)\Pageref{Problem*-3.5}
+
+ [**Theorem**](#Theorem*-3.6)\Pageref{Theorem*-3.6}

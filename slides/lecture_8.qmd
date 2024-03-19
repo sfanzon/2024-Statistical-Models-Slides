@@ -530,24 +530,24 @@ $$
 
 
 
-## Positive definite matrix {.smaller}
+## Positive semi-definite matrix {.smaller}
 
 To prove the Theorem we need some background results
 
-- A symmetric matrix is **positive definite** if all the eigenvalues $\lambda_i$ satisfy 
+- A symmetric matrix is **positive semi-definite** if all the eigenvalues $\lambda_i$ satisfy 
 $$
-\lambda_i > 0
-$$
-
-- In particular the $2 \times 2$ matrix $A$ is **positive definite** iff
-$$
-\det A > 0 \,, \qquad \quad a_{11} > 0 
+\lambda_i \geq 0
 $$
 
+- **Proposition:** A $2 \times 2$ symmetric matrix $M$ is **positive semi-definite** iff
+$$
+\det M \geq 0 \,, \qquad \quad \operatorname{Tr}(M) \geq 0 
+$$
 
 
 
-## Positive definite Hessian {.smaller}
+
+## Positive semi-definite Hessian {.smaller}
 
 
 - Suppose given a smooth function of 2 variables
@@ -568,20 +568,19 @@ f_{yx} & f_{yy} \\
 $$
 
 
+## Positive semi-definite Hessian {.smaller}
 
-## Positive definite Hessian {.smaller}
-
-- In particular the Hessian is **positive definite** iff
+- In particular the Hessian is **positive semi-definite** iff
 $$
-\det \nabla^2 f = f_{xx} f_{yy} - f_{xy}^2 > 0 \qquad \quad
-f_{xx} > 0
+\det \nabla^2 f = f_{xx} f_{yy} - f_{xy}^2 \geq 0 \qquad \quad
+f_{xx} + f_{yy} \geq 0
 $$
 
 
-- **Side Note:** It holds that
+- **Side Note:** For $C^2$ functions it holds that
 $$
-\nabla^2 f \, \text{ positive definite} \qquad \implies \qquad  
-f \, \text{ strictly convex}
+\nabla^2 f \, \text{ is positive semi-definite} \qquad \iff \qquad  
+f \, \text{ is convex}
 $$
 
 
@@ -591,9 +590,9 @@ $$
 
 ::: Lemma
 
-Suppose $f \colon \R^2 \to \R$ has positive definite Hessian. They are equivalent
+Suppose $f \colon \R^2 \to \R$ has positive semi-definite Hessian. They are equivalent
 
-1. The point $(\hat{x},\hat{y})$ is the unique minimizer of $f$, that is,
+1. The point $(\hat{x},\hat{y})$ is a minimizer of $f$, that is,
 $$
 f(\hat{x}, \hat{y}) = \min_{x,y} \ f(x,y)
 $$
@@ -667,9 +666,9 @@ f_{yx} & f_{yy}
 \right) 
 $$
 
-- The Hessian is positive definite since
+- The Hessian is positive semi-definite since
 $$
-\det \nabla^2 f = 4 > 0 \qquad \qquad f_{xx} = 2 > 0
+\det \nabla^2 f = 4 > 0 \qquad \qquad f_{xx} + f_{yy} = 4 > 0
 $$
 
 - By the Lemma we conclude that $(0,0)$ is the unique minimizer of $f$, that is,
@@ -713,7 +712,7 @@ $$
 
 - We have that
 $$
-\RSS_{\alpha} = 2\sum_{i=1}^n(y_i- \alpha- \beta x_i)
+\RSS_{\alpha} = -2\sum_{i=1}^n(y_i- \alpha- \beta x_i)
 $$
 $$
 \RSS_{\beta} = -2\sum_{i=1}^n x_i (y_i- \alpha - \beta x_i)
@@ -726,7 +725,7 @@ $$
 
 - Hence the optimality conditions are
 \begin{align}
- 2\sum_{i=1}^n(y_i- \alpha- \beta x_i) & = 0  \tag{1} \\
+ -2\sum_{i=1}^n(y_i- \alpha- \beta x_i) & = 0  \tag{1} \\
  -2\sum_{i=1}^n x_i (y_i- \alpha - \beta x_i) & = 0 \tag{2}
 \end{align}
 
@@ -797,11 +796,526 @@ $$
 \alpha =  \overline{y}- \beta \overline{x}
 $$
 
-- Therefore $(\alpha,\beta)$ solves the optimality conditions $\nabla \RSS = 0$ iff
+- Therefore $(\hat\alpha, \hat\beta)$ solves the optimality conditions $\nabla \RSS = 0$ iff
 $$
-\alpha =  \overline{y}- \beta \overline{x} \,, \qquad \quad 
-\beta = \frac{S_{xy}}{ S_{xx} }
+\hat\alpha =  \overline{y}- \hat\beta \overline{x} \,, \qquad \quad 
+\hat\beta = \frac{S_{xy}}{ S_{xx} }
 $$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- We need to compute $\nabla^2 \RSS$ 
+
+- To this end recall that
+$$
+\RSS_{\alpha} = -2\sum_{i=1}^n(y_i- \alpha- \beta x_i) \,, \qquad 
+\RSS_{\beta} = -2\sum_{i=1}^n x_i (y_i- \alpha - \beta x_i)
+$$
+
+- Therefore we have
+\begin{align*}
+\RSS_{\alpha \alpha} & = 2n \qquad   & \RSS_{\alpha \beta} & =  2 \sum_{i=1}^n x_i \\ 
+\RSS_{\beta \alpha } & =  2 \sum_{i=1}^n x_i \qquad     & \RSS_{\beta \beta} & =  2 \sum_{i=1}^{n} x_i^2
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- The Hessian determinant is 
+
+\begin{align*}
+\det \nabla^2 \RSS & = \RSS_{\alpha \alpha}\RSS_{\beta \beta} -  \RSS_{\alpha \beta}^2  \\
+                   & = 4n \sum_{i=1}^{n} x_i^2 - 4 \left( \sum_{i=1}^n x_i \right)^2 \\
+                   & = 4 \left(   n \sum_{i=1}^{n} x_i^2 -  \left( \sum_{i=1}^n x_i \right)^2           \right)
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Therefore we have
+
+\begin{align*}
+\det \nabla^2 \RSS \geq 0  \quad & \iff \quad   \left( \sum_{i=1}^n x_i \right)^2 \leq n \sum_{i=1}^{n} x_i^2 \\
+  & \iff \quad   \left( \frac{1}{n} \sum_{i=1}^n x_i \right)^2 \leq \frac{1}{n} \sum_{i=1}^{n} x_i^2
+\end{align*}
+
+
+- The last inequality is true by convexity of the function $x \mapsto x^2$
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+
+- We also have
+
+$$
+\RSS_{\alpha \alpha} + \RSS_{\beta \beta}  = 2n + 2 \sum_{i=1}^{n} x_i^2 \geq 0
+$$
+
+- Therefore we have proven 
+$$
+\det \nabla^2 \RSS \geq 0 \,, \qquad \quad 
+\RSS_{\alpha \alpha} + \RSS_{\beta \beta} \geq 0
+$$
+
+- As the Hessian is symmetric, we conclude that $\nabla^2 \RSS$ is positive semi-definite
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+
+- By the Lemma we have that all the solutions to optimality condions are minimizers
+
+- Therefore $(\hat \alpha,\hat\beta)$ with
+$$\hat\alpha =  \overline{y}- \hat\beta \overline{x} \,, \qquad \quad 
+\hat\beta = \frac{S_{xy}}{ S_{xx} }
+$$
+is a minimizer of $\RSS$, ending the proof
+
+
+
+
+
+## Least-squares line {.smaller}
+
+The previous Theorem allows to give the following definition
+
+
+::: Definition
+
+Let $(x_1,y_1), \ldots, (x_n, y_n)$ be a set of $n$ points. The **least-squares line** is the line 
+$$
+y = \hat\beta x + \hat \alpha
+$$
+where we define
+$$
+\hat{\alpha} = \overline{y} - \hat{\beta} \ \overline{x} \qquad \qquad \hat{\beta} = \frac{S_{xy}}{S_{xx}}
+$$
+
+:::
+
+
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Computing the least-squares line in R
+
+::: {.column width="58%"}
+
+In R do the following:
+
+- Input the data into a data-frame
+
+- Plot the data points $(x_i,y_i)$
+
+- Compute the least-square line coefficients
+$$
+\hat{\alpha} = \overline{y} - \hat{\beta} \ \overline{x} \qquad \qquad \hat{\beta} = \frac{S_{xy}}{S_{xx}}
+$$
+
+- Plot the least squares line
+
+:::
+
+::: {.column width="40%"}
+
+::: {style="font-size: 0.9em"}
+
+| $i$   |  $x_i$  |  $y_i$ |
+|:-----:|:-------:|:------:|
+|  $1$  |  $1.9$  |  $0.7$ |
+|  $2$  |  $0.8$  |  $-1.0$|
+|  $3$  |  $1.1$  |  $-0.2$|
+|  $4$  |  $0.1$  |  $-1.2$|
+|  $5$  |  $-0.1$ |  $-0.1$|
+|  $6$  |  $4.4$  |  $3.4$ |
+|  $7$  |  $4.6$  |  $0.0$ |
+|  $8$  |  $1.6$  |  $0.8$ |
+|  $9$  |  $5.5$  |  $3.7$ |
+|  $10$ |  $3.4$  |  $2.0$ |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+
+:::
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+- We give a first solution using elementary R functions
+
+- The code to input the data into a data-frame is as follows
+
+```r
+# Input blood pressure changes data into data-frame
+
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+
+```
+
+- To shorten the code we assign ``drug_A`` and ``drug_B`` to vectors ``x`` and ``y``
+
+```r
+# Assign data-frame columns to vectors x and y
+x <- changes$drug_A
+y <- changes$drug_B
+```
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+
+- We compute averages $\overline{x}, \overline{y}$ and covariances $S_{xx}, S_{xy}$
+
+
+```r
+# Compute averages xbar and ybar
+xbar <- mean(x)
+ybar <- mean(y)
+
+# Compute covariances S_xx and S_xy
+S_xx <- var(x)
+S_xy <- cov(x,y)
+```
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+- Compute the least-square line coefficients
+$$
+\hat{\alpha} = \overline{y} - \hat{\beta} \ \overline{x} \qquad \qquad \hat{\beta} = \frac{S_{xy}}{S_{xx}}
+$$
+
+```r
+# Compute least-square line coefficients
+beta <- S_xy / S_xx
+alpha <- ybar - beta * xbar
+```
+
+
+- The coefficients computed by the above code are
+
+```{r}
+# Input blood pressure changes data into data-frame
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+
+# Assign data-frame columns to vectors x and y
+x <- changes$drug_A
+y <- changes$drug_B
+
+# Compute averages xbar and ybar
+xbar <- mean(x)
+ybar <- mean(y)
+
+# Compute covariances S_xx and S_xy
+S_xx <- var(x)
+S_xy <- cov(x,y)
+
+# Compute least-square line coefficients
+beta <- S_xy / S_xx
+alpha <- ybar - beta * xbar
+
+# Print coefficients
+cat("\nCoefficient alpha =", alpha)
+cat("\nCoefficient beta =", beta)
+```
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+- Plot the data pairs $(x_i,y_i)$
+
+```r
+# Plot the data
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+```
+
+- **Note:** We have added a few cosmetic options
+  * ``pch = 16`` plots points with black circles
+  * ``cex = 2`` stands for *character expansion* -- Specifies width of points
+  * ``xlab = ""`` and ``ylab = ""`` add empty axis labels
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+- Plot the data pairs $(x_i,y_i)$
+
+```r
+# Plot the data
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+```
+
+
+- **Note:** We have added a few cosmetic options
+  * ``mtext`` is used to fine-tune the axis labels
+  * ``side = 1`` stands for x-axis
+  * ``side = 2`` stands for y-axis
+  * ``line`` specifies distance of label from axis
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+
+- To plot the least-squares line we need to
+  * Create grid of $x$ coordinates and compute $y = \hat \beta x + \hat \alpha$ over such grid
+  * Plot the pairs $(x,y)$ and interpolate
+
+```r
+# Compute least-squares line on grid
+x_grid <- seq(from = -1, to = 6, by = 0.1)
+y_grid <- beta * x_grid + alpha
+
+# Plot the least-squares line
+lines(x_grid, y_grid, col = "red", lwd = 3)
+```
+
+- **Note:** Cosmetic options
+  * ``col`` specifies color of the plot
+  * ``lwd`` specifies line width
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### First Solution
+
+::: {.column width="50%"}
+
+- Previous code can be downloaded here [least_squares_1.R](codes/least_squares_1.R)
+
+- Running the code we obtain the plot on the right
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Input blood pressure changes data into data-frame
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+
+# Assign data-frame columns to vectors x and y
+x <- changes$drug_A
+y <- changes$drug_B
+
+# Compute averages xbar and ybar
+xbar <- mean(x)
+ybar <- mean(y)
+
+# Compute covariances S_xx and S_xy
+S_xx <- var(x)
+S_xy <- cov(x,y)
+
+# Compute least-square line coefficients
+beta <- S_xy / S_xx
+alpha <- ybar - beta * xbar
+
+# Plot the data
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Drug A reaction x_i", side = 1, line = 3, cex = 2.1)
+mtext("Drug B reaction y_i", side = 2, line = 2.5, cex = 2.1)
+
+# Compute least-squares line on grid
+x_grid <- seq(from = -1, to = 6, by = 0.1)
+y_grid <- beta * x_grid + alpha
+
+# Plot the least-squares line
+lines(x_grid, y_grid, col = "red", lwd = 3)
+```
+
+:::
+
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+
+- The second solution uses the R function ``lm``
+- ``lm`` stands for **linear model**
+- First we input the data into a data-frame
+
+```r
+# Input blood pressure changes data into data-frame
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+```
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+- We now use ``lm`` to fit the least-squares line
+
+- The basic syntax of ``lm`` is
+  * ``lm(formula, data)``
+  * ``data`` expects a data-frame in input
+  * ``formula`` stands for the relation to fit
+
+- In case of least-squares the formula is
+  * ``formula = y ~ x``
+
+- The symbol `y ~ x` can be read as
+  * *$y$ modelled as function of $x$*
+
+- ``x`` and ``y`` are the names of two variables in the data-frame
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+- The command to fit the least-squares line on ``changes`` is
+
+```r
+least_squares <- lm(formula = drug_B ~ drug_A, data = changes) 
+```
+
+
+- This is what R plots when calling ``print(least_squares)``
+
+
+```{r}
+# Input blood pressure changes data into data-frame
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+
+least_squares <- lm(formula = drug_B ~ drug_A, data = changes) 
+
+print(least_squares)
+```
+
+- The above means that $\alpha = -0.7861$ and $\beta = 0.6850$
+
+
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+
+- We can now plot the data with the following command
+  * 1st coordinate is the vector ``changes$drug_A``
+  * 2nd coordinate is the vector ``changes$drug_B``
+
+```r
+# Plot data 
+plot(changes$drug_A, changes$drug_B, pch = 16, cex = 2)
+```
+
+
+- The least-squares line is currently stored in ``least_squares``
+
+- To add such line to the current plot use ``abline``
+
+```r    
+# Plot least-squares line
+abline(least_squares, col = "red", lwd = 3)
+```
+
+
+
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+::: {.column width="50%"}
+
+- Previous code can be downloaded here [least_squares_2.R](codes/least_squares_2.R)
+
+- Running the code we obtain the plot on the right
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Input blood pressure changes data into data-frame
+changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1, 
+                                 4.4, 4.6, 1.6, 5.5, 3.4),
+                      drug_B = c(0.7, -1.0, -0.2, -1.2, -0.1, 
+                                 3.4, 0.0, 0.8, 3.7, 2.0)
+                     )
+
+# Fit least-squares line
+least_squares <- lm(formula = drug_B ~ drug_A, data = changes) 
+
+# Plot data 
+plot(changes$drug_A, changes$drug_B, pch = 16, cex = 2)
+
+# Plot least-squares line
+abline(least_squares, col = "red", lwd = 3)
+```
+
+:::
+
+
+
+
+
 
 
 # Part 2: <br>Simple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
@@ -818,151 +1332,467 @@ $$
 
 ## Simple linear regression {.smaller}
 
+Linear regression and least-squares are two **different** things:
 
-Simple linear regression consists of a relationship of the form
+- Least-squares: Deterministic problem of fitting a line through given data points
+  * Compute coefficients for least-squares line
+  $y = \hat\beta x + \hat\alpha$
+  * Line is used to predict values of $y$ from values of $x$
+
+- Linear regresion: Problem of learning a conditional distribution
+  * Suppose to have 2 random variables $X$ and $Y$
+  * $X$ models of *observed values* or *controls*
+  * $Y$ models a response
+  * We want to learn the distribution of $Y | X$
+  * $Y | X$ allows to predict values of $Y$ from values of $X$
+
+
+
+
+
+
+## Basic definitions {.smaller}
+
+Suppose given two random variables $X$ and $Y$
+
+- $X$ is called the **predictor**
+- $Y$ is called the **response**
+- The **regression function** of $Y$ on $X$ is the conditional expectation
 $$
-Y_i = \alpha + \beta x_i + \e_i
+x \mapsto \Expect[Y | X = x]
 $$
-
-- $Y_i$ is random variable -- called **response variable**
-- $x_i$ is an observable variable -- called **predictor variable**
-- $\e_i$ is a random variable -- called **error**
-- $\alpha$ is the **intercept**
-- $\beta$ is the **slope**
-
 
 
 ## Simple linear regression {.smaller}
 
-**Goal**: Predict $Y_i$ from knowledge of $x_i$ using relation
+- The regression of $Y$ on $X$ is **linear** if there exist  $\alpha$ and $\beta$ s.t.
 $$
-Y_i = \alpha + \beta x_i + \e_i
-$$
-
-
-- We assume that the error $\e_i$ satisfies
-$$
-\Expect[\e_i] = 0
+\Expect[Y | X = x] = \alpha +  \beta x 
 $$
 
-- This way we can predict the expected value of $Y_i$ given $x_i$
+-  $\alpha$ and $\beta$ are called **regression coefficients**
+
+- The above regression is called **simple** because only 2 variables are involved
+
+- **Notation:** We use the shorthand 
 $$
-\Expect[Y_i | x_i ] = \alpha + \beta x_i
+\Expect[Y | x] := \Expect[Y | X = x]
 $$
 
 
 
-## What do we mean by linear? {.smaller}
+## Why do we say the regression is linear? {.smaller}
 
-**Note:** By **linear regression** we mean that the relation
+**Note:** We said that the regression is **linear** if
 $$
-\Expect[Y_i | x_i ] = \alpha + \beta x_i
+\Expect[Y | x ] = \alpha + \beta x
 $$
-is linear with respect to the parameters $\alpha$ and $\beta$
+In the above we mean linearity wrt the parameters $\alpha$ and $\beta$
 
 
 **Examples:**
 
-- Linear regression between $Y_i$ and $x_i^2$ is
+- Linear regression of $Y$ on $X^2$ is
 $$
-\Expect[Y_i | x_i ] = \alpha + \beta x_i^2
-$$
-
-- Linear regression between $\log Y_i$ and $1/x_i$ is
-$$
-\Expect[ \log Y_i | x_i ] = \alpha + \beta \frac{1}{ x_i }
+\Expect[Y | x^2 ] = \alpha + \beta x^2
 $$
 
-
-
-
-
-
-
-
-
-
-
-
-## Simple linear regression {.smaller}
-
--  Important conceptually to illustrate the method of least squares
-
-- Shows where the A-level formulae come from
-
-
-- The simple linear regression model is
+- Linear regression of $\log Y$ on $1/x$ is
 $$
-y_i = \alpha+  \beta x_i + \e_i
-$$
-
-- The random errors $\e_i$ are iid $N(0, \sigma^2)$
-
-- This means that any observation errors are assumed to be independent of each other and have the same statistical description
-
-- This model formulation also means that the observed $y_i$ are also normally distributed
-$$
-y_i \sim N(\alpha + \beta x_i, \sigma^2)
+\Expect[ \log Y | x ] = \alpha + \beta \frac{1}{ x }
 $$
 
 
 
 
 
-## Example: Gold and Stock prices {.smaller}
+## Simple linear regression Assumptions {.smaller}
 
+- We now make 5 assumptions on $X$ and $Y$
 
-
-::::: {.columns style='display: flex !important; height: 80%;'}
-
-::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
-
-- Plot Stock Price against Gold Price
-
-- As Stock price increases, Gold price decreases
-
-- Would like to find $\alpha$ and $\beta$ s.t.
+- Suppose we observe $n$ pairs
 $$
-\Expect[Y_i | x_i] \approx \alpha_ + \beta x_i
+(x_1,Y_1) , \, \ldots, \, (x_n, Y_n)
+$$
+where $Y_i$ denotes a random variable with distribution
+$$
+Y | X = x_i
 $$
 
+**Assumptions:**
+
+1. **Predictor is known:** The values $x_1, \ldots, x_n$ are either
+    * known controls (set by the experiment designer) or
+    * observed from random variables $X_1, \ldots, X_n$
 
 
+
+
+
+## Simple linear regression Assumptions {.smaller}
+
+
+2. **Normality:** The distribution of $Y_i$ is normal
+
+3. **Linear mean:** There are parameters $\alpha$ and $\beta$ such that
+$$
+\Expect[Y_i] = \alpha + \beta x_i  
+$$
+
+4. **Common variance (Homoscedasticity):** There is a parameter $\sigma^2$ such that
+$$
+\Var[Y_i] = \sigma^2
+$$
+
+5. **Independence:** The random variables 
+$$
+Y_1   \,, \ldots \,, Y_n 
+$$
+are independent
+
+
+
+
+## Characterization of the Model {.smaller}
+
+The Assumptions made identify exactly one model, as shown in Proposition below
+
+::: Proposition 
+
+Assumptions 1-5 are satisfied if and only if
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+for some random variables
+$$
+\e_1 , \ldots, \e_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$
 
 :::
 
 
-::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
 
-```{r}
-#| echo: false
-#| fig-asp: 1
 
-# Read the data
-data1 <- read.table("datasets/L3eg1data.txt")
-realgoldprice <- data1[,1]
-realstockprice <- data1[,2]
 
-# Create the plot
-plot(realgoldprice,
-     realstockprice, 
-     xlab="", 
-     ylab="")
+## Characterization of the Model {.smaller}
+### Proof
 
-# Add labels
-mtext("Stock Price x_i", side=1, line=3, cex=2.1)
-mtext("Gold Price Y_i", side=2, line=2.5, cex=2.1)
+- By Assumption 2 we have that $Y_i$ is normal
 
-# Fit linear regression
-fit <- lm(realstockprice ~ realgoldprice)
+- By Assumption 3 and 4 we have
+$$
+\Expect[Y_i] = \alpha + \beta x_i \,, \qquad \quad
+\Var[Y_i] = \sigma^2
+$$
 
-# Plot regression line in red
-abline(fit, col = "red", lwd = 3)
-```
+- Therefore
+$$
+Y_i  \sim  N(\alpha + \beta x_i, \sigma^2)
+$$
+
+
+
+
+## Characterization of the Model {.smaller}
+### Proof
+
+- Define the random variables 
+$$
+\e_i := Y_i   -  (\alpha + \beta x_i)
+$$
+
+- By Assumption 5 we have that $Y_1,\ldots,Y_n$ are independent
+
+- Therefore $\e_1,\ldots,\e_n$ are independent
+
+- Since $Y_i  \sim  N(\alpha + \beta x_i, \sigma^2)$ we conclude that 
+$$
+\e_i \sim N(0,\sigma^2)
+$$
+
+
+
+
+
+## Simple linear regression Model {.smaller}
+### Summary
+
+Simple linear regression of $Y$ on $X$ consists of a function of the form
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+for some random variables 
+$$
+\e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$
+
+- $Y_i$ is random variable -- called **response**
+- $x_i$ is an observable variable -- called **predictor**
+- $\e_i$ is a random variable -- called **error**
+- $\alpha$ is the **intercept** and $\beta$ is the **slope**
+
+
+
+## Likelihood function for simple regression {.smaller}
+
+::: Definition
+
+Let $Y_1, \ldots, Y_n$ be continuous rv with joint pdf $f$ depending on a parameter $\theta$. The likelihood function is 
+$$
+L \colon \R^n \to \R \,, \qquad \quad L(y_1,\ldots,y_n | \theta) := f(Y_1 = y_1, \ldots, Y_n = y_n | \theta)
+$$
 
 :::
 
-:::::
+
+::: Proposition
+
+Suppose Assumptions 1--5 hold. Then
+$$
+L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
+$$
+
+:::
+
+
+
+
+## Likelihood function for simple regression {.smaller}
+### Proof
+
+
+- Recall that
+
+$$
+Y_i \sim N( \alpha + \beta x_i , \sigma^2 )
+$$
+
+- Therefore the pdf of $Y_i$ is 
+
+$$
+f_{Y_i} (y_i) =  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right)
+$$
+
+
+
+## Likelihood function for simple regression {.smaller}
+### Proof
+
+- Since $Y_1,\ldots, Y_n$ are independent we obtain
+\begin{align*}
+L(y_1, \ldots,y_n | \alpha,\beta,\sigma^2) & = f(y_1,\ldots,y_n) \\
+                                  & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
+                                  & = \prod_{i=1}^n 
+                                  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right) \\
+                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
+\end{align*}
+
+
+
+
+
+## The linear regression learning problem {.smaller}
+### Original Goal
+
+- Suppose given two random variables $X$ and $Y$
+- Suppose given $n$ observations
+$$
+(x_1,y_1) \,, \ldots , (x_n, y_n)
+$$
+where $x_i$ is from $X_i$ and $y_i$ from $Y_i$
+
+
+::: Problem
+Using the observations, learn for each $x \in \R$ the conditional distribution 
+$$
+Y | X = x
+$$
+
+:::
+
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+
+- The general learning problem is difficult if we do not make assumptions
+
+- Under Assumptions 1--5 we have
+  * $Y_i$ is random variable distributed like 
+  $$
+  Y | X = x_i
+  $$ 
+  * $Y_i$ depends linearly on $X_i$ with
+  $$
+  Y_i = \alpha + \beta x_i + \e_i
+  $$
+  with $\e_1, \ldots, \e_n$ iid $N(0,\sigma^2)$
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+- Hence we could learn $\hat \alpha, \hat \beta, \hat \sigma$ such that
+$$
+Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
+$$
+
+- Since $Y_i$ is distributed like $Y | X = x_i$ we have that
+$$
+\Expect[Y | X = x_i] = \Expect[Y_i] = \hat\alpha + \hat\beta x_i  \qquad \text{ for each } \, i = 1 , \ldots , n
+$$
+
+- We hope that the above relation generalizes for all $x \in \R$, that is,
+$$
+\Expect[Y | X = x] \ \approx \ \hat\alpha + \hat\beta x  \qquad \text{ for all } \, x \in \R 
+$$
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+
+Given the previous considerations, we aim at solving:
+
+::: Problem
+
+Using the observations $(x_1,y_1), \ldots, (x_n,y_n)$, learn parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+\begin{equation} \tag{3}
+Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
+\end{equation}
+
+:::
+
+
+**Question:** How do we enforce (3)?
+
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+**Answer:** 
+
+- Choose parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+$$
+P(Y_i \approx y_i)   \text{ is maximized for each } \, i = 1 , \ldots , n
+$$
+
+- This is equivalent to maximizing the likelihood function
+$$
+\max_{\alpha,\beta,\sigma} \ L(y_1, \ldots, y_n | \alpha,\beta,\sigma^2)
+$$
+
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given $n$ data pairs
+$(x_1,y_1), \ldots, (x_n,y_n)$. 
+The maximization problem
+$$
+\max_{\alpha,\beta,\sigma}  \ L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
+$$
+admits the unique solution
+$$
+\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
+\hat \beta = \frac{S_{xy}}{S_{xy}} \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
+$$
+:::
+
+
+**Note:** The coefficients $\hat \alpha$ and $\hat \beta$ are the same of least-squares line!
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- The $\log$ function is strictly increasing 
+
+- Therefore the problem
+
+$$
+\max_{\alpha,\beta,\sigma} \ L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2)
+$$
+is equivalent to
+
+$$
+\max_{\alpha,\beta,\sigma} \ \log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2)
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- Recall that the likelihood is
+$$
+L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{\sum_{i=1}^n(y_i-\alpha - \beta x_i)^2}{2\sigma^2}      \right)
+$$
+
+
+- Hence the log--likelihood is
+$$
+\log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
+= - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \sum_{i=1}^n(y_i-\alpha - \beta x_i)^2 }{2 \sigma^2}
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+Suppose $\sigma$ is fixed. In this case the problem
+$$
+\max_{\alpha,\beta} \ \left\{ \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \sum_{i=1}^n(y_i-\alpha - \beta x_i)^2 }{2 \sigma^2} \right\}
+$$
+is equivalent to 
+$$
+\min_{\alpha, \beta} \ \sum_{i=1}^n(y_i-\alpha - \beta x_i)^2
+$$
+
+This is the least-squares problem! Hence the solution is
+$$
+\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
+\hat \beta = \frac{S_{xy}}{S_{xy}}
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+
+- Substituting $\hat \alpha$ and $\hat \beta$ we obtain
+\begin{align*}
+\max_{\alpha,\beta,\sigma} \ & \log L(y_1, \ldots, y_n | \alpha,\beta, \sigma^2) 
+= \max_{\sigma} \ \log L(y_1, \ldots, y_n | \hat\alpha, \hat\beta, \sigma^2) \\
+& = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \sum_{i=1}^n(y_i-\hat\alpha - \hat\beta x_i)^2 }{2 \sigma^2}  \right\}
+\end{align*}
+
+
+- It can be shown that the unique solution to the above problem is
+$$
+\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
+$$
+
+- This concludes the proof
+
+
 
 
 
