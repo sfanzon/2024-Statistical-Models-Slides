@@ -1406,7 +1406,7 @@ $$
 
 
 
-## Simple linear regression Assumptions {.smaller}
+## Simple linear regression: Assumptions {.smaller}
 
 - We now make 5 assumptions on $X$ and $Y$
 
@@ -1429,7 +1429,7 @@ $$
 
 
 
-## Simple linear regression Assumptions {.smaller}
+## Simple linear regression: Assumptions {.smaller}
 
 
 2. **Normality:** The distribution of $Y_i$ is normal
@@ -1549,7 +1549,7 @@ $$
 
 Suppose Assumptions 1--5 hold. Then
 $$
-L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
+L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha - \beta x_i)^2}{2\sigma^2}      \right)
 $$
 
 :::
@@ -1584,7 +1584,7 @@ L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
                                   & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
                                   & = \prod_{i=1}^n 
                                   \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right) \\
-                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha_i-{\beta}x_i)^2}{2\sigma^2}      \right)
+                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \alpha - \beta x_i)^2}{2\sigma^2}      \right)
 \end{align*}
 
 
@@ -1796,6 +1796,8 @@ $$
 
 
 
+
+
 # Part 3: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
@@ -1804,6 +1806,219 @@ $$
 
 :::
 
+
+
+
+## Multiple regression {.smaller}
+
+- Simple regression: 
+  * Response variable $Y$ depends on one predictor $X$
+  * The goal is to learn $Y | X$
+
+- Multiple regression: 
+  * Response variable $Y$ depends on multiple predictors $X_1 , \ldots,  X_p$
+  * The goal is to learn $Y | X_1, \ldots, X_p$
+
+
+
+
+
+
+## Basic definitions {.smaller}
+
+
+Suppose given random variables $X_2 , \ldots, X_p$ and $Y$
+
+- $X_1,\ldots,X_p$ are the **predictors**
+
+- $Y$ is the **response**
+
+- The **multiple regression function** of $Y$ on $X_1,\ldots,X_p$ is the conditional expectation
+$$
+(x_1,\ldots, x_p) \mapsto \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+- We use the shorthand
+$$
+ \Expect[Y | x_1, \ldots , x_p] := \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+
+
+
+## Multiple linear regression {.smaller}
+
+- The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist 
+$$
+\beta_0,\beta_1, \ldots, \beta_p
+$$ 
+such that
+$$
+\Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p 
+$$
+
+-  $\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
+
+
+
+
+## Multiple linear regression: Assumptions {.smaller}
+
+- We make 5 assumptions on $X_1,\ldots , X_p$ and $Y$
+
+- Suppose that for each $i = 1, \ldots, n$ we observe the data point
+$$
+(x_{i1}, \ldots, x_{ip}, Y_i)
+$$
+where $Y_i$ denotes a random variable with distribution
+$$
+Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
+$$
+
+
+
+## Multiple linear regression: Assumptions {.smaller}
+
+
+**Assumptions:**
+
+1. **Predictor is known:** The values $x_{i1}, \ldots, x_{ip}$ are known
+
+2. **Normality:** The distribution of $Y_i$ is normal
+
+3. **Linear mean:** There are parameters $\beta_0,\beta_1,\ldots,\beta_p$ such that
+$$
+\Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  
+$$
+
+
+
+## Multiple linear regression: Assumptions {.smaller}
+
+
+
+4. **Common variance (Homoscedasticity):** There is a parameter $\sigma^2$ such that
+$$
+\Var[Y_i] = \sigma^2
+$$
+
+5. **Independence:** The random variables 
+$$
+Y_1   \,, \ldots \,, Y_n 
+$$
+are independent
+
+
+
+
+## Characterization of the Model {.smaller}
+
+The Assumptions made identify exactly one model, as shown in Proposition below
+
+::: Proposition 
+
+Assumptions 1-5 are satisfied if and only if
+$$
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \e_{i}
+$$
+for some random variables
+$$
+\e_1 , \ldots, \e_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$
+
+:::
+
+
+**Proof:** Similar to the proof of the Proposition in Slide 54. Left as an exercise
+
+
+
+
+
+## Likelihood function {.smaller}
+
+
+Introduce the column vectors
+$$
+\bbeta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad 
+\yy := (y_1,\ldots,y_n)^T
+$$
+
+::: Proposition
+
+Suppose Assumptions 1--5 hold. Then
+$$
+L(\bbeta, \sigma^2 | \yy ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
+$$
+
+:::
+
+
+
+## Likelihood function {.smaller}
+### Proof
+
+- By assumption we have
+
+$$
+Y_i \sim N( \beta_0+ \beta_1 x_{i1} + \ldots + \beta_p x_{ip} , \sigma^2 )
+$$
+
+- Therefore the pdf of $Y_i$ is 
+
+$$
+f_{Y_i} (y_i) =  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right)
+$$
+
+
+
+## Likelihood function {.smaller}
+### Proof
+
+- Since $Y_1,\ldots, Y_n$ are independent we obtain
+\begin{align*}
+L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
+                                  & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
+                                  & = \prod_{i=1}^n 
+                                  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right) \\
+                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \alpha - \beta x_i)^2}{2\sigma^2}      \right)
+\end{align*}
+
+
+
+
+## Design matrix {.smaller}
+
+For each $i = 1 , \ldots, n$ we have $p$ observations
+$$
+x_{i1}, \ldots, x_{ip}
+$$
+
+::: Definition 
+
+The **design matrix** is the $n \times (p+1)$ matrix
+$$
+\XX :=
+\left(
+\begin{array}{cccc}
+1 & x_{11} & \ldots & x_{1p} \\
+1 & x_{21} & \ldots & x_{2p} \\
+\ldots & \ldots & \ldots & \ldots \\
+1 & x_{n1} & \ldots & x_{np} \\
+\end{array}
+\right)
+$$
+
+:::
+
+**Note:** The first row of $\XX$ is a vector of ones
+
+
+
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
 
 
 

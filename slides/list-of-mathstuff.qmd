@@ -18,3 +18,9 @@
  [**Problem**](#Problem*-3.5)\Pageref{Problem*-3.5}
 
  [**Theorem**](#Theorem*-3.6)\Pageref{Theorem*-3.6}
+
+ [**Proposition**](#Proposition*-4.1)\Pageref{Proposition*-4.1}
+
+ [**Proposition**](#Proposition*-4.2)\Pageref{Proposition*-4.2}
+
+ [**Definition**](#Definition*-4.3)\Pageref{Definition*-4.3}
