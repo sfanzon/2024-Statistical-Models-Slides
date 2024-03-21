@@ -2527,15 +2527,95 @@ $$
 $$ 
 
 - In particular we have
+
 $$
 \Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}
 $$
 
 
 
+## The multiple linear regression problem {.smaller}
 
-## Multiple regression learning problem {.smaller}
-### Original Goal
+For each $i = 1 , \ldots, n$ suppose given data points
+$$
+(x_{i1}, \ldots, x_{ip}, y_i)
+$$
+
+::: Problem
+From the above data learn a multiple linear regression function
+$$
+\Expect[Y | x_1, \ldots, x_p] = \beta_0 + \beta_1 x_1 +
+\ldots + \beta_p x_p
+$$
+which explains the observations, that is,
+\begin{equation} \tag{5}
+\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}
+
+:::
+
+
+::: Question
+
+How do we enforce (5)?
+
+:::
+
+
+
+
+## The multiple linear regression problem: Answer {.smaller}
+
+
+- Recall that $\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i]$
+
+
+- Therefore (5) holds iff 
+
+\begin{equation} \tag{6}
+\Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}
+
+
+- If we want (5)--(6) to hold, we need to maximize the joint probability
+
+$$
+P(Y_1 \approx y_1, \ldots, Y_n \approx y_n) 
+$$
+
+
+
+- This means choosing parameters $\hat \beta,  \hat \sigma$ which maximize the likelihood function
+
+$$
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+$$
+
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given $n$ observations
+$(x_1,y_1), \ldots, (x_n,y_n)$. 
+The maximization problem
+$$
+\max_{\alpha,\beta,\sigma}  \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
+$$
+admits the unique solution
+$$
+\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
+\hat \beta = \frac{S_{xy}}{S_{xy}} \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
+$$
+:::
+
+
+
+## The multiple regression problem {.smaller}
 
 - Suppose given random variables $X_1,\ldots, X_p$ and $Y$
 - Suppose given $i = 1, \ldots, n$ observations
@@ -2593,65 +2673,6 @@ $$
 \Expect[Y | X = x] \ \approx \ \hat\alpha + \hat\beta x  \qquad \text{ for all } \, x \in \R 
 $$
 
-
-
-## The linear regression learning problem {.smaller}
-### Updated goal
-
-
-Given the previous considerations, we aim at solving:
-
-::: Problem
-
-Using the observations $(x_1,y_1), \ldots, (x_n,y_n)$, learn parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
-\begin{equation} \tag{3}
-Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
-\end{equation}
-
-:::
-
-
-**Question:** How do we enforce (3)?
-
-
-
-
-## The linear regression learning problem {.smaller}
-### Updated goal
-
-**Answer:** 
-
-- Choose parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
-$$
-P(Y_i \approx y_i)   \text{ is maximized for each } \, i = 1 , \ldots , n
-$$
-
-- This is equivalent to maximizing the likelihood function
-$$
-\max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
-$$
-
-
-
-
-
-## Maximizing the likelihood {.smaller}
-
-::: Theorem 
-
-Suppose Assumptions 1--5 hold and assume given $n$ data pairs
-$(x_1,y_1), \ldots, (x_n,y_n)$. 
-The maximization problem
-$$
-\max_{\alpha,\beta,\sigma}  \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
-$$
-admits the unique solution
-$$
-\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
-\hat \beta = \frac{S_{xy}}{S_{xy}} \,, \qquad 
-\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
-$$
-:::
 
 
 
