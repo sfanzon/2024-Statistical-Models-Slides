@@ -2537,9 +2537,7 @@ $$
 ## The multiple linear regression problem {.smaller}
 
 For each $i = 1 , \ldots, n$ suppose given data points
-$$
-(x_{i1}, \ldots, x_{ip}, y_i)
-$$
+$(x_{i1}, \ldots, x_{ip}, y_i)$
 
 ::: Problem
 From the above data learn a multiple linear regression function
@@ -2564,7 +2562,7 @@ How do we enforce (5)?
 
 
 
-## The multiple linear regression problem: Answer {.smaller}
+## Answer {.smaller}
 
 
 - Recall that $\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i]$
@@ -2613,65 +2611,6 @@ $$
 $$
 :::
 
-
-
-## The multiple regression problem {.smaller}
-
-- Suppose given random variables $X_1,\ldots, X_p$ and $Y$
-- Suppose given $i = 1, \ldots, n$ observations
-$$
-(x_{i1}, \ldots, x_{ip}, y_i)
-$$
-where $x_{ip}$ is from $X_{ip}$ and $y_i$ from $Y_i$
-
-
-::: Problem
-Using the observations, learn for each $(x_1, \ldots, x_p) \in \R^p$ the conditional distribution 
-$$
-Y | X_1 = x_1 , \ldots, X_p = x_p
-$$
-
-:::
-
-
-
-
-## Multiple linear regression learning problem {.smaller}
-### Updated goal
-
-
-- The general learning problem is difficult if we do not make assumptions
-
-- Under Assumptions 1--5 we have
-  * $Y_i$ is random variable distributed like 
-  $$
-  Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}
-  $$ 
-  * $Y_i$ depends linearly on $X_{ip}$ with
-  $$
-  Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_{ip} x_{ip}  + \e_i
-  $$
-  with $\e_1, \ldots, \e_n$ iid $N(0,\sigma^2)$
-
-
-
-## Multiple linear regression learning problem {.smaller}
-### Updated goal
-
-- We want to learn $\hat \beta,  \hat \sigma$ such that
-$$
-Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
-$$
-
-- Since $Y_i$ is distributed like $Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}$ we have
-$$
-\Expect[Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}] = \Expect[Y_i] = \hat\alpha + \hat\beta x_i  \qquad \text{ for each } \, i = 1 , \ldots , n
-$$
-
-- We hope that the above relation generalizes for all $x \in \R$, that is,
-$$
-\Expect[Y | X = x] \ \approx \ \hat\alpha + \hat\beta x  \qquad \text{ for all } \, x \in \R 
-$$
 
 
 
