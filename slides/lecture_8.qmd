@@ -778,9 +778,10 @@ $$
 \begin{align*}
 0 & = \sum_{i=1}^n x_i y_i - \alpha n \overline{x}  - \beta \sum_{i=1}^n x^2_i \\
   & = \sum_{i=1}^n x_i y_i - n \overline{x} \, \overline{y}  + \beta n \overline{x}^2 - \beta \sum_{i=1}^n x^2_i \\
-  & =  \sum_{i=1}^n (x_i y_i - \overline{x} \, \overline{y} ) - \beta   \sum_{i=1}^n (x^2_i - \overline{x}^2 )  \\
-  & = S_{xy} - \beta S_{xx} 
+  & =  \sum_{i=1}^n (x_i y_i - \overline{x} \, \overline{y} ) - \beta  \left(  \sum_{i=1}^n x^2_i - n\overline{x}^2 \right)  = S_{xy} - \beta S_{xx} 
 \end{align*}
+where we used the usual identity 
+$S_{xx} = \sum_{i=1}^n ( x_i - \overline{x})^2 =  \sum_{i=1}^n x_i^2 - n\overline{x}^2$
 
 
 ## Minimizing the RSS {.smaller}
@@ -847,10 +848,27 @@ $$
 \end{align*}
 
 
-- The last inequality is true by convexity of the function $x \mapsto x^2$
+- The last inequality is true by convexity of the function $x \mapsto x^2$:
+$$
+\left( \sum_{i=1}^n \lambda_i x_i   \right)^2 \leq \lambda_i \sum_{i=1}^n x_i^2  \,, \qquad \forall \,\, \lambda_i \, \text{ s.t. } \, \sum_{i=1}^n \lambda_i = 1
+$$
 
 
 
+## Minimizing the RSS {.smaller}
+### Proof of Theorem
+
+- Choosing $\lambda_i = 1/n$ in the previous inequality we obtain
+
+$$
+\left( \frac{1}{n} \sum_{i=1}^n x_i \right)^2 \leq \frac{1}{n} \sum_{i=1}^{n} x_i^2
+$$
+
+- This proves 
+
+$$
+\det \nabla^2 \RSS \geq 0 
+$$
 
 ## Minimizing the RSS {.smaller}
 ### Proof of Theorem
@@ -876,7 +894,11 @@ $$
 ### Proof of Theorem
 
 
-- By the Lemma we have that all the solutions to optimality condions are minimizers
+- By the Lemma we have that all the solutions $(\alpha,\beta)$ to the optimality conditions 
+$$
+\nabla \RSS (\alpha,\beta) = 0
+$$
+are minimizers
 
 - Therefore $(\hat \alpha,\hat\beta)$ with
 $$\hat\alpha =  \overline{y}- \hat\beta \overline{x} \,, \qquad \quad 
@@ -1361,12 +1383,8 @@ abline(least_squares, col = "red", lwd = 3)
   $$(x_1,y_1) , \ldots, (x_n,y_n)$$
   * $(x_i,y_i)$ is observed from $(X,Y)$
   
+- **Goal:**Use the data to learn $Y|X$
 
-::: Goal
-
-Use the data to learn $Y|X$
-
-:::
 
 
 
@@ -1436,7 +1454,7 @@ $$
 $$
 
 
-- Ignores statistical nature of the problem
+- Ignores that $(x_i,y_i)$ comes from joint distribution $(X,Y)$
 
 
 :::
@@ -1478,15 +1496,12 @@ abline(fit, col = "red", lwd = 5)
 
 **Linear Regression:** 
 
-- Interprets the line of best fit as the **regression line**
+- Find a **regression line** 
 $$
-\Expect[Y | X = x] = \hat \alpha + \hat \beta x
+R(x) = \alpha + \beta x
 $$
 
-
-- $\Expect[Y | X = x]$ is the **most likely** value of $Y$ when $X = x$ is observed
-
-- Therefore: Regression line predicts **most likely** value of $Y$ from $X$
+- $R(x)$ predicts **most likely** value of $Y$ when $X = x$
 
 :::
 
@@ -1519,9 +1534,54 @@ abline(fit, col = "red", lwd = 5)
 
 
 
+## Simple linear regression {.smaller}
+### Motivation
+
+
+::: {.column width="50%"}
+
+**Linear Regression:** 
+
+- We will see that regression line coincides with line of best fit
+$$
+  R(x) = \hat \alpha + \hat \beta x
+$$
+
+- Hence regression gives statistical meaning to the line of best fit
+
+:::
+
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("X", side = 1, line = 3, cex = 2.1)
+mtext("Y", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+```
+
+:::
+
 
 
 ## Regression function {.smaller}
+### Definition
 
 Suppose given two random variables $X$ and $Y$
 
@@ -1550,7 +1610,7 @@ $$
 
 
 ## Regression function {.smaller}
-
+### Interpretation
 
 ::: Idea
 
@@ -1644,7 +1704,7 @@ $$
 \Expect[Y | x^2 ] = \alpha + \beta x^2
 $$
 
-- Linear regression of $\log Y$ on $1/x$ is
+- Linear regression of $\log Y$ on $1/X$ is
 $$
 \Expect[ \log Y | x ] = \alpha + \beta \frac{1}{ x }
 $$
@@ -1717,7 +1777,9 @@ are independent
 
 ## Characterization of the Model {.smaller}
 
-The Assumptions made identify exactly one model, as shown in Proposition below
+- Assumptions 1--5 look quite abstract
+- The following Proposition gives a handy characterization
+
 
 ::: Proposition 
 
@@ -1732,6 +1794,7 @@ $$
 
 :::
 
+- The terms $\e_i$ are called **errors**
 
 
 
@@ -1778,15 +1841,25 @@ $$
 
 ## Likelihood function {.smaller}
 
+
 ::: Definition
 
-Let $Y_1, \ldots, Y_n$ be continuous rv with joint pdf $f$ depending on a parameter $\theta$. The likelihood function is 
+Let $X_1, \ldots, X_n$ be continuous rv with joint pdf 
 $$
-L \colon \R^n \to \R \,, \qquad \quad L(\theta | y_1,\ldots,y_n ) := f(Y_1 = y_1, \ldots, Y_n = y_n | \theta)
+f = f(x_1, \ldots, x_n | \theta)
+$$ 
+depending on a parameter $\theta \in \Theta$. The likelihood function of the random vector
+$(X_1, \ldots, X_n)$ for a given sample $(x_1, \ldots, x_n)$ is
+$$
+L \colon \Theta \to \R \,, \qquad \quad L(\theta | x_1,\ldots, x_n ) := f(x_1, \ldots, x_n | \theta)
 $$
 
 :::
 
+
+
+
+## Likelihood function {.smaller}
 
 ::: Proposition
 
@@ -1837,31 +1910,40 @@ L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
 ## Model Summary  {.smaller}
 
 - Simple linear regression of $Y$ on $X$ is the function
+
 $$
 \Expect[Y | x] = \alpha + \beta x
 $$
 
-- Suppose given the observations $(x_1,y_1) \,, \ldots , (x_n, y_n)$
+- Suppose given the observations from $(X,Y)$
 
-- Denote by $Y_i$ the random variable $Y | x_i$
+$$
+(x_1,y_1) , \ldots , (x_n, y_n)
+$$
 
-- Suppose that $Y_i$ has the form
+
+
+
+## Model Summary  {.smaller}
+
+
+- Denote by $Y_i$ the random variable 
+
+$$
+Y | X = x_i
+$$
+
+- We suppose that $Y_i$ has the form
+
 $$
 Y_i = \alpha + \beta x_i + \e_i
 $$
-for some **errors** $\e_1,\ldots, \e_n$ 
-iid $N(0,\sigma^2)$
 
-- In particular we have
-$$
-\Expect[Y | x_i] = \Expect[Y_i] = \alpha + \beta x_i
-$$
-
+- The **errors** $\e_1,\ldots, \e_n$ are iid $N(0,\sigma^2)$
 
 
 
 ## The linear regression problem {.smaller}
-
 
 ::: Problem
 From $(x_1,y_1) \,, \ldots , (x_n, y_n)$ learn a linear regression function
@@ -1885,20 +1967,33 @@ How do we enforce (3)?
 
 
 
-## The linear regression problem: Answer {.smaller}
+## Answer {.smaller}
+
+- Recall that $Y_i$ is distributed like 
+
+$$
+Y | x_i
+$$
+
+- Therefore 
+
+$$
+\Expect[Y | x_i] = \Expect[Y_i]
+$$
 
 
-- Recall that $\Expect[Y | x_i] = \Expect[Y_i]$
-
-
-- Therefore (3) holds iff 
+- Hence (3) holds iff 
 
 \begin{equation} \tag{4}
 \Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
 \end{equation}
 
 
-- If we want (3)--(4) to hold, we need to maximize the joint probability
+
+
+## Answer {.smaller}
+
+- If we want (4) to hold, we need to maximize the joint probability
 
 $$
 P(Y_1 \approx y_1, \ldots, Y_n \approx y_n) 
@@ -1945,12 +2040,10 @@ $$
 - The $\log$ function is strictly increasing 
 
 - Therefore the problem
-
 $$
 \max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
 is equivalent to
-
 $$
 \max_{\alpha,\beta,\sigma} \ \log L( \alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
@@ -2003,7 +2096,7 @@ $$
 - Substituting $\hat \alpha$ and $\hat \beta$ we obtain
 \begin{align*}
 \max_{\alpha,\beta,\sigma} \ & \log L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
-= \max_{\sigma} \ \log L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) \\
+= \max_{\sigma} \ \log L(\hat \alpha, \hat \beta, \sigma^2 | y_1, \ldots, y_n ) \\
 & = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
 \frac{ \sum_{i=1}^n(y_i-\hat\alpha - \hat\beta x_i)^2 }{2 \sigma^2}  \right\}
 \end{align*}
@@ -2207,14 +2300,14 @@ $$
 \Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \R^p
 $$
 
+$\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
 :::
 
+**Note:** 
 
-- $\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
+- In simple regression we have 2 coefficients $\alpha$ and $\beta$
 
-- **Note:** 
-  * In simple regression we have 2 coefficients $\alpha$ and $\beta$
-  * In multiple regression we have $p+1$ coefficients $\beta_0, \ldots, \beta_p$
+- In multiple regression we have $p+1$ coefficients $\beta_0, \ldots, \beta_p$
 
 
 
@@ -2273,7 +2366,8 @@ $$
 
 
 
-## Multiple linear regression: Assumptions {.smaller}
+## Multiple linear regression {.smaller}
+### Model Assumptions
 
 
 4. **Common variance (Homoscedasticity):** There is a parameter $\sigma^2$ such that
@@ -2292,7 +2386,8 @@ are independent
 
 ## Characterization of the Model {.smaller}
 
-The Assumptions made identify exactly one model, as shown in Proposition below
+- Assumptions 1--5 look quite abstract
+- The following Proposition gives a handy characterization
 
 ::: Proposition 
 
@@ -2300,7 +2395,7 @@ Assumptions 1-5 are satisfied if and only if
 $$
 Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \e_{i}
 $$
-for some random variables
+for some **errors**
 $$
 \e_1 , \ldots, \e_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
 $$
@@ -2308,7 +2403,7 @@ $$
 :::
 
 
-**Proof:** Similar to the proof of the Proposition in Slide 59. Left as an exercise
+**Proof:** Similar to the proof of the Proposition in Slide 62. Left as an exercise
 
 
 
@@ -2362,6 +2457,9 @@ L(\beta, \sigma^2 | y) & = f(y_1,\ldots,y_n) \\
                                   \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right) \\
                                   & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
 \end{align*}
+
+
+- This concludes the proof
 
 
 
@@ -2453,7 +2551,7 @@ y_2 - \beta_0 - \beta_1 x_{21} - \ldots - \beta_p x_{2p} \\
 \ldots \\
 y_n - \beta_0 - \beta_1 x_{n1} - \ldots - \beta_p x_{np} \\
 \end{array}
-\right)
+\right) \, \in \, \R^n
 \end{align*}
 
 
@@ -2472,8 +2570,10 @@ $$
 
 ::: Definition 
 
-The **residual sum of squares** associated to the data $X$ and $y$ is
+Let $X$ be $n \times (p + 1)$ design matrix and $y \in \R^n$. 
+The **residual sum of squares** associated to the parameter $\beta$ is 
 $$
+\RSS \colon \R^{p+1} \to \R \,, \qquad 
 \RSS (\beta) :=  (y - X \beta)^T \, (y - X\beta)
 $$
 
@@ -2489,7 +2589,7 @@ Therefore the likelihood function can be re-written as
 \begin{align*}
 L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right) \\
  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
- & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right)
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right) 
 \end{align*}
 
 
@@ -2508,29 +2608,30 @@ $$
 (x_{i1}, \ldots, x_{ip}, y_i)
 $$
 
+
+
+## Model Summary  {.smaller}
+
+
 - Denote by $Y_i$ the random variable 
+
 $$
 Y | x_{i1} ,\ldots, x_{ip}
 $$
 
 
-
-## Model Summary  {.smaller}
-
 - Suppose that $Y_i$ has the form
+
 $$
 Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \e_i
 $$
-for some **errors** 
+
+- The **errors** are
+
 $$
 \e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
 $$ 
 
-- In particular we have
-
-$$
-\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}
-$$
 
 
 
@@ -2564,18 +2665,30 @@ How do we enforce (5)?
 
 ## Answer {.smaller}
 
+- Recall that $Y_i$ is distributed like
 
-- Recall that $\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i]$
+$$
+Y_i | x_{i1}, \ldots, x_{ip} 
+$$
+
+- Therefore
+
+$$
+\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] 
+$$
 
 
-- Therefore (5) holds iff 
+- Hence (5) holds iff 
 
 \begin{equation} \tag{6}
 \Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
 \end{equation}
 
 
-- If we want (5)--(6) to hold, we need to maximize the joint probability
+
+## Answer {.smaller}
+
+- If we want (6) to hold, we need to maximize the joint probability
 
 $$
 P(Y_1 \approx y_1, \ldots, Y_n \approx y_n) 
@@ -2597,20 +2710,536 @@ $$
 
 ::: Theorem 
 
-Suppose Assumptions 1--5 hold and assume given $n$ observations
-$(x_1,y_1), \ldots, (x_n,y_n)$. 
+Suppose Assumptions 1--5 hold and assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
 The maximization problem
 $$
-\max_{\alpha,\beta,\sigma}  \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y ) 
 $$
 admits the unique solution
 $$
-\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
-\hat \beta = \frac{S_{xy}}{S_{xy}} \,, \qquad 
-\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
 $$
 :::
 
+
+
+
+## Minimizing the RSS {.smaller}
+
+The proof of previous Theorem relies on the following Lemma
+
+::: Lemma
+
+Assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
+The minimization problem
+$$
+\min_{\beta} \ \RSS(\beta) 
+$$
+admits the unique solution
+$$
+\hat \beta = (X^T X)^{-1} X^T y 
+$$
+
+:::
+
+
+
+
+
+## Results from matrix calculus {.smaller}
+
+
+- Some elementary results from matrix calculus are needed
+
+- In the following $x$ denotes an $n \times 1$ column vector
+
+$$
+x = 
+\left(
+\begin{array}{c}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{array}
+\right)
+$$
+
+
+
+## Results from matrix calculus {.smaller}
+### First result
+
+- Suppose given an $n \times 1$ column vector $a$
+
+
+- Define the scalar function
+
+$$
+f \colon \R^n \to \R \,, \qquad f(x) := a^T x
+$$
+
+- Then $f$ is differentiable and the gradient is constant
+
+$$
+\nabla f (x) = a^T 
+$$
+
+
+
+
+## Results from matrix calculus {.smaller}
+### Second result 
+
+- Suppose given an $m \times n$ matrix $A$
+
+- Define the vectorial affine function
+
+$$
+g \colon \R^n \to \R^m \,, \qquad g(x) := A x
+$$
+
+- Then $g$ is differentiable and the Jacobian is constant
+
+$$
+J g (x) = A 
+$$
+
+
+
+
+## Results from matrix calculus {.smaller}
+### Third result 
+
+- Suppose given an $n \times n$ matrix $M$
+
+- Define the quadratic form
+
+$$
+h \colon \R^n \to \R \,, \qquad
+h(x) := x^T M x
+$$
+
+
+- Then $h$ is differentiable and the Jacobian is
+
+$$
+J h(x) = x^T (M + M^T)
+$$
+
+
+
+## Additional results on the matrix transpose {.smaller}
+
+1. For any $m \times n$ matrix $A$
+$$
+(A^T)^T= A
+$$
+
+2. Let $M$ be a square $n \times n$ matrix. Then $M$ is symmetric iff
+$$
+M^T = M
+$$
+
+
+3. Scalars can be seen as $1 \times 1$ symmetric matrices
+
+4. Therefore for any scalar $c \in \R$
+$$
+c^T = c
+$$
+
+
+## Additional results on the matrix transpose {.smaller}
+
+5. For any $m \times n$ matrix $A$ and $n \times p$ matrix $B$
+$$
+(AB)^T=B^T A^T
+$$
+
+6. The matrix $A^T A$ is symmetric by point (2)
+$$
+(A^T A)^T = A^T (A^T)^T = A^T A
+$$
+
+
+
+## Optimality conditions {.smaller}
+
+We also need the $n$-dimensional version of the Lemma in Slide 18
+
+::: Lemma
+
+Suppose $f \colon \R^n \to \R$ has positive semi-definite Hessian. They are equivalent
+
+1. The point $\hat x$ is a minimizer of $f$, that is, 
+
+$$
+f( \hat x ) = \min_{x \in \R^n} f(x)
+$$
+
+2. The point $\hat x$ satisfies the **optimality conditions**
+
+$$
+\nabla f (\hat x) = 0
+$$
+
+:::
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- We are finally ready to minimize the $\RSS$
+
+$$
+\min_{\beta} \ \RSS(\beta) 
+$$
+
+
+- Recall that $\RSS \colon \R^{p+1} \to \R$ with
+
+$$
+\RSS(\beta) = (y - X \beta)^T (y - X \beta)
+$$
+
+- It is not too difficult to show that $\nabla^2 \RSS$ is positive-semidefinite
+
+- The proof of this fact is left as an exercise
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- By the Lemma on Optimality Conditions in Slide 111
+
+$$
+\beta \,\, \text{ minimizes } \,\, \RSS \qquad \iff \qquad
+\nabla \RSS (\beta) = 0
+$$
+
+
+- To compute $\nabla \RSS$ we first expand $\RSS$
+
+- Using the properties of transposition we get
+
+\begin{align*}
+\RSS(\beta) & = (y-X \beta)^T (y-X \beta) \\
+            & = (y^T - (X\beta)^T ) (y-X \beta) \\
+            & = (y^T - \beta^T X^T ) (y-X \beta) \\
+            & = y^T y - y^T X \beta - \beta^T X^T y 
+                + \beta^T X^T X \beta
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Note that
+  * $y$ is $n \times 1$ column vector
+  * $X$ is $n \times (p+1)$ matrix
+  * Therefore $X^T$ is $(p+1) \times n$ matrix
+  * $\beta$ is $(p+1) \times 1$ column vector
+  * Thus $\beta^T$ is $1 \times (p+1)$ row vector
+
+- $\beta^T X^T y$ therefore has dimension
+$$
+\left[ 1 \times (p+1) \right] \times
+\left[ (p+1) \times n \right] \times
+\left[ n \times 1 \right]  = 1 \times 1
+$$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- $\beta^T X^T y$ is therefore a scalar and so symmetric
+
+- Hence 
+$$
+\left( \beta^T X^T y  \right)^T = \beta^T X^T y  \qquad 
+\implies \qquad  y^T X \beta = \beta^T X^T y
+$$
+
+- The $\RSS$ can now be written as
+\begin{align*}
+\RSS(\beta) & =  (y-X\beta)^T(y-X\beta) \\
+            & =  y^T y - y^T X \beta 
+                - \textcolor{magenta}{\beta^T X^T y} + \beta^T X^T X \beta \\
+            & = y^Ty - y^T X \beta - \textcolor{magenta}{y^T X \beta}
+              + \beta^T X^T X \beta \\
+            & = y^T y - 2 y^T X \beta + \beta^T X^T X \beta
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Therefore we have
+
+\begin{align*}
+\nabla \RSS (\beta) & = \nabla ( y^T y ) 
+                      - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    & = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta )
+\end{align*}
+
+
+- We need to compute
+
+$$
+ \nabla (y^T X     \beta )  \qquad \quad \text{ and } \qquad \quad \nabla (\beta^T X^T X \beta )
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+
+- Note that $y^T X$ has dimension
+
+$$
+[ 1 \times n ] \times [ n \times (p + 1 ) ] = 1 \times (p + 1)
+$$
+
+
+
+
+- Since $\beta$ has dimension $(p+1) \times 1$ we can define the function 
+
+$$
+f \colon \R^{p+1} \to \R \,, \qquad 
+f(\beta) := y^T X \beta
+$$
+
+
+- By the First Result on Matrix Calculus in Slide 106
+
+$$
+\nabla f  = \nabla ( \textcolor{magenta}{y^T X} \beta) = \textcolor{magenta}{y^T X}
+$$
+
+ 
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Note that $X^T X$ has dimension
+
+$$
+[ (p + 1) \times n ] \times [ n \times (p+1) ] = (p+1) \times (p+1)
+$$
+
+- Since $\beta$ has dimension $(p+1) \times 1$ we can define the function 
+
+$$
+g \colon \R^{p+1} \to \R \,, \qquad 
+g(\beta) := \beta^T X^T X \beta 
+$$
+
+
+- By the Third Result on Matrix Calculus in Slide 108
+
+\begin{align*}
+\nabla h  & = \nabla (\beta^T \textcolor{magenta}{X^T X} \beta) = \beta^T (\textcolor{magenta}{X^T X} + (\textcolor{magenta}{X^T X})^T ) \\
+& = \beta^T ( X^T X + X^T X ) = 2 \beta^T (X^T X)
+\end{align*}
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Putting together these results we obtain
+
+\begin{align*}
+\nabla \RSS (\beta) & = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    & = -2 y^T X + 2 \beta^T (X^T X)
+\end{align*}
+
+
+- We can finally solve the optimality conditions:
+
+\begin{align*}
+\nabla \RSS (\beta) = 0 \qquad & \iff \qquad 
+-2 y^T X + 2 \beta^T (X^T X) = 0  \\
+& \iff \qquad 
+ \beta^T (X^T X) =  y^T X
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- So far we have
+
+$$ 
+\beta^T (X^T X) =  y^T X
+$$
+
+- Take the matrix transpose of both sides
+
+$$
+ (X^T X) \beta = X^T y
+$$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- The matrix $X^T X$ is symmetric and therefore invertible
+
+- Multiply both sides of 
+$$
+ (X^T X) \beta = X^T y
+$$
+by $(X^T X)^{-1}$
+
+- We obtain
+
+$$
+\beta = (X^T X)^{-1} X^T y
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+
+- In conclusion 
+
+$$
+\nabla \RSS(\beta) = 0 \qquad \iff \qquad 
+\beta = (X^T X)^{-1} X^T y
+$$
+
+- By the Lemma on Optimality Conditions in Slide 111 we infer
+
+$$
+\beta = (X^T X)^{-1} X^T y  \,\, \text{ minimizes } \,\, \RSS
+$$
+
+- This concludes the proof
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+We are finally in position to prove the main Theorem
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
+The maximization problem
+$$
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y ) 
+$$
+admits the unique solution
+$$
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
+$$
+:::
+
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- The $\log$ function is strictly increasing 
+
+- Therefore the problem
+$$
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+$$
+is equivalent to
+$$
+\max_{\beta,\sigma} \ \log L( \beta, \sigma^2 | y )
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- Recall that the likelihood is
+
+$$
+L(\beta, \sigma^2 | y ) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{ \RSS(\beta) }{2\sigma^2}      \right)
+$$
+
+
+- Hence the log--likelihood is
+
+$$
+\log L(\beta, \sigma^2 | y ) 
+= - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\beta) }{2 \sigma^2}
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+Suppose $\sigma$ is fixed. In this case the problem
+$$
+\max_{\beta} \ \left\{ \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\beta) }{2 \sigma^2} \right\}
+$$
+is equivalent to 
+$$
+\min_{\beta} \ \RSS(\beta)
+$$
+
+We have already seen that the $\RSS$ is minimized at
+$$
+\hat \beta = (X^T X)^{-1} X^T y 
+$$
+
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+
+- Substituting $\hat \beta$ we obtain
+\begin{align*}
+\max_{\beta,\sigma} \ & \log L(\beta, \sigma^2 | y ) 
+= \max_{\sigma} \ \log L(\hat \beta, \sigma^2 | y ) \\
+& = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\hat \beta) }{2 \sigma^2}  \right\}
+\end{align*}
+
+
+- It can be shown that the unique solution to the above problem is
+$$
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
+$$
+
+- This concludes the proof
 
 
 

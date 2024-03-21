@@ -52,3 +52,9 @@
  [**Question**](#Question*-4.11)\Pageref{Question*-4.11}
 
  [**Theorem**](#Theorem*-4.12)\Pageref{Theorem*-4.12}
+
+ [**Lemma**](#Lemma*-4.13)\Pageref{Lemma*-4.13}
+
+ [**Lemma**](#Lemma*-4.14)\Pageref{Lemma*-4.14}
+
+ [**Theorem**](#Theorem*-4.15)\Pageref{Theorem*-4.15}
