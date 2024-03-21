@@ -2156,26 +2156,30 @@ $$
 
 ## The multiple regression problem {.smaller}
 
-**Assumption:** Suppose that for each $i =1 , \ldots, n$ we observe the data point
-\begin{equation} \tag{5}
-(x_{i1}, \ldots, x_{ip}, y_i)
-\end{equation}
+**Assumption:** For each $i =1 , \ldots, n$ we observe
 
-::: {.column width="30%"}
+::: {.column width="42%"}
 
-- $x_{ij}$ observed from $X_j$
+- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
 
 :::
 
-::: {.column width="30%"}
+::: {.column width="26%"}
 
-- $y_i$ observed from $Y$
+- $x_{ij}$ is from $X_j$
 
 :::
+
+::: {.column width="26%"}
+
+- $y_i$ is from $Y$
+
+:::
+
 
 
 ::: Problem
-From the data in (5) learn a regression function
+From the above data learn a regression function
 $$
 \Expect[Y | x_1, \ldots, x_p]
 $$
@@ -2189,68 +2193,71 @@ $$
 
 
 
-## Simple linear regression {.smaller}
+## Multiple linear regression {.smaller}
 
-- Regression problem is difficult without prior knowledge on  $\Expect[Y | x]$
 
-- A popular model is to assume that  $\Expect[Y | x]$ is linear
+A popular model is to assume that  $\Expect[Y | x_1, \ldots, x_p]$ is linear
 
 
 ::: Definition
 
-The regression function of $Y$ on $X$ is **linear** if there exist  $\alpha$ and $\beta$ s.t.
+The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist $\beta_0,\beta_1, \ldots, \beta_p$ s.t.
+
 $$
-\Expect[Y | x] = \alpha +  \beta x  \,, \qquad \forall \, x \in \R
+\Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \R^p
 $$
 
 :::
 
--  $\alpha$ and $\beta$ are called **regression coefficients**
 
-- The above regression is called **simple** because only 2 variables are involved
+- $\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
 
-
-
-## Multiple linear regression {.smaller}
-
-
-- We use the shorthand
-$$
- \Expect[Y | x_1, \ldots , x_p] := \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
-$$
+- **Note:** 
+  * In simple regression we have 2 coefficients $\alpha$ and $\beta$
+  * In multiple regression we have $p+1$ coefficients $\beta_0, \ldots, \beta_p$
 
 
 
 
 ## Multiple linear regression {.smaller}
-
-- The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist $\beta_0,\beta_1, \ldots, \beta_p$ s.t.
-
-$$
-\Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p 
-$$
-
--  $\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
+### Model Assumptions
 
 
+Suppose that for each $i =1 , \ldots, n$ we observe
+
+::: {.column width="42%"}
+
+- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
+
+:::
+
+::: {.column width="26%"}
+
+- $x_{ij}$ is from $X_j$
+
+:::
+
+::: {.column width="26%"}
+
+- $y_i$ is from $Y$
+
+:::
 
 
-## Multiple linear regression: Assumptions {.smaller}
+::: Definition
 
-- We make 5 assumptions on $X_1,\ldots , X_p$ and $Y$
-
-- Suppose that for each $i = 1, \ldots, n$ we observe the data point
-$$
-(x_{i1}, \ldots, x_{ip}, Y_i)
-$$
-where $Y_i$ denotes a random variable with distribution
+For each $i = 1, \ldots, n$ we denote by $Y_i$ a random variable with distribution
 $$
 Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
 $$
 
+:::
 
 
-## Multiple linear regression: Assumptions {.smaller}
+
+
+## Multiple linear regression {.smaller}
+### Model Assumptions
 
 
 **Assumptions:**
@@ -2267,7 +2274,6 @@ $$
 
 
 ## Multiple linear regression: Assumptions {.smaller}
-
 
 
 4. **Common variance (Homoscedasticity):** There is a parameter $\sigma^2$ such that
@@ -2302,7 +2308,7 @@ $$
 :::
 
 
-**Proof:** Similar to the proof of the Proposition in Slide 54. Left as an exercise
+**Proof:** Similar to the proof of the Proposition in Slide 59. Left as an exercise
 
 
 
@@ -2319,7 +2325,7 @@ $$
 
 ::: Proposition
 
-Suppose Assumptions 1--5 hold. Then
+Suppose Assumptions 1--5 hold. The likelihood of multiple linear regression is
 $$
 L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
 $$
@@ -2362,7 +2368,7 @@ L(\beta, \sigma^2 | y) & = f(y_1,\ldots,y_n) \\
 
 ## Design matrix {.smaller}
 
-For each $i = 1 , \ldots, n$ we have $p$ observations
+For each $i = 1 , \ldots, n$ suppose given $p$ observations
 $$
 x_{i1}, \ldots, x_{ip}
 $$
@@ -2485,6 +2491,47 @@ L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -
  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right)
 \end{align*}
+
+
+
+
+
+## Model Summary  {.smaller}
+
+- Multiple linear regression of $Y$ on $X_1, \ldots, X_p$ is the function
+$$
+\Expect[Y | x_1,\ldots,x_p] = \beta_0 + \beta_1 x_{1} + \ldots + \beta_p x_p
+$$
+
+- For each $i=1, \ldots, n$ suppose given the observations 
+$$
+(x_{i1}, \ldots, x_{ip}, y_i)
+$$
+
+- Denote by $Y_i$ the random variable 
+$$
+Y | x_{i1} ,\ldots, x_{ip}
+$$
+
+
+
+## Model Summary  {.smaller}
+
+- Suppose that $Y_i$ has the form
+$$
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \e_i
+$$
+for some **errors** 
+$$
+\e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$ 
+
+- In particular we have
+$$
+\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}
+$$
+
+
 
 
 ## Multiple regression learning problem {.smaller}
