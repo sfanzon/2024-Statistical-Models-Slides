@@ -29,16 +29,24 @@
 
  [**Theorem**](#Theorem*-3.11)\Pageref{Theorem*-3.11}
 
- [**Proposition**](#Proposition*-4.1)\Pageref{Proposition*-4.1}
+ [**Definition**](#Definition*-4.1)\Pageref{Definition*-4.1}
 
- [**Proposition**](#Proposition*-4.2)\Pageref{Proposition*-4.2}
+ [**Idea**](#Idea*-4.2)\Pageref{Idea*-4.2}
 
- [**Definition**](#Definition*-4.3)\Pageref{Definition*-4.3}
+ [**Problem**](#Problem*-4.3)\Pageref{Problem*-4.3}
 
  [**Definition**](#Definition*-4.4)\Pageref{Definition*-4.4}
 
- [**Problem**](#Problem*-4.5)\Pageref{Problem*-4.5}
+ [**Proposition**](#Proposition*-4.5)\Pageref{Proposition*-4.5}
 
- [**Problem**](#Problem*-4.6)\Pageref{Problem*-4.6}
+ [**Proposition**](#Proposition*-4.6)\Pageref{Proposition*-4.6}
 
- [**Theorem**](#Theorem*-4.7)\Pageref{Theorem*-4.7}
+ [**Definition**](#Definition*-4.7)\Pageref{Definition*-4.7}
+
+ [**Definition**](#Definition*-4.8)\Pageref{Definition*-4.8}
+
+ [**Problem**](#Problem*-4.9)\Pageref{Problem*-4.9}
+
+ [**Problem**](#Problem*-4.10)\Pageref{Problem*-4.10}
+
+ [**Theorem**](#Theorem*-4.11)\Pageref{Theorem*-4.11}

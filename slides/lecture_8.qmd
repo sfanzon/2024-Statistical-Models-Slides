@@ -1548,20 +1548,32 @@ $$
 :::
 
 
+
+## Regression function {.smaller}
+
+
 ::: Idea
 
-$R(x)$ predicts the most likely value of $Y$ when we observe $X = x$
+The regression function
+$$
+R(x) = \Expect[Y | X = x]
+$$ 
+predicts the most likely value of $Y$ when we observe 
+$$
+X = x
+$$
 
 :::
+
+**Notation:** We use the shorthand
+$$
+\Expect[Y|x] := \Expect[Y | X = x]
+$$
 
 
 
 
 ## The regression problem {.smaller}
-
-**Notation:** We use the shorthand
-$\Expect[Y|x] := \Expect[Y | X = x]$
-
 
 **Assumption:** Suppose to have $n$ observations $(x_1,y_1) \,, \ldots , (x_n, y_n)$
 
@@ -2059,34 +2071,148 @@ Linear regression and least-squares give seemingly the same answer
 
 
 
-## Multiple regression {.smaller}
+## Simple vs Multiple regression {.smaller}
 
 - Simple regression: 
   * Response variable $Y$ depends on one predictor $X$
-  * The goal is to learn $Y | X$
+  * The goal is to learn distribution of 
+  $$
+  Y | X
+  $$
+  * $Y | X$ allows to predict values of $Y$ knowing values of $X$
+
+
+## Simple vs Multiple regression {.smaller}
 
 - Multiple regression: 
   * Response variable $Y$ depends on multiple predictors $X_1 , \ldots,  X_p$
-  * The goal is to learn $Y | X_1, \ldots, X_p$
+  * The goal is to learn distribution of 
+  $$
+  Y | X_1, \ldots, X_p
+  $$
+  * $Y | X_1 , \dots, X_p$ allows to predict values of $Y$ knowing values of $X_1 , \dots, X_p$
 
 
 
 
+## Multiple regression function {.smaller}
 
+Suppose given random variables $X_1 , \ldots, X_p$ and $Y$
 
-## Basic definitions {.smaller}
-
-
-Suppose given random variables $X_2 , \ldots, X_p$ and $Y$
+::: {.column width="45%"}
 
 - $X_1,\ldots,X_p$ are the **predictors**
 
+:::
+
+::: {.column width="49%"}
+
 - $Y$ is the **response**
 
-- The **multiple regression function** of $Y$ on $X_1,\ldots,X_p$ is the conditional expectation
+:::
+
+
+**Notation:** We denote points of $\R^p$ by
 $$
-(x_1,\ldots, x_p) \mapsto \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+x = (x_1, \ldots, x_p)
 $$
+
+
+::: Definition
+
+The **regression function** of $Y$ on $X_1,\ldots,X_p$ is the conditional expectation
+
+$$
+R \colon \R^p \to \R \,, \qquad \quad R(x) :=  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+:::
+
+
+
+## Multiple regression function {.smaller}
+
+::: Idea
+
+The regression function
+$$
+R(x) =  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$ 
+predicts the most likely value of $Y$ when we observe 
+$$
+X_1 = x_1, \ldots , X_p = x_p
+$$
+
+:::
+
+
+**Notation**: We use the shorthand
+$$
+\Expect[Y | x_1, \ldots, x_p] := \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+
+
+
+## The multiple regression problem {.smaller}
+
+**Assumption:** Suppose that for each $i =1 , \ldots, n$ we observe the data point
+\begin{equation} \tag{5}
+(x_{i1}, \ldots, x_{ip}, y_i)
+\end{equation}
+
+::: {.column width="30%"}
+
+- $x_{ij}$ observed from $X_j$
+
+:::
+
+::: {.column width="30%"}
+
+- $y_i$ observed from $Y$
+
+:::
+
+
+::: Problem
+From the data in (5) learn a regression function
+$$
+\Expect[Y | x_1, \ldots, x_p]
+$$
+which explains the observations, that is,
+$$
+\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+$$
+
+:::
+
+
+
+
+## Simple linear regression {.smaller}
+
+- Regression problem is difficult without prior knowledge on  $\Expect[Y | x]$
+
+- A popular model is to assume that  $\Expect[Y | x]$ is linear
+
+
+::: Definition
+
+The regression function of $Y$ on $X$ is **linear** if there exist  $\alpha$ and $\beta$ s.t.
+$$
+\Expect[Y | x] = \alpha +  \beta x  \,, \qquad \forall \, x \in \R
+$$
+
+:::
+
+-  $\alpha$ and $\beta$ are called **regression coefficients**
+
+- The above regression is called **simple** because only 2 variables are involved
+
+
+
+## Multiple linear regression {.smaller}
+
 
 - We use the shorthand
 $$
