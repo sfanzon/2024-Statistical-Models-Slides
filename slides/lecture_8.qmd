@@ -1330,58 +1330,293 @@ abline(least_squares, col = "red", lwd = 3)
 
 
 
+
+
+
 ## Simple linear regression {.smaller}
+### Motivation
 
-Linear regression and least-squares are two **different** things:
-
-- Least-squares: Deterministic problem of fitting a line through given data points
-  * Compute coefficients for least-squares line
-  $y = \hat\beta x + \hat\alpha$
-  * Line is used to predict values of $y$ from values of $x$
-
-- Linear regresion: Problem of learning a conditional distribution
-  * Suppose to have 2 random variables $X$ and $Y$
-  * $X$ models of *observed values* or *controls*
-  * $Y$ models a response
-  * We want to learn the distribution of $Y | X$
+- **Model:** Suppose to have two random variables $X$ and $Y$
+  * $X$ models *observed values*
+  * $Y$ models a *response*
+  
+- **Goal of Regression:** Learn the distribution of 
+  $$
+  Y | X
+  $$
   * $Y | X$ allows to predict values of $Y$ from values of $X$
 
 
 
 
+## Simple linear regression {.smaller}
+### Motivation
+
+- **Note:** To learn $Y|X$ one would need **joint distribution** of $(X,Y)$
+
+- **Problem:** The joint distribution of $(X,Y)$ is **unknown**
+
+- **Data**: We have partial knowledge on $(X,Y)$ in the form of 
+  * paired observations
+  $$(x_1,y_1) , \ldots, (x_n,y_n)$$
+  * $(x_i,y_i)$ is observed from $(X,Y)$
+  
+
+::: Goal
+
+Use the data to learn $Y|X$
+
+:::
 
 
-## Basic definitions {.smaller}
+
+
+## Simple linear regression {.smaller}
+### Motivation
+
+
+::: {.column width="50%"}
+
+**Least-Squares:** 
+
+- Naive solution to regression problem 
+
+- Find a line of best fit
+$$
+y = \hat \alpha + \hat \beta x
+$$
+
+- Such line explains the data, i.e.,
+$$
+y_i  \ \approx \ \hat \alpha + \hat \beta x_i
+$$
+
+:::
+
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("X", side = 1, line = 3, cex = 2.1)
+mtext("Y", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+```
+
+:::
+
+
+
+## Simple linear regression {.smaller}
+### Motivation
+
+
+::: {.column width="50%"}
+
+**Drawbacks of least squares:** 
+
+- Only predicts values of $y$ such that
+$$
+(x,y)  \, \in \, \text{ Line}
+$$
+
+
+- Ignores statistical nature of the problem
+
+
+:::
+
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("X", side = 1, line = 3, cex = 2.1)
+mtext("Y", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+```
+
+:::
+
+
+
+## Simple linear regression {.smaller}
+### Motivation
+
+
+::: {.column width="50%"}
+
+**Linear Regression:** 
+
+- Interprets the line of best fit as the **regression line**
+$$
+\Expect[Y | X = x] = \hat \alpha + \hat \beta x
+$$
+
+
+- $\Expect[Y | X = x]$ is the **most likely** value of $Y$ when $X = x$ is observed
+
+- Therefore: Regression line predicts **most likely** value of $Y$ from $X$
+
+:::
+
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+x <- c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 4.6, 1.6, 5.5, 3.4)
+y <- c(0.7, -1.0, -0.2, -1.2, -0.1, 3.4, 0.0, 0.8, 3.7, 2.0)
+
+# Create the plot
+plot(x, y, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("X", side = 1, line = 3, cex = 2.1)
+mtext("Y", side = 2, line = 2.5, cex = 2.1)
+
+# Fit linear regression
+fit <- lm(y ~ x)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 5)
+```
+
+:::
+
+
+
+
+
+## Regression function {.smaller}
 
 Suppose given two random variables $X$ and $Y$
 
-- $X$ is called the **predictor**
-- $Y$ is called the **response**
-- The **regression function** of $Y$ on $X$ is the conditional expectation
+::: {.column width="30%"}
+
+- $X$ is the **predictor**
+
+:::
+
+::: {.column width="49%"}
+
+- $Y$ is the **response**
+
+:::
+
+::: Definition
+
+The **regression function** of $Y$ on $X$ is the conditional expectation
+
 $$
-x \mapsto \Expect[Y | X = x]
+R \colon \R \to \R \,, \qquad \quad R(x) :=  \Expect[Y | X = x]
 $$
+
+:::
+
+
+::: Idea
+
+$R(x)$ predicts the most likely value of $Y$ when we observe $X = x$
+
+:::
+
+
+
+
+## The regression problem {.smaller}
+
+**Notation:** We use the shorthand
+$\Expect[Y|x] := \Expect[Y | X = x]$
+
+
+**Assumption:** Suppose to have $n$ observations $(x_1,y_1) \,, \ldots , (x_n, y_n)$
+
+::: {.column width="30%"}
+
+- $x_i$ observed from $X$
+
+:::
+
+::: {.column width="30%"}
+
+- $y_i$ observed from $Y$
+
+:::
+
+
+::: Problem
+From $(x_1,y_1) \,, \ldots , (x_n, y_n)$ learn a regression function
+$$
+\Expect[Y | x]
+$$
+which explains the observations, that is,
+$$
+\Expect[Y | x_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+$$
+
+:::
+
+
 
 
 ## Simple linear regression {.smaller}
 
-- The regression of $Y$ on $X$ is **linear** if there exist  $\alpha$ and $\beta$ s.t.
+- Regression problem is difficult without prior knowledge on  $\Expect[Y | x]$
+
+- A popular model is to assume that  $\Expect[Y | x]$ is linear
+
+
+::: Definition
+
+The regression function of $Y$ on $X$ is **linear** if there exist  $\alpha$ and $\beta$ s.t.
 $$
-\Expect[Y | X = x] = \alpha +  \beta x 
+\Expect[Y | x] = \alpha +  \beta x  \,, \qquad \forall \, x \in \R
 $$
+
+:::
 
 -  $\alpha$ and $\beta$ are called **regression coefficients**
 
 - The above regression is called **simple** because only 2 variables are involved
 
-- **Notation:** We use the shorthand 
-$$
-\Expect[Y | x] := \Expect[Y | X = x]
-$$
 
 
 
-## Why do we say the regression is linear? {.smaller}
+## What do we mean by linear? {.smaller}
 
 **Note:** We said that the regression is **linear** if
 $$
@@ -1406,30 +1641,45 @@ $$
 
 
 
-## Simple linear regression: Assumptions {.smaller}
+## Simple linear regression {.smaller}
+### Model Assumptions
 
-- We now make 5 assumptions on $X$ and $Y$
 
-- Suppose we observe $n$ pairs
-$$
-(x_1,Y_1) , \, \ldots, \, (x_n, Y_n)
-$$
-where $Y_i$ denotes a random variable with distribution
+Suppose to have $n$ observations $(x_1,y_1) \,, \ldots , (x_n, y_n)$
+
+::: {.column width="30%"}
+
+- $x_i$ observed from $X$
+
+:::
+
+::: {.column width="30%"}
+
+- $y_i$ observed from $Y$
+
+:::
+
+
+
+::: Definition
+
+For each $i = 1 , \ldots, n$ we denote by $Y_i$ a random variable with distribution 
 $$
 Y | X = x_i
 $$
 
+:::
+
+
+
 **Assumptions:**
 
-1. **Predictor is known:** The values $x_1, \ldots, x_n$ are either
-    * known controls (set by the experiment designer) or
-    * observed from random variables $X_1, \ldots, X_n$
+1. **Predictor is known:** The values $x_1, \ldots, x_n$ are known
 
 
 
-
-
-## Simple linear regression: Assumptions {.smaller}
+## Simple linear regression {.smaller}
+### Model Assumptions
 
 
 2. **Normality:** The distribution of $Y_i$ is normal
@@ -1514,26 +1764,7 @@ $$
 
 
 
-## Simple linear regression Model {.smaller}
-### Summary
-
-Simple linear regression of $Y$ on $X$ consists of a function of the form
-$$
-Y_i = \alpha + \beta x_i + \e_i
-$$
-for some random variables 
-$$
-\e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
-$$
-
-- $Y_i$ is random variable -- called **response**
-- $x_i$ is an observable variable -- called **predictor**
-- $\e_i$ is a random variable -- called **error**
-- $\alpha$ is the **intercept** and $\beta$ is the **slope**
-
-
-
-## Likelihood function for simple regression {.smaller}
+## Likelihood function {.smaller}
 
 ::: Definition
 
@@ -1547,7 +1778,7 @@ $$
 
 ::: Proposition
 
-Suppose Assumptions 1--5 hold. Then
+Suppose Assumptions 1--5 hold. The likelihood function of linear regression is
 $$
 L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i-\alpha - \beta x_i)^2}{2\sigma^2}      \right)
 $$
@@ -1557,7 +1788,7 @@ $$
 
 
 
-## Likelihood function for simple regression {.smaller}
+## Likelihood function {.smaller}
 ### Proof
 
 
@@ -1575,7 +1806,7 @@ $$
 
 
 
-## Likelihood function for simple regression {.smaller}
+## Likelihood function {.smaller}
 ### Proof
 
 - Since $Y_1,\ldots, Y_n$ are independent we obtain
@@ -1591,99 +1822,80 @@ L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
 
 
 
-## The linear regression learning problem {.smaller}
-### Original Goal
+## Model Summary  {.smaller}
 
-- Suppose given two random variables $X$ and $Y$
-- Suppose given $n$ observations
+- Simple linear regression of $Y$ on $X$ is the function
 $$
-(x_1,y_1) \,, \ldots , (x_n, y_n)
+\Expect[Y | x] = \alpha + \beta x
 $$
-where $x_i$ is from $X_i$ and $y_i$ from $Y_i$
+
+- Suppose given the observations $(x_1,y_1) \,, \ldots , (x_n, y_n)$
+
+- Denote by $Y_i$ the random variable $Y | x_i$
+
+- Suppose that $Y_i$ has the form
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+for some **errors** $\e_1,\ldots, \e_n$ 
+iid $N(0,\sigma^2)$
+
+- In particular we have
+$$
+\Expect[Y | x_i] = \Expect[Y_i] = \alpha + \beta x_i
+$$
+
+
+
+
+## The linear regression problem {.smaller}
 
 
 ::: Problem
-Using the observations, learn for each $x \in \R$ the conditional distribution 
+From $(x_1,y_1) \,, \ldots , (x_n, y_n)$ learn a linear regression function
 $$
-Y | X = x
+\Expect[Y | x] = \alpha + \beta x
 $$
-
-:::
-
-
-
-
-## The linear regression learning problem {.smaller}
-### Updated goal
-
-
-- The general learning problem is difficult if we do not make assumptions
-
-- Under Assumptions 1--5 we have
-  * $Y_i$ is random variable distributed like 
-  $$
-  Y | X = x_i
-  $$ 
-  * $Y_i$ depends linearly on $X_i$ with
-  $$
-  Y_i = \alpha + \beta x_i + \e_i
-  $$
-  with $\e_1, \ldots, \e_n$ iid $N(0,\sigma^2)$
-
-
-
-## The linear regression learning problem {.smaller}
-### Updated goal
-
-- Hence we could learn $\hat \alpha, \hat \beta, \hat \sigma$ such that
-$$
-Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
-$$
-
-- Since $Y_i$ is distributed like $Y | X = x_i$ we have that
-$$
-\Expect[Y | X = x_i] = \Expect[Y_i] = \hat\alpha + \hat\beta x_i  \qquad \text{ for each } \, i = 1 , \ldots , n
-$$
-
-- We hope that the above relation generalizes for all $x \in \R$, that is,
-$$
-\Expect[Y | X = x] \ \approx \ \hat\alpha + \hat\beta x  \qquad \text{ for all } \, x \in \R 
-$$
-
-
-
-## The linear regression learning problem {.smaller}
-### Updated goal
-
-
-Given the previous considerations, we aim at solving:
-
-::: Problem
-
-Using the observations $(x_1,y_1), \ldots, (x_n,y_n)$, learn parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+which explains the observations, that is,
 \begin{equation} \tag{3}
-Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
+\Expect[Y | x_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
 \end{equation}
 
 :::
 
 
-**Question:** How do we enforce (3)?
+::: Question
+
+How do we enforce (3)?
+
+:::
 
 
 
 
-## The linear regression learning problem {.smaller}
-### Updated goal
+## The linear regression problem: Answer {.smaller}
 
-**Answer:** 
 
-- Choose parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+- Recall that $\Expect[Y | x_i] = \Expect[Y_i]$
+
+
+- Therefore (3) holds iff 
+
+\begin{equation} \tag{4}
+\Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}
+
+
+- If we want (3)--(4) to hold, we need to maximize the joint probability
+
 $$
-P(Y_i \approx y_i)   \text{ is maximized for each } \, i = 1 , \ldots , n
+P(Y_1 \approx y_1, \ldots, Y_n \approx y_n) 
 $$
 
-- This is equivalent to maximizing the likelihood function
+
+
+- This means choosing parameters $\hat \alpha, \hat \beta, \hat \sigma$ which maximize the likelihood function
+
 $$
 \max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
 $$
@@ -1696,7 +1908,7 @@ $$
 
 ::: Theorem 
 
-Suppose Assumptions 1--5 hold and assume given $n$ data pairs
+Suppose Assumptions 1--5 hold and assume given $n$ observations
 $(x_1,y_1), \ldots, (x_n,y_n)$. 
 The maximization problem
 $$
@@ -1795,6 +2007,44 @@ $$
 
 
 
+## Least-squares vs Linear regression {.smaller}
+
+Linear regression and least-squares give seemingly the same answer
+
+::: {.column width="73%"}
+
+| **Least-squares line**     |  $y = \hat \alpha + \hat \beta x$               |
+|:-------------------------- |:----------------------------------------------- | 
+| **Linear regression line** | $\Expect[Y | x ] =  \hat \alpha + \hat \beta x$ |
+: {tbl-colwidths="[60,40]"}
+
+:::
+
+::: {.column width="25%"}
+
+:::
+
+**Question:** Why did we define regression if it gives same answer as least-squares?
+
+
+
+
+## Least-squares vs Linear regression {.smaller}
+
+**Answer:** There is actually a big difference
+
+- Least-squares line $y = \hat \alpha + \hat \beta x$
+  * Just a geometric object
+  * Can only predict pairs $(x,y)$ which lie on the line
+  * Ignores statistical nature of the problem
+
+- Regression line $\Expect[Y | x ] =  \hat \alpha + \hat \beta x$
+  * Statistical model for $Y|X$ via the estimation of $\Expect[Y | x]$
+  * Can predict **most likely** values of $Y$ given the observation $X = x$
+  * Can test how well the linear model fits the data
+
+
+
 
 
 
@@ -1848,11 +2098,8 @@ $$
 
 ## Multiple linear regression {.smaller}
 
-- The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist 
-$$
-\beta_0,\beta_1, \ldots, \beta_p
-$$ 
-such that
+- The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist $\beta_0,\beta_1, \ldots, \beta_p$ s.t.
+
 $$
 \Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p 
 $$
@@ -1940,15 +2187,15 @@ $$
 
 Introduce the column vectors
 $$
-\bbeta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad 
-\yy := (y_1,\ldots,y_n)^T
+\beta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad 
+y := (y_1,\ldots,y_n)^T
 $$
 
 ::: Proposition
 
 Suppose Assumptions 1--5 hold. Then
 $$
-L(\bbeta, \sigma^2 | \yy ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
+L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
 $$
 
 :::
@@ -1977,11 +2224,11 @@ $$
 
 - Since $Y_1,\ldots, Y_n$ are independent we obtain
 \begin{align*}
-L(\alpha,\beta, \sigma^2 | y_1, \ldots,y_n) & = f(y_1,\ldots,y_n) \\
+L(\beta, \sigma^2 | y) & = f(y_1,\ldots,y_n) \\
                                   & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
                                   & = \prod_{i=1}^n 
-                                  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i-\alpha-\beta{x_i})^2}{2\sigma^2} \right) \\
-                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \alpha - \beta x_i)^2}{2\sigma^2}      \right)
+                                  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right) \\
+                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
 \end{align*}
 
 
@@ -1998,7 +2245,7 @@ $$
 
 The **design matrix** is the $n \times (p+1)$ matrix
 $$
-\XX :=
+X :=
 \left(
 \begin{array}{cccc}
 1 & x_{11} & \ldots & x_{1p} \\
@@ -2011,7 +2258,7 @@ $$
 
 :::
 
-**Note:** The first row of $\XX$ is a vector of ones
+**Note:** The first row of $X$ is a vector of ones
 
 
 
@@ -2020,7 +2267,218 @@ $$
 ## Likelihood function {.smaller}
 ### Vectorial notation
 
+\begin{align*}
+y - X\beta & = 
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+- 
+\left(
+\begin{array}{cccc}
+1 & x_{11} & \ldots & x_{1p} \\
+1 & x_{21} & \ldots & x_{2p} \\
+\ldots & \ldots & \ldots & \ldots \\
+1 & x_{n1} & \ldots & x_{np} \\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+\beta_0 \\
+\beta_1 \\
+\ldots \\
+\beta_p \\
+\end{array}
+\right)
+\\
+& = 
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+- 
+\left(
+\begin{array}{c}
+\beta_0 + \beta_1 x_{11} + \ldots + \beta_p x_{1p}\\
+\beta_0 + \beta_1 x_{21} + \ldots + \beta_p x_{2p} \\
+\ldots \\
+\beta_0 + \beta_1 x_{n1} + \ldots + \beta_p x_{np} \\
+\end{array}
+\right) \\
+& =
+\left(
+\begin{array}{c}
+y_1 - \beta_0 - \beta_1 x_{11} - \ldots - \beta_p x_{1p}\\
+y_2 - \beta_0 - \beta_1 x_{21} - \ldots - \beta_p x_{2p} \\
+\ldots \\
+y_n - \beta_0 - \beta_1 x_{n1} - \ldots - \beta_p x_{np} \\
+\end{array}
+\right)
+\end{align*}
 
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
+
+
+From the previous calculation we get
+
+$$
+(y - X \beta)^T \, (y - X\beta) =
+ \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip}   \right)^2
+$$
+
+
+::: Definition 
+
+The **residual sum of squares** associated to the data $X$ and $y$ is
+$$
+\RSS (\beta) :=  (y - X \beta)^T \, (y - X\beta)
+$$
+
+:::
+
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
+
+Therefore the likelihood function can be re-written as
+
+\begin{align*}
+L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right) \\
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right)
+\end{align*}
+
+
+## Multiple regression learning problem {.smaller}
+### Original Goal
+
+- Suppose given random variables $X_1,\ldots, X_p$ and $Y$
+- Suppose given $i = 1, \ldots, n$ observations
+$$
+(x_{i1}, \ldots, x_{ip}, y_i)
+$$
+where $x_{ip}$ is from $X_{ip}$ and $y_i$ from $Y_i$
+
+
+::: Problem
+Using the observations, learn for each $(x_1, \ldots, x_p) \in \R^p$ the conditional distribution 
+$$
+Y | X_1 = x_1 , \ldots, X_p = x_p
+$$
+
+:::
+
+
+
+
+## Multiple linear regression learning problem {.smaller}
+### Updated goal
+
+
+- The general learning problem is difficult if we do not make assumptions
+
+- Under Assumptions 1--5 we have
+  * $Y_i$ is random variable distributed like 
+  $$
+  Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}
+  $$ 
+  * $Y_i$ depends linearly on $X_{ip}$ with
+  $$
+  Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_{ip} x_{ip}  + \e_i
+  $$
+  with $\e_1, \ldots, \e_n$ iid $N(0,\sigma^2)$
+
+
+
+## Multiple linear regression learning problem {.smaller}
+### Updated goal
+
+- We want to learn $\hat \beta,  \hat \sigma$ such that
+$$
+Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
+$$
+
+- Since $Y_i$ is distributed like $Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}$ we have
+$$
+\Expect[Y | X_1 = x_{i1} , \ldots, X_{ip} = x_{ip}] = \Expect[Y_i] = \hat\alpha + \hat\beta x_i  \qquad \text{ for each } \, i = 1 , \ldots , n
+$$
+
+- We hope that the above relation generalizes for all $x \in \R$, that is,
+$$
+\Expect[Y | X = x] \ \approx \ \hat\alpha + \hat\beta x  \qquad \text{ for all } \, x \in \R 
+$$
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+
+Given the previous considerations, we aim at solving:
+
+::: Problem
+
+Using the observations $(x_1,y_1), \ldots, (x_n,y_n)$, learn parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+\begin{equation} \tag{3}
+Y_i \approx y_i \qquad \text{ for each } \, i = 1 , \ldots , n
+\end{equation}
+
+:::
+
+
+**Question:** How do we enforce (3)?
+
+
+
+
+## The linear regression learning problem {.smaller}
+### Updated goal
+
+**Answer:** 
+
+- Choose parameters $\hat \alpha, \hat \beta, \hat \sigma$ s.t.
+$$
+P(Y_i \approx y_i)   \text{ is maximized for each } \, i = 1 , \ldots , n
+$$
+
+- This is equivalent to maximizing the likelihood function
+$$
+\max_{\alpha,\beta,\sigma} \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n )
+$$
+
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given $n$ data pairs
+$(x_1,y_1), \ldots, (x_n,y_n)$. 
+The maximization problem
+$$
+\max_{\alpha,\beta,\sigma}  \ L(\alpha,\beta, \sigma^2 | y_1, \ldots, y_n ) 
+$$
+admits the unique solution
+$$
+\hat \alpha = \overline{y} - \hat  \beta \, \overline{x} \,, \qquad 
+\hat \beta = \frac{S_{xy}}{S_{xy}} \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \sum_{i=1}^n \left(  y_i - \hat \alpha - \hat \beta x_i  \right)^2
+$$
+:::
 
 
 
