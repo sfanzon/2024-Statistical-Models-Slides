@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 9: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 9: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -38,18 +38,1599 @@ $
 
 
 
-## Outline of Lecture 6
+## Outline of Lecture 9
 
-1. TBA
-
-
-
-
+1. Multiple linear regression
+2. Simple regression as a multiple regression
+3. Two sample t-test as multiple regression
 
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+
+
+
+# Part 1: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Simple vs Multiple regression {.smaller}
+
+- Simple regression: 
+  * Response variable $Y$ depends on one predictor $X$
+  * The goal is to learn distribution of 
+  $$
+  Y | X
+  $$
+  * $Y | X$ allows to predict values of $Y$ knowing values of $X$
+
+
+## Simple vs Multiple regression {.smaller}
+
+- Multiple regression: 
+  * Response variable $Y$ depends on multiple predictors $X_1 , \ldots,  X_p$
+  * The goal is to learn distribution of 
+  $$
+  Y | X_1, \ldots, X_p
+  $$
+  * $Y | X_1 , \dots, X_p$ allows to predict values of $Y$ knowing values of $X_1 , \dots, X_p$
+
+
+
+
+## Multiple regression function {.smaller}
+
+Suppose given random variables $X_1 , \ldots, X_p$ and $Y$
+
+::: {.column width="45%"}
+
+- $X_1,\ldots,X_p$ are the **predictors**
+
+:::
+
+::: {.column width="49%"}
+
+- $Y$ is the **response**
+
+:::
+
+
+**Notation:** We denote points of $\R^p$ by
+$$
+x = (x_1, \ldots, x_p)
+$$
+
+
+::: Definition
+
+The **regression function** of $Y$ on $X_1,\ldots,X_p$ is the conditional expectation
+
+$$
+R \colon \R^p \to \R \,, \qquad \quad R(x) :=  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+:::
+
+
+
+## Multiple regression function {.smaller}
+
+::: Idea
+
+The regression function
+$$
+R(x) =  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$ 
+predicts the most likely value of $Y$ when we observe 
+$$
+X_1 = x_1, \ldots , X_p = x_p
+$$
+
+:::
+
+
+**Notation**: We use the shorthand
+$$
+\Expect[Y | x_1, \ldots, x_p] := \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+$$
+
+
+
+
+## The multiple regression problem {.smaller}
+
+**Assumption:** For each $i =1 , \ldots, n$ we observe
+
+::: {.column width="42%"}
+
+- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
+
+:::
+
+::: {.column width="26%"}
+
+- $x_{ij}$ is from $X_j$
+
+:::
+
+::: {.column width="26%"}
+
+- $y_i$ is from $Y$
+
+:::
+
+
+
+::: Problem
+From the above data learn a regression function
+$$
+\Expect[Y | x_1, \ldots, x_p]
+$$
+which explains the observations, that is,
+$$
+\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+$$
+
+:::
+
+
+
+
+## Multiple linear regression {.smaller}
+
+
+A popular model is to assume that  $\Expect[Y | x_1, \ldots, x_p]$ is linear
+
+
+::: Definition
+
+The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist $\beta_0,\beta_1, \ldots, \beta_p$ s.t.
+
+$$
+\Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \R^p
+$$
+
+$\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
+:::
+
+**Note:** 
+
+- In simple regression we have 2 coefficients $\alpha$ and $\beta$
+
+- In multiple regression we have $p+1$ coefficients $\beta_0, \ldots, \beta_p$
+
+
+
+
+## Multiple linear regression {.smaller}
+### Model Assumptions
+
+
+Suppose that for each $i =1 , \ldots, n$ we observe
+
+::: {.column width="42%"}
+
+- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
+
+:::
+
+::: {.column width="26%"}
+
+- $x_{ij}$ is from $X_j$
+
+:::
+
+::: {.column width="26%"}
+
+- $y_i$ is from $Y$
+
+:::
+
+
+::: Definition
+
+For each $i = 1, \ldots, n$ we denote by $Y_i$ a random variable with distribution
+$$
+Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
+$$
+
+:::
+
+
+
+
+## Multiple linear regression {.smaller}
+### Model Assumptions
+
+
+**Assumptions:**
+
+1. **Predictor is known:** The values $x_{i1}, \ldots, x_{ip}$ are known
+
+2. **Normality:** The distribution of $Y_i$ is normal
+
+3. **Linear mean:** There are parameters $\beta_0,\beta_1,\ldots,\beta_p$ such that
+$$
+\Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  
+$$
+
+
+
+## Multiple linear regression {.smaller}
+### Model Assumptions
+
+
+4. **Common variance (Homoscedasticity):** There is a parameter $\sigma^2$ such that
+$$
+\Var[Y_i] = \sigma^2
+$$
+
+5. **Independence:** The random variables 
+$$
+Y_1   \,, \ldots \,, Y_n 
+$$
+are independent
+
+
+
+
+## Characterization of the Model {.smaller}
+
+- Assumptions 1--5 look quite abstract
+- The following Proposition gives a handy characterization
+
+::: Proposition 
+
+Assumptions 1-5 are satisfied if and only if
+$$
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \e_{i}
+$$
+for some **errors**
+$$
+\e_1 , \ldots, \e_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$
+
+:::
+
+
+**Proof:** Similar to the proof of Proposition in Slide 62 Lecture 8. Exercise
+
+
+
+
+
+## Likelihood function {.smaller}
+
+
+Introduce the column vectors
+$$
+\beta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad 
+y := (y_1,\ldots,y_n)^T
+$$
+
+::: Proposition
+
+Suppose Assumptions 1--5 hold. The likelihood of multiple linear regression is
+$$
+L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
+$$
+
+:::
+
+
+
+## Likelihood function {.smaller}
+### Proof
+
+- By assumption we have
+
+$$
+Y_i \sim N( \beta_0+ \beta_1 x_{i1} + \ldots + \beta_p x_{ip} , \sigma^2 )
+$$
+
+- Therefore the pdf of $Y_i$ is 
+
+$$
+f_{Y_i} (y_i) =  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right)
+$$
+
+
+
+## Likelihood function {.smaller}
+### Proof
+
+- Since $Y_1,\ldots, Y_n$ are independent we obtain
+\begin{align*}
+L(\beta, \sigma^2 | y) & = f(y_1,\ldots,y_n) \\
+                                  & = \prod_{i=1}^n f_{Y_i}(y_i)  \\
+                                  & = \prod_{i=1}^n 
+                                  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right) \\
+                                  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
+\end{align*}
+
+
+- This concludes the proof
+
+
+
+
+## Design matrix {.smaller}
+
+For each $i = 1 , \ldots, n$ suppose given $p$ observations
+$$
+x_{i1}, \ldots, x_{ip}
+$$
+
+::: Definition 
+
+The **design matrix** is the $n \times (p+1)$ matrix
+$$
+X :=
+\left(
+\begin{array}{cccc}
+1 & x_{11} & \ldots & x_{1p} \\
+1 & x_{21} & \ldots & x_{2p} \\
+\ldots & \ldots & \ldots & \ldots \\
+1 & x_{n1} & \ldots & x_{np} \\
+\end{array}
+\right)
+$$
+
+:::
+
+**Note:** The first row of $X$ is a vector of ones
+
+
+
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
+
+\begin{align*}
+y - X\beta & = 
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+- 
+\left(
+\begin{array}{cccc}
+1 & x_{11} & \ldots & x_{1p} \\
+1 & x_{21} & \ldots & x_{2p} \\
+\ldots & \ldots & \ldots & \ldots \\
+1 & x_{n1} & \ldots & x_{np} \\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+\beta_0 \\
+\beta_1 \\
+\ldots \\
+\beta_p \\
+\end{array}
+\right)
+\\
+& = 
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+- 
+\left(
+\begin{array}{c}
+\beta_0 + \beta_1 x_{11} + \ldots + \beta_p x_{1p}\\
+\beta_0 + \beta_1 x_{21} + \ldots + \beta_p x_{2p} \\
+\ldots \\
+\beta_0 + \beta_1 x_{n1} + \ldots + \beta_p x_{np} \\
+\end{array}
+\right) \\
+& =
+\left(
+\begin{array}{c}
+y_1 - \beta_0 - \beta_1 x_{11} - \ldots - \beta_p x_{1p}\\
+y_2 - \beta_0 - \beta_1 x_{21} - \ldots - \beta_p x_{2p} \\
+\ldots \\
+y_n - \beta_0 - \beta_1 x_{n1} - \ldots - \beta_p x_{np} \\
+\end{array}
+\right) \, \in \, \R^n
+\end{align*}
+
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
+
+
+From the previous calculation we get
+
+$$
+(y - X \beta)^T \, (y - X\beta) =
+ \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip}   \right)^2
+$$
+
+
+::: Definition 
+
+Let $X$ be $n \times (p + 1)$ design matrix and $y \in \R^n$. 
+The **residual sum of squares** associated to the parameter $\beta$ is 
+$$
+\RSS \colon \R^{p+1} \to \R \,, \qquad 
+\RSS (\beta) :=  (y - X \beta)^T \, (y - X\beta)
+$$
+
+:::
+
+
+
+## Likelihood function {.smaller}
+### Vectorial notation
+
+Therefore the likelihood function can be re-written as
+
+\begin{align*}
+L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right) \\
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right) 
+\end{align*}
+
+
+
+
+
+## Model Summary  {.smaller}
+
+- Multiple linear regression of $Y$ on $X_1, \ldots, X_p$ is the function
+$$
+\Expect[Y | x_1,\ldots,x_p] = \beta_0 + \beta_1 x_{1} + \ldots + \beta_p x_p
+$$
+
+- For each $i=1, \ldots, n$ suppose given the observations 
+$$
+(x_{i1}, \ldots, x_{ip}, y_i)
+$$
+
+
+
+## Model Summary  {.smaller}
+
+
+- Denote by $Y_i$ the random variable 
+
+$$
+Y | x_{i1} ,\ldots, x_{ip}
+$$
+
+
+- Suppose that $Y_i$ has the form
+
+$$
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \e_i
+$$
+
+- The **errors** are
+
+$$
+\e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
+$$ 
+
+
+
+
+## The multiple linear regression problem {.smaller}
+
+For each $i = 1 , \ldots, n$ suppose given data points
+$(x_{i1}, \ldots, x_{ip}, y_i)$
+
+::: Problem
+From the above data learn a multiple linear regression function
+$$
+\Expect[Y | x_1, \ldots, x_p] = \beta_0 + \beta_1 x_1 +
+\ldots + \beta_p x_p
+$$
+which explains the observations, that is,
+\begin{equation} \tag{5}
+\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}
+
+:::
+
+
+::: Question
+
+How do we enforce (5)?
+
+:::
+
+
+
+
+## Answer {.smaller}
+
+- Recall that $Y_i$ is distributed like
+
+$$
+Y_i | x_{i1}, \ldots, x_{ip} 
+$$
+
+- Therefore
+
+$$
+\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] 
+$$
+
+
+- Hence (5) holds iff 
+
+\begin{equation} \tag{6}
+\Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}
+
+
+
+## Answer {.smaller}
+
+- If we want (6) to hold, we need to maximize the joint probability
+
+$$
+P(Y_1 \approx y_1, \ldots, Y_n \approx y_n) 
+$$
+
+
+
+- This means choosing parameters $\hat \beta,  \hat \sigma$ which maximize the likelihood function
+
+$$
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+$$
+
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
+The maximization problem
+$$
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y ) 
+$$
+admits the unique solution
+$$
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
+$$
+:::
+
+
+
+
+## Minimizing the RSS {.smaller}
+
+The proof of previous Theorem relies on the following Lemma
+
+::: Lemma
+
+Assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
+The minimization problem
+$$
+\min_{\beta} \ \RSS(\beta) 
+$$
+admits the unique solution
+$$
+\hat \beta = (X^T X)^{-1} X^T y 
+$$
+
+:::
+
+
+
+
+
+## Results from matrix calculus {.smaller}
+
+
+- Some elementary results from matrix calculus are needed
+
+- In the following $x$ denotes an $n \times 1$ column vector
+
+$$
+x = 
+\left(
+\begin{array}{c}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{array}
+\right)
+$$
+
+
+
+## Results from matrix calculus {.smaller}
+### First result
+
+- Suppose given an $n \times 1$ column vector $a$
+
+
+- Define the scalar function
+
+$$
+f \colon \R^n \to \R \,, \qquad f(x) := a^T x
+$$
+
+- Then $f$ is differentiable and the gradient is constant
+
+$$
+\nabla f (x) = a^T 
+$$
+
+
+
+
+## Results from matrix calculus {.smaller}
+### Second result 
+
+- Suppose given an $m \times n$ matrix $A$
+
+- Define the vectorial affine function
+
+$$
+g \colon \R^n \to \R^m \,, \qquad g(x) := A x
+$$
+
+- Then $g$ is differentiable and the Jacobian is constant
+
+$$
+J g (x) = A 
+$$
+
+
+
+
+## Results from matrix calculus {.smaller}
+### Third result 
+
+- Suppose given an $n \times n$ matrix $M$
+
+- Define the quadratic form
+
+$$
+h \colon \R^n \to \R \,, \qquad
+h(x) := x^T M x
+$$
+
+
+- Then $h$ is differentiable and the Jacobian is
+
+$$
+J h(x) = x^T (M + M^T)
+$$
+
+
+
+## Additional results on the matrix transpose {.smaller}
+
+1. For any $m \times n$ matrix $A$
+$$
+(A^T)^T= A
+$$
+
+2. Let $M$ be a square $n \times n$ matrix. Then $M$ is symmetric iff
+$$
+M^T = M
+$$
+
+
+3. Scalars can be seen as $1 \times 1$ symmetric matrices
+
+4. Therefore for any scalar $c \in \R$
+$$
+c^T = c
+$$
+
+
+## Additional results on the matrix transpose {.smaller}
+
+5. For any $m \times n$ matrix $A$ and $n \times p$ matrix $B$
+$$
+(AB)^T=B^T A^T
+$$
+
+6. The matrix $A^T A$ is symmetric by point (2)
+$$
+(A^T A)^T = A^T (A^T)^T = A^T A
+$$
+
+
+
+## Optimality conditions {.smaller}
+
+We also need the $n$-dimensional version of the Lemma in Slide 18 Lecture 8
+
+::: Lemma
+
+Suppose $f \colon \R^n \to \R$ has positive semi-definite Hessian. They are equivalent
+
+1. The point $\hat x$ is a minimizer of $f$, that is, 
+
+$$
+f( \hat x ) = \min_{x \in \R^n} f(x)
+$$
+
+2. The point $\hat x$ satisfies the **optimality conditions**
+
+$$
+\nabla f (\hat x) = 0
+$$
+
+:::
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- We are finally ready to minimize the $\RSS$
+
+$$
+\min_{\beta} \ \RSS(\beta) 
+$$
+
+
+- Recall that $\RSS \colon \R^{p+1} \to \R$ with
+
+$$
+\RSS(\beta) = (y - X \beta)^T (y - X \beta)
+$$
+
+- It is not too difficult to show that $\nabla^2 \RSS$ is positive-semidefinite
+
+- The proof of this fact is left as an exercise
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- By the Lemma on Optimality Conditions in Slide 111
+
+$$
+\beta \,\, \text{ minimizes } \,\, \RSS \qquad \iff \qquad
+\nabla \RSS (\beta) = 0
+$$
+
+
+- To compute $\nabla \RSS$ we first expand $\RSS$
+
+- Using the properties of transposition we get
+
+\begin{align*}
+\RSS(\beta) & = (y-X \beta)^T (y-X \beta) \\
+            & = (y^T - (X\beta)^T ) (y-X \beta) \\
+            & = (y^T - \beta^T X^T ) (y-X \beta) \\
+            & = y^T y - y^T X \beta - \beta^T X^T y 
+                + \beta^T X^T X \beta
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Note that
+  * $y$ has size $n \times 1$
+  * $X$ has size $n \times (p+1)$
+  * Therefore $X^T$ has size $(p+1) \times n$
+  * $\beta$ has size $(p+1) \times 1$
+  * Thus $\beta^T$ has size $1 \times (p+1)$
+
+- $\beta^T X^T y$ therefore has size
+
+$$
+\left[ 1 \times (p+1) \right] \times
+\left[ (p+1) \times n \right] \times
+\left[ n \times 1 \right]  = 1 \times 1
+$$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- $\beta^T X^T y$ is therefore a scalar and so symmetric
+
+- Hence 
+$$
+\left( \beta^T X^T y  \right)^T = \beta^T X^T y  \qquad 
+\implies \qquad  y^T X \beta = \beta^T X^T y
+$$
+
+- The $\RSS$ can now be written as
+\begin{align*}
+\RSS(\beta) & =  (y-X\beta)^T(y-X\beta) \\
+            & =  y^T y - y^T X \beta 
+                - \textcolor{magenta}{\beta^T X^T y} + \beta^T X^T X \beta \\
+            & = y^Ty - y^T X \beta - \textcolor{magenta}{y^T X \beta}
+              + \beta^T X^T X \beta \\
+            & = y^T y - 2 y^T X \beta + \beta^T X^T X \beta
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Therefore we have
+
+\begin{align*}
+\nabla \RSS (\beta) & = \nabla ( y^T y ) 
+                      - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    & = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta )
+\end{align*}
+
+
+- We need to compute
+
+$$
+ \nabla (y^T X     \beta )  \qquad \quad \text{ and } \qquad \quad \nabla (\beta^T X^T X \beta )
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+
+- Note that $y^T X$ has dimension
+
+$$
+[ 1 \times n ] \times [ n \times (p + 1 ) ] = 1 \times (p + 1)
+$$
+
+
+
+
+- Since $\beta$ has dimension $(p+1) \times 1$ we can define the function 
+
+$$
+f \colon \R^{p+1} \to \R \,, \qquad 
+f(\beta) := y^T X \beta
+$$
+
+
+- By the First Result on Matrix Calculus in Slide 28
+
+$$
+\nabla f  = \nabla ( \textcolor{magenta}{y^T X} \beta) = \textcolor{magenta}{y^T X}
+$$
+
+ 
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Note that $X^T X$ has dimension
+
+$$
+[ (p + 1) \times n ] \times [ n \times (p+1) ] = (p+1) \times (p+1)
+$$
+
+- Since $\beta$ has dimension $(p+1) \times 1$ we can define the function 
+
+$$
+g \colon \R^{p+1} \to \R \,, \qquad 
+g(\beta) := \beta^T X^T X \beta 
+$$
+
+
+- By the Third Result on Matrix Calculus in Slide 30
+
+\begin{align*}
+\nabla h  & = \nabla (\beta^T \textcolor{magenta}{X^T X} \beta) = \beta^T (\textcolor{magenta}{X^T X} + (\textcolor{magenta}{X^T X})^T ) \\
+& = \beta^T ( X^T X + X^T X ) = 2 \beta^T (X^T X)
+\end{align*}
+
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- Putting together these results we obtain
+
+\begin{align*}
+\nabla \RSS (\beta) & = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    & = -2 y^T X + 2 \beta^T (X^T X)
+\end{align*}
+
+
+- We can finally solve the optimality conditions:
+
+\begin{align*}
+\nabla \RSS (\beta) = 0 \qquad & \iff \qquad 
+-2 y^T X + 2 \beta^T (X^T X) = 0  \\
+& \iff \qquad 
+ \beta^T (X^T X) =  y^T X
+\end{align*}
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- So far we have
+
+$$ 
+\beta^T (X^T X) =  y^T X
+$$
+
+- Take the matrix transpose of both sides
+
+$$
+ (X^T X) \beta = X^T y
+$$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+- The matrix $X^T X$ is symmetric and therefore invertible
+
+- Multiply by $(X^T X)^{-1}$ both sides of 
+$$
+ (X^T X) \beta = X^T y
+$$
+
+
+- We obtain
+
+$$
+\beta = (X^T X)^{-1} X^T y
+$$
+
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
+
+
+- In conclusion 
+
+$$
+\nabla \RSS(\beta) = 0 \qquad \iff \qquad 
+\beta = (X^T X)^{-1} X^T y
+$$
+
+- By the Lemma on Optimality Conditions in Slide 33 we infer
+
+$$
+\beta = (X^T X)^{-1} X^T y  \,\, \text{ minimizes } \,\, \RSS
+$$
+
+- This concludes the proof
+
+
+
+
+## Maximizing the likelihood {.smaller}
+
+We are finally in position to prove the main Theorem
+
+::: Theorem 
+
+Suppose Assumptions 1--5 hold and assume given observations
+$$
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+$$
+The maximization problem
+$$
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y ) 
+$$
+admits the unique solution
+$$
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad 
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
+$$
+:::
+
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- The $\log$ function is strictly increasing 
+
+- Therefore the problem
+$$
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+$$
+is equivalent to
+$$
+\max_{\beta,\sigma} \ \log L( \beta, \sigma^2 | y )
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+- Recall that the likelihood is
+
+$$
+L(\beta, \sigma^2 | y ) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{ \RSS(\beta) }{2\sigma^2}      \right)
+$$
+
+
+- Hence the log--likelihood is
+
+$$
+\log L(\beta, \sigma^2 | y ) 
+= - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\beta) }{2 \sigma^2}
+$$
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+Suppose $\sigma$ is fixed. In this case the problem
+$$
+\max_{\beta} \ \left\{ \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\beta) }{2 \sigma^2} \right\}
+$$
+is equivalent to 
+$$
+\min_{\beta} \ \RSS(\beta)
+$$
+
+We have already seen that the $\RSS$ is minimized at
+$$
+\hat \beta = (X^T X)^{-1} X^T y 
+$$
+
+
+
+
+## Maximizing the likelihood {.smaller}
+### Proof of Theorem
+
+
+- Substituting $\hat \beta$ we obtain
+\begin{align*}
+\max_{\beta,\sigma} \ & \log L(\beta, \sigma^2 | y ) 
+= \max_{\sigma} \ \log L(\hat \beta, \sigma^2 | y ) \\
+& = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \RSS(\hat \beta) }{2 \sigma^2}  \right\}
+\end{align*}
+
+
+- It can be shown that the unique solution to the above problem is
+$$
+\hat{\sigma}^2  = \frac{1}{n} \RSS(\hat \beta)
+$$
+
+- This concludes the proof
+
+
+
+
+# Part 2: <br>Simple regression as<br> multiple regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+## Simple linear regression from multiple {.smaller}
+
+- The likelihood for multiple linear regression is maximized by
+
+$$
+\hat \beta = (X^T X)^{-1} X^T y
+$$
+
+- $X$ is the design matrix of size $n \times (p + 1)$
+
+$$
+X =
+\left(
+\begin{array}{cccc}
+1 & x_{11} & \ldots & x_{1p} \\
+\ldots & \ldots & \ldots & \ldots \\
+1 & x_{n1} & \ldots & x_{np} \\
+\end{array}
+\right)
+$$
+
+
+
+
+## Simple linear regression from multiple {.smaller}
+
+- The data column vector is 
+
+$$
+y =
+\left(
+\begin{array}{c}
+y_1   \\
+\ldots  \\
+y_{n} \\
+\end{array}
+\right)
+$$
+
+
+- We have $p$ predictor variables and $p + 1$ parameters
+
+$$
+\beta =
+\left(
+\begin{array}{c}
+\beta_0 \\
+\beta_1  \\
+\ldots  \\
+\beta_{p} \\
+\end{array}
+\right)
+$$
+
+
+
+
+## Simple linear regression from multiple {.smaller}
+
+- The likelihood for simple linear regression is maximized by
+
+$$
+\hat \alpha = \overline{y} - \hat \beta \, \overline{x} \,, 
+\qquad \quad \hat \beta = \frac{S_{xy}}{S_{xx}}
+$$
+
+- The data is given by
+
+$$
+x =
+\left(
+\begin{array}{c}
+x_1   \\
+\ldots  \\
+x_{n} \\
+\end{array}
+\right)
+\qquad \quad
+y =
+\left(
+\begin{array}{c}
+y_1   \\
+\ldots  \\
+y_{n} \\
+\end{array}
+\right)
+$$
+
+- We have $p = 1$ predictor variables 
+
+- Hence we have $p + 1 = 2$ parameters $(\alpha,\beta)$
+
+
+## Simple linear regression from multiple {.smaller}
+### Goal 
+
+- Show that the multiple linear regression estimator
+$$
+(X^T X)^{-1} X^T y
+$$
+recovers the simple linear regression estimators 
+$$
+\hat \alpha = \overline{y} - \hat \beta \overline{x} \,, 
+\qquad \quad \hat \beta = \frac{S_{xy}}{S_{xx}}
+$$
+
+- We expect $(X^T X)^{-1} X^T y$ to contain the estimators $\hat \alpha, \hat \beta$
+
+$$
+(X^T X)^{-1} X^T y
+= 
+\left( 
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+$$
+
+
+
+
+## Design matrix for simple linear regression {.smaller}
+
+- In simple linear regression we have $p = 1$ predictors
+
+- Hence the design matrix $X$ has size 
+
+$$
+n \times (p+1) = n \times 2
+$$
+
+- The design matrix is
+
+$$
+X =
+\left(
+\begin{array}{cc}
+1 & x_{1}  \\
+\ldots & \ldots \\
+1 & x_{n} \\
+\end{array}
+\right)
+$$
+
+
+
+
+## Calculation of $X^T y$ {.smaller}
+
+- $X$ has size $n \times 2 \qquad \implies \qquad$  $X^T$ has size $2 \times n$
+- $y$ has size $n \times 1$
+- Therefore $X^T y$ has size
+
+$$
+( 2 \times n )  \times (n \times 1) = 2 \times 1
+$$
+
+
+
+## Calculation of $X^T y$ {.smaller}
+
+
+\begin{align*}
+X^T y
+& =
+\left(
+\begin{array}{cc}
+    1 & x_1 \\
+    \ldots & \ldots\\
+    1 & x_n
+\end{array}
+\right)^T
+\left(
+  \begin{array}{l}
+     y_1  \\
+     \ldots\\
+     y_n
+\end{array}\right) \\
+& = 
+\left(
+\begin{array}{ccc}
+1 & \ldots & 1 \\
+x_1 & \ldots & x_n
+\end{array}
+\right)
+\left(
+  \begin{array}{l}
+     y_1  \\
+     \ldots\\
+     y_n
+\end{array}\right) \\
+& = 
+\left(\begin{array}{c}
+1 \times y_1 + 1 \times y_2 + \ldots + 1 \times y_n \\
+x_1 y_1 + x_2 y_2 + \ldots + x_n y_n 
+\end{array} \right) \\
+& = 
+\left(
+  \begin{array}{c}
+     n \overline{y}  \\
+     \sum_{i=1}^n x_i y_i 
+\end{array}
+\right)
+\end{align*}
+
+
+
+## Calculation of $X^T X$ {.smaller}
+
+- $X$ has size $n \times 2$
+- $X^T$ has size $2 \times n$
+- Therefore $X^T X$ has size
+
+$$
+( 2 \times n )  \times (n \times 2) = 2 \times 2
+$$
+
+
+## Calculation of $X^T X$ {.smaller}
+
+\begin{align*}
+X^T X & = 
+\left(
+\begin{array}{cc}
+    1 & x_1 \\
+    \ldots & \ldots\\
+    1 & x_n
+\end{array}
+\right)^T 
+\left(
+\begin{array}{cc}
+    1 & x_1 \\
+    \ldots & \ldots\\
+    1 & x_n
+\end{array}
+\right) \\
+& = 
+\left(
+\begin{array}{ccc}
+1 & \ldots & 1 \\
+x_1 & \ldots & x_n
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+    1 & x_1 \\
+    \ldots & \ldots\\
+    1 & x_n
+\end{array}
+\right) \\
+& = 
+\left(
+\begin{array}{cc}
+    1 \times 1 + \ldots + 1 \times 1 & 1 \times x_1 + \ldots + 1 \times x_n \\
+    x_1 \times 1 + \ldots + x_n \times 1 &  x_1 \times x_1 + \ldots + x_n \times x_n
+\end{array}
+\right) \\
+& = 
+\left(
+\begin{array}{cc}
+    n & n \overline{x} \\
+    n \overline{x} & \sum_{i=1}^n x_i^2
+\end{array}
+\right)
+\end{align*}
+
+
+## Matrix inverse {.smaller}
+
+- Suppose to have a $2 \times n$ matrix 
+
+$$
+M 
+= 
+\left(
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right)
+$$ 
+
+- $M$ is invertible iff 
+
+$$
+\det M = ad - bc \neq 0
+$$
+
+
+- If $\det M \neq 0$ the inverse of $M$ is 
+
+$$
+M^{-1}
+=
+\frac{1}{ ad - bc}  
+\left(
+\begin{array}{cc}
+d & -b \\
+-c & a
+\end{array}\right)
+$$
+
+
+
+## Calculation of $(X^T X)^{-1}$ {.smaller}
+
+- The determinant of $X^T X$ is
+
+\begin{align*}
+\det  \left(X^TX\right) & = 
+\det
+\left(
+\begin{array}{cc}
+    n & n \overline{x} \\
+    n \overline{x} & \sum_{i=1}^n x_i^2
+\end{array}
+\right) \\
+& =
+n \sum_{i=1}^n x^2_i - n^2 \overline{x}^2 \\
+& = n S_{xx}
+\end{align*}
+
+
+- Therefore we have
+
+$$
+\det \left(X^TX\right) = n S_{xx} \geq 0
+$$
+
+
+## Calculation of $(X^T X)^{-1}$ {.smaller}
+
+- Notice that  
+
+$$
+S_{xx} = \sum_{i=1}^n (x_i - \overline{x})^2 = 0 \qquad \iff \qquad x_1 = \ldots = x_n = \overline{x}
+$$
+
+- Hence $S_{xx} = 0$ is a trivial case which we can discard WLOG
+
+- This is because:
+  * The predictors $x_1, \ldots, x_n$ are either chosen or random
+  * If they are chosen, it makes no sense to choose them all equal
+  * If they are random, they will all be equal with probability $0$
+
+
+## Calculation of $(X^T X)^{-1}$ {.smaller}
+
+- Therefore we assume $S_{xx} > 0$
+
+- This way we have 
+
+$$
+\det \left(X^TX\right) = n S_{xx} > 0
+$$
+
+- $X^TX$ is invertible and the inverse is
+
+\begin{align*}
+(X^TX)^{-1} & =
+\left(
+\begin{array}{cc}
+    n & n \overline{x} \\
+    n \overline{x} & \sum_{i=1}^n x_i^2
+\end{array}
+\right)^{-1} \\
+& = 
+\frac{1}{n S_{xx} }
+\left(
+\begin{array}{cc}
+\sum_{i=1}^n x^2_i & -n \overline{x}\\
+-n\overline{x} & n
+\end{array}
+\right)
+\end{align*}
+
+
+
+
+
+## Calculating $(X^T X)^{-1} X^T y$ {.smaller}
+
+- $(X^TX)^{-1}$ has size $2 \times 2$
+
+- $X^T y$ has size $2 \times 1$
+
+- $(X^T X)^{-1} X^T y$ therefore has dimensions
+$$
+(2 \times 2) \times (2 \times 1) = (2 \times 1)
+$$
+
+- We expect $(X^T X)^{-1} X^T y$ to contain the simple regression estimators $\hat \alpha, \hat \beta$
+
+$$
+(X^T X)^{-1} X^T y
+= 
+\left( 
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+$$
+
+
+## Calculating $(X^T X)^{-1} X^T y$ {.smaller}
+
+- We have already computed $(X^T X)^{-1}$ and $X^T y$
+
+$$
+(X^T X)^{-1} X^T y = \frac{1}{n S_{xx} }
+\left(
+\begin{array}{cc}
+\sum_{i=1}^n x^2_i & -n \overline{x}\\
+-n\overline{x} & n
+\end{array}
+\right) \left(
+  \begin{array}{c}
+     n \overline{y}  \\
+     \sum_{i=1}^n x_i y_i 
+\end{array}
+\right)
+$$
+
+
+
+## Calculating $(X^T X)^{-1} X^T y$ {.smaller}
+
+- The first entry of $(X^T X)^{-1} X^T y$ is therefore
+
+\begin{align*}
+\frac{ \sum_{i=1}^n x_i^2 n \overline{y} - n \overline{x} \sum_{i=1}^n x_i y_i  }{n S_{xx}} 
+& = 
+\frac{ \sum_{i=1}^n x_i^2  \overline{y} - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+& = \frac{ \sum_{i=1}^n x_i^2  \overline{y} 
+ \textcolor{magenta}{- \overline{y} n \overline{x}^2 +  \overline{y} n \overline{x}^2}
+ - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+ & = \overline{y} \ \frac{ \sum_{i=1}^n x_i^2 - n \overline{x}^2}{ S_{xx} } - 
+ \overline{x} \ \frac{ \sum_{i=1}^n x_i y_i - n \overline{x} \overline{y} }{ S_{xx} } \\
+ & =  \overline{y} \ \frac{ S_{xx} }{ S_{xx} } - 
+ \overline{x} \ \frac{ S_{xy} }{ S_{xx} }  \\
+ & = \overline{y} - \hat \beta \, \overline{x} \\
+ & = \hat{\alpha}
+\end{align*}
+
+
+
+## Calculating $(X^T X)^{-1} X^T y$ {.smaller}
+
+- The second entry of $(X^T X)^{-1} X^T y$ is
+
+$$
+\frac{ - n \overline{x} n \overline{y} + n \sum_{i=1}^n x_i y_i}{ n S_{xx} } = 
+\frac{  \sum_{i=1}^n x_i y_i - n\overline{x} \overline{y} }{ S_{xx} } 
+ = \frac{ S_{xy} }{S_{xx}} 
+ = \hat{\beta}
+$$
+
+
+- We have finally proven that
+
+$$
+(X^T X)^{-1} X^T y = 
+\left( 
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+$$
+
+- Treating the simple linear regression model as a multiple regression model therefore reconstructs the earlier estimates
+
+
+
+
+
+# Part 3: <br>Two sample t-test<br> as multiple regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -61,7 +1642,10 @@ $
 
 
 
-## TBA {.smaller}
+
+
+
+
 
 
 

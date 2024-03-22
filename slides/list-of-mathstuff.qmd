@@ -28,33 +28,3 @@
  [**Question**](#Question*-3.10)\Pageref{Question*-3.10}
 
  [**Theorem**](#Theorem*-3.11)\Pageref{Theorem*-3.11}
-
- [**Definition**](#Definition*-4.1)\Pageref{Definition*-4.1}
-
- [**Idea**](#Idea*-4.2)\Pageref{Idea*-4.2}
-
- [**Problem**](#Problem*-4.3)\Pageref{Problem*-4.3}
-
- [**Definition**](#Definition*-4.4)\Pageref{Definition*-4.4}
-
- [**Definition**](#Definition*-4.5)\Pageref{Definition*-4.5}
-
- [**Proposition**](#Proposition*-4.6)\Pageref{Proposition*-4.6}
-
- [**Proposition**](#Proposition*-4.7)\Pageref{Proposition*-4.7}
-
- [**Definition**](#Definition*-4.8)\Pageref{Definition*-4.8}
-
- [**Definition**](#Definition*-4.9)\Pageref{Definition*-4.9}
-
- [**Problem**](#Problem*-4.10)\Pageref{Problem*-4.10}
-
- [**Question**](#Question*-4.11)\Pageref{Question*-4.11}
-
- [**Theorem**](#Theorem*-4.12)\Pageref{Theorem*-4.12}
-
- [**Lemma**](#Lemma*-4.13)\Pageref{Lemma*-4.13}
-
- [**Lemma**](#Lemma*-4.14)\Pageref{Lemma*-4.14}
-
- [**Theorem**](#Theorem*-4.15)\Pageref{Theorem*-4.15}

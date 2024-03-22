@@ -341,47 +341,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Theorem {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Corollary {
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,15 +361,43 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Important {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -405,13 +405,13 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   </style>
 </head>
@@ -450,31 +450,1336 @@
 
 </section>
 <section>
-<section id="lecture-9-tba-tba" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Lecture 9: <br>TBA<br>TBA</h1>
+<section id="lecture-9-multiple-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Lecture 9: <br>Multiple linear<br>regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="outline-of-lecture-6" class="slide level2">
-<h2>Outline of Lecture 6</h2>
+<section id="outline-of-lecture-9" class="slide level2">
+<h2>Outline of Lecture 9</h2>
 <ol type="1">
-<li>TBA</li>
+<li>Multiple linear regression</li>
+<li>Simple regression as a multiple regression</li>
+<li>Two sample t-test as multiple regression</li>
 </ol>
 </section></section>
 <section>
-<section id="part-1-tba" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>TBA</h1>
+<section id="part-1-multiple-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>Multiple linear<br>regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="tba" class="slide level2 smaller">
-<h2>TBA</h2>
+<section id="simple-vs-multiple-regression" class="slide level2 smaller">
+<h2>Simple vs Multiple regression</h2>
+<ul>
+<li>Simple regression:
+<ul>
+<li>Response variable <span class="math inline">Y</span> depends on one predictor <span class="math inline">X</span></li>
+<li>The goal is to learn distribution of <span class="math display">
+Y | X
+</span></li>
+<li><span class="math inline">Y | X</span> allows to predict values of <span class="math inline">Y</span> knowing values of <span class="math inline">X</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="simple-vs-multiple-regression-1" class="slide level2 smaller">
+<h2>Simple vs Multiple regression</h2>
+<ul>
+<li>Multiple regression:
+<ul>
+<li>Response variable <span class="math inline">Y</span> depends on multiple predictors <span class="math inline">X_1 , \ldots,  X_p</span></li>
+<li>The goal is to learn distribution of <span class="math display">
+Y | X_1, \ldots, X_p
+</span></li>
+<li><span class="math inline">Y | X_1 , \dots, X_p</span> allows to predict values of <span class="math inline">Y</span> knowing values of <span class="math inline">X_1 , \dots, X_p</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="multiple-regression-function" class="slide level2 smaller">
+<h2>Multiple regression function</h2>
+<p>Suppose given random variables <span class="math inline">X_1 , \ldots, X_p</span> and <span class="math inline">Y</span></p>
+<div class="column" style="width:45%;">
+<ul>
+<li><span class="math inline">X_1,\ldots,X_p</span> are the <strong>predictors</strong></li>
+</ul>
+</div>
+<div class="column" style="width:49%;">
+<ul>
+<li><span class="math inline">Y</span> is the <strong>response</strong></li>
+</ul>
+</div>
+<p><strong>Notation:</strong> We denote points of <span class="math inline">\mathbb{R}^p</span> by <span class="math display">
+x = (x_1, \ldots, x_p)
+</span></p>
+<div id="Definition*-2.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>regression function</strong> of <span class="math inline">Y</span> on <span class="math inline">X_1,\ldots,X_p</span> is the conditional expectation<p></p>
+<p><span class="math display">
+R \colon \mathbb{R}^p \to \mathbb{R}\,, \qquad \quad R(x) :=  {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+</span></p>
+</div></details>
+</div>
+</section>
+<section id="multiple-regression-function-1" class="slide level2 smaller">
+<h2>Multiple regression function</h2>
+<div id="Idea*-2.2" class="Idea">
+<p></p><details class="Idea fbx-simplebox fbx-default" open=""><summary><strong>Idea</strong></summary><div>The regression function <span class="math display">
+R(x) =  {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+</span> predicts the most likely value of <span class="math inline">Y</span> when we observe <span class="math display">
+X_1 = x_1, \ldots , X_p = x_p
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Notation</strong>: We use the shorthand <span class="math display">
+{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p] := {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+</span></p>
+</section>
+<section id="the-multiple-regression-problem" class="slide level2 smaller">
+<h2>The multiple regression problem</h2>
+<p><strong>Assumption:</strong> For each <span class="math inline">i =1 , \ldots, n</span> we observe</p>
+<div class="column" style="width:42%;">
+<ul>
+<li>data point <span class="math inline">(x_{i1}, \ldots, x_{ip}, y_i)</span></li>
+</ul>
+</div>
+<div class="column" style="width:26%;">
+<ul>
+<li><span class="math inline">x_{ij}</span> is from <span class="math inline">X_j</span></li>
+</ul>
+</div>
+<div class="column" style="width:26%;">
+<ul>
+<li><span class="math inline">y_i</span> is from <span class="math inline">Y</span></li>
+</ul>
+</div>
+<div id="Problem*-2.3" class="Problem">
+<p></p><details class="Problem fbx-simplebox fbx-default" open=""><summary><strong>Problem</strong></summary><div>From the above data learn a regression function <span class="math display">
+{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p]
+</span> which explains the observations, that is, <span class="math display">
+{\rm I\kern-.3em E}[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="multiple-linear-regression" class="slide level2 smaller">
+<h2>Multiple linear regression</h2>
+<p>A popular model is to assume that <span class="math inline">{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p]</span> is linear</p>
+<div id="Definition*-2.4" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The regression of <span class="math inline">Y</span> on <span class="math inline">X_1 , \ldots, X_p</span> is <strong>linear</strong> if there exist <span class="math inline">\beta_0,\beta_1, \ldots, \beta_p</span> s.t.<p></p>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \mathbb{R}^p
+</span></p>
+<p><span class="math inline">\beta_0,\beta_1, \ldots, \beta_p</span> are called <strong>regression coefficients</strong></p>
+</div></details>
+</div>
+<p><strong>Note:</strong></p>
+<ul>
+<li><p>In simple regression we have 2 coefficients <span class="math inline">\alpha</span> and <span class="math inline">\beta</span></p></li>
+<li><p>In multiple regression we have <span class="math inline">p+1</span> coefficients <span class="math inline">\beta_0, \ldots, \beta_p</span></p></li>
+</ul>
+</section>
+<section id="multiple-linear-regression-1" class="slide level2 smaller">
+<h2>Multiple linear regression</h2>
+<h3 id="model-assumptions">Model Assumptions</h3>
+<p>Suppose that for each <span class="math inline">i =1 , \ldots, n</span> we observe</p>
+<div class="column" style="width:42%;">
+<ul>
+<li>data point <span class="math inline">(x_{i1}, \ldots, x_{ip}, y_i)</span></li>
+</ul>
+</div>
+<div class="column" style="width:26%;">
+<ul>
+<li><span class="math inline">x_{ij}</span> is from <span class="math inline">X_j</span></li>
+</ul>
+</div>
+<div class="column" style="width:26%;">
+<ul>
+<li><span class="math inline">y_i</span> is from <span class="math inline">Y</span></li>
+</ul>
+</div>
+<div id="Definition*-2.5" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>For each <span class="math inline">i = 1, \ldots, n</span> we denote by <span class="math inline">Y_i</span> a random variable with distribution <span class="math display">
+Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="multiple-linear-regression-2" class="slide level2 smaller">
+<h2>Multiple linear regression</h2>
+<h3 id="model-assumptions-1">Model Assumptions</h3>
+<p><strong>Assumptions:</strong></p>
+<ol type="1">
+<li><p><strong>Predictor is known:</strong> The values <span class="math inline">x_{i1}, \ldots, x_{ip}</span> are known</p></li>
+<li><p><strong>Normality:</strong> The distribution of <span class="math inline">Y_i</span> is normal</p></li>
+<li><p><strong>Linear mean:</strong> There are parameters <span class="math inline">\beta_0,\beta_1,\ldots,\beta_p</span> such that <span class="math display">
+{\rm I\kern-.3em E}[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  
+</span></p></li>
+</ol>
+</section>
+<section id="multiple-linear-regression-3" class="slide level2 smaller">
+<h2>Multiple linear regression</h2>
+<h3 id="model-assumptions-2">Model Assumptions</h3>
+<ol start="4" type="1">
+<li><p><strong>Common variance (Homoscedasticity):</strong> There is a parameter <span class="math inline">\sigma^2</span> such that <span class="math display">
+{\rm Var}[Y_i] = \sigma^2
+</span></p></li>
+<li><p><strong>Independence:</strong> The random variables <span class="math display">
+Y_1   \,, \ldots \,, Y_n
+</span> are independent</p></li>
+</ol>
+</section>
+<section id="characterization-of-the-model" class="slide level2 smaller">
+<h2>Characterization of the Model</h2>
+<ul>
+<li>Assumptions 1–5 look quite abstract</li>
+<li>The following Proposition gives a handy characterization</li>
+</ul>
+<div id="Proposition*-2.6" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>Assumptions 1-5 are satisfied if and only if <span class="math display">
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \varepsilon_{i}
+</span> for some <strong>errors</strong> <span class="math display">
+\varepsilon_1 , \ldots, \varepsilon_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Proof:</strong> Similar to the proof of Proposition in Slide 62 Lecture 8. Exercise</p>
+</section>
+<section id="likelihood-function" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<p>Introduce the column vectors <span class="math display">
+\beta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad
+y := (y_1,\ldots,y_n)^T
+</span></p>
+<div id="Proposition*-2.7" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>Suppose Assumptions 1–5 hold. The likelihood of multiple linear regression is <span class="math display">
+L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="likelihood-function-1" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<h3 id="proof">Proof</h3>
+<ul>
+<li>By assumption we have</li>
+</ul>
+<p><span class="math display">
+Y_i \sim N( \beta_0+ \beta_1 x_{i1} + \ldots + \beta_p x_{ip} , \sigma^2 )
+</span></p>
+<ul>
+<li>Therefore the pdf of <span class="math inline">Y_i</span> is</li>
+</ul>
+<p><span class="math display">
+f_{Y_i} (y_i) =  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right)
+</span></p>
+</section>
+<section id="likelihood-function-2" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<h3 id="proof-1">Proof</h3>
+<ul>
+<li><p>Since <span class="math inline">Y_1,\ldots, Y_n</span> are independent we obtain <span class="math display">\begin{align*}
+L(\beta, \sigma^2 | y) &amp; = f(y_1,\ldots,y_n) \\
+                                &amp; = \prod_{i=1}^n f_{Y_i}(y_i)  \\
+                                &amp; = \prod_{i=1}^n
+                                \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2} \right) \\
+                                &amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}      \right)
+\end{align*}</span></p></li>
+<li><p>This concludes the proof</p></li>
+</ul>
+</section>
+<section id="design-matrix" class="slide level2 smaller">
+<h2>Design matrix</h2>
+<p>For each <span class="math inline">i = 1 , \ldots, n</span> suppose given <span class="math inline">p</span> observations <span class="math display">
+x_{i1}, \ldots, x_{ip}
+</span></p>
+<div id="Definition*-2.8" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>design matrix</strong> is the <span class="math inline">n \times (p+1)</span> matrix <span class="math display">
+X :=
+\left(
+\begin{array}{cccc}
+1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
+1 &amp; x_{21} &amp; \ldots &amp; x_{2p} \\
+\ldots &amp; \ldots &amp; \ldots &amp; \ldots \\
+1 &amp; x_{n1} &amp; \ldots &amp; x_{np} \\
+\end{array}
+\right)
+</span><p></p>
+</div></details>
+</div>
+<p><strong>Note:</strong> The first row of <span class="math inline">X</span> is a vector of ones</p>
+</section>
+<section id="likelihood-function-3" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<h3 id="vectorial-notation">Vectorial notation</h3>
+<p><span class="math display">\begin{align*}
+y - X\beta &amp; =
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+-
+\left(
+\begin{array}{cccc}
+1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
+1 &amp; x_{21} &amp; \ldots &amp; x_{2p} \\
+\ldots &amp; \ldots &amp; \ldots &amp; \ldots \\
+1 &amp; x_{n1} &amp; \ldots &amp; x_{np} \\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+\beta_0 \\
+\beta_1 \\
+\ldots \\
+\beta_p \\
+\end{array}
+\right)
+\\
+&amp; =
+\left(
+\begin{array}{c}
+y_1 \\
+y_2 \\
+\ldots \\
+y_n \\
+\end{array}
+\right)
+-
+\left(
+\begin{array}{c}
+\beta_0 + \beta_1 x_{11} + \ldots + \beta_p x_{1p}\\
+\beta_0 + \beta_1 x_{21} + \ldots + \beta_p x_{2p} \\
+\ldots \\
+\beta_0 + \beta_1 x_{n1} + \ldots + \beta_p x_{np} \\
+\end{array}
+\right) \\
+&amp; =
+\left(
+\begin{array}{c}
+y_1 - \beta_0 - \beta_1 x_{11} - \ldots - \beta_p x_{1p}\\
+y_2 - \beta_0 - \beta_1 x_{21} - \ldots - \beta_p x_{2p} \\
+\ldots \\
+y_n - \beta_0 - \beta_1 x_{n1} - \ldots - \beta_p x_{np} \\
+\end{array}
+\right) \, \in \, \mathbb{R}^n
+\end{align*}</span></p>
+</section>
+<section id="likelihood-function-4" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<h3 id="vectorial-notation-1">Vectorial notation</h3>
+<p>From the previous calculation we get</p>
+<p><span class="math display">
+(y - X \beta)^T \, (y - X\beta) =
+\sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip}   \right)^2
+</span></p>
+<div id="Definition*-2.9" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>Let <span class="math inline">X</span> be <span class="math inline">n \times (p + 1)</span> design matrix and <span class="math inline">y \in \mathbb{R}^n</span>. The <strong>residual sum of squares</strong> associated to the parameter <span class="math inline">\beta</span> is <span class="math display">
+\mathop{\mathrm{RSS}}\colon \mathbb{R}^{p+1} \to \mathbb{R}\,, \qquad
+\mathop{\mathrm{RSS}}(\beta) :=  (y - X \beta)^T \, (y - X\beta)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="likelihood-function-5" class="slide level2 smaller">
+<h2>Likelihood function</h2>
+<h3 id="vectorial-notation-2">Vectorial notation</h3>
+<p>Therefore the likelihood function can be re-written as</p>
+<p><span class="math display">\begin{align*}
+L(\beta, \sigma^2 | y ) &amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right) \\
+&amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
+&amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\mathop{\mathrm{RSS}}(\beta) }{2 \sigma^2}  \right)
+\end{align*}</span></p>
+</section>
+<section id="model-summary" class="slide level2 smaller">
+<h2>Model Summary</h2>
+<ul>
+<li><p>Multiple linear regression of <span class="math inline">Y</span> on <span class="math inline">X_1, \ldots, X_p</span> is the function <span class="math display">
+{\rm I\kern-.3em E}[Y | x_1,\ldots,x_p] = \beta_0 + \beta_1 x_{1} + \ldots + \beta_p x_p
+</span></p></li>
+<li><p>For each <span class="math inline">i=1, \ldots, n</span> suppose given the observations <span class="math display">
+(x_{i1}, \ldots, x_{ip}, y_i)
+</span></p></li>
+</ul>
+</section>
+<section id="model-summary-1" class="slide level2 smaller">
+<h2>Model Summary</h2>
+<ul>
+<li>Denote by <span class="math inline">Y_i</span> the random variable</li>
+</ul>
+<p><span class="math display">
+Y | x_{i1} ,\ldots, x_{ip}
+</span></p>
+<ul>
+<li>Suppose that <span class="math inline">Y_i</span> has the form</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>The <strong>errors</strong> are</li>
+</ul>
+<p><span class="math display">
+\varepsilon_1,\ldots, \varepsilon_n \,\, \text{ iid } \,\, N(0,\sigma^2)
+</span></p>
+</section>
+<section id="the-multiple-linear-regression-problem" class="slide level2 smaller">
+<h2>The multiple linear regression problem</h2>
+<p>For each <span class="math inline">i = 1 , \ldots, n</span> suppose given data points <span class="math inline">(x_{i1}, \ldots, x_{ip}, y_i)</span></p>
+<div id="Problem*-2.10" class="Problem">
+<p></p><details class="Problem fbx-simplebox fbx-default" open=""><summary><strong>Problem</strong></summary><div>From the above data learn a multiple linear regression function <span class="math display">
+{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p] = \beta_0 + \beta_1 x_1 +
+\ldots + \beta_p x_p
+</span> which explains the observations, that is, <span class="math display">\begin{equation} \tag{5}
+{\rm I\kern-.3em E}[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}</span><p></p>
+</div></details>
+</div>
+<div id="Question*-2.11" class="Question">
+<p></p><details class="Question fbx-simplebox fbx-default" open=""><summary><strong>Question</strong></summary><div>How do we enforce (5)?<p></p>
+</div></details>
+</div>
+</section>
+<section id="answer" class="slide level2 smaller">
+<h2>Answer</h2>
+<ul>
+<li>Recall that <span class="math inline">Y_i</span> is distributed like</li>
+</ul>
+<p><span class="math display">
+Y_i | x_{i1}, \ldots, x_{ip}
+</span></p>
+<ul>
+<li>Therefore</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | x_{i1}, \ldots, x_{ip}] = {\rm I\kern-.3em E}[Y_i]
+</span></p>
+<ul>
+<li>Hence (5) holds iff</li>
+</ul>
+<p><span class="math display">\begin{equation} \tag{6}
+{\rm I\kern-.3em E}[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\end{equation}</span></p>
+</section>
+<section id="answer-1" class="slide level2 smaller">
+<h2>Answer</h2>
+<ul>
+<li>If we want (6) to hold, we need to maximize the joint probability</li>
+</ul>
+<p><span class="math display">
+P(Y_1 \approx y_1, \ldots, Y_n \approx y_n)
+</span></p>
+<ul>
+<li>This means choosing parameters <span class="math inline">\hat \beta,  \hat \sigma</span> which maximize the likelihood function</li>
+</ul>
+<p><span class="math display">
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+</span></p>
+</section>
+<section id="maximizing-the-likelihood" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<div id="Theorem*-2.12" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Suppose Assumptions 1–5 hold and assume given observations <span class="math display">
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+</span> The maximization problem <span class="math display">
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y )
+</span> admits the unique solution <span class="math display">
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad
+\hat{\sigma}^2  = \frac{1}{n} \mathop{\mathrm{RSS}}(\hat \beta)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="minimizing-the-rss" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<p>The proof of previous Theorem relies on the following Lemma</p>
+<div id="Lemma*-2.13" class="Lemma">
+<p></p><details class="Lemma fbx-simplebox fbx-default" open=""><summary><strong>Lemma</strong></summary><div>Assume given observations <span class="math display">
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+</span> The minimization problem <span class="math display">
+\min_{\beta} \ \mathop{\mathrm{RSS}}(\beta)
+</span> admits the unique solution <span class="math display">
+\hat \beta = (X^T X)^{-1} X^T y
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="results-from-matrix-calculus" class="slide level2 smaller">
+<h2>Results from matrix calculus</h2>
+<ul>
+<li><p>Some elementary results from matrix calculus are needed</p></li>
+<li><p>In the following <span class="math inline">x</span> denotes an <span class="math inline">n \times 1</span> column vector</p></li>
+</ul>
+<p><span class="math display">
+x =
+\left(
+\begin{array}{c}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="results-from-matrix-calculus-1" class="slide level2 smaller">
+<h2>Results from matrix calculus</h2>
+<h3 id="first-result">First result</h3>
+<ul>
+<li><p>Suppose given an <span class="math inline">n \times 1</span> column vector <span class="math inline">a</span></p></li>
+<li><p>Define the scalar function</p></li>
+</ul>
+<p><span class="math display">
+f \colon \mathbb{R}^n \to \mathbb{R}\,, \qquad f(x) := a^T x
+</span></p>
+<ul>
+<li>Then <span class="math inline">f</span> is differentiable and the gradient is constant</li>
+</ul>
+<p><span class="math display">
+\nabla f (x) = a^T
+</span></p>
+</section>
+<section id="results-from-matrix-calculus-2" class="slide level2 smaller">
+<h2>Results from matrix calculus</h2>
+<h3 id="second-result">Second result</h3>
+<ul>
+<li><p>Suppose given an <span class="math inline">m \times n</span> matrix <span class="math inline">A</span></p></li>
+<li><p>Define the vectorial affine function</p></li>
+</ul>
+<p><span class="math display">
+g \colon \mathbb{R}^n \to \mathbb{R}^m \,, \qquad g(x) := A x
+</span></p>
+<ul>
+<li>Then <span class="math inline">g</span> is differentiable and the Jacobian is constant</li>
+</ul>
+<p><span class="math display">
+J g (x) = A
+</span></p>
+</section>
+<section id="results-from-matrix-calculus-3" class="slide level2 smaller">
+<h2>Results from matrix calculus</h2>
+<h3 id="third-result">Third result</h3>
+<ul>
+<li><p>Suppose given an <span class="math inline">n \times n</span> matrix <span class="math inline">M</span></p></li>
+<li><p>Define the quadratic form</p></li>
+</ul>
+<p><span class="math display">
+h \colon \mathbb{R}^n \to \mathbb{R}\,, \qquad
+h(x) := x^T M x
+</span></p>
+<ul>
+<li>Then <span class="math inline">h</span> is differentiable and the Jacobian is</li>
+</ul>
+<p><span class="math display">
+J h(x) = x^T (M + M^T)
+</span></p>
+</section>
+<section id="additional-results-on-the-matrix-transpose" class="slide level2 smaller">
+<h2>Additional results on the matrix transpose</h2>
+<ol type="1">
+<li><p>For any <span class="math inline">m \times n</span> matrix <span class="math inline">A</span> <span class="math display">
+(A^T)^T= A
+</span></p></li>
+<li><p>Let <span class="math inline">M</span> be a square <span class="math inline">n \times n</span> matrix. Then <span class="math inline">M</span> is symmetric iff <span class="math display">
+M^T = M
+</span></p></li>
+<li><p>Scalars can be seen as <span class="math inline">1 \times 1</span> symmetric matrices</p></li>
+<li><p>Therefore for any scalar <span class="math inline">c \in \mathbb{R}</span> <span class="math display">
+c^T = c
+</span></p></li>
+</ol>
+</section>
+<section id="additional-results-on-the-matrix-transpose-1" class="slide level2 smaller">
+<h2>Additional results on the matrix transpose</h2>
+<ol start="5" type="1">
+<li><p>For any <span class="math inline">m \times n</span> matrix <span class="math inline">A</span> and <span class="math inline">n \times p</span> matrix <span class="math inline">B</span> <span class="math display">
+(AB)^T=B^T A^T
+</span></p></li>
+<li><p>The matrix <span class="math inline">A^T A</span> is symmetric by point (2) <span class="math display">
+(A^T A)^T = A^T (A^T)^T = A^T A
+</span></p></li>
+</ol>
+</section>
+<section id="optimality-conditions" class="slide level2 smaller">
+<h2>Optimality conditions</h2>
+<p>We also need the <span class="math inline">n</span>-dimensional version of the Lemma in Slide 18 Lecture 8</p>
+<div id="Lemma*-2.14" class="Lemma">
+<p></p><details class="Lemma fbx-simplebox fbx-default" open=""><summary><strong>Lemma</strong></summary><div>Suppose <span class="math inline">f \colon \mathbb{R}^n \to \mathbb{R}</span> has positive semi-definite Hessian. They are equivalent<p></p>
+<ol type="1">
+<li>The point <span class="math inline">\hat x</span> is a minimizer of <span class="math inline">f</span>, that is,</li>
+</ol>
+<p><span class="math display">
+f( \hat x ) = \min_{x \in \mathbb{R}^n} f(x)
+</span></p>
+<ol start="2" type="1">
+<li>The point <span class="math inline">\hat x</span> satisfies the <strong>optimality conditions</strong></li>
+</ol>
+<p><span class="math display">
+\nabla f (\hat x) = 0
+</span></p>
+</div></details>
+</div>
+</section>
+<section id="minimizing-the-rss-1" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma">Proof of Lemma</h3>
+<ul>
+<li>We are finally ready to minimize the <span class="math inline">\mathop{\mathrm{RSS}}</span></li>
+</ul>
+<p><span class="math display">
+\min_{\beta} \ \mathop{\mathrm{RSS}}(\beta)
+</span></p>
+<ul>
+<li>Recall that <span class="math inline">\mathop{\mathrm{RSS}}\colon \mathbb{R}^{p+1} \to \mathbb{R}</span> with</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(\beta) = (y - X \beta)^T (y - X \beta)
+</span></p>
+<ul>
+<li><p>It is not too difficult to show that <span class="math inline">\nabla^2 \mathop{\mathrm{RSS}}</span> is positive-semidefinite</p></li>
+<li><p>The proof of this fact is left as an exercise</p></li>
+</ul>
+</section>
+<section id="minimizing-the-rss-2" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-1">Proof of Lemma</h3>
+<ul>
+<li>By the Lemma on Optimality Conditions in Slide 111</li>
+</ul>
+<p><span class="math display">
+\beta \,\, \text{ minimizes } \,\, \mathop{\mathrm{RSS}}\qquad \iff \qquad
+\nabla \mathop{\mathrm{RSS}}(\beta) = 0
+</span></p>
+<ul>
+<li><p>To compute <span class="math inline">\nabla \mathop{\mathrm{RSS}}</span> we first expand <span class="math inline">\mathop{\mathrm{RSS}}</span></p></li>
+<li><p>Using the properties of transposition we get</p></li>
+</ul>
+<p><span class="math display">\begin{align*}
+\mathop{\mathrm{RSS}}(\beta) &amp; = (y-X \beta)^T (y-X \beta) \\
+            &amp; = (y^T - (X\beta)^T ) (y-X \beta) \\
+            &amp; = (y^T - \beta^T X^T ) (y-X \beta) \\
+            &amp; = y^T y - y^T X \beta - \beta^T X^T y
+                + \beta^T X^T X \beta
+\end{align*}</span></p>
+</section>
+<section id="minimizing-the-rss-3" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-2">Proof of Lemma</h3>
+<ul>
+<li>Note that
+<ul>
+<li><span class="math inline">y</span> has size <span class="math inline">n \times 1</span></li>
+<li><span class="math inline">X</span> has size <span class="math inline">n \times (p+1)</span></li>
+<li>Therefore <span class="math inline">X^T</span> has size <span class="math inline">(p+1) \times n</span></li>
+<li><span class="math inline">\beta</span> has size <span class="math inline">(p+1) \times 1</span></li>
+<li>Thus <span class="math inline">\beta^T</span> has size <span class="math inline">1 \times (p+1)</span></li>
+</ul></li>
+<li><span class="math inline">\beta^T X^T y</span> therefore has size</li>
+</ul>
+<p><span class="math display">
+\left[ 1 \times (p+1) \right] \times
+\left[ (p+1) \times n \right] \times
+\left[ n \times 1 \right]  = 1 \times 1
+</span></p>
+</section>
+<section id="minimizing-the-rss-4" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-3">Proof of Lemma</h3>
+<ul>
+<li><p><span class="math inline">\beta^T X^T y</span> is therefore a scalar and so symmetric</p></li>
+<li><p>Hence <span class="math display">
+\left( \beta^T X^T y  \right)^T = \beta^T X^T y  \qquad
+\implies \qquad  y^T X \beta = \beta^T X^T y
+</span></p></li>
+<li><p>The <span class="math inline">\mathop{\mathrm{RSS}}</span> can now be written as <span class="math display">\begin{align*}
+\mathop{\mathrm{RSS}}(\beta) &amp; =  (y-X\beta)^T(y-X\beta) \\
+          &amp; =  y^T y - y^T X \beta
+              - \textcolor{magenta}{\beta^T X^T y} + \beta^T X^T X \beta \\
+          &amp; = y^Ty - y^T X \beta - \textcolor{magenta}{y^T X \beta}
+            + \beta^T X^T X \beta \\
+          &amp; = y^T y - 2 y^T X \beta + \beta^T X^T X \beta
+\end{align*}</span></p></li>
+</ul>
+</section>
+<section id="minimizing-the-rss-5" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-4">Proof of Lemma</h3>
+<ul>
+<li>Therefore we have</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\nabla \mathop{\mathrm{RSS}}(\beta) &amp; = \nabla ( y^T y )
+                      - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    &amp; = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta )
+\end{align*}</span></p>
+<ul>
+<li>We need to compute</li>
+</ul>
+<p><span class="math display">
+\nabla (y^T X     \beta )  \qquad \quad \text{ and } \qquad \quad \nabla (\beta^T X^T X \beta )
+</span></p>
+</section>
+<section id="minimizing-the-rss-6" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-5">Proof of Lemma</h3>
+<ul>
+<li>Note that <span class="math inline">y^T X</span> has dimension</li>
+</ul>
+<p><span class="math display">
+[ 1 \times n ] \times [ n \times (p + 1 ) ] = 1 \times (p + 1)
+</span></p>
+<ul>
+<li>Since <span class="math inline">\beta</span> has dimension <span class="math inline">(p+1) \times 1</span> we can define the function</li>
+</ul>
+<p><span class="math display">
+f \colon \mathbb{R}^{p+1} \to \mathbb{R}\,, \qquad
+f(\beta) := y^T X \beta
+</span></p>
+<ul>
+<li>By the First Result on Matrix Calculus in Slide 28</li>
+</ul>
+<p><span class="math display">
+\nabla f  = \nabla ( \textcolor{magenta}{y^T X} \beta) = \textcolor{magenta}{y^T X}
+</span></p>
+</section>
+<section id="minimizing-the-rss-7" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-6">Proof of Lemma</h3>
+<ul>
+<li>Note that <span class="math inline">X^T X</span> has dimension</li>
+</ul>
+<p><span class="math display">
+[ (p + 1) \times n ] \times [ n \times (p+1) ] = (p+1) \times (p+1)
+</span></p>
+<ul>
+<li>Since <span class="math inline">\beta</span> has dimension <span class="math inline">(p+1) \times 1</span> we can define the function</li>
+</ul>
+<p><span class="math display">
+g \colon \mathbb{R}^{p+1} \to \mathbb{R}\,, \qquad
+g(\beta) := \beta^T X^T X \beta
+</span></p>
+<ul>
+<li>By the Third Result on Matrix Calculus in Slide 30</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\nabla h  &amp; = \nabla (\beta^T \textcolor{magenta}{X^T X} \beta) = \beta^T (\textcolor{magenta}{X^T X} + (\textcolor{magenta}{X^T X})^T ) \\
+&amp; = \beta^T ( X^T X + X^T X ) = 2 \beta^T (X^T X)
+\end{align*}</span></p>
+</section>
+<section id="minimizing-the-rss-8" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-7">Proof of Lemma</h3>
+<ul>
+<li>Putting together these results we obtain</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\nabla \mathop{\mathrm{RSS}}(\beta) &amp; = - 2  \nabla (y^T X     \beta ) + \nabla (\beta^T X^T X \beta ) \\
+                    &amp; = -2 y^T X + 2 \beta^T (X^T X)
+\end{align*}</span></p>
+<ul>
+<li>We can finally solve the optimality conditions:</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\nabla \mathop{\mathrm{RSS}}(\beta) = 0 \qquad &amp; \iff \qquad
+-2 y^T X + 2 \beta^T (X^T X) = 0  \\
+&amp; \iff \qquad
+\beta^T (X^T X) =  y^T X
+\end{align*}</span></p>
+</section>
+<section id="minimizing-the-rss-9" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-8">Proof of Lemma</h3>
+<ul>
+<li>So far we have</li>
+</ul>
+<p><span class="math display">
+\beta^T (X^T X) =  y^T X
+</span></p>
+<ul>
+<li>Take the matrix transpose of both sides</li>
+</ul>
+<p><span class="math display">
+(X^T X) \beta = X^T y
+</span></p>
+</section>
+<section id="minimizing-the-rss-10" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-9">Proof of Lemma</h3>
+<ul>
+<li><p>The matrix <span class="math inline">X^T X</span> is symmetric and therefore invertible</p></li>
+<li><p>Multiply by <span class="math inline">(X^T X)^{-1}</span> both sides of <span class="math display">
+(X^T X) \beta = X^T y
+</span></p></li>
+<li><p>We obtain</p></li>
+</ul>
+<p><span class="math display">
+\beta = (X^T X)^{-1} X^T y
+</span></p>
+</section>
+<section id="minimizing-the-rss-11" class="slide level2 smaller">
+<h2>Minimizing the RSS</h2>
+<h3 id="proof-of-lemma-10">Proof of Lemma</h3>
+<ul>
+<li>In conclusion</li>
+</ul>
+<p><span class="math display">
+\nabla \mathop{\mathrm{RSS}}(\beta) = 0 \qquad \iff \qquad
+\beta = (X^T X)^{-1} X^T y
+</span></p>
+<ul>
+<li>By the Lemma on Optimality Conditions in Slide 33 we infer</li>
+</ul>
+<p><span class="math display">
+\beta = (X^T X)^{-1} X^T y  \,\, \text{ minimizes } \,\, \mathop{\mathrm{RSS}}
+</span></p>
+<ul>
+<li>This concludes the proof</li>
+</ul>
+</section>
+<section id="maximizing-the-likelihood-1" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<p>We are finally in position to prove the main Theorem</p>
+<div id="Theorem*-2.15" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Suppose Assumptions 1–5 hold and assume given observations <span class="math display">
+(x_{i1}, \ldots, x_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+</span> The maximization problem <span class="math display">
+\max_{\beta,\sigma}  \ L(\beta, \sigma^2 | y )
+</span> admits the unique solution <span class="math display">
+\hat \beta = (X^T X)^{-1} X^T y  \,, \qquad
+\hat{\sigma}^2  = \frac{1}{n} \mathop{\mathrm{RSS}}(\hat \beta)
+</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="maximizing-the-likelihood-2" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<h3 id="proof-of-theorem">Proof of Theorem</h3>
+<ul>
+<li><p>The <span class="math inline">\log</span> function is strictly increasing</p></li>
+<li><p>Therefore the problem <span class="math display">
+\max_{\beta,\sigma} \ L(\beta, \sigma^2 | y )
+</span> is equivalent to <span class="math display">
+\max_{\beta,\sigma} \ \log L( \beta, \sigma^2 | y )
+</span></p></li>
+</ul>
+</section>
+<section id="maximizing-the-likelihood-3" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<h3 id="proof-of-theorem-1">Proof of Theorem</h3>
+<ul>
+<li>Recall that the likelihood is</li>
+</ul>
+<p><span class="math display">
+L(\beta, \sigma^2 | y ) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - \frac{ \mathop{\mathrm{RSS}}(\beta) }{2\sigma^2}      \right)
+</span></p>
+<ul>
+<li>Hence the log–likelihood is</li>
+</ul>
+<p><span class="math display">
+\log L(\beta, \sigma^2 | y )
+= - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \mathop{\mathrm{RSS}}(\beta) }{2 \sigma^2}
+</span></p>
+</section>
+<section id="maximizing-the-likelihood-4" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<h3 id="proof-of-theorem-2">Proof of Theorem</h3>
+<p>Suppose <span class="math inline">\sigma</span> is fixed. In this case the problem <span class="math display">
+\max_{\beta} \ \left\{ \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \mathop{\mathrm{RSS}}(\beta) }{2 \sigma^2} \right\}
+</span> is equivalent to <span class="math display">
+\min_{\beta} \ \mathop{\mathrm{RSS}}(\beta)
+</span></p>
+<p>We have already seen that the <span class="math inline">\mathop{\mathrm{RSS}}</span> is minimized at <span class="math display">
+\hat \beta = (X^T X)^{-1} X^T y
+</span></p>
+</section>
+<section id="maximizing-the-likelihood-5" class="slide level2 smaller">
+<h2>Maximizing the likelihood</h2>
+<h3 id="proof-of-theorem-3">Proof of Theorem</h3>
+<ul>
+<li><p>Substituting <span class="math inline">\hat \beta</span> we obtain <span class="math display">\begin{align*}
+\max_{\beta,\sigma} \ &amp; \log L(\beta, \sigma^2 | y )
+= \max_{\sigma} \ \log L(\hat \beta, \sigma^2 | y ) \\
+&amp; = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
+\frac{ \mathop{\mathrm{RSS}}(\hat \beta) }{2 \sigma^2}  \right\}
+\end{align*}</span></p></li>
+<li><p>It can be shown that the unique solution to the above problem is <span class="math display">
+\hat{\sigma}^2  = \frac{1}{n} \mathop{\mathrm{RSS}}(\hat \beta)
+</span></p></li>
+<li><p>This concludes the proof</p></li>
+</ul>
+</section></section>
+<section>
+<section id="part-2-simple-regression-as-multiple-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Simple regression as<br> multiple regression</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="simple-linear-regression-from-multiple" class="slide level2 smaller">
+<h2>Simple linear regression from multiple</h2>
+<ul>
+<li>The likelihood for multiple linear regression is maximized by</li>
+</ul>
+<p><span class="math display">
+\hat \beta = (X^T X)^{-1} X^T y
+</span></p>
+<ul>
+<li><span class="math inline">X</span> is the design matrix of size <span class="math inline">n \times (p + 1)</span></li>
+</ul>
+<p><span class="math display">
+X =
+\left(
+\begin{array}{cccc}
+1 &amp; x_{11} &amp; \ldots &amp; x_{1p} \\
+\ldots &amp; \ldots &amp; \ldots &amp; \ldots \\
+1 &amp; x_{n1} &amp; \ldots &amp; x_{np} \\
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="simple-linear-regression-from-multiple-1" class="slide level2 smaller">
+<h2>Simple linear regression from multiple</h2>
+<ul>
+<li>The data column vector is</li>
+</ul>
+<p><span class="math display">
+y =
+\left(
+\begin{array}{c}
+y_1   \\
+\ldots  \\
+y_{n} \\
+\end{array}
+\right)
+</span></p>
+<ul>
+<li>We have <span class="math inline">p</span> predictor variables and <span class="math inline">p + 1</span> parameters</li>
+</ul>
+<p><span class="math display">
+\beta =
+\left(
+\begin{array}{c}
+\beta_0 \\
+\beta_1  \\
+\ldots  \\
+\beta_{p} \\
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="simple-linear-regression-from-multiple-2" class="slide level2 smaller">
+<h2>Simple linear regression from multiple</h2>
+<ul>
+<li>The likelihood for simple linear regression is maximized by</li>
+</ul>
+<p><span class="math display">
+\hat \alpha = \overline{y} - \hat \beta \, \overline{x} \,,
+\qquad \quad \hat \beta = \frac{S_{xy}}{S_{xx}}
+</span></p>
+<ul>
+<li>The data is given by</li>
+</ul>
+<p><span class="math display">
+x =
+\left(
+\begin{array}{c}
+x_1   \\
+\ldots  \\
+x_{n} \\
+\end{array}
+\right)
+\qquad \quad
+y =
+\left(
+\begin{array}{c}
+y_1   \\
+\ldots  \\
+y_{n} \\
+\end{array}
+\right)
+</span></p>
+<ul>
+<li><p>We have <span class="math inline">p = 1</span> predictor variables</p></li>
+<li><p>Hence we have <span class="math inline">p + 1 = 2</span> parameters <span class="math inline">(\alpha,\beta)</span></p></li>
+</ul>
+</section>
+<section id="simple-linear-regression-from-multiple-3" class="slide level2 smaller">
+<h2>Simple linear regression from multiple</h2>
+<h3 id="goal">Goal</h3>
+<ul>
+<li><p>Show that the multiple linear regression estimator <span class="math display">
+(X^T X)^{-1} X^T y
+</span> recovers the simple linear regression estimators <span class="math display">
+\hat \alpha = \overline{y} - \hat \beta \overline{x} \,,
+\qquad \quad \hat \beta = \frac{S_{xy}}{S_{xx}}
+</span></p></li>
+<li><p>We expect <span class="math inline">(X^T X)^{-1} X^T y</span> to contain the estimators <span class="math inline">\hat \alpha, \hat \beta</span></p></li>
+</ul>
+<p><span class="math display">
+(X^T X)^{-1} X^T y
+=
+\left(
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="design-matrix-for-simple-linear-regression" class="slide level2 smaller">
+<h2>Design matrix for simple linear regression</h2>
+<ul>
+<li><p>In simple linear regression we have <span class="math inline">p = 1</span> predictors</p></li>
+<li><p>Hence the design matrix <span class="math inline">X</span> has size</p></li>
+</ul>
+<p><span class="math display">
+n \times (p+1) = n \times 2
+</span></p>
+<ul>
+<li>The design matrix is</li>
+</ul>
+<p><span class="math display">
+X =
+\left(
+\begin{array}{cc}
+1 &amp; x_{1}  \\
+\ldots &amp; \ldots \\
+1 &amp; x_{n} \\
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="calculation-of-xt-y" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">X^T y</span></h2>
+<ul>
+<li><span class="math inline">X</span> has size <span class="math inline">n \times 2 \qquad \implies \qquad</span> <span class="math inline">X^T</span> has size <span class="math inline">2 \times n</span></li>
+<li><span class="math inline">y</span> has size <span class="math inline">n \times 1</span></li>
+<li>Therefore <span class="math inline">X^T y</span> has size</li>
+</ul>
+<p><span class="math display">
+( 2 \times n )  \times (n \times 1) = 2 \times 1
+</span></p>
+</section>
+<section id="calculation-of-xt-y-1" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">X^T y</span></h2>
+<p><span class="math display">\begin{align*}
+X^T y
+&amp; =
+\left(
+\begin{array}{cc}
+    1 &amp; x_1 \\
+    \ldots &amp; \ldots\\
+    1 &amp; x_n
+\end{array}
+\right)^T
+\left(
+  \begin{array}{l}
+     y_1  \\
+     \ldots\\
+     y_n
+\end{array}\right) \\
+&amp; =
+\left(
+\begin{array}{ccc}
+1 &amp; \ldots &amp; 1 \\
+x_1 &amp; \ldots &amp; x_n
+\end{array}
+\right)
+\left(
+  \begin{array}{l}
+     y_1  \\
+     \ldots\\
+     y_n
+\end{array}\right) \\
+&amp; =
+\left(\begin{array}{c}
+1 \times y_1 + 1 \times y_2 + \ldots + 1 \times y_n \\
+x_1 y_1 + x_2 y_2 + \ldots + x_n y_n
+\end{array} \right) \\
+&amp; =
+\left(
+  \begin{array}{c}
+     n \overline{y}  \\
+     \sum_{i=1}^n x_i y_i
+\end{array}
+\right)
+\end{align*}</span></p>
+</section>
+<section id="calculation-of-xt-x" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">X^T X</span></h2>
+<ul>
+<li><span class="math inline">X</span> has size <span class="math inline">n \times 2</span></li>
+<li><span class="math inline">X^T</span> has size <span class="math inline">2 \times n</span></li>
+<li>Therefore <span class="math inline">X^T X</span> has size</li>
+</ul>
+<p><span class="math display">
+( 2 \times n )  \times (n \times 2) = 2 \times 2
+</span></p>
+</section>
+<section id="calculation-of-xt-x-1" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">X^T X</span></h2>
+<p><span class="math display">\begin{align*}
+X^T X &amp; =
+\left(
+\begin{array}{cc}
+    1 &amp; x_1 \\
+    \ldots &amp; \ldots\\
+    1 &amp; x_n
+\end{array}
+\right)^T
+\left(
+\begin{array}{cc}
+    1 &amp; x_1 \\
+    \ldots &amp; \ldots\\
+    1 &amp; x_n
+\end{array}
+\right) \\
+&amp; =
+\left(
+\begin{array}{ccc}
+1 &amp; \ldots &amp; 1 \\
+x_1 &amp; \ldots &amp; x_n
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+    1 &amp; x_1 \\
+    \ldots &amp; \ldots\\
+    1 &amp; x_n
+\end{array}
+\right) \\
+&amp; =
+\left(
+\begin{array}{cc}
+    1 \times 1 + \ldots + 1 \times 1 &amp; 1 \times x_1 + \ldots + 1 \times x_n \\
+    x_1 \times 1 + \ldots + x_n \times 1 &amp;  x_1 \times x_1 + \ldots + x_n \times x_n
+\end{array}
+\right) \\
+&amp; =
+\left(
+\begin{array}{cc}
+    n &amp; n \overline{x} \\
+    n \overline{x} &amp; \sum_{i=1}^n x_i^2
+\end{array}
+\right)
+\end{align*}</span></p>
+</section>
+<section id="matrix-inverse" class="slide level2 smaller">
+<h2>Matrix inverse</h2>
+<ul>
+<li>Suppose to have a <span class="math inline">2 \times n</span> matrix</li>
+</ul>
+<p><span class="math display">
+M
+=
+\left(
+\begin{array}{cc}
+a &amp; b \\
+c &amp; d
+\end{array}
+\right)
+</span></p>
+<ul>
+<li><span class="math inline">M</span> is invertible iff</li>
+</ul>
+<p><span class="math display">
+\det M = ad - bc \neq 0
+</span></p>
+<ul>
+<li>If <span class="math inline">\det M \neq 0</span> the inverse of <span class="math inline">M</span> is</li>
+</ul>
+<p><span class="math display">
+M^{-1}
+=
+\frac{1}{ ad - bc}  
+\left(
+\begin{array}{cc}
+d &amp; -b \\
+-c &amp; a
+\end{array}\right)
+</span></p>
+</section>
+<section id="calculation-of-xt-x-1-1" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">(X^T X)^{-1}</span></h2>
+<ul>
+<li>The determinant of <span class="math inline">X^T X</span> is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\det  \left(X^TX\right) &amp; =
+\det
+\left(
+\begin{array}{cc}
+    n &amp; n \overline{x} \\
+    n \overline{x} &amp; \sum_{i=1}^n x_i^2
+\end{array}
+\right) \\
+&amp; =
+n \sum_{i=1}^n x^2_i - n^2 \overline{x}^2 \\
+&amp; = n S_{xx}
+\end{align*}</span></p>
+<ul>
+<li>Therefore we have</li>
+</ul>
+<p><span class="math display">
+\det \left(X^TX\right) = n S_{xx} \geq 0
+</span></p>
+</section>
+<section id="calculation-of-xt-x-1-2" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">(X^T X)^{-1}</span></h2>
+<ul>
+<li>Notice that</li>
+</ul>
+<p><span class="math display">
+S_{xx} = \sum_{i=1}^n (x_i - \overline{x})^2 = 0 \qquad \iff \qquad x_1 = \ldots = x_n = \overline{x}
+</span></p>
+<ul>
+<li><p>Hence <span class="math inline">S_{xx} = 0</span> is a trivial case which we can discard WLOG</p></li>
+<li><p>This is because:</p>
+<ul>
+<li>The predictors <span class="math inline">x_1, \ldots, x_n</span> are either chosen or random</li>
+<li>If they are chosen, it makes no sense to choose them all equal</li>
+<li>If they are random, they will all be equal with probability <span class="math inline">0</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="calculation-of-xt-x-1-3" class="slide level2 smaller">
+<h2>Calculation of <span class="math inline">(X^T X)^{-1}</span></h2>
+<ul>
+<li><p>Therefore we assume <span class="math inline">S_{xx} &gt; 0</span></p></li>
+<li><p>This way we have</p></li>
+</ul>
+<p><span class="math display">
+\det \left(X^TX\right) = n S_{xx} &gt; 0
+</span></p>
+<ul>
+<li><span class="math inline">X^TX</span> is invertible and the inverse is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+(X^TX)^{-1} &amp; =
+\left(
+\begin{array}{cc}
+    n &amp; n \overline{x} \\
+    n \overline{x} &amp; \sum_{i=1}^n x_i^2
+\end{array}
+\right)^{-1} \\
+&amp; =
+\frac{1}{n S_{xx} }
+\left(
+\begin{array}{cc}
+\sum_{i=1}^n x^2_i &amp; -n \overline{x}\\
+-n\overline{x} &amp; n
+\end{array}
+\right)
+\end{align*}</span></p>
+</section>
+<section id="calculating-xt-x-1-xt-y" class="slide level2 smaller">
+<h2>Calculating <span class="math inline">(X^T X)^{-1} X^T y</span></h2>
+<ul>
+<li><p><span class="math inline">(X^TX)^{-1}</span> has size <span class="math inline">2 \times 2</span></p></li>
+<li><p><span class="math inline">X^T y</span> has size <span class="math inline">2 \times 1</span></p></li>
+<li><p><span class="math inline">(X^T X)^{-1} X^T y</span> therefore has dimensions <span class="math display">
+(2 \times 2) \times (2 \times 1) = (2 \times 1)
+</span></p></li>
+<li><p>We expect <span class="math inline">(X^T X)^{-1} X^T y</span> to contain the simple regression estimators <span class="math inline">\hat \alpha, \hat \beta</span></p></li>
+</ul>
+<p><span class="math display">
+(X^T X)^{-1} X^T y
+=
+\left(
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="calculating-xt-x-1-xt-y-1" class="slide level2 smaller">
+<h2>Calculating <span class="math inline">(X^T X)^{-1} X^T y</span></h2>
+<ul>
+<li>We have already computed <span class="math inline">(X^T X)^{-1}</span> and <span class="math inline">X^T y</span></li>
+</ul>
+<p><span class="math display">
+(X^T X)^{-1} X^T y = \frac{1}{n S_{xx} }
+\left(
+\begin{array}{cc}
+\sum_{i=1}^n x^2_i &amp; -n \overline{x}\\
+-n\overline{x} &amp; n
+\end{array}
+\right) \left(
+  \begin{array}{c}
+     n \overline{y}  \\
+     \sum_{i=1}^n x_i y_i
+\end{array}
+\right)
+</span></p>
+</section>
+<section id="calculating-xt-x-1-xt-y-2" class="slide level2 smaller">
+<h2>Calculating <span class="math inline">(X^T X)^{-1} X^T y</span></h2>
+<ul>
+<li>The first entry of <span class="math inline">(X^T X)^{-1} X^T y</span> is therefore</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\frac{ \sum_{i=1}^n x_i^2 n \overline{y} - n \overline{x} \sum_{i=1}^n x_i y_i  }{n S_{xx}}
+&amp; =
+\frac{ \sum_{i=1}^n x_i^2  \overline{y} - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+&amp; = \frac{ \sum_{i=1}^n x_i^2  \overline{y}
+\textcolor{magenta}{- \overline{y} n \overline{x}^2 +  \overline{y} n \overline{x}^2}
+- \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+&amp; = \overline{y} \ \frac{ \sum_{i=1}^n x_i^2 - n \overline{x}^2}{ S_{xx} } -
+\overline{x} \ \frac{ \sum_{i=1}^n x_i y_i - n \overline{x} \overline{y} }{ S_{xx} } \\
+&amp; =  \overline{y} \ \frac{ S_{xx} }{ S_{xx} } -
+\overline{x} \ \frac{ S_{xy} }{ S_{xx} }  \\
+&amp; = \overline{y} - \hat \beta \, \overline{x} \\
+&amp; = \hat{\alpha}
+\end{align*}</span></p>
+</section>
+<section id="calculating-xt-x-1-xt-y-3" class="slide level2 smaller">
+<h2>Calculating <span class="math inline">(X^T X)^{-1} X^T y</span></h2>
+<ul>
+<li>The second entry of <span class="math inline">(X^T X)^{-1} X^T y</span> is</li>
+</ul>
+<p><span class="math display">
+\frac{ - n \overline{x} n \overline{y} + n \sum_{i=1}^n x_i y_i}{ n S_{xx} } =
+\frac{  \sum_{i=1}^n x_i y_i - n\overline{x} \overline{y} }{ S_{xx} }
+= \frac{ S_{xy} }{S_{xx}}
+= \hat{\beta}
+</span></p>
+<ul>
+<li>We have finally proven that</li>
+</ul>
+<p><span class="math display">
+(X^T X)^{-1} X^T y =
+\left(
+\begin{array}{cc}
+\hat \alpha \\
+\hat \beta
+\end{array}
+\right)
+</span></p>
+<ul>
+<li>Treating the simple linear regression model as a multiple regression model therefore reconstructs the earlier estimates</li>
+</ul>
+</section></section>
+<section>
+<section id="part-3-two-sample-t-test-as-multiple-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Two sample t-test<br> as multiple regression</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
 </section>
 <section id="example-gold-and-stock-prices" class="slide level2 smaller">
 <h2>Example: Gold and Stock prices</h2>
