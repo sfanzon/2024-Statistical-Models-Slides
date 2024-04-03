@@ -1238,6 +1238,17 @@ changes <- data.frame(drug_A = c(1.9, 0.8, 1.1, 0.1, -0.1,
 
 
 
+## Exercise: Blood Pressure {.smaller}
+### Second Solution
+
+- Storing data in data-frame is optional
+  * We can instead use vectors ``x`` and ``y``
+
+- We can fit the least-squares line with command
+  * ``lm(y ~ x)``
+
+
+
 
 ## Exercise: Blood Pressure {.smaller}
 ### Second Solution

@@ -300,7 +300,7 @@ $$
 :::
 
 
-**Proof:** Similar to the proof of Proposition in Slide 62 Lecture 8. Exercise
+**Proof:** Similar to the proof of Proposition in Slide 63 Lecture 8. Exercise
 
 
 
@@ -819,7 +819,7 @@ $$
 ## Minimizing the RSS {.smaller}
 ### Proof of Lemma
 
-- By the Lemma on Optimality Conditions in Slide 111
+- By the Lemma on Optimality Conditions in Slide 33
 
 $$
 \beta \,\, \text{ minimizes } \,\, \RSS \qquad \iff \qquad

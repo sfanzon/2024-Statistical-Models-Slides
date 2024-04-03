@@ -406,7 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proposition {
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -414,43 +418,11 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Axiom {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,15 +430,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -474,9 +438,45 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -1317,11 +1317,11 @@ E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
 </ul></li>
 </ol>
 </section>
-<section id="example-fair-die" class="slide level2 smaller">
-<h2>Example: Fair die</h2>
+<section id="example-fair-dice" class="slide level2 smaller">
+<h2>Example: Fair dice</h2>
 <h3 id="goodness-of-fit-test-in-r">Goodness-of-fit test in R</h3>
 <ul>
-<li>A die with <span class="math inline">6</span> faces is rolled <span class="math inline">100</span> times</li>
+<li>A dice with <span class="math inline">6</span> faces is rolled <span class="math inline">100</span> times</li>
 <li>Counts observed are</li>
 </ul>
 <table>
@@ -1347,26 +1347,26 @@ E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
 </tbody>
 </table>
 <ul>
-<li><strong>Exercise</strong>: Is the die fair?
+<li><strong>Exercise</strong>: Is the dice fair?
 <ul>
 <li>Formulate appropriate goodness-of-fit test</li>
 <li>Implement this test in R</li>
 </ul></li>
 </ul>
 </section>
-<section id="example-fair-die-1" class="slide level2 smaller">
-<h2>Example: Fair die</h2>
+<section id="example-fair-dice-1" class="slide level2 smaller">
+<h2>Example: Fair dice</h2>
 <h3 id="solution">Solution</h3>
 <ul>
-<li>The die is fair if probability of rolling <span class="math inline">i</span> is <span class="math inline">1/6</span></li>
+<li>The dice is fair if probability of rolling <span class="math inline">i</span> is <span class="math inline">1/6</span></li>
 <li>Therefore we test the following hypothesis <span class="math display">\begin{align*}
 &amp; H_0 \colon p_i = \frac{1}{6} \qquad \text{ for all } \, i = 1, \ldots, n \\
 &amp; H_1 \colon p_i \neq \frac{1}{6} \qquad \text{ for at least one } \, i
 \end{align*}</span></li>
 </ul>
 </section>
-<section id="example-fair-die-2" class="slide level2 smaller">
-<h2>Example: Fair die</h2>
+<section id="example-fair-dice-2" class="slide level2 smaller">
+<h2>Example: Fair dice</h2>
 <h3 id="solution-1">Solution</h3>
 <ul>
 <li>Test can be performed using the code below</li>
@@ -1382,8 +1382,8 @@ E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
 <span id="cb1-8"><a></a><span class="co"># Print answer</span></span>
 <span id="cb1-9"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="example-fair-die-3" class="slide level2 smaller">
-<h2>Example: Fair die</h2>
+<section id="example-fair-dice-3" class="slide level2 smaller">
+<h2>Example: Fair dice</h2>
 <h3 id="solution-2">Solution</h3>
 <ul>
 <li>Running the code in previous slide we obtain</li>
@@ -1409,7 +1409,7 @@ X-squared = 9.68, df = 5, p-value = 0.08483</code></pre>
 <ul>
 <li><p>Therefore <span class="math inline">p &gt; 0.05</span></p></li>
 <li><p>We cannot reject <span class="math inline">H_0</span></p></li>
-<li><p>The die appears to be fair</p></li>
+<li><p>The dice appears to be fair</p></li>
 </ul>
 </div>
 </section>
@@ -1669,16 +1669,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.13480000, error is 0.00679265
-After    20000 iterations pi is 3.13100000, error is 0.01059265
-After    30000 iterations pi is 3.13146667, error is 0.01012599
-After    40000 iterations pi is 3.13790000, error is 0.00369265
-After    50000 iterations pi is 3.13736000, error is 0.00423265
-After    60000 iterations pi is 3.13640000, error is 0.00519265
-After    70000 iterations pi is 3.13794286, error is 0.00364980
-After    80000 iterations pi is 3.13875000, error is 0.00284265
-After    90000 iterations pi is 3.13755556, error is 0.00403710
-After   100000 iterations pi is 3.13624000, error is 0.00535265</code></pre>
+<pre><code>After    10000 iterations pi is 3.12800000, error is 0.01359265
+After    20000 iterations pi is 3.14420000, error is 0.00260735
+After    30000 iterations pi is 3.14200000, error is 0.00040735
+After    40000 iterations pi is 3.14460000, error is 0.00300735
+After    50000 iterations pi is 3.13976000, error is 0.00183265
+After    60000 iterations pi is 3.14293333, error is 0.00134068
+After    70000 iterations pi is 3.14085714, error is 0.00073551
+After    80000 iterations pi is 3.14370000, error is 0.00210735
+After    90000 iterations pi is 3.14417778, error is 0.00258512
+After   100000 iterations pi is 3.14496000, error is 0.00336735</code></pre>
 </div>
 </div>
 </section>
@@ -1959,11 +1959,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.82071</code></pre>
+Custom Monte Carlo p-value: 0.8207</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8125937</code></pre>
+R Monte Carlo p-value: 0.8130935</code></pre>
 </div>
 </div>
 <ul>

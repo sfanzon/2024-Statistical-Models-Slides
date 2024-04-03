@@ -713,10 +713,10 @@ $$
 
 
 
-## Example: Fair die {.smaller}
+## Example: Fair dice {.smaller}
 ### Goodness-of-fit test in R
 
-- A die with $6$ faces is rolled $100$ times
+- A dice with $6$ faces is rolled $100$ times
 - Counts observed are
 
 | $1$| $2$ | $3$  | $4$ |  $5$|  $6$|
@@ -724,17 +724,17 @@ $$
 |13  | 17  | 9    | 17  | 18  | 26  |
 
 
-- **Exercise**: Is the die fair?
+- **Exercise**: Is the dice fair?
     * Formulate appropriate goodness-of-fit test
     * Implement this test in R
 
 
 
 
-## Example: Fair die {.smaller}
+## Example: Fair dice {.smaller}
 ### Solution
 
-- The die is fair if probability of rolling $i$ is $1/6$
+- The dice is fair if probability of rolling $i$ is $1/6$
 - Therefore we test the following hypothesis
 \begin{align*}
 & H_0 \colon p_i = \frac{1}{6} \qquad \text{ for all } \, i = 1, \ldots, n \\
@@ -742,7 +742,7 @@ $$
 \end{align*}
 
 
-## Example: Fair die {.smaller}
+## Example: Fair dice {.smaller}
 ### Solution
 
 - Test can be performed using the code below
@@ -762,7 +762,7 @@ print(ans)
 
 
 
-## Example: Fair die {.smaller}
+## Example: Fair dice {.smaller}
 ### Solution
 
 - Running the code in previous slide we obtain
@@ -799,7 +799,7 @@ print(ans)
 
 - We cannot reject $H_0$
 
-- The die appears to be fair
+- The dice appears to be fair
 
 :::
 
