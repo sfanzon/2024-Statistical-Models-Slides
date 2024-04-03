@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 9: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+# Lecture 9: <br>General linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,9 +40,10 @@ $
 
 ## Outline of Lecture 9
 
-1. Multiple linear regression
-2. Simple regression as a multiple regression
-3. Two sample t-test as multiple regression
+1. General linear regression
+2. Simple regression as general regression
+3. Two sample t-test as general regression
+4. Multiple linear regression
 
 
 
@@ -50,7 +51,7 @@ $
 
 
 
-# Part 1: <br>Multiple linear<br>regression {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>General linear<br>regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -61,7 +62,7 @@ $
 
 
 
-## Simple vs Multiple regression {.smaller}
+## Simple vs General regression {.smaller}
 
 - Simple regression: 
   * Response variable $Y$ depends on one predictor $X$
@@ -72,26 +73,30 @@ $
   * $Y | X$ allows to predict values of $Y$ knowing values of $X$
 
 
-## Simple vs Multiple regression {.smaller}
 
-- Multiple regression: 
-  * Response variable $Y$ depends on multiple predictors $X_1 , \ldots,  X_p$
+## Simple vs General regression {.smaller}
+
+- General regression: 
+  * Response variable $Y$ depends on $p$ predictors 
+  $$
+  Z_1 , \ldots,  Z_p
+  $$
   * The goal is to learn distribution of 
   $$
-  Y | X_1, \ldots, X_p
+  Y | Z_1, \ldots, Z_p
   $$
-  * $Y | X_1 , \dots, X_p$ allows to predict values of $Y$ knowing values of $X_1 , \dots, X_p$
+  * $Y | Z_1 , \dots, Z_p$ allows to predict $Y$ knowing values of $Z_1 , \dots, Z_p$
 
 
 
 
-## Multiple regression function {.smaller}
+## General regression function {.smaller}
 
-Suppose given random variables $X_1 , \ldots, X_p$ and $Y$
+Suppose given random variables $Z_1 , \ldots, Z_p$ and $Y$
 
 ::: {.column width="45%"}
 
-- $X_1,\ldots,X_p$ are the **predictors**
+- $Z_1,\ldots, Z_p$ are the **predictors**
 
 :::
 
@@ -104,33 +109,33 @@ Suppose given random variables $X_1 , \ldots, X_p$ and $Y$
 
 **Notation:** We denote points of $\R^p$ by
 $$
-x = (x_1, \ldots, x_p)
+z = (z_1, \ldots, z_p)
 $$
 
 
 ::: Definition
 
-The **regression function** of $Y$ on $X_1,\ldots,X_p$ is the conditional expectation
+The **regression function** of $Y$ on $Z_1,\ldots,Z_p$ is the conditional expectation
 
 $$
-R \colon \R^p \to \R \,, \qquad \quad R(x) :=  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+R \colon \R^p \to \R \,, \qquad \quad R(z) :=  \Expect[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 $$
 
 :::
 
 
 
-## Multiple regression function {.smaller}
+## General regression function {.smaller}
 
 ::: Idea
 
 The regression function
 $$
-R(x) =  \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+R(z) =  \Expect[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 $$ 
 predicts the most likely value of $Y$ when we observe 
 $$
-X_1 = x_1, \ldots , X_p = x_p
+Z_1 = z_1, \ldots , Z_p = z_p
 $$
 
 :::
@@ -138,25 +143,25 @@ $$
 
 **Notation**: We use the shorthand
 $$
-\Expect[Y | x_1, \ldots, x_p] := \Expect[Y | X_1 = x_1, \ldots , X_p = x_p]
+\Expect[Y | z_1, \ldots, z_p] := \Expect[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 $$
 
 
 
 
-## The multiple regression problem {.smaller}
+## The general regression problem {.smaller}
 
 **Assumption:** For each $i =1 , \ldots, n$ we observe
 
 ::: {.column width="42%"}
 
-- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
+- data point $(z_{i1}, \ldots, z_{ip}, y_i)$  
 
 :::
 
 ::: {.column width="26%"}
 
-- $x_{ij}$ is from $X_j$
+- $z_{ij}$ is from $Z_j$
 
 :::
 
@@ -171,11 +176,11 @@ $$
 ::: Problem
 From the above data learn a regression function
 $$
-\Expect[Y | x_1, \ldots, x_p]
+R(z) = \Expect[Y | z_1, \ldots, z_p]
 $$
 which explains the observations, that is,
 $$
-\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+\Expect[Y | z_{i1}, \ldots, z_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
 $$
 
 :::
@@ -183,33 +188,33 @@ $$
 
 
 
-## Multiple linear regression {.smaller}
+## General linear regression {.smaller}
 
 
-A popular model is to assume that  $\Expect[Y | x_1, \ldots, x_p]$ is linear
+**Key assumption:** The regression function $R(z) = \Expect[Y | z_1, \ldots, z_p]$ is linear
 
 
 ::: Definition
 
-The regression of $Y$ on $X_1 , \ldots, X_p$ is **linear** if there exist $\beta_0,\beta_1, \ldots, \beta_p$ s.t.
+The regression of $Y$ on $Z_1 , \ldots, Z_p$ is **linear** if there exist $\beta_1, \ldots, \beta_p$ s.t.
 
 $$
-\Expect[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \R^p
+\Expect[Y | z_1, \ldots, z_p] =  \beta_1 z_1 + \ldots + \beta_p z_p  \,, \quad \forall \, z \in \R^p
 $$
 
-$\beta_0,\beta_1, \ldots, \beta_p$ are called **regression coefficients**
+$\beta_1, \ldots, \beta_p$ are called **regression coefficients**
 :::
 
 **Note:** 
 
 - In simple regression we have 2 coefficients $\alpha$ and $\beta$
 
-- In multiple regression we have $p+1$ coefficients $\beta_0, \ldots, \beta_p$
+- In multiple regression we have $p$ coefficients $\beta_1, \ldots, \beta_p$
 
 
 
 
-## Multiple linear regression {.smaller}
+## General linear regression {.smaller}
 ### Model Assumptions
 
 
@@ -217,13 +222,13 @@ Suppose that for each $i =1 , \ldots, n$ we observe
 
 ::: {.column width="42%"}
 
-- data point $(x_{i1}, \ldots, x_{ip}, y_i)$  
+- data point $(z_{i1}, \ldots, z_{ip}, y_i)$  
 
 :::
 
 ::: {.column width="26%"}
 
-- $x_{ij}$ is from $X_j$
+- $z_{ij}$ is from $Z_j$
 
 :::
 
@@ -238,7 +243,7 @@ Suppose that for each $i =1 , \ldots, n$ we observe
 
 For each $i = 1, \ldots, n$ we denote by $Y_i$ a random variable with distribution
 $$
-Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
+Y | Z_1 = z_{i1} , \ldots, Z_p = z_{ip}
 $$
 
 :::
@@ -246,24 +251,24 @@ $$
 
 
 
-## Multiple linear regression {.smaller}
+## General linear regression {.smaller}
 ### Model Assumptions
 
 
 **Assumptions:**
 
-1. **Predictor is known:** The values $x_{i1}, \ldots, x_{ip}$ are known
+1. **Predictor is known:** The values $z_{i1}, \ldots, z_{ip}$ are known
 
 2. **Normality:** The distribution of $Y_i$ is normal
 
-3. **Linear mean:** There are parameters $\beta_0,\beta_1,\ldots,\beta_p$ such that
+3. **Linear mean:** There are parameters $\beta_1,\ldots,\beta_p$ such that
 $$
-\Expect[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  
+\Expect[Y_i] = \beta_1 z_{i1} + \ldots + \beta_p z_{ip}  
 $$
 
 
 
-## Multiple linear regression {.smaller}
+## General linear regression {.smaller}
 ### Model Assumptions
 
 
@@ -290,7 +295,7 @@ are independent
 
 Assumptions 1-5 are satisfied if and only if
 $$
-Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \e_{i}
+Y_i =  \beta_1 z_{i1} + \ldots + \beta_p z_{ip}  + \e_{i}
 $$
 for some **errors**
 $$
@@ -311,15 +316,15 @@ $$
 
 Introduce the column vectors
 $$
-\beta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad 
+\beta := (\beta_1, \ldots, \beta_p)^T \,, \qquad 
 y := (y_1,\ldots,y_n)^T
 $$
 
 ::: Proposition
 
-Suppose Assumptions 1--5 hold. The likelihood of multiple linear regression is
+Suppose Assumptions 1--5 hold. The likelihood of general linear regression is
 $$
-L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
+L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_1 z_{i1} - \ldots - \beta_p z_{ip})^2}{2\sigma^2}  \right)
 $$
 
 :::
@@ -1142,7 +1147,7 @@ $$
 
 
 
-# Part 2: <br>Simple regression as<br> multiple regression {background-color="#cc0164" visibility="uncounted"}
+# Part 2: <br>Simple regression as<br> general regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1630,7 +1635,7 @@ $$
 
 
 
-# Part 3: <br>Two sample t-test<br> as multiple regression {background-color="#cc0164" visibility="uncounted"}
+# Part 3: <br>Two sample t-test<br> as general regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -1643,6 +1648,14 @@ $$
 
 
 
+
+# Part 4: <br>Multiple linear<br> regression{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 

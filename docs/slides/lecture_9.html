@@ -341,51 +341,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Warning {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -393,25 +361,57 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
   }
   </style>
 </head>
@@ -450,8 +450,8 @@
 
 </section>
 <section>
-<section id="lecture-9-multiple-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Lecture 9: <br>Multiple linear<br>regression</h1>
+<section id="lecture-9-general-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Lecture 9: <br>General linear<br>regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -461,22 +461,23 @@
 <section id="outline-of-lecture-9" class="slide level2">
 <h2>Outline of Lecture 9</h2>
 <ol type="1">
+<li>General linear regression</li>
+<li>Simple regression as general regression</li>
+<li>Two sample t-test as general regression</li>
 <li>Multiple linear regression</li>
-<li>Simple regression as a multiple regression</li>
-<li>Two sample t-test as multiple regression</li>
 </ol>
 </section></section>
 <section>
-<section id="part-1-multiple-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 1: <br>Multiple linear<br>regression</h1>
+<section id="part-1-general-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br>General linear<br>regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="simple-vs-multiple-regression" class="slide level2 smaller">
-<h2>Simple vs Multiple regression</h2>
+<section id="simple-vs-general-regression" class="slide level2 smaller">
+<h2>Simple vs General regression</h2>
 <ul>
 <li>Simple regression:
 <ul>
@@ -488,25 +489,27 @@ Y | X
 </ul></li>
 </ul>
 </section>
-<section id="simple-vs-multiple-regression-1" class="slide level2 smaller">
-<h2>Simple vs Multiple regression</h2>
+<section id="simple-vs-general-regression-1" class="slide level2 smaller">
+<h2>Simple vs General regression</h2>
 <ul>
-<li>Multiple regression:
+<li>General regression:
 <ul>
-<li>Response variable <span class="math inline">Y</span> depends on multiple predictors <span class="math inline">X_1 , \ldots,  X_p</span></li>
-<li>The goal is to learn distribution of <span class="math display">
-Y | X_1, \ldots, X_p
+<li>Response variable <span class="math inline">Y</span> depends on <span class="math inline">p</span> predictors <span class="math display">
+Z_1 , \ldots,  Z_p
 </span></li>
-<li><span class="math inline">Y | X_1 , \dots, X_p</span> allows to predict values of <span class="math inline">Y</span> knowing values of <span class="math inline">X_1 , \dots, X_p</span></li>
+<li>The goal is to learn distribution of <span class="math display">
+Y | Z_1, \ldots, Z_p
+</span></li>
+<li><span class="math inline">Y | Z_1 , \dots, Z_p</span> allows to predict <span class="math inline">Y</span> knowing values of <span class="math inline">Z_1 , \dots, Z_p</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="multiple-regression-function" class="slide level2 smaller">
-<h2>Multiple regression function</h2>
-<p>Suppose given random variables <span class="math inline">X_1 , \ldots, X_p</span> and <span class="math inline">Y</span></p>
+<section id="general-regression-function" class="slide level2 smaller">
+<h2>General regression function</h2>
+<p>Suppose given random variables <span class="math inline">Z_1 , \ldots, Z_p</span> and <span class="math inline">Y</span></p>
 <div class="column" style="width:45%;">
 <ul>
-<li><span class="math inline">X_1,\ldots,X_p</span> are the <strong>predictors</strong></li>
+<li><span class="math inline">Z_1,\ldots, Z_p</span> are the <strong>predictors</strong></li>
 </ul>
 </div>
 <div class="column" style="width:49%;">
@@ -515,41 +518,41 @@ Y | X_1, \ldots, X_p
 </ul>
 </div>
 <p><strong>Notation:</strong> We denote points of <span class="math inline">\mathbb{R}^p</span> by <span class="math display">
-x = (x_1, \ldots, x_p)
+z = (z_1, \ldots, z_p)
 </span></p>
 <div id="Definition*-2.1" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>regression function</strong> of <span class="math inline">Y</span> on <span class="math inline">X_1,\ldots,X_p</span> is the conditional expectation<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>regression function</strong> of <span class="math inline">Y</span> on <span class="math inline">Z_1,\ldots,Z_p</span> is the conditional expectation<p></p>
 <p><span class="math display">
-R \colon \mathbb{R}^p \to \mathbb{R}\,, \qquad \quad R(x) :=  {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+R \colon \mathbb{R}^p \to \mathbb{R}\,, \qquad \quad R(z) :=  {\rm I\kern-.3em E}[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 </span></p>
 </div></details>
 </div>
 </section>
-<section id="multiple-regression-function-1" class="slide level2 smaller">
-<h2>Multiple regression function</h2>
+<section id="general-regression-function-1" class="slide level2 smaller">
+<h2>General regression function</h2>
 <div id="Idea*-2.2" class="Idea">
 <p></p><details class="Idea fbx-simplebox fbx-default" open=""><summary><strong>Idea</strong></summary><div>The regression function <span class="math display">
-R(x) =  {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+R(z) =  {\rm I\kern-.3em E}[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 </span> predicts the most likely value of <span class="math inline">Y</span> when we observe <span class="math display">
-X_1 = x_1, \ldots , X_p = x_p
+Z_1 = z_1, \ldots , Z_p = z_p
 </span><p></p>
 </div></details>
 </div>
 <p><strong>Notation</strong>: We use the shorthand <span class="math display">
-{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p] := {\rm I\kern-.3em E}[Y | X_1 = x_1, \ldots , X_p = x_p]
+{\rm I\kern-.3em E}[Y | z_1, \ldots, z_p] := {\rm I\kern-.3em E}[Y | Z_1 = z_1, \ldots , Z_p = z_p]
 </span></p>
 </section>
-<section id="the-multiple-regression-problem" class="slide level2 smaller">
-<h2>The multiple regression problem</h2>
+<section id="the-general-regression-problem" class="slide level2 smaller">
+<h2>The general regression problem</h2>
 <p><strong>Assumption:</strong> For each <span class="math inline">i =1 , \ldots, n</span> we observe</p>
 <div class="column" style="width:42%;">
 <ul>
-<li>data point <span class="math inline">(x_{i1}, \ldots, x_{ip}, y_i)</span></li>
+<li>data point <span class="math inline">(z_{i1}, \ldots, z_{ip}, y_i)</span></li>
 </ul>
 </div>
 <div class="column" style="width:26%;">
 <ul>
-<li><span class="math inline">x_{ij}</span> is from <span class="math inline">X_j</span></li>
+<li><span class="math inline">z_{ij}</span> is from <span class="math inline">Z_j</span></li>
 </ul>
 </div>
 <div class="column" style="width:26%;">
@@ -559,42 +562,42 @@ X_1 = x_1, \ldots , X_p = x_p
 </div>
 <div id="Problem*-2.3" class="Problem">
 <p></p><details class="Problem fbx-simplebox fbx-default" open=""><summary><strong>Problem</strong></summary><div>From the above data learn a regression function <span class="math display">
-{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p]
+R(z) = {\rm I\kern-.3em E}[Y | z_1, \ldots, z_p]
 </span> which explains the observations, that is, <span class="math display">
-{\rm I\kern-.3em E}[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
+{\rm I\kern-.3em E}[Y | z_{i1}, \ldots, z_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
 </span><p></p>
 </div></details>
 </div>
 </section>
-<section id="multiple-linear-regression" class="slide level2 smaller">
-<h2>Multiple linear regression</h2>
-<p>A popular model is to assume that <span class="math inline">{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p]</span> is linear</p>
+<section id="general-linear-regression" class="slide level2 smaller">
+<h2>General linear regression</h2>
+<p><strong>Key assumption:</strong> The regression function <span class="math inline">R(z) = {\rm I\kern-.3em E}[Y | z_1, \ldots, z_p]</span> is linear</p>
 <div id="Definition*-2.4" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The regression of <span class="math inline">Y</span> on <span class="math inline">X_1 , \ldots, X_p</span> is <strong>linear</strong> if there exist <span class="math inline">\beta_0,\beta_1, \ldots, \beta_p</span> s.t.<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The regression of <span class="math inline">Y</span> on <span class="math inline">Z_1 , \ldots, Z_p</span> is <strong>linear</strong> if there exist <span class="math inline">\beta_1, \ldots, \beta_p</span> s.t.<p></p>
 <p><span class="math display">
-{\rm I\kern-.3em E}[Y | x_1, \ldots, x_p] = \beta_0 +  \beta_1 x_1 + \ldots + \beta_p x_p  \,, \quad \forall \, x \in \mathbb{R}^p
+{\rm I\kern-.3em E}[Y | z_1, \ldots, z_p] =  \beta_1 z_1 + \ldots + \beta_p z_p  \,, \quad \forall \, z \in \mathbb{R}^p
 </span></p>
-<p><span class="math inline">\beta_0,\beta_1, \ldots, \beta_p</span> are called <strong>regression coefficients</strong></p>
+<p><span class="math inline">\beta_1, \ldots, \beta_p</span> are called <strong>regression coefficients</strong></p>
 </div></details>
 </div>
 <p><strong>Note:</strong></p>
 <ul>
 <li><p>In simple regression we have 2 coefficients <span class="math inline">\alpha</span> and <span class="math inline">\beta</span></p></li>
-<li><p>In multiple regression we have <span class="math inline">p+1</span> coefficients <span class="math inline">\beta_0, \ldots, \beta_p</span></p></li>
+<li><p>In multiple regression we have <span class="math inline">p</span> coefficients <span class="math inline">\beta_1, \ldots, \beta_p</span></p></li>
 </ul>
 </section>
-<section id="multiple-linear-regression-1" class="slide level2 smaller">
-<h2>Multiple linear regression</h2>
+<section id="general-linear-regression-1" class="slide level2 smaller">
+<h2>General linear regression</h2>
 <h3 id="model-assumptions">Model Assumptions</h3>
 <p>Suppose that for each <span class="math inline">i =1 , \ldots, n</span> we observe</p>
 <div class="column" style="width:42%;">
 <ul>
-<li>data point <span class="math inline">(x_{i1}, \ldots, x_{ip}, y_i)</span></li>
+<li>data point <span class="math inline">(z_{i1}, \ldots, z_{ip}, y_i)</span></li>
 </ul>
 </div>
 <div class="column" style="width:26%;">
 <ul>
-<li><span class="math inline">x_{ij}</span> is from <span class="math inline">X_j</span></li>
+<li><span class="math inline">z_{ij}</span> is from <span class="math inline">Z_j</span></li>
 </ul>
 </div>
 <div class="column" style="width:26%;">
@@ -604,25 +607,25 @@ X_1 = x_1, \ldots , X_p = x_p
 </div>
 <div id="Definition*-2.5" class="Definition">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>For each <span class="math inline">i = 1, \ldots, n</span> we denote by <span class="math inline">Y_i</span> a random variable with distribution <span class="math display">
-Y | X_1 = x_{i1} , \ldots, X_p = x_{ip}
+Y | Z_1 = z_{i1} , \ldots, Z_p = z_{ip}
 </span><p></p>
 </div></details>
 </div>
 </section>
-<section id="multiple-linear-regression-2" class="slide level2 smaller">
-<h2>Multiple linear regression</h2>
+<section id="general-linear-regression-2" class="slide level2 smaller">
+<h2>General linear regression</h2>
 <h3 id="model-assumptions-1">Model Assumptions</h3>
 <p><strong>Assumptions:</strong></p>
 <ol type="1">
-<li><p><strong>Predictor is known:</strong> The values <span class="math inline">x_{i1}, \ldots, x_{ip}</span> are known</p></li>
+<li><p><strong>Predictor is known:</strong> The values <span class="math inline">z_{i1}, \ldots, z_{ip}</span> are known</p></li>
 <li><p><strong>Normality:</strong> The distribution of <span class="math inline">Y_i</span> is normal</p></li>
-<li><p><strong>Linear mean:</strong> There are parameters <span class="math inline">\beta_0,\beta_1,\ldots,\beta_p</span> such that <span class="math display">
-{\rm I\kern-.3em E}[Y_i] = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  
+<li><p><strong>Linear mean:</strong> There are parameters <span class="math inline">\beta_1,\ldots,\beta_p</span> such that <span class="math display">
+{\rm I\kern-.3em E}[Y_i] = \beta_1 z_{i1} + \ldots + \beta_p z_{ip}  
 </span></p></li>
 </ol>
 </section>
-<section id="multiple-linear-regression-3" class="slide level2 smaller">
-<h2>Multiple linear regression</h2>
+<section id="general-linear-regression-3" class="slide level2 smaller">
+<h2>General linear regression</h2>
 <h3 id="model-assumptions-2">Model Assumptions</h3>
 <ol start="4" type="1">
 <li><p><strong>Common variance (Homoscedasticity):</strong> There is a parameter <span class="math inline">\sigma^2</span> such that <span class="math display">
@@ -641,7 +644,7 @@ Y_1   \,, \ldots \,, Y_n
 </ul>
 <div id="Proposition*-2.6" class="Proposition">
 <p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>Assumptions 1-5 are satisfied if and only if <span class="math display">
-Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \varepsilon_{i}
+Y_i =  \beta_1 z_{i1} + \ldots + \beta_p z_{ip}  + \varepsilon_{i}
 </span> for some <strong>errors</strong> <span class="math display">
 \varepsilon_1 , \ldots, \varepsilon_n  \,\, \text{ iid } \,\, N(0,\sigma^2)
 </span><p></p>
@@ -652,12 +655,12 @@ Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip}  + \varepsilon_{i}
 <section id="likelihood-function" class="slide level2 smaller">
 <h2>Likelihood function</h2>
 <p>Introduce the column vectors <span class="math display">
-\beta := (\beta_0, \beta_1, \ldots, \beta_p)^T \,, \qquad
+\beta := (\beta_1, \ldots, \beta_p)^T \,, \qquad
 y := (y_1,\ldots,y_n)^T
 </span></p>
 <div id="Proposition*-2.7" class="Proposition">
-<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>Suppose Assumptions 1–5 hold. The likelihood of multiple linear regression is <span class="math display">
-L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right)
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>Suppose Assumptions 1–5 hold. The likelihood of general linear regression is <span class="math display">
+L(\beta, \sigma^2 | y ) = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_1 z_{i1} - \ldots - \beta_p z_{ip})^2}{2\sigma^2}  \right)
 </span><p></p>
 </div></details>
 </div>
@@ -1319,8 +1322,8 @@ L(\beta, \sigma^2 | y ) =  \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   - 
 </ul>
 </section></section>
 <section>
-<section id="part-2-simple-regression-as-multiple-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Simple regression as<br> multiple regression</h1>
+<section id="part-2-simple-regression-as-general-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Simple regression as<br> general regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -1772,9 +1775,18 @@ S_{xx} = \sum_{i=1}^n (x_i - \overline{x})^2 = 0 \qquad \iff \qquad x_1 = \ldots
 <li>Treating the simple linear regression model as a multiple regression model therefore reconstructs the earlier estimates</li>
 </ul>
 </section></section>
+<section id="part-3-two-sample-t-test-as-general-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Two sample t-test<br> as general regression</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
 <section>
-<section id="part-3-two-sample-t-test-as-multiple-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 3: <br>Two sample t-test<br> as multiple regression</h1>
+<section id="part-4-multiple-linear-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>Multiple linear<br> regression</h1>
 <div class="footer">
 <div color="#cc0164">
 
