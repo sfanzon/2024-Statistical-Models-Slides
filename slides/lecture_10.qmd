@@ -61,4 +61,58 @@ $
 
 
 
-## TBA {.smaller}
+## Example: Gold and Stock prices {.smaller}
+
+
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Plot Stock Price against Gold Price
+
+- As Stock price increases, Gold price decreases
+
+- Would like to find $\alpha$ and $\beta$ s.t.
+$$
+\Expect[Y_i | x_i] \ \approx \  \alpha + \beta x_i
+$$
+
+
+
+
+:::
+
+
+::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+data1 <- read.table("datasets/L3eg1data.txt")
+realgoldprice <- data1[,1]
+realstockprice <- data1[,2]
+
+# Create the plot
+plot(realgoldprice,
+     realstockprice, 
+     xlab="", 
+     ylab="")
+
+# Add labels
+mtext("Stock Price x_i", side=1, line=3, cex=2.1)
+mtext("Gold Price Y_i", side=2, line=2.5, cex=2.1)
+
+# Fit linear regression
+fit <- lm(realstockprice ~ realgoldprice)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 3)
+```
+
+:::
+
+:::::
+

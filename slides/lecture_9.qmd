@@ -426,7 +426,7 @@ z_{n1} & \ldots & z_{np} \\
 \beta_p \\
 \end{array}
 \right)
-\\
+\\[20pt]
 & = 
 \left(
 \begin{array}{c}
@@ -444,7 +444,7 @@ y_n \\
 \ldots \\
 \beta_1 z_{n1} + \ldots + \beta_p z_{np} \\
 \end{array}
-\right) \\
+\right) \\[20pt]
 & =
 \left(
 \begin{array}{c}
@@ -489,8 +489,8 @@ $$
 Using vectorial notation the likelihood function can be re-written as
 
 \begin{align*}
-L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i - \beta_1 z_{i1} - \ldots - \beta_p z_{ip})^2}{2\sigma^2}  \right) \\
- & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - Z \beta)^T \, (y - Z\beta) }{2 \sigma^2}  \right) \\
+L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i - \beta_1 z_{i1} - \ldots - \beta_p z_{ip})^2}{2\sigma^2}  \right) \\[20pt]
+ & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - Z \beta)^T \, (y - Z\beta) }{2 \sigma^2}  \right) \\[20pt]
  & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right) 
 \end{align*}
 
@@ -841,12 +841,10 @@ $$
 
 - To compute $\nabla \RSS$ we first expand $\RSS$
 
-- Using the properties of transposition we get
-
 \begin{align*}
-\RSS(\beta) & = (y-Z \beta)^T (y-Z \beta) \\
-            & = (y^T - (Z\beta)^T ) (y-Z \beta) \\
-            & = (y^T - \beta^T Z^T ) (y-Z \beta) \\
+\RSS(\beta) & = (y-Z \beta)^T (y-Z \beta) \\[5pt]
+            & = (y^T - (Z\beta)^T ) (y-Z \beta) \\[5pt]
+            & = (y^T - \beta^T Z^T ) (y-Z \beta) \\[5pt]
             & = y^T y - y^T Z \beta - \beta^T Z^T y 
                 + \beta^T Z^T Z \beta
 \end{align*}
@@ -876,21 +874,36 @@ $$
 ## Minimizing the RSS {.smaller}
 ### Proof of Lemma
 
-- $\beta^T Z^T y$ is therefore a scalar and so symmetric
+- $\beta^T Z^T y \,$ is a scalar $\quad \implies \quad$ it is symmetric and we get
 
-- Hence 
 $$
-\left( \beta^T Z^T y  \right)^T = \beta^T Z^T y  \qquad 
-\implies \qquad  y^T Z \beta = \beta^T Z^T y
+\left( \beta^T Z^T y  \right)^T = \beta^T Z^T y
 $$
+
+
+- Using the properties of transposition we also get
+
+$$
+\left( \beta^T Z^T y  \right)^T =  y^T Z \beta
+$$
+
+- From the last 2 equations we conclude
+
+$$
+y^T Z \beta = \beta^T Z^T y
+$$
+
+
+## Minimizing the RSS {.smaller}
+### Proof of Lemma
 
 - The $\RSS$ can now be written as
+
 \begin{align*}
-\RSS(\beta) & =  (y-Z\beta)^T(y-Z\beta) \\
-            & =  y^T y - y^T Z \beta 
-                - \textcolor{magenta}{\beta^T Z^T y} + \beta^T Z^T Z \beta \\
+\RSS(\beta) & = y^T y - y^T Z \beta 
+                - \textcolor{magenta}{\beta^T Z^T y} + \beta^T Z^T Z \beta \\[5pt]
             & = y^T y - y^T Z \beta - \textcolor{magenta}{y^T Z \beta}
-              + \beta^T Z^T Z \beta \\
+              + \beta^T Z^T Z \beta \\[5pt]
             & = y^T y - 2 y^T Z \beta + \beta^T Z^T Z \beta
 \end{align*}
 
@@ -903,7 +916,7 @@ $$
 
 \begin{align*}
 \nabla \RSS (\beta) & = \nabla ( y^T y ) 
-                      - 2  \nabla (y^T Z     \beta ) + \nabla (\beta^T Z^T Z \beta ) \\
+                      - 2  \nabla (y^T Z     \beta ) + \nabla (\beta^T Z^T Z \beta ) \\[5pt]
                     & = - 2  \nabla (y^T Z     \beta ) + \nabla (\beta^T Z^T Z \beta )
 \end{align*}
 
@@ -949,10 +962,7 @@ $$
 ### Proof of Lemma
 
 - Note that $Z^T Z$ has dimension
-
-$$
-( p \times n ) \times ( n \times p ) = p \times p
-$$
+$( p \times n ) \times ( n \times p ) = p \times p$
 
 - Since $\beta$ has dimension $p \times 1$ we can define the function 
 
@@ -965,7 +975,7 @@ $$
 - By the Third Result on Matrix Calculus in Slide 30
 
 \begin{align*}
-\nabla h  & = \nabla (\beta^T \textcolor{magenta}{Z^T Z} \beta) = \beta^T (\textcolor{magenta}{Z^T Z} + (\textcolor{magenta}{Z^T Z})^T ) \\
+\nabla h  & = \nabla (\beta^T \textcolor{magenta}{Z^T Z} \beta) = \beta^T (\textcolor{magenta}{Z^T Z} + (\textcolor{magenta}{Z^T Z})^T ) \\[5pt]
 & = \beta^T ( Z^T Z + Z^T Z ) = 2 \beta^T (Z^T Z)
 \end{align*}
 
@@ -978,7 +988,7 @@ $$
 - Putting together these results we obtain
 
 \begin{align*}
-\nabla \RSS (\beta) & = - 2  \nabla (y^T Z     \beta ) + \nabla (\beta^T Z^T Z \beta ) \\
+\nabla \RSS (\beta) & = - 2  \nabla (y^T Z     \beta ) + \nabla (\beta^T Z^T Z \beta ) \\[5pt]
                     & = -2 y^T Z + 2 \beta^T (Z^T Z)
 \end{align*}
 
@@ -987,7 +997,7 @@ $$
 
 \begin{align*}
 \nabla \RSS (\beta) = 0 \qquad & \iff \qquad 
--2 y^T Z + 2 \beta^T (Z^T Z) = 0  \\
+-2 y^T Z + 2 \beta^T (Z^T Z) = 0  \\[5pt]
 & \iff \qquad 
  \beta^T (Z^T Z) =  y^T Z
 \end{align*}
@@ -1016,6 +1026,7 @@ $$
 - The matrix $Z^T Z$ is symmetric and therefore invertible
 
 - Multiply by $(Z^T Z)^{-1}$ both sides of 
+
 $$
  (Z^T Z) \beta = Z^T y
 $$
@@ -1138,9 +1149,10 @@ $$
 
 
 - Substituting $\hat \beta$ we obtain
+
 \begin{align*}
 \max_{\beta,\sigma} \ & \log L(\beta, \sigma^2 | y ) 
-= \max_{\sigma} \ \log L(\hat \beta, \sigma^2 | y ) \\
+= \max_{\sigma} \ \log L(\hat \beta, \sigma^2 | y ) \\[5pt]
 & = \max_{\sigma} \ \left\{ - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log \sigma^2 -
 \frac{ \RSS(\hat \beta) }{2 \sigma^2}  \right\}
 \end{align*}
@@ -1380,7 +1392,7 @@ Z^T y
      y_1  \\
      \ldots\\
      y_n
-\end{array}\right) \\
+\end{array}\right) \\[15pt]
 & = 
 \left(
 \begin{array}{ccc}
@@ -1393,12 +1405,12 @@ x_1 & \ldots & x_n
      y_1  \\
      \ldots\\
      y_n
-\end{array}\right) \\
+\end{array}\right) \\[15pt]
 & = 
 \left(\begin{array}{c}
 1 \times y_1 + 1 \times y_2 + \ldots + 1 \times y_n \\
 x_1 y_1 + x_2 y_2 + \ldots + x_n y_n 
-\end{array} \right) \\
+\end{array} \right) \\[15pt]
 & = 
 \left(
   \begin{array}{c}
@@ -1438,7 +1450,7 @@ Z^T Z & =
     \ldots & \ldots\\
     1 & x_n
 \end{array}
-\right) \\
+\right) \\[15pt]
 & = 
 \left(
 \begin{array}{ccc}
@@ -1452,14 +1464,14 @@ x_1 & \ldots & x_n
     \ldots & \ldots\\
     1 & x_n
 \end{array}
-\right) \\
+\right) \\[15pt]
 & = 
 \left(
 \begin{array}{cc}
     1 \times 1 + \ldots + 1 \times 1 & 1 \times x_1 + \ldots + 1 \times x_n \\
     x_1 \times 1 + \ldots + x_n \times 1 &  x_1 \times x_1 + \ldots + x_n \times x_n
 \end{array}
-\right) \\
+\right) \\[15pt]
 & = 
 \left(
 \begin{array}{cc}
@@ -1519,9 +1531,9 @@ $$
     n & n \overline{x} \\
     n \overline{x} & \sum_{i=1}^n x_i^2
 \end{array}
-\right) \\
+\right) \\[15pt]
 & =
-n \sum_{i=1}^n x^2_i - n^2 \overline{x}^2 \\
+n \sum_{i=1}^n x^2_i - n^2 \overline{x}^2 \\[15pt]
 & = n S_{xx}
 \end{align*}
 
@@ -1566,7 +1578,7 @@ $$
     n & n \overline{x} \\
     n \overline{x} & \sum_{i=1}^n x_i^2
 \end{array}
-\right)^{-1} \\
+\right)^{-1} \\[15pt]
 & = 
 \frac{1}{n S_{xx} }
 \left(
@@ -1610,6 +1622,8 @@ $$
 
 - We have already computed $(Z^T Z)^{-1}$ and $Z^T y$
 
+- Their product is
+
 $$
 (Z^T Z)^{-1} Z^T y = \frac{1}{n S_{xx} }
 \left(
@@ -1634,16 +1648,15 @@ $$
 \begin{align*}
 \frac{ \sum_{i=1}^n x_i^2 n \overline{y} - n \overline{x} \sum_{i=1}^n x_i y_i  }{n S_{xx}} 
 & = 
-\frac{ \sum_{i=1}^n x_i^2  \overline{y} - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+\frac{ \sum_{i=1}^n x_i^2  \overline{y} - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\[10pt]
 & = \frac{ \sum_{i=1}^n x_i^2  \overline{y} 
  \textcolor{magenta}{- \overline{y} n \overline{x}^2 +  \overline{y} n \overline{x}^2}
- - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\
+ - \overline{x} \sum_{i=1}^n x_i y_i  }{ S_{xx}} \\[10pt]
  & = \overline{y} \ \frac{ \sum_{i=1}^n x_i^2 - n \overline{x}^2}{ S_{xx} } - 
- \overline{x} \ \frac{ \sum_{i=1}^n x_i y_i - n \overline{x} \overline{y} }{ S_{xx} } \\
+ \overline{x} \ \frac{ \sum_{i=1}^n x_i y_i - n \overline{x} \overline{y} }{ S_{xx} } \\[10pt]
  & =  \overline{y} \ \frac{ S_{xx} }{ S_{xx} } - 
- \overline{x} \ \frac{ S_{xy} }{ S_{xx} }  \\
- & = \overline{y} - \hat \beta \, \overline{x} \\
- & = \hat{\alpha}
+ \overline{x} \ \frac{ S_{xy} }{ S_{xx} }  \\[10pt]
+ & = \overline{y} - \hat \beta \, \overline{x} = \hat{\alpha}
 \end{align*}
 
 
@@ -1698,33 +1711,26 @@ The response variable $Y$ depends on $p-1$ predictors
   X_2, \ldots, X_p
   $$
 
-**Note:** We start from $2$ for notational convenience
+**Note:** We start counting from $2$ for notational convenience
 
 **Assumption:** For each $i=1, \ldots, n$ we observe
 
-::: {.column width="42%"}
+
 
 - data point $(x_{i2}, \ldots, x_{ip}, y_i)$  
 
-:::
-
-::: {.column width="26%"}
 
 - $x_{ij}$ is from $X_j$
 
-:::
-
-::: {.column width="26%"}
 
 - $y_i$ is from $Y$
 
-:::
 
 
 
 ## Mutiple linear regression model {.smaller}
 
-- Denote by $Y_i$ the random variable 
+Denote by $Y_i$ the random variable 
 
 $$
 Y | x_{i2} ,\ldots, x_{ip}
@@ -1732,7 +1738,7 @@ $$
 
 ::: Definition
 
-The multiple regression model is
+The multiple linear regression model is
 
 $$
 Y_i = \beta_1 + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \e_i
@@ -1752,7 +1758,7 @@ $$
 ## Mutiple vs General linear regression {.smaller}
 
 
-- The multiple regression model is a particular case of general regression
+- Multiple linear regression is a particular case of general linear regression
 
 - To see this, consider a general linear model with $p$ parameters
 
@@ -1813,235 +1819,6 @@ $$
 
 
 
-## Simple linear regression from general {.smaller}
-### Goal 
-
-- Show that the multiple linear regression estimator
-$$
-(Z^T Z)^{-1} Z^T y
-$$
-
-For each $i = 1 , \ldots, n$ suppose given $p$ observations
-$$
-x_{i1}, \ldots, x_{ip}
-$$
-
-::: Definition 
-
-The **design matrix** is the $n \times (p+1)$ matrix
-$$
-X :=
-\left(
-\begin{array}{cccc}
-1 & x_{11} & \ldots & x_{1p} \\
-1 & x_{21} & \ldots & x_{2p} \\
-\ldots & \ldots & \ldots & \ldots \\
-1 & x_{n1} & \ldots & x_{np} \\
-\end{array}
-\right)
-$$
-
-:::
-
-**Note:** The first row of $X$ is a vector of ones
-
-
-
-
-
-## Likelihood function {.smaller}
-### Vectorial notation
-
-\begin{align*}
-y - X\beta & = 
-\left(
-\begin{array}{c}
-y_1 \\
-y_2 \\
-\ldots \\
-y_n \\
-\end{array}
-\right)
-- 
-\left(
-\begin{array}{cccc}
-1 & x_{11} & \ldots & x_{1p} \\
-1 & x_{21} & \ldots & x_{2p} \\
-\ldots & \ldots & \ldots & \ldots \\
-1 & x_{n1} & \ldots & x_{np} \\
-\end{array}
-\right)
-\left(
-\begin{array}{c}
-\beta_0 \\
-\beta_1 \\
-\ldots \\
-\beta_p \\
-\end{array}
-\right)
-\\
-& = 
-\left(
-\begin{array}{c}
-y_1 \\
-y_2 \\
-\ldots \\
-y_n \\
-\end{array}
-\right)
-- 
-\left(
-\begin{array}{c}
-\beta_0 + \beta_1 x_{11} + \ldots + \beta_p x_{1p}\\
-\beta_0 + \beta_1 x_{21} + \ldots + \beta_p x_{2p} \\
-\ldots \\
-\beta_0 + \beta_1 x_{n1} + \ldots + \beta_p x_{np} \\
-\end{array}
-\right) \\
-& =
-\left(
-\begin{array}{c}
-y_1 - \beta_0 - \beta_1 x_{11} - \ldots - \beta_p x_{1p}\\
-y_2 - \beta_0 - \beta_1 x_{21} - \ldots - \beta_p x_{2p} \\
-\ldots \\
-y_n - \beta_0 - \beta_1 x_{n1} - \ldots - \beta_p x_{np} \\
-\end{array}
-\right) \, \in \, \R^n
-\end{align*}
-
-
-
-## Likelihood function {.smaller}
-### Vectorial notation
-
-
-From the previous calculation we get
-
-$$
-(y - X \beta)^T \, (y - X\beta) =
- \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip}   \right)^2
-$$
-
-
-::: Definition 
-
-Let $X$ be $n \times (p + 1)$ design matrix and $y \in \R^n$. 
-The **residual sum of squares** associated to the parameter $\beta$ is 
-$$
-\RSS \colon \R^{p+1} \to \R \,, \qquad 
-\RSS (\beta) :=  (y - X \beta)^T \, (y - X\beta)
-$$
-
-:::
-
-
-
-## Likelihood function {.smaller}
-### Vectorial notation
-
-Therefore the likelihood function can be re-written as
-
-\begin{align*}
-L(\beta, \sigma^2 | y ) & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \beta_0 - \beta_1 x_{i1} - \ldots - \beta_p x_{ip})^2}{2\sigma^2}  \right) \\
- & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{ (y - X \beta)^T \, (y - X\beta) }{2 \sigma^2}  \right) \\
- & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left( - \frac{\RSS(\beta) }{2 \sigma^2}  \right) 
-\end{align*}
-
-
-
-
-
-## Model Summary  {.smaller}
-
-- Multiple linear regression of $Y$ on $X_1, \ldots, X_p$ is the function
-$$
-\Expect[Y | x_1,\ldots,x_p] = \beta_0 + \beta_1 x_{1} + \ldots + \beta_p x_p
-$$
-
-- For each $i=1, \ldots, n$ suppose given the observations 
-$$
-(x_{i1}, \ldots, x_{ip}, y_i)
-$$
-
-
-
-## Model Summary  {.smaller}
-
-
-- Denote by $Y_i$ the random variable 
-
-$$
-Y | x_{i1} ,\ldots, x_{ip}
-$$
-
-
-- Suppose that $Y_i$ has the form
-
-$$
-Y_i = \beta_0 + \beta_1 x_{i1} + \ldots + \beta_p x_{ip} + \e_i
-$$
-
-- The **errors** are
-
-$$
-\e_1,\ldots, \e_n \,\, \text{ iid } \,\, N(0,\sigma^2)
-$$ 
-
-
-
-
-## The multiple linear regression problem {.smaller}
-
-For each $i = 1 , \ldots, n$ suppose given data points
-$(x_{i1}, \ldots, x_{ip}, y_i)$
-
-::: Problem
-From the above data learn a multiple linear regression function
-$$
-\Expect[Y | x_1, \ldots, x_p] = \beta_0 + \beta_1 x_1 +
-\ldots + \beta_p x_p
-$$
-which explains the observations, that is,
-\begin{equation} \tag{5}
-\Expect[Y | x_{i1}, \ldots, x_{ip}] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
-\end{equation}
-
-:::
-
-
-::: Question
-
-How do we enforce (5)?
-
-:::
-
-
-
-
-## Answer {.smaller}
-
-- Recall that $Y_i$ is distributed like
-
-$$
-Y_i | x_{i1}, \ldots, x_{ip} 
-$$
-
-- Therefore
-
-$$
-\Expect[Y | x_{i1}, \ldots, x_{ip}] = \Expect[Y_i] 
-$$
-
-
-- Hence (5) holds iff 
-
-\begin{equation} \tag{6}
-\Expect[Y_i] \ \approx \ y_i \,, \qquad \forall \, i = 1 , \ldots, n
-\end{equation}
-
-
-
-
 
 # Part 4: <br>Two sample t-test<br> as general regression {background-color="#cc0164" visibility="uncounted"}
 
@@ -2054,64 +1831,349 @@ $$
 
 
 
+## Two-sample t-test as general regression {.smaller}
+
+- Two-sample t-test is particular case of general linear regression
+
+- This example is important for two reasons
+
+  * Shows that multiple linear regression encapsulates simple models like the two-sample t-test
+  * Shows that general linear regression leads to intuitive solutions in simple examples
 
 
 
 
+## Two-sample t-test setting {.smaller}
 
+- We have 2 populations $A$ and $B$ distributed like $N(\mu_A, \sigma_A^2)$ and $N(\mu_B, \sigma_B^2)$
 
+- We have two samples
+  * Sample of size $n_A$ from population $A$
+  $$
+  a = (a_1, \ldots, a_{n_A})
+  $$
+  * Sample of size $n_B$ from population $B$
+  $$
+  b = (b_1, \ldots, b_{n_B})
+  $$
 
-## Example: Gold and Stock prices {.smaller}
-
-
-
-::::: {.columns style='display: flex !important; height: 80%;'}
-
-::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
-
-- Plot Stock Price against Gold Price
-
-- As Stock price increases, Gold price decreases
-
-- Would like to find $\alpha$ and $\beta$ s.t.
+- Two-sample t-test compares means $\mu_A$ and $\mu_B$ by computing t-statistic
 $$
-\Expect[Y_i | x_i] \ \approx \  \alpha + \beta x_i
+t = \frac{ \overline{a} - \overline{b} }{\ese}
+$$
+
+
+
+## Setting up the regression analysis {.smaller}
+
+- We want to fit a general linear model with $p = 2$ to the data:
+  * Response variable $Y$ depends on predictors $Z_1, Z_2$
+
+- To this end, define the data vector $y$ by concatenating $a$ and $b$
+
+
+
+$$
+y = 
+\left(\begin{array}{c}
+     y_1   \\
+     \ldots \\
+     y_{n_A} \\
+     y_{n_A + 1}\\
+     \ldots \\
+     y_{n_A + n_B}
+\end{array}\right)
+= 
+\left(\begin{array}{c}
+     a_1   \\
+     \ldots \\
+     a_{n_A} \\
+     b_{1}\\
+     \ldots \\
+     b_{n_B}
+\end{array}\right)
+$$
+
+
+
+## Setting up the regression analysis {.smaller}
+
+- The variable $Z_1$ is modelled as
+
+$$
+Z_1 = 1_{A} := 
+\begin{cases}
+1 & \text{ if observation is from population A} \\
+0 & \text{ otherwise}
+\end{cases}
+$$
+
+
+- Therefore we have 
+
+\begin{align*}
+z_1 & = (\underbrace{1_A , \ldots, 1_A}_{n_A + n_B} ) \\
+    & = (\underbrace{1 , \ldots, 1}_{n_A}, 
+         \underbrace{0 , \ldots, 0}_{n_B} ) \\
+\end{align*}
+
+
+## Setting up the regression analysis {.smaller}
+
+- Similarly, the variable $Z_2$ is modelled as
+
+$$
+Z_2 = 1_{B} := 
+\begin{cases}
+1 & \text{ if observation is from population B} \\
+0 & \text{ otherwise}
+\end{cases}
+$$
+
+- Therefore we have 
+
+\begin{align*}
+z_2 & = (\underbrace{1_B , \ldots, 1_B}_{n_A + n_B} ) \\
+    & = (\underbrace{0 , \ldots, 0}_{n_A}, 
+         \underbrace{1 , \ldots, 1}_{n_B} ) \\
+\end{align*}
+
+
+
+## Setting up the regression analysis {.smaller}
+
+
+- The design matrix is therefore
+
+$$
+Z = (z_1 | z_2) =
+\left(\begin{array}{cc}
+     1_A & 1_B  \\
+     \ldots & \ldots\\
+     1_A & 1_B\\
+\end{array}\right)  
+ = 
+\left(\begin{array}{cc}
+     1 & 0  \\
+     \ldots & \ldots\\
+     1  & 0\\
+     0 & 1 \\
+     \ldots & \ldots\\
+     0 & 1 
+\end{array}\right)
+$$
+
+
+- $Z$ has size $(n_A + n_B) \times 2$
+
+
+- We want to compute the regression estimator
+
+$$
+\hat \beta = (Z^T Z)^{-1} Z^T y
 $$
 
 
 
 
-:::
+## Calculation of $Z^T y$ {.smaller}
+
+- $Z$ has dimension $(n_A + n_B) \times 2$
+- $Z^T$ has dimension $2 \times (n_A + n_B)$
+- $y$ has dimension $(n_A + n_B) \times 1$
+- $Z^T y$ therefore has dimension
+
+$$
+[ 2 \times (n_A + n_B)] \times [ (n_A + n_B) \times 1 ] 
+= 2 \times 1
+$$
 
 
-::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
 
-```{r}
-#| echo: false
-#| fig-asp: 1
 
-# Read the data
-data1 <- read.table("datasets/L3eg1data.txt")
-realgoldprice <- data1[,1]
-realstockprice <- data1[,2]
+## Calculation of $Z^T y$ {.smaller}
 
-# Create the plot
-plot(realgoldprice,
-     realstockprice, 
-     xlab="", 
-     ylab="")
 
-# Add labels
-mtext("Stock Price x_i", side=1, line=3, cex=2.1)
-mtext("Gold Price Y_i", side=2, line=2.5, cex=2.1)
 
-# Fit linear regression
-fit <- lm(realstockprice ~ realgoldprice)
+\begin{align*}
+Z^T y & = 
+\left(\begin{array}{cc}
+     1 & 0  \\
+     \ldots & \ldots\\
+     1 & 0\\
+     0 & 1\\
+     \ldots & \ldots\\
+     0 & 1
+\end{array}\right)^T
+\left(\begin{array}{c}
+     y_1  \\
+     \ldots\\
+     y_{n_A}\\
+     y_{n_A+1}\\
+     \ldots\\
+     y_{n_A+n_B}
+\end{array}\right) 
+=
+\left(\begin{array}{cccccc}
+     1 & \ldots & 1 & 0 & \ldots & 0  \\
+     0 & \ldots & 0 & 1 & \ldots & 1  \\
+\end{array}\right)
+\left(\begin{array}{c}
+     y_1  \\
+     \ldots\\
+     y_{n_A}\\
+     y_{n_A+1}\\
+     \ldots\\
+     y_{n_A+n_B}
+\end{array}\right) \\[35pt]
+& = 
+\left(\begin{array}{c}
+     y_1 \cdot 1 + \ldots + y_{n_A} \cdot 1 + 
+     y_{n_A + 1} \cdot 0 + \ldots + y_{n_A + n_B} \cdot 0 \\
+     y_1 \cdot 0 + \ldots + y_{n_A} \cdot 0 + 
+     y_{n_A + 1} \cdot 1 + \ldots + y_{n_A + n_B} \cdot 1 
+\end{array}\right) \\[20pt]
+ & = 
+\left(\begin{array}{c}
+     y_1 + \ldots + y_{n_A} \\
+     y_{n_A + 1} + \ldots + y_{n_A + n_B} 
+\end{array}\right) 
+ = 
+\left(\begin{array}{c}
+     a_1 + \ldots + a_{n_A} \\
+     b_{1} + \ldots + b_{n_B} 
+\end{array}\right) 
+=
+\left(\begin{array}{c}
+     n_A \ \overline{a} \\
+      n_B \ \overline{b}
+\end{array}\right)
+\end{align*}
 
-# Plot regression line in red
-abline(fit, col = "red", lwd = 3)
-```
 
-:::
 
-:::::
+
+
+## Calculation of $Z^T Z$ {.smaller}
+
+- $Z$ has dimension $(n_A + n_B) \times 2$
+- $Z^T$ has dimension $2 \times (n_A + n_B)$
+- $Z^T Z$ therefore has dimension
+$$
+[ 2 \times (n_A + n_B)] \times [ (n_A + n_B) \times 2 ] 
+= 2 \times 2
+$$
+
+
+## Calculation of $Z^T Z$ {.smaller}
+
+\begin{align*}
+Z^T Z & = 
+\left(\begin{array}{cc}
+     1 & 0  \\
+     \ldots & \ldots\\
+     1 & 0\\
+     0 & 1\\
+     \ldots & \ldots\\
+     0 & 1
+\end{array}\right)^T
+\left(\begin{array}{cc}
+     1 & 0  \\
+     \ldots & \ldots\\
+     1 & 0\\
+     0 & 1\\
+     \ldots & \ldots\\
+     0 & 1
+\end{array}\right) \\[35pt]
+& = 
+\left(\begin{array}{cccccc}
+     1 & \ldots & 1 & 0 & \ldots & 0  \\
+     0 & \ldots & 0 & 1 & \ldots & 1  \\
+\end{array}\right)
+\left(\begin{array}{cc}
+     1 & 0  \\
+     \ldots & \ldots\\
+     1 & 0\\
+     0 & 1\\
+     \ldots & \ldots\\
+     0 & 1
+\end{array}\right)
+= \left(\begin{array}{cc}
+   n_A  & 0  \\
+    0 & n_B
+\end{array}\right)
+\end{align*}
+
+
+## Calculation of $\hat \beta$ {.smaller}
+
+- The inverse of a diagonal matrix is diagonal
+
+$$
+(Z^T Z)^{-1} =
+\left(\begin{array}{cc}
+   n_A  & 0  \\
+    0  & n_B
+\end{array}\right)^{-1}
+=\left(\begin{array}{cc}
+    \frac{1}{n_A} & 0 \\
+    0 & \frac{1}{n_B}
+\end{array}\right)
+$$
+
+- Then we can calculate
+
+$$
+\hat \beta = (Z^T Z)^{-1} Z^Ty = 
+\left(\begin{array}{cc}
+    \frac{1}{n_A} & 0 \\
+    0 & \frac{1}{n_B}
+\end{array}\right)
+\left(\begin{array}{c}
+     n_A \ \overline{a}  \\
+      n_B \ \overline{b}
+\end{array}\right)
+=
+\left(\begin{array}{c}
+     \overline{a}  \\
+     \overline{b} 
+\end{array}\right)
+$$
+
+
+## Conclusions {.smaller}
+
+- Therefore the estimator is 
+
+$$
+\hat \beta = 
+\left(\begin{array}{c}
+     \overline{a}  \\
+     \overline{b} 
+\end{array}\right)
+$$
+
+- The regression function is 
+
+\begin{align*}
+\Expect[Y | z_1,z_2] & = \hat\beta_1 \ z_1 + \hat\beta_2 \ z_2 \\[20pt]
+& = \overline{a} \ z_1 + \overline{b} \ z_2 
+\end{align*}
+
+
+## Conclusions {.smaller}
+
+- This is a very intuitive result:
+  * The expected value for $Y$ when data is observed from population $A$ is
+  $$
+  \Expect[Y | 1 , 0] = \overline{a}
+  $$
+  * The expected value for $Y$ when data is observed from population $B$ is
+  $$
+  \Expect[Y | 0 , 1] = \overline{b}
+  $$
+
+
+- Therefore, under this simple model
+  * The best estimate for population A is the sample mean $\overline{a}$
+  * The best estimate for population B is the sample mean $\overline{b}$
