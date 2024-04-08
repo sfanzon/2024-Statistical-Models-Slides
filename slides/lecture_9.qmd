@@ -1819,6 +1819,583 @@ $$
 
 
 
+## Example: Predicting unemployment {.smaller}
+
+::: {.column width="55%"}
+
+**Goal:** Predict unemployment rates
+
+- Unemp. related to Productivity Index
+- Other factors might also play a role
+- These factors likely depend on the year
+- Use year as surrogate for other factors
+
+
+:::
+
+::: {.column width="42%"}
+
+
+| Unemp. | Product. | Year |
+|:------:|:--------:|:----:|
+|  3.1   |  113     | 1950 |
+|  1.9   |  123     | 1951 |
+|  1.7   |  127     | 1952 |
+|  1.6   |  138     | 1953 |
+|  3.2   |  130     | 1954 |
+|  2.7   |  146     | 1955 |
+|  2.6   |  151     | 1956 |
+|  2.9   |  152     | 1957 |
+|  4.7   |  141     | 1958 |
+|  3.8   |  159     | 1959 |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+
+
+## Plotting the data {.smaller}
+
+
+- Enter the data in 3 vectors
+
+```r 
+# Unemployment data
+unemployment <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+
+# Productivity data
+productivity <- c(113, 123, 127, 138, 130, 146, 151, 152, 141, 159)
+
+# Year data
+year <- seq(1950, 1959, by = 1)
+```
+
+
+
+
+## Plotting the data {.smaller}
+
+- Using ``plot`` we plot productivity and year against unemployment
+
+
+```r
+# Set up the layout with two plot panels side by side
+par(mfrow = c(1, 2))
+
+# Scatter plot: Productivity vs Unemployment
+plot(productivity, unemployment, 
+     xlab = "Productivity", ylab = "Unemployment",
+     main = "Productivity vs Unemployment", 
+     pch = 16)
+
+# Scatter plot: Year vs Unemployment
+plot(year, unemployment, 
+     xlab = "Year", ylab = "Unemployment",
+     main = "Year vs Unemployment", 
+     pch = 16)
+```
+
+
+## Plotting the data {.smaller}
+### There appears to be some relationship
+
+```{r}
+# Unemployment data
+unemployment <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+
+# Productivity data
+productivity <- c(113, 123, 127, 138, 130, 146, 151, 152, 141, 159)
+
+# Year data
+year <- seq(1950, 1959, by = 1)
+
+# Set up the layout with two plot panels side by side
+par(mfrow = c(1, 2))
+
+# Scatter plot: Productivity vs Unemployment
+plot(productivity, unemployment, 
+     xlab = "Productivity", ylab = "Unemployment",
+     main = "Productivity vs Unemployment", 
+     pch = 16)
+
+# Scatter plot: Year vs Unemployment
+plot(year, unemployment, 
+     xlab = "Year", ylab = "Unemployment",
+     main = "Year vs Unemployment", 
+     pch = 16)
+```
+
+
+
+
+## Plotting the data in 3D {.smaller}
+
+To better understand the data we can do a 3D scatter plot using either
+
+- ``scatterplot3D``
+  * installed via ``install.packages("scatterplot3d")``
+  * produces static plots
+
+- ``plotly``
+  * installed via ``install.packages("plotly")``
+  * produces interactive plots
+
+
+
+
+## Plotting the data with ``scatterplot3d`` {.smaller}
+
+
+
+```r
+# Load the scatterplot3d library
+library(scatterplot3d)
+
+# Create 3D scatter plot
+scatterplot3d(x = productivity,
+              y = year,
+              z = unemployment, 
+              main = "Productivity and Year vs Unemployment", 
+              xlab = "Productivity", 
+              ylab = "Year", 
+              zlab = "Unemployment",
+              pch = 16,
+              color = "black",
+              angle = 50)
+```
+
+
+
+## Plotting the data with ``scatterplot3d`` {.smaller}
+
+```{r}
+# Unemployment data
+unemployment <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+
+# Productivity data
+productivity <- c(113, 123, 127, 138, 130, 146, 151, 152, 141, 159)
+
+# Year data
+year <- seq(1950, 1959, by = 1)
+
+# Load the scatterplot3d library
+library(scatterplot3d)
+
+# Create 3D scatter plot
+scatterplot3d(x = productivity,
+              y = year,
+              z = unemployment, 
+              main = "Productivity and Year vs Unemployment", 
+              xlab = "Productivity", 
+              ylab = "Year", 
+              zlab = "Unemployment", 
+              pch = 16,
+              color = "black",
+              angle = 50)
+```
+
+
+
+
+## Plotting the data with ``plotly`` {.smaller}
+
+```r
+# Load the plotly library
+library(plotly)
+
+# Create a scatter plot using plot_ly
+plot_ly(x = productivity, 
+        y = year, 
+        z = unemployment, 
+        type = "scatter3d", 
+        mode = "markers",
+        marker = list(size = 5, color = "black")) %>%
+  layout(scene = list(xaxis = list(title = "Productivity"),
+                      yaxis = list(title = "Year"),
+                      zaxis = list(title = "Unemployment")),
+         width = 1000, 
+         height = 500)
+```
+
+
+
+
+## Plotting the data with ``plotly`` {.smaller}
+### The data is clearly close to a plane
+
+```{r}
+# Load the plotly library
+library(plotly)
+
+# Data
+unemployment <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+productivity <- c(113, 123, 127, 138, 130, 146, 151, 152, 141, 159)
+year <- seq(1950, 1959, by = 1)
+
+# Create a scatter plot using plot_ly
+plot_ly(x = productivity, 
+        y = year, 
+        z = unemployment, 
+        type = "scatter3d", 
+        mode = "markers",
+        marker = list(size = 5, color = "black")) %>%
+  layout(scene = list(xaxis = list(title = "Productivity"),
+                      yaxis = list(title = "Year"),
+                      zaxis = list(title = "Unemployment")),
+         width = 1000, 
+         height = 500)
+```
+
+
+
+## Setting up multiple regression model {.smaller}
+
+- We saw that the data points
+$$
+(x_i, y_i, z_i) = ( \text{productivity}, \text{year}, \text{unemployment} )
+$$
+roughly lie on a **plane**
+
+- **Goal:** Use multiple regression to model such plane
+  * Unemployment is modelled by response variable $Y$
+  * Productivity is modelled by predictor $X_2$
+  * Year is modelled by predictor $X_3$
+  * The multiple regression model is
+  $$
+  \Expect[Y | x_2, x_3] = \beta_1 + \beta_2 \, x_2 + \beta_3 \, x_3
+  $$
+
+
+
+## Exercise {.smaller}
+
+::: {.column width="54%"}
+
+Multiple regression model is
+$$
+\Expect[Y | x_2, x_3] = \beta_1 + \beta_2 \, x_2 + \beta_3 \, x_3
+$$
+
+- Enter design matrix ``Z`` into R
+- Compute estimator 
+$$
+\hat \beta = (Z^T Z)^{-1} Z^T y
+$$
+- Matrix product in R is $\,$``%*%``
+- Transpose matrix of $\,$``A``$\,$ is $\,$``t(A)``
+- Transpose matrix of $\,$``A``$\,$ is $\,$``solve(A)``
+
+:::
+
+::: {.column width="45%"}
+
+::: {style="font-size: 0.85em"}
+
+| Unemp. |  Product.| Year |
+|:------:|:--------:|:----:|
+| $y_i$  | $x_{i2}$ |$x_{i3}$|
+|  3.1   |  113     | 1950 |
+|  1.9   |  123     | 1951 |
+|  1.7   |  127     | 1952 |
+|  1.6   |  138     | 1953 |
+|  3.2   |  130     | 1954 |
+|  2.7   |  146     | 1955 |
+|  2.6   |  151     | 1956 |
+|  2.9   |  152     | 1957 |
+|  4.7   |  141     | 1958 |
+|  3.8   |  159     | 1959 |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+:::
+
+
+
+
+
+## Solution {.smaller}
+
+::: {.column width="54%"}
+
+The design matrix is
+$$
+Z=\left(\begin{array}{cccc}
+    1 & 113 & 1950 \\
+    1 & 123 & 1951 \\
+    1 & 127 & 1952 \\
+    1 & 138 & 1953 \\
+    1 & 130 & 1954 \\
+    1 & 146 & 1955 \\
+    1 & 151 & 1956 \\
+    1 & 152 & 1957 \\
+    1 & 141 & 1958 \\
+    1 & 159 & 1959 \\
+\end{array}\right)
+$$
+
+:::
+
+::: {.column width="45%"}
+
+::: {style="font-size: 0.85em"}
+
+| Unemp. |  Product.| Year |
+|:------:|:--------:|:----:|
+| $y_i$  | $x_{i2}$ |$x_{i3}$|
+|  3.1   |  113     | 1950 |
+|  1.9   |  123     | 1951 |
+|  1.7   |  127     | 1952 |
+|  1.6   |  138     | 1953 |
+|  3.2   |  130     | 1954 |
+|  2.7   |  146     | 1955 |
+|  2.6   |  151     | 1956 |
+|  2.9   |  152     | 1957 |
+|  4.7   |  141     | 1958 |
+|  3.8   |  159     | 1959 |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+:::
+
+
+
+## Solution {.smaller}
+
+::: {.column width="54%"}
+
+The data vector is
+$$
+y = 
+\left(\begin{array}{c}
+3.1 \\
+1.9 \\
+1.7 \\
+1.6 \\
+3.2 \\
+2.7 \\
+2.6 \\
+2.9 \\
+4.7 \\
+3.8 \\
+\end{array}\right)
+$$
+
+:::
+
+::: {.column width="45%"}
+
+::: {style="font-size: 0.85em"}
+
+| Unemp. |  Product.| Year |
+|:------:|:--------:|:----:|
+| $y_i$  | $x_{i2}$ |$x_{i3}$|
+|  3.1   |  113     | 1950 |
+|  1.9   |  123     | 1951 |
+|  1.7   |  127     | 1952 |
+|  1.6   |  138     | 1953 |
+|  3.2   |  130     | 1954 |
+|  2.7   |  146     | 1955 |
+|  2.6   |  151     | 1956 |
+|  2.9   |  152     | 1957 |
+|  4.7   |  141     | 1958 |
+|  3.8   |  159     | 1959 |
+: {tbl-colwidths="[30,35,35]"}
+
+:::
+:::
+
+
+
+## Solution {.smaller}
+
+Data vector $y$ is stored in R as usual
+
+```r
+# Store vector y
+y <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+```
+
+
+
+
+## Solution {.smaller}
+
+Design matrix is stored as follows
+
+
+```r
+# Store design matrix Z as long vector
+Z <- c(1, 113, 1950,
+       1, 123, 1951,
+       1, 127, 1952,
+       1, 138, 1953,
+       1, 130, 1954,
+       1, 146, 1955,
+       1, 151, 1956,
+       1, 152, 1957,
+       1, 141, 1958,
+       1, 159, 1959)
+
+# Make Z into a matrix with 3 columns
+Z <- matrix(Z, ncol = 3, byrow = TRUE)
+```
+
+
+
+## Solution {.smaller}
+
+- We need to compute the estimator
+
+$$
+\hat \beta = (Z^T Z)^{-1} Z^T y
+$$
+
+
+- The matrix transpose is computed with $\,$``t(A)``
+- The product of two matrices $A$ and $B$ is computed with $\,$ ``A %*% B``
+- We use these two operators to compute $Z^T Z$ and store it into ``m1``
+
+
+```r
+# Calculate m1
+m1 <- t(Z) %*% Z
+```
+
+
+## Solution {.smaller}
+
+
+- The inverse of a matrix $A$ is computed with $\,$ ``solve(A)``
+- We use this function to compute $(Z^T Z)^{-1}$ and store it into ``m2``
+
+
+```r
+# Calculate m2
+m2 <- solve(m1)
+```
+
+- We can compute $Z^T y$ with $\,$``%*%``
+- This is because R automatically interprets vectors as matrices
+
+```r
+# Calculate m3
+m3 <- t(Z) %*% y
+```
+
+
+
+## Solution {.smaller}
+
+- We compute the estimator 
+$$\hat{\beta}=(Z^T Z)^{-1} Z^T y
+$$
+and store it as $\,$ ``beta``
+
+```r
+# Calculate estimator beta
+beta <- m2 %*% m3
+```
+
+- We then print the result to screen
+
+```r
+# Print estimator beta
+cat("The estimator is", beta)
+```
+
+
+```{r}
+# Store vector y
+y <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+
+# Store design matrix Z as long vector
+Z <- c(1, 113, 1950,
+       1, 123, 1951,
+       1, 127, 1952,
+       1, 138, 1953,
+       1, 130, 1954,
+       1, 146, 1955,
+       1, 151, 1956,
+       1, 152, 1957,
+       1, 141, 1958,
+       1, 159, 1959)
+
+# Make Z into a matrix with 3 columns
+Z <- matrix(Z, ncol = 3, byrow = TRUE)
+
+# Calculate m1
+m1 <- t(Z) %*% Z
+
+# Calculate m2
+m2 <- solve(m1)
+
+# Calculate m3
+m3 <- t(Z) %*% y
+
+# Calculate estimator beta
+beta <- m2 %*% m3
+
+# Print estimator beta
+cat("The estimator is", beta)
+```
+
+
+
+## Solution {.smaller}
+
+
+- The computed regression model is
+
+\begin{align*}
+\Expect[Y | x_2, x_3] & = \hat\beta_1 + \hat\beta_2 \, x_2 + \hat\beta_3 \, x_3 \\[15pt]
+ & = -1271.75 + -0.1033386 \times x_2 + 0.6594171 \times x_3 
+\end{align*}
+
+
+- Previous code can be downloaded here [multiple_regression.R](codes/multiple_regression.R)
+
+
+
+## Solution: Plot of data and regression plane {.smaller}
+
+```{r}
+# Load the plotly library
+library(plotly)
+
+# Data
+unemployment <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+productivity <- c(113, 123, 127, 138, 130, 146, 151, 152, 141, 159)
+year <- seq(1950, 1959, by = 1)
+
+# Generate a grid of x and y values
+x_grid <- seq(min(productivity), max(productivity), length.out = 50)
+y_grid <- seq(min(year), max(year), length.out = 50)
+grid <- expand.grid(productivity = x_grid, year = y_grid)
+
+# Calculate z values for the regression plane
+z_values <- -1271.75 - 0.1033386 * grid$productivity + 0.6594171 * grid$year
+
+# Create a scatter plot using plot_ly
+plot_ly(x = productivity, 
+        y = year, 
+        z = unemployment, 
+        type = "scatter3d", 
+        mode = "markers",
+        marker = list(size = 5, color = "black")) %>%
+  layout(scene = list(xaxis = list(title = "Productivity"),
+                      yaxis = list(title = "Year"),
+                      zaxis = list(title = "Unemployment")),
+         width = 1000, 
+         height = 500) %>%
+         add_surface(
+         x = x_grid, 
+         y = y_grid, 
+         z = matrix(z_values, nrow = length(x_grid)),
+         opacity = 0.5, 
+         colorscale = list(c(0, 'rgb(255,255,255)'), c(1, 'rgb(255,0,0)')))
+```
+
+
+
 
 # Part 4: <br>Two sample t-test<br> as general regression {background-color="#cc0164" visibility="uncounted"}
 
@@ -1866,12 +2443,16 @@ $$
 
 ## Setting up the regression analysis {.smaller}
 
-- We want to fit a general linear model with $p = 2$ to the data:
-  * Response variable $Y$ depends on predictors $Z_1, Z_2$
+- We want a regression model that can capture the sample means $\overline{a}$ and $\overline{b}$
 
-- To this end, define the data vector $y$ by concatenating $a$ and $b$
+- To this end, we fit a general linear model with $p = 2$ to the data
+
+$$
+\Expect[Y | z_1 , z_2 ] = \beta_1 z_1 + \beta_2 z_2
+$$
 
 
+- Define the data vector $y$ by concatenating $a$ and $b$
 
 $$
 y = 
