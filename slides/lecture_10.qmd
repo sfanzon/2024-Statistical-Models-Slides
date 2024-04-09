@@ -40,9 +40,7 @@ $
 ## Practical regression {.smaller}
 ### Next 2 classes
 
-- We cover additional theoretical aspects of regression 
-  * These are mathematically quite difficult
-  * We only briefly mention them
+
 
 - Applications of regression in R
   * Most examples will be from finance and business
@@ -59,243 +57,9 @@ $
 
 ## Outline of Lecture 10
 
-1. Coefficient of determination
-2. Statistical inference
 3. Practical regression in R
 
 
-
-
-
-
-
-
-# Part 1: <br>Coefficient of <br>determination {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-
-
-## How good is the model? {.smaller}
-
-- Consider the multiple linear regression model
-
-$$
-Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p \, x_{ip} + \e_i
-$$
-
-- Denote the estimator by
-
-$$
-\hat \beta = (\hat \beta_1, \ldots, \hat \beta_p ) = (Z^T Z)^{-1} Z^T y
-$$
-
-::: Problem
-
-Quantify how well the model fits the **observed values**
-
-$$
-y_1 , \ldots, y_n
-$$
-
-:::
-
-
-
-## Predicted values and RSS {.smaller}
-
-
-- The **predicted values** are
-
-\begin{align*}
-\hat y_i & := \Expect[ Y | x_{i2}, \ldots , z_{ip} ] \\
-         & = \hat \beta_1 + \hat \beta_2 \, x_{i2} + \ldots + \hat \beta_p \, x_{ip}
-\end{align*}
-
-- Recall that the **Residual sum of squares** is
-
-$$
-\RSS := \sum_{i=1}^n ( y_i - \hat y_i )^2 
-$$
-
-- The $\RSS$ measures deviation of predicted values from observed values
-
-
-
-
-
-## Explained sum of squares {.smaller}
-
-
-- The **explained sum of squares** is
-
-$$
-\ESS := \sum_{i=1}^n ( \hat y_i - \overline{y} )^2
-$$
-
-- $\ESS$ measures deviation of predicted values from the grand mean
-
-
-
-
-## Total sum of squares {.smaller}
-
-
-- The **total sum of squares** is 
-
-$$
-\TSS := \sum_{i=1}^n ( y_i - \overline{y} )^2
-$$
-
-
-- $\TSS$ measures deviation of observed values from the grand mean 
-
-
-- Hence $\TSS$ measures variability of the observed data $y_1 , \ldots, y_n$
-
-
-
-## $\TSS = \ESS + \RSS$  {.smaller}
-
-
-::: Theorem
-
-Suppose given the multiple regression linear model
-
-$$
-Y_i =  \beta_1 + \beta_2 x_{i2} + \ldots + \beta_p x_{ip}  + \e_{i}
-$$
-for errors $\e_1 , \ldots, \e_n$ iid $N(0,\sigma^2)$. Then
-
-$$
-\TSS = \ESS + \RSS
-$$
-
-:::
-
-
-**Proof:** Left as an exercise
-
-
-
-::: {.content-hidden}
-
-For proof see here
-
-https://en.wikipedia.org/wiki/Explained_sum_of_squares
-
-:::
-
-
-
-## Coefficient of determination {.smaller}
-
-
-- The **coefficient of determination** is 
-
-$$
-R^2 :=  \frac{ \ESS }{ \TSS } = \frac{ \sum_{i=1}^n ( \hat y_i - \overline{y} )^2 }{ \sum_{i=1}^n ( y_i - \overline{y} )^2 }
-$$
-
-- $R^2$ measures proportion of total data variability ($\TSS$) which is explained by the regression model ($\ESS$) 
-
-- By the Theorem we have
-
-$$
-R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }
-$$
-
-
-
-
-## Coefficient of determination {.smaller}
-
-::: Proposition
-
-We have that 
-
-$$
-0 \leq R^2 \leq 1
-$$
-
-Moreover 
-
-$$
-R^2 = 1 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
-$$
-
-:::
-
-
-## Coefficient of determination {.smaller}
-### Proof of Proposition
-
-- Note that 
-
-$$
-\TSS, \, \ESS , \, \RSS \geq 0
-$$
-
-- Therefore 
-
-$$
-R^2 := \frac{\ESS}{\TSS} \geq 0
-$$
-
-
-
-## Coefficient of determination {.smaller}
-### Proof of Proposition
-
-
-- By the Theorem we also have
-
-$$
-R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }  \leq 1
-$$
-
-
-- Moreover note that
-
-$$
-\RSS = \sum_{i=1}^n ( y_i - \hat y_i )^2 = 0 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
-$$
-
-
-## Coefficient of determination {.smaller}
-### Proof of Proposition
-
-
-- The proof is concluded by noting that
-
-\begin{align*}
-R^2 = 1 \quad & \iff  \quad 1 - \frac{ \RSS }{ \TSS }  = 1 \\[15pt]
-              & \iff \quad \frac{ \RSS }{ \TSS }  = 0 \\[15pt]
-              & \iff \quad \RSS = 0 \\[15pt]
-              & \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
-\end{align*}
-
-
-
-
-## Conclusion {.smaller}
-
-We have shown that
-
-- $0 \leq R^2 \leq 1$
-
-- $R^2 = 1 \quad \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n$
-
-
-**Conclusion:** $R^2$ measures how well the model fits the data
-
-- $R^2$ close to $1 \quad \implies \quad$ model fits data well
-- $R^2$ close to $0 \quad \implies \quad$ model does not fit data well
 
 
 
@@ -344,7 +108,7 @@ Interested in relationship between 2 variables
 
 
 
-## Example: Gold and Stock prices
+## Example: Stock and Gold prices
 
 ::: {style="font-size: 0.75em"}
 Dataset with $33$ entries for Stock and Gold price pairs
@@ -376,7 +140,7 @@ knitr::kable(
 
 
 
-## Example: Gold and Stock prices {.smaller}
+## Example: Stock and Gold prices {.smaller}
 
 
 - The data is stored in a ``.txt`` file
@@ -458,29 +222,46 @@ print(prices)
 
 
 
+## Store data into vectors {.smaller}
+
+- We now store Stock and Gold prices in 2 vectors
+    * Stock prices are in 1st column of ``prices``
+    * Gold prices are in 2nd column of ``prices``
+
+```r
+stock.price <- prices[ , 1]
+gold.price <- prices[ , 2]
+```
+
+<br>
+
+- Alternatively the same can be achieved with
+
+```r
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
+```
 
 
-## Example: Gold and Stock prices {.smaller}
 
+## Plot Stock Price vs Gold Price {.smaller}
 
 ::::: {.columns style='display: flex !important; height: 80%;'}
 
 ::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
 
-- Plot Stock Price against Gold Price
-
-- As Stock price increases, Gold price decreases
-
-- Would like to find $\alpha$ and $\beta$ s.t.
-$$
-\Expect[Y_i | x_i] \ \approx \  \alpha + \beta x_i
-$$
 
 
-
+```r
+plot(stock.price, 
+     gold.price, 
+     xlab = "Stock Price", 
+     ylab = "Gold Price",
+     pch = 16
+    )
+```
 
 :::
-
 
 ::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
 
@@ -489,28 +270,23 @@ $$
 #| fig-asp: 1
 
 # Read the data
-data <- read.table(file = "datasets/stock_gold.txt",
+prices <- read.table(file = "datasets/stock_gold.txt",
                    header = TRUE
                   )
 
-stockprice <- data[ , 1]
-goldprice <- data[ , 2]
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
 
 # Create the plot
-plot(stockprice,
-     goldprice, 
+plot(stock.price,
+     gold.price, 
      xlab = "", 
-     ylab= "")
+     ylab= "",
+     pch = 16)
 
 # Add labels
 mtext("Stock Price", side=1, line=3, cex=2.1)
 mtext("Gold Price", side=2, line=2.5, cex=2.1)
-
-# Fit linear regression
-fit <- lm(stockprice ~ goldprice)
-
-# Plot regression line in red
-abline(fit, col = "red", lwd = 3)
 ```
 
 :::
@@ -519,14 +295,360 @@ abline(fit, col = "red", lwd = 3)
 
 
 
-## Example: Gold and Stock prices {.smaller}
+## Plot Stock Price vs Gold Price {.smaller}
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- ``xlab`` and ``ylab`` specify axes labels
+
+- ``pch`` specifies type of points
+
+- Scaling is achieved with
+    * ``xlim = c(lower, upper)``
+    * ``ylim = c(lower, upper)``
+
+
+:::
+
+
+::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+prices <- read.table(file = "datasets/stock_gold.txt",
+                   header = TRUE
+                  )
+
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
+
+# Create the plot
+plot(stock.price,
+     gold.price, 
+     xlab = "", 
+     ylab= "",
+     pch = 16)
+
+# Add labels
+mtext("Stock Price", side=1, line=3, cex=2.1)
+mtext("Gold Price", side=2, line=2.5, cex=2.1)
+```
+
+:::
+:::::
+
+
+
+## Examining the graph {.smaller}
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Graph suggests that the 2 variables are negatively correlated
+
+- Need to cross-check with the results of a formal statistical regression analysis
+
+
+:::
+
+
+::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+prices <- read.table(file = "datasets/stock_gold.txt",
+                   header = TRUE
+                  )
+
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
+
+# Create the plot
+plot(stock.price,
+     gold.price, 
+     xlab = "", 
+     ylab= "",
+     pch = 16)
+
+# Add labels
+mtext("Stock Price", side=1, line=3, cex=2.1)
+mtext("Gold Price", side=2, line=2.5, cex=2.1)
+```
+
+:::
+:::::
+
+
+
+
+
+## Coefficient of determination $R^2$ {.smaller}
+
+- $R^2$ is defined as
+
+$$
+\TSS = \ESS + \RSS 
+$$
+
+- $R^2$ measures proportion of variability in the data explained by the model
+
+<br>
+
+::: Important
+
+- $R^2$ is automatically computed by R when using ``lm``
+- **High** values of $R^2$ are **better**! 
+
+:::
+
+
+
+
+## Some observations about $R^2$ {.smaller}
+
+::: Warning
+
+$R^2$ increases as more $X$ variables are added to a regression model
+
+:::
+
+This is not necessarily good
+
+- One can add lots of variables and make $R^2 \approx 1$
+
+- This way the model explains the data really well
+    $$
+    y_i \approx \hat y_i \,, \quad \forall \,\, i = 1 , \ldots, n
+    $$ 
+
+- Problem: the model will not make good predictions on new data 
+
+- This is known as **overfitting** and it should be avoided
+
+
+
+
+## Some observations about $R^2$ {.smaller}
+
+- $R^2$ lies between $0$ and $1$
+    * $R^2 = 0$ model explains nothing
+    * $R^2 = 1$ model explains everything
+
+<br>
+
+- Generally: the higher the value of $R^2$ the better the model
+    * Textbook examples often have high values
+    $$
+    R^2 \geq 0.7
+    $$
+    * **Example:** In the unemployment example of Lecture 9 we found
+    $$
+    R^2 = 0.8655401
+    $$
+
+
+
+
+## Some observations about $R^2$ {.smaller}
+
+
+
+::: Important
+
+In practice values 
+$$
+R^2 \geq 0.3
+$$ 
+imply there is a nontrivial amount of variation in the data explained by the model
+
+:::
+
+    
+**Example:** In the *Stock Price* Vs *Gold Price* example we have
+$$
+R^2 = 0.395325
+$$ 
+
+- This shows that *Stock Price* affects *Gold Price*
+- However, it is clear that other also factors affect *Gold Price*
+
+
+
+
+
+## Running the regression in R {.smaller}
+
+- The basic R command used to run regression is
+
+::: {.r-stack}
+
+``lm(formula)``
+
+:::
+
+<br>
+
+- ``lm`` stands for **linear model**
+
+
+
+## Running simple linear regression in R {.smaller}
+
+
+For simple linear regression
+
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+the command is
+
+::: {.r-stack}
+
+``lm(y ~ x)``
+
+:::
+
+<br>
+
+- Symbol ``y ~ x`` reads as *$y$ modelled as function of $x$*
+
+- ``y`` is vector containing the data $y_1, \ldots, y_n$
+
+- ``x`` is vector containing the data $x_1, \ldots, x_n$
+
+
+
+
+## Running multiple linear regression in R {.smaller}
+
+
+
+For multiple linear regression
+
+$$
+Y_i = \beta_1 + \beta_2 \, x_{i2} + \ldots + \beta_p \, x_{ip} + \e_i
+$$
+
+the command is 
+
+::: {.r-stack}
+
+``lm (y ~ x2 + x3 + ... + xp)``
+
+:::
+
+<br>
+
+- ``y`` is vector containing the data $y_1, \ldots, y_n$
+
+- ``xj`` is vector containing the data $x_{1j}, \ldots , x_{jp}$ 
+
+
+
+## Running the regression in R {.smaller}
+
+The best way to run regression is
+
+1. Run the regression analysis and store the results in a variable
+
+```r
+fit.model <- lm(formula)
+```
+
+<br>
+
+2. Use command ``summary`` to read output of regression
+
+```r
+summary(fit.model)
+```
+
+**Note:** If you are running the code from ``.R`` file you need to print output
+
+```r
+print( summary(fit.model) )
+```
+
+
+
+
+## Example: Stock and Gold prices {.smaller}
+
+- Stock price is stored in vector 
+    * ``stock.price``
+
+- Gold price is stored in vector 
+    * ``gold.price``
+
+
+- We want to fit the simple linear model
+$$
+\text{gold.price } = \alpha + \beta \, \text{ stock.price } + \text{ error}
+$$
+
+
+```r
+# Fit simple linear regression model
+fit.model <- lm(gold.price ~ stock.price)
+
+# Print result to screen
+summary(fit.model)
+```
+
+
+- The full code can be downloaded here [simple_regression.R](codes/simple_regression.R)
+
+
+
+
+## Full output
+
+![](images/simple_regression_output.png){width=70%}
+
+
+
+## Interesting parts of Output {.smaller}
+
+
+![](images/simple_regression_output_cut.png){width=65%}
+
+
+We are only interested in 3 quantities:
+
+
+| Coefficient $R^2$ | $\texttt{Multiple R-squared:  0.3953}$ |
+|:------------------|:----------                             |
+|**t-statistic for** ``stock.price`` | $\texttt{stock.price t-value:  -4.502}$ |
+| **F-statistic**      |  $\texttt{F-statistic: 20.27}$           |
+: {tbl-colwidths="[50,50]"}
+
+
+- 
+
+
+
+
+
+
+
+## Example: Stock and Gold prices {.smaller}
 
 
 ::::: {.columns style='display: flex !important; height: 80%;'}
 
 ::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
 
-- Plot Stock Price against Gold Price
+- We have gold price 
 
 - As Stock price increases, Gold price decreases
 
@@ -548,22 +670,26 @@ $$
 #| fig-asp: 1
 
 # Read the data
-data1 <- read.table("datasets/L3eg1data.txt")
-realgoldprice <- data1[,1]
-realstockprice <- data1[,2]
+prices <- read.table(file = "datasets/stock_gold.txt",
+                     header = TRUE
+                    )
+
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
 
 # Create the plot
-plot(realgoldprice,
-     realstockprice, 
-     xlab="", 
-     ylab="")
+plot(stock.price,
+     gold.price, 
+     xlab = "", 
+     ylab= "",
+     pch = 16)
 
 # Add labels
-mtext("Stock Price x_i", side=1, line=3, cex=2.1)
-mtext("Gold Price Y_i", side=2, line=2.5, cex=2.1)
+mtext("Stock Price", side=1, line=3, cex=2.1)
+mtext("Gold Price", side=2, line=2.5, cex=2.1)
 
 # Fit linear regression
-fit <- lm(realstockprice ~ realgoldprice)
+fit <- lm(gold.price ~ stock.price)
 
 # Plot regression line in red
 abline(fit, col = "red", lwd = 3)

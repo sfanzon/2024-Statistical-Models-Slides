@@ -43,7 +43,9 @@ $
 1. General linear regression
 2. Simple regression as general regression
 3. Multiple linear regression
-4. Two sample t-test as general regression
+4. Coefficient of determination
+5. Example of multiple regression
+6. Two sample t-test as general regression
 
 
 
@@ -65,28 +67,36 @@ $
 
 ## Simple vs General regression {.smaller}
 
-- Simple regression: 
-  * Response variable $Y$ depends on one predictor $X$
-  * The goal is to learn distribution of 
+**Simple regression:**
+
+- Response variable $Y$ depends on one predictor $X$
+
+- The goal is to learn distribution of 
+  
   $$
   Y | X
   $$
-  * $Y | X$ allows to predict values of $Y$ knowing values of $X$
+
+- $Y | X$ allows to predict values of $Y$ knowing values of $X$
 
 
 
 ## Simple vs General regression {.smaller}
 
-- General regression: 
-  * Response variable $Y$ depends on $p$ predictors 
-  $$
-  Z_1 , \ldots,  Z_p
-  $$
-  * The goal is to learn distribution of 
-  $$
-  Y | Z_1, \ldots, Z_p
-  $$
-  * $Y | Z_1 , \dots, Z_p$ allows to predict $Y$ knowing values of $Z_1 , \dots, Z_p$
+**General regression:**
+
+- Response variable $Y$ depends on $p$ predictors 
+
+$$
+Z_1 , \ldots,  Z_p
+$$
+
+- The goal is to learn distribution of 
+$$
+Y | Z_1, \ldots, Z_p
+$$
+
+- $Y | Z_1 , \dots, Z_p$ allows to predict $Y$ knowing values of $Z_1 , \dots, Z_p$
 
 
 
@@ -1819,6 +1829,248 @@ $$
 
 
 
+
+
+# Part 4: <br>Coefficient of <br>determination {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## How good is the model? {.smaller}
+
+- Consider the multiple linear regression model
+
+$$
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p \, x_{ip} + \e_i
+$$
+
+- Denote the estimator by
+
+$$
+\hat \beta = (\hat \beta_1, \ldots, \hat \beta_p ) = (Z^T Z)^{-1} Z^T y
+$$
+
+::: Problem
+
+Quantify how well the model fits the **observed values**
+
+$$
+y_1 , \ldots, y_n
+$$
+
+:::
+
+
+
+## Predicted values and RSS {.smaller}
+
+
+- The **predicted values** are
+
+\begin{align*}
+\hat y_i & := \Expect[ Y | x_{i2}, \ldots , z_{ip} ] \\
+         & = \hat \beta_1 + \hat \beta_2 \, x_{i2} + \ldots + \hat \beta_p \, x_{ip}
+\end{align*}
+
+- Recall that the **Residual sum of squares** is
+
+$$
+\RSS := \sum_{i=1}^n ( y_i - \hat y_i )^2 
+$$
+
+- The $\RSS$ measures deviation of predicted values from observed values
+
+
+
+
+
+## Explained sum of squares {.smaller}
+
+
+- The **explained sum of squares** is
+
+$$
+\ESS := \sum_{i=1}^n ( \hat y_i - \overline{y} )^2
+$$
+
+- $\ESS$ measures deviation of predicted values from the grand mean
+
+
+
+
+## Total sum of squares {.smaller}
+
+
+- The **total sum of squares** is 
+
+$$
+\TSS := \sum_{i=1}^n ( y_i - \overline{y} )^2
+$$
+
+
+- $\TSS$ measures deviation of observed values from the grand mean 
+
+
+- Hence $\TSS$ measures variability of the observed data $y_1 , \ldots, y_n$
+
+
+
+## $\TSS = \ESS + \RSS$  {.smaller}
+
+
+::: Theorem
+
+Suppose given the multiple regression linear model
+
+$$
+Y_i =  \beta_1 + \beta_2 x_{i2} + \ldots + \beta_p x_{ip}  + \e_{i}
+$$
+for errors $\e_1 , \ldots, \e_n$ iid $N(0,\sigma^2)$. Then
+
+$$
+\TSS = \ESS + \RSS
+$$
+
+:::
+
+
+**Proof:** Left as an exercise
+
+
+
+::: {.content-hidden}
+
+For proof see here
+
+https://en.wikipedia.org/wiki/Explained_sum_of_squares
+
+:::
+
+
+
+## Coefficient of determination {.smaller}
+
+
+- The **coefficient of determination** is 
+
+$$
+R^2 :=  \frac{ \ESS }{ \TSS } = \frac{ \sum_{i=1}^n ( \hat y_i - \overline{y} )^2 }{ \sum_{i=1}^n ( y_i - \overline{y} )^2 }
+$$
+
+- $R^2$ measures proportion of total data variability ($\TSS$) which is explained by the regression model ($\ESS$) 
+
+- By the Theorem we have
+
+$$
+R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }
+$$
+
+
+
+
+## Coefficient of determination {.smaller}
+
+::: Proposition
+
+We have that 
+
+$$
+0 \leq R^2 \leq 1
+$$
+
+Moreover 
+
+$$
+R^2 = 1 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+$$
+
+:::
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+- Note that 
+
+$$
+\TSS, \, \ESS , \, \RSS \geq 0
+$$
+
+- Therefore 
+
+$$
+R^2 := \frac{\ESS}{\TSS} \geq 0
+$$
+
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+
+- By the Theorem we also have
+
+$$
+R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }  \leq 1
+$$
+
+
+- Moreover note that
+
+$$
+\RSS = \sum_{i=1}^n ( y_i - \hat y_i )^2 = 0 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+$$
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+
+- The proof is concluded by noting that
+
+\begin{align*}
+R^2 = 1 \quad & \iff  \quad 1 - \frac{ \RSS }{ \TSS }  = 1 \\[15pt]
+              & \iff \quad \frac{ \RSS }{ \TSS }  = 0 \\[15pt]
+              & \iff \quad \RSS = 0 \\[15pt]
+              & \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+\end{align*}
+
+
+
+
+## Conclusion {.smaller}
+
+We have shown that
+
+- $0 \leq R^2 \leq 1$
+
+- $R^2 = 1 \quad \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n$
+
+
+**Conclusion:** $R^2$ measures how well the model fits the data
+
+- $R^2$ close to $1 \quad \implies \quad$ model fits data well
+- $R^2$ close to $0 \quad \implies \quad$ model does not fit data well
+
+
+
+
+# Part 5: <br>Example of <br>multiple regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
 ## Example: Predicting unemployment {.smaller}
 
 ::: {.column width="55%"}
@@ -2397,7 +2649,231 @@ plot_ly(x = productivity,
 
 
 
-# Part 4: <br>Two sample t-test<br> as general regression {background-color="#cc0164" visibility="uncounted"}
+## Computing the $R^2$ coefficient  {.smaller} 
+
+
+- How well does such multiple linear model fit our data?
+
+- To answer this question we compute the coefficient of determination
+
+$$
+R^2 = \frac{ \ESS }{ \TSS }  = \frac{ \sum_{i=1}^n ( \hat y_i - \overline{y} )^2 }{ \sum_{i=1}^n (y_i - \overline{y})^2 }
+$$
+
+
+
+## Computing $\TSS$  {.smaller} 
+
+- We have that 
+
+$$
+\TSS := \sum_{i=1}^n (y_i - \overline{y})^2
+$$
+
+- We compute $\overline{y}$ with the R command
+
+```r
+# Compute mean of y
+y_bar <- mean(y)
+```
+
+- We compute $\TSS$ with the R command
+
+
+```r
+# Compute TSS
+TSS <- sum( ( y - y_bar) ^ 2 )
+```
+
+
+## Computing $\ESS$  {.smaller} 
+
+- We have that 
+
+$$
+\ESS := \sum_{i=1}^n (\hat y_i - \overline{y})^2
+$$
+
+
+- We need to compute
+
+$$
+\hat y_i :=  \hat \beta_1 + \hat \beta_2 x_{i2} + \hat \beta_3 x_{i3}
+$$
+
+
+## Computing $\ESS$  {.smaller}
+
+- $\hat y$, the design matrix $Z$, and $\hat \beta$ are
+
+$$
+\hat y = 
+\left(\begin{array}{c}
+    \hat y_1 \\
+    \ldots \\
+    \hat y_i  \\
+    \ldots  \\
+    \hat y_n \\
+\end{array}\right) \,, \qquad 
+Z = 
+\left(\begin{array}{cccc}
+    1 & x_{11} & x_{12} \\
+    \ldots & \ldots & \ldots \\
+    1 & x_{i1} & x_{i2} \\
+    \ldots & \ldots & \ldots \\
+    1 & x_{n1} & x_{n2} \\
+\end{array}\right) \,, \qquad 
+\hat \beta = 
+\left(\begin{array}{c}
+    \hat \beta_1 \\
+    \hat \beta_2  \\
+    \hat \beta_3 \\
+\end{array}\right) 
+$$
+
+
+- Therefore we can compute 
+$$
+\hat y_i =  \hat \beta_1 + \hat \beta_2 x_{i2} + \hat \beta_3 x_{i3}
+$$
+with the product 
+$$
+\hat y = Z \hat \beta
+$$
+
+
+
+
+
+## Computing $\ESS$  {.smaller}
+
+
+- Recall that $\hat \beta$ is stored in ``beta``
+
+- Therefore we can compute $\hat y$ with R command
+
+```r
+# Compute predictions y hat
+y_hat <- Z %*% beta
+```
+
+
+- Finally $\ESS$ is computed with
+
+```r
+# Compute ESS
+ESS <- sum( (y_hat - y_bar) ^ 2 )
+```
+
+
+
+## Computing $R^2$  {.smaller}
+
+
+- The coefficient $R^2$ is computed with
+
+```r 
+# Compute coefficient of determination R^2
+R2 <- ESS / TSS
+
+# Print ESS, RSS and R^2
+cat("\nThe Estimated Squared Error ESS is", ESS)
+cat("\nThe Total Squared Error TSS is", TSS)
+cat("\nThe coefficient of determination R^2 is", R2)
+```
+
+- The full code can be downloaded here [R2_multiple_regression.R](codes/R2_multiple_regression.R)
+
+
+
+
+
+## Computing $R^2$  {.smaller}
+
+- Running the code we obtain the output
+
+```{r} 
+# Store vector y
+y <- c(3.1, 1.9, 1.7, 1.6, 3.2, 2.7, 2.6, 2.9, 4.7, 3.8)
+
+# Store design matrix Z as long vector
+Z <- c(1, 113, 1950,
+       1, 123, 1951,
+       1, 127, 1952,
+       1, 138, 1953,
+       1, 130, 1954,
+       1, 146, 1955,
+       1, 151, 1956,
+       1, 152, 1957,
+       1, 141, 1958,
+       1, 159, 1959)
+
+# Make Z into a matrix with 3 columns
+Z <- matrix(Z, ncol = 3, byrow = TRUE)
+
+# Calculate m1
+m1 <- t(Z) %*% Z
+
+# Calculate m2
+m2 <- solve(m1)
+
+# Calculate m3
+m3 <- t(Z) %*% y
+
+# Calculate estimator beta
+beta <- m2 %*% m3
+
+# Print estimator beta
+cat("\nThe estimator is", beta)
+
+# Compute mean of y
+y_bar <- mean(y)
+
+# Compute TSS
+TSS <- sum( ( y - y_bar) ^ 2 )
+
+# Compute predictions hat y
+y_hat <- Z %*% beta
+
+# Compute ESS
+ESS <- sum( (y_hat - y_bar) ^ 2 )
+
+# Compute coefficient of determination R^2
+R2 <- ESS / TSS
+
+# Print ESS, RSS and R^2
+cat("\nThe Estimated Squared Error ESS is", ESS)
+cat("\nThe Total Squared Error TSS is", TSS)
+cat("\nThe coefficient of determination R^2 is", R2)
+```
+
+<br>
+
+- In particular we have 
+
+$$
+R^2 = 0.8655401
+$$
+
+
+
+## Conclusions  {.smaller}
+
+The coefficient of determination
+
+$$
+R^2 = 0.8655401
+$$
+
+is quite close to $1$, showing that
+
+- The model fits data quite well
+- *Productivity Index* and *Year* affect *Unemployment*
+- *Unemployment* is almost completely explained by *Productivity Index* and *Year*
+
+
+
+# Part 6: <br>Two sample t-test<br> as general regression {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
