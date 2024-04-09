@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 10: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 10: <br>Practical regression<br>Part 1 {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -37,10 +37,31 @@ $
 
 
 
+## Practical regression {.smaller}
+### Next 2 classes
 
-## Outline of Lecture 6
+- We cover additional theoretical aspects of regression 
+  * These are mathematically quite difficult
+  * We only briefly mention them
 
-1. TBA
+- Applications of regression in R
+  * Most examples will be from finance and business
+
+**Side Note:** Regression is very important
+
+- Subject is active field of mathematical research
+- Regression plays central role in quantitative research
+- Examples of quantitative research are in *finance* and *social sciences*
+
+
+
+
+
+## Outline of Lecture 10
+
+1. Coefficient of determination
+2. Statistical inference
+3. Practical regression in R
 
 
 
@@ -49,13 +70,391 @@ $
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>Coefficient of <br>determination {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+
+## How good is the model? {.smaller}
+
+- Consider the multiple linear regression model
+
+$$
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p \, x_{ip} + \e_i
+$$
+
+- Denote the estimator by
+
+$$
+\hat \beta = (\hat \beta_1, \ldots, \hat \beta_p ) = (Z^T Z)^{-1} Z^T y
+$$
+
+::: Problem
+
+Quantify how well the model fits the **observed values**
+
+$$
+y_1 , \ldots, y_n
+$$
+
+:::
+
+
+
+## Predicted values and RSS {.smaller}
+
+
+- The **predicted values** are
+
+\begin{align*}
+\hat y_i & := \Expect[ Y | x_{i2}, \ldots , z_{ip} ] \\
+         & = \hat \beta_1 + \hat \beta_2 \, x_{i2} + \ldots + \hat \beta_p \, x_{ip}
+\end{align*}
+
+- Recall that the **Residual sum of squares** is
+
+$$
+\RSS := \sum_{i=1}^n ( y_i - \hat y_i )^2 
+$$
+
+- The $\RSS$ measures deviation of predicted values from observed values
+
+
+
+
+
+## Explained sum of squares {.smaller}
+
+
+- The **explained sum of squares** is
+
+$$
+\ESS := \sum_{i=1}^n ( \hat y_i - \overline{y} )^2
+$$
+
+- $\ESS$ measures deviation of predicted values from the grand mean
+
+
+
+
+## Total sum of squares {.smaller}
+
+
+- The **total sum of squares** is 
+
+$$
+\TSS := \sum_{i=1}^n ( y_i - \overline{y} )^2
+$$
+
+
+- $\TSS$ measures deviation of observed values from the grand mean 
+
+
+- Hence $\TSS$ measures variability of the observed data $y_1 , \ldots, y_n$
+
+
+
+## $\TSS = \ESS + \RSS$  {.smaller}
+
+
+::: Theorem
+
+Suppose given the multiple regression linear model
+
+$$
+Y_i =  \beta_1 + \beta_2 x_{i2} + \ldots + \beta_p x_{ip}  + \e_{i}
+$$
+for errors $\e_1 , \ldots, \e_n$ iid $N(0,\sigma^2)$. Then
+
+$$
+\TSS = \ESS + \RSS
+$$
+
+:::
+
+
+**Proof:** Left as an exercise
+
+
+
+::: {.content-hidden}
+
+For proof see here
+
+https://en.wikipedia.org/wiki/Explained_sum_of_squares
+
+:::
+
+
+
+## Coefficient of determination {.smaller}
+
+
+- The **coefficient of determination** is 
+
+$$
+R^2 :=  \frac{ \ESS }{ \TSS } = \frac{ \sum_{i=1}^n ( \hat y_i - \overline{y} )^2 }{ \sum_{i=1}^n ( y_i - \overline{y} )^2 }
+$$
+
+- $R^2$ measures proportion of total data variability ($\TSS$) which is explained by the regression model ($\ESS$) 
+
+- By the Theorem we have
+
+$$
+R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }
+$$
+
+
+
+
+## Coefficient of determination {.smaller}
+
+::: Proposition
+
+We have that 
+
+$$
+0 \leq R^2 \leq 1
+$$
+
+Moreover 
+
+$$
+R^2 = 1 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+$$
+
+:::
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+- Note that 
+
+$$
+\TSS, \, \ESS , \, \RSS \geq 0
+$$
+
+- Therefore 
+
+$$
+R^2 := \frac{\ESS}{\TSS} \geq 0
+$$
+
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+
+- By the Theorem we also have
+
+$$
+R^2 = \frac{ \ESS }{ \TSS } = 1 - \frac{ \RSS }{ \TSS }  \leq 1
+$$
+
+
+- Moreover note that
+
+$$
+\RSS = \sum_{i=1}^n ( y_i - \hat y_i )^2 = 0 \qquad \iff \qquad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+$$
+
+
+## Coefficient of determination {.smaller}
+### Proof of Proposition
+
+
+- The proof is concluded by noting that
+
+\begin{align*}
+R^2 = 1 \quad & \iff  \quad 1 - \frac{ \RSS }{ \TSS }  = 1 \\[15pt]
+              & \iff \quad \frac{ \RSS }{ \TSS }  = 0 \\[15pt]
+              & \iff \quad \RSS = 0 \\[15pt]
+              & \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n
+\end{align*}
+
+
+
+
+## Conclusion {.smaller}
+
+We have shown that
+
+- $0 \leq R^2 \leq 1$
+
+- $R^2 = 1 \quad \iff \quad y_i = \hat y_i \quad \,\, \forall \, i = 1 , \ldots, n$
+
+
+**Conclusion:** $R^2$ measures how well the model fits the data
+
+- $R^2$ close to $1 \quad \implies \quad$ model fits data well
+- $R^2$ close to $0 \quad \implies \quad$ model does not fit data well
+
+
+
+
+
+# Part 2: <br>Practical regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+## Solving 4 basic regression problems {.smaller}
+
+1. Plotting variables in R  
+    * Cross-check formal statistical results with graphical analyses
+    * Important in practical research work
+
+2. Coefficient of determination $R^2$
+    * $R^2$ measures proportion of variability in the data explained by the model
+    * $R^2$ close to $1$ is good result
+    * Any $R^2$ larger than $0.3$ is potentially worthwhile
+
+3. t-test
+    * Test the significance of individual parameters
+
+4. F-test
+    * Test the significance of multiple parameters
+
+
+
+
+
+## Plotting variables in R {.smaller}
+
+
+Interested in relationship between 2 variables
+
+- Want to plot the 2 variables together
+
+- Cross-check the results of a formal statistical analysis
+
+- Very important in real project work
+
+
+
+## Example: Gold and Stock prices
+
+::: {style="font-size: 0.75em"}
+Dataset with $33$ entries for Stock and Gold price pairs
+:::
+
+
+::: {style="font-size: 0.55em"}
+```{r}
+#| echo: false
+#| layout-ncol: 1
+
+data <- read.table("datasets/L3eg1data.txt")
+
+#Add column labels to data
+colnames(data) <- c("Stock Price","Gold Price")
+
+# Output markdown table from data
+knitr::kable(
+  list(data[1:11,], data[12:22,], data[23:33,]),
+  row.names = TRUE,
+  format = "html", 
+  table.attr = 'class="table simple table-striped table-hover"',
+) 
+
+
+```
+
+:::
+
+
+
+## Example: Gold and Stock prices {.smaller}
+
+
+- The data is stored in a ``.txt`` file
+
+- The file can be downloaded here [stock_gold.txt](datasets/stock_gold.txt)
+
+::: {.column width="54%"}
+
+- The text file looks like this
+![](images/stock_gold.png){width=73%}
+
+:::
+
+::: {.column width="44%"}
+
+- Remarks:
+    * There is a Header
+    * 1st column lists *Stock Price*
+    * 2nd column lists *Gold Price*
+
+:::
+
+
+
+## Reading data into R {.smaller}
+
+
+To read ``stock_gold.txt`` into R proceed as follows:
+
+1. Download [stock_gold.txt](datasets/stock_gold.txt) and move file to Desktop
+
+2. Open the R Console and change working directory to **Desktop**
+
+```r
+# In MacOS type
+setwd("~/Desktop")
+
+# In Windows type
+setwd("C:/Users/YourUsername/Desktop")
+```
+
+
+## Reading data into R {.smaller}
+
+3. Read ``stock_gold.txt`` into R and store it in data-frame ``prices`` with code
+
+```r
+prices = read.table(file = "stock_gold.txt",
+                    header = TRUE)
+```
+
+<br>
+
+**Note:** We are telling ``read.table()`` that
+
+- ``stock_gold.txt`` has a header
+- Headers are *optional*
+- Headers are good practice to describe data
+
+
+
+## Reading data into R {.smaller}
+
+
+4. For safety, let us check we loaded the correct data file 
+
+
+```r
+print(prices)
+```
+
+```{r}
+prices = read.table(file = "datasets/stock_gold.txt",
+                    header = TRUE)
+
+print(prices)
+```
+
 
 
 
@@ -63,6 +462,64 @@ $
 
 ## Example: Gold and Stock prices {.smaller}
 
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Plot Stock Price against Gold Price
+
+- As Stock price increases, Gold price decreases
+
+- Would like to find $\alpha$ and $\beta$ s.t.
+$$
+\Expect[Y_i | x_i] \ \approx \  \alpha + \beta x_i
+$$
+
+
+
+
+:::
+
+
+::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+data <- read.table(file = "datasets/stock_gold.txt",
+                   header = TRUE
+                  )
+
+stockprice <- data[ , 1]
+goldprice <- data[ , 2]
+
+# Create the plot
+plot(stockprice,
+     goldprice, 
+     xlab = "", 
+     ylab= "")
+
+# Add labels
+mtext("Stock Price", side=1, line=3, cex=2.1)
+mtext("Gold Price", side=2, line=2.5, cex=2.1)
+
+# Fit linear regression
+fit <- lm(stockprice ~ goldprice)
+
+# Plot regression line in red
+abline(fit, col = "red", lwd = 3)
+```
+
+:::
+:::::
+
+
+
+
+## Example: Gold and Stock prices {.smaller}
 
 
 ::::: {.columns style='display: flex !important; height: 80%;'}
@@ -115,4 +572,3 @@ abline(fit, col = "red", lwd = 3)
 :::
 
 :::::
-
