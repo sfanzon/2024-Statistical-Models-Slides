@@ -41,8 +41,9 @@ $
 ### Next 2 classes
 
 
+- How to do regression in R
 
-- Applications of regression in R
+- Applications of regression
   * Most examples will be from finance and business
 
 **Side Note:** Regression is very important
@@ -55,42 +56,47 @@ $
 
 
 
-## Outline of Lecture 10
-
-3. Practical regression in R
-
-
-
-
-
-
-
-# Part 2: <br>Practical regression {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-## Solving 4 basic regression problems {.smaller}
+## Outline of Lecture 10 {.smaller}
+### 4 aspects of regression
 
 1. Plotting variables in R  
     * Cross-check formal statistical results with graphical analyses
     * Important in practical research work
+
+<br>
 
 2. Coefficient of determination $R^2$
     * $R^2$ measures proportion of variability in the data explained by the model
     * $R^2$ close to $1$ is good result
     * Any $R^2$ larger than $0.3$ is potentially worthwhile
 
-3. t-test
+
+
+## Outline of Lecture 10 {.smaller}
+### 4 aspects of regression
+
+3. t-test for regression
     * Test the significance of individual parameters
 
-4. F-test
+<br>
+
+4. F-test for regression
     * Test the significance of multiple parameters
 
+
+
+
+
+
+
+
+# Part 1: <br>Plotting variables in R {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
@@ -390,6 +396,15 @@ mtext("Gold Price", side=2, line=2.5, cex=2.1)
 
 
 
+# Part 2: <br>Coefficient of <br> determination $R^2${background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
 
 ## Coefficient of determination $R^2$ {.smaller}
 
@@ -450,7 +465,7 @@ This is not necessarily good
     $$
     R^2 \geq 0.7
     $$
-    * **Example:** In the unemployment example of Lecture 9 we found
+    * **Example:** In the *Unemployment* example of Lecture 9 we found
     $$
     R^2 = 0.8655401
     $$
@@ -479,7 +494,7 @@ R^2 = 0.395325
 $$ 
 
 - This shows that *Stock Price* affects *Gold Price*
-- However, it is clear that other also factors affect *Gold Price*
+- However, it is clear that also other factors affect *Gold Price*
 
 
 
@@ -633,10 +648,61 @@ We are only interested in 3 quantities:
 : {tbl-colwidths="[50,50]"}
 
 
-- 
+
+## Conclusion {.smaller}
+
+- We fit a simple linear model to *Stock Price* Vs *Gold Price*
+
+- We obtain coefficient of correlation
+
+$$
+R^2 = 0.395325 \geq 0.3
+$$ 
+
+- This shows that *Stock Price* affects *Gold Price*
+
+- However, it is clear that also other factors affect *Gold Price*
 
 
 
+## t-test and F-test for regression {.smaller}
+
+- From the call of ``lm`` we obtained
+
+| Coefficient $R^2$ | $\texttt{Multiple R-squared:  0.3953}$ |
+|:------------------|:----------                             |
+|**t-statistic for** ``stock.price`` | $\texttt{stock.price t-value:  -4.502}$ |
+| **F-statistic**      |  $\texttt{F-statistic: 20.27}$           |
+: {tbl-colwidths="[50,50]"}
+
+<br>
+
+- t-statistic and F-statistic for regression are mathematically **HARD** topic
+
+- In the next two parts we explain what they mean
+    * We however omit mathematical details
+    * If interested check out Section 11.3 of [@casella-berger]
+
+
+
+
+# Part 3: <br>t-test for regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+# Part 4: <br>F-test for regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
@@ -698,3 +764,7 @@ abline(fit, col = "red", lwd = 3)
 :::
 
 :::::
+
+
+
+## References
