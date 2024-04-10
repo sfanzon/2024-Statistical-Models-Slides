@@ -632,7 +632,8 @@ $$
 
 Suppose Assumptions 1--5 hold and assume given observations
 $$
-(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n \,, \qquad
+\det (Z Z^T) \neq 0 
 $$
 The maximization problem
 $$
@@ -656,7 +657,8 @@ The proof of previous Theorem relies on the following Lemma
 
 Assume given observations
 $$
-(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n \,, \qquad
+\det (Z Z^T) \neq 0 
 $$
 The minimization problem
 $$
@@ -866,12 +868,12 @@ $$
 
 - Note that
   * $y$ has size $n \times 1$
-  * $X$ has size $n \times p$
-  * Therefore $X^T$ has size $p \times n$
+  * $Z$ has size $n \times p$
+  * Therefore $Z^T$ has size $p \times n$
   * $\beta$ has size $p \times 1$
   * Thus $\beta^T$ has size $1 \times p$
 
-- $\beta^T X^T y$ therefore has size
+- $\beta^T Z^T y$ therefore has size
 
 $$
 \left( 1 \times p \right) \times
@@ -1033,7 +1035,11 @@ $$
 ## Minimizing the RSS {.smaller}
 ### Proof of Lemma
 
-- The matrix $Z^T Z$ is symmetric and therefore invertible
+- The matrix $Z^T Z$ is invertible, since we are assuming
+
+$$
+\det (Z^T Z) \neq 0
+$$
 
 - Multiply by $(Z^T Z)^{-1}$ both sides of 
 
@@ -1079,9 +1085,10 @@ We are finally in position to prove the main Theorem. We recall the statement
 
 ::: Theorem 
 
-Suppose Assumptions 1--5 hold and assume given observations
+Suppose Assumptions 1--5 hold and assume given observations such that
 $$
-(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n
+(z_{i1}, \ldots, z_{ip} ,y_i) \,, \qquad \quad \forall \, i =1 ,\ldots n \,, \qquad
+\det (Z Z^T) \neq 0 
 $$
 The maximization problem
 $$
