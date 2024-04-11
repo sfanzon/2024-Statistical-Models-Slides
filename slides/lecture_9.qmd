@@ -2341,7 +2341,7 @@ $$
 $$
 - Matrix product in R is $\,$``%*%``
 - Transpose matrix of $\,$``A``$\,$ is $\,$``t(A)``
-- Transpose matrix of $\,$``A``$\,$ is $\,$``solve(A)``
+- Inverse of matrix $\,$``A``$\,$ is $\,$``solve(A)``
 
 :::
 

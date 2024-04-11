@@ -1292,7 +1292,11 @@ least_squares <- lm(formula = drug_B ~ drug_A, data = changes)
 print(least_squares)
 ```
 
-- The above means that $\alpha = -0.7861$ and $\beta = 0.6850$
+- The above tells us that the estimators are 
+
+$$
+\hat \alpha = -0.7861 \,, \qquad \quad \hat \beta = 0.6850
+$$
 
 
 

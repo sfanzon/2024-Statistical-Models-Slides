@@ -494,7 +494,7 @@ R^2 = 0.395325
 $$ 
 
 - This shows that *Stock Price* affects *Gold Price*
-- However, it is clear that also other factors affect *Gold Price*
+- Since $R^2$ is not too large, also other factors affect *Gold Price*
 
 
 
@@ -608,7 +608,7 @@ print( summary(fit.model) )
 
 - We want to fit the simple linear model
 $$
-\text{gold.price } = \alpha + \beta \, \text{ stock.price } + \text{ error}
+\text{gold.price } = \alpha + \beta \, \times  \text{ stock.price } + \text{ error}
 $$
 
 
@@ -628,17 +628,51 @@ summary(fit.model)
 
 ## Full output
 
-![](images/simple_regression_output.png){width=70%}
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut.png){width=85%}
+:::
+
+::::
+
+
 
 
 
 ## Interesting parts of Output {.smaller}
 
 
-![](images/simple_regression_output_cut.png){width=65%}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut.png){width=79%}
+:::
+
+::::
+  
+
+- The estimated regression coefficients are under ``estimate``
+    * ``(Intercept)`` refers to the coefficient $\hat \alpha \qquad \implies  \qquad  \hat \alpha = 37.917$
+    * ``stock.price`` refers to the coefficient $\hat \beta \qquad \implies  \qquad  \hat \beta = - 6.169$
 
 
-We are only interested in 3 quantities:
+
+
+## Interesting parts of Output {.smaller}
+
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut.png){width=79%}
+:::
+
+::::
+
+
+- Other quantities of interest are:
 
 
 | Coefficient $R^2$ | $\texttt{Multiple R-squared:  0.3953}$ |
@@ -653,25 +687,30 @@ We are only interested in 3 quantities:
 
 - We fit a simple linear model to *Stock Price* Vs *Gold Price*
 
-- We obtain coefficient of correlation
+- We obtained the regression line
+
+$$
+\Expect[Y | x] = \hat \alpha + \hat \beta x =  37.917 -  6.169 \times x
+$$
+
+- The coefficient of correlation is
 
 $$
 R^2 = 0.395325 \geq 0.3
 $$ 
 
-- This shows that *Stock Price* affects *Gold Price*
-
-- However, it is clear that also other factors affect *Gold Price*
+- Hence the linear model explains the data to a reasonable extent:
+    * *Stock Price* affects *Gold Price*
+    * Since $R^2$ is not too large, also other factors affect *Gold Price*
 
 
 
 ## t-test and F-test for regression {.smaller}
 
-- From the call of ``lm`` we obtained
+- From ``lm`` we also obtained
 
-| Coefficient $R^2$ | $\texttt{Multiple R-squared:  0.3953}$ |
+| **t-statistic for** ``stock.price`` | $\texttt{stock.price t-value:  -4.502}$ |
 |:------------------|:----------                             |
-|**t-statistic for** ``stock.price`` | $\texttt{stock.price t-value:  -4.502}$ |
 | **F-statistic**      |  $\texttt{F-statistic: 20.27}$           |
 : {tbl-colwidths="[50,50]"}
 
@@ -681,7 +720,7 @@ $$
 
 - In the next two parts we explain what they mean
     * We however omit mathematical details
-    * If interested check out Section 11.3 of [@casella-berger]
+    * If interested check out Section 11.3 of [@casella-berger] and Chapter 11 of [@degroot]
 
 
 
@@ -693,6 +732,194 @@ $$
 <div color="#cc0164">  </div>
 
 :::
+
+
+
+
+
+## Basic question in regression {.smaller}
+
+What happens to $Y$ as $X$ increases?
+
+- increases?
+
+- decreases?
+
+- nothing?
+
+
+
+
+## Positive gradient {.smaller}
+
+As $X$ increases $Y$ increases
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "", 
+  ylab = "", 
+  xlim = c(0, 5), 
+  ylim = c(0, 5), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
+
+# Add the line y = x
+abline(
+  a = 0, 
+  b = 1, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+## Negative gradient {.smaller}
+
+As $X$ increases $Y$ decreases
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "", 
+  ylab = "", 
+  xlim = c(-3, 3), 
+  ylim = c(-3, 3), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
+
+# Add the line y = x
+abline(
+  a = 0, 
+  b = -1, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+## Zero gradient {.smaller}
+
+Changes in $X$ do not affect $Y$
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+
+# Create a scatter plot with no data points (type = "n")
+plot(
+  1, 1, 
+  type = "n", 
+  xlab = "", 
+  ylab = "", 
+  xlim = c(0, 5), 
+  ylim = c(0, 5), 
+  frame.plot = TRUE, 
+  axes = FALSE, 
+  asp = 1)
+
+
+mtext("X", side=1, line=3, cex=3)
+mtext("Y", side=2, line=2, cex=3)
+
+# Add the line y = x
+abline(
+  a = 2.5, 
+  b = 0, 
+  col = "black", 
+  lwd = 2)
+
+```
+
+
+
+
+## t-test on regression coefficients {.smaller}
+
+- Consider the simple linear regression model
+
+$$
+Y_i = \alpha + \beta X_i + \e_i
+$$
+
+
+- We have that 
+
+$$
+X \,\, \text{ affects } \,\, Y \qquad \iff \qquad
+\beta \neq 0
+$$
+
+- $\beta$ is a random quantity which depends on the sample
+
+- Therefore we can study $\beta$ with the hypothesis test
+
+\begin{align*}
+H_0 \colon  & \beta = b \\
+H_1 \colon & \beta \neq b
+\end{align*}
+
+
+
+
+
+## Construction of t-test in regression {.smaller}
+
+- Want to test hypothesis 
+
+\begin{align*}
+H_0 \colon  & \beta = b \\
+H_1 \colon & \beta \neq b
+\end{align*}
+
+- Our best guess for $\beta$ is the estimator $\hat \beta$
+
+- To test above hypotheses, we therefore need to
+    * Know the **distribution** of
+    $$
+    \hat \beta = \frac{ S_{xy} }{ S_{xx} }
+    $$
+    * Construct a meaningful **statistic** to perform hypothesis test
+
+
+
+## Distribution of $\hat \beta$ {.smaller}
+
+
+::: Theorem
+
+We have that
+
+:::
+
+
+
 
 
 

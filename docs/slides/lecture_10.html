@@ -426,51 +426,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
   .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -478,7 +434,35 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,7 +470,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -494,7 +486,15 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Idea {
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1108,7 +1108,7 @@ R^2 = 0.395325
 </span></p>
 <ul>
 <li>This shows that <em>Stock Price</em> affects <em>Gold Price</em></li>
-<li>However, it is clear that also other factors affect <em>Gold Price</em></li>
+<li>Since <span class="math inline">R^2</span> is not too large, also other factors affect <em>Gold Price</em></li>
 </ul>
 </section>
 <section id="running-the-regression-in-r" class="slide level2 smaller">
@@ -1184,7 +1184,7 @@ Y_i = \beta_1 + \beta_2 \, x_{i2} + \ldots + \beta_p \, x_{ip} + \varepsilon_i
 <li><code>gold.price</code></li>
 </ul></li>
 <li>We want to fit the simple linear model <span class="math display">
-\text{gold.price } = \alpha + \beta \, \text{ stock.price } + \text{ error}
+\text{gold.price } = \alpha + \beta \, \times  \text{ stock.price } + \text{ error}
 </span></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Fit simple linear regression model</span></span>
@@ -1198,12 +1198,37 @@ Y_i = \beta_1 + \beta_2 \, x_{i2} + \ldots + \beta_p \, x_{ip} + \varepsilon_i
 </section>
 <section id="full-output" class="slide level2">
 <h2>Full output</h2>
-
-<img data-src="images/simple_regression_output.png" style="width:70.0%" class="r-stretch"></section>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut.png" style="width:85.0%"></p>
+</div>
+</div>
+</section>
 <section id="interesting-parts-of-output" class="slide level2 smaller">
 <h2>Interesting parts of Output</h2>
-
-<img data-src="images/simple_regression_output_cut.png" style="width:65.0%" class="r-stretch"><p>We are only interested in 3 quantities:</p>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut.png" style="width:79.0%"></p>
+</div>
+</div>
+<ul>
+<li>The estimated regression coefficients are under <code>estimate</code>
+<ul>
+<li><code>(Intercept)</code> refers to the coefficient <span class="math inline">\hat \alpha \qquad \implies  \qquad  \hat \alpha = 37.917</span></li>
+<li><code>stock.price</code> refers to the coefficient <span class="math inline">\hat \beta \qquad \implies  \qquad  \hat \beta = - 6.169</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="interesting-parts-of-output-1" class="slide level2 smaller">
+<h2>Interesting parts of Output</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut.png" style="width:79.0%"></p>
+</div>
+</div>
+<ul>
+<li>Other quantities of interest are:</li>
+</ul>
 <table>
 <colgroup>
 <col style="width: 50%">
@@ -1231,20 +1256,29 @@ Y_i = \beta_1 + \beta_2 \, x_{i2} + \ldots + \beta_p \, x_{ip} + \varepsilon_i
 <h2>Conclusion</h2>
 <ul>
 <li><p>We fit a simple linear model to <em>Stock Price</em> Vs <em>Gold Price</em></p></li>
-<li><p>We obtain coefficient of correlation</p></li>
+<li><p>We obtained the regression line</p></li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | x] = \hat \alpha + \hat \beta x =  37.917 -  6.169 \times x
+</span></p>
+<ul>
+<li>The coefficient of correlation is</li>
 </ul>
 <p><span class="math display">
 R^2 = 0.395325 \geq 0.3
 </span></p>
 <ul>
-<li><p>This shows that <em>Stock Price</em> affects <em>Gold Price</em></p></li>
-<li><p>However, it is clear that also other factors affect <em>Gold Price</em></p></li>
+<li>Hence the linear model explains the data to a reasonable extent:
+<ul>
+<li><em>Stock Price</em> affects <em>Gold Price</em></li>
+<li>Since <span class="math inline">R^2</span> is not too large, also other factors affect <em>Gold Price</em></li>
+</ul></li>
 </ul>
 </section>
 <section id="t-test-and-f-test-for-regression" class="slide level2 smaller">
 <h2>t-test and F-test for regression</h2>
 <ul>
-<li>From the call of <code>lm</code> we obtained</li>
+<li>From <code>lm</code> we also obtained</li>
 </ul>
 <table>
 <colgroup>
@@ -1253,16 +1287,12 @@ R^2 = 0.395325 \geq 0.3
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Coefficient <span class="math inline">R^2</span></th>
-<th style="text-align: left;"><span class="math inline">\texttt{Multiple R-squared:  0.3953}</span></th>
+<th style="text-align: left;"><strong>t-statistic for</strong> <code>stock.price</code></th>
+<th style="text-align: left;"><span class="math inline">\texttt{stock.price t-value:  -4.502}</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>t-statistic for</strong> <code>stock.price</code></td>
-<td style="text-align: left;"><span class="math inline">\texttt{stock.price t-value:  -4.502}</span></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><strong>F-statistic</strong></td>
 <td style="text-align: left;"><span class="math inline">\texttt{F-statistic: 20.27}</span></td>
 </tr>
@@ -1274,10 +1304,11 @@ R^2 = 0.395325 \geq 0.3
 <li><p>In the next two parts we explain what they mean</p>
 <ul>
 <li>We however omit mathematical details</li>
-<li>If interested check out Section 11.3 of <span class="citation" data-cites="casella-berger">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span></li>
+<li>If interested check out Section 11.3 of <span class="citation" data-cites="casella-berger">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span> and Chapter 11 of <span class="citation" data-cites="degroot">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></li>
 </ul></li>
 </ul>
 </section></section>
+<section>
 <section id="part-3-t-test-for-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 3: <br>t-test for regression</h1>
 <div class="footer">
@@ -1286,7 +1317,81 @@ R^2 = 0.395325 \geq 0.3
 </div>
 </div>
 </section>
+<section id="basic-question-in-regression" class="slide level2 smaller">
+<h2>Basic question in regression</h2>
+<p>What happens to <span class="math inline">Y</span> as <span class="math inline">X</span> increases?</p>
+<ul>
+<li><p>increases?</p></li>
+<li><p>decreases?</p></li>
+<li><p>nothing?</p></li>
+</ul>
+</section>
+<section id="positive-gradient" class="slide level2 smaller">
+<h2>Positive gradient</h2>
+<p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> increases</p>
 
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="negative-gradient" class="slide level2 smaller">
+<h2>Negative gradient</h2>
+<p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> decreases</p>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="zero-gradient" class="slide level2 smaller">
+<h2>Zero gradient</h2>
+<p>Changes in <span class="math inline">X</span> do not affect <span class="math inline">Y</span></p>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="t-test-on-regression-coefficients" class="slide level2 smaller">
+<h2>t-test on regression coefficients</h2>
+<ul>
+<li>Consider the simple linear regression model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta X_i + \varepsilon_i
+</span></p>
+<ul>
+<li>We have that</li>
+</ul>
+<p><span class="math display">
+X \,\, \text{ affects } \,\, Y \qquad \iff \qquad
+\beta \neq 0
+</span></p>
+<ul>
+<li><p><span class="math inline">\beta</span> is a random quantity which depends on the sample</p></li>
+<li><p>Therefore we can study <span class="math inline">\beta</span> with the hypothesis test</p></li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon  &amp; \beta = b \\
+H_1 \colon &amp; \beta \neq b
+\end{align*}</span></p>
+</section>
+<section id="construction-of-t-test-in-regression" class="slide level2 smaller">
+<h2>Construction of t-test in regression</h2>
+<ul>
+<li>Want to test hypothesis</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon  &amp; \beta = b \\
+H_1 \colon &amp; \beta \neq b
+\end{align*}</span></p>
+<ul>
+<li><p>Our best guess for <span class="math inline">\beta</span> is the estimator <span class="math inline">\hat \beta</span></p></li>
+<li><p>To test above hypotheses, we therefore need to</p>
+<ul>
+<li>Know the <strong>distribution</strong> of <span class="math display">
+  \hat \beta = \frac{ S_{xy} }{ S_{xx} }
+  </span></li>
+<li>Construct a meaningful <strong>statistic</strong> to perform hypothesis test</li>
+</ul></li>
+</ul>
+</section>
+<section id="distribution-of-hat-beta" class="slide level2 smaller">
+<h2>Distribution of <span class="math inline">\hat \beta</span></h2>
+<div id="Theorem*-4.1" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>We have that<p></p>
+</div></details>
+</div>
+</section></section>
 <section>
 <section id="part-4-f-test-for-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 4: <br>F-test for regression</h1>
@@ -1312,7 +1417,7 @@ R^2 = 0.395325 \geq 0.3
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1331,6 +1436,9 @@ R^2 = 0.395325 \geq 0.3
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-casella-berger" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">Casella, George, Berger, Roger L., Statistical inference, second edition, Brooks/Cole, 2002.</div>
+</div>
+<div id="ref-degroot" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.</div>
 </div>
 </div>
 </section></section>
