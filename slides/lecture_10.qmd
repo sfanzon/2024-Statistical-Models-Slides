@@ -57,7 +57,7 @@ $
 
 
 ## Outline of Lecture 10 {.smaller}
-### 4 aspects of regression
+### Part A -- 4 aspects of regression
 
 1. Plotting variables in R  
     * Cross-check formal statistical results with graphical analyses
@@ -73,7 +73,7 @@ $
 
 
 ## Outline of Lecture 10 {.smaller}
-### 4 aspects of regression
+### Part B -- 4 aspects of regression
 
 3. t-test for regression
     * Test the significance of individual parameters
@@ -87,6 +87,28 @@ $
 
 
 
+
+## Outline of Lecture 10 {.smaller}
+### Part B -- Regression modelling assumptions
+
+1. Extra sum of squares principle
+2. F-tests and mathematical formulae
+3. Examples
+4. Regression modelling assumptions
+5. Graphical detection of heteroscedasticity 
+
+
+
+
+
+
+# Part A: <br>4 aspects of regression {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
@@ -860,7 +882,7 @@ abline(
 
 
 
-## t-test on regression coefficients {.smaller}
+## t-test for simple regression {.smaller}
 
 - Consider the simple linear regression model
 
@@ -889,7 +911,7 @@ H_1 \colon & \beta \neq b
 
 
 
-## Construction of t-test in regression {.smaller}
+## Construction of t-test {.smaller}
 
 - Want to test hypothesis 
 
@@ -905,20 +927,706 @@ H_1 \colon & \beta \neq b
     $$
     \hat \beta = \frac{ S_{xy} }{ S_{xx} }
     $$
-    * Construct a meaningful **statistic** to perform hypothesis test
+    * Construct **t-statistic** involving $\hat \beta$
+
 
 
 
 ## Distribution of $\hat \beta$ {.smaller}
 
-
 ::: Theorem
 
-We have that
+Consider the linear regression model 
+
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+with $\e_i$ iid $N(0, \sigma^2)$. Then
+
+$$
+\hat \beta \sim N \left(\beta , \frac{ \sigma^2 }{ S_{xx} } \right)
+$$
 
 :::
 
 
+**Proof:** Quite difficult. If interested see Theorem 11.3.3 in [@casella-berger] 
+
+
+
+
+## Construction of the t-statistic {.smaller}
+
+- We want to construct t-statistic for $\hat \beta$
+
+
+- As for the standard t-test, we want a t-statistic of the form
+
+$$
+t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\ese}
+$$
+
+
+- We know that 
+
+$$
+\hat \beta \sim N \left(\beta , \frac{ \sigma^2 }{ S_{xx} } \right)
+$$
+
+
+
+## Construction of the t-statistic {.smaller}
+
+
+
+- In particular $\hat \beta$ is an unbiased estimator for $\beta$
+
+$$
+\Expect[ \hat \beta ] = \beta
+$$
+
+- Therefore $\hat \beta$ is the estimate
+
+$$
+t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\ese} 
+  = \frac{ \hat \beta - \beta }{ \ese }
+$$
+
+
+
+## Estimated Standard Error {.smaller}
+
+- We need to find a **Standard Error** for $\hat \beta$
+
+- We know that 
+
+$$
+\Var [\hat \beta] = \frac{ \sigma^2 }{ S_{xx}}
+$$
+
+- Hence the standard error of $\hat \beta$ is the standard deviation
+
+$$
+\SD [\hat \beta] = \frac{ \sigma }{ S_{xx} }
+$$
+
+- $\SD$ cannot be used for testing, since $\sigma^2$ is unknown
+
+
+
+## Estimated Standard Error {.smaller}
+
+- We however have an estimate for $\sigma^2$
+
+$$
+\hat \sigma^2 = \frac{1}{n} \RSS = \frac1n \sum_{i=1}^n (y_i - \hat y_i)^2
+$$
+
+- $\hat \sigma^2$ was obtained from maximization of the likelihood function (Lecture 8) 
+
+- It can be shown that (see Section 11.3.4 in [@casella-berger])
+
+$$
+\Expect[ \hat\sigma^2 ] = \frac{n-2}{n} \, \sigma^2
+$$
+
+
+
+## Estimated Standard Error {.smaller}
+
+- Therefore $\hat\sigma^2$ is not unbiased estimator of $\sigma^2$
+
+- We hence rescale and introduce $S^2$
+
+$$
+S^2 := \frac{n}{n-2} \, \hat\sigma^2 = \frac{1}{n-2} \, \RSS
+$$
+
+- This way $S^2$ is unbiased estimator for $\sigma^2$
+
+$$
+\Expect[S^2] =  \frac{n}{n-2}  \, \Expect[\hat\sigma^2] =  \frac{n}{n-2} \, \frac{n-2}{n} \, \sigma^2 = \sigma^2
+$$
+
+
+## Estimated Standard Error {.smaller}
+
+- Recall that the standard deviation of $\hat \beta$ is
+
+$$
+\SD [\hat \beta] = \frac{ \sigma }{ S_{xx} }
+$$
+
+- We replace the unknown $\sigma$ with its unbiased estimator $S$ 
+
+- We obtain the **estimated standard error**
+
+$$
+\ese = \frac{S}{\sqrt{S_{xx}}}
+$$
+
+
+## t-statistic to test $\hat \beta$ {.smaller}
+
+The t-statistic for $\hat \beta$ is then
+
+$$
+t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\ese}
+  = \frac{ \hat \beta - \beta }{ S / \sqrt{S_{xx}} }
+$$
+
+
+::: Theorem 
+
+Consider the linear regression model 
+
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+with $\e_i$ iid $N(0, \sigma^2)$. Then
+
+$$
+t = \frac{ \hat \beta - \beta }{ S / \sqrt{S_{xx}} }  
+\, \sim \,
+t_{n-2}
+$$
+
+:::
+
+
+
+## How to prove the Theorem {.smaller}
+
+- Proof of this Theorem is quite difficult and we omit it
+
+- If you are interested in the proof, see Section 11.3.4 in [@casella-berger]
+
+- The main idea is that t-statistic can be rewritten as
+
+$$
+t = \frac{ \hat \beta - \beta }{ S / \sqrt{S_{xx}} }  
+  = \frac{ U }{ \sqrt{ V/(n-2) } }  
+$$
+
+- Here we defined
+
+$$
+U := \frac{ \hat \beta - \beta }{ \sigma / \sqrt{S_{xx}} } \,, \qquad \quad V := \frac{ (n-2) S^2 }{ \sigma^2 }
+$$
+
+
+## How to prove the Theorem {.smaller}
+
+- We know that 
+
+$$
+\hat \beta \sim N \left(\beta , \frac{ \sigma^2 }{ S_{xx} } \right)
+$$
+
+
+- Therefore 
+
+$$
+U = \frac{ \hat \beta - \beta }{ \sigma / \sqrt{S_{xx}} } \, \sim \, N(0,1)
+$$
+
+
+
+## How to prove the Theorem {.smaller}
+
+- Moreover it can be shown that 
+
+$$
+V = \frac{(n-2) S^2}{\sigma^2} \, \sim \, \chi_{n-2}^2
+$$
+
+- It can also be shown that $U$ and $V$ are independent
+
+
+
+## How to prove the Theorem {.smaller}
+
+- In summary, we have
+
+$$
+t = \frac{ \hat \beta - \beta }{ S / \sqrt{S_{xx}} }  
+  = \frac{ U }{ \sqrt{ V/(n-2) } }  
+$$
+
+- $U$ and $V$ are independent, with
+
+$$
+U \sim N(0,1) \,, \qquad \quad V \sim \chi_{n-2}^2
+$$
+
+- From the Theorem on t-distribution in Lecture 3 we conclude
+
+$$
+t \sim t_{n-2}
+$$
+
+
+
+
+## t-test for $\beta$ {.smaller}
+
+**Goal**: Estimate the slope $\beta$ for the simple linear model
+
+$$
+Y_i = \alpha + \beta x_i + \e_i \,, \qquad \e_i \, \text{ iid } \, N(0,\sigma^2)
+$$
+
+<br>
+
+**Hypotheses**: If $b$ is guess for $\beta$ the hypotheses are
+
+\begin{align*}
+H_0 & \colon \beta = b \\
+H_1 & \colon \beta \neq b
+\end{align*}
+
+
+
+## t-test for $\beta$ {.smaller}
+
+- Suppose given the data 
+
+$$
+x = (x_1, \ldots, x_n) \,, \qquad \quad y = (y_1, \ldots, y_n)
+$$
+
+- The t-statistic is
+
+$$
+t = \frac{\hat \beta - b }{ \ese } \, \sim \, t_{n-2} \,, \qquad \quad
+\ese = \frac{S }{\sqrt{S_{xx}} }
+$$
+
+- In the above we have
+
+$$
+\hat \beta = \frac{ S_{xy} }{ S_{xx} } \,, \qquad \quad S^2 := \frac{1}{n-2} \, \RSS
+$$
+
+
+
+
+
+## Example: Stock and Gold prices {.smaller}
+
+- Recall that 
+    * $Y =$ Gold Price
+    * $X =$ Stock Price
+
+- We want to test if *Gold Price* affects *Stock Price* at level $0.05$
+    * Consider the linear model
+    $$
+    Y_i =  \alpha + \beta x_i + \e_i 
+    $$
+    * Test the hypotheses
+    \begin{align*}
+    H_0 & \colon \beta = 0 \\
+    H_1 & \colon \beta \neq 0
+    \end{align*}
+
+
+
+
+## Testing for $\beta = 0$ {.smaller}
+
+- Recall that Stock Prices and Gold Prices are stored in R vectors
+    * ``stock.price``
+    * ``gold.price``
+
+
+- Fit the simple linear model with the following commands
+
+$$
+\text{gold.price } = \alpha + \beta \, \times  \text{ stock.price } + \text{ error}
+$$
+
+
+```r
+# Fit simple linear regression model
+fit.model <- lm(gold.price ~ stock.price)
+
+# Print result to screen
+summary(fit.model)
+```
+
+
+
+## Output: $\ese$, t-statistic, p-value {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut_2.png){width=70%}
+:::
+
+::::
+  
+
+- $\texttt{(Intercept)}$: 1st row of the table contains statistics related to $\hat \alpha$
+    * This part of the table can be ignored
+    * It is not interesting to do inference on intercept
+
+- $\texttt{stock.price}$: 2nd row of the table contains statistics related to $\hat \beta$
+    * This is the **informative part** of the table
+    * For larger models there will be additional rows below the 2nd
+    * These will be **informative** about additional regression parameters
+
+
+
+## Output: $\ese$, t-statistic, p-value {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut_2.png){width=70%}
+:::
+
+::::
+  
+- The 2nd row of the table has to be interpreted as follows
+
+
+| $\texttt{Estimate}$   | $\text{The value of } \hat \beta$                  |
+|:------------------    |:----------                                         |
+| $\texttt{Std. Error}$ | Estimated standard error $\ese$ for $\beta$        |
+| $\texttt{t value}$    | t-statistic $\, t = \dfrac{\hat \beta - 0 }{\ese}$|
+| $\texttt{Pr(>|t|)}$   | p-value $\, p = 2 P( t_{n-2} > |t| )$             |
+: {tbl-colwidths="[35,65]"}
+
+
+
+
+## Output: $\ese$, t-statistic, p-value {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut_2.png){width=70%}
+:::
+
+::::
+  
+- The above table then gives
+
+$$
+\hat \beta = -6.169 \,, \qquad \ese = 1.37 \, , \qquad t = - 4.502 \,, \qquad 
+p = 8.9 \times 10^{-5} \
+$$
+
+
+- The $t$-statistic computed by R can also be computed by hand
+
+$$
+  t   = \frac{\hat \beta - 0}{ \ese }
+      = \frac{-6.169}{1.37} = -4.502 
+$$
+
+
+
+
+## Output: $\ese$, t-statistic, p-value {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut_2.png){width=70%}
+:::
+
+::::
+  
+- The p-value cannot be computed by hand
+
+- However we can find critical value on [Tables](files/Statistics_Tables.pdf)
+
+$$
+n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
+$$
+
+- Critical value is $\, t_{31}(0.025) = 2.040$
+
+$$
+|t| = 4.502 > 2.040 = t_{31}(0.025) \quad \implies \quad  p < 0.05
+$$
+
+
+## Output: $\ese$, t-statistic, p-value {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/simple_regression_output_cut_2.png){width=70%}
+:::
+
+::::
+
+
+**Interpretation:**
+
+- Some evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
+- As $\hat \beta < 0$ and statistically significant, as *Stock Prices* increase *Gold Prices* decrease and vice versa
+
+
+
+
+## t-test for general regression {.smaller}
+
+- Consider the general linear regression model
+
+$$
+Y_i = \beta_1 z_{i1} + \ldots + \beta_{ip} z_{ip} + \e_i \,, \qquad 
+\e_i \, \text{ iid } \, N(0, \sigma^2)
+$$
+
+- For any $j = 1, \ldots, p$ we can test the hypothesis
+
+\begin{align*}
+H_0 \colon  & \beta_j = b_j \\
+H_1 \colon & \beta_j \neq b_j
+\end{align*}
+
+
+
+
+## Distribution of estimator $\hat \beta$ {.smaller}
+
+
+- The estimator for the general model is
+
+$$
+\hat \beta = (Z^T Z)^{-1} Z^T y
+$$
+
+
+- It can be proven that (see Section 11.5 in [@degroot])
+
+$$
+\hat \beta_j \sim N \left( \beta_j ,  \xi_{jj} \sigma^2 \right)
+$$
+
+- The numbers $\xi_{jj}$ are the diagonal entries of the $p \times p$ matrix
+
+$$
+(Z^T Z)^{-1} =
+\left(
+\begin{array}{ccc}
+\xi_{11} & \ldots & \xi_{1p} \\
+\ldots   & \ldots & \ldots \\
+\xi_{p1} & \ldots & \xi_{pp} \\
+\end{array}
+\right)
+$$
+
+
+
+## Construction of the t-statistic {.smaller}
+
+
+
+- In particular $\hat \beta_j$ is an unbiased estimator for $\beta_j$
+
+$$
+\Expect[ \hat \beta_j ] = \beta_j
+$$
+
+- Therefore the t-statistic for $\hat \beta_j$ is
+
+$$
+t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\ese} 
+  = \frac{ \hat \beta_j - \beta_j }{ \ese }
+$$
+
+
+
+## Estimated Standard Error {.smaller}
+
+- We need to find a **Standard Error** for $\hat \beta_j$
+
+- We know that 
+
+$$
+\Var [\hat \beta_j] =  \xi_{jj} \, \sigma^2 
+$$
+
+- Hence the standard error of $\hat \beta_j$ is the standard deviation
+
+$$
+\SD [\hat \beta_j] =  \xi_{jj}^{1/2} \, \sigma
+$$
+
+- $\SD$ cannot be used for testing, since $\sigma^2$ is unknown
+
+
+
+
+## Estimated Standard Error {.smaller}
+
+- We however have an estimate for $\sigma^2$
+
+$$
+\hat \sigma^2 = \frac{1}{n} \RSS = \frac1n \sum_{i=1}^n (y_i - \hat y_i)^2
+$$
+
+- $\hat \sigma^2$ was obtained from maximization of the likelihood function (Lecture 9) 
+
+- It can be shown that (see Section 11.5 in [@degroot])
+
+$$
+\Expect[ \hat\sigma^2 ] = \frac{n-p}{n} \, \sigma^2
+$$
+
+
+
+## Estimated Standard Error {.smaller}
+
+- Therefore $\hat\sigma^2$ is not unbiased estimator of $\sigma^2$
+
+- We hence rescale and introduce $S^2$
+
+$$
+S^2 := \frac{n}{n-p} \, \hat\sigma^2 = \frac{1}{n-p} \, \RSS
+$$
+
+- This way $S^2$ is unbiased estimator for $\sigma^2$
+
+$$
+\Expect[S^2] =  \frac{n}{n-p}  \, \Expect[\hat\sigma^2] =  \frac{n}{n-p} \, \frac{n-p}{n} \, \sigma^2 = \sigma^2
+$$
+
+
+## Estimated Standard Error {.smaller}
+
+- Recall that the standard deviation of $\hat \beta$ is
+
+$$
+\SD [\hat \beta] = \xi_{jj}^{1/2} \, \sigma
+$$
+
+- We replace the unknown $\sigma$ with its unbiased estimator $S$ 
+
+- We obtain the **estimated standard error**
+
+$$
+\ese =\xi_{jj}^{1/2} \,  S
+$$
+
+
+
+## t-statistic to test $\beta_j$ {.smaller}
+
+
+::: Theorem 
+
+Consider the general linear regression model 
+
+$$
+Y_i = \beta_1 z_{i1} + \ldots +\beta_p z_{ip} + \e_i
+$$
+
+with $\e_i$ iid $N(0, \sigma^2)$. Then
+
+$$
+t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\ese} = \frac{ \hat \beta_j - \beta_j }{ \xi_{jj}^{1/2} \, S}  
+\, \sim \,
+t_{n-p}
+$$
+
+:::
+
+**Proof:** See section 11.5 in [@degroot]
+
+
+## t-test for $\beta_j$ {.smaller}
+
+**Goal**: Estimate the coefficient $\beta_j$ for the general linear model
+
+$$
+Y_i = \beta_1 z_{i1} + \ldots + \beta_p z_{ip} + \e_i \,, \qquad \e_i \, \text{ iid } \, N(0,\sigma^2)
+$$
+
+<br>
+
+**Hypotheses**: If $b_j$ is guess for $\beta_j$ the hypotheses are
+
+\begin{align*}
+H_0 & \colon \beta_j = b_j \\
+H_1 & \colon \beta_j \neq b_j
+\end{align*}
+
+
+
+## t-test for $\beta_j$ {.smaller}
+
+- The t-statistic is
+
+$$
+t = \frac{\hat \beta_j - b_j }{ \ese } \, \sim \, t_{n-p} \,, \qquad \quad
+\ese = \xi_{jj}^{1/2} \, S 
+$$
+
+- In the above $\xi_{jj}$ are diagonal entries of $(Z^TZ)^1$ and
+
+$$
+\hat \beta = (Z^TZ)^{-1} Z^T y \,, \qquad \quad S^2 := \frac{1}{n-p} \, \RSS
+$$
+
+- **R code:** 
+    * Fit the general regression model with ``lm``
+    * $\,\, \ese$ for $\hat \beta_j$ is found in $j$-th variable row and $\texttt{Std. Error}$ column
+
+
+## Example: $\ese$ for simple linear regression {.smaller}
+
+- Consider the simple regression model
+
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+
+- The design matrix is
+
+$$
+Z = \left( 
+\begin{array}{cc}
+1 & x_1 \\
+\ldots & \ldots \\
+1 & x_n \\
+\end{array}
+\right)
+$$
+
+
+## Example: $\ese$ for simple linear regression {.smaller}
+
+- We have seen in Lecture 9 that
+
+$$
+(Z^T Z)^{-1} = 
+\frac{1}{n S_{xx} }
+\left(
+\begin{array}{cc}
+\sum_{i=1}^n x^2_i & -n \overline{x}\\
+-n\overline{x} & n
+\end{array}
+\right)
+$$
+
+
+- Hence the $\ese$ for $\hat \alpha$ and $\hat \beta$ are
+
+\begin{align*}
+\ese (\hat \alpha) & = \xi_{11}^{1/2} \, S^2 = \sqrt{ \frac{ \sum_{i=1}^n x_i^2 }{ n S_{xx} } } \, S^2 \\[7pt]
+\ese (\hat \beta) & = \xi_{22}^{1/2} \, S^2 = \frac{ S^2 }{ \sqrt{ S_{xx} } }
+\end{align*}
+
+- **Note:** $\, \ese(\hat\beta)$ coincides with the $\ese$ in Slide 49
 
 
 
@@ -991,6 +1699,34 @@ abline(fit, col = "red", lwd = 3)
 :::
 
 :::::
+
+
+
+
+
+
+
+
+# Part B: <br> Regression modelling assumptions {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+# Part 1: <br> Extra sum of <br> squares principle {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
 
 
 
