@@ -83,6 +83,9 @@ $
 4. F-test for regression
     * Test the significance of multiple parameters
 
+<br>
+
+5. Multiple linear regression example
 
 
 
@@ -705,6 +708,73 @@ summary(fit.model)
 
 
 
+
+## Plotting the regression line {.smaller}
+
+::::: {.columns style='display: flex !important; height: 80%;'}
+
+::: {.column width="43%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+```r    
+# Data stored in stock.price 
+# and gold.price
+# Plot the data
+plot(stock.price, gold.price, 
+     xlab = "Stock Price", 
+     ylab= "Gold Price",
+     pch = 16)
+
+# Model stored in fit.model
+# Plot the regression line
+abline(fit.model, 
+       col = "red", 
+       lwd = 3)
+```
+
+:::
+
+
+::: {.column width="48%" style='display: flex; justify-content: center; align-items: center;'}
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+
+# Read the data
+prices <- read.table(file = "datasets/stock_gold.txt",
+                     header = TRUE
+                    )
+
+# Store data into vectors
+stock.price <- prices$stock_price
+gold.price <- prices$gold_price
+
+# Fit simple linear regression model
+fit.model <- lm(gold.price ~ stock.price)
+
+# Plot the data
+plot(stock.price,
+     gold.price, 
+     xlab = "", 
+     ylab= "",
+     pch = 16)
+
+# Add labels
+mtext("Stock Price", side=1, line=3, cex=2.1)
+mtext("Gold Price", side=2, line=2.5, cex=2.1)
+
+# Plot the regression line in red
+abline(fit.model, col = "red", lwd = 3)
+```
+
+:::
+
+:::::
+
+
+
+
 ## Conclusion {.smaller}
 
 - We fit a simple linear model to *Stock Price* Vs *Gold Price*
@@ -724,6 +794,9 @@ $$
 - Hence the linear model explains the data to a reasonable extent:
     * *Stock Price* affects *Gold Price*
     * Since $R^2$ is not too large, also other factors affect *Gold Price*
+
+
+
 
 
 
@@ -1298,6 +1371,7 @@ summary(fit.model)
 | $\texttt{Std. Error}$ | Estimated standard error $\ese$ for $\beta$        |
 | $\texttt{t value}$    | t-statistic $\, t = \dfrac{\hat \beta - 0 }{\ese}$|
 | $\texttt{Pr(>|t|)}$   | p-value $\, p = 2 P( t_{n-2} > |t| )$             |
+| $\texttt{*}$, $\, \texttt{**}$, $\, \texttt{***}$   | Statistical significance -- More stars is better |
 : {tbl-colwidths="[35,65]"}
 
 
@@ -1369,7 +1443,9 @@ $$
 
 **Interpretation:**
 
-- Some evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
+- $p$ is very small and rated $\, \texttt{***}$
+
+- Strong evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
 - As $\hat \beta < 0$ and statistically significant, as *Stock Prices* increase *Gold Prices* decrease and vice versa
 
 
@@ -1384,7 +1460,14 @@ Y_i = \beta_1 z_{i1} + \ldots + \beta_{ip} z_{ip} + \e_i \,, \qquad
 \e_i \, \text{ iid } \, N(0, \sigma^2)
 $$
 
-- For any $j = 1, \ldots, p$ we can test the hypothesis
+- We have that 
+
+$$
+Z_j \,\, \text{ affects } \,\, Y \qquad \iff \qquad
+\beta_j \neq 0
+$$
+
+- To see if $Z_j$ affects $Y$ we need to test the hypothesis
 
 \begin{align*}
 H_0 \colon  & \beta_j = b_j \\
@@ -1626,7 +1709,7 @@ $$
 \ese (\hat \beta) & = \xi_{22}^{1/2} \, S^2 = \frac{ S^2 }{ \sqrt{ S_{xx} } }
 \end{align*}
 
-- **Note:** $\, \ese(\hat\beta)$ coincides with the $\ese$ in Slide 49
+- **Note:** $\, \ese(\hat\beta)$ coincides with the $\ese$ in Slide 50
 
 
 
@@ -1641,64 +1724,105 @@ $$
 
 
 
+## F-test for overall fit {.smaller}
 
-## Example: Stock and Gold prices {.smaller}
+- Want to test the **overall fit** of the model
 
-
-::::: {.columns style='display: flex !important; height: 80%;'}
-
-::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
-
-- We have gold price 
-
-- As Stock price increases, Gold price decreases
-
-- Would like to find $\alpha$ and $\beta$ s.t.
 $$
-\Expect[Y_i | x_i] \ \approx \  \alpha + \beta x_i
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \e_i
 $$
 
+- This means answering the question:
+
+$$
+\text{ Does at least one } X_i \text{ affect } Y \text{ ?}
+$$
+
+- How to do this?
+    * Could perform a sequence of t-tests on the $\beta_j$
+    * For statistical reasons this is not really desirable
+    * To assess **overall** fit we can perform **F-test**
 
 
+
+
+## F-test for overall fit {.smaller}
+
+The F-test for overall fit has 3 steps:
+
+1. Define a larger full model (with more parameters)
+
+
+2. Define a smaller nested reduced model (with fewer parameters)
+
+
+3. Use an F-statistic to decide between larger or smaller model
+
+
+
+## Overall fit for multiple regression {.smaller}
+
+- The larger model is
+
+$$
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \e_i
+$$
+
+- The smaller nested model is
+
+$$
+Y_i = \beta_1 + \e_i
+$$
+
+
+- Choosing the smaller model is equivalent to accepting $H_0$
+
+\begin{align*}
+H_0 & \colon \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
+H_1 & \colon \text{ At least one of the } \beta_i \text{ is non-zero}
+\end{align*}
+
+
+
+## Overall fit for simple regression {.smaller}
+
+- The larger model is
+
+$$
+Y_i = \alpha  + \beta x_i  + \e_i
+$$
+
+- The smaller nested model is
+
+$$
+Y_i = \alpha + \e_i
+$$
+
+
+- Choosing the smaller model is equivalent to accepting $H_0$
+
+\begin{align*}
+H_0 & \colon \beta = 0 \\
+H_1 & \colon \beta \neq 0 
+\end{align*}
+
+
+
+## Construction of F-statistic {.smaller}
+
+
+
+
+
+
+# Part 5: <br>Multiple linear <br> regression example  {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
 
 :::
 
-
-::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
-
-```{r}
-#| echo: false
-#| fig-asp: 1
-
-# Read the data
-prices <- read.table(file = "datasets/stock_gold.txt",
-                     header = TRUE
-                    )
-
-stock.price <- prices$stock_price
-gold.price <- prices$gold_price
-
-# Create the plot
-plot(stock.price,
-     gold.price, 
-     xlab = "", 
-     ylab= "",
-     pch = 16)
-
-# Add labels
-mtext("Stock Price", side=1, line=3, cex=2.1)
-mtext("Gold Price", side=2, line=2.5, cex=2.1)
-
-# Fit linear regression
-fit <- lm(gold.price ~ stock.price)
-
-# Plot regression line in red
-abline(fit, col = "red", lwd = 3)
-```
-
-:::
-
-:::::
 
 
 

@@ -426,11 +426,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Conjecture {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -438,47 +446,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,15 +458,43 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -595,6 +595,10 @@
 <ul>
 <li>Test the significance of multiple parameters</li>
 </ul></li>
+</ol>
+<p><br></p>
+<ol start="5" type="1">
+<li>Multiple linear regression example</li>
 </ol>
 </section>
 <section id="outline-of-lecture-10-2" class="slide level2 smaller">
@@ -1272,6 +1276,36 @@ Y_i = \beta_1 + \beta_2 \, x_{i2} + \ldots + \beta_p \, x_{ip} + \varepsilon_i
 </tbody>
 </table>
 </section>
+<section id="plotting-the-regression-line" class="slide level2 smaller">
+<h2>Plotting the regression line</h2>
+<div class="columns" style="display: flex !important; height: 80%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Data stored in stock.price </span></span>
+<span id="cb12-2"><a></a><span class="co"># and gold.price</span></span>
+<span id="cb12-3"><a></a><span class="co"># Plot the data</span></span>
+<span id="cb12-4"><a></a><span class="fu">plot</span>(stock.price, gold.price, </span>
+<span id="cb12-5"><a></a>     <span class="at">xlab =</span> <span class="st">"Stock Price"</span>, </span>
+<span id="cb12-6"><a></a>     <span class="at">ylab=</span> <span class="st">"Gold Price"</span>,</span>
+<span id="cb12-7"><a></a>     <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a><span class="co"># Model stored in fit.model</span></span>
+<span id="cb12-10"><a></a><span class="co"># Plot the regression line</span></span>
+<span id="cb12-11"><a></a><span class="fu">abline</span>(fit.model, </span>
+<span id="cb12-12"><a></a>       <span class="at">col =</span> <span class="st">"red"</span>, </span>
+<span id="cb12-13"><a></a>       <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="conclusion" class="slide level2 smaller">
 <h2>Conclusion</h2>
 <ul>
@@ -1350,17 +1384,17 @@ R^2 = 0.395325 \geq 0.3
 <h2>Positive gradient</h2>
 <p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> increases</p>
 
-<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="negative-gradient" class="slide level2 smaller">
 <h2>Negative gradient</h2>
 <p>As <span class="math inline">X</span> increases <span class="math inline">Y</span> decreases</p>
 
-<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="zero-gradient" class="slide level2 smaller">
 <h2>Zero gradient</h2>
 <p>Changes in <span class="math inline">X</span> do not affect <span class="math inline">Y</span></p>
 
-<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="t-test-for-simple-regression" class="slide level2 smaller">
 <h2>t-test for simple regression</h2>
 <ul>
@@ -1675,11 +1709,11 @@ t = \frac{\hat \beta - b }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-2} \,, \qq
 <p><span class="math display">
 \text{gold.price } = \alpha + \beta \, \times  \text{ stock.price } + \text{ error}
 </span></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Fit simple linear regression model</span></span>
-<span id="cb12-2"><a></a>fit.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(gold.price <span class="sc">~</span> stock.price)</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a><span class="co"># Print result to screen</span></span>
-<span id="cb12-5"><a></a><span class="fu">summary</span>(fit.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># Fit simple linear regression model</span></span>
+<span id="cb13-2"><a></a>fit.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(gold.price <span class="sc">~</span> stock.price)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="co"># Print result to screen</span></span>
+<span id="cb13-5"><a></a><span class="fu">summary</span>(fit.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="output-mathopmathrme.s.e.-t-statistic-p-value" class="slide level2 smaller">
 <h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
@@ -1736,6 +1770,10 @@ t = \frac{\hat \beta - b }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-2} \,, \qq
 <td style="text-align: left;"><span class="math inline">\texttt{Pr(&gt;|t|)}</span></td>
 <td style="text-align: left;">p-value <span class="math inline">\, p = 2 P( t_{n-2} &gt; |t| )</span></td>
 </tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\texttt{*}</span>, <span class="math inline">\, \texttt{**}</span>, <span class="math inline">\, \texttt{***}</span></td>
+<td style="text-align: left;">Statistical significance – More stars is better</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -1791,8 +1829,9 @@ n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
 </div>
 <p><strong>Interpretation:</strong></p>
 <ul>
-<li>Some evidence (<span class="math inline">p&lt;0.05</span>) that <em>Stock Prices</em> affect <em>Gold Prices</em></li>
-<li>As <span class="math inline">\hat \beta &lt; 0</span> and statistically significant, as <em>Stock Prices</em> increase <em>Gold Prices</em> decrease and vice versa</li>
+<li><p><span class="math inline">p</span> is very small and rated <span class="math inline">\, \texttt{***}</span></p></li>
+<li><p>Strong evidence (<span class="math inline">p&lt;0.05</span>) that <em>Stock Prices</em> affect <em>Gold Prices</em></p></li>
+<li><p>As <span class="math inline">\hat \beta &lt; 0</span> and statistically significant, as <em>Stock Prices</em> increase <em>Gold Prices</em> decrease and vice versa</p></li>
 </ul>
 </section>
 <section id="t-test-for-general-regression" class="slide level2 smaller">
@@ -1805,7 +1844,14 @@ Y_i = \beta_1 z_{i1} + \ldots + \beta_{ip} z_{ip} + \varepsilon_i \,, \qquad
 \varepsilon_i \, \text{ iid } \, N(0, \sigma^2)
 </span></p>
 <ul>
-<li>For any <span class="math inline">j = 1, \ldots, p</span> we can test the hypothesis</li>
+<li>We have that</li>
+</ul>
+<p><span class="math display">
+Z_j \,\, \text{ affects } \,\, Y \qquad \iff \qquad
+\beta_j \neq 0
+</span></p>
+<ul>
+<li>To see if <span class="math inline">Z_j</span> affects <span class="math inline">Y</span> we need to test the hypothesis</li>
 </ul>
 <p><span class="math display">\begin{align*}
 H_0 \colon  &amp; \beta_j = b_j \\
@@ -2020,7 +2066,7 @@ Z = \left(
 \mathop{\mathrm{e.s.e.}}(\hat \beta) &amp; = \xi_{22}^{1/2} \, S^2 = \frac{ S^2 }{ \sqrt{ S_{xx} } }
 \end{align*}</span></p>
 <ul>
-<li><strong>Note:</strong> <span class="math inline">\, \mathop{\mathrm{e.s.e.}}(\hat\beta)</span> coincides with the <span class="math inline">\mathop{\mathrm{e.s.e.}}</span> in Slide 49</li>
+<li><strong>Note:</strong> <span class="math inline">\, \mathop{\mathrm{e.s.e.}}(\hat\beta)</span> coincides with the <span class="math inline">\mathop{\mathrm{e.s.e.}}</span> in Slide 50</li>
 </ul>
 </section></section>
 <section>
@@ -2032,30 +2078,94 @@ Z = \left(
 </div>
 </div>
 </section>
-<section id="example-stock-and-gold-prices-4" class="slide level2 smaller">
-<h2>Example: Stock and Gold prices</h2>
-<div class="columns" style="display: flex !important; height: 80%;">
-<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<section id="f-test-for-overall-fit" class="slide level2 smaller">
+<h2>F-test for overall fit</h2>
 <ul>
-<li><p>We have gold price</p></li>
-<li><p>As Stock price increases, Gold price decreases</p></li>
-<li><p>Would like to find <span class="math inline">\alpha</span> and <span class="math inline">\beta</span> s.t. <span class="math display">
-{\rm I\kern-.3em E}[Y_i | x_i] \ \approx \  \alpha + \beta x_i
-</span></p></li>
+<li>Want to test the <strong>overall fit</strong> of the model</li>
 </ul>
-</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p><span class="math display">
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>This means answering the question:</li>
+</ul>
+<p><span class="math display">
+\text{ Does at least one } X_i \text{ affect } Y \text{ ?}
+</span></p>
+<ul>
+<li>How to do this?
+<ul>
+<li>Could perform a sequence of t-tests on the <span class="math inline">\beta_j</span></li>
+<li>For statistical reasons this is not really desirable</li>
+<li>To assess <strong>overall</strong> fit we can perform <strong>F-test</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="f-test-for-overall-fit-1" class="slide level2 smaller">
+<h2>F-test for overall fit</h2>
+<p>The F-test for overall fit has 3 steps:</p>
+<ol type="1">
+<li><p>Define a larger full model (with more parameters)</p></li>
+<li><p>Define a smaller nested reduced model (with fewer parameters)</p></li>
+<li><p>Use an F-statistic to decide between larger or smaller model</p></li>
+</ol>
+</section>
+<section id="overall-fit-for-multiple-regression" class="slide level2 smaller">
+<h2>Overall fit for multiple regression</h2>
+<ul>
+<li>The larger model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>The smaller nested model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 + \varepsilon_i
+</span></p>
+<ul>
+<li>Choosing the smaller model is equivalent to accepting <span class="math inline">H_0</span></li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
+H_1 &amp; \colon \text{ At least one of the } \beta_i \text{ is non-zero}
+\end{align*}</span></p>
+</section>
+<section id="overall-fit-for-simple-regression" class="slide level2 smaller">
+<h2>Overall fit for simple regression</h2>
+<ul>
+<li>The larger model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha  + \beta x_i  + \varepsilon_i
+</span></p>
+<ul>
+<li>The smaller nested model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \varepsilon_i
+</span></p>
+<ul>
+<li>Choosing the smaller model is equivalent to accepting <span class="math inline">H_0</span></li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \beta = 0 \\
+H_1 &amp; \colon \beta \neq 0
+\end{align*}</span></p>
+</section>
+<section id="construction-of-f-statistic" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
 </section></section>
+<section id="part-5-multiple-linear-regression-example" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Multiple linear <br> regression example</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+
 <section id="part-b-regression-modelling-assumptions-1" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part B: <br> Regression modelling assumptions</h1>
 <div class="footer">

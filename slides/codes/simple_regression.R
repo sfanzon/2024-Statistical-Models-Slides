@@ -21,3 +21,12 @@ fit.model <- lm(gold.price ~ stock.price)
 
 # Print result to screen
 print(summary(fit.model))
+
+# Plot the data
+plot(stock.price, gold.price, 
+     xlab = "Stock Price", 
+     ylab= "Gold Price",
+     pch = 16)
+
+# Plot the regression line in red
+abline(fit.model, col = "red", lwd = 3)
