@@ -426,43 +426,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,19 +438,15 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Warning {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -490,11 +454,47 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Idea {
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1066,7 +1066,7 @@
 <li><span class="math inline">R^2</span> is defined as</li>
 </ul>
 <p><span class="math display">
-\mathop{\mathrm{TSS}}= \mathop{\mathrm{ESS}}+ \mathop{\mathrm{RSS}}
+R^2 = \frac{ \mathop{\mathrm{ESS}}}{ \mathop{\mathrm{TSS}}} = 1 - \frac{ \mathop{\mathrm{RSS}}}{ \mathop{\mathrm{TSS}}}
 </span></p>
 <ul>
 <li><span class="math inline">R^2</span> measures proportion of variability in the data explained by the model</li>
@@ -2078,10 +2078,10 @@ Z = \left(
 </div>
 </div>
 </section>
-<section id="f-test-for-overall-fit" class="slide level2 smaller">
-<h2>F-test for overall fit</h2>
+<section id="f-test-for-overall-significance" class="slide level2 smaller">
+<h2>F-test for overall significance</h2>
 <ul>
-<li>Want to test the <strong>overall fit</strong> of the model</li>
+<li>Want to test the <strong>overall significance</strong> of the model</li>
 </ul>
 <p><span class="math display">
 Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
@@ -2097,29 +2097,29 @@ Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
 <ul>
 <li>Could perform a sequence of t-tests on the <span class="math inline">\beta_j</span></li>
 <li>For statistical reasons this is not really desirable</li>
-<li>To assess <strong>overall</strong> fit we can perform <strong>F-test</strong></li>
+<li>To assess <strong>overall</strong> significance we can perform <strong>F-test</strong></li>
 </ul></li>
 </ul>
 </section>
-<section id="f-test-for-overall-fit-1" class="slide level2 smaller">
-<h2>F-test for overall fit</h2>
-<p>The F-test for overall fit has 3 steps:</p>
+<section id="f-test-for-overall-significance-1" class="slide level2 smaller">
+<h2>F-test for overall significance</h2>
+<p>The F-test for overall significance has 3 steps:</p>
 <ol type="1">
-<li><p>Define a larger full model (with more parameters)</p></li>
-<li><p>Define a smaller nested reduced model (with fewer parameters)</p></li>
+<li><p>Define a larger <strong>full model</strong> (with more parameters)</p></li>
+<li><p>Define a smaller nested <strong>reduced model</strong> (with fewer parameters)</p></li>
 <li><p>Use an F-statistic to decide between larger or smaller model</p></li>
 </ol>
 </section>
-<section id="overall-fit-for-multiple-regression" class="slide level2 smaller">
-<h2>Overall fit for multiple regression</h2>
+<section id="overall-significance-for-multiple-regression" class="slide level2 smaller">
+<h2>Overall significance for multiple regression</h2>
 <ul>
-<li>The larger model is</li>
+<li>The larger <strong>full model</strong> is</li>
 </ul>
 <p><span class="math display">
 Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
 </span></p>
 <ul>
-<li>The smaller nested model is</li>
+<li>The smaller <strong>reduced model</strong> is</li>
 </ul>
 <p><span class="math display">
 Y_i = \beta_1 + \varepsilon_i
@@ -2128,20 +2128,20 @@ Y_i = \beta_1 + \varepsilon_i
 <li>Choosing the smaller model is equivalent to accepting <span class="math inline">H_0</span></li>
 </ul>
 <p><span class="math display">\begin{align*}
-H_0 &amp; \colon \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
+H_0 &amp; \colon \, \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
 H_1 &amp; \colon \text{ At least one of the } \beta_i \text{ is non-zero}
 \end{align*}</span></p>
 </section>
-<section id="overall-fit-for-simple-regression" class="slide level2 smaller">
-<h2>Overall fit for simple regression</h2>
+<section id="overall-significance-for-simple-regression" class="slide level2 smaller">
+<h2>Overall significance for simple regression</h2>
 <ul>
-<li>The larger model is</li>
+<li>The larger <strong>full model</strong> is</li>
 </ul>
 <p><span class="math display">
 Y_i = \alpha  + \beta x_i  + \varepsilon_i
 </span></p>
 <ul>
-<li>The smaller nested model is</li>
+<li>The smaller <strong>reduced model</strong> is</li>
 </ul>
 <p><span class="math display">
 Y_i = \alpha + \varepsilon_i
@@ -2156,6 +2156,365 @@ H_1 &amp; \colon \beta \neq 0
 </section>
 <section id="construction-of-f-statistic" class="slide level2 smaller">
 <h2>Construction of F-statistic</h2>
+<ul>
+<li>Consider the full model with <span class="math inline">p</span> parameters</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>Predictions for the full model are</li>
+</ul>
+<p><span class="math display">
+\hat y_i := \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip}  
+</span></p>
+<ul>
+<li>Define the residual sum of squares for the full model</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(p) := \sum_{i=1}^n (y_i - \hat y_i)^2
+</span></p>
+</section>
+<section id="construction-of-f-statistic-1" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li>Consider now the reduced model</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 + \varepsilon_i
+</span></p>
+<ul>
+<li>Predictions of the reduced model are constant</li>
+</ul>
+<p><span class="math display">
+\hat y_i = \beta_1
+</span></p>
+<ul>
+<li>Define the residual sum of squares for the full model</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(1) := \sum_{i=1}^n (y_i - \beta_1)^2
+</span></p>
+</section>
+<section id="construction-of-f-statistic-2" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li><p>Suppose the parameters of the full model <span class="math display">
+\beta_2, \ldots, \beta_p
+</span> are not important</p></li>
+<li><p>In this case the predictions of full and reduced model will be similar</p></li>
+<li><p>Therefore the <span class="math inline">\mathop{\mathrm{RSS}}</span> for the 2 models are similar</p></li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(1) \, \approx \, \mathop{\mathrm{RSS}}(p)
+</span></p>
+</section>
+<section id="construction-of-f-statistic-3" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li>Recall that <span class="math inline">\mathop{\mathrm{RSS}}</span> is defined via minimization</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(k) := \min_{\beta_1 , \ldots , \beta_k} \ \sum_{i=1}^n ( y_i - \hat y_i)^2 \,, \qquad
+\hat y_i := \beta_1 + \beta_2 x_{i2} + \ldots + \beta_k x_{ik}
+</span></p>
+<ul>
+<li>Therefore <span class="math inline">\mathop{\mathrm{RSS}}</span> cannot increase if we add parameters to the model</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(1) \geq \mathop{\mathrm{RSS}}(p)
+</span></p>
+<ul>
+<li>To measure how influential the parameters <span class="math inline">\beta_2, \ldots, \beta_p</span> are, we study</li>
+</ul>
+<p><span class="math display">
+\frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{\mathop{\mathrm{RSS}}(p)}
+</span></p>
+</section>
+<section id="construction-of-f-statistic-4" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li>We now suitably rescale</li>
+</ul>
+<p><span class="math display">
+\frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{\mathop{\mathrm{RSS}}(p)}
+</span></p>
+<ul>
+<li>To this end, note that the degrees of freedom of reduced model are</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{df}}(1) = n - 1
+</span></p>
+<ul>
+<li>The degrees of freedom of the full model are</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{df}}(p) = n - p
+</span></p>
+</section>
+<section id="f-statistic-for-overall-significance" class="slide level2 smaller">
+<h2>F-statistic for overall significance</h2>
+<div id="Definition*-6.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The <strong>F-statistic</strong> for overall significance is<p></p>
+<p><span class="math display">\begin{align*}
+F &amp; := \frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{ \mathop{\mathrm{df}}(1) - \mathop{\mathrm{df}}(p) } \bigg/
+\frac{\mathop{\mathrm{RSS}}(p)}{\mathop{\mathrm{df}}(p)}  \\[15pt]
+  &amp; = \frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{ p - 1 } \bigg/
+\frac{\mathop{\mathrm{RSS}}(p)}{n - p}
+\end{align*}</span></p>
+</div></details>
+</div>
+<p><strong>Theorem:</strong> The F-statistic for overall significance has F-distribution</p>
+<p><span class="math display">
+F \, \sim \, F_{p-1,n-p}
+</span></p>
+</section>
+<section id="rewriting-the-f-statistic" class="slide level2 smaller">
+<h2>Rewriting the F-statistic</h2>
+<div id="Proposition*-6.2" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>The F-statistic can be rewritten as<p></p>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{ p - 1 } \bigg/
+\frac{\mathop{\mathrm{RSS}}(p)}{n - p}  \\[15pt]
+  &amp; = \frac{R^2}{1 - R^2} \, \cdot \, \frac{n - p}{p - 1}
+\end{align*}</span></p>
+</div></details>
+</div>
+</section>
+<section id="proof-of-proposition" class="slide level2 smaller">
+<h2>Proof of Proposition</h2>
+<ul>
+<li>Notice that <span class="math inline">\mathop{\mathrm{TSS}}</span> does not depend on <span class="math inline">p</span> since</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{TSS}}= \sum_{i=1}^n (y_i - \overline{y})^2
+</span></p>
+<ul>
+<li>Recall the definition of <span class="math inline">R^2</span></li>
+</ul>
+<p><span class="math display">
+R^2 = 1 - \frac{\mathop{\mathrm{RSS}}(p)}{\mathop{\mathrm{TSS}}}
+</span></p>
+<ul>
+<li>From the above we obtain</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(p) = (1 - R^2) \mathop{\mathrm{TSS}}
+</span></p>
+</section>
+<section id="proof-of-proposition-1" class="slide level2 smaller">
+<h2>Proof of Proposition</h2>
+<ul>
+<li>By definition we have that</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(1) = \min_{\beta_1} \ \sum_{i=1}^n (y_i - \beta_1)^2
+</span></p>
+<ul>
+<li><strong>Exercise:</strong> Check that the unique solution to the above problem is</li>
+</ul>
+<p><span class="math display">
+\beta_1 = \overline{y}
+</span></p>
+<ul>
+<li>Therefore we have</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(1) =  \sum_{i=1}^n (y_i - \overline{y})^2 = \mathop{\mathrm{TSS}}
+</span></p>
+</section>
+<section id="proof-of-proposition-2" class="slide level2 smaller">
+<h2>Proof of Proposition</h2>
+<ul>
+<li>We just obtained the two identities</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}(p) = (1 - R^2) \mathop{\mathrm{TSS}}\,, \qquad \quad \mathop{\mathrm{RSS}}(1) = \mathop{\mathrm{TSS}}
+</span></p>
+<ul>
+<li>From the above we conclude the proof</li>
+</ul>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{ p - 1 } \bigg/
+\frac{\mathop{\mathrm{RSS}}(p)}{n - p}  \\[15pt]
+  &amp; = \frac{\mathop{\mathrm{TSS}}- (1 - R^2) \mathop{\mathrm{TSS}}}{ p - 1 } \bigg/
+\frac{(1 - R^2) \mathop{\mathrm{TSS}}}{n - p}\\[15pt]
+  &amp; = \frac{R^2}{1 - R^2} \, \cdot \, \frac{n - p}{p - 1}
+\end{align*}</span></p>
+</section>
+<section id="f-statistic-for-simple-regression" class="slide level2 smaller">
+<h2>F-statistic for simple regression</h2>
+<div id="Proposition*-6.3" class="Proposition">
+<details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>
+<ol type="1">
+<li><p>The <span class="math inline">F</span>-statistic for overall significance in simple regression is <span class="math display">
+F = t^2 \,, \qquad \quad t = \frac{\hat \beta}{ S / \sqrt{S_{xx}}}
+</span> where <span class="math inline">t</span> is the t-statistic for <span class="math inline">\hat \beta</span>.</p></li>
+<li><p>In particular the p-values for t-test and F-test coincide <span class="math display">
+p = P( t_{n-2} &gt; |t| ) = P( F_{1,n-2} &gt; F )
+</span></p></li>
+</ol>
+</div></details>
+</div>
+<p><strong>Proof:</strong> Will be left as an exercise</p>
+</section>
+<section id="example-stock-and-gold-prices-4" class="slide level2 smaller">
+<h2>Example: Stock and Gold prices</h2>
+<ul>
+<li><p>Recall that</p>
+<ul>
+<li><span class="math inline">Y =</span> Gold Price</li>
+<li><span class="math inline">X =</span> Stock Price</li>
+</ul></li>
+<li><p>Consider the linear model <span class="math display">
+  Y_i =  \alpha + \beta x_i + \varepsilon_i
+  </span></p></li>
+<li><p>We want to</p>
+<ul>
+<li>Test the hypotheses <span class="math display">\begin{align*}
+  H_0 &amp; \colon \beta = 0 \\
+  H_1 &amp; \colon \beta \neq 0
+  \end{align*}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="testing-for-beta-0-1" class="slide level2 smaller">
+<h2>Testing for <span class="math inline">\beta = 0</span></h2>
+<ul>
+<li>Recall that Stock Prices and Gold Prices are stored in R vectors
+<ul>
+<li><code>stock.price</code></li>
+<li><code>gold.price</code></li>
+</ul></li>
+<li>Fit the simple linear model with the following commands</li>
+</ul>
+<p><span class="math display">
+\text{gold.price } = \alpha + \beta \, \times  \text{ stock.price } + \text{ error}
+</span></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Fit simple linear regression model</span></span>
+<span id="cb14-2"><a></a>fit.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(gold.price <span class="sc">~</span> stock.price)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a><span class="co"># Print result to screen</span></span>
+<span id="cb14-5"><a></a><span class="fu">summary</span>(fit.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-5" class="slide level2 smaller">
+<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\texttt{(Intercept)}</span>: 1st row of the table contains statistics related to <span class="math inline">\hat \alpha</span>
+<ul>
+<li>This part of the table can be ignored</li>
+<li>It is not interesting to do inference on intercept</li>
+</ul></li>
+<li><span class="math inline">\texttt{stock.price}</span>: 2nd row of the table contains statistics related to <span class="math inline">\hat \beta</span>
+<ul>
+<li>This is the <strong>informative part</strong> of the table</li>
+<li>For larger models there will be additional rows below the 2nd</li>
+<li>These will be <strong>informative</strong> about additional regression parameters</li>
+</ul></li>
+</ul>
+</section>
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-6" class="slide level2 smaller">
+<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+</div>
+</div>
+<ul>
+<li>The 2nd row of the table has to be interpreted as follows</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\texttt{Estimate}</span></th>
+<th style="text-align: left;"><span class="math inline">\text{The value of } \hat \beta</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\texttt{Std. Error}</span></td>
+<td style="text-align: left;">Estimated standard error <span class="math inline">\mathop{\mathrm{e.s.e.}}</span> for <span class="math inline">\beta</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\texttt{t value}</span></td>
+<td style="text-align: left;">t-statistic <span class="math inline">\, t = \dfrac{\hat \beta - 0 }{\mathop{\mathrm{e.s.e.}}}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\texttt{Pr(&gt;|t|)}</span></td>
+<td style="text-align: left;">p-value <span class="math inline">\, p = 2 P( t_{n-2} &gt; |t| )</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\texttt{*}</span>, <span class="math inline">\, \texttt{**}</span>, <span class="math inline">\, \texttt{***}</span></td>
+<td style="text-align: left;">Statistical significance – More stars is better</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-7" class="slide level2 smaller">
+<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+</div>
+</div>
+<ul>
+<li>The above table then gives</li>
+</ul>
+<p><span class="math display">
+\hat \beta = -6.169 \,, \qquad \mathop{\mathrm{e.s.e.}}= 1.37 \, , \qquad t = - 4.502 \,, \qquad
+p = 8.9 \times 10^{-5} \
+</span></p>
+<ul>
+<li>The <span class="math inline">t</span>-statistic computed by R can also be computed by hand</li>
+</ul>
+<p><span class="math display">
+  t   = \frac{\hat \beta - 0}{ \mathop{\mathrm{e.s.e.}}}
+      = \frac{-6.169}{1.37} = -4.502
+</span></p>
+</section>
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-8" class="slide level2 smaller">
+<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+</div>
+</div>
+<ul>
+<li><p>The p-value cannot be computed by hand</p></li>
+<li><p>However we can find critical value on <a href="files/Statistics_Tables.pdf">Tables</a></p></li>
+</ul>
+<p><span class="math display">
+n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
+</span></p>
+<ul>
+<li>Critical value is <span class="math inline">\, t_{31}(0.025) = 2.040</span></li>
+</ul>
+<p><span class="math display">
+|t| = 4.502 &gt; 2.040 = t_{31}(0.025) \quad \implies \quad  p &lt; 0.05
+</span></p>
+</section>
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-9" class="slide level2 smaller">
+<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><p><span class="math inline">p</span> is very small and rated <span class="math inline">\, \texttt{***}</span></p></li>
+<li><p>Strong evidence (<span class="math inline">p&lt;0.05</span>) that <em>Stock Prices</em> affect <em>Gold Prices</em></p></li>
+<li><p>As <span class="math inline">\hat \beta &lt; 0</span> and statistically significant, as <em>Stock Prices</em> increase <em>Gold Prices</em> decrease and vice versa</p></li>
+</ul>
 </section></section>
 <section id="part-5-multiple-linear-regression-example" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 5: <br>Multiple linear <br> regression example</h1>
