@@ -426,31 +426,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
   .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,15 +438,7 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Lemma {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -474,11 +446,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
-  .Important {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,15 +458,43 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1528,7 +1528,7 @@ t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\mathop{\mathrm{e.s.e.}
 <li><p>We hence rescale and introduce <span class="math inline">S^2</span></p></li>
 </ul>
 <p><span class="math display">
-S^2 := \frac{n}{n-2} \, \hat\sigma^2 = \frac{1}{n-2} \, \mathop{\mathrm{RSS}}
+S^2 := \frac{n}{n-2} \, \hat\sigma^2 = \frac{\mathop{\mathrm{RSS}}}{n-2}
 </span></p>
 <ul>
 <li>This way <span class="math inline">S^2</span> is unbiased estimator for <span class="math inline">\sigma^2</span></li>
@@ -1641,8 +1641,8 @@ U \sim N(0,1) \,, \qquad \quad V \sim \chi_{n-2}^2
 t \sim t_{n-2}
 </span></p>
 </section>
-<section id="t-test-for-beta" class="slide level2 smaller">
-<h2>t-test for <span class="math inline">\beta</span></h2>
+<section id="summary-t-test-for-beta" class="slide level2 smaller">
+<h2>Summary: t-test for <span class="math inline">\beta</span></h2>
 <p><strong>Goal</strong>: Estimate the slope <span class="math inline">\beta</span> for the simple linear model</p>
 <p><span class="math display">
 Y_i = \alpha + \beta x_i + \varepsilon_i \,, \qquad \varepsilon_i \, \text{ iid } \, N(0,\sigma^2)
@@ -1654,14 +1654,8 @@ H_0 &amp; \colon \beta = b \\
 H_1 &amp; \colon \beta \neq b
 \end{align*}</span></p>
 </section>
-<section id="t-test-for-beta-1" class="slide level2 smaller">
-<h2>t-test for <span class="math inline">\beta</span></h2>
-<ul>
-<li>Suppose given the data</li>
-</ul>
-<p><span class="math display">
-x = (x_1, \ldots, x_n) \,, \qquad \quad y = (y_1, \ldots, y_n)
-</span></p>
+<section id="summary-t-test-for-beta-1" class="slide level2 smaller">
+<h2>Summary: t-test for <span class="math inline">\beta</span></h2>
 <ul>
 <li>The t-statistic is</li>
 </ul>
@@ -1673,7 +1667,13 @@ t = \frac{\hat \beta - b }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-2} \,, \qq
 <li>In the above we have</li>
 </ul>
 <p><span class="math display">
-\hat \beta = \frac{ S_{xy} }{ S_{xx} } \,, \qquad \quad S^2 := \frac{1}{n-2} \, \mathop{\mathrm{RSS}}
+\hat \beta = \frac{ S_{xy} }{ S_{xx} } \,, \qquad \quad S^2 := \frac{\mathop{\mathrm{RSS}}}{n-2}
+</span></p>
+<ul>
+<li>The p-value is</li>
+</ul>
+<p><span class="math display">
+p = 2 P( t_{n-2} &gt; |t| )
 </span></p>
 </section>
 <section id="example-stock-and-gold-prices-3" class="slide level2 smaller">
@@ -1723,14 +1723,9 @@ t = \frac{\hat \beta - b }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-2} \,, \qq
 </div>
 </div>
 <ul>
-<li><span class="math inline">\texttt{(Intercept)}</span>: 1st row of the table contains statistics related to <span class="math inline">\hat \alpha</span>
+<li><p><span class="math inline">\texttt{(Intercept)}</span>: 1st row of the table contains statistics related to <span class="math inline">\hat \alpha</span></p></li>
+<li><p><span class="math inline">\texttt{stock.price}</span>: 2nd row of the table contains statistics related to <span class="math inline">\hat \beta</span></p>
 <ul>
-<li>This part of the table can be ignored</li>
-<li>It is not interesting to do inference on intercept</li>
-</ul></li>
-<li><span class="math inline">\texttt{stock.price}</span>: 2nd row of the table contains statistics related to <span class="math inline">\hat \beta</span>
-<ul>
-<li>This is the <strong>informative part</strong> of the table</li>
 <li>For larger models there will be additional rows below the 2nd</li>
 <li>These will be <strong>informative</strong> about additional regression parameters</li>
 </ul></li>
@@ -1832,6 +1827,20 @@ n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
 <li><p><span class="math inline">p</span> is very small and rated <span class="math inline">\, \texttt{***}</span></p></li>
 <li><p>Strong evidence (<span class="math inline">p&lt;0.05</span>) that <em>Stock Prices</em> affect <em>Gold Prices</em></p></li>
 <li><p>As <span class="math inline">\hat \beta &lt; 0</span> and statistically significant, as <em>Stock Prices</em> increase <em>Gold Prices</em> decrease and vice versa</p></li>
+</ul>
+</section>
+<section id="warning" class="slide level2 smaller">
+<h2>Warning</h2>
+<ul>
+<li><p>t-statistic in summary refers to two-sided t-test of whether a coefficient is 0</p></li>
+<li><p>If <span class="math inline">b = 0</span> or one-sided t-test is required</p>
+<ul>
+<li>Compute t-statistic by hand <span class="math display">
+  t = \frac{\hat \beta - b}{\mathop{\mathrm{e.s.e.}}}
+  </span></li>
+<li><span class="math inline">\, \mathop{\mathrm{e.s.e.}}</span> is in the 2nd row under <span class="math inline">\, \texttt{Std. Error}</span></li>
+<li>Compute p-value <em>by hand</em> with <span class="math inline">\, \texttt{pt(t, df)}</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="t-test-for-general-regression" class="slide level2 smaller">
@@ -1944,7 +1953,7 @@ t = \frac{\text{Estimate } - \text{ Hypothesised Value}}{\mathop{\mathrm{e.s.e.}
 <li><p>We hence rescale and introduce <span class="math inline">S^2</span></p></li>
 </ul>
 <p><span class="math display">
-S^2 := \frac{n}{n-p} \, \hat\sigma^2 = \frac{1}{n-p} \, \mathop{\mathrm{RSS}}
+S^2 := \frac{n}{n-p} \, \hat\sigma^2 = \frac{\mathop{\mathrm{RSS}}}{n-p}
 </span></p>
 <ul>
 <li>This way <span class="math inline">S^2</span> is unbiased estimator for <span class="math inline">\sigma^2</span></li>
@@ -1986,8 +1995,8 @@ t_{n-p}
 </div>
 <p><strong>Proof:</strong> See section 11.5 in <span class="citation" data-cites="degroot">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></p>
 </section>
-<section id="t-test-for-beta_j" class="slide level2 smaller">
-<h2>t-test for <span class="math inline">\beta_j</span></h2>
+<section id="summary-t-test-for-beta_j" class="slide level2 smaller">
+<h2>Summary: t-test for <span class="math inline">\beta_j</span></h2>
 <p><strong>Goal</strong>: Estimate the coefficient <span class="math inline">\beta_j</span> for the general linear model</p>
 <p><span class="math display">
 Y_i = \beta_1 z_{i1} + \ldots + \beta_p z_{ip} + \varepsilon_i \,, \qquad \varepsilon_i \, \text{ iid } \, N(0,\sigma^2)
@@ -1999,8 +2008,8 @@ H_0 &amp; \colon \beta_j = b_j \\
 H_1 &amp; \colon \beta_j \neq b_j
 \end{align*}</span></p>
 </section>
-<section id="t-test-for-beta_j-1" class="slide level2 smaller">
-<h2>t-test for <span class="math inline">\beta_j</span></h2>
+<section id="summary-t-test-for-beta_j-1" class="slide level2 smaller">
+<h2>Summary: t-test for <span class="math inline">\beta_j</span></h2>
 <ul>
 <li>The t-statistic is</li>
 </ul>
@@ -2009,16 +2018,34 @@ t = \frac{\hat \beta_j - b_j }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-p} \,,
 \mathop{\mathrm{e.s.e.}}= \xi_{jj}^{1/2} \, S
 </span></p>
 <ul>
-<li>In the above <span class="math inline">\xi_{jj}</span> are diagonal entries of <span class="math inline">(Z^TZ)^1</span> and</li>
+<li>In the above <span class="math inline">\xi_{jj}</span> are diagonal entries of <span class="math inline">(Z^TZ)^{-1}</span> and</li>
 </ul>
 <p><span class="math display">
-\hat \beta = (Z^TZ)^{-1} Z^T y \,, \qquad \quad S^2 := \frac{1}{n-p} \, \mathop{\mathrm{RSS}}
+\hat \beta = (Z^TZ)^{-1} Z^T y \,, \qquad \quad S^2 := \frac{\mathop{\mathrm{RSS}}}{n-p}
 </span></p>
 <ul>
-<li><strong>R code:</strong>
+<li>The p-value is</li>
+</ul>
+<p><span class="math display">
+p = 2P (t_{n-p} &gt; |t|)
+</span></p>
+</section>
+<section id="t-test-in-r" class="slide level2 smaller">
+<h2>t-test in R</h2>
+<p>Fit the general regression model with <code>lm</code></p>
 <ul>
-<li>Fit the general regression model with <code>lm</code></li>
-<li><span class="math inline">\,\, \mathop{\mathrm{e.s.e.}}</span> for <span class="math inline">\hat \beta_j</span> is found in <span class="math inline">j</span>-th variable row and <span class="math inline">\texttt{Std. Error}</span> column</li>
+<li>If <span class="math inline">b_j = 0</span> and a two-sided t-test is required
+<ul>
+<li>t-statistic is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{t value}</span></li>
+<li>p-value is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{Pr(&gt;|t|)}</span></li>
+</ul></li>
+<li>If <span class="math inline">b_j = 0</span> or one-sided t-test is required
+<ul>
+<li>Compute t-statistic by hand <span class="math display">
+  t = \frac{\hat \beta_j - b_j}{\mathop{\mathrm{e.s.e.}}}
+  </span></li>
+<li><span class="math inline">\,\, \mathop{\mathrm{e.s.e.}}</span> for <span class="math inline">\hat \beta_j</span> is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{Std. Error}</span></li>
+<li>Compute p-value <em>by hand</em> with <span class="math inline">\, \texttt{pt(t, df)}</span></li>
 </ul></li>
 </ul>
 </section>
@@ -2358,6 +2385,56 @@ p = P( t_{n-2} &gt; |t| ) = P( F_{1,n-2} &gt; F )
 </div>
 <p><strong>Proof:</strong> Will be left as an exercise</p>
 </section>
+<section id="summary-f-test-for-overall-significance" class="slide level2 smaller">
+<h2>Summary: F-test for overall significance</h2>
+<p><strong>Goal:</strong> Test the <strong>overall significance</strong> of the model</p>
+<p><span class="math display">
+Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+</span></p>
+<p>This means answering the question:</p>
+<p><span class="math display">
+\text{ Does at least one } X_i \text{ affect } Y \text{ ?}
+</span></p>
+<p><strong>Hypotheses:</strong> The above question is equivalent to testing</p>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \, \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
+H_1 &amp; \colon \text{ At least one of the } \beta_i \text{ is non-zero}
+\end{align*}</span></p>
+</section>
+<section id="summary-f-test-for-overall-significance-1" class="slide level2 smaller">
+<h2>Summary: F-test for overall significance</h2>
+<ul>
+<li>F-statistic is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{\mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p)}{ p - 1 } \bigg/
+\frac{\mathop{\mathrm{RSS}}(p)}{n - p}  \\[15pt]
+  &amp; = \frac{R^2}{1 - R^2} \, \cdot \, \frac{n - p}{p - 1}
+\end{align*}</span></p>
+<ul>
+<li>We have that</li>
+</ul>
+<p><span class="math display">
+F \, \sim  \, F_{p-1,n-2}
+</span></p>
+</section>
+<section id="summary-f-test-for-overall-significance-2" class="slide level2 smaller">
+<h2>Summary: F-test for overall significance</h2>
+<ul>
+<li>The p-value is</li>
+</ul>
+<p><span class="math display">
+p = P ( F_{p-1,n-2} &gt; F)
+</span></p>
+<ul>
+<li><strong>t-test in R:</strong>
+<ul>
+<li>Fit the multiple regression model with <code>lm</code></li>
+<li>F-statistic is listed in the summary</li>
+<li>p-value is listed in the summary</li>
+</ul></li>
+</ul>
+</section>
 <section id="example-stock-and-gold-prices-4" class="slide level2 smaller">
 <h2>Example: Stock and Gold prices</h2>
 <ul>
@@ -2366,20 +2443,19 @@ p = P( t_{n-2} &gt; |t| ) = P( F_{1,n-2} &gt; F )
 <li><span class="math inline">Y =</span> Gold Price</li>
 <li><span class="math inline">X =</span> Stock Price</li>
 </ul></li>
-<li><p>Consider the linear model <span class="math display">
+<li><p>We want to test the <strong>overall significance</strong> of the model</p>
+<p><span class="math display">
   Y_i =  \alpha + \beta x_i + \varepsilon_i
   </span></p></li>
-<li><p>We want to</p>
-<ul>
-<li>Test the hypotheses <span class="math display">\begin{align*}
-  H_0 &amp; \colon \beta = 0 \\
-  H_1 &amp; \colon \beta \neq 0
-  \end{align*}</span></li>
-</ul></li>
+<li><p>To this end, perform F-test for the hypotheses</p></li>
 </ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \beta = 0 \\
+H_1 &amp; \colon \beta \neq 0
+\end{align*}</span></p>
 </section>
-<section id="testing-for-beta-0-1" class="slide level2 smaller">
-<h2>Testing for <span class="math inline">\beta = 0</span></h2>
+<section id="f-test-for-overall-significance-2" class="slide level2 smaller">
+<h2>F-test for overall significance</h2>
 <ul>
 <li>Recall that Stock Prices and Gold Prices are stored in R vectors
 <ul>
@@ -2397,32 +2473,27 @@ p = P( t_{n-2} &gt; |t| ) = P( F_{1,n-2} &gt; F )
 <span id="cb14-4"><a></a><span class="co"># Print result to screen</span></span>
 <span id="cb14-5"><a></a><span class="fu">summary</span>(fit.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="output-mathopmathrme.s.e.-t-statistic-p-value-5" class="slide level2 smaller">
-<h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
+<section id="output-f-statistic-and-p-value" class="slide level2 smaller">
+<h2>Output: F-statistic and p-value</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+<p><img data-src="images/simple_regression_output_cut_3.png" style="width:80.0%"></p>
 </div>
 </div>
 <ul>
-<li><span class="math inline">\texttt{(Intercept)}</span>: 1st row of the table contains statistics related to <span class="math inline">\hat \alpha</span>
+<li><p><span class="math inline">\texttt{(Intercept)}</span>: 1st row of the table contains statistics related to <span class="math inline">\hat \alpha</span></p></li>
+<li><p><span class="math inline">\texttt{stock.price}</span>: 2nd row of the table contains statistics related to <span class="math inline">\hat \beta</span></p>
 <ul>
-<li>This part of the table can be ignored</li>
-<li>It is not interesting to do inference on intercept</li>
-</ul></li>
-<li><span class="math inline">\texttt{stock.price}</span>: 2nd row of the table contains statistics related to <span class="math inline">\hat \beta</span>
-<ul>
-<li>This is the <strong>informative part</strong> of the table</li>
 <li>For larger models there will be additional rows below the 2nd</li>
 <li>These will be <strong>informative</strong> about additional regression parameters</li>
 </ul></li>
 </ul>
 </section>
-<section id="output-mathopmathrme.s.e.-t-statistic-p-value-6" class="slide level2 smaller">
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-5" class="slide level2 smaller">
 <h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+<p><img data-src="images/simple_regression_output_cut_3.png" style="width:80.0%"></p>
 </div>
 </div>
 <ul>
@@ -2459,11 +2530,11 @@ p = P( t_{n-2} &gt; |t| ) = P( F_{1,n-2} &gt; F )
 </tbody>
 </table>
 </section>
-<section id="output-mathopmathrme.s.e.-t-statistic-p-value-7" class="slide level2 smaller">
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-6" class="slide level2 smaller">
 <h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+<p><img data-src="images/simple_regression_output_cut_3.png" style="width:80.0%"></p>
 </div>
 </div>
 <ul>
@@ -2481,11 +2552,11 @@ p = 8.9 \times 10^{-5} \
       = \frac{-6.169}{1.37} = -4.502
 </span></p>
 </section>
-<section id="output-mathopmathrme.s.e.-t-statistic-p-value-8" class="slide level2 smaller">
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-7" class="slide level2 smaller">
 <h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+<p><img data-src="images/simple_regression_output_cut_3.png" style="width:80.0%"></p>
 </div>
 </div>
 <ul>
@@ -2502,11 +2573,11 @@ n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
 |t| = 4.502 &gt; 2.040 = t_{31}(0.025) \quad \implies \quad  p &lt; 0.05
 </span></p>
 </section>
-<section id="output-mathopmathrme.s.e.-t-statistic-p-value-9" class="slide level2 smaller">
+<section id="output-mathopmathrme.s.e.-t-statistic-p-value-8" class="slide level2 smaller">
 <h2>Output: <span class="math inline">\mathop{\mathrm{e.s.e.}}</span>, t-statistic, p-value</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
-<p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
+<p><img data-src="images/simple_regression_output_cut_3.png" style="width:80.0%"></p>
 </div>
 </div>
 <p><strong>Interpretation:</strong></p>
