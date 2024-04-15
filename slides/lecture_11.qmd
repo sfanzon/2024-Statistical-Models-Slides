@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 11: <br>TBA<br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Lecture 11: <br>Violation of regression <br> assumptions {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -40,13 +40,16 @@ $
 
 ## Outline of Lecture 11
 
-1. TBA
+1. Regression assumptions
+2. Heteroschedasticity
+3. Autocorrelation
+4. Multicollinearity
 
 
 
 
 
-# Part 1: <br>TBA {background-color="#cc0164" visibility="uncounted"}
+# Part 1: <br>Regression assumptions {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -57,5 +60,3 @@ $
 
 
 
-
-## References

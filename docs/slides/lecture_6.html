@@ -406,63 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,11 +414,67 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Definition {
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
@@ -1302,21 +1302,21 @@ t_{21}(0.025) = 2.08
 </section>
 <section id="the-two-sample-t-test-in-r-code" class="slide level2 smaller">
 <h2>The two-sample t-test in R: Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
-<span id="cb1-4"><a></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co"># Perform two-sample t-test with null hypothesis mu_X = mu_Y</span></span>
-<span id="cb1-8"><a></a><span class="co"># Specify that populations have same variance</span></span>
-<span id="cb1-9"><a></a><span class="co"># Store result of t.test in answer</span></span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a>answer <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mathematicians, accountants, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-12"><a></a></span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a><span class="co"># Print answer</span></span>
-<span id="cb1-15"><a></a><span class="fu">print</span>(answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform two-sample t-test with null hypothesis mu_X = mu_Y</span></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Specify that populations have same variance</span></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store result of t.test in answer</span></span>
+<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mathematicians, accountants, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Code can be downloaded here <a href="codes/two_sample_t_test.R">two_sample_t_test.R</a></li>
 </ul>
@@ -1503,20 +1503,20 @@ t = \frac{ \overline{x} - \overline{y} }{s_p \sqrt{ \dfrac{1}{n} + \dfrac{1}{m} 
 </section>
 <section id="welch-two-sample-t-test-code" class="slide level2 smaller">
 <h2>Welch two-sample t-test: Code</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
-<span id="cb8-4"><a></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a><span class="co"># Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y</span></span>
-<span id="cb8-8"><a></a><span class="co"># Store result of t.test in answer</span></span>
-<span id="cb8-9"><a></a></span>
-<span id="cb8-10"><a></a>answer <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mathematicians, accountants)</span>
-<span id="cb8-11"><a></a></span>
-<span id="cb8-12"><a></a></span>
-<span id="cb8-13"><a></a><span class="co"># Print answer</span></span>
-<span id="cb8-14"><a></a><span class="fu">print</span>(answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Welch two-sample t-test with null hypothesis mu_X = mu_Y</span></span>
+<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store result of t.test in answer</span></span>
+<span id="cb8-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mathematicians, accountants)</span>
+<span id="cb8-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb8-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Note</strong>:
 <ul>
@@ -2065,20 +2065,20 @@ p &gt; 0.05
 </section>
 <section id="simple-solution-code" class="slide level2 smaller">
 <h2>Simple solution: Code</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
-<span id="cb12-4"><a></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a></span>
-<span id="cb12-7"><a></a><span class="co"># Perform one-sided F-test using var.test</span></span>
-<span id="cb12-8"><a></a><span class="co"># Store result of var.test in ans</span></span>
-<span id="cb12-9"><a></a></span>
-<span id="cb12-10"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">var.test</span>(accountants, mathematicians, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
-<span id="cb12-11"><a></a></span>
-<span id="cb12-12"><a></a></span>
-<span id="cb12-13"><a></a><span class="co"># Print answer</span></span>
-<span id="cb12-14"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform one-sided F-test using var.test</span></span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store result of var.test in ans</span></span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">var.test</span>(accountants, mathematicians, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb12-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Note</strong>: <code>accountants</code> is first because it has larger variance</li>
 <li>Code can be downloaded here <a href="codes/F_test.R">F_test.R</a></li>
@@ -2264,10 +2264,10 @@ ratio of variances
 <ul>
 <li>Start by entering data into R</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
-<span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
-<span id="cb20-4"><a></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter Wages data in 2 vectors using function c()</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>mathematicians <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">46</span>, <span class="dv">54</span>, <span class="dv">57</span>, <span class="dv">58</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">63</span>)</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>accountants <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">37</span>, <span class="dv">37</span>, <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">60</span>, <span class="dv">64</span>, <span class="dv">64</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="first-principles-solution-code-1" class="slide level2 smaller">
 <h2>First principles solution: Code</h2>
@@ -2275,20 +2275,20 @@ ratio of variances
 <li>Check which population has higher variance</li>
 <li>In our case <code>accountants</code> has higher variance</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Check which variance is higher</span></span>
-<span id="cb21-2"><a></a></span>
-<span id="cb21-3"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> Variance of accountants is"</span>, <span class="fu">var</span>(accountants))</span>
-<span id="cb21-4"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> Variance of mathematicians is"</span>, <span class="fu">var</span>(mathematicians))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Check which variance is higher</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> Variance of accountants is"</span>, <span class="fu">var</span>(accountants))</span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> Variance of mathematicians is"</span>, <span class="fu">var</span>(mathematicians))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="first-principles-solution-code-2" class="slide level2 smaller">
 <h2>First principles solution: Code</h2>
 <ul>
 <li>Compute sample sizes</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Calculate sample sizes</span></span>
-<span id="cb22-2"><a></a></span>
-<span id="cb22-3"><a></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(mathematicians)</span>
-<span id="cb22-4"><a></a>m <span class="ot">&lt;-</span> <span class="fu">length</span>(accountants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample sizes</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(mathematicians)</span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">length</span>(accountants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="first-principles-solution-code-3" class="slide level2 smaller">
 <h2>First principles solution: Code</h2>
@@ -2299,10 +2299,10 @@ F = \frac{s_Y^2}{s_X^2}
 <li><p><strong>Recall</strong>: Numerator has to have larger variance</p></li>
 <li><p>In our case <code>accountants</code> is numerator</p></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Compute F-statistics</span></span>
-<span id="cb23-2"><a></a><span class="co"># Numerator is population with largest variance</span></span>
-<span id="cb23-3"><a></a></span>
-<span id="cb23-4"><a></a>F <span class="ot">&lt;-</span> <span class="fu">var</span>(accountants) <span class="sc">/</span> <span class="fu">var</span>(mathematicians)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute F-statistics</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Numerator is population with largest variance</span></span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>F <span class="ot">&lt;-</span> <span class="fu">var</span>(accountants) <span class="sc">/</span> <span class="fu">var</span>(mathematicians)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="first-principles-solution-code-4" class="slide level2 smaller">
 <h2>First principles solution: Code</h2>
@@ -2311,11 +2311,11 @@ F = \frac{s_Y^2}{s_X^2}
 p = P(F_{m-1, n-1} &gt; F) = 1 - P(F_{m-1, n-1} \leq F)
 </span></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Compute p-value</span></span>
-<span id="cb24-2"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(F, <span class="at">df1 =</span> m <span class="sc">-</span> <span class="dv">1</span>, <span class="at">df2 =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb24-3"><a></a></span>
-<span id="cb24-4"><a></a><span class="co"># Print p-value</span></span>
-<span id="cb24-5"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> The p-value for one-sided F-test is"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute p-value</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(F, <span class="at">df1 =</span> m <span class="sc">-</span> <span class="dv">1</span>, <span class="at">df2 =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print p-value</span></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st"> The p-value for one-sided F-test is"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <ul>
 <li><strong>Note:</strong> The command <code>pf(f, df1 = n, df2 = m)</code> computes probability <span class="math display">

@@ -15,6 +15,7 @@ format:
       keyboard: true
       code-block-background: true
       code-block-border-left: "#31BAE9"
+      code-line-numbers: false
       toc: false
       include-in-header:
         - text: |

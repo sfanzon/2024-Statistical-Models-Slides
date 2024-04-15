@@ -406,11 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -418,11 +418,23 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -434,27 +446,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Idea {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -462,21 +462,21 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -1372,15 +1372,15 @@ E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
 <li>Test can be performed using the code below</li>
 <li>Code can be downloaded here <a href="codes/good_fit.R">good_fit.R</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
-<span id="cb1-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">9</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">26</span>)</span>
-<span id="cb1-3"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a><span class="co"># Perform goodness-of-fit test</span></span>
-<span id="cb1-6"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co"># Print answer</span></span>
-<span id="cb1-9"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">9</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">26</span>)</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>null_probs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform goodness-of-fit test</span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs)</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-fair-dice-3" class="slide level2 smaller">
 <h2>Example: Fair dice</h2>
@@ -1488,9 +1488,9 @@ p_1^0 = 0.35 \qquad \quad  p_2^0 = 0.35 \qquad \quad p_3^0 = 0.3
 <li><p>We want to perform goodness-of-fit test without using <code>chisq.test</code></p></li>
 <li><p>First we enter the data</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
-<span id="cb3-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">40</span> , <span class="dv">25</span>)</span>
-<span id="cb3-3"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.35</span>, <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">40</span> , <span class="dv">25</span>)</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.35</span>, <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-voting-data-5" class="slide level2 smaller">
 <h2>Example: Voting data</h2>
@@ -1498,14 +1498,14 @@ p_1^0 = 0.35 \qquad \quad  p_2^0 = 0.35 \qquad \quad p_3^0 = 0.3
 <ul>
 <li>Compute the total number of counts <span class="math inline">m = o_1 + \ldots + o_n</span></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Compute total counts</span></span>
-<span id="cb4-2"><a></a>m <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute total counts</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <ul>
 <li>Compute degrees of freedom <span class="math inline">\, {\rm df} = n - 1</span></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Compute degrees of freedom</span></span>
-<span id="cb5-2"><a></a>degrees <span class="ot">&lt;-</span> <span class="fu">length</span>(counts) <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute degrees of freedom</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>degrees <span class="ot">&lt;-</span> <span class="fu">length</span>(counts) <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-voting-data-6" class="slide level2 smaller">
 <h2>Example: Voting data</h2>
@@ -1513,15 +1513,15 @@ p_1^0 = 0.35 \qquad \quad  p_2^0 = 0.35 \qquad \quad p_3^0 = 0.3
 <ul>
 <li>Compute the expected counts <span class="math inline">E_i = m p_i^0</span></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Compute expected counts</span></span>
-<span id="cb6-2"><a></a>exp_counts <span class="ot">&lt;-</span> m <span class="sc">*</span> null_probs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute expected counts</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>exp_counts <span class="ot">&lt;-</span> m <span class="sc">*</span> null_probs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Compute chi-squared statistic <span class="math display">
 \chi^2 = \sum_{i=1}^n \frac{( o_i - E_i )^2}{E_i}
 </span></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Compute chi-squared statistic</span></span>
-<span id="cb7-2"><a></a>chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (counts <span class="sc">-</span> exp_counts)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute chi-squared statistic</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (counts <span class="sc">-</span> exp_counts)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-voting-data-7" class="slide level2 smaller">
 <h2>Example: Voting data</h2>
@@ -1531,11 +1531,11 @@ p_1^0 = 0.35 \qquad \quad  p_2^0 = 0.35 \qquad \quad p_3^0 = 0.3
 p = P( \chi_{n-1}^2 &gt; \chi^2 ) = 1 - P( \chi_{n-1}^2 \leq \chi^2 )
 </span></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Compute p-value</span></span>
-<span id="cb8-2"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_squared, <span class="at">df =</span> degrees)</span>
-<span id="cb8-3"><a></a></span>
-<span id="cb8-4"><a></a><span class="co"># Print p-value</span></span>
-<span id="cb8-5"><a></a><span class="fu">cat</span>(<span class="st">"The p-value is:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute p-value</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_squared, <span class="at">df =</span> degrees)</span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print p-value</span></span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The p-value is:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <ul>
 <li>The full code can be downloaded here <a href="codes/good_fit_first_principles.R">good_fit_first_principles.R</a></li>
@@ -1645,40 +1645,40 @@ x_i^2 + y_i^2 \leq 1
 <section id="monte-carlo-simulation-example-4" class="slide level2 smaller">
 <h2>Monte Carlo simulation: Example</h2>
 <h3 id="implementation-in-r-download-code-monte_carlo_pi.r">Implementation in R – Download code <a href="codes/monte_carlo_pi.R">monte_carlo_pi.R</a></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb10-2"><a></a>total <span class="ot">&lt;-</span> <span class="dv">0</span>      <span class="co"># Counts total number of points</span></span>
-<span id="cb10-3"><a></a>in_circle <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Counts points falling in circle</span></span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb10-6"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
-<span id="cb10-7"><a></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>); y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>);  <span class="co"># sample point (x,y)</span></span>
-<span id="cb10-8"><a></a>    <span class="cf">if</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">1</span>) {    </span>
-<span id="cb10-9"><a></a>      in_circle <span class="ot">&lt;-</span> in_circle <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># If (x,y) in circle increase counter</span></span>
-<span id="cb10-10"><a></a>    }</span>
-<span id="cb10-11"><a></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># Increase total counter</span></span>
-<span id="cb10-12"><a></a>  }</span>
-<span id="cb10-13"><a></a>  </span>
-<span id="cb10-14"><a></a>  pi_approx <span class="ot">&lt;-</span> ( in_circle <span class="sc">/</span> total ) <span class="sc">*</span> <span class="dv">4</span>  <span class="co"># Compute approximate area</span></span>
-<span id="cb10-15"><a></a></span>
-<span id="cb10-16"><a></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"After %8d iterations pi is %.08f, error is %.08f</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb10-17"><a></a>     (j <span class="sc">*</span> N), pi_approx, <span class="fu">abs</span>(pi_approx <span class="sc">-</span> pi)))</span>
-<span id="cb10-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span>      <span class="co"># Counts total number of points</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>in_circle <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Counts points falling in circle</span></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>); y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>);  <span class="co"># sample point (x,y)</span></span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">1</span>) {    </span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>      in_circle <span class="ot">&lt;-</span> in_circle <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># If (x,y) in circle increase counter</span></span>
+<span id="cb10-10"><a aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-11"><a aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># Increase total counter</span></span>
+<span id="cb10-12"><a aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-13"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a aria-hidden="true" tabindex="-1"></a>  pi_approx <span class="ot">&lt;-</span> ( in_circle <span class="sc">/</span> total ) <span class="sc">*</span> <span class="dv">4</span>  <span class="co"># Compute approximate area</span></span>
+<span id="cb10-15"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"After %8d iterations pi is %.08f, error is %.08f</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb10-17"><a aria-hidden="true" tabindex="-1"></a>     (j <span class="sc">*</span> N), pi_approx, <span class="fu">abs</span>(pi_approx <span class="sc">-</span> pi)))</span>
+<span id="cb10-18"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-simulation-example-5" class="slide level2 smaller">
 <h2>Monte Carlo simulation: Example</h2>
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.12640000, error is 0.01519265
-After    20000 iterations pi is 3.12720000, error is 0.01439265
-After    30000 iterations pi is 3.12720000, error is 0.01439265
-After    40000 iterations pi is 3.12520000, error is 0.01639265
-After    50000 iterations pi is 3.12296000, error is 0.01863265
-After    60000 iterations pi is 3.12746667, error is 0.01412599
-After    70000 iterations pi is 3.12560000, error is 0.01599265
-After    80000 iterations pi is 3.13125000, error is 0.01034265
-After    90000 iterations pi is 3.13306667, error is 0.00852599
-After   100000 iterations pi is 3.13700000, error is 0.00459265</code></pre>
+<pre><code>After    10000 iterations pi is 3.15440000, error is 0.01280735
+After    20000 iterations pi is 3.16220000, error is 0.02060735
+After    30000 iterations pi is 3.15533333, error is 0.01374068
+After    40000 iterations pi is 3.15430000, error is 0.01270735
+After    50000 iterations pi is 3.15920000, error is 0.01760735
+After    60000 iterations pi is 3.15453333, error is 0.01294068
+After    70000 iterations pi is 3.15434286, error is 0.01275020
+After    80000 iterations pi is 3.15335000, error is 0.01175735
+After    90000 iterations pi is 3.15151111, error is 0.00991846
+After   100000 iterations pi is 3.15072000, error is 0.00912735</code></pre>
 </div>
 </div>
 </section>
@@ -1855,18 +1855,18 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 <li>Compute total counts, expected counts and observed chi-squared statistic</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
-<span id="cb12-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">4</span>)</span>
-<span id="cb12-3"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>, <span class="fl">0.05</span>)</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a><span class="co"># Compute total counts</span></span>
-<span id="cb12-6"><a></a>m <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a><span class="co"># Compute expected counts</span></span>
-<span id="cb12-9"><a></a>exp_counts <span class="ot">&lt;-</span> m <span class="sc">*</span> null_probs</span>
-<span id="cb12-10"><a></a></span>
-<span id="cb12-11"><a></a><span class="co"># Compute the observed chi-squared statistic</span></span>
-<span id="cb12-12"><a></a>obs_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (counts <span class="sc">-</span> exp_counts)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter counts and null hypothesis probabilities</span></span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">4</span>)</span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.15</span>, <span class="fl">0.05</span>)</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute total counts</span></span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute expected counts</span></span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>exp_counts <span class="ot">&lt;-</span> m <span class="sc">*</span> null_probs</span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the observed chi-squared statistic</span></span>
+<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a>obs_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (counts <span class="sc">-</span> exp_counts)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-p-value-7" class="slide level2 smaller">
 <h2>Monte Carlo p-value</h2>
@@ -1875,13 +1875,13 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 <li>We approximate the p-value using ideas in Slide 60</li>
 <li>We perform <span class="math inline">N</span> Monte Carlo simulations</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># Number of Monte Carlo simulations</span></span>
-<span id="cb13-2"><a></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Number of Monte Carlo simulations</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>To count extreme statistics we initialize a counter</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Initialize counter for extreme statistics</span></span>
-<span id="cb14-2"><a></a>count_extreme_statistics <span class="ot">&lt;-</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize counter for extreme statistics</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>count_extreme_statistics <span class="ot">&lt;-</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-p-value-8" class="slide level2 smaller">
 <h2>Monte Carlo p-value</h2>
@@ -1906,20 +1906,20 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 <ul>
 <li>The procedure discussed in the previous slide is coded below</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Perform Monte Carlo simulations</span></span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
-<span id="cb15-4"><a></a>  <span class="co"># Simulate multinomial counts under null hypothesis</span></span>
-<span id="cb15-5"><a></a>  simul_counts <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">1</span>, m, null_probs)</span>
-<span id="cb15-6"><a></a>  </span>
-<span id="cb15-7"><a></a>  <span class="co"># Compute chi-squared statistic for the simulated counts</span></span>
-<span id="cb15-8"><a></a>  simul_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (simul_counts <span class="sc">-</span> exp_counts )<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts)</span>
-<span id="cb15-9"><a></a>  </span>
-<span id="cb15-10"><a></a>  <span class="co"># Check if simulated chi-squared statistic is extreme</span></span>
-<span id="cb15-11"><a></a>  <span class="cf">if</span> (simul_chi_squared <span class="sc">&gt;=</span> obs_chi_squared) {</span>
-<span id="cb15-12"><a></a>    count_extreme_statistics <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb15-13"><a></a>  }</span>
-<span id="cb15-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Monte Carlo simulations</span></span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate multinomial counts under null hypothesis</span></span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>  simul_counts <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">1</span>, m, null_probs)</span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute chi-squared statistic for the simulated counts</span></span>
+<span id="cb15-8"><a aria-hidden="true" tabindex="-1"></a>  simul_chi_squared <span class="ot">&lt;-</span> <span class="fu">sum</span>( (simul_counts <span class="sc">-</span> exp_counts )<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> exp_counts)</span>
+<span id="cb15-9"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if simulated chi-squared statistic is extreme</span></span>
+<span id="cb15-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (simul_chi_squared <span class="sc">&gt;=</span> obs_chi_squared) {</span>
+<span id="cb15-12"><a aria-hidden="true" tabindex="-1"></a>    count_extreme_statistics <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb15-13"><a aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-14"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-p-value-10" class="slide level2 smaller">
 <h2>Monte Carlo p-value</h2>
@@ -1929,8 +1929,8 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number of simulations} }
 </span></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Compute Monte Carlo p-value</span></span>
-<span id="cb16-2"><a></a>monte_carlo_p_value <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Monte Carlo p-value</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>monte_carlo_p_value <span class="ot">&lt;-</span> count_extreme_statistics <span class="sc">/</span> N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-p-value-11" class="slide level2 smaller">
 <h2>Monte Carlo p-value</h2>
@@ -1938,16 +1938,16 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <ul>
 <li>To check our procedure we also compute Monte-Carlo p-value with <code>chisq.test</code></li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Perform chi-squared test using built-in R function</span></span>
-<span id="cb17-2"><a></a>chi_squared_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs, </span>
-<span id="cb17-3"><a></a>                               <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a><span class="co"># Extract p-value from chi-squared test result</span></span>
-<span id="cb17-6"><a></a>chisq_p_value <span class="ot">&lt;-</span> chi_squared_test<span class="sc">$</span>p.value</span>
-<span id="cb17-7"><a></a></span>
-<span id="cb17-8"><a></a><span class="co"># Print p-values for comparison</span></span>
-<span id="cb17-9"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Custom Monte Carlo p-value:"</span>, monte_carlo_p_value)</span>
-<span id="cb17-10"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">R Monte Carlo p-value:"</span>, chisq_p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform chi-squared test using built-in R function</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>chi_squared_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs, </span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p-value from chi-squared test result</span></span>
+<span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a>chisq_p_value <span class="ot">&lt;-</span> chi_squared_test<span class="sc">$</span>p.value</span>
+<span id="cb17-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print p-values for comparison</span></span>
+<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Custom Monte Carlo p-value:"</span>, monte_carlo_p_value)</span>
+<span id="cb17-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">R Monte Carlo p-value:"</span>, chisq_p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monte-carlo-p-value-12" class="slide level2 smaller">
 <h2>Monte Carlo p-value</h2>
@@ -1959,7 +1959,7 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.82159</code></pre>
+Custom Monte Carlo p-value: 0.82055</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -3272,13 +3272,13 @@ p_{ij}^0 = \frac{o_{i+}}{3 m}
 <li><p>We are now ready to perform the goodness-of-fit test in R</p></li>
 <li><p>We start by storing the matrix of counts into a single R vector, row-by-row</p></li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Store matrix of counts into single R vector</span></span>
-<span id="cb20-2"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>,</span>
-<span id="cb20-3"><a></a>            <span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>,</span>
-<span id="cb20-4"><a></a>            <span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>, </span>
-<span id="cb20-5"><a></a>            <span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>,</span>
-<span id="cb20-6"><a></a>            <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>,</span>
-<span id="cb20-7"><a></a>            <span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store matrix of counts into single R vector</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>,</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>,</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>, </span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>,</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>,</span>
+<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-manchester-united-performance-7" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
@@ -3286,23 +3286,23 @@ p_{ij}^0 = \frac{o_{i+}}{3 m}
 <li>Then we store the matrix of null probabilities into a single R vector, row-by-row</li>
 <li>Null probabilities in each row are the same. Hence we can use the command <code>rep</code></li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Store matrix of null probabilities into single R vector</span></span>
-<span id="cb21-2"><a></a><span class="co"># We use repeat to avoid copy pasting </span></span>
-<span id="cb21-3"><a></a>lines_null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">103</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">144</span><span class="sc">/</span><span class="dv">1788</span>, </span>
-<span id="cb21-4"><a></a>                      <span class="dv">168</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">29</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">101</span><span class="sc">/</span><span class="dv">1788</span>)</span>
-<span id="cb21-5"><a></a></span>
-<span id="cb21-6"><a></a>null_probs <span class="ot">&lt;-</span> <span class="fu">rep</span>(lines_null_probs, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store matrix of null probabilities into single R vector</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># We use repeat to avoid copy pasting </span></span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>lines_null_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">103</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">144</span><span class="sc">/</span><span class="dv">1788</span>, </span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>                      <span class="dv">168</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">29</span><span class="sc">/</span><span class="dv">1788</span>, <span class="dv">101</span><span class="sc">/</span><span class="dv">1788</span>)</span>
+<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>null_probs <span class="ot">&lt;-</span> <span class="fu">rep</span>(lines_null_probs, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-manchester-united-performance-8" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
 <ul>
 <li>Finally we perform the goodness-of-fit test on <code>counts</code> and <code>null_probs</code></li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Perform goodness-of-fit test</span></span>
-<span id="cb22-2"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs)</span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a><span class="co"># Print answer</span></span>
-<span id="cb22-5"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform goodness-of-fit test</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts, <span class="at">p =</span> null_probs)</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>The code can be downloaded here <a href="codes/good_fit_contingency.R">good_fit_contingency.R</a></li>
 </ul>
@@ -4176,19 +4176,19 @@ p \geq 0.05
 <ul>
 <li>Test can be performed using code <a href="codes/independence_test.R">independence_test.R</a></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Store each row into and R vector</span></span>
-<span id="cb24-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2180</span>, <span class="dv">871</span>)</span>
-<span id="cb24-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1820</span>, <span class="dv">1400</span>)</span>
-<span id="cb24-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1703</span>, <span class="dv">614</span>)</span>
-<span id="cb24-5"><a></a></span>
-<span id="cb24-6"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
-<span id="cb24-7"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3)</span>
-<span id="cb24-8"><a></a></span>
-<span id="cb24-9"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
-<span id="cb24-10"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
-<span id="cb24-11"><a></a></span>
-<span id="cb24-12"><a></a><span class="co"># Print answer</span></span>
-<span id="cb24-13"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store each row into and R vector</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2180</span>, <span class="dv">871</span>)</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1820</span>, <span class="dv">1400</span>)</span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1703</span>, <span class="dv">614</span>)</span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Assemble the rows into an R matrix</span></span>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3)</span>
+<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform chi-squared test of independence</span></span>
+<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
+<span id="cb24-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb24-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-residential-status-and-region-9" class="slide level2 smaller">
 <h2>Example: Residential Status and Region</h2>
@@ -4289,22 +4289,22 @@ X-squared = 228.11, df = 2, p-value &lt; 2.2e-16</code></pre>
 <li><p>To answer the question we perform chi-square test of independence in R</p></li>
 <li><p>Test can be performed by suitably modifying the code <a href="codes/independence_test.R">independence_test.R</a></p></li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># Store each row into and R vector</span></span>
-<span id="cb26-2"><a></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>)</span>
-<span id="cb26-3"><a></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>) </span>
-<span id="cb26-4"><a></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>) </span>
-<span id="cb26-5"><a></a>row_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>)</span>
-<span id="cb26-6"><a></a>row_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>)</span>
-<span id="cb26-7"><a></a>row_6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span>
-<span id="cb26-8"><a></a></span>
-<span id="cb26-9"><a></a><span class="co"># Assemble the rows into an R matrix</span></span>
-<span id="cb26-10"><a></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3, row_4, row_5, row_6)</span>
-<span id="cb26-11"><a></a></span>
-<span id="cb26-12"><a></a><span class="co"># Perform chi-squared test of independence</span></span>
-<span id="cb26-13"><a></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
-<span id="cb26-14"><a></a></span>
-<span id="cb26-15"><a></a><span class="co"># Print answer</span></span>
-<span id="cb26-16"><a></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store each row into and R vector</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>row_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">15</span>)</span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>row_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">54</span>, <span class="dv">25</span>, <span class="dv">24</span>) </span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>row_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">32</span>, <span class="dv">28</span>) </span>
+<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>row_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">91</span>, <span class="dv">37</span>, <span class="dv">40</span>)</span>
+<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>row_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>)</span>
+<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a>row_6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">61</span>, <span class="dv">12</span>, <span class="dv">28</span>)</span>
+<span id="cb26-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Assemble the rows into an R matrix</span></span>
+<span id="cb26-10"><a aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">rbind</span>(row_1, row_2, row_3, row_4, row_5, row_6)</span>
+<span id="cb26-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Perform chi-squared test of independence</span></span>
+<span id="cb26-13"><a aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(counts)</span>
+<span id="cb26-14"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print answer</span></span>
+<span id="cb26-16"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-manchester-united-performance-13" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>

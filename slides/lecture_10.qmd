@@ -26,7 +26,7 @@ $
 
 
 
-# Lecture 10: <br>Practical regression<br>Part 1 {background-color="#cc0164" visibility="uncounted"}
+# Lecture 10: <br>Practical regression{background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -37,27 +37,10 @@ $
 
 
 
-## Practical regression {.smaller}
-### Next 2 classes
-
-
-- How to do regression in R
-
-- Applications of regression
-  * Most examples will be from finance and business
-
-**Side Note:** Regression is very important
-
-- Subject is active field of mathematical research
-- Regression plays central role in quantitative research
-- Examples of quantitative research are in *finance* and *social sciences*
-
-
-
 
 
 ## Outline of Lecture 10 {.smaller}
-### Part A -- 4 aspects of regression
+
 
 1. Plotting variables in R  
     * Cross-check formal statistical results with graphical analyses
@@ -73,7 +56,7 @@ $
 
 
 ## Outline of Lecture 10 {.smaller}
-### Part B -- 4 aspects of regression
+
 
 3. t-test for regression
     * Test the significance of individual parameters
@@ -81,37 +64,25 @@ $
 <br>
 
 4. F-test for regression
-    * Test the significance of multiple parameters
-
-<br>
-
-5. Multiple linear regression example
-
-
-
+    * Test the overall significance of the parameters
 
 
 ## Outline of Lecture 10 {.smaller}
-### Part B -- Regression modelling assumptions
-
-1. Extra sum of squares principle
-2. F-tests and mathematical formulae
-3. Examples
-4. Regression modelling assumptions
-5. Graphical detection of heteroscedasticity 
 
 
+5. The Longley dataset
+    * Classical regression example
+
+<br>
+
+6. Extra sum of squares principle
+    * Comparison of nested regression models
+
+<br>
+
+7. Examples
 
 
-
-
-# Part A: <br>4 aspects of regression {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
 
 
 
@@ -651,17 +622,20 @@ summary(fit.model)
 
 
 
-## Full output
+##  {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="100%"}
-![](images/simple_regression_output_cut.png){width=85%}
+![](images/simple_regression_output.png){width=78%}
 :::
 
 ::::
 
 
+- There is a lot of information here!
+
+- We will make sense of most of it in this lecture
 
 
 
@@ -1370,7 +1344,7 @@ summary(fit.model)
 | $\texttt{Std. Error}$ | Estimated standard error $\ese$ for $\beta$        |
 | $\texttt{t value}$    | t-statistic $\, t = \dfrac{\hat \beta - 0 }{\ese}$|
 | $\texttt{Pr(>|t|)}$   | p-value $\, p = 2 P( t_{n-2} > |t| )$             |
-| $\texttt{*}$, $\, \texttt{**}$, $\, \texttt{***}$   | Statistical significance -- More stars is better |
+| $\texttt{*}$, $\, \texttt{**}$, $\, \texttt{***}$, $\, \texttt{.}$   | Statistical significance -- More stars is better |
 : {tbl-colwidths="[35,65]"}
 
 
@@ -1442,7 +1416,7 @@ $$
 
 **Interpretation:**
 
-- $p$ is very small and rated $\, \texttt{***}$
+- $p$ is very small (hence the $\, \texttt{***} \,$ rating)
 
 - Strong evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
 - As $\hat \beta < 0$ and statistically significant, as *Stock Prices* increase *Gold Prices* decrease and vice versa
@@ -2124,10 +2098,10 @@ F & = \frac{\RSS(1) - \RSS (p)}{ p - 1 } \bigg/
   & = \frac{R^2}{1 - R^2} \, \cdot \, \frac{n - p}{p - 1} 
 \end{align*}
 
-- We have that
+- Distribution of $F$ is
 
 $$
-F \, \sim  \, F_{p-1,n-2}
+F \, \sim  \, F_{p-1,n-p}
 $$
 
 
@@ -2210,15 +2184,24 @@ summary(fit.model)
 ::::
   
 
-- $\texttt{(Intercept)}$: 1st row of the table contains statistics related to $\hat \alpha$
+- F-statistic is $F = 20.27$ 
 
-- $\texttt{stock.price}$: 2nd row of the table contains statistics related to $\hat \beta$
-    * For larger models there will be additional rows below the 2nd
-    * These will be **informative** about additional regression parameters
+- Degrees of freedom are $1$ and $31$, meaning that $F \, \sim \, F_{1,31}$
+
+- The p-value is 
+
+$$
+p = P( F_{1,31} > F ) = 8.904 \times 10^{-5}
+$$
+
+
+- **Conclusion:** Strong evidence ($p=0.000$) that *Stock Price* affects *Gold Price*
 
 
 
-## Output: $\ese$, t-statistic, p-value {.smaller}
+
+
+## Output: F-statistic and p-value {.smaller}
 
 :::: {.columns}
 
@@ -2228,49 +2211,24 @@ summary(fit.model)
 
 ::::
   
-- The 2nd row of the table has to be interpreted as follows
 
+We can also compute F-statistic by hand
 
-| $\texttt{Estimate}$   | $\text{The value of } \hat \beta$                  |
-|:------------------    |:----------                                         |
-| $\texttt{Std. Error}$ | Estimated standard error $\ese$ for $\beta$        |
-| $\texttt{t value}$    | t-statistic $\, t = \dfrac{\hat \beta - 0 }{\ese}$|
-| $\texttt{Pr(>|t|)}$   | p-value $\, p = 2 P( t_{n-2} > |t| )$             |
-| $\texttt{*}$, $\, \texttt{**}$, $\, \texttt{***}$   | Statistical significance -- More stars is better |
-: {tbl-colwidths="[35,65]"}
+- From the output we see that $R^2 = 0.3953$
 
+- We have $p = 2$ and $n =33$
 
-
-
-## Output: $\ese$, t-statistic, p-value {.smaller}
-
-:::: {.columns}
-
-::: {.column width="100%"}
-![](images/simple_regression_output_cut_3.png){width=80%}
-:::
-
-::::
-  
-- The above table then gives
+- Therefore 
 
 $$
-\hat \beta = -6.169 \,, \qquad \ese = 1.37 \, , \qquad t = - 4.502 \,, \qquad 
-p = 8.9 \times 10^{-5} \
-$$
-
-
-- The $t$-statistic computed by R can also be computed by hand
-
-$$
-  t   = \frac{\hat \beta - 0}{ \ese }
-      = \frac{-6.169}{1.37} = -4.502 
+F = \frac{ R^2 }{ 1 - R^2  } \, \cdot \, \frac{n-p}{p-1} = \frac{0.395325}{0.604675} \, \cdot \, \frac{31}{1} = 20.267
 $$
 
 
 
 
-## Output: $\ese$, t-statistic, p-value {.smaller}
+
+## Output: F-statistic and p-value {.smaller}
 
 :::: {.columns}
 
@@ -2282,20 +2240,15 @@ $$
   
 - The p-value cannot be computed by hand
 
-- However we can find critical value on [Tables](files/Statistics_Tables.pdf)
+- However we can find critical values close to $F_{1,31} (0.05)$ on [Tables](files/Statistics_Tables.pdf)
 
 $$
-n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
-$$
-
-- Critical value is $\, t_{31}(0.025) = 2.040$
-
-$$
-|t| = 4.502 > 2.040 = t_{31}(0.025) \quad \implies \quad  p < 0.05
+F_{1, 30} (0.05) = 4.17 \,, \qquad \quad  F_{1, 40} (0.05) = 4.08
 $$
 
 
-## Output: $\ese$, t-statistic, p-value {.smaller}
+
+## Output: F-statistic and p-value {.smaller}
 
 :::: {.columns}
 
@@ -2305,37 +2258,24 @@ $$
 
 ::::
 
+- We can approximate $F_{1,31} (0.05)$ by averaging the found values
 
-**Interpretation:**
+$$
+F_{1,31}(0.05) \, \approx  \,  \frac{F_{1, 30} (0.05) +  F_{1, 40} (0.05)}{2} = 4.125
+$$
 
-- $p$ is very small and rated $\, \texttt{***}$
+- We reject $H_0$ since
 
-- Strong evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
-- As $\hat \beta < 0$ and statistically significant, as *Stock Prices* increase *Gold Prices* decrease and vice versa
-
-
-
-
-
-
-
-# Part 5: <br>Multiple linear <br> regression example  {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
+$$
+F = 20.267 > 4.125 = F_{1,31}(0.05) \quad \implies \quad  p < 0.05
+$$
 
 
 
 
 
 
-
-
-
-# Part B: <br> Regression modelling assumptions {background-color="#cc0164" visibility="uncounted"}
+# Part 5: <br>The Longley dataset {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -2346,7 +2286,348 @@ $$
 
 
 
-# Part 1: <br> Extra sum of <br> squares principle {background-color="#cc0164" visibility="uncounted"}
+## Longley dataset {.smaller}
+
+```{r}
+longley <- read.table(file = "datasets/longley.txt",
+                      header = TRUE)
+
+head(longley,n=3)
+```
+
+
+**Goal:** Explain the number of *Employed* people $Y$ in the US in terms of
+
+- $X_2$ *GNP* Gross National Product
+- $X_3$ number of *Unemployed*
+- $X_4$ number of people in the *Armed Forces*
+- $X_5$ *non-institutionalised Population* $\geq$ age 14 (not in care of insitutions)
+- $X_6$ *Years* from 1947 to 1962
+
+
+
+
+## R commands for reading in the data {.smaller}
+
+- Longley dataset available here [longley.txt](datasets/longley.txt)
+
+- Download the file and place it in current working directory
+
+```r
+# Read data file
+longley <- read.table(file = "longley.txt",
+                      header = TRUE)
+
+# Store columns in vectors
+x2 <- longley[ , 1]
+x3 <- longley[ , 2]
+x4 <- longley[ , 3]
+x5 <- longley[ , 4]
+x6 <- longley[ , 5]
+y <- longley[ , 6]
+```
+
+
+## R commands for fitting multiple regression {.smaller}
+
+- We want to fit the multiple regression model
+
+$$
+Y = \beta_1 + \beta_2 \, X_2 + \beta_3 \, X_3 + \beta_4 \, X_4 + \beta_5 \, X_5
+    + \beta_6 \, X_6 + \e
+$$
+
+
+```r
+# Fit multiple regression model
+model <- lm(y ~ x2 + x3 + x4 + x5 + x6)
+
+# Print summary
+summary(model)
+```
+
+<br>
+
+- Full code can be downloaded here [longley_regression.R](codes/longley_regression.R)
+
+
+##  {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/longley_output.png){width=70%}
+:::
+
+::::
+
+
+
+## Interpreting R output {.smaller}
+
+We are interested in the following information
+
+1. The $R^2$ statistic
+
+2. The individual t-statistics
+
+3. The F-statistic to assess overall significance
+
+
+
+## The $R^2$ statistic {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/longley_output_1.png){width=85%}
+:::
+
+::::
+
+- We have that $R^2=0.9955$ 
+
+- $R^2$ is very high which suggests we might have quite a good model
+
+- This means the model explains around 99.6\% of the variability in the data
+
+- There is a chance $R^2$ is too high to be true (see later)
+
+
+
+
+## The individual t-statistics {.smaller}
+
+- Look at p-values for each variable $X_j$
+
+- Recall: Such p-values refer to the two-sided t-test
+
+$$
+H_0 \colon \, \beta_j = 0 \qquad  \quad
+H_1 \colon \, \beta_j \neq 0
+$$
+
+
+::: {.column width="48%"}
+
+- Find $X_j$ for which $p < 0.05$
+    * For $X_j$ we reject $H_0$
+    * Therefore $\beta_j \neq 0$
+    * Hence $X_j$ influences $Y$ 
+    * $X_j$ is statistically significant
+
+:::
+
+::: {.column width="48%"}
+
+- In dissertations $p < 0.1$ is OK
+    * Weak evidence against $H_0$
+    * $X_j$ has some weak effect on $Y$
+
+:::
+
+
+
+
+
+
+## The individual t-statistics {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_3.png){width=83%}
+:::
+
+- Stars in output help you find the significant p-values
+
+| Significance code       | p-value               |  Coefficient        |
+|:------------------    |:----------              |:-----------------   |
+|  No stars             |  $0.1 \leq p \leq 1$    |  $\beta_j = 0$      |
+|  $\texttt{.}$         |  $0.05 \leq p < 0.1$    |  $\beta_j = 0$      |
+|  $\texttt{*}$         |  $0.1 \leq p < 0.05$    |  $\beta_j \neq 0$   |
+|  $\texttt{**}$        |  $0.001 \leq p < 0.01$  |  $\beta_j \neq 0$   |
+|  $\texttt{***}$       |  $p < 0.001$            |  $\beta_j \neq 0$   |
+: {tbl-colwidths="[35,40,25]"}
+
+
+
+##  {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+**Interpretation:** Not all variables are statistically significant
+
+- This is because some variables have no stars 
+- Significant variables have at least one star
+
+
+
+
+## {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+1. Intercept has two stars $\, \texttt{**}$ and hence is significant
+    * The p-value is $p = 0.001932$
+    * Since $p < 0.05$ we conclude that the real intercept is $\beta_1 \neq 0$
+    * Estimated intercept is $\hat \beta_1 = -3.45 \times 10^{3}$
+
+
+
+
+## {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+
+2. $X_2$ and $X_5$ have no stars
+    * p-values are $p \geq 0.1$ and therefore  $\beta_2 = \beta_5 = 0$
+    * Notice that the estimates $\hat \beta_2$ and $\hat \beta_5$ are not zero
+    * However these estimates have to be ignored due to t-test
+    * $X_2$ and $X_5$ have no effect on $Y$
+    * Hence *GNP* and *Non-Institutionalized* do not affect *Number of Employed*
+
+
+
+
+##  {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+
+3. $X_3$ has three stars $\, \texttt{***}$ and hence is significant
+    * Since $p<0.05$ we have that $\beta_3 \neq 0$
+    * Estimated coefficient is $\hat \beta_3 < 0$
+    * Since $\hat \beta_3 < 0$ we have that $X_3$ negatively affects $Y$
+    * As the *Number of Unemployed* increases the *Number of Employed* decreases
+
+
+
+
+##  {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+
+4. $X_4$ has three stars $\, \texttt{***}$ and hence is significant
+    * Since $p<0.05$ we have that $\beta_4 \neq 0$
+    * Estimated coefficient is $\hat \beta_4 < 0$
+    * Therefore $X_4$ negatively affects $Y$
+    * As the size of *Armed Forces* increases the *Number of Employed* decreases
+
+
+
+##  {.smaller}
+
+::: {.column width="100%"}
+![](images/longley_output_2.png){width=68%}
+:::
+
+
+5. $X_6$ has two stars $\, \texttt{**}$ and hence is significant
+    * Since $p<0.05$ we have that $\beta_6 \neq 0$
+    * Estimated coefficient is $\hat \beta_6 > 0$
+    * Therefore $X_6$ positively affects $Y$
+    * Remember that $X_6$ is the *Year*
+    * The *Number of Employed* is increasing every year from 1947 to 1962
+
+
+
+
+## The F-statistic to assess overall significance {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/longley_output_1.png){width=85%}
+:::
+
+::::
+
+- The F-statistic is $F = 438.8$ with distribution $F_{5, 10}$
+
+- The p-value for F-test is $p = 2.242 \times 10^{-11} < 0.05$
+
+- Recall: Such p-value refers to the F-test for
+
+$$
+H_0 \colon \, \beta_2 =  \ldots = \beta_6 = 0  \,, \qquad 
+H_1 \colon \, \text{At least one } \beta_j \neq 0
+$$
+
+- Since $p < 0.05$ we reject $H_0$
+
+- There is evidence that at least one of the $X$-variables affects $Y$
+
+
+
+## Conclusions {.smaller}
+
+
+- There is evidence that at least one of the $X$-variables affects $Y$
+
+- We have seen that 
+    * $X_2$ and $X_5$ do not affect $Y$
+    * $X_3$ and $X_4$ negatively affect $Y$
+    * $X_6$ positively affects $Y$
+
+- The $R^2$ statistic is really high:
+    * The model explains around 99.6% of the variability in the data
+
+
+
+
+::: {.content-hidden}
+
+**Question:** Do you think the high $R^2$ statistic is suspicious?
+
+
+
+
+## Observations {.smaller}
+
+- $X_3$ and $X_4$ are *Unemployment Rate* and *Number of Unemployed*
+    * These quantities are clearly equivalent 
+    * Do we need to include both in the model? 
+
+- $X_3$ and $X_4$ negatively affect the *Number of Employed*
+    * Number of Employed and Unemployed are clearly inversely proportional
+    * No wonder $X_3, X_4$ and $Y$ are negatively correlated!
+    * $X_3$ and $X_4$ provide no meaningful explanation for $Y$!
+
+- $X_6$ is the yearly trend
+    * We saw that $X_6$ positively affects the *Number of Employed*
+    * This just means the *Number of Employed* is increasing between 1947 and 1962
+
+
+## Answer {.smaller}
+
+The model does really well because it is **trivial**
+
+- It tells us that the *Number of Employed* is increasing between 1947 and 1962
+    * This is clear just by looking at data for $Y$
+
+- It tells us that *Employment* and *Unemployment* are inversely proportional
+    * Thanks a lot!
+
+:::
+
+
+
+
+
+
+
+# Part 6: <br> Extra sum of <br> squares principle {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -2354,6 +2635,15 @@ $$
 
 :::
 
+
+
+# Part 7: <br>Examples {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
 
 
 
