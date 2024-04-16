@@ -426,15 +426,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -442,15 +434,19 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Proposition {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
-  .Warning {
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,35 +454,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -494,7 +462,39 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Idea {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -588,14 +588,14 @@
 </ol>
 <p><br></p>
 <ol start="6" type="1">
-<li>Extra sum of squares principle
+<li>Model selection
 <ul>
 <li>Comparison of nested regression models</li>
 </ul></li>
 </ol>
 <p><br></p>
 <ol start="7" type="1">
-<li>Examples</li>
+<li>Examples of model selection</li>
 </ol>
 </section></section>
 <section>
@@ -2121,19 +2121,15 @@ Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
 <section id="overall-significance-for-multiple-regression" class="slide level2 smaller">
 <h2>Overall significance for multiple regression</h2>
 <ul>
-<li>The larger <strong>full model</strong> is</li>
+<li>Model 1 is the smaller <strong>reduced model</strong></li>
+<li>Model 2 is the larger <strong>full model</strong></li>
 </ul>
-<p><span class="math display">
-Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
-</span></p>
+<p><span class="math display">\begin{align*}
+\textbf{Model 1:} &amp; \quad Y_i = \beta_1 + \varepsilon_i \\[15pt]
+\textbf{Model 2:} &amp; \quad Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+\end{align*}</span></p>
 <ul>
-<li>The smaller <strong>reduced model</strong> is</li>
-</ul>
-<p><span class="math display">
-Y_i = \beta_1 + \varepsilon_i
-</span></p>
-<ul>
-<li>Choosing the smaller model is equivalent to accepting <span class="math inline">H_0</span></li>
+<li>Choosing the smaller Model 1 is equivalent to accepting <span class="math inline">H_0</span></li>
 </ul>
 <p><span class="math display">\begin{align*}
 H_0 &amp; \colon \, \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
@@ -2143,19 +2139,15 @@ H_1 &amp; \colon \text{ At least one of the } \beta_i \text{ is non-zero}
 <section id="overall-significance-for-simple-regression" class="slide level2 smaller">
 <h2>Overall significance for simple regression</h2>
 <ul>
-<li>The larger <strong>full model</strong> is</li>
+<li>Model 1 is the smaller <strong>reduced model</strong></li>
+<li>Model 2 is the larger <strong>full model</strong></li>
 </ul>
-<p><span class="math display">
-Y_i = \alpha  + \beta x_i  + \varepsilon_i
-</span></p>
+<p><span class="math display">\begin{align*}
+\textbf{Model 1:} &amp; \quad Y_i = \alpha + \varepsilon_i \\[15pt]
+\textbf{Model 2:} &amp; \quad Y_i = \alpha  + \beta x_i  + \varepsilon_i
+\end{align*}</span></p>
 <ul>
-<li>The smaller <strong>reduced model</strong> is</li>
-</ul>
-<p><span class="math display">
-Y_i = \alpha + \varepsilon_i
-</span></p>
-<ul>
-<li>Choosing the smaller model is equivalent to accepting <span class="math inline">H_0</span></li>
+<li>Choosing the smaller Model 1 is equivalent to accepting <span class="math inline">H_0</span></li>
 </ul>
 <p><span class="math display">\begin{align*}
 H_0 &amp; \colon \beta = 0 \\
@@ -2168,7 +2160,7 @@ H_1 &amp; \colon \beta \neq 0
 <li>Consider the full model with <span class="math inline">p</span> parameters</li>
 </ul>
 <p><span class="math display">
-Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
+\textbf{Model 2:}  \quad Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
 </span></p>
 <ul>
 <li>Predictions for the full model are</li>
@@ -2189,7 +2181,7 @@ Y_i = \beta_1  + \beta_2 x_{i2} + \ldots + \beta_p x_{ip} + \varepsilon_i
 <li>Consider now the reduced model</li>
 </ul>
 <p><span class="math display">
-Y_i = \beta_1 + \varepsilon_i
+\textbf{Model 1:} \quad Y_i = \beta_1 + \varepsilon_i
 </span></p>
 <ul>
 <li>Predictions of the reduced model are constant</li>
@@ -2408,7 +2400,7 @@ F \, \sim  \, F_{p-1,n-p}
 p = P ( F_{p-1,n-2} &gt; F)
 </span></p>
 <ul>
-<li><strong>t-test in R:</strong>
+<li><strong>F-test in R:</strong>
 <ul>
 <li>Fit the multiple regression model with <code>lm</code></li>
 <li>F-statistic is listed in the summary</li>
@@ -2826,23 +2818,571 @@ H_1 \colon \, \text{At least one } \beta_j \neq 0
 </ul></li>
 </ul>
 </section></section>
-<section id="part-6-extra-sum-of-squares-principle" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 6: <br> Extra sum of <br> squares principle</h1>
+<section>
+<section id="part-6-model-selection" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 6: <br> Model selection <br></h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-
+<section id="testing-regression-parameters" class="slide level2 smaller">
+<h2>Testing regression parameters</h2>
+<p><strong>Summary:</strong> We have seen</p>
+<ul>
+<li><strong>t-test</strong>
+<ul>
+<li>Test the significance of individual parameters <span class="math display">\begin{align*}
+  H_0 &amp; \colon \, \beta_j = 0 \\
+  H_1 &amp; \colon \, \beta_j \neq 0
+  \end{align*}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="testing-regression-parameters-1" class="slide level2 smaller">
+<h2>Testing regression parameters</h2>
+<ul>
+<li><strong>F-test</strong>
+<ul>
+<li>Test the overall significance of the model</li>
+<li>This is done by comparing two <strong>nested</strong> regression models <span class="math display">\begin{align*}
+  \textbf{Model 1:} &amp; \qquad Y_ i= \beta_1 + \varepsilon_i \\[10pt]
+  \textbf{Model 2:} &amp; \qquad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_p x_{p, i} + \varepsilon_i
+  \end{align*}</span></li>
+<li>The comparison is achieved with F-test for <span class="math display">\begin{align*}
+  H_0 &amp; \colon \, \beta_2 = \beta_3 = \ldots = \beta_p = 0 \\
+  H_1 &amp; \colon \text{ At least one of the } \beta_i \text{ is non-zero}
+  \end{align*}</span></li>
+<li>Choosing Model 1 is equivalent to accepting <span class="math inline">H_0</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="more-general-nested-models" class="slide level2 smaller">
+<h2>More general nested models</h2>
+<ul>
+<li>Consider the more general <strong>nested</strong> models</li>
+</ul>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad Y_ i =\beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \varepsilon_i \\[10pt]
+    \textbf{Model 2:} &amp; \quad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i} + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li><p>Model 1 has k parameters</p></li>
+<li><p>Model 2 has p parameters with <span class="math inline">p &gt; k</span></p></li>
+<li><p>The two models coincide if</p></li>
+</ul>
+<p><span class="math display">
+\beta_{k + 1} = \beta_{k + 2} = \ldots = \beta_p = 0
+</span></p>
+<p><strong>Question:</strong> How do we decide which model is better?</p>
+</section>
+<section id="model-selection" class="slide level2 smaller">
+<h2>Model selection</h2>
+<ul>
+<li>Consider the more general <strong>nested</strong> models</li>
+</ul>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad Y_ i =\beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \varepsilon_i \\[10pt]
+    \textbf{Model 2:} &amp; \quad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i} + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li>Define the predictions for the two models</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\hat y_i^1 &amp; := \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} \\[10pt]
+\hat y_i^2 &amp; :=  \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i}
+\end{align*}</span></p>
+</section>
+<section id="model-selection-1" class="slide level2 smaller">
+<h2>Model selection</h2>
+<ul>
+<li>Consider the more general <strong>nested</strong> models</li>
+</ul>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad Y_ i =\beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \varepsilon_i \\[10pt]
+    \textbf{Model 2:} &amp; \quad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i} + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{RSS}}</span> measures variation between data and prediction</li>
+</ul>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad \mathop{\mathrm{RSS}}_1 := \mathop{\mathrm{RSS}}(k) = \sum_{i=1}^n (y_i - \hat y_i^0)^2 \\[10pt]
+    \textbf{Model 2:} &amp; \quad \mathop{\mathrm{RSS}}_2 := \mathop{\mathrm{RSS}}(p) = \sum_{i=1}^n (y_i - \hat y_i^1)^2
+\end{align*}</span></p>
+</section>
+<section id="extra-sum-of-squares" class="slide level2 smaller">
+<h2>Extra sum of squares</h2>
+<ul>
+<li>Consider the more general <strong>nested</strong> models</li>
+</ul>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad Y_ i =\beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \varepsilon_i \\[10pt]
+    \textbf{Model 2:} &amp; \quad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i} + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li>The <strong>extra sum of squares</strong> is the difference</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 := \mathop{\mathrm{RSS}}(k) - \mathop{\mathrm{RSS}}(p)
+</span></p>
+</section>
+<section id="construction-of-f-statistic-5" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<p><strong>Goal:</strong> Use <span class="math inline">\mathop{\mathrm{RSS}}</span> to construct statistic to compare the 2 models</p>
+<ul>
+<li><p>Suppose the extra parameters of Model 2 <span class="math display">
+\beta_{k+1}, \, \beta_{k+2} , \, \ldots , \, \beta_p
+</span> are not important</p></li>
+<li><p>Hence the predictions of the 2 models will be similar <span class="math display">
+\hat y_i^1 \, \approx \, \hat y_i^2
+</span></p></li>
+<li><p>Therefore the <span class="math inline">\mathop{\mathrm{RSS}}</span> for the 2 models are similar <span class="math display">
+\mathop{\mathrm{RSS}}_1 \, \approx \, \mathop{\mathrm{RSS}}_2
+</span></p></li>
+</ul>
+</section>
+<section id="construction-of-f-statistic-6" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li>Recall that <span class="math inline">\mathop{\mathrm{RSS}}</span> cannot increase if we increase parameters</li>
+</ul>
+<p><span class="math display">
+k &lt; p \quad \implies \quad \mathop{\mathrm{RSS}}(k) \geq \mathop{\mathrm{RSS}}(p)
+</span></p>
+<ul>
+<li>To measure influence of extra parameters <span class="math display">
+\beta_{k+1}, \, \beta_{k+2} , \, \ldots , \, \beta_p
+</span> we consider the ratio <span class="math display">
+\frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{RSS}}_2 } = \frac{ \mathop{\mathrm{RSS}}(k) - \mathop{\mathrm{RSS}}(p) }{ \mathop{\mathrm{RSS}}(p) }
+</span></li>
+</ul>
+</section>
+<section id="construction-of-f-statistic-7" class="slide level2 smaller">
+<h2>Construction of F-statistic</h2>
+<ul>
+<li>We now suitably rescale</li>
+</ul>
+<p><span class="math display">
+\frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{RSS}}_2 }
+</span></p>
+<ul>
+<li>Note that the degrees of freedom are
+<ul>
+<li>Model 1: <span class="math display">
+  k \text{ parameters } \quad \implies \quad \mathop{\mathrm{df}}_1 =  n - k
+  </span></li>
+<li>Model 2: <span class="math display">
+  p \text{ parameters } \quad \implies \quad \mathop{\mathrm{df}}_2 = n - p
+  </span></li>
+</ul></li>
+</ul>
+</section>
+<section id="f-statistic-for-model-selection" class="slide level2 smaller">
+<h2>F-statistic for model selection</h2>
+<div id="Definition*-7.1" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition</strong></summary><div>The F-statistic for model selection is<p></p>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2  } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_2  }  \\[20pt]
+&amp; = \frac{ \mathop{\mathrm{RSS}}(k) - \mathop{\mathrm{RSS}}(p) }{ p - k  } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}(p) }{ n - p  }  
+\end{align*}</span></p>
+</div></details>
+</div>
+<p><strong>Theorem:</strong> The F-statistic for model selection has F-distribution</p>
+<p><span class="math display">
+F \, \sim  \, F_{\mathop{\mathrm{df}}_2 - \mathop{\mathrm{df}}_1, \, \mathop{\mathrm{df}}_2} = F_{p - k, \, n - p}
+</span></p>
+</section>
+<section id="rewriting-the-f-statistic-1" class="slide level2 smaller">
+<h2>Rewriting the F-statistic</h2>
+<ul>
+<li>Recall the formulas for sums of squares</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{TSS}}= \mathop{\mathrm{ESS}}(p) + \mathop{\mathrm{RSS}}(p)  \,, \qquad \quad
+\mathop{\mathrm{TSS}}= \mathop{\mathrm{ESS}}(k) + \mathop{\mathrm{RSS}}(k)  
+</span></p>
+<ul>
+<li><p><strong>Note:</strong> <span class="math inline">\mathop{\mathrm{TSS}}</span> does not depend on numeber of parameters</p></li>
+<li><p>Also define the coefficient of determination for the two models</p></li>
+</ul>
+<p><span class="math display">
+R_1^2 := R^2 (k) := \frac{ \mathop{\mathrm{ESS}}(k) }{ \mathop{\mathrm{TSS}}}
+\, , \qquad \quad
+R_2^2 := R^2 (p) := \frac{ \mathop{\mathrm{ESS}}(p) }{ \mathop{\mathrm{TSS}}}
+</span></p>
+</section>
+<section id="rewriting-the-f-statistic-2" class="slide level2 smaller">
+<h2>Rewriting the F-statistic</h2>
+<p><span class="math display">\begin{align*}
+\mathop{\mathrm{RSS}}(k) - \mathop{\mathrm{RSS}}(p) &amp; = \mathop{\mathrm{ESS}}(p) - \mathop{\mathrm{ESS}}(k) \\[10pt]
+                  &amp; = \mathop{\mathrm{TSS}}( R^2(p) - R^2(k) ) \\[10pt]
+                  &amp; = \mathop{\mathrm{TSS}}( R^2_2 - R^2_1 ) \\[20pt]
+\mathop{\mathrm{RSS}}(p) &amp; = \mathop{\mathrm{TSS}}- \mathop{\mathrm{ESS}}(p)  \\[10pt]
+        &amp; = \mathop{\mathrm{TSS}}- \mathop{\mathrm{TSS}}\, \cdot \, R^2 (p) \\[10pt]
+        &amp; = \mathop{\mathrm{TSS}}(1 - R^2(p)) \\[10pt]
+        &amp; = \mathop{\mathrm{TSS}}(1 - R_2^2)
+\end{align*}</span></p>
+</section>
+<section id="rewriting-the-f-statistic-3" class="slide level2 smaller">
+<h2>Rewriting the F-statistic</h2>
+<p>Therefore the F-statistic can be rewritten as</p>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_2 - \mathop{\mathrm{df}}_1  } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_2 }   \\[20pt]
+  &amp; = \frac{ \mathop{\mathrm{TSS}}(R^2_2 - R^2_1) }{\mathop{\mathrm{TSS}}(1 - R^2_2 )}  \, \cdot \,  \frac{n-p}{p-k} \\[20pt]
+  &amp; = \frac{ R^2_2 - R^2_1 }{1 - R^2_2}  \, \cdot \,  \frac{n-p}{p-k}
+\end{align*}</span></p>
+</section>
+<section id="f-test-for-overall-significance-revisited" class="slide level2 smaller">
+<h2>F-test for overall significance revisited</h2>
+<ul>
+<li><p>The F-test for overall significance allows to select between models <span class="math display">\begin{align*}
+  \textbf{Model 1:} &amp; \qquad Y_ i= \beta_1 + \varepsilon_i \\[10pt]
+  \textbf{Model 2:} &amp; \qquad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_p x_{p, i} + \varepsilon_i
+\end{align*}</span></p></li>
+<li><p>Model 1 has <span class="math inline">k = 1</span> parameters</p></li>
+<li><p>F-statistic for model selection coincides with F-statistic for overall significance</p></li>
+</ul>
+<p><span class="math display">
+F = \frac{ \mathop{\mathrm{RSS}}(1) - \mathop{\mathrm{RSS}}(p) }{ p - 1  } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}(p) }{ n - p  }
+</span></p>
+</section>
+<section id="summary-f-test-for-model-selection" class="slide level2 smaller">
+<h2>Summary: F-test for model selection</h2>
+<p><strong>Goal:</strong> Choose one of the nested models</p>
+<p><span class="math display">\begin{align*}
+    \textbf{Model 1:} &amp; \quad Y_ i =\beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \varepsilon_i \\[10pt]
+    \textbf{Model 2:} &amp; \quad Y_ i= \beta_1 + \beta_2 x_{2, i}+ \ldots + \beta_{k} x_{k, i} + \beta_{k + 1} x_{k + 1, i} +
+    \ldots + \beta_{p} x_{p, i} + \varepsilon_i
+\end{align*}</span></p>
+<p><strong>Hypotheses:</strong> Choosing a model is equivalent to testing</p>
+<p><span class="math display">\begin{align*}
+H_0 \colon &amp; \, \beta_{k+1} = \beta_{k+2} = \ldots  = \beta_p \\[5pt]
+H_1 \colon &amp; \, \text{At least one of the above } \beta_i \text{ is non-zero}
+\end{align*}</span></p>
+<ul>
+<li><span class="math inline">H_0</span> is in favor of Model 1</li>
+<li><span class="math inline">H_1</span> is in favor of Model 2</li>
+</ul>
+</section>
+<section id="summary-f-test-for-model-selection-1" class="slide level2 smaller">
+<h2>Summary: F-test for model selection</h2>
+<ul>
+<li>The F-statistic is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2  } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_2  }   \\[20pt]
+  &amp; = \frac{ R^2_2 - R^2_1 }{1 - R^2_2 }  \, \cdot \,  \frac{n-p}{p-k}
+\end{align*}</span></p>
+<ul>
+<li>Distribution of <span class="math inline">F</span> is</li>
+</ul>
+<p><span class="math display">
+F \, \sim \, F_{ \mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2 , \, \mathop{\mathrm{df}}_2 } = F_{p-k, \, n-p}
+</span></p>
+</section>
+<section id="summary-f-test-for-model-selection-2" class="slide level2 smaller">
+<h2>Summary: F-test for model selection</h2>
+<ul>
+<li>The p-value is</li>
+</ul>
+<p><span class="math display">
+p = P(F_{p-k,n-p} &gt; F)
+</span></p>
+<ul>
+<li><strong>F-test for model selection in R:</strong>
+<ul>
+<li>Fit the two models with <span class="math inline">\,\texttt{lm}</span></li>
+<li>Use the command <span class="math inline">\, \texttt{anova} \qquad\quad</span> (more on this later)</li>
+</ul></li>
+<li><strong>Alternative:</strong>
+<ul>
+<li>Find <span class="math inline">R^2_1</span> and <span class="math inline">R^2_2</span> in summary</li>
+<li>Compute F-statistic and p-value</li>
+</ul></li>
+</ul>
+</section></section>
 <section>
-<section id="part-7-examples" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 7: <br>Examples</h1>
+<section id="part-7-examples-of-model-selection" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br>Examples of <br> model selection</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
+</section>
+<section id="examples-of-model-selection" class="slide level2 smaller">
+<h2>Examples of model selection</h2>
+<p>We illustrate F-test for Model Selection with two examples:</p>
+<ul>
+<li>Joint significance in Multiple linear Regression</li>
+<li>Polynomial regression</li>
+</ul>
+</section>
+<section id="example-1-multiple-linear-regression" class="slide level2 smaller">
+<h2>Example 1: Multiple linear regression</h2>
+<ul>
+<li>Consider again the Longley dataset</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      GNP Unemployed Armed.Forces Population Year Employed
+1 234.289      235.6        159.0    107.608 1947   60.323
+2 259.426      232.5        145.6    108.632 1948   61.122
+3 258.054      368.2        161.6    109.773 1949   60.171</code></pre>
+</div>
+</div>
+<p><strong>Goal:</strong> Explain the number of <em>Employed</em> people <span class="math inline">Y</span> in the US in terms of</p>
+<ul>
+<li><span class="math inline">X_2</span> <em>GNP</em> Gross National Product</li>
+<li><span class="math inline">X_3</span> number of <em>Unemployed</em></li>
+<li><span class="math inline">X_4</span> number of people in the <em>Armed Forces</em></li>
+<li><span class="math inline">X_5</span> <em>non-institutionalised Population</em> <span class="math inline">\geq</span> age 14 (not in care of insitutions)</li>
+<li><span class="math inline">X_6</span> <em>Years</em> from 1947 to 1962</li>
+</ul>
+</section>
+<section id="example-1-multiple-linear-regression-1" class="slide level2 smaller">
+<h2>Example 1: Multiple linear regression</h2>
+<p><strong>Previously:</strong> Using t-test for parameters significance we showed that</p>
+<ul>
+<li><span class="math inline">X_2</span> and <span class="math inline">X_3</span> do not affect <span class="math inline">Y</span></li>
+<li><span class="math inline">X_3</span> and <span class="math inline">X_4</span> negatively affect <span class="math inline">Y</span></li>
+<li><span class="math inline">X_6</span> positively affects <span class="math inline">Y</span></li>
+</ul>
+<p><strong>Question:</strong> Since <span class="math inline">X_2</span> and <span class="math inline">X_3</span> do not affect <span class="math inline">Y</span>, can we exclude them from the model?</p>
+</section>
+<section id="two-competing-models" class="slide level2 smaller">
+<h2>Two competing models</h2>
+<p>We therefore want to select between the models:</p>
+<ul>
+<li><strong>Model 1:</strong> The reduced model without <span class="math inline">X_2</span> and <span class="math inline">X_5</span></li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 + \beta_3 X_3 + \beta_4 X_4 +
+       \beta_6 X_6 + \varepsilon
+</span></p>
+<ul>
+<li><strong>Model 2:</strong> The full model</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 +
+       \beta_5 X_5 +  \beta_6 X_6 + \varepsilon
+</span></p>
+</section>
+<section id="r-commands-for-reading-in-the-data-1" class="slide level2 smaller">
+<h2>R commands for reading in the data</h2>
+<ul>
+<li><p>We read the data in the same way we did earlier</p></li>
+<li><p>Longley dataset available here <a href="datasets/longley.txt">longley.txt</a></p></li>
+<li><p>Download the file and place it in current working directory</p></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>longley <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"longley.txt"</span>,</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store columns in vectors</span></span>
+<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> longley[ , <span class="dv">1</span>]</span>
+<span id="cb19-7"><a aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> longley[ , <span class="dv">2</span>]</span>
+<span id="cb19-8"><a aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> longley[ , <span class="dv">3</span>]</span>
+<span id="cb19-9"><a aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> longley[ , <span class="dv">4</span>]</span>
+<span id="cb19-10"><a aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> longley[ , <span class="dv">5</span>]</span>
+<span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> longley[ , <span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-commands-for-fitting-multiple-regression-1" class="slide level2 smaller">
+<h2>R commands for fitting multiple regression</h2>
+<ol type="1">
+<li>Fit the two multiple regression models</li>
+</ol>
+<p><span class="math display">\begin{align*}
+\textbf{Model 1:} &amp; \quad Y = \beta_1 + \beta_3 X_3 + \beta_4 X_4 +
+       \beta_6 X_6 + \varepsilon\\[10pt]
+\textbf{Model 2:} &amp; \quad Y = \beta_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 +
+       \beta_5 X_5 +  \beta_6 X_6 + \varepsilon
+\end{align*}</span></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Model 1 and Model 2</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x6)</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x5 <span class="sc">+</span> x6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>F-test for model selection is done using the command <span class="math inline">\, \texttt{anova}</span></li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># F-test for model selection</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model<span class="fl">.1</span>, model<span class="fl">.2</span>, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Full code can be downloaded here <a href="codes/longley_selection.R">longley_selection.R</a></li>
+</ul>
+</section>
+<section id="anova-output" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>First two lines tell us which models are being compared</li>
+</ul>
+</section>
+<section id="anova-output-1" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\texttt{Res.Df} \,</span> are the degrees of freedom of each model
+<ul>
+<li>The sample size of longley is 16</li>
+<li>Model 1 has <span class="math inline">k=4</span> parameters</li>
+<li>Model 2 has <span class="math inline">p=6</span> parameters</li>
+<li><span class="math inline">\mathop{\mathrm{df}}_1 = n - k = 16 - 4 = 12   \quad \qquad \mathop{\mathrm{df}}_2 = n - p = 16 - 6 = 10</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="anova-output-2" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\texttt{Df} \,</span> is difference in degrees of freedom
+<ul>
+<li><span class="math inline">\mathop{\mathrm{df}}_1 = 12</span></li>
+<li><span class="math inline">\mathop{\mathrm{df}}_2 = 10</span></li>
+<li>Therefore the difference is <span class="math display">
+  \mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2 = 12 - 10 = 2
+  </span></li>
+</ul></li>
+</ul>
+</section>
+<section id="anova-output-3" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\texttt{RSS} \,</span> is the residual sum of squares for each model
+<ul>
+<li><span class="math inline">\mathop{\mathrm{RSS}}_1 = 1.32336</span></li>
+<li><span class="math inline">\mathop{\mathrm{RSS}}_2 = 0.83935</span></li>
+</ul></li>
+<li><span class="math inline">\texttt{Sum of Sq} \,</span> is the extra sum of squares
+<ul>
+<li><span class="math inline">\mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 = 0.48401</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="anova-output-4" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\texttt{F} \,</span> is the F-statistic for model selection</li>
+</ul>
+<p><span class="math display">\begin{align*}
+F &amp; = \frac{ \mathop{\mathrm{RSS}}_1 - \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2 } \bigg/
+      \frac{ \mathop{\mathrm{RSS}}_2 }{ \mathop{\mathrm{df}}_2 } \\
+  &amp; = \frac{ 1.32336 - 0.83935 }{ 12 - 10 } \bigg/
+      \frac{ 0.83935 }{ 10 } =  2.8833
+\end{align*}</span></p>
+</section>
+<section id="anova-output-5" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\texttt{Pr(&gt;F)}</span> is the p-value for F-test
+<ul>
+<li><span class="math inline">F \, \sim \, F_{\mathop{\mathrm{df}}_1 - \mathop{\mathrm{df}}_2 , \, \mathop{\mathrm{df}}_2 } = F_{2, 10}</span></li>
+<li>Therefore the p-value is <span class="math display">
+  p = P(F_{2,10} &gt; F) = 0.1026
+  </span></li>
+</ul></li>
+</ul>
+</section>
+<section id="anova-output-6" class="slide level2 smaller">
+<h2>Anova output</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: y ~ x3 + x4 + x6
+Model 2: y ~ x2 + x3 + x4 + x5 + x6
+  Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+1     12 1.32336                           
+2     10 0.83935  2   0.48401 2.8833 0.1026</code></pre>
+</div>
+</div>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li>The p-value is <span class="math inline">p = 0.1026 &gt; 0.05</span></li>
+<li>This means we cannot reject <span class="math inline">H_0</span></li>
+<li>Therefore the reduced Model 1 has to be preferred</li>
+<li>This gives statistical evidence that <span class="math inline">X_2</span> and <span class="math inline">X_5</span> can be excluded from the model</li>
+<li><em>GNP</em> and <em>Non-institutionalized</em> do not affect <em>Number of Employed</em></li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
