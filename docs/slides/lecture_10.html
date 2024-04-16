@@ -426,15 +426,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Axiom {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Question {
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -442,45 +446,9 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   .Problem {
     --color1: #f4cce0;
@@ -490,11 +458,43 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Corollary {
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -3123,10 +3123,11 @@ p = P(F_{p-k,n-p} &gt; F)
 </section>
 <section id="examples-of-model-selection" class="slide level2 smaller">
 <h2>Examples of model selection</h2>
-<p>We illustrate F-test for Model Selection with two examples:</p>
+<p>We illustrate F-test for Model Selection with 3 examples:</p>
 <ul>
 <li>Joint significance in Multiple linear Regression</li>
-<li>Polynomial regression</li>
+<li>Polynomial regression 1</li>
+<li>Polynomial regression 2</li>
 </ul>
 </section>
 <section id="example-1-multiple-linear-regression" class="slide level2 smaller">
@@ -3381,9 +3382,462 @@ Model 2: y ~ x2 + x3 + x4 + x5 + x6
 <li>This means we cannot reject <span class="math inline">H_0</span></li>
 <li>Therefore the reduced Model 1 has to be preferred</li>
 <li>This gives statistical evidence that <span class="math inline">X_2</span> and <span class="math inline">X_5</span> can be excluded from the model</li>
-<li><em>GNP</em> and <em>Non-institutionalized</em> do not affect <em>Number of Employed</em></li>
+<li><em>GNP</em> and <em>Non-institutionalised</em> do not affect <em>Number of Employed</em></li>
 </ul>
 </section>
+<section id="example-2-motion-of-falling-bodies" class="slide level2 smaller">
+<h2>Example 2: Motion of falling bodies</h2>
+<p>Engraving (1546): people believed projectiles follow circular trajectories (<a href="https://www.alamy.com/engraving-depicting-the-path-of-a-projectile-shown-as-a-circular-arc-rather-than-a-parabolic-arc-as-was-later-proved-to-be-the-case-by-galileo-galileo-galilei-1564-1642-an-italian-polymath-dated-16th-century-image186386912.html">source</a>)</p>
+
+<img data-src="images/engraving.jpg" style="width:73.0%" class="r-stretch"></section>
+<section id="section-8" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>1609: Galileo proved mathematically that projectile trajectories are parabolic
+<ul>
+<li>His finding was based on empirical data</li>
+<li>A ball (covered in ink) was released on an inclined plane from <em>Initial Height</em></li>
+<li>Ink mark on the floor represented the <em>Horizontal Distance</em> traveled</li>
+<li>Unit of measure is <em>punti</em> <span class="math inline">\qquad\quad 1 \text{ punto} = 169/180 \, \text{mm}</span></li>
+</ul></li>
+</ul>
+
+<img data-src="images/galileo_0.png" style="width:73.0%" class="r-stretch"></section>
+<section id="section-9" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>We have access to Galileo’s original data <span class="citation" data-cites="drake_galileo">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></li>
+<li>Does a parabolic (quadratic) trajectory really explain the data?</li>
+<li>Let’s fit a polynomial regression model and find out!</li>
+</ul>
+
+<img data-src="images/galileo.png" style="width:73.0%" class="r-stretch"></section>
+<section id="plotting-the-data" class="slide level2 smaller">
+<h2>Plotting the data</h2>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Initial Height</strong></th>
+<th style="text-align: left;">100</th>
+<th style="text-align: left;">200</th>
+<th style="text-align: left;">300</th>
+<th style="text-align: left;">450</th>
+<th style="text-align: left;">600</th>
+<th style="text-align: left;">800</th>
+<th style="text-align: left;">1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Horizontal Distance</strong></td>
+<td style="text-align: left;">253</td>
+<td style="text-align: left;">337</td>
+<td style="text-align: left;">395</td>
+<td style="text-align: left;">451</td>
+<td style="text-align: left;">495</td>
+<td style="text-align: left;">534</td>
+<td style="text-align: left;">573</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the data</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">450</span>, <span class="dv">600</span>, <span class="dv">800</span>, <span class="dv">1000</span>)</span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>distance <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">253</span>, <span class="dv">337</span>, <span class="dv">395</span>, <span class="dv">451</span>, <span class="dv">495</span>, <span class="dv">534</span>, <span class="dv">573</span>)</span>
+<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of data</span></span>
+<span id="cb29-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height, distance, <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-10" class="slide level2 smaller">
+<h2></h2>
+<p>We clearly see a parabola. Therefore we expect a relation of the form</p>
+<p><span class="math display">
+{\rm distance} = \beta_1 + \beta_2 \, {\rm height } + \beta_3 \, {\rm height }^2
+</span></p>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<section id="fit-linear-model" class="slide level2 smaller">
+<h2>Fit linear model</h2>
+<p><span class="math display">
+{\rm distance} = \beta_1 + \beta_2 \, {\rm height }
+</span></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> height)</span>
+<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Multiple R-squared:  0.9264,    Adjusted R-squared:  0.9116 
+
+</code></pre>
+<ul>
+<li>The coefficient of correlation is <span class="math inline">R^2 = 0.9264</span></li>
+<li><span class="math inline">R^2</span> is quite high, showing that a linear model fits reasonably well</li>
+</ul>
+</section>
+<section id="is-a-quadratic-model-better" class="slide level2 smaller">
+<h2>Is a quadratic model better?</h2>
+<p><span class="math display">
+{\rm distance} = \beta_1 + \beta_2 \, {\rm height } + \beta_3  
+\, {\rm height }^2
+</span></p>
+<p><br></p>
+<p><strong>Note:</strong> To specify powers we need to type <span class="math inline">\,\, \texttt{I}</span></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit quadratic model</span></span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>quadratic <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> height <span class="sc">+</span> <span class="fu">I</span>( height<span class="sc">^</span><span class="dv">2</span> ))</span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quadratic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Multiple R-squared:  0.9903,    Adjusted R-squared:  0.9855 
+
+</code></pre>
+<ul>
+<li>The coefficient of correlation is <span class="math inline">R^2 = 0.9903</span></li>
+<li>This is higher than the previous score <span class="math inline">R^2 = 0.9264</span></li>
+<li>The quadratic trajectory explains <span class="math inline">99\%</span> of variability in the data</li>
+</ul>
+</section>
+<section id="why-not-try-a-cubic-model" class="slide level2 smaller">
+<h2>Why not try a cubic model?</h2>
+<p><span class="math display">
+{\rm distance} = \beta_1 + \beta_2 \, {\rm height } + \beta_3  
+\, {\rm height }^2 + \beta_4 \, {\rm height }^3
+</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit cubic model</span></span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>cubic <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> height <span class="sc">+</span> <span class="fu">I</span>( height<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span> (height<span class="sc">^</span><span class="dv">3</span>))</span>
+<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cubic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Multiple R-squared:  0.9994,    Adjusted R-squared:  0.9987 
+
+</code></pre>
+<ul>
+<li>The coefficient of correlation is <span class="math inline">R^2 = 0.9987</span></li>
+<li>This is higher than the score of quadratic model <span class="math inline">R^2 = 0.9903</span></li>
+<li>What is going on?</li>
+</ul>
+</section>
+<section id="quadratic-vs-cubic" class="slide level2 smaller">
+<h2>Quadratic vs cubic</h2>
+<ul>
+<li><p>Which model is better: quadratic or cubic?</p></li>
+<li><p>Let us perform F-test for model selection</p></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Model selection</span></span>
+<span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(quadratic, cubic, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Analysis of Variance Table
+
+Model 1: distance ~ height + I(height^2)
+Model 2: distance ~ height + I(height^2) + I(height^3)
+  Res.Df    RSS Df Sum of Sq     F  Pr(&gt;F)   
+1      4 744.08                              
+2      3  48.25  1    695.82 43.26 0.00715 **</code></pre>
+</section>
+<section id="model-selection-quadratic-vs-cubic" class="slide level2 smaller">
+<h2>Model selection: quadratic Vs cubic</h2>
+<ul>
+<li><p>The F-test is significant since <span class="math inline">p = 0.007 &lt; 0.05</span></p></li>
+<li><p>This means we should reject the null hypothesis that</p></li>
+</ul>
+<p><span class="math display">
+\beta_4 = 0
+</span></p>
+<ul>
+<li><p>Therefore the quadratic model does not describe the data well</p></li>
+<li><p>The underlying relationship from Galileo’s data is cubic and not quadratic</p></li>
+<li><p>Probably the <em>inclined plane</em> introduced drag</p></li>
+<li><p>Code can be downloaded here <a href="codes/galileo.R">galileo.R</a></p></li>
+</ul>
+</section>
+<section id="plot-quadratic-vs-cubic" class="slide level2">
+<h2>Plot: Quadratic Vs Cubic</h2>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="why-not-try-higher-degree-polynomials" class="slide level2 smaller">
+<h2>Why not try higher degree polynomials</h2>
+<p><span class="math display">
+{\rm distance} = \beta_1 + \beta_2 \, {\rm height } + \beta_3  
+\, {\rm height }^2 + \beta_4 \, {\rm height }^3
++ \beta_5 \, {\rm height }^4
+</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit quartic model</span></span>
+<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a>quartic <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> height <span class="sc">+</span> <span class="fu">I</span>( height<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span> (height<span class="sc">^</span><span class="dv">3</span>) </span>
+<span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a>                                                <span class="sc">+</span> <span class="fu">I</span> (height<span class="sc">^</span><span class="dv">4</span>))</span>
+<span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quartic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Multiple R-squared:  0.9998,    Adjusted R-squared:  0.9995
+
+</code></pre>
+<ul>
+<li>We obtain a coefficient <span class="math inline">R^2 = 0.9998</span></li>
+<li>This is even higher than cubic model coefficient <span class="math inline">R^2 = 0.9987</span></li>
+<li>Is the quartic model actually better?</li>
+</ul>
+</section>
+<section id="model-selection-cubic-vs-quartic" class="slide level2 smaller">
+<h2>Model selection: cubic Vs quartic</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Model selection</span></span>
+<span id="cb40-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(cubic, quartic, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Analysis of Variance Table
+
+Model 1: distance ~ height + I(height^2) + I(height^3)
+Model 2: distance ~ height + I(height^2) + I(height^3) + I(height^4)
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1      3 48.254                           
+2      2 12.732  1    35.522 5.5799  0.142
+
+</code></pre>
+<ul>
+<li><p>The F-test is not significant since <span class="math inline">p = 0.142 &gt; 0.05</span></p></li>
+<li><p>This means we cannot reject the null hypothesis that <span class="math inline">\beta_5 = 0</span></p></li>
+<li><p>The cubic models does better than quartic, despite higher <span class="math inline">R^2</span></p></li>
+<li><p>The underlying relationship from Galileo’s data is indeed cubic!</p></li>
+</ul>
+</section>
+<section id="example-3-divorces" class="slide level2 smaller">
+<h2>Example 3: Divorces</h2>
+<ul>
+<li>Data from <strong>Daily Mirror</strong> gives
+<ul>
+<li>Percentage of divorces caused by adultery VS years of marriage</li>
+</ul></li>
+<li>Original analysis claimed
+<ul>
+<li>Divorce-risk peaks at year 2 then decreases thereafter</li>
+</ul></li>
+<li>Is this conclusion misleading?
+<ul>
+<li>Does a quadratic model offers a better fit than a straight line model?</li>
+</ul></li>
+</ul>
+</section>
+<section id="divorces-dataset" class="slide level2 smaller">
+<h2>Divorces dataset</h2>
+<h3 id="percent-of-divorces-caused-by-adultery-by-year-of-marriage">Percent of divorces caused by adultery by year of marriage</h3>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Years of Marriage</strong></th>
+<th style="text-align: left;">1</th>
+<th style="text-align: left;">2</th>
+<th style="text-align: left;">3</th>
+<th style="text-align: left;">4</th>
+<th style="text-align: left;">5</th>
+<th style="text-align: left;">6</th>
+<th style="text-align: left;">7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>% divorces adultery</strong></td>
+<td style="text-align: left;">3.51</td>
+<td style="text-align: left;">9.50</td>
+<td style="text-align: left;">8.91</td>
+<td style="text-align: left;">9.35</td>
+<td style="text-align: left;">8.18</td>
+<td style="text-align: left;">6.43</td>
+<td style="text-align: left;">5.31</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Years of Marriage</strong></th>
+<th style="text-align: left;">8</th>
+<th style="text-align: left;">9</th>
+<th style="text-align: left;">10</th>
+<th style="text-align: left;">15</th>
+<th style="text-align: left;">20</th>
+<th style="text-align: left;">25</th>
+<th style="text-align: left;">30</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>% divorces adultery</strong></td>
+<td style="text-align: left;">5.07</td>
+<td style="text-align: left;">3.65</td>
+<td style="text-align: left;">3.80</td>
+<td style="text-align: left;">2.83</td>
+<td style="text-align: left;">1.51</td>
+<td style="text-align: left;">1.27</td>
+<td style="text-align: left;">0.49</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-years-of-marriage-vs-divorce-risk" class="slide level2 smaller">
+<h2>Plot: Years of Marriage Vs Divorce-risk</h2>
+<ul>
+<li>Looks like: Divorce-risk is low, then peaks at year 2, and then decreases</li>
+<li>Change of trend suggests a higher order model (quadratic?) might be good fit</li>
+</ul>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<section id="fitting-linear-model" class="slide level2 smaller">
+<h2>Fitting linear model</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Divorces data</span></span>
+<span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.51</span>, <span class="fl">9.5</span>, <span class="fl">8.91</span>, <span class="fl">9.35</span>, <span class="fl">8.18</span>, <span class="fl">6.43</span>, <span class="fl">5.31</span>, </span>
+<span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">5.07</span>, <span class="fl">3.65</span>, <span class="fl">3.8</span>, <span class="fl">2.83</span>, <span class="fl">1.51</span>, <span class="fl">1.27</span>, <span class="fl">0.49</span>)</span>
+<span id="cb42-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb42-7"><a aria-hidden="true" tabindex="-1"></a>linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year)</span>
+<span id="cb42-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  7.88575    0.78667  10.024 3.49e-07 ***
+year        -0.27993    0.05846  -4.788 0.000442 ***
+
+</code></pre>
+<ul>
+<li>t-test for <span class="math inline">\beta_2</span> is significant since <span class="math inline">p = 0.0004 &lt; 0.05</span></li>
+<li>Therefore <span class="math inline">\beta_2 \neq 0</span> and the estimate is <span class="math inline">\hat \beta_2 = -0.27993</span></li>
+<li>The risk of divorce decreases with years of marriage (because <span class="math inline">\hat \beta_2 &lt; 0</span>)</li>
+</ul>
+</section>
+<section id="fitting-quadratic-model" class="slide level2 smaller">
+<h2>Fitting quadratic model</h2>
+<ul>
+<li><p>Linear model offered a reasonable explanation of the divorce data</p></li>
+<li><p>Is quadratic model better?</p></li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit quadratic model</span></span>
+<span id="cb44-2"><a aria-hidden="true" tabindex="-1"></a>quadratic <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ))</span>
+<span id="cb44-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quadratic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  8.751048   1.258038   6.956  2.4e-05 ***
+year        -0.482252   0.235701  -2.046   0.0654 .  
+I(year^2)    0.006794   0.007663   0.887   0.3943 
+
+</code></pre>
+<ul>
+<li><p>t-test for <span class="math inline">\beta_3</span> is not significant since <span class="math inline">p = 0.3943 &gt; 0.05</span></p></li>
+<li><p>Cannot reject null hypothesis <span class="math inline">\beta_3 = 0 \quad \implies \quad</span> Quadratic term not needed!</p></li>
+<li><p>The original analysis in the <strong>Daily Mirror is probably mistaken</strong></p></li>
+</ul>
+</section>
+<section id="model-selection-linear-vs-quadratic" class="slide level2 smaller">
+<h2>Model selection: Linear Vs Quadratic</h2>
+<ul>
+<li><p>We concluded that a linear model is better fit</p></li>
+<li><p>To cross check this result we do F-test for model selection</p></li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Model selection</span></span>
+<span id="cb46-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(linear, quadratic, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Model 1: percent ~ year
+Model 2: percent ~ year + I(year^2)
+  Res.Df    RSS Df Sum of Sq     F Pr(&gt;F)
+1     12 42.375                          
+2     11 39.549  1     2.826 0.786 0.3943
+
+</code></pre>
+<ul>
+<li>F-test is not significant since <span class="math inline">p = 0.3943 &gt; 0.05</span></li>
+<li>We cannot reject the null hypothesis that <span class="math inline">\beta_3 = 0</span></li>
+<li>Quadratic model is worse than linear model</li>
+</ul>
+</section>
+<section id="conclusions-1" class="slide level2 smaller">
+<h2>Conclusions</h2>
+<ul>
+<li>Daily Mirror Claim: Divorce-risk peaks at year 2 then decreases thereafter
+<ul>
+<li>Claim suggests higher order model needed to explain change in trend</li>
+</ul></li>
+<li>Analysis conducted:
+<ul>
+<li>Fit linear and quadratic regression models</li>
+<li>t-test of significance discarded quadratic term</li>
+<li>F-test for model selection discarded Quadratic model</li>
+</ul></li>
+<li>Findings: Claims in Daily Mirror are misleading
+<ul>
+<li>Linear model seems to be better than quadratic</li>
+<li>This suggests divorce-risk generally decreases over time</li>
+<li>Peak in year 2 can be explained by unusually low divorce-risk in 1st year</li>
+</ul></li>
+<li>Code is available here <a href="codes/divorces.R">divorces.R</a></li>
+</ul>
+</section>
+<section id="section-11" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><p>Visual confirmation: Linear model is better and divorce-risk is decreasing</p></li>
+<li><p>Peak in year 2 should be explained by unusually low divorce-risk in 1st year</p></li>
+</ul>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="why-not-try-higher-order-polynomials" class="slide level2 smaller">
+<h2>Why not try higher order polynomials</h2>
+<ul>
+<li>Let us compare Linear model with Order 6 Model</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit order 6 model</span></span>
+<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>order_6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year  <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">3</span> ) <span class="sc">+</span> </span>
+<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>                              <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">4</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">5</span> ) <span class="sc">+</span></span>
+<span id="cb48-4"><a aria-hidden="true" tabindex="-1"></a>                              <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">6</span> ))</span>
+<span id="cb48-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Model selection</span></span>
+<span id="cb48-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(linear, order_6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Model 1: percent ~ year
+Model 2: percent ~ year + I(year^2) + I(year^3) + I(year^4) + I(year^5) + 
+    +I(year^6)
+  Res.Df    RSS Df Sum of Sq      F   Pr(&gt;F)   
+1     12 42.375                                
+2      7  3.724  5    38.651 14.531 0.001404 **</code></pre>
+</section>
+<section id="why-not-try-higher-order-polynomials-1" class="slide level2 smaller">
+<h2>Why not try higher order polynomials</h2>
+<ul>
+<li><p>F-test is significant since <span class="math inline">p = 0.001 &lt; 0.05</span></p></li>
+<li><p>This means we reject the null hypothesis that</p></li>
+</ul>
+<p><span class="math display">
+\beta_3 = \beta_4 = \beta_5 = \beta_6 = 0
+</span></p>
+<ul>
+<li><p>The Order 6 model is better than the Linear model</p></li>
+<li><p>Peak divorce-rate in Year 2 is well explained by order 6 regression</p></li>
+<li><p>What is going on? Let us plot the regression functions</p></li>
+</ul>
+</section>
+<section id="section-12" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><p>There are more peaks: Marriage is nice after 23 years but gets boring after 27!</p></li>
+<li><p><strong>Model overfits</strong>: Data very well explained but predictions are not realistic</p></li>
+<li><p>Linear model should be preferred</p></li>
+</ul>
+
+<img data-src="lecture_10_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
@@ -3398,6 +3852,9 @@ Model 2: y ~ x2 + x3 + x4 + x5 + x6
 </div>
 <div id="ref-degroot" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div class="csl-right-inline">DeGroot, Morris H., Schervish, Mark J., Probability and statistics, Fourth Edition, Addison-Wesley, 2012.</div>
+</div>
+<div id="ref-drake_galileo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Drake, Stillman, MacLachlan, James, Galileo’s discovery of the parabolic trajectory, Scientific American. 232 (1975) 102–111. <a href="http://www.jstor.org/stable/24949756">http://www.jstor.org/stable/24949756</a>.</div>
 </div>
 </div>
 </section></section>

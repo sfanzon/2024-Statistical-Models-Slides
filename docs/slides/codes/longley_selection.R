@@ -19,9 +19,11 @@ x5 <- longley[ , 4]
 x6 <- longley[ , 5]
 y <- longley[ , 6]
 
-# Fit Model 0 and Model 1
+# Fit Model 1 and Model 2
 model.0 <- lm(y ~ x3 + x4 + x6)
 model.1 <- lm(y ~ x2 + x3 + x4 + x5 + x6)
 
 # F-test for model selection
-anova(model.0, model.1, test = "F")
+ans <- anova(model.1, model.2, test = "F")
+
+print(ans)
