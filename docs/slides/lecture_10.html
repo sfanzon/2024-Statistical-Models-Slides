@@ -426,7 +426,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Corollary {
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -434,47 +438,15 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Problem {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,17 +458,45 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Theorem {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -1803,11 +1803,13 @@ n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
 <p><img data-src="images/simple_regression_output_cut_2.png" style="width:70.0%"></p>
 </div>
 </div>
-<p><strong>Interpretation:</strong></p>
+<p><strong>Interpretation:</strong> <span class="math inline">\, p</span> is very small (hence the <span class="math inline">\, \texttt{***} \,</span> rating)</p>
 <ul>
-<li><p><span class="math inline">p</span> is very small (hence the <span class="math inline">\, \texttt{***} \,</span> rating)</p></li>
-<li><p>Strong evidence (<span class="math inline">p&lt;0.05</span>) that <em>Stock Prices</em> affect <em>Gold Prices</em></p></li>
-<li><p>As <span class="math inline">\hat \beta &lt; 0</span> and statistically significant, as <em>Stock Prices</em> increase <em>Gold Prices</em> decrease and vice versa</p></li>
+<li><p>Therefore we reject the null hypothesis <span class="math inline">H_0</span> and the real parameter is <span class="math inline">\beta \neq 0</span></p></li>
+<li><p>Since <span class="math inline">\beta \neq 0</span> we have that <em>Stock Prices</em> affect <em>Gold Prices</em></p></li>
+<li><p>The best estimate for <span class="math inline">\beta</span> is <span class="math inline">\hat \beta = -6.169</span></p></li>
+<li><p><span class="math inline">\hat \beta &lt; 0</span> and statistically significant:<br>
+<span class="math inline">\,\,</span> As <em>Stock Prices</em> increase <em>Gold Prices</em> decrease</p></li>
 </ul>
 </section>
 <section id="warning" class="slide level2 smaller">
@@ -1819,8 +1821,8 @@ n = \text{No. of data points} = 33 \,, \qquad  \text{df} = n - 2 = 31
 <li>Compute t-statistic by hand <span class="math display">
   t = \frac{\hat \beta - b}{\mathop{\mathrm{e.s.e.}}}
   </span></li>
-<li><span class="math inline">\, \mathop{\mathrm{e.s.e.}}</span> is in the 2nd row under <span class="math inline">\, \texttt{Std. Error}</span></li>
-<li>Compute p-value <em>by hand</em> with <span class="math inline">\, \texttt{pt(t, df)}</span></li>
+<li><span class="math inline">\, \mathop{\mathrm{e.s.e.}}</span> is in the 2nd row under <span class="math inline">\,\, \texttt{Std. Error}</span></li>
+<li>Compute p-value <em>by hand</em> with <span class="math inline">\,\, \texttt{pt(t, df)}</span></li>
 </ul></li>
 </ul>
 </section>
@@ -2011,22 +2013,22 @@ t = \frac{\hat \beta_j - b_j }{ \mathop{\mathrm{e.s.e.}}} \, \sim \, t_{n-p} \,,
 p = 2P (t_{n-p} &gt; |t|)
 </span></p>
 </section>
-<section id="t-test-in-r" class="slide level2 smaller">
-<h2>t-test in R</h2>
-<p>Fit the general regression model with <code>lm</code></p>
+<section id="t-test-in-r-fit-general-regression-with-lm" class="slide level2 smaller">
+<h2>t-test in R: Fit general regression with <code>lm</code></h2>
 <ul>
 <li>If <span class="math inline">b_j = 0</span> and a two-sided t-test is required
 <ul>
-<li>t-statistic is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{t value}</span></li>
-<li>p-value is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{Pr(&gt;|t|)}</span></li>
+<li>t-statistic is in <span class="math inline">j</span>-th variable row under <span class="math inline">\,\, \texttt{t value}</span></li>
+<li>p-value is in <span class="math inline">j</span>-th variable row under <span class="math inline">\,\, \texttt{Pr(&gt;|t|)}</span></li>
 </ul></li>
-<li>If <span class="math inline">b_j = 0</span> or one-sided t-test is required
+<li>If <span class="math inline">b_j \neq 0</span> or one-sided t-test is required
 <ul>
 <li>Compute t-statistic by hand <span class="math display">
   t = \frac{\hat \beta_j - b_j}{\mathop{\mathrm{e.s.e.}}}
   </span></li>
-<li><span class="math inline">\,\, \mathop{\mathrm{e.s.e.}}</span> for <span class="math inline">\hat \beta_j</span> is in <span class="math inline">j</span>-th variable row under <span class="math inline">\, \texttt{Std. Error}</span></li>
-<li>Compute p-value <em>by hand</em> with <span class="math inline">\, \texttt{pt(t, df)}</span></li>
+<li><span class="math inline">\,\, \hat \beta_j</span> is in <span class="math inline">j</span>-th variable row under <span class="math inline">\,\, \texttt{Estimate}</span></li>
+<li><span class="math inline">\,\, \mathop{\mathrm{e.s.e.}}</span> for <span class="math inline">\hat \beta_j</span> is in <span class="math inline">j</span>-th variable row under <span class="math inline">\,\, \texttt{Std. Error}</span></li>
+<li>Compute p-value <em>by hand</em> with <span class="math inline">\,\, \texttt{pt(t, df)}</span></li>
 </ul></li>
 </ul>
 </section>

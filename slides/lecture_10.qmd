@@ -1414,12 +1414,17 @@ $$
 ::::
 
 
-**Interpretation:**
+**Interpretation:** $\, p$ is very small (hence the $\, \texttt{***} \,$ rating)
 
-- $p$ is very small (hence the $\, \texttt{***} \,$ rating)
+- Therefore we reject the null hypothesis $H_0$ and the real parameter is $\beta \neq 0$
 
-- Strong evidence ($p<0.05$) that *Stock Prices* affect *Gold Prices*
-- As $\hat \beta < 0$ and statistically significant, as *Stock Prices* increase *Gold Prices* decrease and vice versa
+- Since $\beta \neq 0$ we have that *Stock Prices* affect *Gold Prices*
+
+- The best estimate for $\beta$ is $\hat \beta = -6.169$
+
+- $\hat \beta < 0$ and statistically significant:  
+$\,\,$ 
+As *Stock Prices* increase *Gold Prices* decrease
 
 
 
@@ -1433,8 +1438,8 @@ $$
     $$
     t = \frac{\hat \beta - b}{\ese}
     $$
-    * $\, \ese$ is in the 2nd row under $\, \texttt{Std. Error}$
-    * Compute p-value *by hand* with $\, \texttt{pt(t, df)}$
+    * $\, \ese$ is in the 2nd row under $\,\, \texttt{Std. Error}$
+    * Compute p-value *by hand* with $\,\, \texttt{pt(t, df)}$
 
 
 
@@ -1655,22 +1660,22 @@ $$
 
 
 
-## t-test in R {.smaller}
+## t-test in R: Fit general regression with ``lm`` {.smaller}
 
-Fit the general regression model with ``lm``
 
 - If $b_j = 0$ and a two-sided t-test is required
-    * t-statistic is in $j$-th variable row under $\, \texttt{t value}$
-    * p-value is in $j$-th variable row under $\, \texttt{Pr(>|t|)}$
+    * t-statistic is in $j$-th variable row under $\,\, \texttt{t value}$
+    * p-value is in $j$-th variable row under $\,\, \texttt{Pr(>|t|)}$
 
 
-- If $b_j = 0$ or one-sided t-test is required
+- If $b_j \neq 0$ or one-sided t-test is required
     * Compute t-statistic by hand
     $$
     t = \frac{\hat \beta_j - b_j}{\ese}
     $$
-    * $\,\, \ese$ for $\hat \beta_j$ is in $j$-th variable row under $\, \texttt{Std. Error}$
-    * Compute p-value *by hand* with $\, \texttt{pt(t, df)}$
+    * $\,\, \hat \beta_j$ is in $j$-th variable row under $\,\, \texttt{Estimate}$
+    * $\,\, \ese$ for $\hat \beta_j$ is in $j$-th variable row under $\,\, \texttt{Std. Error}$
+    * Compute p-value *by hand* with $\,\, \texttt{pt(t, df)}$
 
 
 
