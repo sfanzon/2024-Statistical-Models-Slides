@@ -72,14 +72,14 @@ $$
 - There are $p$ predictor random variables
 
 $$
-Z_1, \ldots, Z_p
+Z_1 \, , \,\, \ldots \, , \, Z_p
 $$
 
 
 - $Y_i$ is the conditional distribution
 
 $$
-Y | Z_1 = z_{i1} , \ldots, Z_p = z_{ip}
+Y | Z_1 = z_{i1} \,, \,\, \ldots \,, \,\, Z_p = z_{ip}
 $$
 
 - The errors $\e_i$ are random variables 
@@ -159,7 +159,7 @@ $$
 
 
 ## Violation of Assumptions {.smaller}
-### 3 scenarios
+### We consider 3 scenarios
 
 i. **Heteroscedasticity:** The violation of Assumption 4 of homoscedasticity
 

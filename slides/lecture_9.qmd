@@ -2617,6 +2617,10 @@ cat("The estimator is", beta)
 ## Solution: Plot of data and regression plane {.smaller}
 
 ```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
+
 # Load the plotly library
 library(plotly)
 

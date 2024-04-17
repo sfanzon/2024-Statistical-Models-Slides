@@ -341,47 +341,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Question {
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -389,17 +353,53 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Theorem {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Warning {
     --color1: #f4cce0;
@@ -409,9 +409,9 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   </style>
 </head>
@@ -486,13 +486,13 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 <li>There are <span class="math inline">p</span> predictor random variables</li>
 </ul>
 <p><span class="math display">
-Z_1, \ldots, Z_p
+Z_1 \, , \,\, \ldots \, , \, Z_p
 </span></p>
 <ul>
 <li><span class="math inline">Y_i</span> is the conditional distribution</li>
 </ul>
 <p><span class="math display">
-Y | Z_1 = z_{i1} , \ldots, Z_p = z_{ip}
+Y | Z_1 = z_{i1} \,, \,\, \ldots \,, \,\, Z_p = z_{ip}
 </span></p>
 <ul>
 <li>The errors <span class="math inline">\varepsilon_i</span> are random variables</li>
@@ -555,7 +555,7 @@ Z^T Z  \, \text{ is invertible}
 </section>
 <section id="violation-of-assumptions" class="slide level2 smaller">
 <h2>Violation of Assumptions</h2>
-<h3 id="scenarios">3 scenarios</h3>
+<h3 id="we-consider-3-scenarios">We consider 3 scenarios</h3>
 <ol type="i">
 <li><strong>Heteroscedasticity:</strong> The violation of Assumption 4 of homoscedasticity</li>
 </ol>

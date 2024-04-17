@@ -3558,10 +3558,12 @@ $$
 
 
 
-## Plot: Quadratic Vs Cubic
+## Plot: Quadratic Vs Cubic {.smaller}
 
 ```{r}
-#| echo: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
 #| fig-asp: 1
 
 # Enter the data
@@ -3695,11 +3697,25 @@ Model 2: distance ~ height + I(height^2) + I(height^3) + I(height^4)
 
 ## Plot: Years of Marriage Vs Divorce-risk {.smaller}
 
-- Looks like: Divorce-risk is low, then peaks at year 2, and then decreases
-- Change of trend suggests a higher order model (quadratic?) might be good fit
+::: {.column width="48%"}
 
+- Looks like: Divorce-risk is
+    * First low, 
+    * then peaks at year 2
+    * then decreases
+
+- Change of trend suggests: 
+    * Higher order model might be good fit
+    * Consider quadratic model 
+
+
+:::
+
+::: {.column width="48%"}
 ```{r}
-#| echo: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
 #| fig-asp: 1
 
 # Divorces data
@@ -3714,7 +3730,7 @@ plot(year, percent, xlab = "", ylab = "", pch = 16, cex = 2)
 mtext("Years of marriage", side = 1, line = 3, cex = 2.1)
 mtext("Risk of divorce by adultery", side = 2, line = 2.5, cex = 2.1)
 ```
-
+:::
 
 
 ## Fitting linear model  {.smaller}
@@ -3832,7 +3848,9 @@ Model 2: percent ~ year + I(year^2)
 
 
 ```{r} 
-#| echo: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
 #| fig-asp: 1
 
 # Divorces data
@@ -3914,15 +3932,30 @@ $$
 ## {.smaller}
 
 
-- There are more peaks: Marriage is nice after 23 years but gets boring after 27!
 
-- **Model overfits**: Data very well explained but predictions are not realistic
+::: {.column width="45%"}
+
+<br>
+
+- There are more peaks: 
+    * Decreasing risk of divorce for 23 years
+    * But it gets boring after 27 years!
+
+- **Model overfits**: 
+    * Data is very well explained
+    * but predictions are not realistic
 
 - Linear model should be preferred
 
+:::
+
+
+::: {.column width="46%"}
 
 ```{r} 
-#| echo: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
 #| fig-asp: 1
 
 # Divorces data
@@ -3955,6 +3988,10 @@ curve(polynomial(x, coef(order_6)), add=TRUE, col = "blue", lty = 2, lwd = 3)
 legend("topright", legend = c("Linear", "Order 6"), 
        col = c("red", "blue"), lty = c(1,2), cex = 3, lwd = 3)
 ```
+
+:::
+
+
 
 
 ## References
