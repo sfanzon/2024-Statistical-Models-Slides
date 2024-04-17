@@ -71,7 +71,7 @@ $
 
 
 5. The Longley dataset
-    * Classical regression example
+    * Well-known vintage regression example
 
 <br>
 

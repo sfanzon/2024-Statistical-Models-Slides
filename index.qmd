@@ -25,8 +25,6 @@ date-format: "D MMM YYYY"
 
 # Welcome 
 
-
-
 These are the Slides of the module **Statistical Models 551305** for T2 2023/24 at the University of Hull. 
 If you have any question or find any typo, please email me at
 
@@ -84,23 +82,35 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 : {tbl-colwidths="[30,70]"}
 
 
+# Statistical tables 
 
+- Download [here](slides/files/Statistics_Tables.pdf)
 
-# Supplementary Material
+# R Codes
 
-
-
-| **Lecture** | **Material**                                                                                                              | 
+| **Lecture** | **Codes**                                                                                                                 | 
 |:------      |:------                                                                                                                    |
-| Lecture 4   | [Statistical Tables](slides/files/Statistics_Tables.pdf) <br> [Code: One-Sample t-test](slides/codes/one_sample_t_test.R) | 
-| Lecture 5   | [Code: Variance ratio test](slides/codes/variance_ratio_test.R)                                                           |
-| Lecture 6   | [Code: Two-Sample t-test](slides/codes/two_sample_t_test.R) <br> [Code: F-test](slides/codes/F_test.R) <br> [Code: F-test First Principles](slides/codes/F_test_first_principles.R) |
-| Lecture 7   | [Code: Goodness-of-fit](slides/codes/good_fit.R) <br> [Code: Goodness-of-fit First Principles](slides/codes/good_fit_first_principles.R) <br> [Code: Monte Carlo $\pi$](slides/codes/monte_carlo_pi.R) <br> [Code: Monte Carlo p-value](slides/codes/monte_carlo_p_value.R) <br> [Code: Goodness-of-fit Contingency](slides/codes/good_fit_contingency.R) <br> [Code: Independence Test](slides/codes/independence_test.R) |
-| Lecture 8   | [Code: Least-squares Solution 1](slides/codes/least_squares_1.R) <br>  [Code: Least-squares Solution 2](slides/codes/least_squares_2.R)        |
-| Lecture 9   | [Code: Multiple Regression](slides/codes/multiple_regression.R) <br> [Code: R2 multiple regression](slides/codes/R2_multiple_regression.R) |
-| Lecture 10  | [Code: Simple Regression](slides/codes/simple_regression.R)  <br> [Code: Longley regression](slides/codes/longley_regression.R) <br> [Code: Longley selection](slides/codes/longley_selection.R) <br> [Code: Galileo](slides/codes/galileo.R) <br> [Code: Divorces](slides/codes/divorces.R) <br>[Data: Stock-Gold prices](slides/datasets/stock_gold.txt) <br> [Data: Longley](slides/datasets/longley.txt) |
-| Appendix    | [Code: 2008 Crisis](slides/codes/2008_crisis_code.R) <br> [Data: 2008 Crisis](slides/datasets/2008_crisis.txt) <br> [Data: Family Guy](slides/datasets/family_guy.txt) |
+| Lecture 4   | [One-Sample t-test](slides/codes/one_sample_t_test.R)                                                                     | 
+| Lecture 5   | [Variance ratio test](slides/codes/variance_ratio_test.R)                                                                 |
+| Lecture 6   | [Two-Sample t-test](slides/codes/two_sample_t_test.R) <br> [F-test](slides/codes/F_test.R) <br> [F-test First Principles](slides/codes/F_test_first_principles.R) |
+| Lecture 7   | [Goodness-of-fit](slides/codes/good_fit.R) <br> [Goodness-of-fit First Principles](slides/codes/good_fit_first_principles.R) <br> [Monte Carlo $\pi$](slides/codes/monte_carlo_pi.R) <br> [Monte Carlo p-value](slides/codes/monte_carlo_p_value.R) <br> [Goodness-of-fit Contingency](slides/codes/good_fit_contingency.R) <br> [Independence Test](slides/codes/independence_test.R) |
+| Lecture 8   | [Least-squares Solution 1](slides/codes/least_squares_1.R) <br>  [Least-squares Solution 2](slides/codes/least_squares_2.R)        |
+| Lecture 9   | [Multiple Regression](slides/codes/multiple_regression.R) <br> [R2 multiple regression](slides/codes/R2_multiple_regression.R) |
+| Lecture 10  | [Simple Regression](slides/codes/simple_regression.R)  <br> [Longley regression](slides/codes/longley_regression.R) <br> [Longley selection](slides/codes/longley_selection.R) <br> [Galileo](slides/codes/galileo.R) <br> [Divorces](slides/codes/divorces.R) |
+| Lecture 11  | [Residual graphs](slides/codes/residual_graphs.R)  |
+| Appendix    | [2008 Crisis](slides/codes/2008_crisis_code.R) |
 : {tbl-colwidths="[30,70]"}
+
+
+[residual_graphs.R](codes/residual_graphs.R)
+
+
+# Datsets
+
+- [Stock-Gold prices](slides/datasets/stock_gold.txt) 
+- [Longley](slides/datasets/longley.txt)
+- [2008 Crisis](slides/datasets/2008_crisis.txt)
+- [Family Guy](slides/datasets/family_guy.txt)
 
 
 
