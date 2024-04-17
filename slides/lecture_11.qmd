@@ -40,8 +40,8 @@ $
 
 ## Outline of Lecture 11
 
-1. Regression assumptions
-2. Heteroschedasticity
+1. Regression modelling assumptions
+2. Heteroscedasticity
 3. Autocorrelation
 4. Multicollinearity
 
@@ -60,3 +60,122 @@ $
 
 
 
+## Regression modelling assumptions {.smaller}
+
+In Lecture 9 we have introduced the general regression model
+
+$$
+Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \e_i
+$$
+
+
+- There are $p$ predictor random variables
+
+$$
+Z_1, \ldots, Z_p
+$$
+
+
+- $Y_i$ is the conditional distribution
+
+$$
+Y | Z_1 = z_{i1} , \ldots, Z_p = z_{ip}
+$$
+
+- The errors $\e_i$ are random variables 
+
+
+
+## Regression assumptions on $Y_i$ {.smaller}
+
+1. **Predictor is known:** The values $z_{i1}, \ldots, z_{ip}$ are known
+
+2. **Normality:** The distribution of $Y_i$ is normal
+
+3. **Linear mean:** There are parameters $\beta_1,\ldots,\beta_p$ such that
+$$
+\Expect[Y_i] = \beta_1 z_{i1} + \ldots + \beta_p z_{ip}  
+$$
+
+4. **Homoscedasticity:** There is a parameter $\sigma^2$ such that
+$$
+\Var[Y_i] = \sigma^2
+$$
+
+5. **Independence:** rv $Y_1 , \ldots , Y_n$ are independent and therefore uncorrelated
+
+$$
+\Cor (Y_i,Y_j) = 0 \qquad \forall \,\, i \neq j
+$$
+
+
+
+
+## Equivalent assumptions on $\e_i$ {.smaller}
+
+1. **Predictor is known:** The values $z_{i1}, \ldots, z_{ip}$ are known
+
+2. **Normality:** The distribution of $\e_i$ is normal
+
+3. **Linear mean:** The errors have zero mean
+$$
+\Expect[\e_i] = 0
+$$
+
+4. **Homoscedasticity:** There is a parameter $\sigma^2$ such that
+$$
+\Var[\e_i] = \sigma^2
+$$
+
+5. **Independence:** Errors $\e_1 , \ldots , \e_n$ are independent and therefore uncorrelated
+
+$$
+\Cor (\e_i, \e_j) = 0 \qquad \forall \,\, i \neq j
+$$
+
+
+## Extra assumption on design matrix {.smaller}
+
+
+6. The design matrix $Z$ is such that
+
+$$
+Z^T Z  \, \text{ is invertible}
+$$
+
+
+- Assumptions 1-6 allowed us to estimate the parameters
+
+$$
+\beta = (\beta_1, \ldots, \beta_p)
+$$
+
+- By maximizing the likelihood we obtained estimator
+
+$$
+\hat \beta = (Z^T Z)^{-1} Z^T y
+$$
+
+
+
+## Violation of Assumptions {.smaller}
+### 3 scenarios
+
+i. **Heteroscedasticity:** The violation of Assumption 4 of homoscedasticity
+
+$$
+\Var [\e_i] \neq \Var[\e_j] \qquad \text{ for some } \,\, i \neq j
+$$
+
+ii. **Autocorrelation:** The violation of Assumption 5 of no-correlation
+
+$$
+\Cor( \e_i, \e_j ) \neq 0  \qquad \text{ for some } \,\, i \neq j
+$$
+
+
+iii. **Multicollinearity:** The violation of Assumption 6 of invertibilty of the matrix
+
+$$
+Z^T Z
+$$
