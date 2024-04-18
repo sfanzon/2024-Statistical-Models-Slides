@@ -258,7 +258,7 @@ $$
     * Plot residual $e_t$ against $e_{t-1}$
 
 
-- **Important:**
+- Important:
     * No Autocorrelation: Plots will look **random**
     * Yes Autocorrelation: Plots will show certain **patterns**
 
@@ -511,17 +511,14 @@ mtext("Residuals Lag 1", side=2, line=2.5, cex=2.1)
 
 
 
-\frame{\frametitle{4.1 Statistical tests for autocorrelation}
-\begin{enumerate}
-  \item Runs test\\
-$\quad$ \textbf{-} Under the classical multiple linear regression model residuals are equally likely to be positive or negative
-  \item Durbin-Watson test\\
-$\quad$ \textbf{-} Test to see if residuals are AR(1)
-  \item Breusch-Godfrey Lagrange Multiplier test\\
-$\quad$ \textbf{-} More general test for autocorrelation but outside the scope of this course
-\end{enumerate}
+## Statistical tests for Autocorrelation {.smaller}
 
-}
+- Runs test
+    * Under the classical multiple linear regression model residuals are equally likely to be positive or negative
+
+- Durbin-Watson test
+    * Test to see if residuals are AR(1)
+ 
 
 
 

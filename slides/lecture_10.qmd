@@ -2727,8 +2727,8 @@ $$
 - $\RSS$ measures variation between data and prediction
 
 \begin{align*}
-    \textbf{Model 1:} & \quad \RSS_1 := \RSS (k) = \sum_{i=1}^n (y_i - \hat y_i^0)^2 \\[10pt]
-    \textbf{Model 2:} & \quad \RSS_2 := \RSS (p) = \sum_{i=1}^n (y_i - \hat y_i^1)^2
+    \textbf{Model 1:} & \quad \RSS_1 := \RSS (k) = \sum_{i=1}^n (y_i - \hat y_i^1)^2 \\[10pt]
+    \textbf{Model 2:} & \quad \RSS_2 := \RSS (p) = \sum_{i=1}^n (y_i - \hat y_i^2)^2
 \end{align*}
 
 
@@ -2830,7 +2830,7 @@ F & = \frac{ \RSS_1 - \RSS_2 }{ \df_1 - \df_2  } \bigg/
 **Theorem:** The F-statistic for model selection has F-distribution
 
 $$
-F \, \sim  \, F_{\df_2 - \df_1, \, \df_2} = F_{p - k, \, n - p}
+F \, \sim  \, F_{\df_1 - \df_2 , \, \df_2} = F_{p - k, \, n - p}
 $$
 
 
@@ -2875,7 +2875,7 @@ $$
 Therefore the F-statistic can be rewritten as
 
 \begin{align*}
-F & = \frac{ \RSS_1 - \RSS_2 }{ \df_2 - \df_1  } \bigg/
+F & = \frac{ \RSS_1 - \RSS_2 }{ \df_1 - \df_2  } \bigg/
       \frac{ \RSS_2 }{ \df_2 }   \\[20pt]
   & = \frac{ \TSS (R^2_2 - R^2_1) }{\TSS (1 - R^2_2 )}  \, \cdot \,  \frac{n-p}{p-k} \\[20pt]
   & = \frac{ R^2_2 - R^2_1 }{1 - R^2_2}  \, \cdot \,  \frac{n-p}{p-k}
@@ -2917,7 +2917,7 @@ $$
 
 \begin{align*}
 H_0 \colon & \, \beta_{k+1} = \beta_{k+2} = \ldots  = \beta_p \\[5pt]
-H_1 \colon & \, \text{At least one of the above } \beta_i \text{ is non-zero}
+H_1 \colon & \, \text{ At least one among } \beta_{k+1}, \ldots, \beta_p \text{ is non-zero}
 \end{align*}
 
 - $H_0$ is in favor of Model 1
@@ -3009,11 +3009,11 @@ head(longley,n=3)
 
 **Previously:** Using t-test for parameters significance we showed that
 
-- $X_2$ and $X_3$ do not affect $Y$
+- $X_2$ and $X_5$ do not affect $Y$
 - $X_3$ and $X_4$ negatively affect $Y$
 - $X_6$ positively affects $Y$
 
-**Question:** Since $X_2$ and $X_3$ do not affect $Y$, can we exclude them from the model?
+**Question:** Since $X_2$ and $X_5$ do not affect $Y$, can we exclude them from the model?
 
 
 ## Two competing models {.smaller}
@@ -3508,7 +3508,7 @@ Multiple R-squared:  0.9994,	Adjusted R-squared:  0.9987
 ```
 
 
-- The coefficient of correlation is $R^2 = 0.9987$
+- The coefficient of correlation is $R^2 = 0.9994$
 - This is higher than the score of quadratic model $R^2 = 0.9903$
 - What is going on?
 
@@ -3619,7 +3619,7 @@ Multiple R-squared:  0.9998,	Adjusted R-squared:  0.9995
 ```
 
 - We obtain a coefficient $R^2 = 0.9998$
-- This is even higher than cubic model coefficient $R^2 = 0.9987$
+- This is even higher than cubic model coefficient $R^2 = 0.R^2 = 0.9994$
 - Is the quartic model actually better?
 
 
