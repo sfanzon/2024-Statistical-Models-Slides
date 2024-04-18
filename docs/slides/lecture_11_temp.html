@@ -12,6 +12,8 @@
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.542">
 
+  <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
+  <meta name="author" content="Dr.&nbsp;John Fry">
   <title>Statistical Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -32,6 +34,22 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -323,67 +341,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
   .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -391,7 +349,67 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -401,22 +419,184 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Statistical Models</h1>
+  <p class="subtitle">Lecture 11</p>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.silviofanzon.com">Dr.&nbsp;Silvio Fanzon</a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:S.Fanzon@hull.ac.uk">S.Fanzon@hull.ac.uk</a>
+</div>
+        <p class="quarto-title-affiliation">
+            University of Hull
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.hull.ac.uk/staff-directory/john-fry">Dr.&nbsp;John Fry</a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:J.M.Fry@hull.ac.uk">J.M.Fry@hull.ac.uk</a>
+</div>
+        <p class="quarto-title-affiliation">
+            University of Hull
+          </p>
+    </div>
+</div>
 
-<p><a href="#/Definition*-3.1"><strong>Definition</strong></a></p>
-<p><a href="#/Definition*-3.2"><strong>Definition</strong></a></p>
-<p><a href="#/Definition*-3.3"><strong>Definition</strong></a></p>
-<p><a href="#/Theorem*-3.4"><strong>Theorem</strong></a></p>
-<p><a href="#/Definition*-6.1"><strong>Definition</strong></a></p>
-<p><a href="#/Theorem*-6.2"><strong>Theorem</strong></a></p>
+</section>
+<section>
+<section id="part-2-autocorrelation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Autocorrelation</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="autocorrelation" class="slide level2 smaller">
+<h2>Autocorrelation</h2>
+<ul>
+<li>The general linear regression model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>Consider Assumption 5
+<ul>
+<li><strong>Independence:</strong> Errors <span class="math inline">\varepsilon_1, \ldots, \varepsilon_n</span> are independent and thus uncorrelated <span class="math display">
+  {\rm Cor}(\varepsilon_i , \varepsilon_j) = 0 \qquad \forall \,\, i \neq j
+  </span></li>
+</ul></li>
+<li><strong>Autocorrelation:</strong> The violation of Assumption 5</li>
+</ul>
+<p><span class="math display">
+{\rm Cor}(\varepsilon_i , \varepsilon_j) = 0 \qquad \text{ for some } \,\, i \neq j
+</span></p>
+</section>
+<section id="why-is-independence-important" class="slide level2 smaller">
+<h2>Why is independence important?</h2>
+<ul>
+<li><p>Recall the methods to assess linear models</p>
+<ul>
+<li>Coefficient <span class="math inline">R^2</span></li>
+<li><span class="math inline">t</span>-tests for parameters significance</li>
+<li><span class="math inline">F</span>-test for model selection</li>
+</ul></li>
+<li><p>The above methods <strong>rely heavily</strong> on independence</p></li>
+</ul>
+</section>
+<section id="why-is-independence-important-1" class="slide level2 smaller">
+<h2>Why is independence important?</h2>
+<ul>
+<li><p>Once again let us consider the likelihood calculation <span class="math display">\begin{align*}
+  L &amp; = f(y_1, \ldots, y_n) =  \prod_{i=1}^n  f_{Y_i} (y_i)  
+       \\[15pts]
+    &amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \hat y_i)^2}{2\sigma^2}      \right) \\[15pts]
+    &amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathrm{RSS}}}{2\sigma^2}      \right)
+  \end{align*}</span></p></li>
+<li><p>The second equality is only possible thanks to independence of</p></li>
+</ul>
+<p><span class="math display">
+Y_1 , \ldots, Y_n
+</span></p>
+</section>
+<section id="why-is-independence-important-2" class="slide level2 smaller">
+<h2>Why is independence important?</h2>
+<ul>
+<li>If we have <strong>autocorrelation</strong> then</li>
+</ul>
+<p><span class="math display">
+{\rm Cor}(\varepsilon_i,\varepsilon_j) \neq 0 \quad \text{ for some } \, i \neq j
+</span></p>
+<ul>
+<li>In particualar we would have</li>
+</ul>
+<p><span class="math display">
+\varepsilon_i \, \text{ and } \, \varepsilon_j \, \text{ dependent } \quad \implies \quad Y_i \, \text{ and } \, Y_j \, \text{ dependent }
+</span></p>
+<ul>
+<li>Therefore the calculation in previous slide breaks down</li>
+</ul>
+<p><span class="math display">
+L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathrm{RSS}}}{2\sigma^2}      \right)
+</span></p>
+</section>
+<section id="why-is-independence-important-3" class="slide level2 smaller">
+<h2>Why is independence important?</h2>
+<ul>
+<li><p>In this case <span class="math inline">\hat \beta</span> does no longer maximize the likelihood!</p></li>
+<li><p>As already seen, this implies that</p></li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{e.s.e.}}(\beta_j) \,\, \text{ is unreliable}
+</span></p>
+<ul>
+<li><strong>Without independence the regression maths does not work!</strong>
+<ul>
+<li>t-tests for significance of <span class="math inline">\beta_j</span></li>
+<li>confidence intervals for <span class="math inline">\beta_j</span></li>
+<li><span class="math inline">F</span>-tests for model selection</li>
+<li>They all break down and become unreliable!</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-nature-of-autocorrelation" class="slide level2 smaller">
+<h2>The nature of Autocorrelation</h2>
+<ul>
+<li>Autocorrelation means that</li>
+</ul>
+<p><span class="math display">
+{\rm Cor}(\varepsilon_i,\varepsilon_j) \neq 0 \quad \text{ for some } \, i \neq j
+</span></p>
+<ul>
+<li><p>Autocorrelation if often unavoidable</p></li>
+<li><p>Typically associated with <strong>time series data</strong></p>
+<ul>
+<li>Observations ordered wrt time or space are usually correlated</li>
+<li>This is because observations taken close together may take similar values</li>
+</ul></li>
+</ul>
+</section>
+<section id="datasets-prone-to-autocorrelation" class="slide level2 smaller">
+<h2>Datasets prone to Autocorrelation</h2>
+<ul>
+<li>Autocorrelation is especially likely for datasets in
+<ul>
+<li>Accounting</li>
+<li>Finance</li>
+<li>Economics</li>
+</ul></li>
+<li>Autocorrelation is likely if the data have been recorded over time
+<ul>
+<li>E.g. daily, weekly, monthly, quarterly, yearly</li>
+</ul></li>
+<li>Example:</li>
+</ul>
+</section></section>
+<section>
+<section id="part-3-multicollinearity" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Multicollinearity</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="tba" class="slide level2 smaller">
+<h2>TBA</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="../index.html">Homepage</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../license.html">License</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.silviofanzon.com/contact">Contact</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

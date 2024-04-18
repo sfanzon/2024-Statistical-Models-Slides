@@ -101,7 +101,7 @@ $$
 \Var[Y_i] = \sigma^2
 $$
 
-5. **Independence:** rv $Y_1 , \ldots , Y_n$ are independent and therefore uncorrelated
+5. **Independence:** rv $Y_1 , \ldots , Y_n$ are independent and thus uncorrelated
 
 $$
 \Cor (Y_i,Y_j) = 0 \qquad \forall \,\, i \neq j
@@ -126,7 +126,7 @@ $$
 \Var[\e_i] = \sigma^2
 $$
 
-5. **Independence:** Errors $\e_1 , \ldots , \e_n$ are independent and therefore uncorrelated
+5. **Independence:** Errors $\e_1 , \ldots , \e_n$ are independent and thus uncorrelated
 
 $$
 \Cor (\e_i, \e_j) = 0 \qquad \forall \,\, i \neq j
@@ -202,13 +202,13 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \e_i
 $$
 
 
-- We now consider the violation of Assumption 4
+- Consider Assumption 4
     * **Homoscedasticity:** There is a parameter $\sigma^2$ such that
     $$
     \Var[\e_i] = \sigma^2 \qquad \forall \,\, i
     $$
 
-- If Assumption 4 is violated we have **heteroscedasticity**
+- **Heteroscedasticity:** The violation of Assumption 4
 
 $$
 \Var [\e_i] \neq \Var[\e_j] \qquad \text{ for some } \,\, i \neq j
@@ -225,7 +225,7 @@ $$
     * $t$-tests for parameters significance
     * $F$-test for model selection
 
-- The above methods however **rely heavily** on homoscedasticity
+- The above methods **rely heavily** on homoscedasticity
 
 
 
@@ -974,7 +974,7 @@ log.fitted <- log.model$fitted
 
 # {.smaller}
 
-- Heteroscedasticity has definitely improved
+- Heteroscedasticity has definitely reduced
     * Left: Residual plot for original model
     * Right: Residual plot for $\log y$ data model
 
@@ -1068,7 +1068,7 @@ abline(0, 0, col = "red", lwd = 3)
 
 # {.smaller}
 
-- Heteroscedasticity has definitely improved
+- Heteroscedasticity has definitely reduced
     * Left: Histogram of residuals for original model
     * Right: Histogram of residuals for $\log y$ data model
 
@@ -1151,33 +1151,6 @@ mtext("Frequency", side = 2, line = 2.5, cex = 2.5)
 
 :::
 :::::
-
-
-
-
-# Part 2: <br>Autocorrelation {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-## TBA {.smaller}
-
-
-
-# Part 3: <br>Multicollinearity {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-## TBA {.smaller}
 
 
 

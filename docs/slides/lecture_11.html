@@ -426,47 +426,31 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Theorem {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
+  .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -474,17 +458,33 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Definition {
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Conjecture {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Corollary {
     --color1: #f4cce0;
@@ -494,7 +494,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Idea {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -594,7 +594,7 @@ Y | Z_1 = z_{i1} \,, \,\, \ldots \,, \,\, Z_p = z_{ip}
 <li><p><strong>Homoscedasticity:</strong> There is a parameter <span class="math inline">\sigma^2</span> such that <span class="math display">
 {\rm Var}[Y_i] = \sigma^2
 </span></p></li>
-<li><p><strong>Independence:</strong> rv <span class="math inline">Y_1 , \ldots , Y_n</span> are independent and therefore uncorrelated</p></li>
+<li><p><strong>Independence:</strong> rv <span class="math inline">Y_1 , \ldots , Y_n</span> are independent and thus uncorrelated</p></li>
 </ol>
 <p><span class="math display">
 {\rm Cor}(Y_i,Y_j) = 0 \qquad \forall \,\, i \neq j
@@ -611,7 +611,7 @@ Y | Z_1 = z_{i1} \,, \,\, \ldots \,, \,\, Z_p = z_{ip}
 <li><p><strong>Homoscedasticity:</strong> There is a parameter <span class="math inline">\sigma^2</span> such that <span class="math display">
 {\rm Var}[\varepsilon_i] = \sigma^2
 </span></p></li>
-<li><p><strong>Independence:</strong> Errors <span class="math inline">\varepsilon_1 , \ldots , \varepsilon_n</span> are independent and therefore uncorrelated</p></li>
+<li><p><strong>Independence:</strong> Errors <span class="math inline">\varepsilon_1 , \ldots , \varepsilon_n</span> are independent and thus uncorrelated</p></li>
 </ol>
 <p><span class="math display">
 {\rm Cor}(\varepsilon_i, \varepsilon_j) = 0 \qquad \forall \,\, i \neq j
@@ -678,13 +678,13 @@ Z^T Z
 Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 </span></p>
 <ul>
-<li>We now consider the violation of Assumption 4
+<li>Consider Assumption 4
 <ul>
 <li><strong>Homoscedasticity:</strong> There is a parameter <span class="math inline">\sigma^2</span> such that <span class="math display">
   {\rm Var}[\varepsilon_i] = \sigma^2 \qquad \forall \,\, i
   </span></li>
 </ul></li>
-<li>If Assumption 4 is violated we have <strong>heteroscedasticity</strong></li>
+<li><strong>Heteroscedasticity:</strong> The violation of Assumption 4</li>
 </ul>
 <p><span class="math display">
 {\rm Var}[\varepsilon_i] \neq {\rm Var}[\varepsilon_j] \qquad \text{ for some } \,\, i \neq j
@@ -699,7 +699,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 <li><span class="math inline">t</span>-tests for parameters significance</li>
 <li><span class="math inline">F</span>-test for model selection</li>
 </ul></li>
-<li><p>The above methods however <strong>rely heavily</strong> on homoscedasticity</p></li>
+<li><p>The above methods <strong>rely heavily</strong> on homoscedasticity</p></li>
 </ul>
 </section>
 <section id="why-is-homoscedasticity-important-1" class="slide level2 smaller">
@@ -1213,7 +1213,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 <section id="section-4" class="title-slide slide level1 smaller center">
 <h1></h1>
 <ul>
-<li>Heteroscedasticity has definitely improved
+<li>Heteroscedasticity has definitely reduced
 <ul>
 <li>Left: Residual plot for original model</li>
 <li>Right: Residual plot for <span class="math inline">\log y</span> data model</li>
@@ -1244,10 +1244,11 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </section>
 
+<section>
 <section id="section-5" class="title-slide slide level1 smaller center">
 <h1></h1>
 <ul>
-<li>Heteroscedasticity has definitely improved
+<li>Heteroscedasticity has definitely reduced
 <ul>
 <li>Left: Histogram of residuals for original model</li>
 <li>Right: Histogram of residuals for <span class="math inline">\log y</span> data model</li>
@@ -1276,31 +1277,6 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</section>
-
-<section>
-<section id="part-2-autocorrelation" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 2: <br>Autocorrelation</h1>
-<div class="footer">
-<div color="#cc0164">
-
-</div>
-</div>
-</section>
-<section id="tba" class="slide level2 smaller">
-<h2>TBA</h2>
-</section></section>
-<section>
-<section id="part-3-multicollinearity" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 3: <br>Multicollinearity</h1>
-<div class="footer">
-<div color="#cc0164">
-
-</div>
-</div>
-</section>
-<section id="tba-1" class="slide level2 smaller">
-<h2>TBA</h2>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

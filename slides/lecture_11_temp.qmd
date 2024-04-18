@@ -1,0 +1,179 @@
+---
+title: "Statistical Models"
+subtitle: "Lecture 11"
+from: markdown+emoji
+author: 
+    - name: Dr. Silvio Fanzon
+      id: sf
+      email: S.Fanzon@hull.ac.uk
+      url: https://www.silviofanzon.com
+      affiliations: University of Hull
+    - name: Dr. John Fry
+      id: jf
+      email: J.M.Fry@hull.ac.uk
+      url: https://www.hull.ac.uk/staff-directory/john-fry
+      affiliations: University of Hull
+---
+
+
+
+::: {.content-hidden}
+$
+{{< include macros.tex >}}
+$
+:::
+
+
+
+
+# Part 2: <br>Autocorrelation {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## Autocorrelation {.smaller}
+
+- The general linear regression model is 
+
+$$
+Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \e_i
+$$
+
+
+- Consider Assumption 5
+    * **Independence:** Errors $\e_1, \ldots, \e_n$ are independent and thus uncorrelated
+    $$
+    \Cor(\e_i , \e_j) = 0 \qquad \forall \,\, i \neq j
+    $$
+
+- **Autocorrelation:** The violation of Assumption 5
+
+$$
+\Cor(\e_i , \e_j) = 0 \qquad \text{ for some } \,\, i \neq j
+$$
+
+
+
+
+## Why is independence important? {.smaller}
+
+- Recall the methods to assess linear models 
+
+    * Coefficient $R^2$
+    * $t$-tests for parameters significance
+    * $F$-test for model selection
+
+- The above methods **rely heavily** on independence
+
+
+
+## Why is independence important? {.smaller}
+
+- Once again let us consider the likelihood calculation
+    \begin{align*}
+    L & = f(y_1, \ldots, y_n) =  \prod_{i=1}^n  f_{Y_i} (y_i)  
+         \\[15pts]
+      & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \hat y_i)^2}{2\sigma^2}      \right) \\[15pts]
+      & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \RSS }{2\sigma^2}      \right)
+    \end{align*}
+
+
+- The second equality is only possible thanks to independence of 
+
+$$
+Y_1 , \ldots, Y_n
+$$
+
+
+
+## Why is independence important? {.smaller}
+
+- If we have **autocorrelation** then
+
+$$
+\Cor (\e_i,\e_j) \neq 0 \quad \text{ for some } \, i \neq j
+$$
+
+- In particualar we would have
+
+$$
+\e_i \, \text{ and } \, \e_j \, \text{ dependent } \quad \implies \quad Y_i \, \text{ and } \, Y_j \, \text{ dependent }
+$$
+
+
+- Therefore the calculation in previous slide breaks down
+
+$$
+L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \RSS }{2\sigma^2}      \right)
+$$
+
+
+
+## Why is independence important? {.smaller}
+
+
+- In this case $\hat \beta$ does no longer maximize the likelihood!
+
+- As already seen, this implies that 
+
+$$
+\ese (\beta_j) \,\, \text{ is unreliable}
+$$
+
+- **Without independence the regression maths does not work!**
+    * t-tests for significance of $\beta_j$
+    * confidence intervals for $\beta_j$
+    * $F$-tests for model selection
+    * They all break down and become unreliable!
+
+
+
+
+## The nature of Autocorrelation {.smaller}
+
+- Autocorrelation means that
+
+$$
+\Cor (\e_i,\e_j) \neq 0 \quad \text{ for some } \, i \neq j
+$$
+
+- Autocorrelation if often unavoidable
+
+- Typically associated with **time series data**
+    * Observations ordered wrt time or space are usually correlated
+    * This is because observations taken close together may take similar values
+
+
+## Datasets prone to Autocorrelation {.smaller}
+
+- Autocorrelation is especially likely for datasets in 
+    * Accounting
+    * Finance
+    * Economics
+
+- Autocorrelation is likely if the data have been recorded over time
+    * E.g. daily, weekly, monthly, quarterly, yearly
+
+- Example: 
+
+
+
+
+# Part 3: <br>Multicollinearity {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+## TBA {.smaller}
+
+
