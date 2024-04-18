@@ -3619,7 +3619,7 @@ Multiple R-squared:  0.9998,	Adjusted R-squared:  0.9995
 ```
 
 - We obtain a coefficient $R^2 = 0.9998$
-- This is even higher than cubic model coefficient $R^2 = 0.R^2 = 0.9994$
+- This is even higher than cubic model coefficient $R^2 =  0.9994$
 - Is the quartic model actually better?
 
 

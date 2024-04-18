@@ -26,501 +26,6 @@ $
 
 
 
-# Part 2: <br>Autocorrelation {background-color="#cc0164" visibility="uncounted"}
-
-::: footer
-
-<div color="#cc0164">  </div>
-
-:::
-
-
-
-
-## Autocorrelation {.smaller}
-
-- The general linear regression model is 
-
-$$
-Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \e_i
-$$
-
-
-- Consider Assumption 5
-    * **Independence:** Errors $\e_1, \ldots, \e_n$ are independent and thus uncorrelated
-    $$
-    \Cor(\e_i , \e_j) = 0 \qquad \forall \,\, i \neq j
-    $$
-
-- **Autocorrelation:** The violation of Assumption 5
-
-$$
-\Cor(\e_i , \e_j) = 0 \qquad \text{ for some } \,\, i \neq j
-$$
-
-
-
-
-## Why is independence important? {.smaller}
-
-- Recall the methods to assess linear models 
-
-    * Coefficient $R^2$
-    * $t$-tests for parameters significance
-    * $F$-test for model selection
-
-- The above methods **rely heavily** on independence
-
-
-
-## Why is independence important? {.smaller}
-
-- Once again let us consider the likelihood calculation
-    \begin{align*}
-    L & = f(y_1, \ldots, y_n) =  \prod_{i=1}^n  f_{Y_i} (y_i)  
-         \\[15pts]
-      & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{\sum_{i=1}^n(y_i- \hat y_i)^2}{2\sigma^2}      \right) \\[15pts]
-      & = \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \RSS }{2\sigma^2}      \right)
-    \end{align*}
-
-
-- The second equality is only possible thanks to independence of 
-
-$$
-Y_1 , \ldots, Y_n
-$$
-
-
-
-## Why is independence important? {.smaller}
-
-- If we have **autocorrelation** then
-
-$$
-\Cor (\e_i,\e_j) \neq 0 \quad \text{ for some } \, i \neq j
-$$
-
-- In particualar we would have
-
-$$
-\e_i \, \text{ and } \, \e_j \, \text{ dependent } \quad \implies \quad Y_i \, \text{ and } \, Y_j \, \text{ dependent }
-$$
-
-
-- Therefore the calculation in previous slide breaks down
-
-$$
-L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \RSS }{2\sigma^2}      \right)
-$$
-
-
-
-## Why is independence important? {.smaller}
-
-- In this case $\hat \beta$ does no longer maximize the likelihood!
-
-- As already seen, this implies that 
-
-$$
-\ese (\beta_j) \,\, \text{ is unreliable}
-$$
-
-- **Without independence the regression maths does not work!**
-    * t-tests for significance of $\beta_j$
-    * confidence intervals for $\beta_j$
-    * $F$-tests for model selection
-    * They all break down and become unreliable!
-
-
-
-
-## Causes of Autocorrelation {.smaller}
-### Time-series data
-
-- Autocorrelation means that
-
-$$
-\Cor (\e_i,\e_j) \neq 0 \quad \text{ for some } \, i \neq j
-$$
-
-- Autocorrelation if often unavoidable
-
-- Typically associated with **time series data**
-    * Observations ordered wrt time or space are usually correlated
-    * This is because observations taken close together may take similar values
-
-
-## Causes of Autocorrelation {.smaller}
-### Financial data
-
-- Autocorrelation is especially likely for datasets in 
-    * Accounting
-    * Finance
-    * Economics
-
-- Autocorrelation is likely if the data have been recorded over time
-    * E.g. daily, weekly, monthly, quarterly, yearly
-
-- Example: Datasetet on *Stock prices* and *Gold prices*
-    * General linear regression model assumes uncorrelated errors
-    * Not realistic to assume that price observations for say 2020 and 2021 would be independent
-
-
-## Causes of Autocorrelation  {.smaller}
-### Inertia
-
-- Economic time series tend to exhibit **cyclical behaviour**
-
-- Examples include GNP, price indices, production figures, employment statistics etc.
-
-- Since these series tend to be quite slow moving
-    * Effect of inertia is that successive observations are highly correlated
-
-**This is an extremely common phenomenon in financial and economic time series**
-
-
-## Causes of Autocorrelation  {.smaller}
-### Cobweb Phenomenon
-
-- Characteristic of industries in which a large amount of time passes between
-    * the decision to produce something 
-    * and its arrival on the market
-
-- Cobweb phenomenon is common with agricultural commodities
-
-- Economic agents (e.g. farmers) decide
-    * how many goods to supply to the market
-    * based on previous year price 
-
-
-## Causes of Autocorrelation  {.smaller}
-### Cobweb Phenomenon
-
-- **Example:** the amount of crops farmers supply to the market at time $t$ might be
-
-\begin{equation} \tag{3}
-{\rm Supply}_t = \beta_1 + \beta_2 \, {\rm Price}_{t-1} + \e_t
-\end{equation}
-
-- Errors $\e_t$ in equation (3) are unlikely to be completely random and patternless
-
-- This is because they represent actions of intelligent economic agents (e.g. farmers)
-
-**Error terms are likely to be autocorrelated**
-
-
-
-## Causes of Autocorrelation  {.smaller}
-### Data manipulation
-
-
-**Examples:** 
-
-- Quarterly data may smooth out the wild fluctuations in monthly sales figures
-
-- Low frequency economic survey data may be interpolated
-
-**However:** Such data transformations may be inevitable
-
-- In social sciences data quality may be variable
-
-- This may induce systematic patterns and autocorrelation
-    
-
-**No magic solution -- Autocorrelation is unavoidable and must be considered**
-
-
-
-
-## Detection of autocorrelation {.smaller}
-
-- Statistical tests
-    * Runs test
-    * Durbin-Watson test
-
-- Graphical methods
-    * Simpler but can be more robust and more informative
-
-**Graphical and statistical methods can be useful cross-check of each other!**
-
-
-
-
-## Graphical tests for autocorrelation {.smaller}
-
-
-- Time-series plot of residuals
-    * Plot residuals $e_t$ over time
-    * Check to see if any evidence of a systematic pattern exists
-
-- Autocorrelation plot of residuals
-    * Natural to think that $\e_t$ and $\e_{t-1}$ may be correlated
-    * Plot residual $e_t$ against $e_{t-1}$
-
-
-- Important:
-    * No Autocorrelation: Plots will look **random**
-    * Yes Autocorrelation: Plots will show certain **patterns**
-
-
-
-## Graphical tests in R {.smaller}
-
-- Code for this example is available here [autocorrelation_graph_tests.R](codes/autocorrelation_graph_tests.R)
-
-- Stock Vs Gold prices data is available here [stock_gold.txt](datasets/stock_gold.txt)
-
-- Read data into R and fit simple regression
-
-```r
-# Load dataset
-prices <- read.table(file = "stock_gold.txt",
-                    header = TRUE)
-
-# Store data-frame into 2 vectors
-stock.price <- prices[ , 1]
-gold.price <- prices[ , 2]
-
-# Fit regression model
-model <- lm(gold.price ~ stock.price)
-```
-
-
-
-
-##  {.smaller}
-
-- **Time-series plot of residuals**
-    * Time series plot suggests some evidence for autocorrelation
-    * Look for successive runs of residuals either side of line $y = 0 \,$ (see $t = 15$)
-
-
-
-::::: {.columns style='display: flex !important; height: 60%;'}
-
-::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
-
-```r
-# Compute residuals
-residuals <- model$resid
-
-# Time-series plot of residuals
-plot(residuals,
-     xlab = "Time", 
-     ylab = "Residuals",
-     pch = 16,
-     cex = 1.5)
-
-# Add line y = 0 for reference
-abline(0, 0, col = "red", lwd = 3)
-```
-
-:::
-
-::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
-
-```{r}
-#| echo: false
-#| fig-asp: 1
-
-# Read the data
-prices <- read.table(file = "datasets/stock_gold.txt",
-                   header = TRUE
-                  )
-
-stock.price <- prices$stock_price
-gold.price <- prices$gold_price
-
-# Fit regression model
-model <- lm(gold.price ~ stock.price)
-
-# Compute residuals
-residuals <- model$resid
-
-# Time-series plot of residuals
-plot(residuals, 
-     xlab = "", 
-     ylab= "",
-     pch = 16,
-     cex = 1.5)
-
-# Add labels
-mtext("Time", side=1, line=3, cex=2.1)
-mtext("Residuals", side=2, line=2.5, cex=2.1)
-
-# Add line y = 0 for reference
-abline(0, 0, col = "red", lwd = 3)
-```
-
-:::
-:::::
-
-
-
-
-## {.smaller}
-
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="27%" style='display: flex; align-items: center;'}
-
-- **Autocorrelation plot of residuals**
-    * Want to plot $e_t$ against $e_{t-1}$
-    * Shift $e_t$ by 1 to get $e_{t-1}$
-    * Can only plot magenta pairs
-    * We have 1 pair less than number of residuals
-
-
-:::
-
-::: {.column width="72%" style='display: flex; justify-content: center; align-items: center;'}
-
-![](images/shifted_vectors.png){width=110%}
-![](images/shifted_vectors_2.png){width=110%}
-
-:::
-:::::
-
-
-
-
-
-##  {.smaller}
-
-
-- We want to plot $e_t$ against $e_{t-1}$
-    * Residuals are stored in vector $\,\, \texttt{residuals}$
-    * We need to create a shifted version of $\,\, \texttt{residuals}$
-    * First compute the length of $\,\, \texttt{residuals}$
-
-```r
-# Compute length of residuals
-length(residuals)
-```
-```{r}
-# Read the data
-prices <- read.table(file = "datasets/stock_gold.txt",
-                   header = TRUE
-                  )
-
-stock.price <- prices$stock_price
-gold.price <- prices$gold_price
-
-# Fit regression model
-model <- lm(gold.price ~ stock.price)
-
-# Compute residuals
-residuals <- model$resid
-
-# Compute length of residuals
-length(residuals)
-```
-
-
-- Need to generate the $33-1$ pairs for plotting
-
-
-##  {.smaller}
-
-
-- **Lag 0:** 
-    * This is the original vector with no lag
-    * Lose one observation from $\,\, \texttt{residuals}$ -- the first observation
-
-```r 
-residuals.lag.0 <- residuals[2:33]
-```
-
-
-- **Lag 1:** 
-    * This is the original vector shifted by 1
-    * Lose one observation from $\,\, \texttt{residuals}$ -- the last observation
-
-```r 
-residuals.lag.1 <- residuals[1:32]
-```
-
-
-
-##  {.smaller}
-
-- **Autocorrelation plot of residuals**
-    * Plot suggests positive autocorrelation of residuals
-    * This means $\, e_t \, \approx \, \alpha + \beta \, \e_{t-1} \,$ with $\beta > 0$ 
-    
-
-::::: {.columns style='display: flex !important; height: 60%;'}
-
-::: {.column width="38%" style='display: flex; justify-content: center; align-items: center;'}
-
-```r
-# Plot Lag0 Vs Lag1 residuals
-
-plot(residuals.lag.0, 
-     residuals.lag.1,
-     xlab = "Residuals Lag 0", 
-     ylab = "Residuals Lag 1",
-     pch = 16,
-     cex = 1.5)
-```
-
-:::
-
-::: {.column width="61%" style='display: flex; justify-content: center; align-items: center;'}
-
-```{r}
-#| echo: false
-#| fig-asp: 1
-
-# Read the data
-prices <- read.table(file = "datasets/stock_gold.txt",
-                   header = TRUE
-                  )
-
-stock.price <- prices$stock_price
-gold.price <- prices$gold_price
-
-# Fit regression model
-model <- lm(gold.price ~ stock.price)
-
-# Compute residuals
-residuals <- model$resid
-
-# Generate lagged version of residuals
-residuals.lag.0 <- residuals[2:33]
-residuals.lag.1 <-residuals[1:32]
-
-# Plot Lag0 Vs Lag1 residuals
-plot(residuals.lag.0, 
-     residuals.lag.1,
-     xlab = "", 
-     ylab= "",
-     pch = 16,
-     cex = 1.5)
-
-# Add labels
-mtext("Residuals Lag 0", side=1, line=3, cex=2.1)
-mtext("Residuals Lag 1", side=2, line=2.5, cex=2.1)
-```
-
-:::
-:::::
-
-
-
-
-
-## Statistical tests for Autocorrelation {.smaller}
-
-- Runs test
-    * Under the classical multiple linear regression model residuals are equally likely to be positive or negative
-
-- Durbin-Watson test
-    * Test to see if residuals are AR(1)
- 
-
-
 
 
 
@@ -537,6 +42,331 @@ mtext("Residuals Lag 1", side=2, line=2.5, cex=2.1)
 :::
 
 
-## TBA {.smaller}
+
+
+
+
+
+## Multicollinearity {.smaller}
+
+- The general linear regression model is 
+
+$$
+Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \e_i
+$$
+
+
+- Consider Assumption 6
+    * The design matrix $Z$ is such that
+    $$
+    Z^T Z  \, \text{ is invertible}
+    $$
+
+- **Multicollinearity:** The violation of Assumption 6
+
+$$
+\det(Z^T Z ) \, \approx  \, 0  \, \quad \implies \quad Z^T Z \, \text{ is (almost) not invertible}
+$$
+
+
+
+
+## The nature of Multicollinearity {.smaller}
+
+$$ 
+\text{Multicollinearity = multiple (linear) relationships between the X-variables}
+$$
+
+
+- Multicollinearity arises when there is either 
+    * **exact** linear relationship amongst the $X$-variables
+    * **approximate** linear relationship amongst the $X$-variables
+
+<br>
+
+**$X$-variables *inter-related*** $\quad \implies \quad$ **hard to isolate individual influence on $Y$**
+
+
+
+## Example of Multicollinear data {.smaller}
+
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Perfect collinearity for $Z_1$ and $Z_2$
+    * because of exact linear relation
+    $$
+    Z_2 = 5 Z_1
+    $$
+
+- No perfect collinearity for $Z_1$ and $Z_3$
+
+- But $Z_3$ is small perturbation of $Z_2$
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+## Example of Multicollinear data {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+- Approximate collinearity for $Z_1, Z_3$
+    * Correlation between $Z_1$ and $Z_3$ is almost $1$
+    * There is approximate linear relation between $Z_1$ and $Z_3$
+    $$
+    Z_3 \, \approx \, 5 Z_1
+    $$
+
+- **Both instances qualify as multicollinearity**
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+
+## Example of Multicollinear data {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+```{r}
+#| echo: true
+
+# Enter the data
+Z1 <- c(10, 15, 18, 24, 30)
+Z3 <- c(52, 75, 97, 129, 152)
+
+# Compute correlation
+cor(Z1, Z3)
+```
+
+
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+## Consequences of Multicollinearity {.smaller}
+
+- Therefore multicollinearity means that
+    * Predictors $Z_j$ are (approximately) linearly dependent
+    * E.g. one can be written as (approximate) linear combination of the others
+
+
+- Recall that the design matrix is
+
+$$
+Z
+= 
+\left( 
+\begin{array}{cccc}
+z_{11}  & z_{12} & \ldots & z_{ip} \\
+z_{21}  & z_{22} & \ldots & z_{2p} \\
+\ldots  & \ldots & \ldots & \ldots \\
+z_{n1}  & z_{n2} & \ldots & z_{np} \\
+\end{array}
+\right)
+$$
+
+- Note that $Z$ has $p$ columns
+
+
+
+## Consequences of Multicollinearity {.smaller}
+
+- If at least one pair $Z_i$ and $Z_j$ is collinear (linearly dependent) then
+
+$$
+{\rm rank} (Z) < p
+$$
+
+
+- Hence 
+
+$$
+{\rm rank} \left(  Z^T Z  \right) < p
+$$
+
+
+- Therefore the matrix 
+
+$$
+Z^T Z \,\, \text{ is NOT invertible} 
+$$
+
+
+
+## Consequences of Multicollinearity {.smaller}
+
+- This means the least-squares estimator is not well defined
+
+$$
+\hat{\beta} = (Z^T Z)^{-1} Z^T y
+$$
+
+
+- In practice one never has exact Multicollinearity
+
+- In case of approximate Multicollinearity it holds that
+    * The matrix $Z^T Z$ can be inverted
+    * The estimator $\hat \beta$ can be computed!
+    * However the inversion is numerically instable
+
+
+## Consequences of Multicollinearity {.smaller}
+
+- Numerically instable means: 
+    * **We may not be able to trust the estimator $\hat \beta$**
+
+
+
+This is because of:
+
+1. Large estimated standard errors
+    - Lack of precision associated with parameter estimtes
+    - Wider confidence intervals
+    - May affect hypothesis tests
+ 
+2. Correlated parameter estimates
+    - Another potential source of errors
+    - Potential numerical problems with computational routines
+    
+
+
+
+## Why are estimated standard errors large?  {.smaller}
+
+- Recall formula of estimated standard error for $\beta_j$
+
+$$
+\ese = \xi_{jj}^{1/2} \, S   \,, \qquad \quad S^2 = \frac{\RSS}{n-p}
+$$
+
+
+- The numbers $\xi_{jj}$ are diagonal entries of $Z^T Z$
+
+- Approximate Multicollinearity implies that
+    * $Z^T Z$ is invertible
+    * The inversion is numerically unstable
+
+
+
+## Why are estimated standard errors large?  {.smaller}
+
+- Numerically unstable inversion means that
+    * Entries of $(Z^T Z)^{-1}$ might be very large
+    * Therefore $\xi_{jj}$ might be very large
+
+
+- As a consequence the estimated standard errors might be very large, since
+
+$$
+\ese = \xi_{jj}^{1/2} S
+$$
+
+- **It becomes harder to reject incorrect hypotheses**
+
+
+
+
+## Effect of Multicollinearity on t-tests {.smaller}
+
+- To test the null hypothesis that $\beta_j = 0$ we use $t$-statistic
+
+$$
+t = \frac{\hat{\beta}_j}{ \ese } 
+$$
+
+- But multicollinearity increases the $\ese$
+
+- Therefore the t-statistic reduces in size:
+    * t-statistic will be smaller than it should
+    * It will be easier to obtain $p < 0.05$
+    * Easier to reject null hypothesis
+
+
+**It becomes harder to reject incorrect hypotheses!**
+
+
+
+
+## Sources of multicollinearity {.smaller}
+
+$\bullet$ \textbf{The data collection method employed}\\
+$\quad$ \textbf{-} Sampling over a limited range of values taken by the regressors in the population\\
+$\bullet$ \textbf{Constraints on the model or population}\\
+$\quad$ \textbf{-} E.g. variables such as income and house size may be interrelated\\
+$\bullet$ \textbf{Model Specification}\\
+$\quad$ \textbf{-} E.g. adding polynomial terms to a model when the range of the $X$-variables is small
+
+}
+
+
+
+
+
+    
 
 
