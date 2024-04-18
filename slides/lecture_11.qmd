@@ -368,11 +368,11 @@ $$
 - They involve studying the model **residuals**
 
 $$
-r_i := y_i - \hat y_i
+e_i := y_i - \hat y_i
 $$
 
 
-- By definition $r_i$ is sampled from $\e_i$
+- By definition $e_i$ is sampled from $\e_i$
 
 - We have heteroscedasticity if 
 
@@ -380,7 +380,7 @@ $$
 \Var [\e_i] \neq \Var [\e_j] \, \quad \, \text{ for some } \, i \neq j
 $$
 
-- This implies the residuals $r_i$ have **different variance**
+- Hence under heteroscedasticity the residuals $e_i$ have **different variance**
 
 
 
@@ -391,14 +391,14 @@ $$
 ## Graphical checks {.smaller}
 ### First method: Histogram of residuals
 
-- If heteroscedasticity is present then: 
+- Yes Heteroscedasticity:
     * Residuals have different variance
-    * Histogram will display asymetric pattern
+    * Histogram will display **asymetric pattern**
 
-- If no heteroscedasticity is present then: 
+- No Heteroscedasticity:
     * Homoscedasticity assumption holds
     * Residuals have same variance
-    * Histogram will look like normal distribution $N(0,\sigma^2)$
+    * Histogram will look like **normal** distribution $N(0,\sigma^2)$
 
 
 
@@ -467,9 +467,12 @@ mtext("Residuals", side=1, line=2.5, cex=2.5)
     * Residuals against fitted values
     * Squared residuals against fitted values
 
-- There are certain common patterns associated with heteroscedasticity
-    * Important to recognize such patterns
-    * More on this in the book [@draper_smith]
+
+- Important:
+    * No Heteroscedasticity: Plots will look **random**
+    * Yes Heteroscedasticity: Plots will show certain **patterns**
+
+- Good reference is the book [@draper_smith]
 
 
 

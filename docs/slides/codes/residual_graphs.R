@@ -28,9 +28,6 @@ xlab = "Residuals",
 ylab = "Frequency",
 col = "skyblue")
 
-# Time-series plot of residuals
-ts.plot(residuals)
-
 # Compute fitted values
 fitted <- model$fitted
 

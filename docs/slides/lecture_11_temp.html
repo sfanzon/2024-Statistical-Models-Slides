@@ -32,6 +32,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
@@ -341,15 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -361,23 +422,7 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
   .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -385,19 +430,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Idea {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -405,11 +446,35 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Conjecture {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -546,8 +611,9 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </ul></li>
 </ul>
 </section>
-<section id="the-nature-of-autocorrelation" class="slide level2 smaller">
-<h2>The nature of Autocorrelation</h2>
+<section id="causes-of-autocorrelation" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="time-series-data">Time-series data</h3>
 <ul>
 <li>Autocorrelation means that</li>
 </ul>
@@ -563,8 +629,9 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </ul></li>
 </ul>
 </section>
-<section id="datasets-prone-to-autocorrelation" class="slide level2 smaller">
-<h2>Datasets prone to Autocorrelation</h2>
+<section id="causes-of-autocorrelation-1" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="financial-data">Financial data</h3>
 <ul>
 <li>Autocorrelation is especially likely for datasets in
 <ul>
@@ -576,8 +643,251 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 <ul>
 <li>E.g. daily, weekly, monthly, quarterly, yearly</li>
 </ul></li>
-<li>Example:</li>
+<li>Example: Datasetet on <em>Stock prices</em> and <em>Gold prices</em>
+<ul>
+<li>General linear regression model assumes uncorrelated errors</li>
+<li>Not realistic to assume that price observations for say 2020 and 2021 would be independent</li>
+</ul></li>
 </ul>
+</section>
+<section id="causes-of-autocorrelation-2" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="inertia">Inertia</h3>
+<ul>
+<li><p>Economic time series tend to exhibit <strong>cyclical behaviour</strong></p></li>
+<li><p>Examples include GNP, price indices, production figures, employment statistics etc.</p></li>
+<li><p>Since these series tend to be quite slow moving</p>
+<ul>
+<li>Effect of inertia is that successive observations are highly correlated</li>
+</ul></li>
+</ul>
+<p><strong>This is an extremely common phenomenon in financial and economic time series</strong></p>
+</section>
+<section id="causes-of-autocorrelation-3" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="cobweb-phenomenon">Cobweb Phenomenon</h3>
+<ul>
+<li><p>Characteristic of industries in which a large amount of time passes between</p>
+<ul>
+<li>the decision to produce something</li>
+<li>and its arrival on the market</li>
+</ul></li>
+<li><p>Cobweb phenomenon is common with agricultural commodities</p></li>
+<li><p>Economic agents (e.g.&nbsp;farmers) decide</p>
+<ul>
+<li>how many goods to supply to the market</li>
+<li>based on previous year price</li>
+</ul></li>
+</ul>
+</section>
+<section id="causes-of-autocorrelation-4" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="cobweb-phenomenon-1">Cobweb Phenomenon</h3>
+<ul>
+<li><strong>Example:</strong> the amount of crops farmers supply to the market at time <span class="math inline">t</span> might be</li>
+</ul>
+<p><span class="math display">\begin{equation} \tag{3}
+{\rm Supply}_t = \beta_1 + \beta_2 \, {\rm Price}_{t-1} + \varepsilon_t
+\end{equation}</span></p>
+<ul>
+<li><p>Errors <span class="math inline">\varepsilon_t</span> in equation (3) are unlikely to be completely random and patternless</p></li>
+<li><p>This is because they represent actions of intelligent economic agents (e.g.&nbsp;farmers)</p></li>
+</ul>
+<p><strong>Error terms are likely to be autocorrelated</strong></p>
+</section>
+<section id="causes-of-autocorrelation-5" class="slide level2 smaller">
+<h2>Causes of Autocorrelation</h2>
+<h3 id="data-manipulation">Data manipulation</h3>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><p>Quarterly data may smooth out the wild fluctuations in monthly sales figures</p></li>
+<li><p>Low frequency economic survey data may be interpolated</p></li>
+</ul>
+<p><strong>However:</strong> Such data transformations may be inevitable</p>
+<ul>
+<li><p>In social sciences data quality may be variable</p></li>
+<li><p>This may induce systematic patterns and autocorrelation</p></li>
+</ul>
+<p><strong>No magic solution – Autocorrelation is unavoidable and must be considered</strong></p>
+</section>
+<section id="detection-of-autocorrelation" class="slide level2 smaller">
+<h2>Detection of autocorrelation</h2>
+<ul>
+<li>Statistical tests
+<ul>
+<li>Runs test</li>
+<li>Durbin-Watson test</li>
+</ul></li>
+<li>Graphical methods
+<ul>
+<li>Simpler but can be more robust and more informative</li>
+</ul></li>
+</ul>
+<p><strong>Graphical and statistical methods can be useful cross-check of each other!</strong></p>
+</section>
+<section id="graphical-tests-for-autocorrelation" class="slide level2 smaller">
+<h2>Graphical tests for autocorrelation</h2>
+<ul>
+<li>Time-series plot of residuals
+<ul>
+<li>Plot residuals <span class="math inline">e_t</span> over time</li>
+<li>Check to see if any evidence of a systematic pattern exists</li>
+</ul></li>
+<li>Autocorrelation plot of residuals
+<ul>
+<li>Natural to think that <span class="math inline">\varepsilon_t</span> and <span class="math inline">\varepsilon_{t-1}</span> may be correlated</li>
+<li>Plot residual <span class="math inline">e_t</span> against <span class="math inline">e_{t-1}</span></li>
+</ul></li>
+<li><strong>Important:</strong>
+<ul>
+<li>No Autocorrelation: Plots will look <strong>random</strong></li>
+<li>Yes Autocorrelation: Plots will show certain <strong>patterns</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="graphical-tests-in-r" class="slide level2 smaller">
+<h2>Graphical tests in R</h2>
+<ul>
+<li><p>Code for this example is available here <a href="codes/autocorrelation_graph_tests.R">autocorrelation_graph_tests.R</a></p></li>
+<li><p>Stock Vs Gold prices data is available here <a href="datasets/stock_gold.txt">stock_gold.txt</a></p></li>
+<li><p>Read data into R and fit simple regression</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>prices <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"stock_gold.txt"</span>,</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store data-frame into 2 vectors</span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>stock.price <span class="ot">&lt;-</span> prices[ , <span class="dv">1</span>]</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>gold.price <span class="ot">&lt;-</span> prices[ , <span class="dv">2</span>]</span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model</span></span>
+<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(gold.price <span class="sc">~</span> stock.price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><strong>Time-series plot of residuals</strong>
+<ul>
+<li>Time series plot suggests some evidence for autocorrelation</li>
+<li>Look for successive runs of residuals either side of line <span class="math inline">y = 0 \,</span> (see <span class="math inline">t = 15</span>)</li>
+</ul></li>
+</ul>
+<div class="columns" style="display: flex !important; height: 60%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute residuals</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> model<span class="sc">$</span>resid</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Time-series plot of residuals</span></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(residuals,</span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time"</span>, </span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Residuals"</span>,</span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add line y = 0 for reference</span></span>
+<span id="cb2-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_temp_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; align-items: center;">
+<ul>
+<li><strong>Autocorrelation plot of residuals</strong>
+<ul>
+<li>Want to plot <span class="math inline">e_t</span> against <span class="math inline">e_{t-1}</span></li>
+<li>Shift <span class="math inline">e_t</span> by 1 to get <span class="math inline">e_{t-1}</span></li>
+<li>Can only plot magenta pairs</li>
+<li>We have 1 pair less than number of residuals</li>
+</ul></li>
+</ul>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<p><img data-src="images/shifted_vectors.png" style="width:110.0%"> <img data-src="images/shifted_vectors_2.png" style="width:110.0%"></p>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>We want to plot <span class="math inline">e_t</span> against <span class="math inline">e_{t-1}</span>
+<ul>
+<li>Residuals are stored in vector <span class="math inline">\,\, \texttt{residuals}</span></li>
+<li>We need to create a shifted version of <span class="math inline">\,\, \texttt{residuals}</span></li>
+<li>First compute the length of <span class="math inline">\,\, \texttt{residuals}</span></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute length of residuals</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33</code></pre>
+</div>
+</div>
+<ul>
+<li>Need to generate the <span class="math inline">33-1</span> pairs for plotting</li>
+</ul>
+</section>
+<section id="section-3" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><strong>Lag 0:</strong>
+<ul>
+<li>This is the original vector with no lag</li>
+<li>Lose one observation from <span class="math inline">\,\, \texttt{residuals}</span> – the first observation</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>residuals.lag<span class="fl">.0</span> <span class="ot">&lt;-</span> residuals[<span class="dv">2</span><span class="sc">:</span><span class="dv">33</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Lag 1:</strong>
+<ul>
+<li>This is the original vector shifted by 1</li>
+<li>Lose one observation from <span class="math inline">\,\, \texttt{residuals}</span> – the last observation</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>residuals.lag<span class="fl">.1</span> <span class="ot">&lt;-</span> residuals[<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><strong>Autocorrelation plot of residuals</strong>
+<ul>
+<li>Plot suggests positive autocorrelation of residuals</li>
+<li>This means <span class="math inline">\, e_t \, \approx \, \alpha + \beta \, \varepsilon_{t-1} \,</span> with <span class="math inline">\beta &gt; 0</span></li>
+</ul></li>
+</ul>
+<div class="columns" style="display: flex !important; height: 60%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Lag0 Vs Lag1 residuals</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(residuals.lag<span class="fl">.0</span>, </span>
+<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a>     residuals.lag<span class="fl">.1</span>,</span>
+<span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Residuals Lag 0"</span>, </span>
+<span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Residuals Lag 1"</span>,</span>
+<span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb7-8"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_temp_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="part-3-multicollinearity" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
@@ -788,6 +1098,44 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
