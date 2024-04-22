@@ -426,39 +426,19 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Axiom {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,15 +446,31 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Idea {
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
   .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,17 +482,21 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Important {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   </style>
 </head>
@@ -550,6 +550,8 @@
 <li>Heteroscedasticity</li>
 <li>Autocorrelation</li>
 <li>Multicollinearity</li>
+<li>Stepwise regression and overfitting</li>
+<li>Dummy variable regression</li>
 </ol>
 </section></section>
 <section>
@@ -1628,7 +1630,7 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 <li><strong>Autocorrelation plot of residuals</strong>
 <ul>
 <li>Plot suggests positive autocorrelation of residuals</li>
-<li>This means <span class="math inline">\, e_t \, \approx \, \alpha + \beta \, \varepsilon_{t-1} \,</span> with <span class="math inline">\beta &gt; 0</span></li>
+<li>This means <span class="math inline">\, e_t \, \approx \, a + b \, e_{t-1} \,</span> with <span class="math inline">b &gt; 0</span></li>
 </ul></li>
 </ul>
 <div class="columns" style="display: flex !important; height: 60%;">
@@ -1657,20 +1659,53 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 <section id="statistical-tests-for-autocorrelation" class="slide level2 smaller">
 <h2>Statistical tests for Autocorrelation</h2>
 <ul>
-<li><p>Runs test</p>
+<li>Runs test
 <ul>
 <li>Under the classical multiple linear regression model residuals are equally likely to be positive or negative</li>
 </ul></li>
-<li><p>Durbin-Watson test</p>
+<li>Durbin-Watson test
 <ul>
 <li>Test to see if residuals are AR(1)</li>
 </ul></li>
-<li><p>We do not cover these</p></li>
-<li><p><strong>What to do in case of autocorrelation?</strong></p>
+<li>We do not cover these</li>
+</ul>
+</section>
+<section id="what-to-do-in-case-of-autocorrelation" class="slide level2 smaller">
+<h2>What to do in case of Autocorrelation?</h2>
 <ul>
-<li>Couple regression with time series analysis (ARIMA models)</li>
-<li>Not covered</li>
-</ul></li>
+<li>Consider the simple regression model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta x_i + \varepsilon_i
+</span></p>
+<ul>
+<li>Suppose that autocorrelation occurs</li>
+</ul>
+<p><span class="math display">
+{\rm Cor}(\varepsilon_i, \varepsilon_j ) \neq 0 \quad \text{ for some } \, i \neq j
+</span></p>
+<ul>
+<li>Also suppose that autocorrelation is linear in nature</li>
+</ul>
+<p><span class="math display">
+e_t \, \approx \, a + b \, e_{t-1} \quad \text{ for some } \,\, a , \, b \in \mathbb{R}
+</span></p>
+<ul>
+<li>This was for example the case of <em>Stock prices</em> Vs <em>Gold prices</em></li>
+</ul>
+</section>
+<section id="what-to-do-in-case-of-autocorrelation-1" class="slide level2 smaller">
+<h2>What to do in case of Autocorrelation?</h2>
+<ul>
+<li><p>In this case the simple linear model is not the right thing to consider</p></li>
+<li><p>The right thing to do is consider <strong>Autoregressive linear models</strong></p></li>
+</ul>
+<p><span class="math display">
+Y_t = \alpha + \beta x_{t} + \varepsilon_t
+</span></p>
+<ul>
+<li><p>These models couple regression with time-series analysis (ARIMA models)</p></li>
+<li><p>Good reference is book by Shumway and Stoffer <span class="citation" data-cites="shumway">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -1687,6 +1722,9 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </div>
 <div id="ref-draper_smith" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div class="csl-right-inline">Draper, N. R., Smith, H., Applied regression analysis, Wiley, 1998.</div>
+</div>
+<div id="ref-shumway" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Shumway, R. H., Stoffer, D. S., Time series analysis and its applications, fourth edition, Springer, 2017.</div>
 </div>
 </div>
 </section></section>

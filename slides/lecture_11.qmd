@@ -35,7 +35,13 @@ $
 :::
 
 
+::: {.content-hidden}
 
+Split this lecture over 2-3 weeks. Make a more
+granular outline for each session. To do it, look 
+at John's slides (Lectures 9-10-11)
+
+:::
 
 
 ## Outline of Lecture 11
@@ -44,6 +50,8 @@ $
 2. Heteroscedasticity
 3. Autocorrelation
 4. Multicollinearity
+5. Stepwise regression and overfitting
+6. Dummy variable regression
 
 
 
@@ -1580,7 +1588,7 @@ residuals.lag.1 <- residuals[1:32]
 
 - **Autocorrelation plot of residuals**
     * Plot suggests positive autocorrelation of residuals
-    * This means $\, e_t \, \approx \, \alpha + \beta \, \e_{t-1} \,$ with $\beta > 0$ 
+    * This means $\, e_t \, \approx \, a + b \, e_{t-1} \,$ with $b > 0$ 
     
 
 ::::: {.columns style='display: flex !important; height: 60%;'}
@@ -1655,9 +1663,45 @@ mtext("Residuals Lag 1", side=2, line=2.5, cex=2.1)
 
 - We do not cover these
 
-- **What to do in case of autocorrelation?**
-    * Couple regression with time series analysis (ARIMA models)
-    * Not covered
+
+## What to do in case of Autocorrelation? {.smaller}
+
+- Consider the simple regression model
+
+$$
+Y_i = \alpha + \beta x_i + \e_i
+$$
+
+- Suppose that autocorrelation occurs
+
+$$
+\Cor (\e_i, \e_j ) \neq 0 \quad \text{ for some } \, i \neq j
+$$
+
+- Also suppose that autocorrelation is linear in nature
+
+$$
+e_t \, \approx \, a + b \, e_{t-1} \quad \text{ for some } \,\, a , \, b \in \R 
+$$
+
+- This was for example the case of *Stock prices* Vs *Gold prices*
+
+
+## What to do in case of Autocorrelation? {.smaller}
+
+- In this case the simple linear model is not the right thing to consider
+
+- The right thing to do is consider **Autoregressive linear models**
+
+$$
+Y_t = \alpha + \beta x_{t} + \e_t
+$$
+
+- These models couple regression with time-series analysis (ARIMA models)
+
+- Good reference is book by Shumway and Stoffer [@shumway]
+
+
 
 
 ::: {.content-hidden}
@@ -1668,7 +1712,7 @@ Do next time
 
 - This is Lecture 9 John Fry slides Section 4 onwards
 
-- Do also ARIMA for time series (good reference is )
+- Do also ARIMA for time series (good reference is Shumway, Stoffer - Time Series Analysis and Its Applications 4th edition)
 
 - Below is Rcode for Lecture 9 
 

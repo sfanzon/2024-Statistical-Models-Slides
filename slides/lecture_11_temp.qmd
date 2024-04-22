@@ -343,30 +343,1280 @@ $$
 
 - Therefore the t-statistic reduces in size:
     * t-statistic will be smaller than it should
-    * It will be easier to obtain $p < 0.05$
-    * Easier to reject null hypothesis
-
-
+    * The p-values will be large $p > 0.05$
+   
+    
 **It becomes harder to reject incorrect hypotheses!**
 
 
 
 
-## Sources of multicollinearity {.smaller}
+## Sources of Multicollinearity {.smaller}
 
-$\bullet$ \textbf{The data collection method employed}\\
-$\quad$ \textbf{-} Sampling over a limited range of values taken by the regressors in the population\\
-$\bullet$ \textbf{Constraints on the model or population}\\
-$\quad$ \textbf{-} E.g. variables such as income and house size may be interrelated\\
-$\bullet$ \textbf{Model Specification}\\
-$\quad$ \textbf{-} E.g. adding polynomial terms to a model when the range of the $X$-variables is small
+- **The data collection method employed**
+    * Sampling over a limited range of values taken by the regressors in the population
 
-}
+- **Constraints on the model or population**
+    * E.g. variables such as income and house size may be interrelated
 
-
+- **Model Specification**
+    * E.g. adding polynomial terms to a model when range of $X$-variables is small
 
 
+## Sources of Multicollinearity {.smaller}
 
+- **An over-determined model**
+    * Having too many $X$ variables compared to the number of observations
+    
+- **Common trends**
+    * E.g. variables such as consumption, income, wealth, etc may be correlated due to a dependence upon general economic trends and cycles
+
+**Often can *know* in advance when you might experience Multicollinearity**
+
+
+
+
+## Practical consequences of Multicollinearity {.smaller}
+
+- In practical problems look for something that *does not look quite right*
+
+
+::: Important 
+
+**Often see high $R^2$ values coupled with small t-values**
+
+:::
+
+- **This is contradictory**
+    * High $R^2$ suggests model is good and explains a lot of the variation in $Y$
+    * But if individual $t$-statistics are small, this suggests $\beta_j = 0$
+    * Hence individual $X$-variables do not affect $Y$
+
+
+
+
+
+## Potential signs of Multicollinearity {.smaller}
+
+1. **High $R^2$ values couple with small t-values**
+
+2. **Very large $\ese$**
+
+3. **Numerical instabilities:**
+    * Parameter estimates $\hat \beta_j$ become very sensitive to small changes in the data
+    * The $\ese$ become very sensitive to small changes in the data
+    * Parameter estimates $\hat \beta_j$ *take the wrong sign* or otherwise *look strange*
+    * Parameter estimates may be highly correlated
+
+
+
+
+## Example of Multicollinearity {.smaller}
+
+- Consider the following illustrative example
+
+- Want to explain expenditure $Y$ in terms of 
+    * income $X_2$
+    * wealth $X_3$
+
+
+::: Important
+
+**To detect Multicollinearity look out for**
+
+- High $R^2$ value
+- coupled with low t-values
+
+:::
+
+
+
+
+## Example dataset {.smaller}
+
+::: {style="font-size: 0.90em"}
+
+| Expenditure $Y$ | Income $X_2$ | Wealth $X_3$ |
+|-----------------|--------------|--------------|
+| 70              | 80           | 810          |
+| 65              | 100          | 1009         |
+| 90              | 120          | 1273         |
+| 95              | 140          | 1425         |
+| 110             | 160          | 1633         |
+| 115             | 180          | 1876         |
+| 120             | 200          | 2052         |
+| 140             | 220          | 2201         |
+| 155             | 240          | 2435         |
+| 150             | 260          | 2686         |
+
+:::
+
+
+
+## Fit the regression model in R {.smaller}
+
+
+- Code for this example is available here [multicollinearity.R](codes/multicollinearity.R)
+
+
+```r
+# Enter data
+y <- c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150)
+x2 <- c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260)
+x3 <- c(810, 1009, 1273, 1425, 1633, 1876, 2052, 2201, 2435, 2686)
+
+# Fit model
+model <- lm(y ~ x2 + x3)
+
+# We want to display only part of summary
+# First capture the output into a vector
+temp <- capture.output(summary(model))
+
+# Then print only the lines of interest
+cat(paste(temp[9:20], collapse = "\n"))
+```
+
+
+
+##  {.smaller}
+
+
+```{r}
+# Enter data
+y <- c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150)
+x2 <- c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260)
+x3 <- c(810, 1009, 1273, 1425, 1633, 1876, 2052, 2201, 2435, 2686)
+
+# Fit model
+model <- lm(y ~ x2 + x3)
+
+# We want to display only part of summary
+# First capture the output into a vector
+temp <- capture.output(summary(model))
+
+# Then print only the lines of interest
+cat(paste(temp[9:20], collapse = "\n"))
+```
+
+
+<br>
+
+**Three basic statistics**
+
+- $R^2$ coefficient
+- t-statistics and related p-values 
+- F-statistic and related p-value
+
+
+
+## Interpreting the R output {.smaller}
+
+1. $R^2 = 0.9635$
+    * Model explains a substantial amount of the variation (96.35\%) in the data
+
+<br>
+
+2. F-statistic is
+    * $F = 92.40196$
+    * Corresponding p-value is $p = 9.286 \times 10^{-6}$
+    * There is evidence $p<0.05$ that at least one between *income* and *wealth* affect expenditure
+
+
+## Interpreting the R output {.smaller}
+
+3. t-statistics
+    * t-statistics for *income* is $t = 1.144$
+    * Corresponding p-value is $p = 0.29016$
+    * t-statistic for *wealth* is $t = -0.526$
+    * Corresponding p-value is $p = 0.61509$
+    * Both p-values are $p > 0.05$
+    * Therefore neither *income* nor *wealth* are individually statistically significant
+    * This means regression parameters are $\beta_2 = \beta_3 = 0$
+
+
+**Main red flag for Multicollinearity:**
+
+- High $R^2$ value coupled with low t-values (corresponding to high p-values)
+
+
+
+
+## The output looks strange {.smaller}
+### There are many contradictions
+
+1. High $R^2$ value suggests model is really good
+
+2. However low t-values imply neither *income* nor *wealth* affect *expenditure*
+
+3. F-statistic is high, meaning that at least one between  *income* nor *wealth* affect *expenditure*
+
+4. The *wealth* variable has the *wrong sign* ($\hat \beta_3 < 0$) 
+    * This makes no sense: it is likely that *expenditure* will increase as *wealth* increases
+    * Therefore we would expect $\, \hat \beta_3 > 0$
+
+**Multicollinearity is definitely present!**
+
+
+
+## Computing the correlation  {.smaller}
+
+- For further confirmation of Multicollinearity compute correlation of $X_2$ and $X_3$
+
+```r
+cor(x2, x3)
+```
+
+```{r}
+# Enter data
+x2 <- c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260)
+x3 <- c(810, 1009, 1273, 1425, 1633, 1876, 2052, 2201, 2435, 2686)
+
+# Compute correlation
+cor(x2, x3)
+```
+
+- Correlation is almost 1: Variables $X_2$ and $X_3$ are very highly correlated
+
+**This once again confirms Multicollinearity is present**
+
+<br>
+
+**Conclusion:** The variables *Income* and *Wealth* are highly correlated 
+
+- Impossible to isolate individual impact of either *Income* or *Wealth* upon *Expenditure*
+
+
+
+
+
+
+## Detection of Multicollinearity {.smaller}
+
+**Klein's rule of thumb:** Multicollinearity will be a serious problem if: 
+
+- The $R^2$ obtained from regressing predictor variables $X$ is greater than the overall $R^2$ obtained by regressing $Y$ against all the $X$ variables
+
+
+**Example:** In the *Expenditure* vs *Income* and *Wealth* dataset we have
+
+- Regressing $Y$ against $X_2$ and $X_3$ gives $R^2=0.9635$
+
+- Regressing $X_2$ against $X_3$ gives $R^2 = 0.9979$
+
+**Klein's rule of thumb suggests that Multicollinearity will be a serious problem**
+
+
+
+
+## Remedial measures {.smaller}
+### Do nothing
+
+- Multicollinearity is essentially a **data-deficiency problem**
+
+- Sometimes we have no control over the dataset available
+
+- Important point: 
+    * Doing nothing should only be an option in quantitative social sciences (e.g. finance, economics) where data is often difficult to collect
+    * For scientific experiments (e.g. physics, chemistry) one should strive to collect good data
+
+
+## Remedial measures {.smaller}
+### Acquire new/more data
+
+- **Multicollinearity is a sample feature**
+
+- Possible that another sample involving the same variables will have less Multicollinearity
+
+- Acquiring more data might reduce severity of Multicollinearity
+
+- More data can be collected by either 
+    * increasing the sample size or 
+    * including additional variables
+
+
+## Remedial measures {.smaller}
+### Use prior information about some parameters
+
+- To do this properly would require advanced Bayesian statistical methods
+
+- This is beyond the scope of this module
+
+
+
+## Remedial measures {.smaller}
+### Rethinking the model
+
+- Sometimes a model chosen for empirical analysis is not carefully thought out
+    * Some important variables may be omitted
+    * The functional form of the model may have been incorrectly chosen
+
+- Sometimes using more advanced statistical techniques may be required
+    * Factor Analysis
+    * Principal Components Analysis
+    * Ridge Regression
+
+
+
+## Remedial measures {.smaller}
+### Transformation of variables
+
+- Multicollinearity may be reduced by transforming variables
+
+- This may be possible in various different ways
+    * E.g. for time-series data one might consider forming a new model by taking first differences
+
+- Further reading in Chapter 10 of [@gujarati_porter]
+
+
+
+
+## Remedial measures {.smaller}
+### Dropping variables
+
+- Simplest approach to tackle Multicollinearity is to drop one or more of the collinear variables
+
+- Then one has to find the best combination of $X$ variables which reduces Multicollinearity
+
+- Such selection process can be aided by **Stepwise regression** (more later)
+
+
+
+## Example: Dropping variables {.smaller}
+
+- Consider again the *Expenditure* vs *Income* and *Wealth* dataset
+
+- The variables *Income* and *Wealth* are highly correlated
+
+- Intuitively we expect both *Income* and *Wealth* to affect *Expenditure*
+
+- Solution can be to drop either *Income* or *Wealth* variables
+    * We can then fit 2 separate models
+
+```r
+# Fit expenditure as function of income
+model.1 <- lm(y ~ x2)
+
+# Fit expenditure as function of wealth
+model.2 <- lm(y ~ x3)
+
+summary(model.1)
+summary(model.2)
+```
+
+
+## Expenditure Vs Income {.smaller}
+
+::: {style="font-size: 0.90em"}
+
+```{r}
+# Enter data
+y <- c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150)
+x2 <- c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260)
+x3 <- c(810, 1009, 1273, 1425, 1633, 1876, 2052, 2201, 2435, 2686)
+
+# Fit expenditure as function of income
+model.1 <- lm(y ~ x2)
+
+# Capture output
+temp.1 <- capture.output(summary(model.1))
+
+# Print reduced output
+cat(paste(temp.1[9:19], collapse = "\n"))
+```
+
+:::
+
+
+<br>
+
+::: {style="font-size: 0.93em"}
+
+- $R^ 2 = 0.9621$ which is quite high
+- p-value for $\beta_2$ is $p = 9.8 \times 10^{-7} < 0.5 \quad \implies \quad$ *Income* variable is significant
+- Estimate is $\hat \beta_2 = 0.50909 > 0$
+
+**Strong evidence that *Expenditure* increases as *Income* increases**
+
+:::
+
+
+
+## Expenditure Vs Wealth {.smaller}
+
+::: {style="font-size: 0.90em"}
+
+```{r}
+# Enter data
+y <- c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150)
+x2 <- c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260)
+x3 <- c(810, 1009, 1273, 1425, 1633, 1876, 2052, 2201, 2435, 2686)
+
+# Fit expenditure as function of wealth
+model.2 <- lm(y ~ x3)
+
+# Capture output
+temp.2 <- capture.output(summary(model.2))
+
+# Print reduced output
+cat(paste(temp.2[9:19], collapse = "\n"))
+```
+
+:::
+
+<br>
+
+::: {style="font-size: 0.93em"}
+
+- $R^ 2 = 0.9567$ which is quite high
+- p-value for $\beta_2$ is $p = 9.8 \times 10^{-7} < 0.5 \quad \implies \quad$ *Wealth* variable is significant
+- Estimate is $\hat \beta_2 = 0.049764 > 0$
+
+**Strong evidence that *Expenditure* increases as *Wealth* increases**
+
+:::
+
+
+## Example: Conclusion {.smaller}
+
+- We considered the simpler models
+    * *Expenditure* vs *Income*
+    * *Expenditure* vs *Wealth*
+
+- Both models perform really well
+    * *Expenditure* increases as either *Income* or *Wealth* increase
+
+
+- Multicollinearity effects disappeared after dropping either variable!
+
+
+
+
+
+
+
+## Stepwise regression {.smaller}
+
+- Stepwise regression: Method of comparing regression models
+
+- Involves iterative selection of predictor variables $X$ to use in the model
+
+- It can be achieved through 
+    * Forward selection
+    * Backward selection 
+    * Stepwise selection: Combination of Forward and Backward selection 
     
 
+
+## Stepwise regression methods {.smaller}
+
+1. **Forward Selection** 
+    * Start with the **null model** with only intercept
+    $$
+    Y = \beta_1 + \e
+    $$ 
+    * Add each variable $X_j$ incrementally, testing for significance
+    * Stop when no more variables are statistically significant
+
+
+**Note:** Significance criterion for $X_j$ is in terms of **AIC**
+
+- AIC is a measure of how well a model fits the data
+- AIC is an alternative to the coefficient of determination $R^2$
+- We will give details about AIC later
+
+
+
+## Stepwise regression methods {.smaller}
+
+
+2. **Backward Selection**
+    * Start with the **full model**
+    $$
+    Y = \beta_1 + \beta_2 X_{2}+ \ldots+\beta_p X_{p}+ \e
+    $$
+    * Delete $X_j$ variables which are not significant
+    * Stop when all the remaining variables are significant
+
+
+
+## Stepwise regression methods {.smaller}
+
+3. **Stepwise Selection**
+    * Start with the **null model**
+    $$
+    Y = \beta_1 + \e
+    $$ 
+    * Add each variable $X_j$ incrementally, testing for significance
+    * Each time a new variable $X_j$ is added, perform a Backward Selection step
+    * Stop when all the remaining variables are significant
+
+
+**Note:** Stepwise Selection ensures that at each step all the variables are significant
+
+
+
+
+## Stepwise regression in R {.smaller}
+
+- Suppose given 
+    * a data vector $\, \texttt{y}$
+    * predictors data $\, \texttt{x2}, \texttt{x3}, \ldots, \texttt{xp}$
+
+<br>
+
+- Begin by fitting the null and full regression models
+
+```r
+# Fit the null model
+null.model <- lm(y ~ 1)
+
+# Fit the full model
+full.model <- lm(y ~ x2 + x3 + ... + xp)
+```
+
+
+
+## Stepwise regression in R {.smaller}
+
+
+
+- There are 2 basic differences depending on whether you are doing 
+    * Forward selection or Stepwise selection: Start with **null model**
+    * Backward selection: Start with **full model**
+
+
+<br>
+
+- The command for *Stepwise selection* is
+
+```r
+# Stepwise selection
+best.model <- step(null.model, 
+                   direction = "both", 
+                   scope = formula(full.model))
+```
+
+
+## Stepwise regression in R {.smaller}
+
+- The command for *Forward selection* is
+
+```r
+# Forward selection
+best.model <- step(null.model, 
+                   direction = "forward", 
+                   scope = formula(full.model))
+```
+
+
+<br>
+
+- The command for *Backward selection* is
+
+```r
+# Backward selection
+best.model <- step(full.model, 
+                   direction = "backward")
+```
+
+
+## Stepwise regression in R {.smaller}
+
+
+- The model selected by *Stepwise regression* is saved in 
+    * $\texttt{best.model}$
+
+<br>
+
+- To check which model is best, just print the summary and read first 2 lines
+
+```r
+summary(best.model)
+```
+
+
+
+## Example: Longley dataset {.smaller}
+
+
+```{r}
+longley <- read.table(file = "datasets/longley.txt",
+                      header = TRUE)
+
+head(longley,n=3)
+```
+
+
+**Goal:** Explain the number of *Employed* people $Y$ in the US in terms of
+
+- $X_2$ *GNP* Gross National Product
+- $X_3$ number of *Unemployed*
+- $X_4$ number of people in the *Armed Forces*
+- $X_5$ *non-institutionalised Population* $\geq$ age 14 (not in care of insitutions)
+- $X_6$ *Years* from 1947 to 1962
+
+
+
+
+
+
+## Reading in the data {.smaller}
+
+- Code for this example is available here [longley_stepwise.R](codes/longley_stepwise.R)
+
+- Longley dataset available here [longley.txt](datasets/longley.txt)
+
+- Download the data file and place it in current working directory
+
+```r
+# Read data file
+longley <- read.table(file = "longley.txt",
+                      header = TRUE)
+
+# Store columns in vectors
+x2 <- longley[ , 1]
+x3 <- longley[ , 2]
+x4 <- longley[ , 3]
+x5 <- longley[ , 4]
+x6 <- longley[ , 5]
+y <- longley[ , 6]
+```
+
+
+
+## Detecting Multicollinearity {.smaller}
+
+- Fit the multiple regression model including all predictors
+
+$$
+Y = \beta_1 + \beta_2 \, X_2 + \beta_3 \, X_3 + \beta_4 \, X_4 + \beta_5 \, X_5
+    + \beta_6 \, X_6 + \e
+$$
+
+<br>
+
+```r
+# Fit multiple regression model
+model <- lm(y ~ x2 + x3 + x4 + x5 + x6)
+
+# Print summary
+summary(model)
+```
+
+
+
+
+##  {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+![](images/longley_output_4.png){width=72%}
+:::
+
+::::
+
+- Fitting the full model gives 
+    * High $R^2$ value
+    * Low $t$-values (and high p-values) for $X_2$ and $X_5$
+
+- These are signs that we might have a problem with Multicollinearity
+
+
+
+## {.smaller}
+
+- To further confirm Multicollinearity we can look at the correlation matrix
+    * We can use function $\, \texttt{cor}$ directly on first 5 columns of data-frame $\,\texttt{longley}$
+    * We look only at correlations larger than $0.9$
+
+```r
+# Return correlations larger than 0.9
+cor(longley[ , 1:5]) > 0.9
+```
+
+
+```{r}
+# Read data file
+longley <- read.table(file = "datasets/longley.txt",
+                      header = TRUE)
+
+# Return correlations larger than 0.9
+cor(longley[ , 1:5]) > 0.9
+```
+
+<br>
+
+- Hence the following pairs are highly correlated (correlation $\, > 0.9$)
+$$
+X_2 \,\, \text{and} \,\, X_5 \qquad \quad 
+X_2 \,\, \text{and} \,\, X_6 \qquad \quad 
+X_4 \,\, \text{and} \,\, X_6
+$$
+
+
+
+## Stepwise regression {.smaller}
+
+- **Goal:** Want to find best variables which, at the same time
+    * Explain *Employment* variable $Y$
+    * Reduce Multicollinearity
+
+- **Method:** We use *Stepwise regression*
+
+<br>
+
+- Start by by fitting the null and full regression models
+
+```r
+# Fit the null model
+null.model <- lm(y ~ 1)
+
+# Fit the full model
+full.model <- lm(y ~ x2 + x3 + x4 + x5 + x6)
+```
+
+
+
+## Stepwise regression {.smaller}
+
+- Perform Stepwise regression by 
+    * Forward selection, Backward selection, Stepwise selection
+
+
+```r
+# Forward selection
+best.model.1 <- step(null.model, 
+                    direction = "forward", 
+                    scope = formula(full.model))
+
+# Backward selection
+best.model.2 <- step(full.model, 
+                    direction = "backward")
+
+# Stepwise selection
+best.model.3 <- step(null.model, 
+                    direction = "both",
+                    scope = formula(full.model))
+```
+
+
+
+## Stepwise regression {.smaller}
+
+- The best models for the 3 Stepwise regression methods are stored in
+    * $\texttt{best.model.1}, \,\, \texttt{best.model.3}, \,\,\texttt{best.model.3}$
+
+
+- Print the summary for each model obtained
+
+```r
+# Print summary of each model
+summary(best.model.x)
+```
+
+
+- **Conclusion:**In this simple example all three approaches agree and select a model with the variables $X_2$, $X_3$, $X_4$ and $X_6$ (no $X_5$ term) 
+
+
+
+# Part 4: <br>Stepwise regression <br> and overfitting {background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+
+
+## On the coefficient of determination $R^2$ {.smaller}
+
+- Recall the formula for the $R^2$ coefficient of determination 
+
+$$
+R^2 = 1 - \frac{\RSS}{\TSS}
+$$
+
+- We used $R^2$ to measure how well a regression model fits the data
+    * Large $R^2$ implies good fit
+    * Small $R^2$ implies bad fit
+
+
+
+## Revisiting the Galileo example {.smaller}
+
+**Drawback:** $R^2$ increases when number of predictors increases
+
+- We saw this phenomenon in the **Galileo** example in Lecture 10
+
+- Fitting the model 
+$$
+    \rm{distance} = \beta_1 + \beta_2 \, \rm{height}  + \e
+$$
+yielded $R^2 = 0.9264$
+
+- In contrast the quadratic, cubic, and quartic models yielded, respectively
+$$
+R^2 = 0.9903 \,, \qquad R^2 = 0.9994 \,, \qquad 
+R^2 = 0.9998
+$$
+
+- Fitting a higher degree polynomial gives higher $R^2$
+
+
+
+## Revisiting the Galileo example {.smaller}
+
+**Conclusion:**  If the degree of the polynomial is sufficiently high, we will get $R^2 = 1$
+
+- Indeed, there always exist a polynomial passing exactly through the data points
+
+$$
+(\rm{height}_1, \rm{distance}_1) \,, \ldots , (\rm{height}_n, \rm{distance}_n)
+$$
+
+- For such polynomial model the predictions match the data perfectly
+
+$$
+\hat y_i = y_i \,, \qquad \forall \,\, i = 1 , \ldots, n
+$$
+
+- Therefore we have 
+
+$$
+\RSS = \sum_{i=1}^n (y_i - \hat y_i )^2 = 0 \qquad \implies 
+\qquad R^2 = 1
+$$
+
+
+## Overfitting the model {.smaller}
+
+**Warning:**  Adding increasingly higher number of parameters is not good
+
+- It leads to a phenomenon called **overfitting**
+    * The model fits the data very well
+    * However the model does not make good predictions on unseen data
+
+- We encountered this phenomenon in the **Divorces** example of Lecture 10
+
+
+
+## Revisiting the Divorces example {.smaller}
+
+::: {.column width="45%"}
+
+<br>
+
+- The best model seems to be Linear
+$$
+y = \beta_1 + \beta_2 x + \e
+$$
+   
+- Linear model interpretation:
+    * The risk of divorce is decreasing in time
+    * The risk peak in year 2 is explained by unusually low risk in year 1
+
+:::
+
+
+::: {.column width="46%"}
+
+```{r} 
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
+#| fig-asp: 1
+
+# Divorces data
+year <- c(1, 2, 3, 4, 5, 6,7, 8, 9, 10, 15, 20, 25, 30)
+percent <- c(3.51, 9.5, 8.91, 9.35, 8.18, 6.43, 5.31, 
+             5.07, 3.65, 3.8, 2.83, 1.51, 1.27, 0.49)
+
+# Fit linear model
+linear <- lm(percent ~ year)
+
+# Fit order 6 model
+order_6 <- lm(percent ~ year  + I( year^2 ) + I( year^3 ) + 
+                                I( year^4 ) + I( year^5 ) +
+                                I( year^6 ))
+
+# Scatter plot of data
+plot(year, percent, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Years of marriage", side = 1, line = 3, cex = 2.1)
+mtext("Risk of divorce by adultery", side = 2, line = 2.5, cex = 2.1)
+
+# Plot Linear Vs Quadratic
+polynomial <- Vectorize(function(x, ps) {
+  n <- length(ps)
+  sum(ps*x^(1:n-1))
+}, "x")
+curve(polynomial(x, coef(linear)), add=TRUE, col = "red", lwd = 2)
+curve(polynomial(x, coef(order_6)), add=TRUE, col = "blue", lty = 2, lwd = 3)
+legend("topright", legend = c("Linear", "Order 6"), 
+       col = c("red", "blue"), lty = c(1,2), cex = 3, lwd = 3)
+```
+
+:::
+
+
+
+
+## Revisiting the Divorces example {.smaller}
+
+::: {.column width="45%"}
+
+<br>
+
+- Fitting *Order 6* polynomial yields better results
+    * The coefficient $R^2$ decreases (of course!)
+    * F-test for model comparison prefers *Order 6* model to the linear one
+
+- Statistically *Order 6* model is better than *Linear* model
+:::
+
+
+::: {.column width="46%"}
+
+```{r} 
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
+#| fig-asp: 1
+
+# Divorces data
+year <- c(1, 2, 3, 4, 5, 6,7, 8, 9, 10, 15, 20, 25, 30)
+percent <- c(3.51, 9.5, 8.91, 9.35, 8.18, 6.43, 5.31, 
+             5.07, 3.65, 3.8, 2.83, 1.51, 1.27, 0.49)
+
+# Fit linear model
+linear <- lm(percent ~ year)
+
+# Fit order 6 model
+order_6 <- lm(percent ~ year  + I( year^2 ) + I( year^3 ) + 
+                                I( year^4 ) + I( year^5 ) +
+                                I( year^6 ))
+
+# Scatter plot of data
+plot(year, percent, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Years of marriage", side = 1, line = 3, cex = 2.1)
+mtext("Risk of divorce by adultery", side = 2, line = 2.5, cex = 2.1)
+
+# Plot Linear Vs Quadratic
+polynomial <- Vectorize(function(x, ps) {
+  n <- length(ps)
+  sum(ps*x^(1:n-1))
+}, "x")
+curve(polynomial(x, coef(linear)), add=TRUE, col = "red", lwd = 2)
+curve(polynomial(x, coef(order_6)), add=TRUE, col = "blue", lty = 2, lwd = 3)
+legend("topright", legend = c("Linear", "Order 6"), 
+       col = c("red", "blue"), lty = c(1,2), cex = 3, lwd = 3)
+```
+
+:::
+
+
+
+
+## Revisiting the Divorces example {.smaller}
+
+::: {.column width="45%"}
+
+
+
+- However, looking at the plot:
+    * *Order 6* model introduces unnatural spike at 27 years
+    * This is a sign of *overfitting*
+
+- Question:
+    * $R^2$ coefficient and F-test are in favor of *Order 6* model
+    * How do we rule out the *Order 6* model?
+
+- Answer: We need a new measure for comparing regression models
+
+:::
+
+
+::: {.column width="46%"}
+
+```{r} 
+#| echo: true
+#| code-fold: true
+#| code-summary: "Click here for full code"
+#| fig-asp: 1
+
+# Divorces data
+year <- c(1, 2, 3, 4, 5, 6,7, 8, 9, 10, 15, 20, 25, 30)
+percent <- c(3.51, 9.5, 8.91, 9.35, 8.18, 6.43, 5.31, 
+             5.07, 3.65, 3.8, 2.83, 1.51, 1.27, 0.49)
+
+# Fit linear model
+linear <- lm(percent ~ year)
+
+# Fit order 6 model
+order_6 <- lm(percent ~ year  + I( year^2 ) + I( year^3 ) + 
+                                I( year^4 ) + I( year^5 ) +
+                                I( year^6 ))
+
+# Scatter plot of data
+plot(year, percent, xlab = "", ylab = "", pch = 16, cex = 2)
+
+# Add labels
+mtext("Years of marriage", side = 1, line = 3, cex = 2.1)
+mtext("Risk of divorce by adultery", side = 2, line = 2.5, cex = 2.1)
+
+# Plot Linear Vs Quadratic
+polynomial <- Vectorize(function(x, ps) {
+  n <- length(ps)
+  sum(ps*x^(1:n-1))
+}, "x")
+curve(polynomial(x, coef(linear)), add=TRUE, col = "red", lwd = 2)
+curve(polynomial(x, coef(order_6)), add=TRUE, col = "blue", lty = 2, lwd = 3)
+legend("topright", legend = c("Linear", "Order 6"), 
+       col = c("red", "blue"), lty = c(1,2), cex = 3, lwd = 3)
+```
+
+:::
+
+
+
+
+
+
+## Akaike information criterion (AIC) {.smaller}
+
+- The AIC is a number which measures how well a regression model fits the data
+
+- Also $R^2$ measures how well a regression model fits the data
+
+- The difference between AIC and $R^2$ is that AIC also **accounts for overfitting**
+
+- The formal definition of AIC is
+
+$$
+{\rm AIC} := 2p - 2 \log ( \hat{L} )
+$$
+
+- $p =$ number of parameters in the model
+
+- $\hat{L} =$ maximum value of the likelihood function 
+
+
+
+
+## Akaike information criterion (AIC) {.smaller}
+
+- In past lectures we have shown that for the general regression model 
+
+$$
+ \ln(\hat L)=
+ -\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln(\hat\sigma^2) - \frac{1}{2\hat\sigma^2} \RSS \,, \qquad \hat \sigma^2 := \frac{\RSS}{n}
+$$
+
+- Therefore 
+
+$$
+\ln(\hat L)= - \frac{n}{2}  \log \left( \frac{\RSS}{n}  \right) + C
+$$
+
+
+- $C$ is constant depending only on the number of sample points
+
+- Thus $C$ does not change if the data does not change
+
+
+
+## Akaike information criterion (AIC) {.smaller}
+
+- We obtain the following equivalent formula for AIC
+
+$$
+{\rm AIC} = 2p + n \log \left( \frac{ \RSS}{n} \right) - 2C 
+$$
+
+
+- We now see that AIC accounts for
+    * **Data fit:** since the data fit term $\RSS$ is present
+    * **Model complexity:** Since the number of degrees of freedom $p$ is present
+
+
+- Therefore a model with low AIC is such that:
+    1. Model fits data well
+    2. Model is not too complex, preventing overfitting
+
+- Conclusion: sometimes AIC is better than $R^2$ when comparing two models
+
+
+## Stepwise regression and AIC {.smaller}
+
+- *Stepwise regression* function in R uses AIC to compare models
+    * the model with **lowest AIC** is selected
+
+- Hence Stepwise regression outputs the model which, at the same time
+    1. Best fits the given data 
+    2. Prevents overfitting
+
+
+- **Example:** Apply Stepwise regression to **divorces** examples to compare 
+    * Linear model
+    * Order 6 model
+
+
+
+## Example: Divorces {.smaller}
+### The dataset
+
+- Code for this example is available here [divorces_stepwise.R](codes/divorces_stepwise.R)
+
+<br>
+
+| **Years of Marriage**              | 1   |  2   |  3  |  4  | 5  |   6  |  7  |
+|:---------------------------------- |:--- |:-    |:--  |:--  |:-- |:---  |:--  |
+| **\% divorces adultery**        | 3.51| 9.50 | 8.91| 9.35|8.18| 6.43 | 5.31|
+: {tbl-colwidths="[30,10,10,10,10,10,10,10]"}
+
+
+<br>
+
+
+| **Years of Marriage**              | 8   |  9   | 10  | 15  |20  |  25  | 30  |
+|:---------------------------------- |:--- |:-    |:--  |:--  |:-- |:---  |:--  |
+| **\% divorces adultery**        | 5.07| 3.65 | 3.80| 2.83|1.51| 1.27 | 0.49|
+: {tbl-colwidths="[30,10,10,10,10,10,10,10]"}
+
+
+
+## Fitting the null model  {.smaller}
+
+- First we import the data into R
+
+```r
+# Divorces data
+year <- c(1, 2, 3, 4, 5, 6,7, 8, 9, 10, 15, 20, 25, 30)
+percent <- c(3.51, 9.5, 8.91, 9.35, 8.18, 6.43, 5.31, 
+             5.07, 3.65, 3.8, 2.83, 1.51, 1.27, 0.49)
+```
+
+- The null model is 
+
+$$
+{\rm percent} = \beta_1 + \e 
+$$
+
+
+- Fit the null model with
+
+```r
+null.model <- lm(percent ~ 1)
+```
+
+
+## Fitting the full model  {.smaller}
+
+- The full model is the *Order 6* model
+
+$$
+\rm{percent} = \beta_1 + \beta_2 \, {\rm year} +
+\beta_3 \, {\rm year}^2 + \ldots + \beta_7 \, {\rm year}^6 
+$$
+
+- Fit the full model with
+
+```r
+full.model <- lm(percent ~ year  + I( year^2 ) + I( year^3 ) + 
+                                   I( year^4 ) + I( year^5 ) +
+                                   I( year^6 ))
+```
+
+
+## Stepwise regression {.smaller}
+
+- We run stepwise regression and save the best model
+
+```r
+best.model <- step(null.model, 
+                  direction = "both", 
+                  scope = formula(full.model)) 
+```
+
+<br>
+
+- The best model is *Linear*, and not *Order 6*!
+
+```r
+summary(best.model)
+```
+
+```verbatim
+
+Call:
+lm(formula = percent ~ year)
+
+.....
+
+```
+
+
+## Conclusions {.smaller}
+
+- Old conclusions:
+    * *Linear model* has lower $R^2$ than *Order 6 model*
+    * F-test for model selection chooses *Order 6 model* over *Linear model*
+    * Hence *Order 6 model* seems better than *Linear model*
+
+- New conclusions:
+    * *Order 6 model* is more complex than the *Linear model*
+    * In particular *Order 6 model* has higher AIC than the *Linear model*
+    * Stepwise regression chooses *Linear model* over *Order 6 model*
+
+- **Bottom line:** The new findings are in line with our intuition: 
+    * *Order 6* model overfits
+    * Therefore the *Linear model* should be preferred
+
+
+
+
+
+
+# Part 5: <br>Dummy variable <br> regression{background-color="#cc0164" visibility="uncounted"}
+
+::: footer
+
+<div color="#cc0164">  </div>
+
+:::
+
+
+::: {.content-hidden}
+
+- ANOVA is lesson 11 John. Use those slides + verzani
+
+- Analysis of variance ANOVA done really well on verzani
+
+- He does the examples of t-test as simple regression that I covered in exercises
+
+$$
+Y_i = \alpha + \beta 1_{A}(i)  + \e_i
+$$
+
+where $1_{A}(i) = 1$ if sample i is from population $A$ and $0$ if not. Turns out $1_A$ is just a factor
+
+- It also does the case of t-test intepreted as multiple regression with two dummy variables without intercept
+
+$$
+Y_i = \beta_1 1_{A}(i) + \beta_2 1_B(i) + \e_i
+$$
+
+where $1_{A}(i) = 1$ if sample i is from population $A$ and $0$ if not. Same for $1_B(i)$
+
+
+:::
+
+
+## References
 

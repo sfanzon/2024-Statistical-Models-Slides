@@ -2930,12 +2930,12 @@ $$
 
 ## Setting up the regression analysis {.smaller}
 
-- We want a regression model that can capture the sample means $\overline{a}$ and $\overline{b}$
+- We want a regression model that can describe the sample means $\overline{a}$ and $\overline{b}$
 
 - To this end, we fit a general linear model with $p = 2$ to the data
 
 $$
-\Expect[Y | z_1 , z_2 ] = \beta_1 z_1 + \beta_2 z_2
+\Expect[Y | Z_1 = z_1 , Z_2 = z_2 ] = \beta_1 z_1 + \beta_2 z_2
 $$
 
 
@@ -2969,9 +2969,9 @@ $$
 - The variable $Z_1$ is modelled as
 
 $$
-Z_1 = 1_{A} := 
+Z_1 = 1_{A}(i) := 
 \begin{cases}
-1 & \text{ if observation is from population A} \\
+1 & \text{ if i-th observation is from population A} \\
 0 & \text{ otherwise}
 \end{cases}
 $$
@@ -2980,9 +2980,9 @@ $$
 - Therefore we have 
 
 \begin{align*}
-z_1 & = (\underbrace{1_A , \ldots, 1_A}_{n_A + n_B} ) \\
+z_1 & = (\underbrace{1_A(i) , \ldots, 1_A(i)}_{n_A + n_B} ) \\[15pts]
     & = (\underbrace{1 , \ldots, 1}_{n_A}, 
-         \underbrace{0 , \ldots, 0}_{n_B} ) \\
+         \underbrace{0 , \ldots, 0}_{n_B} )
 \end{align*}
 
 
@@ -2991,9 +2991,9 @@ z_1 & = (\underbrace{1_A , \ldots, 1_A}_{n_A + n_B} ) \\
 - Similarly, the variable $Z_2$ is modelled as
 
 $$
-Z_2 = 1_{B} := 
+Z_2 = 1_{B}(i) := 
 \begin{cases}
-1 & \text{ if observation is from population B} \\
+1 & \text{ if i-th observation is from population B} \\
 0 & \text{ otherwise}
 \end{cases}
 $$
@@ -3001,24 +3001,31 @@ $$
 - Therefore we have 
 
 \begin{align*}
-z_2 & = (\underbrace{1_B , \ldots, 1_B}_{n_A + n_B} ) \\
+z_2 & = (\underbrace{1_B(i), \ldots, 1_B (i)}_{n_A + n_B} ) \\[15pts]
     & = (\underbrace{0 , \ldots, 0}_{n_A}, 
-         \underbrace{1 , \ldots, 1}_{n_B} ) \\
+         \underbrace{1 , \ldots, 1}_{n_B} )
 \end{align*}
 
 
 
 ## Setting up the regression analysis {.smaller}
 
+- The general regression model is
+
+$$
+Y_i = \beta_1 \, 1_{A}(i) + \beta_2 \, 1_{B}(i) + \e_i
+$$
+
+- Variables $1_A$ and $1_B$ are called **dummy variables** (more on this later)
 
 - The design matrix is therefore
 
 $$
-Z = (z_1 | z_2) =
+Z = (1_A | 1_B) =
 \left(\begin{array}{cc}
-     1_A & 1_B  \\
+     1_A(i) & 1_B (i)  \\
      \ldots & \ldots\\
-     1_A & 1_B\\
+     1_A(i) & 1_B (i) \\
 \end{array}\right)  
  = 
 \left(\begin{array}{cc}
@@ -3032,8 +3039,10 @@ Z = (z_1 | z_2) =
 $$
 
 
-- $Z$ has size $(n_A + n_B) \times 2$
 
+
+
+## Calculation of $Z^T y$ {.smaller}
 
 - We want to compute the regression estimator
 
@@ -3041,10 +3050,6 @@ $$
 \hat \beta = (Z^T Z)^{-1} Z^T y
 $$
 
-
-
-
-## Calculation of $Z^T y$ {.smaller}
 
 - $Z$ has dimension $(n_A + n_B) \times 2$
 - $Z^T$ has dimension $2 \times (n_A + n_B)$
@@ -3189,6 +3194,7 @@ $$
 \end{array}\right)
 $$
 
+
 - Then we can calculate
 
 $$
@@ -3221,10 +3227,10 @@ $$
 \end{array}\right)
 $$
 
-- The regression function is 
+- The regression function is hence
 
 \begin{align*}
-\Expect[Y | z_1,z_2] & = \hat\beta_1 \ z_1 + \hat\beta_2 \ z_2 \\[20pt]
+\Expect[Y | 1_A = z_1 , 1_B = z_2] & = \hat\beta_1 \ z_1 + \hat\beta_2 \ z_2 \\[20pt]
 & = \overline{a} \ z_1 + \overline{b} \ z_2 
 \end{align*}
 
@@ -3234,11 +3240,11 @@ $$
 - This is a very intuitive result:
   * The expected value for $Y$ when data is observed from population $A$ is
   $$
-  \Expect[Y | 1 , 0] = \overline{a}
+  \Expect[Y | 1_A = 1 , 1_B = 0] = \overline{a}
   $$
   * The expected value for $Y$ when data is observed from population $B$ is
   $$
-  \Expect[Y | 0 , 1] = \overline{b}
+  \Expect[Y | 1_A = 0 , 1_B = 1] = \overline{b}
   $$
 
 
