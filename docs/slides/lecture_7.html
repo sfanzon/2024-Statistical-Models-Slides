@@ -410,43 +410,19 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Conjecture {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -454,15 +430,27 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Proof {
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
-  .Question {
+  .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -470,11 +458,23 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1669,16 +1669,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.14360000, error is 0.00200735
-After    20000 iterations pi is 3.15540000, error is 0.01380735
-After    30000 iterations pi is 3.14746667, error is 0.00587401
-After    40000 iterations pi is 3.14800000, error is 0.00640735
-After    50000 iterations pi is 3.14992000, error is 0.00832735
-After    60000 iterations pi is 3.15700000, error is 0.01540735
-After    70000 iterations pi is 3.15417143, error is 0.01257877
-After    80000 iterations pi is 3.15190000, error is 0.01030735
-After    90000 iterations pi is 3.14800000, error is 0.00640735
-After   100000 iterations pi is 3.14692000, error is 0.00532735</code></pre>
+<pre><code>After    10000 iterations pi is 3.14600000, error is 0.00440735
+After    20000 iterations pi is 3.14680000, error is 0.00520735
+After    30000 iterations pi is 3.14520000, error is 0.00360735
+After    40000 iterations pi is 3.14470000, error is 0.00310735
+After    50000 iterations pi is 3.14792000, error is 0.00632735
+After    60000 iterations pi is 3.14580000, error is 0.00420735
+After    70000 iterations pi is 3.14931429, error is 0.00772163
+After    80000 iterations pi is 3.14450000, error is 0.00290735
+After    90000 iterations pi is 3.14306667, error is 0.00147401
+After   100000 iterations pi is 3.14336000, error is 0.00176735</code></pre>
 </div>
 </div>
 </section>
@@ -1959,11 +1959,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.82086</code></pre>
+Custom Monte Carlo p-value: 0.82057</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8330835</code></pre>
+R Monte Carlo p-value: 0.8290855</code></pre>
 </div>
 </div>
 <ul>
