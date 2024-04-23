@@ -426,35 +426,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
   .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -462,27 +434,23 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Corollary {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
   .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -490,13 +458,45 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
   }
   </style>
 </head>
@@ -551,7 +551,7 @@
 <li>Autocorrelation</li>
 <li>Multicollinearity</li>
 <li>Stepwise regression and overfitting</li>
-<li>Dummy variable regression</li>
+<li>Dummy variable regression models</li>
 </ol>
 </section></section>
 <section>
@@ -1706,6 +1706,1776 @@ Y_t = \alpha + \beta x_{t} + \varepsilon_t
 <ul>
 <li><p>These models couple regression with time-series analysis (ARIMA models)</p></li>
 <li><p>Good reference is book by Shumway and Stoffer <span class="citation" data-cites="shumway">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p></li>
+</ul>
+</section></section>
+<section>
+<section id="part-3-multicollinearity" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br>Multicollinearity</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="multicollinearity" class="slide level2 smaller">
+<h2>Multicollinearity</h2>
+<ul>
+<li>The general linear regression model is</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
+</span></p>
+<ul>
+<li>Consider Assumption 6
+<ul>
+<li>The design matrix <span class="math inline">Z</span> is such that <span class="math display">
+  Z^T Z  \, \text{ is invertible}
+  </span></li>
+</ul></li>
+<li><strong>Multicollinearity:</strong> The violation of Assumption 6</li>
+</ul>
+<p><span class="math display">
+\det(Z^T Z ) \, \approx  \, 0  \, \quad \implies \quad Z^T Z \, \text{ is (almost) not invertible}
+</span></p>
+</section>
+<section id="the-nature-of-multicollinearity" class="slide level2 smaller">
+<h2>The nature of Multicollinearity</h2>
+<p><span class="math display">
+\text{Multicollinearity = multiple (linear) relationships between the X-variables}
+</span></p>
+<ul>
+<li>Multicollinearity arises when there is either
+<ul>
+<li><strong>exact</strong> linear relationship amongst the <span class="math inline">X</span>-variables</li>
+<li><strong>approximate</strong> linear relationship amongst the <span class="math inline">X</span>-variables</li>
+</ul></li>
+</ul>
+<p><br></p>
+<p><strong><span class="math inline">X</span>-variables <em>inter-related</em></strong> <span class="math inline">\quad \implies \quad</span> <strong>hard to isolate individual influence on <span class="math inline">Y</span></strong></p>
+</section>
+<section id="example-of-multicollinear-data" class="slide level2 smaller">
+<h2>Example of Multicollinear data</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<ul>
+<li><p>Perfect collinearity for <span class="math inline">Z_1</span> and <span class="math inline">Z_2</span></p>
+<ul>
+<li>because of exact linear relation <span class="math display">
+  Z_2 = 5 Z_1
+  </span></li>
+</ul></li>
+<li><p>No perfect collinearity for <span class="math inline">Z_1</span> and <span class="math inline">Z_3</span></p></li>
+<li><p>But <span class="math inline">Z_3</span> is small perturbation of <span class="math inline">Z_2</span></p></li>
+</ul>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">Z_1</span></th>
+<th><span class="math inline">Z_2</span></th>
+<th><span class="math inline">Z_3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>50</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>75</td>
+<td>75</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>90</td>
+<td>97</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>120</td>
+<td>129</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>150</td>
+<td>152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="example-of-multicollinear-data-1" class="slide level2 smaller">
+<h2>Example of Multicollinear data</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<ul>
+<li>Approximate collinearity for <span class="math inline">Z_1, Z_3</span>
+<ul>
+<li>Correlation between <span class="math inline">Z_1</span> and <span class="math inline">Z_3</span> is almost <span class="math inline">1</span></li>
+<li>There is approximate linear relation between <span class="math inline">Z_1</span> and <span class="math inline">Z_3</span> <span class="math display">
+  Z_3 \, \approx \, 5 Z_1
+  </span></li>
+</ul></li>
+<li><strong>Both instances qualify as multicollinearity</strong></li>
+</ul>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">Z_1</span></th>
+<th><span class="math inline">Z_2</span></th>
+<th><span class="math inline">Z_3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>50</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>75</td>
+<td>75</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>90</td>
+<td>97</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>120</td>
+<td>129</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>150</td>
+<td>152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="example-of-multicollinear-data-2" class="slide level2 smaller">
+<h2>Example of Multicollinear data</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the data</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>Z1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">30</span>)</span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>Z3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">75</span>, <span class="dv">97</span>, <span class="dv">129</span>, <span class="dv">152</span>)</span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation</span></span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Z1, Z3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9958817</code></pre>
+</div>
+</div>
+</div><div class="column" style="display: flex; justify-content: center; align-items: center;">
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">Z_1</span></th>
+<th><span class="math inline">Z_2</span></th>
+<th><span class="math inline">Z_3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>50</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>75</td>
+<td>75</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>90</td>
+<td>97</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>120</td>
+<td>129</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>150</td>
+<td>152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="consequences-of-multicollinearity" class="slide level2 smaller">
+<h2>Consequences of Multicollinearity</h2>
+<ul>
+<li>Therefore multicollinearity means that
+<ul>
+<li>Predictors <span class="math inline">Z_j</span> are (approximately) linearly dependent</li>
+<li>E.g. one can be written as (approximate) linear combination of the others</li>
+</ul></li>
+<li>Recall that the design matrix is</li>
+</ul>
+<p><span class="math display">
+Z
+=
+\left(
+\begin{array}{cccc}
+z_{11}  &amp; z_{12} &amp; \ldots &amp; z_{ip} \\
+z_{21}  &amp; z_{22} &amp; \ldots &amp; z_{2p} \\
+\ldots  &amp; \ldots &amp; \ldots &amp; \ldots \\
+z_{n1}  &amp; z_{n2} &amp; \ldots &amp; z_{np} \\
+\end{array}
+\right)
+</span></p>
+<ul>
+<li>Note that <span class="math inline">Z</span> has <span class="math inline">p</span> columns</li>
+</ul>
+</section>
+<section id="consequences-of-multicollinearity-1" class="slide level2 smaller">
+<h2>Consequences of Multicollinearity</h2>
+<ul>
+<li>If at least one pair <span class="math inline">Z_i</span> and <span class="math inline">Z_j</span> is collinear (linearly dependent) then</li>
+</ul>
+<p><span class="math display">
+{\rm rank} (Z) &lt; p
+</span></p>
+<ul>
+<li>Hence</li>
+</ul>
+<p><span class="math display">
+{\rm rank} \left(  Z^T Z  \right) &lt; p
+</span></p>
+<ul>
+<li>Therefore the matrix</li>
+</ul>
+<p><span class="math display">
+Z^T Z \,\, \text{ is NOT invertible}
+</span></p>
+</section>
+<section id="consequences-of-multicollinearity-2" class="slide level2 smaller">
+<h2>Consequences of Multicollinearity</h2>
+<ul>
+<li>This means the least-squares estimator is not well defined</li>
+</ul>
+<p><span class="math display">
+\hat{\beta} = (Z^T Z)^{-1} Z^T y
+</span></p>
+<ul>
+<li><p>In practice one never has exact Multicollinearity</p></li>
+<li><p>In case of approximate Multicollinearity it holds that</p>
+<ul>
+<li>The matrix <span class="math inline">Z^T Z</span> can be inverted</li>
+<li>The estimator <span class="math inline">\hat \beta</span> can be computed!</li>
+<li>However the inversion is numerically instable</li>
+</ul></li>
+</ul>
+</section>
+<section id="consequences-of-multicollinearity-3" class="slide level2 smaller">
+<h2>Consequences of Multicollinearity</h2>
+<ul>
+<li>Numerically instable means:
+<ul>
+<li><strong>We may not be able to trust the estimator <span class="math inline">\hat \beta</span></strong></li>
+</ul></li>
+</ul>
+<p>This is because of:</p>
+<ol type="1">
+<li>Large estimated standard errors
+<ul>
+<li>Lack of precision associated with parameter estimtes</li>
+<li>Wider confidence intervals</li>
+<li>May affect hypothesis tests</li>
+</ul></li>
+<li>Correlated parameter estimates
+<ul>
+<li>Another potential source of errors</li>
+<li>Potential numerical problems with computational routines</li>
+</ul></li>
+</ol>
+</section>
+<section id="why-are-estimated-standard-errors-large" class="slide level2 smaller">
+<h2>Why are estimated standard errors large?</h2>
+<ul>
+<li>Recall formula of estimated standard error for <span class="math inline">\beta_j</span></li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{e.s.e.}}= \xi_{jj}^{1/2} \, S   \,, \qquad \quad S^2 = \frac{\mathop{\mathrm{RSS}}}{n-p}
+</span></p>
+<ul>
+<li><p>The numbers <span class="math inline">\xi_{jj}</span> are diagonal entries of <span class="math inline">Z^T Z</span></p></li>
+<li><p>Approximate Multicollinearity implies that</p>
+<ul>
+<li><span class="math inline">Z^T Z</span> is invertible</li>
+<li>The inversion is numerically unstable</li>
+</ul></li>
+</ul>
+</section>
+<section id="why-are-estimated-standard-errors-large-1" class="slide level2 smaller">
+<h2>Why are estimated standard errors large?</h2>
+<ul>
+<li>Numerically unstable inversion means that
+<ul>
+<li>Entries of <span class="math inline">(Z^T Z)^{-1}</span> might be very large</li>
+<li>Therefore <span class="math inline">\xi_{jj}</span> might be very large</li>
+</ul></li>
+<li>As a consequence the estimated standard errors might be very large, since</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{e.s.e.}}= \xi_{jj}^{1/2} S
+</span></p>
+<ul>
+<li><strong>It becomes harder to reject incorrect hypotheses</strong></li>
+</ul>
+</section>
+<section id="effect-of-multicollinearity-on-t-tests" class="slide level2 smaller">
+<h2>Effect of Multicollinearity on t-tests</h2>
+<ul>
+<li>To test the null hypothesis that <span class="math inline">\beta_j = 0</span> we use <span class="math inline">t</span>-statistic</li>
+</ul>
+<p><span class="math display">
+t = \frac{\hat{\beta}_j}{ \mathop{\mathrm{e.s.e.}}}
+</span></p>
+<ul>
+<li><p>But multicollinearity increases the <span class="math inline">\mathop{\mathrm{e.s.e.}}</span></p></li>
+<li><p>Therefore the t-statistic reduces in size:</p>
+<ul>
+<li>t-statistic will be smaller than it should</li>
+<li>The p-values will be large <span class="math inline">p &gt; 0.05</span></li>
+</ul></li>
+</ul>
+<p><strong>It becomes harder to reject incorrect hypotheses!</strong></p>
+</section>
+<section id="sources-of-multicollinearity" class="slide level2 smaller">
+<h2>Sources of Multicollinearity</h2>
+<ul>
+<li><strong>The data collection method employed</strong>
+<ul>
+<li>Sampling over a limited range of values taken by the regressors in the population</li>
+</ul></li>
+<li><strong>Constraints on the model or population</strong>
+<ul>
+<li>E.g. variables such as income and house size may be interrelated</li>
+</ul></li>
+<li><strong>Model Specification</strong>
+<ul>
+<li>E.g. adding polynomial terms to a model when range of <span class="math inline">X</span>-variables is small</li>
+</ul></li>
+</ul>
+</section>
+<section id="sources-of-multicollinearity-1" class="slide level2 smaller">
+<h2>Sources of Multicollinearity</h2>
+<ul>
+<li><strong>An over-determined model</strong>
+<ul>
+<li>Having too many <span class="math inline">X</span> variables compared to the number of observations</li>
+</ul></li>
+<li><strong>Common trends</strong>
+<ul>
+<li>E.g. variables such as consumption, income, wealth, etc may be correlated due to a dependence upon general economic trends and cycles</li>
+</ul></li>
+</ul>
+<p><strong>Often can <em>know</em> in advance when you might experience Multicollinearity</strong></p>
+</section>
+<section id="practical-consequences-of-multicollinearity" class="slide level2 smaller">
+<h2>Practical consequences of Multicollinearity</h2>
+<ul>
+<li>In practical problems look for something that <em>does not look quite right</em></li>
+</ul>
+<div id="Important*-7.1" class="Important">
+<p></p><details class="Important fbx-simplebox fbx-default" open=""><summary><strong>Important</strong></summary><div><strong>Often see high <span class="math inline">R^2</span> values coupled with small t-values</strong><p></p>
+</div></details>
+</div>
+<ul>
+<li><strong>This is contradictory</strong>
+<ul>
+<li>High <span class="math inline">R^2</span> suggests model is good and explains a lot of the variation in <span class="math inline">Y</span></li>
+<li>But if individual <span class="math inline">t</span>-statistics are small, this suggests <span class="math inline">\beta_j = 0</span></li>
+<li>Hence individual <span class="math inline">X</span>-variables do not affect <span class="math inline">Y</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="potential-signs-of-multicollinearity" class="slide level2 smaller">
+<h2>Potential signs of Multicollinearity</h2>
+<ol type="1">
+<li><p><strong>High <span class="math inline">R^2</span> values couple with small t-values</strong></p></li>
+<li><p><strong>Very large <span class="math inline">\mathop{\mathrm{e.s.e.}}</span></strong></p></li>
+<li><p><strong>Numerical instabilities:</strong></p>
+<ul>
+<li>Parameter estimates <span class="math inline">\hat \beta_j</span> become very sensitive to small changes in the data</li>
+<li>The <span class="math inline">\mathop{\mathrm{e.s.e.}}</span> become very sensitive to small changes in the data</li>
+<li>Parameter estimates <span class="math inline">\hat \beta_j</span> <em>take the wrong sign</em> or otherwise <em>look strange</em></li>
+<li>Parameter estimates may be highly correlated</li>
+</ul></li>
+</ol>
+</section>
+<section id="example-of-multicollinearity" class="slide level2 smaller">
+<h2>Example of Multicollinearity</h2>
+<ul>
+<li><p>Consider the following illustrative example</p></li>
+<li><p>Want to explain expenditure <span class="math inline">Y</span> in terms of</p>
+<ul>
+<li>income <span class="math inline">X_2</span></li>
+<li>wealth <span class="math inline">X_3</span></li>
+</ul></li>
+</ul>
+<div id="Important*-7.2" class="Important">
+<details class="Important fbx-simplebox fbx-default" open=""><summary><strong>Important</strong></summary><div>
+<p><strong>To detect Multicollinearity look out for</strong></p>
+<ul>
+<li>High <span class="math inline">R^2</span> value</li>
+<li>coupled with low t-values</li>
+</ul>
+</div></details>
+</div>
+</section>
+<section id="example-dataset" class="slide level2 smaller">
+<h2>Example dataset</h2>
+<div style="font-size: 0.90em">
+<table>
+<thead>
+<tr class="header">
+<th>Expenditure <span class="math inline">Y</span></th>
+<th>Income <span class="math inline">X_2</span></th>
+<th>Wealth <span class="math inline">X_3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>70</td>
+<td>80</td>
+<td>810</td>
+</tr>
+<tr class="even">
+<td>65</td>
+<td>100</td>
+<td>1009</td>
+</tr>
+<tr class="odd">
+<td>90</td>
+<td>120</td>
+<td>1273</td>
+</tr>
+<tr class="even">
+<td>95</td>
+<td>140</td>
+<td>1425</td>
+</tr>
+<tr class="odd">
+<td>110</td>
+<td>160</td>
+<td>1633</td>
+</tr>
+<tr class="even">
+<td>115</td>
+<td>180</td>
+<td>1876</td>
+</tr>
+<tr class="odd">
+<td>120</td>
+<td>200</td>
+<td>2052</td>
+</tr>
+<tr class="even">
+<td>140</td>
+<td>220</td>
+<td>2201</td>
+</tr>
+<tr class="odd">
+<td>155</td>
+<td>240</td>
+<td>2435</td>
+</tr>
+<tr class="even">
+<td>150</td>
+<td>260</td>
+<td>2686</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="fit-the-regression-model-in-r" class="slide level2 smaller">
+<h2>Fit the regression model in R</h2>
+<ul>
+<li>Code for this example is available here <a href="codes/multicollinearity.R">multicollinearity.R</a></li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Enter data</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">110</span>, <span class="dv">115</span>, <span class="dv">120</span>, <span class="dv">140</span>, <span class="dv">155</span>, <span class="dv">150</span>)</span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">180</span>, <span class="dv">200</span>, <span class="dv">220</span>, <span class="dv">240</span>, <span class="dv">260</span>)</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">1009</span>, <span class="dv">1273</span>, <span class="dv">1425</span>, <span class="dv">1633</span>, <span class="dv">1876</span>, <span class="dv">2052</span>, <span class="dv">2201</span>, <span class="dv">2435</span>, <span class="dv">2686</span>)</span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model</span></span>
+<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3)</span>
+<span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># We want to display only part of summary</span></span>
+<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># First capture the output into a vector</span></span>
+<span id="cb18-11"><a aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">capture.output</span>(<span class="fu">summary</span>(model))</span>
+<span id="cb18-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Then print only the lines of interest</span></span>
+<span id="cb18-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(temp[<span class="dv">9</span><span class="sc">:</span><span class="dv">20</span>], <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-11" class="slide level2 smaller">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept) 24.77473    6.75250   3.669  0.00798 **
+x2           0.94154    0.82290   1.144  0.29016   
+x3          -0.04243    0.08066  -0.526  0.61509   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.808 on 7 degrees of freedom
+Multiple R-squared:  0.9635,    Adjusted R-squared:  0.9531 
+F-statistic:  92.4 on 2 and 7 DF,  p-value: 9.286e-06</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>Three basic statistics</strong></p>
+<ul>
+<li><span class="math inline">R^2</span> coefficient</li>
+<li>t-statistics and related p-values</li>
+<li>F-statistic and related p-value</li>
+</ul>
+</section>
+<section id="interpreting-the-r-output" class="slide level2 smaller">
+<h2>Interpreting the R output</h2>
+<ol type="1">
+<li><span class="math inline">R^2 = 0.9635</span>
+<ul>
+<li>Model explains a substantial amount of the variation (96.35%) in the data</li>
+</ul></li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li>F-statistic is
+<ul>
+<li><span class="math inline">F = 92.40196</span></li>
+<li>Corresponding p-value is <span class="math inline">p = 9.286 \times 10^{-6}</span></li>
+<li>There is evidence <span class="math inline">p&lt;0.05</span> that at least one between <em>income</em> and <em>wealth</em> affect expenditure</li>
+</ul></li>
+</ol>
+</section>
+<section id="interpreting-the-r-output-1" class="slide level2 smaller">
+<h2>Interpreting the R output</h2>
+<ol start="3" type="1">
+<li>t-statistics
+<ul>
+<li>t-statistics for <em>income</em> is <span class="math inline">t = 1.144</span></li>
+<li>Corresponding p-value is <span class="math inline">p = 0.29016</span></li>
+<li>t-statistic for <em>wealth</em> is <span class="math inline">t = -0.526</span></li>
+<li>Corresponding p-value is <span class="math inline">p = 0.61509</span></li>
+<li>Both p-values are <span class="math inline">p &gt; 0.05</span></li>
+<li>Therefore neither <em>income</em> nor <em>wealth</em> are individually statistically significant</li>
+<li>This means regression parameters are <span class="math inline">\beta_2 = \beta_3 = 0</span></li>
+</ul></li>
+</ol>
+<p><strong>Main red flag for Multicollinearity:</strong></p>
+<ul>
+<li>High <span class="math inline">R^2</span> value coupled with low t-values (corresponding to high p-values)</li>
+</ul>
+</section>
+<section id="the-output-looks-strange" class="slide level2 smaller">
+<h2>The output looks strange</h2>
+<h3 id="there-are-many-contradictions">There are many contradictions</h3>
+<ol type="1">
+<li><p>High <span class="math inline">R^2</span> value suggests model is really good</p></li>
+<li><p>However low t-values imply neither <em>income</em> nor <em>wealth</em> affect <em>expenditure</em></p></li>
+<li><p>F-statistic is high, meaning that at least one between <em>income</em> nor <em>wealth</em> affect <em>expenditure</em></p></li>
+<li><p>The <em>wealth</em> variable has the <em>wrong sign</em> (<span class="math inline">\hat \beta_3 &lt; 0</span>)</p>
+<ul>
+<li>This makes no sense: it is likely that <em>expenditure</em> will increase as <em>wealth</em> increases</li>
+<li>Therefore we would expect <span class="math inline">\, \hat \beta_3 &gt; 0</span></li>
+</ul></li>
+</ol>
+<p><strong>Multicollinearity is definitely present!</strong></p>
+</section>
+<section id="computing-the-correlation" class="slide level2 smaller">
+<h2>Computing the correlation</h2>
+<ul>
+<li>For further confirmation of Multicollinearity compute correlation of <span class="math inline">X_2</span> and <span class="math inline">X_3</span></li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, x3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9989624</code></pre>
+</div>
+</div>
+<ul>
+<li>Correlation is almost 1: Variables <span class="math inline">X_2</span> and <span class="math inline">X_3</span> are very highly correlated</li>
+</ul>
+<p><strong>This once again confirms Multicollinearity is present</strong></p>
+<p><br></p>
+<p><strong>Conclusion:</strong> The variables <em>Income</em> and <em>Wealth</em> are highly correlated</p>
+<ul>
+<li>Impossible to isolate individual impact of either <em>Income</em> or <em>Wealth</em> upon <em>Expenditure</em></li>
+</ul>
+</section>
+<section id="detection-of-multicollinearity" class="slide level2 smaller">
+<h2>Detection of Multicollinearity</h2>
+<p><strong>Klein’s rule of thumb:</strong> Multicollinearity will be a serious problem if:</p>
+<ul>
+<li>The <span class="math inline">R^2</span> obtained from regressing predictor variables <span class="math inline">X</span> is greater than the overall <span class="math inline">R^2</span> obtained by regressing <span class="math inline">Y</span> against all the <span class="math inline">X</span> variables</li>
+</ul>
+<p><strong>Example:</strong> In the <em>Expenditure</em> vs <em>Income</em> and <em>Wealth</em> dataset we have</p>
+<ul>
+<li><p>Regressing <span class="math inline">Y</span> against <span class="math inline">X_2</span> and <span class="math inline">X_3</span> gives <span class="math inline">R^2=0.9635</span></p></li>
+<li><p>Regressing <span class="math inline">X_2</span> against <span class="math inline">X_3</span> gives <span class="math inline">R^2 = 0.9979</span></p></li>
+</ul>
+<p><strong>Klein’s rule of thumb suggests that Multicollinearity will be a serious problem</strong></p>
+</section>
+<section id="remedial-measures" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="do-nothing">Do nothing</h3>
+<ul>
+<li><p>Multicollinearity is essentially a <strong>data-deficiency problem</strong></p></li>
+<li><p>Sometimes we have no control over the dataset available</p></li>
+<li><p>Important point:</p>
+<ul>
+<li>Doing nothing should only be an option in quantitative social sciences (e.g.&nbsp;finance, economics) where data is often difficult to collect</li>
+<li>For scientific experiments (e.g.&nbsp;physics, chemistry) one should strive to collect good data</li>
+</ul></li>
+</ul>
+</section>
+<section id="remedial-measures-1" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="acquire-newmore-data">Acquire new/more data</h3>
+<ul>
+<li><p><strong>Multicollinearity is a sample feature</strong></p></li>
+<li><p>Possible that another sample involving the same variables will have less Multicollinearity</p></li>
+<li><p>Acquiring more data might reduce severity of Multicollinearity</p></li>
+<li><p>More data can be collected by either</p>
+<ul>
+<li>increasing the sample size or</li>
+<li>including additional variables</li>
+</ul></li>
+</ul>
+</section>
+<section id="remedial-measures-2" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="use-prior-information-about-some-parameters">Use prior information about some parameters</h3>
+<ul>
+<li><p>To do this properly would require advanced Bayesian statistical methods</p></li>
+<li><p>This is beyond the scope of this module</p></li>
+</ul>
+</section>
+<section id="remedial-measures-3" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="rethinking-the-model">Rethinking the model</h3>
+<ul>
+<li>Sometimes a model chosen for empirical analysis is not carefully thought out
+<ul>
+<li>Some important variables may be omitted</li>
+<li>The functional form of the model may have been incorrectly chosen</li>
+</ul></li>
+<li>Sometimes using more advanced statistical techniques may be required
+<ul>
+<li>Factor Analysis</li>
+<li>Principal Components Analysis</li>
+<li>Ridge Regression</li>
+</ul></li>
+</ul>
+</section>
+<section id="remedial-measures-4" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="transformation-of-variables">Transformation of variables</h3>
+<ul>
+<li><p>Multicollinearity may be reduced by transforming variables</p></li>
+<li><p>This may be possible in various different ways</p>
+<ul>
+<li>E.g. for time-series data one might consider forming a new model by taking first differences</li>
+</ul></li>
+<li><p>Further reading in Chapter 10 of <span class="citation" data-cites="gujarati_porter">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span></p></li>
+</ul>
+</section>
+<section id="remedial-measures-5" class="slide level2 smaller">
+<h2>Remedial measures</h2>
+<h3 id="dropping-variables">Dropping variables</h3>
+<ul>
+<li><p>Simplest approach to tackle Multicollinearity is to drop one or more of the collinear variables</p></li>
+<li><p>Goal: Find the best combination of <span class="math inline">X</span> variables which reduces Multicollinearity</p></li>
+<li><p>We present 2 alternatives</p>
+<ol type="i">
+<li>Dropping variables <em>by hand</em></li>
+<li>Dropping variables using <strong>Stepwise regression</strong></li>
+</ol></li>
+</ul>
+</section>
+<section id="example-dropping-variables-by-hand" class="slide level2 smaller">
+<h2>Example: Dropping variables by hand</h2>
+<ul>
+<li><p>Consider again the <em>Expenditure</em> vs <em>Income</em> and <em>Wealth</em> dataset</p></li>
+<li><p>The variables <em>Income</em> and <em>Wealth</em> are highly correlated</p></li>
+<li><p>Intuitively we expect both <em>Income</em> and <em>Wealth</em> to affect <em>Expenditure</em></p></li>
+<li><p>Solution can be to drop either <em>Income</em> or <em>Wealth</em> variables</p>
+<ul>
+<li>We can then fit 2 separate models</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit expenditure as function of income</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit expenditure as function of wealth</span></span>
+<span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x3)</span>
+<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>)</span>
+<span id="cb22-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="expenditure-vs-income" class="slide level2 smaller">
+<h2>Expenditure Vs Income</h2>
+<div style="font-size: 0.90em">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 24.45455    6.41382   3.813  0.00514 ** 
+x2           0.50909    0.03574  14.243 5.75e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.493 on 8 degrees of freedom
+Multiple R-squared:  0.9621,    Adjusted R-squared:  0.9573 
+F-statistic: 202.9 on 1 and 8 DF,  p-value: 5.753e-07</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div style="font-size: 0.93em">
+<ul>
+<li><span class="math inline">R^ 2 = 0.9621</span> which is quite high</li>
+<li>p-value for <span class="math inline">\beta_2</span> is <span class="math inline">p = 9.8 \times 10^{-7} &lt; 0.5 \quad \implies \quad</span> <em>Income</em> variable is significant</li>
+<li>Estimate is <span class="math inline">\hat \beta_2 = 0.50909 &gt; 0</span></li>
+</ul>
+<p><strong>Strong evidence that <em>Expenditure</em> increases as <em>Income</em> increases</strong></p>
+</div>
+</section>
+<section id="expenditure-vs-wealth" class="slide level2 smaller">
+<h2>Expenditure Vs Wealth</h2>
+<div style="font-size: 0.90em">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 24.411045   6.874097   3.551   0.0075 ** 
+x3           0.049764   0.003744  13.292  9.8e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.938 on 8 degrees of freedom
+Multiple R-squared:  0.9567,    Adjusted R-squared:  0.9513 
+F-statistic: 176.7 on 1 and 8 DF,  p-value: 9.802e-07</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div style="font-size: 0.93em">
+<ul>
+<li><span class="math inline">R^ 2 = 0.9567</span> which is quite high</li>
+<li>p-value for <span class="math inline">\beta_2</span> is <span class="math inline">p = 9.8 \times 10^{-7} &lt; 0.5 \quad \implies \quad</span> <em>Wealth</em> variable is significant</li>
+<li>Estimate is <span class="math inline">\hat \beta_2 = 0.049764 &gt; 0</span></li>
+</ul>
+<p><strong>Strong evidence that <em>Expenditure</em> increases as <em>Wealth</em> increases</strong></p>
+</div>
+</section>
+<section id="example-conclusion" class="slide level2 smaller">
+<h2>Example: Conclusion</h2>
+<ul>
+<li>We considered the simpler models
+<ul>
+<li><em>Expenditure</em> vs <em>Income</em></li>
+<li><em>Expenditure</em> vs <em>Wealth</em></li>
+</ul></li>
+<li>Both models perform really well
+<ul>
+<li><em>Expenditure</em> increases as either <em>Income</em> or <em>Wealth</em> increase</li>
+</ul></li>
+<li>Multicollinearity effects disappeared after dropping either variable!</li>
+</ul>
+</section>
+<section id="stepwise-regression" class="slide level2 smaller">
+<h2>Stepwise regression</h2>
+<ul>
+<li><p>Stepwise regression: Method of comparing regression models</p></li>
+<li><p>Involves iterative selection of predictor variables <span class="math inline">X</span> to use in the model</p></li>
+<li><p>It can be achieved through</p>
+<ul>
+<li>Forward selection</li>
+<li>Backward selection</li>
+<li>Stepwise selection: Combination of Forward and Backward selection</li>
+</ul></li>
+</ul>
+</section>
+<section id="stepwise-regression-methods" class="slide level2 smaller">
+<h2>Stepwise regression methods</h2>
+<ol type="1">
+<li><strong>Forward Selection</strong>
+<ul>
+<li>Start with the <strong>null model</strong> with only intercept <span class="math display">
+Y = \beta_1 + \varepsilon
+</span></li>
+<li>Add each variable <span class="math inline">X_j</span> incrementally, testing for significance</li>
+<li>Stop when no more variables are statistically significant</li>
+</ul></li>
+</ol>
+<p><strong>Note:</strong> Significance criterion for <span class="math inline">X_j</span> is in terms of <strong>AIC</strong></p>
+<ul>
+<li>AIC is a measure of how well a model fits the data</li>
+<li>AIC is an alternative to the coefficient of determination <span class="math inline">R^2</span></li>
+<li>We will give details about AIC later</li>
+</ul>
+</section>
+<section id="stepwise-regression-methods-1" class="slide level2 smaller">
+<h2>Stepwise regression methods</h2>
+<ol start="2" type="1">
+<li><strong>Backward Selection</strong>
+<ul>
+<li>Start with the <strong>full model</strong> <span class="math display">
+Y = \beta_1 + \beta_2 X_{2}+ \ldots+\beta_p X_{p}+ \varepsilon
+</span></li>
+<li>Delete <span class="math inline">X_j</span> variables which are not significant</li>
+<li>Stop when all the remaining variables are significant</li>
+</ul></li>
+</ol>
+</section>
+<section id="stepwise-regression-methods-2" class="slide level2 smaller">
+<h2>Stepwise regression methods</h2>
+<ol start="3" type="1">
+<li><strong>Stepwise Selection</strong>
+<ul>
+<li>Start with the <strong>null model</strong> <span class="math display">
+Y = \beta_1 + \varepsilon
+</span></li>
+<li>Add each variable <span class="math inline">X_j</span> incrementally, testing for significance</li>
+<li>Each time a new variable <span class="math inline">X_j</span> is added, perform a Backward Selection step</li>
+<li>Stop when all the remaining variables are significant</li>
+</ul></li>
+</ol>
+<p><strong>Note:</strong> Stepwise Selection ensures that at each step all the variables are significant</p>
+</section>
+<section id="stepwise-regression-in-r" class="slide level2 smaller">
+<h2>Stepwise regression in R</h2>
+<ul>
+<li>Suppose given
+<ul>
+<li>a data vector <span class="math inline">\, \texttt{y}</span></li>
+<li>predictors data <span class="math inline">\, \texttt{x2}, \texttt{x3}, \ldots, \texttt{xp}</span></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Begin by fitting the null and full regression models</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the null model</span></span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>null.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the full model</span></span>
+<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>full.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> ... <span class="sc">+</span> xp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stepwise-regression-in-r-1" class="slide level2 smaller">
+<h2>Stepwise regression in R</h2>
+<ul>
+<li>There are 2 basic differences depending on whether you are doing
+<ul>
+<li>Forward selection or Stepwise selection: Start with <strong>null model</strong></li>
+<li>Backward selection: Start with <strong>full model</strong></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>The command for <em>Stepwise selection</em> is</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stepwise selection</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>best.model <span class="ot">&lt;-</span> <span class="fu">step</span>(null.model, </span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">direction =</span> <span class="st">"both"</span>, </span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">scope =</span> <span class="fu">formula</span>(full.model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stepwise-regression-in-r-2" class="slide level2 smaller">
+<h2>Stepwise regression in R</h2>
+<ul>
+<li>The command for <em>Forward selection</em> is</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Forward selection</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>best.model <span class="ot">&lt;-</span> <span class="fu">step</span>(null.model, </span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">direction =</span> <span class="st">"forward"</span>, </span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">scope =</span> <span class="fu">formula</span>(full.model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<ul>
+<li>The command for <em>Backward selection</em> is</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Backward selection</span></span>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>best.model <span class="ot">&lt;-</span> <span class="fu">step</span>(full.model, </span>
+<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">direction =</span> <span class="st">"backward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stepwise-regression-in-r-3" class="slide level2 smaller">
+<h2>Stepwise regression in R</h2>
+<ul>
+<li>The model selected by <em>Stepwise regression</em> is saved in
+<ul>
+<li><span class="math inline">\texttt{best.model}</span></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>To check which model is best, just print the summary and read first 2 lines</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(best.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-longley-dataset" class="slide level2 smaller">
+<h2>Example: Longley dataset</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      GNP Unemployed Armed.Forces Population Year Employed
+1 234.289      235.6        159.0    107.608 1947   60.323
+2 259.426      232.5        145.6    108.632 1948   61.122
+3 258.054      368.2        161.6    109.773 1949   60.171</code></pre>
+</div>
+</div>
+<p><strong>Goal:</strong> Explain the number of <em>Employed</em> people <span class="math inline">Y</span> in the US in terms of</p>
+<ul>
+<li><span class="math inline">X_2</span> <em>GNP</em> Gross National Product</li>
+<li><span class="math inline">X_3</span> number of <em>Unemployed</em></li>
+<li><span class="math inline">X_4</span> number of people in the <em>Armed Forces</em></li>
+<li><span class="math inline">X_5</span> <em>non-institutionalised Population</em> <span class="math inline">\geq</span> age 14 (not in care of insitutions)</li>
+<li><span class="math inline">X_6</span> <em>Years</em> from 1947 to 1962</li>
+</ul>
+</section>
+<section id="reading-in-the-data" class="slide level2 smaller">
+<h2>Reading in the data</h2>
+<ul>
+<li><p>Code for this example is available here <a href="codes/longley_stepwise.R">longley_stepwise.R</a></p></li>
+<li><p>Longley dataset available here <a href="datasets/longley.txt">longley.txt</a></p></li>
+<li><p>Download the data file and place it in current working directory</p></li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file</span></span>
+<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>longley <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"longley.txt"</span>,</span>
+<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Store columns in vectors</span></span>
+<span id="cb31-6"><a aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> longley[ , <span class="dv">1</span>]</span>
+<span id="cb31-7"><a aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> longley[ , <span class="dv">2</span>]</span>
+<span id="cb31-8"><a aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> longley[ , <span class="dv">3</span>]</span>
+<span id="cb31-9"><a aria-hidden="true" tabindex="-1"></a>x5 <span class="ot">&lt;-</span> longley[ , <span class="dv">4</span>]</span>
+<span id="cb31-10"><a aria-hidden="true" tabindex="-1"></a>x6 <span class="ot">&lt;-</span> longley[ , <span class="dv">5</span>]</span>
+<span id="cb31-11"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> longley[ , <span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="detecting-multicollinearity" class="slide level2 smaller">
+<h2>Detecting Multicollinearity</h2>
+<ul>
+<li>Fit the multiple regression model including all predictors</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 + \beta_2 \, X_2 + \beta_3 \, X_3 + \beta_4 \, X_4 + \beta_5 \, X_5
+    + \beta_6 \, X_6 + \varepsilon
+</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit multiple regression model</span></span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x5 <span class="sc">+</span> x6)</span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary</span></span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-12" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:100%;">
+<p><img data-src="images/longley_output_4.png" style="width:72.0%"></p>
+</div>
+</div>
+<ul>
+<li>Fitting the full model gives
+<ul>
+<li>High <span class="math inline">R^2</span> value</li>
+<li>Low <span class="math inline">t</span>-values (and high p-values) for <span class="math inline">X_2</span> and <span class="math inline">X_5</span></li>
+</ul></li>
+<li>These are signs that we might have a problem with Multicollinearity</li>
+</ul>
+</section>
+<section id="section-13" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>To further confirm Multicollinearity we can look at the correlation matrix
+<ul>
+<li>We can use function <span class="math inline">\, \texttt{cor}</span> directly on first 5 columns of data-frame <span class="math inline">\,\texttt{longley}</span></li>
+<li>We look only at correlations larger than <span class="math inline">0.9</span></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Return correlations larger than 0.9</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(longley[ , <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">&gt;</span> <span class="fl">0.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>               GNP Unemployed Armed.Forces Population  Year
+GNP           TRUE      FALSE        FALSE       TRUE  TRUE
+Unemployed   FALSE       TRUE        FALSE      FALSE FALSE
+Armed.Forces FALSE      FALSE         TRUE      FALSE FALSE
+Population    TRUE      FALSE        FALSE       TRUE  TRUE
+Year          TRUE      FALSE        FALSE       TRUE  TRUE</code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li>Hence the following pairs are highly correlated (correlation <span class="math inline">\, &gt; 0.9</span>) <span class="math display">
+X_2 \,\, \text{and} \,\, X_5 \qquad \quad
+X_2 \,\, \text{and} \,\, X_6 \qquad \quad
+X_4 \,\, \text{and} \,\, X_6
+</span></li>
+</ul>
+</section>
+<section id="applying-stepwise-regression" class="slide level2 smaller">
+<h2>Applying Stepwise regression</h2>
+<ul>
+<li><strong>Goal:</strong> Want to find best variables which, at the same time
+<ul>
+<li>Explain <em>Employment</em> variable <span class="math inline">Y</span></li>
+<li>Reduce Multicollinearity</li>
+</ul></li>
+<li><strong>Method:</strong> We use <em>Stepwise regression</em></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Start by by fitting the null and full regression models</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the null model</span></span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>null.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the full model</span></span>
+<span id="cb35-5"><a aria-hidden="true" tabindex="-1"></a>full.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4 <span class="sc">+</span> x5 <span class="sc">+</span> x6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="applying-stepwise-regression-1" class="slide level2 smaller">
+<h2>Applying Stepwise regression</h2>
+<ul>
+<li>Perform Stepwise regression by
+<ul>
+<li>Forward selection, Backward selection, Stepwise selection</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Forward selection</span></span>
+<span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a>best.model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">step</span>(null.model, </span>
+<span id="cb36-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">direction =</span> <span class="st">"forward"</span>, </span>
+<span id="cb36-4"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">scope =</span> <span class="fu">formula</span>(full.model))</span>
+<span id="cb36-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Backward selection</span></span>
+<span id="cb36-7"><a aria-hidden="true" tabindex="-1"></a>best.model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">step</span>(full.model, </span>
+<span id="cb36-8"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">direction =</span> <span class="st">"backward"</span>)</span>
+<span id="cb36-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Stepwise selection</span></span>
+<span id="cb36-11"><a aria-hidden="true" tabindex="-1"></a>best.model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">step</span>(null.model, </span>
+<span id="cb36-12"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">direction =</span> <span class="st">"both"</span>,</span>
+<span id="cb36-13"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">scope =</span> <span class="fu">formula</span>(full.model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="applying-stepwise-regression-2" class="slide level2 smaller">
+<h2>Applying Stepwise regression</h2>
+<ul>
+<li>Models obtained by Stepwise regression are stored in
+<ul>
+<li><span class="math inline">\texttt{best.model.1}, \,\, \texttt{best.model.3}, \,\,\texttt{best.model.3}</span></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Print the summary for each model obtained</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of each model</span></span>
+<span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(best.model.x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<ul>
+<li><strong>Output:</strong> The 3 methods all yield the same model</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a>Call:</span>
+<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a>lm(formula = y ~ x2 + x3 + x4 + x6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="interpretation" class="slide level2 smaller">
+<h2>Interpretation</h2>
+<ul>
+<li>All three Stepwise regression methods agree and select a model with the variables
+<ul>
+<li><span class="math inline">X_2</span>, <span class="math inline">X_3</span>, <span class="math inline">X_4</span> and <span class="math inline">X_6</span></li>
+<li><span class="math inline">X_5</span> is excluded</li>
+</ul></li>
+<li>Explanation: Multicollinearity and inter-relationships between the <span class="math inline">X</span>-variables mean that there is some redundancy
+<ul>
+<li>the <span class="math inline">X_5</span> variable is not needed in the model</li>
+</ul></li>
+<li>This means that the number <em>Employed</em> just depends on
+<ul>
+<li><span class="math inline">X_2</span> <em>GNP</em></li>
+<li><span class="math inline">X_3</span> Number of <em>Unemployed</em> people</li>
+<li><span class="math inline">X_4</span> Number of people in the <em>Armed Forces</em></li>
+<li><span class="math inline">X_6</span> Time in <em>Years</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li>Coefficient of determination is still very high: <span class="math inline">R^2 = 0.9954</span></li>
+<li>All the variables <span class="math inline">X_2, X_3,X_4,X_6</span> are significant (high t-values)</li>
+<li>This means Multicollinearity effects have disappeared</li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5-1" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li>The coefficient of <span class="math inline">X_2</span> is negative and statistically significant
+<ul>
+<li>As <em>GNP</em> increases the number <em>Employed</em> decreases</li>
+</ul></li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5-2" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li>The coefficient of <span class="math inline">X_3</span> is negative and statistically significant
+<ul>
+<li>As the number of <em>Unemployed</em> increases the number <em>Employed</em> decreases</li>
+</ul></li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5-3" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li>The coefficient of <span class="math inline">X_4</span> is negative and statistically significant
+<ul>
+<li>As the number of <em>Armed Forces</em> increases the number <em>Employed</em> decreases</li>
+</ul></li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5-4" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li>The coefficient of <span class="math inline">X_6</span> is positive and statistically significant
+<ul>
+<li>the number <em>Employed</em> is generally increasing over <em>Time</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="re-fitting-the-model-without-x_5-5" class="slide level2 smaller">
+<h2>Re-fitting the model without <span class="math inline">X_5</span></h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = y ~ x2 + x3 + x4 + x6)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.599e+03  7.406e+02  -4.859 0.000503 ***
+x2          -4.019e-02  1.647e-02  -2.440 0.032833 *  
+x3          -2.088e-02  2.900e-03  -7.202 1.75e-05 ***
+x4          -1.015e-02  1.837e-03  -5.522 0.000180 ***
+x6           1.887e+00  3.828e-01   4.931 0.000449 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2794 on 11 degrees of freedom
+Multiple R-squared:  0.9954,    Adjusted R-squared:  0.9937 
+F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
+
+</code></pre>
+</div>
+<ul>
+<li><strong>Apparent contradiction:</strong> The interpretation for <span class="math inline">X_2</span> appears contradictory
+<ul>
+<li>We would expect that as <em>GNP</em> increases the number of <em>Employed</em> increases</li>
+<li>This is not the case because the effect of <span class="math inline">X_2</span> is dwarfed by the general increase in <em>Employment</em> over <em>Time</em> (<span class="math inline">X_6</span> has large coefficient)</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="part-4-stepwise-regression-and-overfitting" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>Stepwise regression <br> and overfitting</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="on-the-coefficient-of-determination-r2" class="slide level2 smaller">
+<h2>On the coefficient of determination <span class="math inline">R^2</span></h2>
+<ul>
+<li>Recall the formula for the <span class="math inline">R^2</span> coefficient of determination</li>
+</ul>
+<p><span class="math display">
+R^2 = 1 - \frac{\mathop{\mathrm{RSS}}}{\mathop{\mathrm{TSS}}}
+</span></p>
+<ul>
+<li>We used <span class="math inline">R^2</span> to measure how well a regression model fits the data
+<ul>
+<li>Large <span class="math inline">R^2</span> implies good fit</li>
+<li>Small <span class="math inline">R^2</span> implies bad fit</li>
+</ul></li>
+</ul>
+</section>
+<section id="revisiting-the-galileo-example" class="slide level2 smaller">
+<h2>Revisiting the Galileo example</h2>
+<p><strong>Drawback:</strong> <span class="math inline">R^2</span> increases when number of predictors increases</p>
+<ul>
+<li><p>We saw this phenomenon in the <strong>Galileo</strong> example in Lecture 10</p></li>
+<li><p>Fitting the model <span class="math display">
+  \rm{distance} = \beta_1 + \beta_2 \, \rm{height}  + \varepsilon
+</span> yielded <span class="math inline">R^2 = 0.9264</span></p></li>
+<li><p>In contrast the quadratic, cubic, and quartic models yielded, respectively <span class="math display">
+R^2 = 0.9903 \,, \qquad R^2 = 0.9994 \,, \qquad
+R^2 = 0.9998
+</span></p></li>
+<li><p>Fitting a higher degree polynomial gives higher <span class="math inline">R^2</span></p></li>
+</ul>
+</section>
+<section id="revisiting-the-galileo-example-1" class="slide level2 smaller">
+<h2>Revisiting the Galileo example</h2>
+<p><strong>Conclusion:</strong> If the degree of the polynomial is sufficiently high, we will get <span class="math inline">R^2 = 1</span></p>
+<ul>
+<li>Indeed, there always exist a polynomial passing exactly through the data points</li>
+</ul>
+<p><span class="math display">
+(\rm{height}_1, \rm{distance}_1) \,, \ldots , (\rm{height}_n, \rm{distance}_n)
+</span></p>
+<ul>
+<li>For such polynomial model the predictions match the data perfectly</li>
+</ul>
+<p><span class="math display">
+\hat y_i = y_i \,, \qquad \forall \,\, i = 1 , \ldots, n
+</span></p>
+<ul>
+<li>Therefore we have</li>
+</ul>
+<p><span class="math display">
+\mathop{\mathrm{RSS}}= \sum_{i=1}^n (y_i - \hat y_i )^2 = 0 \qquad \implies
+\qquad R^2 = 1
+</span></p>
+</section>
+<section id="overfitting-the-model" class="slide level2 smaller">
+<h2>Overfitting the model</h2>
+<p><strong>Warning:</strong> Adding increasingly higher number of parameters is not good</p>
+<ul>
+<li>It leads to a phenomenon called <strong>overfitting</strong>
+<ul>
+<li>The model fits the data very well</li>
+<li>However the model does not make good predictions on unseen data</li>
+</ul></li>
+<li>We encountered this phenomenon in the <strong>Divorces</strong> example of Lecture 10</li>
+</ul>
+</section>
+<section id="revisiting-the-divorces-example" class="slide level2 smaller">
+<h2>Revisiting the Divorces example</h2>
+<div class="column" style="width:45%;">
+<p><br></p>
+<ul>
+<li><p>The best model seems to be Linear <span class="math display">
+y = \beta_1 + \beta_2 x + \varepsilon
+</span></p></li>
+<li><p>Linear model interpretation:</p>
+<ul>
+<li>The risk of divorce is decreasing in time</li>
+<li>The risk peak in year 2 is explained by unusually low risk in year 1</li>
+</ul></li>
+</ul>
+</div>
+<div class="column" style="width:46%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Click here for full code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Divorces data</span></span>
+<span id="cb45-2"><a aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb45-3"><a aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.51</span>, <span class="fl">9.5</span>, <span class="fl">8.91</span>, <span class="fl">9.35</span>, <span class="fl">8.18</span>, <span class="fl">6.43</span>, <span class="fl">5.31</span>, </span>
+<span id="cb45-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">5.07</span>, <span class="fl">3.65</span>, <span class="fl">3.8</span>, <span class="fl">2.83</span>, <span class="fl">1.51</span>, <span class="fl">1.27</span>, <span class="fl">0.49</span>)</span>
+<span id="cb45-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb45-7"><a aria-hidden="true" tabindex="-1"></a>linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year)</span>
+<span id="cb45-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit order 6 model</span></span>
+<span id="cb45-10"><a aria-hidden="true" tabindex="-1"></a>order_6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year  <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">3</span> ) <span class="sc">+</span> </span>
+<span id="cb45-11"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">4</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">5</span> ) <span class="sc">+</span></span>
+<span id="cb45-12"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">6</span> ))</span>
+<span id="cb45-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of data</span></span>
+<span id="cb45-15"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(year, percent, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb45-16"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-17"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels</span></span>
+<span id="cb45-18"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Years of marriage"</span>, <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb45-19"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Risk of divorce by adultery"</span>, <span class="at">side =</span> <span class="dv">2</span>, <span class="at">line =</span> <span class="fl">2.5</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb45-20"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-21"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Linear Vs Quadratic</span></span>
+<span id="cb45-22"><a aria-hidden="true" tabindex="-1"></a>polynomial <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x, ps) {</span>
+<span id="cb45-23"><a aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(ps)</span>
+<span id="cb45-24"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(ps<span class="sc">*</span>x<span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span>n<span class="dv">-1</span>))</span>
+<span id="cb45-25"><a aria-hidden="true" tabindex="-1"></a>}, <span class="st">"x"</span>)</span>
+<span id="cb45-26"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(linear)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb45-27"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(order_6)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb45-28"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Linear"</span>, <span class="st">"Order 6"</span>), </span>
+<span id="cb45-29"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="revisiting-the-divorces-example-1" class="slide level2 smaller">
+<h2>Revisiting the Divorces example</h2>
+<div class="column" style="width:45%;">
+<p><br></p>
+<ul>
+<li>Fitting <em>Order 6</em> polynomial yields better results
+<ul>
+<li>The coefficient <span class="math inline">R^2</span> decreases (of course!)</li>
+<li>F-test for model comparison prefers <em>Order 6</em> model to the linear one</li>
+</ul></li>
+<li>Statistically <em>Order 6</em> model is better than <em>Linear</em> model</li>
+</ul>
+</div>
+<div class="column" style="width:46%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Click here for full code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Divorces data</span></span>
+<span id="cb46-2"><a aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb46-3"><a aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.51</span>, <span class="fl">9.5</span>, <span class="fl">8.91</span>, <span class="fl">9.35</span>, <span class="fl">8.18</span>, <span class="fl">6.43</span>, <span class="fl">5.31</span>, </span>
+<span id="cb46-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">5.07</span>, <span class="fl">3.65</span>, <span class="fl">3.8</span>, <span class="fl">2.83</span>, <span class="fl">1.51</span>, <span class="fl">1.27</span>, <span class="fl">0.49</span>)</span>
+<span id="cb46-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb46-7"><a aria-hidden="true" tabindex="-1"></a>linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year)</span>
+<span id="cb46-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit order 6 model</span></span>
+<span id="cb46-10"><a aria-hidden="true" tabindex="-1"></a>order_6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year  <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">3</span> ) <span class="sc">+</span> </span>
+<span id="cb46-11"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">4</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">5</span> ) <span class="sc">+</span></span>
+<span id="cb46-12"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">6</span> ))</span>
+<span id="cb46-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of data</span></span>
+<span id="cb46-15"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(year, percent, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb46-16"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-17"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels</span></span>
+<span id="cb46-18"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Years of marriage"</span>, <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb46-19"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Risk of divorce by adultery"</span>, <span class="at">side =</span> <span class="dv">2</span>, <span class="at">line =</span> <span class="fl">2.5</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb46-20"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Linear Vs Quadratic</span></span>
+<span id="cb46-22"><a aria-hidden="true" tabindex="-1"></a>polynomial <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x, ps) {</span>
+<span id="cb46-23"><a aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(ps)</span>
+<span id="cb46-24"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(ps<span class="sc">*</span>x<span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span>n<span class="dv">-1</span>))</span>
+<span id="cb46-25"><a aria-hidden="true" tabindex="-1"></a>}, <span class="st">"x"</span>)</span>
+<span id="cb46-26"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(linear)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb46-27"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(order_6)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb46-28"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Linear"</span>, <span class="st">"Order 6"</span>), </span>
+<span id="cb46-29"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="revisiting-the-divorces-example-2" class="slide level2 smaller">
+<h2>Revisiting the Divorces example</h2>
+<div class="column" style="width:45%;">
+<ul>
+<li>However, looking at the plot:
+<ul>
+<li><em>Order 6</em> model introduces unnatural spike at 27 years</li>
+<li>This is a sign of <em>overfitting</em></li>
+</ul></li>
+<li>Question:
+<ul>
+<li><span class="math inline">R^2</span> coefficient and F-test are in favor of <em>Order 6</em> model</li>
+<li>How do we rule out the <em>Order 6</em> model?</li>
+</ul></li>
+<li>Answer: We need a new measure for comparing regression models</li>
+</ul>
+</div>
+<div class="column" style="width:46%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Click here for full code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Divorces data</span></span>
+<span id="cb47-2"><a aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb47-3"><a aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.51</span>, <span class="fl">9.5</span>, <span class="fl">8.91</span>, <span class="fl">9.35</span>, <span class="fl">8.18</span>, <span class="fl">6.43</span>, <span class="fl">5.31</span>, </span>
+<span id="cb47-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">5.07</span>, <span class="fl">3.65</span>, <span class="fl">3.8</span>, <span class="fl">2.83</span>, <span class="fl">1.51</span>, <span class="fl">1.27</span>, <span class="fl">0.49</span>)</span>
+<span id="cb47-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear model</span></span>
+<span id="cb47-7"><a aria-hidden="true" tabindex="-1"></a>linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year)</span>
+<span id="cb47-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit order 6 model</span></span>
+<span id="cb47-10"><a aria-hidden="true" tabindex="-1"></a>order_6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year  <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">3</span> ) <span class="sc">+</span> </span>
+<span id="cb47-11"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">4</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">5</span> ) <span class="sc">+</span></span>
+<span id="cb47-12"><a aria-hidden="true" tabindex="-1"></a>                                <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">6</span> ))</span>
+<span id="cb47-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of data</span></span>
+<span id="cb47-15"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(year, percent, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb47-16"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels</span></span>
+<span id="cb47-18"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Years of marriage"</span>, <span class="at">side =</span> <span class="dv">1</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb47-19"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Risk of divorce by adultery"</span>, <span class="at">side =</span> <span class="dv">2</span>, <span class="at">line =</span> <span class="fl">2.5</span>, <span class="at">cex =</span> <span class="fl">2.1</span>)</span>
+<span id="cb47-20"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-21"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Linear Vs Quadratic</span></span>
+<span id="cb47-22"><a aria-hidden="true" tabindex="-1"></a>polynomial <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x, ps) {</span>
+<span id="cb47-23"><a aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(ps)</span>
+<span id="cb47-24"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(ps<span class="sc">*</span>x<span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span>n<span class="dv">-1</span>))</span>
+<span id="cb47-25"><a aria-hidden="true" tabindex="-1"></a>}, <span class="st">"x"</span>)</span>
+<span id="cb47-26"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(linear)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb47-27"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">polynomial</span>(x, <span class="fu">coef</span>(order_6)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb47-28"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Linear"</span>, <span class="st">"Order 6"</span>), </span>
+<span id="cb47-29"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="akaike-information-criterion-aic" class="slide level2 smaller">
+<h2>Akaike information criterion (AIC)</h2>
+<ul>
+<li><p>The AIC is a number which measures how well a regression model fits the data</p></li>
+<li><p>Also <span class="math inline">R^2</span> measures how well a regression model fits the data</p></li>
+<li><p>The difference between AIC and <span class="math inline">R^2</span> is that AIC also <strong>accounts for overfitting</strong></p></li>
+<li><p>The formal definition of AIC is</p></li>
+</ul>
+<p><span class="math display">
+{\rm AIC} := 2p - 2 \log ( \hat{L} )
+</span></p>
+<ul>
+<li><p><span class="math inline">p =</span> number of parameters in the model</p></li>
+<li><p><span class="math inline">\hat{L} =</span> maximum value of the likelihood function</p></li>
+</ul>
+</section>
+<section id="akaike-information-criterion-aic-1" class="slide level2 smaller">
+<h2>Akaike information criterion (AIC)</h2>
+<ul>
+<li>In past lectures we have shown that for the general regression model</li>
+</ul>
+<p><span class="math display">
+\ln(\hat L)=
+-\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln(\hat\sigma^2) - \frac{1}{2\hat\sigma^2} \mathop{\mathrm{RSS}}\,, \qquad \hat \sigma^2 := \frac{\mathop{\mathrm{RSS}}}{n}
+</span></p>
+<ul>
+<li>Therefore</li>
+</ul>
+<p><span class="math display">
+\ln(\hat L)= - \frac{n}{2}  \log \left( \frac{\mathop{\mathrm{RSS}}}{n}  \right) + C
+</span></p>
+<ul>
+<li><p><span class="math inline">C</span> is constant depending only on the number of sample points</p></li>
+<li><p>Thus <span class="math inline">C</span> does not change if the data does not change</p></li>
+</ul>
+</section>
+<section id="akaike-information-criterion-aic-2" class="slide level2 smaller">
+<h2>Akaike information criterion (AIC)</h2>
+<ul>
+<li>We obtain the following equivalent formula for AIC</li>
+</ul>
+<p><span class="math display">
+{\rm AIC} = 2p + n \log \left( \frac{ \mathop{\mathrm{RSS}}}{n} \right) - 2C
+</span></p>
+<ul>
+<li>We now see that AIC accounts for
+<ul>
+<li><strong>Data fit:</strong> since the data fit term <span class="math inline">\mathop{\mathrm{RSS}}</span> is present</li>
+<li><strong>Model complexity:</strong> Since the number of degrees of freedom <span class="math inline">p</span> is present</li>
+</ul></li>
+<li>Therefore a model with low AIC is such that:
+<ol type="1">
+<li>Model fits data well</li>
+<li>Model is not too complex, preventing overfitting</li>
+</ol></li>
+<li>Conclusion: sometimes AIC is better than <span class="math inline">R^2</span> when comparing two models</li>
+</ul>
+</section>
+<section id="stepwise-regression-and-aic" class="slide level2 smaller">
+<h2>Stepwise regression and AIC</h2>
+<ul>
+<li><em>Stepwise regression</em> function in R uses AIC to compare models
+<ul>
+<li>the model with <strong>lowest AIC</strong> is selected</li>
+</ul></li>
+<li>Hence Stepwise regression outputs the model which, at the same time
+<ol type="1">
+<li>Best fits the given data</li>
+<li>Prevents overfitting</li>
+</ol></li>
+<li><strong>Example:</strong> Apply Stepwise regression to <strong>divorces</strong> examples to compare
+<ul>
+<li>Linear model</li>
+<li>Order 6 model</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-divorces" class="slide level2 smaller">
+<h2>Example: Divorces</h2>
+<h3 id="the-dataset">The dataset</h3>
+<ul>
+<li>Code for this example is available here <a href="codes/divorces_stepwise.R">divorces_stepwise.R</a></li>
+</ul>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Years of Marriage</strong></th>
+<th style="text-align: left;">1</th>
+<th style="text-align: left;">2</th>
+<th style="text-align: left;">3</th>
+<th style="text-align: left;">4</th>
+<th style="text-align: left;">5</th>
+<th style="text-align: left;">6</th>
+<th style="text-align: left;">7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>% divorces adultery</strong></td>
+<td style="text-align: left;">3.51</td>
+<td style="text-align: left;">9.50</td>
+<td style="text-align: left;">8.91</td>
+<td style="text-align: left;">9.35</td>
+<td style="text-align: left;">8.18</td>
+<td style="text-align: left;">6.43</td>
+<td style="text-align: left;">5.31</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Years of Marriage</strong></th>
+<th style="text-align: left;">8</th>
+<th style="text-align: left;">9</th>
+<th style="text-align: left;">10</th>
+<th style="text-align: left;">15</th>
+<th style="text-align: left;">20</th>
+<th style="text-align: left;">25</th>
+<th style="text-align: left;">30</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>% divorces adultery</strong></td>
+<td style="text-align: left;">5.07</td>
+<td style="text-align: left;">3.65</td>
+<td style="text-align: left;">3.80</td>
+<td style="text-align: left;">2.83</td>
+<td style="text-align: left;">1.51</td>
+<td style="text-align: left;">1.27</td>
+<td style="text-align: left;">0.49</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fitting-the-null-model" class="slide level2 smaller">
+<h2>Fitting the null model</h2>
+<ul>
+<li>First we import the data into R</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Divorces data</span></span>
+<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.51</span>, <span class="fl">9.5</span>, <span class="fl">8.91</span>, <span class="fl">9.35</span>, <span class="fl">8.18</span>, <span class="fl">6.43</span>, <span class="fl">5.31</span>, </span>
+<span id="cb48-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">5.07</span>, <span class="fl">3.65</span>, <span class="fl">3.8</span>, <span class="fl">2.83</span>, <span class="fl">1.51</span>, <span class="fl">1.27</span>, <span class="fl">0.49</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The null model is</li>
+</ul>
+<p><span class="math display">
+{\rm percent} = \beta_1 + \varepsilon
+</span></p>
+<ul>
+<li>Fit the null model with</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-hidden="true" tabindex="-1"></a>null.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fitting-the-full-model" class="slide level2 smaller">
+<h2>Fitting the full model</h2>
+<ul>
+<li>The full model is the <em>Order 6</em> model</li>
+</ul>
+<p><span class="math display">
+\rm{percent} = \beta_1 + \beta_2 \, {\rm year} +
+\beta_3 \, {\rm year}^2 + \ldots + \beta_7 \, {\rm year}^6
+</span></p>
+<ul>
+<li>Fit the full model with</li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-hidden="true" tabindex="-1"></a>full.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(percent <span class="sc">~</span> year  <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">3</span> ) <span class="sc">+</span> </span>
+<span id="cb50-2"><a aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">4</span> ) <span class="sc">+</span> <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">5</span> ) <span class="sc">+</span></span>
+<span id="cb50-3"><a aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">I</span>( year<span class="sc">^</span><span class="dv">6</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stepwise-regression-1" class="slide level2 smaller">
+<h2>Stepwise regression</h2>
+<ul>
+<li>We run stepwise regression and save the best model</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-hidden="true" tabindex="-1"></a>best.model <span class="ot">&lt;-</span> <span class="fu">step</span>(null.model, </span>
+<span id="cb51-2"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">direction =</span> <span class="st">"both"</span>, </span>
+<span id="cb51-3"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">scope =</span> <span class="fu">formula</span>(full.model)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<ul>
+<li>The best model is <em>Linear</em>, and not <em>Order 6</em>!</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(best.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="verbatim"><code>
+Call:
+lm(formula = percent ~ year)
+
+.....
+</code></pre>
+</section>
+<section id="conclusions" class="slide level2 smaller">
+<h2>Conclusions</h2>
+<ul>
+<li>Old conclusions:
+<ul>
+<li><em>Linear model</em> has lower <span class="math inline">R^2</span> than <em>Order 6 model</em></li>
+<li>F-test for model selection chooses <em>Order 6 model</em> over <em>Linear model</em></li>
+<li>Hence <em>Order 6 model</em> seems better than <em>Linear model</em></li>
+</ul></li>
+<li>New conclusions:
+<ul>
+<li><em>Order 6 model</em> is more complex than the <em>Linear model</em></li>
+<li>In particular <em>Order 6 model</em> has higher AIC than the <em>Linear model</em></li>
+<li>Stepwise regression chooses <em>Linear model</em> over <em>Order 6 model</em></li>
+</ul></li>
+<li><strong>Bottom line:</strong> The new findings are in line with our intuition:
+<ul>
+<li><em>Order 6</em> model overfits</li>
+<li>Therefore the <em>Linear model</em> should be preferred</li>
+</ul></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">

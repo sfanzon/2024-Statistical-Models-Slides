@@ -97,7 +97,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | Lecture 8   | [Least-squares Solution 1](slides/codes/least_squares_1.R) <br>  [Least-squares Solution 2](slides/codes/least_squares_2.R)        |
 | Lecture 9   | [Multiple Regression](slides/codes/multiple_regression.R) <br> [R2 multiple regression](slides/codes/R2_multiple_regression.R) |
 | Lecture 10  | [Simple Regression](slides/codes/simple_regression.R)  <br> [Longley regression](slides/codes/longley_regression.R) <br> [Longley selection](slides/codes/longley_selection.R) <br> [Galileo](slides/codes/galileo.R) <br> [Divorces](slides/codes/divorces.R) |
-| Lecture 11  | [Residual graphs](slides/codes/residual_graphs.R) <br> [Autocorrelation graphic tests](slides/codes/autocorrelation_graph_tests.R) <br> [Multicollinearity](slides/codes/multicollinearity.R) <br> [Stepwise regression: Longley.R](slides/codes/longley_stepwise.R) <br> [Stepwise regression: Divorces](slides/codes/divorces_stepwise.R) |
+| Lecture 11  | [Residual graphs](slides/codes/residual_graphs.R) <br> [Autocorrelation graphic tests](slides/codes/autocorrelation_graph_tests.R) <br> [Multicollinearity](slides/codes/multicollinearity.R) <br> [Stepwise regression: Longley](slides/codes/longley_stepwise.R) <br> [Stepwise regression: Divorces](slides/codes/divorces_stepwise.R) |
 | Appendix    | [2008 Crisis](slides/codes/2008_crisis_code.R) |
 : {tbl-colwidths="[30,70]"}
 
@@ -107,6 +107,7 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 
 - [Stock-Gold prices](slides/datasets/stock_gold.txt) 
 - [Longley](slides/datasets/longley.txt)
+- [Fridge Sales](slides/datasets/fridge_sales.txt)
 - [2008 Crisis](slides/datasets/2008_crisis.txt)
 - [Family Guy](slides/datasets/family_guy.txt)
 
