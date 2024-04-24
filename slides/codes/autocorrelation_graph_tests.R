@@ -1,3 +1,12 @@
+# Remember to save data on Desktop
+
+# Change working directory to Desktop
+# In MacOS type
+# setwd("~/Desktop")
+
+# In Windows type
+# setwd("C:/Users/YourUsername/Desktop")
+
 # Load dataset
 prices <- read.table(file = "stock_gold.txt",
                     header = TRUE)

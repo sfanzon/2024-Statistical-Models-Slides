@@ -406,55 +406,35 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Idea {
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Warning {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
   }
   .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Important {
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -462,21 +442,41 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Theorem {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
-  .Conjecture {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   </style>
 </head>
@@ -1234,6 +1234,16 @@ Levels: f m</code></pre>
 <li>This is done with the <span class="math inline">\, \texttt{factor}</span> command</li>
 </ul></li>
 </ul>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(quarter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+Levels: 1 2 3 4</code></pre>
+</div>
+</div>
 </section>
 <section id="regression-and-anova" class="slide level2 smaller">
 <h2>Regression and ANOVA</h2>
@@ -1247,6 +1257,208 @@ Levels: f m</code></pre>
 </div>
 <ul>
 <li>Both approaches lead to the same numerical answers in our example</li>
+</ul>
+</section>
+<section id="regression-approach" class="slide level2 smaller">
+<h2>Regression approach</h2>
+<p>We can proceed in 2 equivalent ways</p>
+<ol type="1">
+<li>Use a dummy variable approach (and arbitrarily excluding <span class="math inline">\, \texttt{q1}</span>)</li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># We drop q1 to avoid dummy variable trap</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>dummy.lm <span class="ot">&lt;-</span> <span class="fu">lm</span> (fridge <span class="sc">~</span> q2 <span class="sc">+</span> q3 <span class="sc">+</span> q4)</span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dummy.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<ol start="2" type="1">
+<li>Using the <span class="math inline">\, \texttt{factor}</span> command on <span class="math inline">\, \texttt{quarter}</span></li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Need to convert quarter to a factor</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>quarter.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(quarter)</span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>factor.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(fridge <span class="sc">~</span> quarter.f)</span>
+<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(factor.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<ul>
+<li>Get the same numerical answers using both approaches</li>
+</ul>
+</section>
+<section id="output-for-dummy-variable-approach" class="slide level2 smaller">
+<h2>Output for dummy variable approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+</section>
+<section id="output-for-factor-approach" class="slide level2 smaller">
+<h2>Output for factor approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The two outputs are essentially the same (only difference is variables names)</p></li>
+<li><p><span class="math inline">\, \texttt{quarter.f}</span> is a factor with four levels <span class="math inline">\, \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}</span></p></li>
+<li><p>Variables <span class="math inline">\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}</span> refer to the levels <span class="math inline">\, \texttt{2}, \texttt{3}, \texttt{4}</span> in <span class="math inline">\, \texttt{quarter.f}</span></p></li>
+</ul>
+</section>
+<section id="output-for-factor-approach-1" class="slide level2 smaller">
+<h2>Output for factor approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><p><span class="math inline">\, \texttt{lm}</span> is treating <span class="math inline">\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}</span> as if they were dummy variables</p></li>
+<li><p>Note that <span class="math inline">\, \texttt{lm}</span> automatically drops <span class="math inline">\, \texttt{quarter.f1}</span> to prevent dummy variable trap</p></li>
+<li><p>Thus <span class="math inline">\, \texttt{lm}</span> behaves the same way as if we passed dummy variables <span class="math inline">\, \texttt{q2}, \texttt{q3}, \texttt{q4}</span></p></li>
+</ul>
+</section>
+<section id="computing-regression-coefficients" class="slide level2 smaller">
+<h2>Computing regression coefficients</h2>
+<div style="font-size: 0.86em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    </code></pre>
+</div>
+<div style="font-size: 0.3em">
+<p><br></p>
+</div>
+<ul>
+<li><p>Recall that <span class="math inline">\, \texttt{Intercept}</span> refers to coefficient for <span class="math inline">\, \texttt{q1}</span></p></li>
+<li><p>Coefficients for <span class="math inline">\, \texttt{q2}, \texttt{q3}, \texttt{q4}</span> are obtained by summing <span class="math inline">\, \texttt{Intercept}</span> to coefficient in appropriate row</p></li>
+</ul>
+</section>
+<section id="computing-regression-coefficients-1" class="slide level2 smaller">
+<h2>Computing regression coefficients</h2>
+<div style="font-size: 0.86em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    </code></pre>
+</div>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<div style="font-size: 0.9em">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Dummy variable</th>
+<th style="text-align: center;">Coefficient formula</th>
+<th style="text-align: center;">Estimated coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\texttt{q1}</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\texttt{q2}</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_2</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 + 245.37 = 1467.49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\texttt{q3}</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_3</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 + 347.63 = 1569.75</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\texttt{q4}</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_4</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 - 62.12 = 1160</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="regression-formula" class="slide level2 smaller">
+<h2>Regression formula</h2>
+<ul>
+<li>Therefore the linear regression formula obtained is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[\text{ Fridge sales }] = &amp; \,\, 1222.12 \times \, \text{Q1} +
+1467.49 \times \, \text{Q2} + \\[15pts]
+&amp; \,\, 1569.75 \times \, \text{Q3} + 1160 \times \, \text{Q4}
+\end{align*}</span></p>
+<ul>
+<li>Recall that Q1, Q2, Q3 and Q4 assume only values 0 / 1 and</li>
+</ul>
+<p><span class="math display">
+\text{Q1} + \text{Q2} + \text{Q4} + \text{Q4} = 1
+</span></p>
+<ul>
+<li>Therefore we obtain
+<ul>
+<li>Expected sales in Q1 are</li>
+</ul></li>
 </ul>
 
 <div class="quarto-auto-generated-content">

@@ -1777,17 +1777,17 @@ $$
 ## The nature of Multicollinearity {.smaller}
 
 $$ 
-\text{Multicollinearity = multiple (linear) relationships between the X-variables}
+\text{Multicollinearity = multiple (linear) relationships between the Z-variables}
 $$
 
 
 - Multicollinearity arises when there is either 
-    * **exact** linear relationship amongst the $X$-variables
-    * **approximate** linear relationship amongst the $X$-variables
+    * **exact** linear relationship amongst the $Z$-variables
+    * **approximate** linear relationship amongst the $Z$-variables
 
 <br>
 
-**$X$-variables *inter-related*** $\quad \implies \quad$ **hard to isolate individual influence on $Y$**
+**$Z$-variables *inter-related*** $\quad \implies \quad$ **hard to isolate individual influence on $Y$**
 
 
 
@@ -1922,10 +1922,10 @@ cor(Z1, Z3)
 
 $$
 Z
-= 
+= (Z_1 | Z_2 | \ldots | Z_p) = 
 \left( 
 \begin{array}{cccc}
-z_{11}  & z_{12} & \ldots & z_{ip} \\
+z_{11}  & z_{12} & \ldots & z_{1p} \\
 z_{21}  & z_{22} & \ldots & z_{2p} \\
 \ldots  & \ldots & \ldots & \ldots \\
 z_{n1}  & z_{n2} & \ldots & z_{np} \\
@@ -1946,16 +1946,18 @@ $$
 $$
 
 
-- Hence 
+- Basic linear algebra tells us that
 
 $$
-{\rm rank} \left(  Z^T Z  \right) < p
+{\rm rank} \left(  Z^T Z  \right) = {\rm rank} \left(  Z  \right)
 $$
 
 
-- Therefore the matrix 
+- Therefore if we have collinearity
 
 $$
+{\rm rank} \left(  Z^T Z  \right) < p 
+\qquad \implies \qquad 
 Z^T Z \,\, \text{ is NOT invertible} 
 $$
 
@@ -1963,32 +1965,160 @@ $$
 
 ## Consequences of Multicollinearity {.smaller}
 
-- This means the least-squares estimator is not well defined
+- In this case the least-squares estimator is not well defined
 
 $$
 \hat{\beta} = (Z^T Z)^{-1} Z^T y
 $$
 
 
-- In practice one never has exact Multicollinearity
+**Multicollinearity is a big problem!**
+
+
+
+
+## Example of non-invertible $Z^T Z$ {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+- $Z_1, Z_2, Z_3$ as before
+
+- Exact Multicollinearity since
+$$
+Z_2 = 5 Z_1
+$$
+
+- Thus $Z^T Z$ is not invertible
+
+- Let us check with R
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+## Example of non-invertible $Z^T Z$ {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+```{r}
+#| echo: true
+
+# Enter the data
+Z1 <- c(10, 15, 18, 24, 30)
+Z2 <- c(50, 75, 90, 120, 150)
+Z3 <- c(52, 75, 97, 129, 152)
+
+# Assemble design matrix
+Z <- matrix(c(Z1, Z2, Z3), ncol = 3)
+
+# Compute determinant of Z^T Z
+det ( t(Z) %*% Z )
+```
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+## Example of non-invertible $Z^T Z$ {.smaller}
+
+- R computed that $\,\, {\rm det} ( Z^T Z) = -3.531172 \times 10^{-7}$
+
+- Therefore the determinant of $Z^T Z$ is almost $0$
+
+$$
+Z^T Z \text{ is not invertible!}
+$$
+
+
+- If we try to invert $Z^T Z$ in R we get an error
+
+```r
+# Compute inverse of Z^T Z
+solve ( t(Z) %*% Z )
+```
+
+```verbatim
+
+Error in solve.default(t(Z) %*% Z) : 
+  system is computationally singular: reciprocal condition number = 8.25801e-19
+
+```
+
+
+
+
+
+
+
+## Approximate Multicollinearity {.smaller}
+
+
+- In practice one almost never has exact Multicollinearity
+
+- If Multicollinearity is present, it is likely to be **Approximate Multicollinearity**
 
 - In case of approximate Multicollinearity it holds that
     * The matrix $Z^T Z$ can be inverted
-    * The estimator $\hat \beta$ can be computed!
-    * However the inversion is numerically instable
+    * The estimator $\hat \beta$ can be computed
+    $$
+    \hat \beta = (Z^T Z)^{-1} Z^T y
+    $$
+    * However the inversion is **numerically instable**
+
+**Approximate Multicollinearity is still a big problem!**
 
 
-## Consequences of Multicollinearity {.smaller}
 
-- Numerically instable means: 
+## Numerical instability {.smaller}
+
+- Numerical instability means that: 
     * **We may not be able to trust the estimator $\hat \beta$**
-
 
 
 This is because of:
 
-1. Large estimated standard errors
-    - Lack of precision associated with parameter estimtes
+1. Larger estimated standard errors
+    - Lack of precision associated with parameter estimates
     - Wider confidence intervals
     - May affect hypothesis tests
  
@@ -1999,35 +2129,48 @@ This is because of:
 
 
 
-## Why are estimated standard errors large?  {.smaller}
+## The effects of numerical instability  {.smaller}
+
+- Approximate Multicollinearity implies that
+    * $Z^T Z$ is invertible
+    * The inversion is numerically instable
+
+- Numerically instable inversion means that 
+
+$$
+\text{Small perturbations in } Z  \quad \implies \quad \text{large variations in } (Z^T Z)^{-1}
+$$
+
+
+- Denote by $\xi_{ij}$ the entries of $(Z^T Z)^{-1}$
+
+
+$$
+\text{Small perturbations in } Z  \quad \implies \quad \text{large variations in } \xi_{ij}
+$$
+
+
+- This in particular might lead to larger than usual values $\xi_{ij}$
+
+
+
+## Why are estimated standard errors larger?  {.smaller}
 
 - Recall formula of estimated standard error for $\beta_j$
 
 $$
-\ese = \xi_{jj}^{1/2} \, S   \,, \qquad \quad S^2 = \frac{\RSS}{n-p}
+\ese (\beta_j) = \xi_{jj}^{1/2} \, S   \,, \qquad \quad S^2 = \frac{\RSS}{n-p}
 $$
 
 
-- The numbers $\xi_{jj}$ are diagonal entries of $Z^T Z$
-
-- Approximate Multicollinearity implies that
-    * $Z^T Z$ is invertible
-    * The inversion is numerically unstable
+- The numbers $\xi_{jj}$ are the diagonal entries of $(Z^T Z)^{-1}$
 
 
-
-## Why are estimated standard errors large?  {.smaller}
-
-- Numerically unstable inversion means that
-    * Entries of $(Z^T Z)^{-1}$ might be very large
-    * Therefore $\xi_{jj}$ might be very large
-
-
-- As a consequence the estimated standard errors might be very large, since
-
-$$
-\ese = \xi_{jj}^{1/2} S
-$$
+\begin{align*}
+\text{Multicollinearity} & \quad \implies \quad \text{Numerical instability} \\[5pts]
+ & \quad \implies \quad \text{potentially larger } \xi_{jj} \\[5pts]
+ & \quad \implies \quad \text{potentially larger } \ese(\beta_j)
+\end{align*}
 
 - **It becomes harder to reject incorrect hypotheses**
 
@@ -2039,10 +2182,10 @@ $$
 - To test the null hypothesis that $\beta_j = 0$ we use $t$-statistic
 
 $$
-t = \frac{\hat{\beta}_j}{ \ese } 
+t = \frac{\beta_j}{ \ese (\beta_j) } 
 $$
 
-- But multicollinearity increases the $\ese$
+- But Multicollinearity increases the $\ese (\beta_j)$
 
 - Therefore the t-statistic reduces in size:
     * t-statistic will be smaller than it should
@@ -2053,25 +2196,328 @@ $$
 
 
 
+## Example of numerical instability {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+- $Z_1, Z_2, Z_3$ as before
+
+- We know we have exact Multicollinearity, since
+$$
+Z_2 = 5 Z_1
+$$
+
+- Therefore $Z^T Z$ is not invertible
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+## Example of numerical instability {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+- To get rid of Multicollinearity we can add a small perturbation to $Z_1$ 
+$$
+Z_1 \,\, \leadsto \,\, Z_1 + 0.01
+$$
+
+- The new dataset $Z_1 + 0.01, Z_2, Z_3$ is
+    * Not anymore exactly Multicollinear
+    * Still approximately Multicollinear
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|  $Z_1$| $Z_2$ |       $Z_3$|
+|-------|-------|------------|
+|  10   |   50  |      52    |
+|  15   |   75  |      75    |
+|  18   |   90  |      97    |
+|  24   |  120  |     129    |
+|  30   |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+## Example of numerical instability {.smaller}
+
+::::: {.columns style='display: flex !important; height: 90%;'}
+
+::: {.column width="64%" style='display: flex; justify-content: center; align-items: center;'}
+
+- Define the new design matrix
+$$
+Z = (Z_1 + 0.01 | Z_2 | Z_3)
+$$
+
+- Data is approximately Multicollinear
+
+- Therefore the inverse of $Z^T Z$ exists
+
+- Let us compute this inverse in R
+
+:::
+
+::: {.column width="34%" style='display: flex; justify-content: center; align-items: center;'}
+
+
+
+|      $Z_1 + 0.01$ | $Z_2$ |       $Z_3$|
+|-------------------|-------|------------|
+|  10.01            |   50  |      52    |
+|  15.01            |   75  |      75    |
+|  18.01            |   90  |      97    |
+|  24.01            |  120  |     129    |
+|  30.01            |  150  |     152    |
+
+
+
+:::
+:::::
+
+
+
+
+##  {.smaller}
+
+
+::: {style="font-size: 0.92em"}
+
+- Let us compute the inverse of 
+
+$$
+Z = (Z_1 + 0.01 | Z_2 | Z_3)
+$$
+
+```r
+# Consider perturbation Z1 + 0.01
+PZ1 <- Z1 + 0.01
+
+# Assemble perturbed design matrix
+Z <- matrix(c(PZ1, Z2, Z3), ncol = 3)
+
+# Compute the inverse of Z^T Z
+solve ( t(Z) %*% Z )
+```
+
+
+```{r}
+# Enter the data
+Z1 <- c(10, 15, 18, 24, 30)
+Z2 <- c(50, 75, 90, 120, 150)
+Z3 <- c(52, 75, 97, 129, 152)
+
+# Consider perturbation Z1 + 0.01
+PZ1 <- Z1 + 0.01
+
+# Assemble perturbed design matrix
+Z <- matrix(c(PZ1, Z2, Z3), ncol = 3)
+
+# Compute the inverse of Z^T Z
+solve ( t(Z) %*% Z )
+```
+
+::: {style="font-size: 0.1em"}
+
+<br>
+
+:::
+
+- In particular note that the first coefficient is $\,\, \xi_{11} \, \approx \, 17786$
+
+:::
+
+
+
+
+
+##  {.smaller}
+
+::: {style="font-size: 0.92em"}
+
+- Let us change the perturbation slightly:
+
+$$
+\text{ consider } \, Z_1 + 0.02 \,  \text{ instead of } \, Z_1 + 0.01
+$$
+
+- Invert the new design matrix $\,\, Z = (Z_1 + 0.02 | Z_2 | Z_3)$
+
+```r
+# Consider perturbation Z1 + 0.02
+PZ1 <- Z1 + 0.02
+
+# Assemble perturbed design matrix
+Z <- matrix(c(PZ1, Z2, Z3), ncol = 3)
+
+# Compute the inverse of Z^T Z
+solve ( t(Z) %*% Z )
+```
+
+
+```{r}
+# Enter the data
+Z1 <- c(10, 15, 18, 24, 30)
+Z2 <- c(50, 75, 90, 120, 150)
+Z3 <- c(52, 75, 97, 129, 152)
+
+# Consider perturbation Z1 + 0.02
+PZ1 <- Z1 + 0.02
+
+# Assemble perturbed design matrix
+Z <- matrix(c(PZ1, Z2, Z3), ncol = 3)
+
+# Compute the inverse of Z^T Z
+solve ( t(Z) %*% Z )
+```
+
+
+::: {style="font-size: 0.1em"}
+
+<br>
+
+:::
+
+- In particular note that the first coefficient is $\,\, \xi_{11} \, \approx \, 4446$
+
+
+:::
+
+
+
+##  {.smaller}
+
+- **Summary:**
+    * If we perturb the vector $Z_1$ by $0.01$ the first coefficient of $Z^T Z$ is
+    $$
+    \xi_{11} \, \approx \, 17786
+    $$
+    * If we perturb the vector $Z_1$ by $0.02$ the first coefficient of $Z^T Z$ is
+    $$
+    \xi_{11} \, \approx \, 4446
+    $$
+
+
+::: {style="font-size: 0.5em"}
+
+<br>
+
+:::
+
+- Note that the average entry in $Z_1$ is
+
+```r
+mean(Z1)
+```
+
+```{r}
+Z1 <- c(10, 15, 18, 24, 30)
+mean(Z1)
+```
+
+
+##  {.smaller}
+
+
+- Therefore the average percentage change in the data is
+
+\begin{align*}
+\text{Percentage Change} & = \left( \frac{\text{New Value} - \text{Old Value}}{\text{Old Value}} \right) \times 100\% \\[15pts]
+                         & = \left(  \frac{(19.4 + 0.02) - (19.4 + 0.01)}{19.4 + 0.01}   \right)  \times 100 \% \ \approx  \ 0.05 \%
+\end{align*}
+
+
+- The percentage change in the coefficients $\xi_{11}$ is
+
+$$
+\text{Percentage Change in } \, \xi_{11} = \frac{4446 - 17786}{17786} \times 100 \% \\approx \ −75 \%
+$$
+
+
+##  {.smaller}
+
+- **Conclusion:** We have shown that
+
+$$
+\text{perturbation of } \, 0.05 \%  \, \text{ in the data } \quad \implies \quad
+\text{change of } \, - 75 \%  \, \text{ in } \, \xi_{11}
+$$
+
+
+::: {style="font-size: 0.5em"}
+
+<br>
+
+:::
+
+
+
+- This is precisely **numerical instability**
+
+$$
+\text{Small perturbations in } Z  \quad \implies \quad \text{large variations in } (Z^T Z)^{-1}
+$$
+
+
+
+
 
 ## Sources of Multicollinearity {.smaller}
 
-- **The data collection method employed**
+- Multicollinearity is a problem
+    * When are we likely to encounter it?
+
+- Possible sources of Multicollinearity are
+
+1. **The data collection method employed**
     * Sampling over a limited range of values taken by the regressors in the population
 
-- **Constraints on the model or population**
+2. **Constraints on the model or population**
     * E.g. variables such as income and house size may be interrelated
 
-- **Model Specification**
+3. **Model Specification**
     * E.g. adding polynomial terms to a model when range of $X$-variables is small
 
 
+
+
 ## Sources of Multicollinearity {.smaller}
 
-- **An over-determined model**
+4. **An over-determined model**
     * Having too many $X$ variables compared to the number of observations
     
-- **Common trends**
+5. **Common trends**
     * E.g. variables such as consumption, income, wealth, etc may be correlated due to a dependence upon general economic trends and cycles
 
 **Often can *know* in advance when you might experience Multicollinearity**
@@ -2079,18 +2525,22 @@ $$
 
 
 
-## Practical consequences of Multicollinearity {.smaller}
+
+## How to detect Multicollinearity in practice?  {.smaller}
+### Most important sign
 
 - In practical problems look for something that *does not look quite right*
 
 
 ::: Important 
 
-**Often see high $R^2$ values coupled with small t-values**
+**High $R^2$ values coupled with small t-values**
 
 :::
 
-- **This is contradictory**
+- **This is a big sign of potential Multicollinearity** 
+
+- **Why is this contradictory?**
     * High $R^2$ suggests model is good and explains a lot of the variation in $Y$
     * But if individual $t$-statistics are small, this suggests $\beta_j = 0$
     * Hence individual $X$-variables do not affect $Y$
@@ -2099,17 +2549,19 @@ $$
 
 
 
-## Potential signs of Multicollinearity {.smaller}
 
-1. **High $R^2$ values couple with small t-values**
+## How to detect Multicollinearity in practice?  {.smaller}
+### Other signs of Multicollinearity {.smaller}
 
-2. **Very large $\ese$**
+**Numerical instabilities:**
 
-3. **Numerical instabilities:**
-    * Parameter estimates $\hat \beta_j$ become very sensitive to small changes in the data
-    * The $\ese$ become very sensitive to small changes in the data
-    * Parameter estimates $\hat \beta_j$ *take the wrong sign* or otherwise *look strange*
-    * Parameter estimates may be highly correlated
+- Parameter estimates $\hat \beta_j$ become very sensitive to small changes in the data
+
+- The $\ese$ become very sensitive to small changes in the data
+
+- Parameter estimates $\hat \beta_j$ *take the wrong sign* or otherwise *look strange*
+
+- Parameter estimates may be highly correlated
 
 
 
@@ -2122,6 +2574,7 @@ $$
     * income $X_2$
     * wealth $X_3$
 
+- It is intuitively clear that *income* and *wealth* are highly correlated
 
 ::: Important
 
@@ -2261,7 +2714,8 @@ cat(paste(temp[9:20], collapse = "\n"))
 
 
 
-## Computing the correlation  {.smaller}
+## Detection of Multicollinearity {.smaller}
+### Computing the correlation
 
 - For further confirmation of Multicollinearity compute correlation of $X_2$ and $X_3$
 
@@ -2282,7 +2736,11 @@ cor(x2, x3)
 
 **This once again confirms Multicollinearity is present**
 
+::: {style="font-size: 0.5em"}
+
 <br>
+
+:::
 
 **Conclusion:** The variables *Income* and *Wealth* are highly correlated 
 
@@ -2294,6 +2752,7 @@ cor(x2, x3)
 
 
 ## Detection of Multicollinearity {.smaller}
+### Klein's rule of thumb
 
 **Klein's rule of thumb:** Multicollinearity will be a serious problem if: 
 
@@ -2358,6 +2817,7 @@ cor(x2, x3)
     * Principal Components Analysis
     * Ridge Regression
 
+- Above techniques are outside the scope of this module
 
 
 ## Remedial measures {.smaller}
@@ -2721,11 +3181,15 @@ summary(model)
 
 ::::
 
+::: {style="font-size: 0.9em"}
+
 - Fitting the full model gives 
     * High $R^2$ value
     * Low $t$-values (and high p-values) for $X_2$ and $X_5$
 
 - These are signs that we might have a problem with Multicollinearity
+
+:::
 
 
 
@@ -2769,7 +3233,11 @@ $$
 
 - **Method:** We use *Stepwise regression*
 
+::: {style="font-size: 0.2em"}
+
 <br>
+
+:::
 
 - Start by by fitting the null and full regression models
 
@@ -2812,7 +3280,12 @@ best.model.3 <- step(null.model,
 - Models obtained by  Stepwise regression are stored in
     * $\texttt{best.model.1}, \,\, \texttt{best.model.3}, \,\,\texttt{best.model.3}$
 
+::: {style="font-size: 0.2em"}
+
 <br>
+
+:::
+
 
 - Print the summary for each model obtained
 
@@ -2821,7 +3294,12 @@ best.model.3 <- step(null.model,
 summary(best.model.x)
 ```
 
+::: {style="font-size: 0.2em"}
+
 <br>
+
+:::
+
 
 - **Output:** The 3 methods all yield the same model 
 
@@ -2831,7 +3309,11 @@ lm(formula = y ~ x2 + x3 + x4 + x6)
 ```
 
 
+
+
 ## Interpretation {.smaller}
+
+::: {style="font-size: 0.93em"}
 
 -  All three Stepwise regression methods agree and select a model with the variables 
     * $X_2$, $X_3$, $X_4$ and $X_6$
@@ -2849,9 +3331,13 @@ lm(formula = y ~ x2 + x3 + x4 + x6)
     * $X_6$ Time in *Years*
 
 
+:::
+
+
+
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -2883,7 +3369,7 @@ F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
 
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -2914,7 +3400,7 @@ F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
 
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -2945,7 +3431,7 @@ F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
 
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -2976,7 +3462,7 @@ F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
 
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -3008,7 +3494,7 @@ F-statistic: 589.8 on 4 and 11 DF,  p-value: 9.5e-13
 
 ## Re-fitting the model without $X_5$ {.smaller}
 
-::: {style="font-size: 0.83em"}
+::: {style="font-size: 0.8em"}
 ```verbatim
 Call:
 lm(formula = y ~ x2 + x3 + x4 + x6)
@@ -3086,7 +3572,7 @@ $$
 
 
 
-## Revisiting the Galileo example {.smaller}
+##  {.smaller}
 
 **Conclusion:**  If the degree of the polynomial is sufficiently high, we will get $R^2 = 1$
 

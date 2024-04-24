@@ -813,6 +813,25 @@ quarter <- sales[ , 7]
     * Need to tell R this is a qualitative variable
     * This is done with the $\, \texttt{factor}$ command
 
+::: {style="font-size: 0.10em"}
+
+<br>
+
+:::
+
+
+```r
+factor(quarter)
+```
+
+```{r}
+# Load dataset on Fridge Sales
+sales <- read.table(file = "datasets/fridge_sales.txt",
+                    header = TRUE)
+
+quarter <- sales[ , 7]
+print(factor(quarter))
+```
 
 
 
@@ -832,6 +851,267 @@ As already mentioned, there are 2 ways of fitting regression and ANOVA models in
 :::
 
 - Both approaches lead to the same numerical answers in our example
+
+
+
+
+
+
+
+
+## Regression approach {.smaller}
+
+We can proceed in 2 equivalent ways
+
+1. Use a dummy variable approach (and arbitrarily excluding $\, \texttt{q1}$)
+
+```r
+# We drop q1 to avoid dummy variable trap
+dummy.lm <- lm (fridge ~ q2 + q3 + q4)
+summary(dummy.lm)
+```
+
+::: {style="font-size: 0.10em"}
+
+<br>
+
+:::
+
+2. Using the $\, \texttt{factor}$ command on $\, \texttt{quarter}$
+
+```r
+# Need to convert quarter to a factor
+quarter.f <- factor(quarter)
+
+factor.lm <- lm(fridge ~ quarter.f)
+summary(factor.lm)
+```
+
+::: {style="font-size: 0.10em"}
+
+<br>
+
+:::
+
+- Get the same numerical answers using both approaches
+
+
+
+## Output for dummy variable approach {.smaller}
+
+::: {style="font-size: 0.83em"}
+
+```verbatim
+Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1222.12      59.99  20.372  < 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,	Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+```
+
+:::
+
+
+::: {style="font-size: 0.1em"}
+
+<br>
+
+:::
+
+
+
+
+## Output for factor approach {.smaller}
+
+
+::: {style="font-size: 0.83em"}
+
+```verbatim
+Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1222.12      59.99  20.372  < 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,	Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+
+```
+
+:::
+
+::: {style="font-size: 0.1em"}
+
+<br>
+
+:::
+
+
+
+- The two outputs are essentially the same (only difference is variables names)
+
+- $\, \texttt{quarter.f}$ is a factor with four levels $\, \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}$
+
+- Variables $\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}$ refer to the levels 
+$\, \texttt{2}, \texttt{3}, \texttt{4}$ in $\, \texttt{quarter.f}$
+
+
+## Output for factor approach {.smaller}
+
+
+::: {style="font-size: 0.83em"}
+
+```verbatim
+Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1222.12      59.99  20.372  < 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,	Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+
+```
+
+:::
+
+::: {style="font-size: 0.1em"}
+
+<br>
+
+:::
+
+
+- $\, \texttt{lm}$ is treating  $\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}$ as if they were dummy variables
+
+- Note that $\, \texttt{lm}$ automatically drops $\, \texttt{quarter.f1}$ to prevent dummy variable trap
+
+- Thus $\, \texttt{lm}$ behaves the same way as if we passed dummy variables $\, \texttt{q2}, \texttt{q3}, \texttt{q4}$
+
+
+
+
+## Computing regression coefficients {.smaller}
+
+::: {style="font-size: 0.86em"}
+
+```verbatim
+Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1222.12      59.99  20.372  < 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    
+```
+
+:::
+
+
+::: {style="font-size: 0.3em"}
+
+<br>
+
+:::
+
+
+- Recall that $\, \texttt{Intercept}$ refers to coefficient for $\, \texttt{q1}$
+
+- Coefficients for $\, \texttt{q2}, \texttt{q3}, \texttt{q4}$ are obtained by summing $\, \texttt{Intercept}$ to coefficient in appropriate row
+
+
+
+## Computing regression coefficients {.smaller}
+
+::: {style="font-size: 0.86em"}
+
+```verbatim
+Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1222.12      59.99  20.372  < 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    
+```
+
+:::
+
+
+::: {style="font-size: 0.5em"}
+
+<br>
+
+:::
+
+::: {style="font-size: 0.9em"}
+
+| Dummy variable |  Coefficient formula | Estimated coefficient        |
+|:--------------:|:--------------------:|:----------------------------:|
+| $\texttt{q1}$  | $\beta_1$            | $1222.12$                    |
+| $\texttt{q2}$  | $\beta_1 + \beta_2$  | $1222.12 + 245.37 = 1467.49$ |
+| $\texttt{q3}$  | $\beta_1 + \beta_3$  | $1222.12 + 347.63 = 1569.75$ |
+| $\texttt{q4}$  | $\beta_1 + \beta_4$  | $1222.12 - 62.12 = 1160$     |
+
+
+:::
+
+
+
+
+## Regression formula {.smaller}
+
+- Therefore the linear regression formula obtained is
+
+\begin{align*}
+\Expect[\text{ Fridge sales }] = & \,\, 1222.12 \times \, \text{Q1} + 
+1467.49 \times \, \text{Q2} + \\[15pts]
+& \,\, 1569.75 \times \, \text{Q3} + 1160 \times \, \text{Q4} 
+\end{align*}
+
+
+
+- Recall that Q1, Q2, Q3 and Q4 assume only values 0 / 1 and 
+
+$$
+\text{Q1} + \text{Q2} + \text{Q4} + \text{Q4} = 1
+$$
+
+
+- Therefore we obtain
+    * Expected sales in Q1 are
+
+
+
+
 
 
 
