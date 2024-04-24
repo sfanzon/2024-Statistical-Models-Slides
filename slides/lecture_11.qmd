@@ -2461,7 +2461,7 @@ mean(Z1)
 - The percentage change in the coefficients $\xi_{11}$ is
 
 $$
-\text{Percentage Change in } \, \xi_{11} = \frac{4446 - 17786}{17786} \times 100 \% \\approx \ −75 \%
+\text{Percentage Change in } \, \xi_{11} = \frac{4446 - 17786}{17786} \times 100 \% \ \approx \ −75 \%
 $$
 
 

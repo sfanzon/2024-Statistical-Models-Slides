@@ -406,55 +406,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Important {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -462,11 +422,47 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Theorem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
     --color1: #bce5de;
     --color2: #21aa93;
   }
@@ -474,7 +470,11 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -1669,16 +1669,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.13480000, error is 0.00679265
-After    20000 iterations pi is 3.12180000, error is 0.01979265
-After    30000 iterations pi is 3.13973333, error is 0.00185932
-After    40000 iterations pi is 3.13750000, error is 0.00409265
-After    50000 iterations pi is 3.13600000, error is 0.00559265
-After    60000 iterations pi is 3.14073333, error is 0.00085932
-After    70000 iterations pi is 3.14371429, error is 0.00212163
-After    80000 iterations pi is 3.14560000, error is 0.00400735
-After    90000 iterations pi is 3.14617778, error is 0.00458512
-After   100000 iterations pi is 3.14888000, error is 0.00728735</code></pre>
+<pre><code>After    10000 iterations pi is 3.15080000, error is 0.00920735
+After    20000 iterations pi is 3.14740000, error is 0.00580735
+After    30000 iterations pi is 3.14693333, error is 0.00534068
+After    40000 iterations pi is 3.15050000, error is 0.00890735
+After    50000 iterations pi is 3.14920000, error is 0.00760735
+After    60000 iterations pi is 3.15073333, error is 0.00914068
+After    70000 iterations pi is 3.15040000, error is 0.00880735
+After    80000 iterations pi is 3.14655000, error is 0.00495735
+After    90000 iterations pi is 3.14497778, error is 0.00338512
+After   100000 iterations pi is 3.14392000, error is 0.00232735</code></pre>
 </div>
 </div>
 </section>
@@ -1959,11 +1959,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.81972</code></pre>
+Custom Monte Carlo p-value: 0.82112</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8270865</code></pre>
+R Monte Carlo p-value: 0.818091</code></pre>
 </div>
 </div>
 <ul>
