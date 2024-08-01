@@ -32,8 +32,89 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -325,19 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
-  .Axiom {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -345,11 +418,11 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Important {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -357,43 +430,51 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
   .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
   }
   .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Notation {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Warning {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -433,8 +514,2177 @@
 </div>
 
 </section>
-<section id="part-5-two-way-anova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 5: <br> Two-way ANOVA</h1>
+<section>
+<section id="part-5-dummy-variable-regression-models" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br>Dummy variable <br> regression models</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ol type="1">
+<li>ANOVA</li>
+<li>Factors in R</li>
+<li>ANOVA in R</li>
+<li>Dummy variable regression</li>
+<li>Regression approach to ANOVA</li>
+<li>Two-way ANOVA</li>
+<li>Two-way ANOVA with interactions</li>
+<li>ANCOVA</li>
+</ol>
+</section>
+<section id="explaining-the-terminology" class="slide level2 smaller">
+<h2>Explaining the terminology</h2>
+<ul>
+<li><strong>Dummy variable:</strong> Variables <span class="math inline">X</span> which are <strong>qualitative</strong> in nature</li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANOVA:</strong>
+<ul>
+<li>Method for comparing the means of different populations</li>
+<li>At a higher level: ANOVA can be seen as a regression model containing <strong>only</strong> dummy variables</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANCOVA:</strong> refers to situations where regression models contain a combination of
+<ul>
+<li>dummy variables <strong>and</strong> quantitative (the usual) variables</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="part-1-anova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 1: <br> ANOVA</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="what-is-anova" class="slide level2 smaller">
+<h2>What is ANOVA?</h2>
+<ul>
+<li><p>ANOVA stands for <strong>Analysis of Variance</strong></p></li>
+<li><p>ANOVA is <strong>generalization of two-sample t-test</strong> to multiple populations</p>
+<ul>
+<li>Suppose to have <span class="math inline">M</span> normally distributed populations <span class="math inline">N(\mu_i, \sigma^2)</span> <span class="math inline">\,\,\,\,\qquad</span> (with mean <span class="math inline">\mu_i</span> same variance)</li>
+<li>From each population we have a sample of size <span class="math inline">n_i</span> <span class="math display">
+  x_{i1}, x_{i2}, \ldots, x_{i n_i}
+  </span></li>
+</ul></li>
+<li><p><strong>Goal:</strong> compare the populations means <span class="math inline">\mu_i</span></p>
+<ul>
+<li>For <span class="math inline">M = 2</span> populations this can be done with the two-sample t-test</li>
+<li>For <span class="math inline">M &gt; 2</span> we use ANOVA</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-anova-f-test" class="slide level2 smaller">
+<h2>The ANOVA F-test</h2>
+<ul>
+<li>The <strong>ANOVA comparison</strong> of populations averages is the hypothesis</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_{1} =  \mu_{2} =  \ldots =  \mu_{M}  \\
+H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<ul>
+<li><p>To decide on the above hypothesis we use the <strong>ANOVA F-test</strong></p></li>
+<li><p>We omit mathematical details. All you need to know is that</p>
+<ul>
+<li>ANOVA F-test is performed in R with the function <span class="math inline">\, \texttt{aov}</span></li>
+<li>This function outputs the so-called ANOVA table</li>
+<li>ANOVA table contains the F-statistic and relative p-value for ANOVA F-test</li>
+</ul></li>
+</ul>
+<p><strong>If <span class="math inline">p &lt; 0.05</span> we reject <span class="math inline">H_0</span> and there is a difference in populations averages</strong></p>
+</section>
+<section id="anova-f-test-for-fridge-sales" class="slide level2 smaller">
+<h2>ANOVA F-test for fridge sales</h2>
+<ul>
+<li>In the <em>Fridge Sales</em> example we wish to compare <em>Fridge sales numbers</em>
+<ul>
+<li>We have <em>Fridge Sales</em> data for each quarter</li>
+<li>Each <em>Quarter</em> represents a population</li>
+<li>We want to compare average fridge sales for each Quarter</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANOVA hypothesis test:</strong> is there a difference in average sales for each Quarter?
+<ul>
+<li>If <span class="math inline">\mu_{i}</span> is average sales in Quarter <span class="math inline">i</span> then <span class="math display">\begin{align*}
+  H_0 &amp; \colon \mu_{1} =  \mu_{2} =  \mu_{3} =  \mu_{4}  \\
+  H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
+  \end{align*}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="plotting-the-data" class="slide level2 smaller">
+<h2>Plotting the data</h2>
+<div class="column" style="width:44%;">
+<p><br></p>
+<ul>
+<li>Plot Quarter against Fridge sales</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(quarter, fridge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>We see 4 populations
+<ul>
+<li>One for each quarter</li>
+</ul></li>
+<li>Population averages look different
+<ul>
+<li>Is this difference due to chance or not?</li>
+<li>Answer with ANOVA F-test</li>
+</ul></li>
+</ul>
+</div>
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_temp_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="anova-f-test-for-fridge-sales-1" class="slide level2 smaller">
+<h2>ANOVA F-test for fridge sales</h2>
+<ul>
+<li>To implement ANOVA F-test in R you need to use command <span class="math inline">\, \texttt{factor}</span></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Turn vector quarter into a factor</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>quarter.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(quarter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.3em">
+<p><br></p>
+</div>
+<ul>
+<li>The factor <span class="math inline">\, \texttt{quarter.f} \,</span> allows to <em>label</em> the <em>fridge sales</em> data
+<ul>
+<li>Factor level <span class="math inline">\, \texttt{k} \,</span> corresponds to <em>fridge sales</em> in Quarter <span class="math inline">k</span></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.3em">
+<p><br></p>
+</div>
+<ul>
+<li>To perform the ANOVA F-test do</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit ANOVA model</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>factor.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(fridge <span class="sc">~</span> quarter.f)</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print output</span></span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(factor.aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="anova-output" class="slide level2 smaller">
+<h2>ANOVA output</h2>
+<ul>
+<li>The summary gives the following analysis of variance (ANOVA) table</li>
+</ul>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<pre class="verbatim"><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+quarter.f    3 915636  305212    10.6 7.91e-05 ***
+Residuals   28 806142   28791                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The F-statistic for the ANOVA F-test is <span class="math inline">\,\, F = 10.6</span></p></li>
+<li><p>The p-value for ANOVA F-test is <span class="math inline">\,\, p = 7.91 \times 10^{-5}</span></p></li>
+<li><p>Therefore <span class="math inline">p &lt; 0.05</span> and we reject <span class="math inline">H_0</span></p>
+<ul>
+<li><strong>Evidence that average Fridge sales are different in at least two quarters</strong></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="part-2-factors-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 2: <br>Factors in R</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="factors-in-r" class="slide level2 smaller">
+<h2>Factors in R</h2>
+<ul>
+<li><p>Before proceeding we need to introduce <strong>factors</strong> in R</p></li>
+<li><p><strong>Factors:</strong> A way to represent discrete variables taking a finite number of values</p></li>
+<li><p><strong>Example:</strong> Suppose to have a vector of people’s names</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>firstname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Liz"</span>, <span class="st">"Jolene"</span>, <span class="st">"Susan"</span>, <span class="st">"Boris"</span>, <span class="st">"Rochelle"</span>, <span class="st">"Tim"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Let us store the sex of each person as either
+<ul>
+<li>Numbers: <span class="math inline">\, \texttt{1}</span> represents female and <span class="math inline">\texttt{0}</span> represents male</li>
+<li>Strings: <span class="math inline">\, \texttt{"female"}</span> and <span class="math inline">\texttt{"male"}</span></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>sex.num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>sex.char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-factor-command" class="slide level2 smaller">
+<h2>The factor command</h2>
+<ul>
+<li>The <span class="math inline">\, \texttt{factor}</span> command turns a vector into a factor</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Turn sex.num into a factor</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>sex.num.factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(sex.num)</span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print the factor obtained</span></span>
+<span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sex.num.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 1 1 0 1 0
+Levels: 0 1</code></pre>
+</div>
+</div>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The factor <span class="math inline">\, \texttt{sex.num.factor}</span> looks like the original vector <span class="math inline">\, \texttt{sex.num}</span></p></li>
+<li><p>The difference is that the factor <span class="math inline">\, \texttt{sex.num.factor}</span> contains <strong>levels</strong></p>
+<ul>
+<li>In this case the levels are <span class="math inline">\, \texttt{0}</span> and <span class="math inline">\, \texttt{1}</span></li>
+<li>Levels are all the (discrete) values assumed by the vector <span class="math inline">\, \texttt{sex.num}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="the-factor-command-1" class="slide level2 smaller">
+<h2>The factor command</h2>
+<ul>
+<li>In the same way we can convert <span class="math inline">\, \texttt{sex.char}</span> into a factor</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Turn sex.char into a factor</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>sex.char.factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(sex.char)</span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print the factor obtained</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sex.char.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] female female female male   female male  
+Levels: female male</code></pre>
+</div>
+</div>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li><p>Again, the factor <span class="math inline">\, \texttt{sex.char.factor}</span> looks like the original vector <span class="math inline">\, \texttt{sex.char}</span></p></li>
+<li><p>Again, the difference is that the factor <span class="math inline">\, \texttt{sex.char.factor}</span> contains <strong>levels</strong></p>
+<ul>
+<li>In this case the levels are strings <span class="math inline">\, \texttt{"female"}</span> and <span class="math inline">\, \texttt{"male"}</span></li>
+<li>These 2 strings are all the values assumed by the vector <span class="math inline">\, \texttt{sex.char}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="subsetting-factors" class="slide level2 smaller">
+<h2>Subsetting factors</h2>
+<ul>
+<li>Factors can be subset exactly like vectors</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>sex.num.factor[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 1 0 1
+Levels: 0 1</code></pre>
+</div>
+</div>
+</section>
+<section id="subsetting-factors-1" class="slide level2 smaller">
+<h2>Subsetting factors</h2>
+<ul>
+<li><strong>Warning:</strong> After subsetting a factor, all defined levels are still stored
+<ul>
+<li>This is true even if some of the levels are no longer represented in the subsetted factor</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.30em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>subset.factor <span class="ot">&lt;-</span> sex.char.factor[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">5</span>)]</span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(subset.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] female female female female
+Levels: female male</code></pre>
+</div>
+</div>
+<div style="font-size: 0.30em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The levels of <span class="math inline">\, \texttt{subset.factor}</span> are still <span class="math inline">\, \texttt{"female"}</span> and <span class="math inline">\, \texttt{"male"}</span></p></li>
+<li><p>This is despite <span class="math inline">\, \texttt{subset.factor}</span> only containing <span class="math inline">\, \texttt{"female"}</span></p></li>
+</ul>
+</section>
+<section id="the-levels-function" class="slide level2 smaller">
+<h2>The levels function</h2>
+<ul>
+<li>The levels of a factor can be extracted with the function <span class="math inline">\, \texttt{levels}</span></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sex.char.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "0" "1"</code></pre>
+</div>
+</div>
+<div style="font-size: 0.30em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>Note:</strong> Levels of a factor are always stored as <strong>strings</strong>, even if originally numbers</li>
+</ul>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sex.num.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "0" "1"</code></pre>
+</div>
+</div>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The levels of <span class="math inline">\, \texttt{sex.num.factor}</span> are the strings <span class="math inline">\, \texttt{"0"}</span> and <span class="math inline">\, \texttt{"1"}</span></p></li>
+<li><p>This is despite the original vector <span class="math inline">\, \texttt{sex.num}</span> being numeric</p></li>
+<li><p>The command <span class="math inline">\, \texttt{factor}</span> converted numeric levels into strings</p></li>
+</ul>
+</section>
+<section id="relabelling-a-factor" class="slide level2 smaller">
+<h2>Relabelling a factor</h2>
+<ul>
+<li><p>The function <span class="math inline">\, \texttt{levels}</span> can also be used to <strong>relabel</strong> factors</p></li>
+<li><p>For example we can relabel</p>
+<ul>
+<li><span class="math inline">\, \texttt{female}</span> into <span class="math inline">\, \texttt{f}</span></li>
+<li><span class="math inline">\, \texttt{male}</span> into <span class="math inline">\, \texttt{m}</span></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Relabel levels of sex.char.factor</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sex.char.factor) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"m"</span>)</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print relabelled factor</span></span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sex.char.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] f f f m f m
+Levels: f m</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-subsetting-of-factors" class="slide level2 smaller">
+<h2>Logical subsetting of factors</h2>
+<ul>
+<li><p>Logical subsetting is done exactly like in the case of vectors</p></li>
+<li><p><strong>Important:</strong> Need to remember that levels are always <strong>strings</strong></p></li>
+<li><p><strong>Example:</strong> To identify all the men in <span class="math inline">\, \texttt{sex.num.factor}</span> we do</p></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>sex.num.factor <span class="sc">==</span> <span class="st">"0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li>To retrieve names of men stored in <span class="math inline">\, \texttt{firstname}</span> use logical subsetting</li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>firstname[ sex.num.factor <span class="sc">==</span> <span class="st">"0"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Boris" "Tim"  </code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="part-3-anova-in-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 3: <br> ANOVA in R</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="analysis-of-variance-anova-models-in-r" class="slide level2 smaller">
+<h2>Analysis of variance (ANOVA) models in R</h2>
+<ul>
+<li>The data in <a href="datasets/fridge_sales.txt">fridge_sales.txt</a> links
+<ul>
+<li><em>Sales of fridges</em> and <em>Sales of durable goods</em></li>
+<li>to the time of year (<em>Quarter</em>)</li>
+</ul></li>
+<li>For the moment ignore the data on the <em>Sales of durable goods</em></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>Goal:</strong> Fit ANOVA and regression models to link
+<ul>
+<li><em>Fridge sales</em> to the <em>time of the year</em></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li>There are two ways this can be achieved in R
+<ol type="1">
+<li>ANOVA approach using the command <span class="math inline">\, \texttt{aov}</span></li>
+<li>A regression approach using the command <span class="math inline">\, \texttt{lm}</span></li>
+</ol></li>
+</ul>
+</section>
+<section id="section" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><p>Code for this example is available here <a href="datasets/anova.R">anova.R</a></p></li>
+<li><p>Data is in the file <a href="datasets/fridge_sales.txt">fridge_sales.txt</a></p></li>
+<li><p>The first 4 rows of the data-set are given below</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  fridge.sales durable.goods.sales Q1 Q2 Q3 Q4 Quarter
+1         1317               252.6  1  0  0  0       1
+2         1615               272.4  0  1  0  0       2
+3         1662               270.9  0  0  1  0       3
+4         1295               273.9  0  0  0  1       4</code></pre>
+</div>
+</div>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li>Therefore we have the variables
+<ul>
+<li><em>Fridge sales</em></li>
+<li><em>Durable goods sales</em> <span class="math inline">\quad</span> (ignored for now)</li>
+<li><em>Q1, Q2, Q3, Q4</em></li>
+<li><em>Quarter</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="reading-the-data-into-r" class="slide level2 smaller">
+<h2>Reading the data into R</h2>
+<ul>
+<li>We read the data into a data-frame as usual</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset on Fridge Sales</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"fridge_sales.txt"</span>,</span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Assign data-frame columns to vectors</span></span>
+<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>fridge <span class="ot">&lt;-</span> sales[ , <span class="dv">1</span>]</span>
+<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a>durables <span class="ot">&lt;-</span> sales[ , <span class="dv">2</span>]</span>
+<span id="cb26-8"><a aria-hidden="true" tabindex="-1"></a>q1 <span class="ot">&lt;-</span> sales[ , <span class="dv">3</span>]</span>
+<span id="cb26-9"><a aria-hidden="true" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> sales[ , <span class="dv">4</span>]</span>
+<span id="cb26-10"><a aria-hidden="true" tabindex="-1"></a>q3 <span class="ot">&lt;-</span> sales[ , <span class="dv">5</span>]</span>
+<span id="cb26-11"><a aria-hidden="true" tabindex="-1"></a>q4 <span class="ot">&lt;-</span> sales[ , <span class="dv">6</span>]</span>
+<span id="cb26-12"><a aria-hidden="true" tabindex="-1"></a>quarter <span class="ot">&lt;-</span> sales[ , <span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="what-is-anova-1" class="slide level2 smaller">
+<h2>What is ANOVA?</h2>
+<ul>
+<li><p>ANOVA stands for Analysis of Variance</p></li>
+<li><p>ANOVA is used to compare means of independent populations:</p>
+<ul>
+<li>Suppose to have <span class="math inline">M</span> normally distributed populations <span class="math inline">N(\mu_k, \sigma^2)</span> <span class="math inline">\,\,\,\,\qquad</span> (with same variance)</li>
+<li>The goal is to compare the populations averages <span class="math inline">\mu_k</span></li>
+<li>For <span class="math inline">M = 2</span> this can be done with the two-sample t-test</li>
+<li>For <span class="math inline">M &gt; 2</span> we use ANOVA</li>
+</ul></li>
+</ul>
+<p><strong>ANOVA is a generalization of two-sample t-test to multiple populations</strong></p>
+</section>
+<section id="the-anova-f-test-1" class="slide level2 smaller">
+<h2>The ANOVA F-test</h2>
+<ul>
+<li>The <strong>ANOVA comparison</strong> of populations averages is the hypothesis</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_{1} =  \mu_{2} =  \ldots =  \mu_{M}  \\
+H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<ul>
+<li><p>To decide on the above hypothesis we use the <strong>ANOVA F-test</strong></p></li>
+<li><p>We omit mathematical details. All you need to know is that</p>
+<ul>
+<li>ANOVA F-test is performed in R with the function <span class="math inline">\, \texttt{aov}</span></li>
+<li>This function outputs the so-called ANOVA table</li>
+<li>ANOVA table contains the F-statistic and relative p-value for ANOVA F-test</li>
+</ul></li>
+</ul>
+<p><strong>If <span class="math inline">p &lt; 0.05</span> we reject <span class="math inline">H_0</span> and there is a difference in populations averages</strong></p>
+</section>
+<section id="anova-f-test-for-fridge-sales-2" class="slide level2 smaller">
+<h2>ANOVA F-test for fridge sales</h2>
+<ul>
+<li>In the <em>Fridge Sales</em> example we wish to compare <em>Fridge sales numbers</em>
+<ul>
+<li>We have <em>Fridge Sales</em> data for each quarter</li>
+<li>Each <em>Quarter</em> represents a population</li>
+<li>We want to compare average fridge sales for each Quarter</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANOVA hypothesis test:</strong> is there a difference in average sales for each Quarter?
+<ul>
+<li>If <span class="math inline">\mu_{i}</span> is average sales in Quarter <span class="math inline">i</span> then <span class="math display">\begin{align*}
+  H_0 &amp; \colon \mu_{1} =  \mu_{2} =  \mu_{3} =  \mu_{4}  \\
+  H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
+  \end{align*}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="plotting-the-data-1" class="slide level2 smaller">
+<h2>Plotting the data</h2>
+<div class="column" style="width:44%;">
+<p><br></p>
+<ul>
+<li>Plot Quarter against Fridge sales</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(quarter, fridge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>We see 4 populations
+<ul>
+<li>One for each quarter</li>
+</ul></li>
+<li>Population averages look different
+<ul>
+<li>Is this difference due to chance or not?</li>
+<li>Answer with ANOVA F-test</li>
+</ul></li>
+</ul>
+</div>
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture_11_temp_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="anova-f-test-for-fridge-sales-3" class="slide level2 smaller">
+<h2>ANOVA F-test for fridge sales</h2>
+<ul>
+<li>To implement ANOVA F-test in R you need to use command <span class="math inline">\, \texttt{factor}</span></li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Turn vector quarter into a factor</span></span>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>quarter.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(quarter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.3em">
+<p><br></p>
+</div>
+<ul>
+<li>The factor <span class="math inline">\, \texttt{quarter.f} \,</span> allows to <em>label</em> the <em>fridge sales</em> data
+<ul>
+<li>Factor level <span class="math inline">\, \texttt{k} \,</span> corresponds to <em>fridge sales</em> in Quarter <span class="math inline">k</span></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.3em">
+<p><br></p>
+</div>
+<ul>
+<li>To perform the ANOVA F-test do</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fit ANOVA model</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>factor.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(fridge <span class="sc">~</span> quarter.f)</span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Print output</span></span>
+<span id="cb29-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(factor.aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="anova-output-1" class="slide level2 smaller">
+<h2>ANOVA output</h2>
+<ul>
+<li>The summary gives the following analysis of variance (ANOVA) table</li>
+</ul>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<pre class="verbatim"><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+quarter.f    3 915636  305212    10.6 7.91e-05 ***
+Residuals   28 806142   28791                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The F-statistic for the ANOVA F-test is <span class="math inline">\,\, F = 10.6</span></p></li>
+<li><p>The p-value for ANOVA F-test is <span class="math inline">\,\, p = 7.91 \times 10^{-5}</span></p></li>
+<li><p>Therefore <span class="math inline">p &lt; 0.05</span> and we reject <span class="math inline">H_0</span></p>
+<ul>
+<li><strong>Evidence that average Fridge sales are different in at least two quarters</strong></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="part-4-dummy-variable-regression" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 4: <br>Dummy variable <br> regression</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="explaining-the-terminology-1" class="slide level2 smaller">
+<h2>Explaining the terminology</h2>
+<ul>
+<li><strong>Dummy variable:</strong> Variables <span class="math inline">X</span> which are <strong>qualitative</strong> in nature</li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANOVA:</strong>
+<ul>
+<li>Method for comparing the means of different populations</li>
+<li>At a higher level: ANOVA can be seen as a regression model containing <strong>only</strong> dummy variables</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>ANCOVA:</strong> refers to situations where regression models contain a combination of
+<ul>
+<li>dummy variables <strong>and</strong> quantitative (the usual) variables</li>
+</ul></li>
+</ul>
+</section>
+<section id="binary-dummy-variables" class="slide level2 smaller">
+<h2>Binary dummy variables</h2>
+<ul>
+<li><p><strong>Dummy variable:</strong></p>
+<ul>
+<li>A variable <span class="math inline">X</span> which is qualitative in nature</li>
+<li>Often called <strong>cathegorical variables</strong></li>
+</ul></li>
+<li><p>Regression models can include dummy variables</p></li>
+<li><p>Qualitatitve <strong>binary</strong> variables can be represented by <span class="math inline">X</span> with</p>
+<ul>
+<li><span class="math inline">X = 1 \,</span> if effect present</li>
+<li><span class="math inline">X = 0 \,</span> if effect not present</li>
+</ul></li>
+<li><p>Examples of <strong>binary</strong> quantitative variables are</p>
+<ul>
+<li>On / Off</li>
+<li>Yes / No</li>
+<li>Sample is from Population A / B</li>
+</ul></li>
+</ul>
+</section>
+<section id="dummy-variables-with-multiple-levels" class="slide level2 smaller">
+<h2>Dummy variables with multiple levels</h2>
+<ul>
+<li>Dummy variables can also take several values
+<ul>
+<li>These values are often called <strong>levels</strong></li>
+<li>Such variables are represented by <span class="math inline">X</span> taking discrete values</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>Examples of dummy variables with several levels
+<ul>
+<li>Season: Summer, Autumn, Winter, Spring</li>
+<li>Sex: Male, Female, Non-binary, …</li>
+<li>Priority: Low, Medium, High</li>
+<li>Quarterly sales data: Q1, Q2, Q3, Q4</li>
+<li>UK regions: East Midlands, London Essex, North East/Yorkshire, …</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-fridge-sales-data" class="slide level2 smaller">
+<h2>Example: Fridge sales data</h2>
+<div style="font-size: 0.90em">
+<ul>
+<li>Consider the dataset on quarterly fridge sales <a href="datasets/fridge_sales.txt">fridge_sales.txt</a>
+<ul>
+<li>Each entry represents sales data for 1 quarter</li>
+<li>4 consecutive entries represent sales data for 1 year</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   fridge.sales durable.goods.sales Q1 Q2 Q3 Q4 Quarter
+1          1317               252.6  1  0  0  0       1
+2          1615               272.4  0  1  0  0       2
+3          1662               270.9  0  0  1  0       3
+4          1295               273.9  0  0  0  1       4
+5          1271               268.9  1  0  0  0       1
+6          1555               262.9  0  1  0  0       2
+7          1639               270.9  0  0  1  0       3
+8          1238               263.4  0  0  0  1       4
+9          1277               260.6  1  0  0  0       1
+10         1258               231.9  0  1  0  0       2
+11         1417               242.7  0  0  1  0       3
+12         1185               248.6  0  0  0  1       4
+13         1196               258.7  1  0  0  0       1
+14         1410               248.4  0  1  0  0       2
+15         1417               255.5  0  0  1  0       3
+16          919               240.4  0  0  0  1       4
+17          943               247.7  1  0  0  0       1
+18         1175               249.1  0  1  0  0       2
+19         1269               251.8  0  0  1  0       3
+20          973               262.0  0  0  0  1       4
+21         1102               263.3  1  0  0  0       1
+22         1344               280.0  0  1  0  0       2
+23         1641               288.5  0  0  1  0       3
+24         1225               300.5  0  0  0  1       4
+25         1429               312.6  1  0  0  0       1
+26         1699               322.5  0  1  0  0       2
+27         1749               324.3  0  0  1  0       3
+28         1117               333.1  0  0  0  1       4
+29         1242               344.8  1  0  0  0       1
+30         1684               350.3  0  1  0  0       2
+31         1764               369.1  0  0  1  0       3
+32         1328               356.4  0  0  0  1       4</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
+<div style="font-size: 0.90em">
+<ul>
+<li>Below are the first 4 entries of the <em>Fridge sales dataset</em>
+<ul>
+<li>These correspond to 1 year of sales data</li>
+</ul></li>
+<li>First two variables are quantitative
+<ul>
+<li><em>Fridge Sales</em> <span class="math inline">=</span> total quarterly fridge sales (in million $)</li>
+<li><em>Duarable Goods Sales</em> <span class="math inline">=</span> total quarterly durable goods sales (in billion $)</li>
+</ul></li>
+<li>Remaining variables are qualitative:
+<ul>
+<li><em>Q1</em>, <em>Q2</em>, <em>Q3</em>, <em>Q4</em> <span class="math inline">\,</span> take values 0 / 1 <span class="math inline">\quad</span> (representing 4 yearly quarters)</li>
+<li><em>Quarter</em> <span class="math inline">\,</span> takes values 1 / 2 / 3 / 4 <span class="math inline">\quad</span> (equivalent representation of quarters)</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.40em">
+<p><br></p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Fridge Sales</th>
+<th>Durable Goods Sales</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Q3</th>
+<th>Q4</th>
+<th>Quarter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1317</td>
+<td>252.6</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1615</td>
+<td>272.4</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>1662</td>
+<td>270.9</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>1295</td>
+<td>273.9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="encoding-quarter-in-regression-model" class="slide level2 smaller">
+<h2>Encoding Quarter in regression model</h2>
+<p><strong>Two alternative approaches:</strong></p>
+<ol type="1">
+<li>Include <span class="math inline">4-1 = 3</span> dummy variables with values 0 / 1
+<ul>
+<li>Each dummy variable represents 1 Quarter</li>
+<li>We need 3 variables to represent 4 Quarters (if we include intercept)</li>
+</ul></li>
+<li>Include one variable which takes values 1 / 2 / 3 / 4</li>
+</ol>
+<p><strong>Differences between the two approaches:</strong></p>
+<ol type="1">
+<li><p>This method is good to first understand dummy variable regression</p></li>
+<li><p>This is the most efficient way of organising cathegorical data in R</p>
+<ul>
+<li>usese the command <span class="math inline">\, \texttt{factor}</span></li>
+</ul></li>
+</ol>
+</section>
+<section id="the-dummy-variable-trap" class="slide level2 smaller">
+<h2>The dummy variable trap</h2>
+<ul>
+<li>Suppose you follow the first approach:
+<ul>
+<li>Encode each quarter with a separate variable</li>
+</ul></li>
+<li>If you have 4 different levels you would need
+<ul>
+<li><span class="math inline">4-1=3</span> dummy variables</li>
+<li>the intercept term</li>
+</ul></li>
+<li>In general: if you have <span class="math inline">m</span> different levels you would need
+<ul>
+<li><span class="math inline">m-1</span> dummy variables</li>
+<li>the intercept term</li>
+</ul></li>
+</ul>
+<p><strong>Question:</strong> Why only <span class="math inline">m - 1</span> dummy variables?</p>
+<p><strong>Answer:</strong> To avoid the <strong>dummy variable trap</strong></p>
+</section>
+<section id="example-dummy-variable-trap" class="slide level2 smaller">
+<h2>Example: Dummy variable trap</h2>
+<p>To illustrate the dummy variable trap consider the following</p>
+<ul>
+<li>Encode each Quarter with one dummy variable <span class="math inline">Q_i</span></li>
+</ul>
+<p><span class="math display">
+Q_i = \begin{cases}
+1 &amp; \text{ if data belongs to Quarter i} \\
+0 &amp; \text{ otherwise} \\
+\end{cases}
+</span></p>
+<ul>
+<li>Consider the regression model with intercept</li>
+</ul>
+<p><span class="math display">
+Y = \beta_0 \cdot (1) + \beta_1 Q_1 + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4   + \varepsilon
+</span></p>
+<ul>
+<li>In the above <span class="math inline">Y</span> is the quartely <em>Fridge sales data</em></li>
+</ul>
+</section>
+<section id="section-2" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>Each data entry belongs to exactly one Quarter, so that</li>
+</ul>
+<p><span class="math display">
+Q_1 + Q_2 + Q_3 + Q_4 = 1
+</span></p>
+<ul>
+<li><p><strong>Dummy variable trap:</strong> Variables are collinear (linearly dependent)</p></li>
+<li><p>Indeed the design matrix is</p></li>
+</ul>
+<p><span class="math display">
+Z =
+\left(
+\begin{array}{ccccc}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+\dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots \\
+\end{array}
+\right)
+</span></p>
+<ul>
+<li>First column is the sum of remaining columns <span class="math inline">\quad \implies \quad</span> Multicollinearity</li>
+</ul>
+</section>
+<section id="example-avoiding-dummy-variable-trap" class="slide level2 smaller">
+<h2>Example: Avoiding dummy variable trap</h2>
+<ul>
+<li><p>We want to avoid Multicollinearity (or dummy variable trap)</p></li>
+<li><p><strong>How?</strong> Drop one dummy variable (e.g.&nbsp;the first) and consider the model</p></li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 \cdot (1) + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4  + \varepsilon
+</span></p>
+<ul>
+<li><p>If data belongs to Q1 then <span class="math inline">Q_2 = Q_3 = Q_4 = 0</span></p></li>
+<li><p>Therefore, in general, we have</p></li>
+</ul>
+<p><span class="math display">
+Q_2 + Q_3 + Q_4 \not\equiv 1
+</span></p>
+<ul>
+<li>This way we <strong>avoid</strong> Multicollinearity <span class="math inline">\quad \implies \quad</span> <strong>no trap!</strong></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li><strong>Question:</strong> How do we interpret the coefficients in the model</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 \cdot (1)  + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4  + \varepsilon\qquad ?
+</span></p>
+<ul>
+<li><strong>Answer:</strong> Recall the relationship</li>
+</ul>
+<p><span class="math display">
+Q_1 + Q_2 + Q_3 + Q_4 = 1
+</span></p>
+<ul>
+<li>Substituting in the regression model we get</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y &amp; = \beta_1 \cdot ( Q_1 + Q_2 + Q_3 + Q_4 ) + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4  + \varepsilon\\[10pts]
+&amp; = \beta_1 Q_1 + (\beta_1 + \beta_2) Q_2 + (\beta_1 + \beta_3) Q_3 + (\beta_1 + \beta_4 ) Q_4 + \varepsilon
+\end{align*}</span></p>
+</section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>Therefore the regression coefficients are such that
+<ul>
+<li><span class="math inline">\beta_1</span> describes increase for <span class="math inline">Q_1</span></li>
+<li><span class="math inline">\beta_1 + \beta_2</span> describes increase for <span class="math inline">Q_2</span></li>
+<li><span class="math inline">\beta_1 + \beta_3</span> describes increase for <span class="math inline">Q_3</span></li>
+<li><span class="math inline">\beta_1 + \beta_4</span> describes increase for <span class="math inline">Q_4</span></li>
+</ul></li>
+</ul>
+<p><strong>Conclusion:</strong> When fitting regression model with dummy variables</p>
+<ul>
+<li><p>Increase for first dummy variable <span class="math inline">Q_1</span> is intercept term <span class="math inline">\beta_1</span></p></li>
+<li><p>Increase for successive dummy variables <span class="math inline">Q_i</span> with <span class="math inline">i &gt; 1</span> is computed by <span class="math inline">\beta_1 + \beta_i</span></p></li>
+</ul>
+<p><strong>Intercept coefficient acts as base reference point</strong></p>
+</section>
+<section id="general-case-dummy-variable-trap" class="slide level2 smaller">
+<h2>General case: Dummy variable trap</h2>
+<ul>
+<li>Suppose to have a qualitative <span class="math inline">X</span> variable which takes <span class="math inline">m</span> different levels
+<ul>
+<li>E.g. the previous example has <span class="math inline">m = 4</span> quarters</li>
+</ul></li>
+<li>Encode each level of <span class="math inline">X</span> in one dummy variable <span class="math inline">D_i</span></li>
+</ul>
+<p><span class="math display">
+D_i = \begin{cases}
+1 &amp; \text{ if X has level i} \\
+0 &amp; \text{ otherwise} \\
+\end{cases}
+</span></p>
+<ul>
+<li>To each data entry corresponds one and only one level of <span class="math inline">X</span>, so that</li>
+</ul>
+<p><span class="math display">
+D_1 + D_2 + \ldots + D_m = 1
+</span></p>
+<ul>
+<li>Hence <strong>Multicollinearity</strong> if intercept is present <span class="math inline">\, \implies \,</span> <strong>Dummy variable trap!</strong></li>
+</ul>
+</section>
+<section id="general-case-avoid-the-trap" class="slide level2 smaller">
+<h2>General case: Avoid the trap!</h2>
+<ul>
+<li>We drop the first dummy variable <span class="math inline">D_1</span> and consider the model</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 \cdot (1)  + \beta_2 D_2 + \beta_3 D_3 + \ldots + \beta_m D_m  + \varepsilon
+</span></p>
+<ul>
+<li>For data points such that <span class="math inline">X = 1</span> we have</li>
+</ul>
+<p><span class="math display">
+D_2 = D_3 = \ldots = D_m = 0
+</span></p>
+<ul>
+<li>Therefore, in general, we get</li>
+</ul>
+<p><span class="math display">
+D_2 + D_3 + \ldots + D_m \not \equiv 1
+</span></p>
+<ul>
+<li>This way we avoid Multicollinearity <span class="math inline">\quad \implies \quad</span> <strong>no trap!</strong></li>
+</ul>
+</section>
+<section id="general-case-interpret-the-output" class="slide level2 smaller">
+<h2>General case: Interpret the output</h2>
+<ul>
+<li>How to interpret the coefficients in the model</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 \cdot (1)  + \beta_2 D_2 + \beta_3 D_3 + \ldots + \beta_m D_m  + \varepsilon\quad ?
+</span></p>
+<ul>
+<li>We can argue similarly to the case <span class="math inline">m = 4</span> and use the constraint</li>
+</ul>
+<p><span class="math display">
+D_1 + D_2 + \ldots + D_m = 1
+</span></p>
+<ul>
+<li>Substituting in the regression model we get</li>
+</ul>
+<p><span class="math display">
+Y = \beta_1 D_1 + (\beta_1 + \beta_2) D_2 + \ldots + (\beta_1 + \beta_m) D_m + \varepsilon
+</span></p>
+</section>
+<section id="section-5" class="slide level2 smaller">
+<h2></h2>
+<p><strong>Conclusion:</strong> When fitting regression model with dummy variables</p>
+<ul>
+<li><p>Increase for first dummy variable <span class="math inline">D_1</span> is intercept term <span class="math inline">\beta_1</span></p></li>
+<li><p>Increase for successive dummy variables <span class="math inline">D_i</span> with <span class="math inline">i &gt; 1</span> is computed by <span class="math inline">\beta_1 + \beta_i</span></p></li>
+</ul>
+<p><strong>Intercept coefficient acts as base reference point</strong></p>
+</section></section>
+<section>
+<section id="part-5-regression-approach-to-anova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 5: <br> Regression approach <br> to ANOVA</h1>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+<div class="footer">
+<div color="#cc0164">
+
+</div>
+</div>
+</section>
+<section id="regression-approach-to-anova" class="slide level2 smaller">
+<h2>Regression approach to ANOVA</h2>
+<p>As already mentioned, there are 2 ways of fitting ANOVA models in R</p>
+<ol type="1">
+<li>An analysis of variance approach using the command <span class="math inline">\, \texttt{aov}</span>
+<ul>
+<li>We just saw this</li>
+</ul></li>
+<li>A regression approach using the command <span class="math inline">\, \texttt{lm}</span>
+<ul>
+<li>We are going to see this now</li>
+</ul></li>
+</ol>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<p><strong>Both approaches lead to the same numerical answers</strong></p>
+</section>
+<section id="regression-approach-to-anova-1" class="slide level2 smaller">
+<h2>Regression approach to ANOVA</h2>
+<ul>
+<li><p><strong>Question:</strong> How do we model ANOVA using linear regression?</p></li>
+<li><p><strong>Answer:</strong> Represent each population with one dummy variable</p></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>We have already seen this idea in the Lectures and the Homework
+<ul>
+<li><strong>Simple linear regression can be used to perform two-sample t-test</strong></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>This was done by considering the model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta \, 1_B (i) + \varepsilon_i
+</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<p>Let us recall how to perform two-sample t-test with regression</p>
+<ul>
+<li><p>Given two independent normal populations <span class="math inline">A</span> and <span class="math inline">B</span> with same variance <span class="math display">
+A \sim N (\mu_A, \sigma^2) \,, \qquad
+B \sim N(\mu_B, \sigma^2)
+</span></p></li>
+<li><p>We wish to test if the populations have equal means <span class="math display">\begin{align*}
+H_0 \colon &amp; \mu_A = \mu_B \\
+H_1 \colon &amp; \mu_A \neq \mu_B
+\end{align*}</span></p></li>
+<li><p>The above can best tested equivalently with</p>
+<ul>
+<li>Two-sample t-test</li>
+<li>Dummy variable simple regression</li>
+</ul></li>
+</ul>
+</section>
+<section id="regression-and-the-two-sample-t-test-1" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>Define the dummy (random) variable corresponding to population <span class="math inline">B</span></li>
+</ul>
+<p><span class="math display">
+1_B = \begin{cases}
+1 &amp; \text{ if sample belongs to population B} \\
+0 &amp; \text{ otherwise}
+\end{cases}
+</span></p>
+<ul>
+<li>Consider the model</li>
+</ul>
+<p><span class="math display">
+Y = \alpha + \beta 1_{B} + \varepsilon\,, \quad \varepsilon\sim N(0,\sigma^2)
+</span></p>
+<ul>
+<li>We have two samples
+<ul>
+<li>Sample of size <span class="math inline">n_A</span> from population <span class="math inline">A</span> <span class="math display">
+a = (a_1, \ldots, a_{n_A})
+</span></li>
+<li>Sample of size <span class="math inline">n_B</span> from population <span class="math inline">B</span> <span class="math display">
+b = (b_1, \ldots, b_{n_B})
+</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="regression-and-the-two-sample-t-test-2" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>The data vector <span class="math inline">y</span> is obtained by concatenating <span class="math inline">a</span> and <span class="math inline">b</span></li>
+</ul>
+<p><span class="math display">
+y = (a,b) = (a_1, \ldots, a_{n_A}, b_1, \ldots, b_{n_B} )
+</span></p>
+<ul>
+<li>We then considered the dummy variable model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta \, 1_B (i) + \varepsilon_i
+</span></p>
+<ul>
+<li>Here <span class="math inline">1_B (i)</span> is the dummy variable relative to population <span class="math inline">B</span></li>
+</ul>
+<p><span class="math display">
+1_B(i) = \begin{cases}
+1 &amp; \text{ if i-th sample belongs to population B} \\
+0 &amp; \text{ otherwise}
+\end{cases}
+</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-3" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>By construction we have that</li>
+</ul>
+<p><span class="math display">
+Y | \text{sample belongs to population A}  \ \sim \ N(\mu_A, \sigma^2)
+</span></p>
+<ul>
+<li>Therefore by definition of <span class="math inline">1_B</span> we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 0] = {\rm I\kern-.3em E}[Y | \text{ sample belongs to population A}] = \mu_A
+</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-4" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>On the other hand, the regression function is</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = x] = \alpha + \beta x
+</span></p>
+<ul>
+<li>Thus</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 0] = \alpha + \beta \cdot 0 = \alpha
+</span></p>
+<ul>
+<li><p>Recall that <span class="math inline">\, {\rm I\kern-.3em E}[Y | 1_B = 0] = \mu_A</span></p></li>
+<li><p>Hence we get</p></li>
+</ul>
+<p><span class="math display">
+\alpha = \mu_A
+</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-5" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>Similarly, we get that</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 1] = {\rm I\kern-.3em E}[Y | \text{ sample belongs to population B}] = \mu_B
+</span></p>
+<ul>
+<li>On the other hand, using the regression function we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 1] = \alpha + \beta \cdot 1 = \alpha + \beta
+</span></p>
+<ul>
+<li>Therefore</li>
+</ul>
+<p><span class="math display">
+\alpha + \beta = \mu_B
+</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-6" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>Since <span class="math inline">\alpha = \mu_A</span> we get</li>
+</ul>
+<p><span class="math display">
+\alpha + \beta = \mu_B  \quad \implies \quad \beta = \mu_B - \mu_A
+</span></p>
+<ul>
+<li>In particular we have shown that the regression model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y &amp; = \alpha + \beta \, 1_{B} + \varepsilon\\[10pts]
+    &amp; = \mu_A + (\mu_B - \mu_A) \, 1_{B}  + \varepsilon
+\end{align*}</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-7" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>We have also shown in the Homework that the estimators are related to the sample means</li>
+</ul>
+<p><span class="math display">
+\hat \alpha = \overline{a}  \,, \qquad \hat \beta =
+\overline{b} - \overline{a}
+</span></p>
+<ul>
+<li>Therefore the fitted model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y_i &amp; = \hat{\alpha} + \hat{\beta} \, 1_{B}(i) + \varepsilon_i \\[10pts]
+    &amp; = \overline{a} + ( \overline{b} - \overline{a} ) \, 1_{B}(i)  + \varepsilon_i
+\end{align*}</span></p>
+</section>
+<section id="regression-and-the-two-sample-t-test-8" class="slide level2 smaller">
+<h2>Regression and the two-sample t-test</h2>
+<ul>
+<li>F-test for overall significance for previous slide model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon \beta = 0 \\
+H_1 \colon \beta \neq 0
+\end{align*}</span></p>
+<ul>
+<li>Since <span class="math inline">\beta = \mu_B - \mu_A</span> the above is equivalent to</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon \mu_A = \mu_B \\
+H_1 \colon \mu_A \neq \mu_B
+\end{align*}</span></p>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<p><strong>F-test for overall significance is equivalent to two-sample t-test</strong></p>
+</section>
+<section id="regression-and-anova-f-test" class="slide level2 smaller">
+<h2>Regression and ANOVA F-test</h2>
+<p>We now consider the general ANOVA case</p>
+<ul>
+<li>Suppose to have <span class="math inline">M</span> populations <span class="math inline">A_i</span> with normal distribution <span class="math inline">N(\mu_i,\sigma^2)</span> <span class="math inline">\qquad</span> (with same variance)</li>
+</ul>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>Example:</strong> In Fridge sales example we have <span class="math inline">M = 4</span> populations (the 4 quarters)</li>
+</ul>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li>The ANOVA F-test for difference in populations means is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_1 = \mu_2 = \ldots =  \mu_M  \\
+H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<ul>
+<li><strong>Goal:</strong> Show that the ANOVA F-test can be obtained with regression</li>
+</ul>
+</section>
+<section id="setting-up-dummy-variable-model" class="slide level2 smaller">
+<h2>Setting up dummy variable model</h2>
+<ul>
+<li>We want to introduce dummy variable regression model which models ANOVA
+<ul>
+<li>We follow the same ideas seen for two-sample t-test</li>
+</ul></li>
+<li>To each population <span class="math inline">A_i</span> associate a dummy variable</li>
+</ul>
+<p><span class="math display">
+1_{A_i}(i) = \begin{cases}
+1 &amp; \text{ if i-th sample belongs to population } A_i \\
+0 &amp; \text{ otherwise} \\
+\end{cases}
+</span></p>
+<ul>
+<li><p>Suppose to have samples <span class="math inline">a_i</span> of size <span class="math inline">n_{A_i}</span> from population <span class="math inline">A_i</span></p></li>
+<li><p>Concatenate these samples into a long vector (length <span class="math inline">n_{A_1} + \ldots + n_{A_M}</span>)</p></li>
+</ul>
+<p><span class="math display">
+y = (a_1, \ldots, a_M)
+</span></p>
+</section>
+<section id="setting-up-dummy-variable-model-1" class="slide level2 smaller">
+<h2>Setting up dummy variable model</h2>
+<ul>
+<li>Consider the dummy variable model (with <span class="math inline">1_{A_1}</span> omitted)</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 + \beta_2 \, 1_{A_2} (i) + \beta_3 \, 1_{A_3} (i) +  \ldots  + \beta_M \, 1_{A_M} (i) + \varepsilon_i
+</span></p>
+<ul>
+<li>The regression function is therefore</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_{A_2} = x_2 , \, \ldots, \, 1_{A_M} = x_M ] = \beta_1 + \beta_2 \, x_2 +  \ldots  + \beta_M \, x_M
+</span></p>
+<ul>
+<li>By construction we have that</li>
+</ul>
+<p><span class="math display">
+Y | \text{sample belongs to population } A_i \ \sim \ N(\mu_i , \sigma^2)
+</span></p>
+</section>
+<section id="conditional-expectations" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>The sample belongs to population <span class="math inline">A_1</span> if and only if</li>
+</ul>
+<p><span class="math display">
+1_{A_2} = 1_{A_3} = \ldots = 1_{A_M} = 0
+</span></p>
+<ul>
+<li>Hence we can compute the conditional expectation</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 0 , \, \ldots, \, 1_{A_M} = 0] =
+{\rm I\kern-.3em E}[Y | \text{sample belongs to population } A_1] = \mu_1
+</span></p>
+<ul>
+<li>On the other hand, by definition of regression function, we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 0 , \, \ldots, \, 1_{A_M} = 0] = \beta_1 + \beta_2 \cdot 0 + \ldots + \beta_M \cdot 0 = \beta_1
+</span></p>
+<ul>
+<li>We conclude that <span class="math inline">\,\, \mu_1 = \beta_1</span></li>
+</ul>
+</section>
+<section id="conditional-expectations-1" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>Similarly, the sample belongs to population <span class="math inline">A_2</span> if and only if</li>
+</ul>
+<p><span class="math display">
+1_{A_2} = 1 \quad \text{and} \quad 1_{A_1} = 1_{A_3} = \ldots = 1_{A_M} = 0
+</span></p>
+<ul>
+<li>Hence we can compute the conditional expectation</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 1 , \, \ldots, \, 1_{A_M} = 0] =
+{\rm I\kern-.3em E}[Y | \text{sample belongs to population } A_2] = \mu_2
+</span></p>
+<ul>
+<li>On the other hand, by definition of regression function, we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 1 , \, \ldots, \, 1_{A_M} = 0] = \beta_1 + \beta_2 \cdot 1 + \ldots + \beta_M \cdot 0 = \beta_1 + \beta_2
+</span></p>
+<ul>
+<li>We conclude that <span class="math inline">\,\, \mu_2 = \beta_1 + \beta_2</span></li>
+</ul>
+</section>
+<section id="conditional-expectations-2" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>We have shown that</li>
+</ul>
+<p><span class="math display">
+\mu_1 = \beta_1 \quad \text{ and } \quad \mu_2 = \beta_1 + \beta_2
+</span></p>
+<ul>
+<li>Therefore we obtain</li>
+</ul>
+<p><span class="math display">
+\beta_1 = \mu_1 \quad \text{ and } \quad \beta_2 = \mu_2 - \mu_1
+</span></p>
+<ul>
+<li>Arguing in a similar way, we can show that also</li>
+</ul>
+<p><span class="math display">
+\beta_i = \mu_i - \mu_1  \qquad \forall \, i &gt; 1
+</span></p>
+</section>
+<section id="conclusion" class="slide level2 smaller">
+<h2>Conclusion</h2>
+<ul>
+<li>The considered dummy variable model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y_i &amp; = \beta_1 + \beta_2 \, 1_{A_2} (i) +   \ldots  + \beta_M \, 1_{A_M} (i) + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li>The F-test of overall significance for the above regression model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon  \beta_2 = \beta_3 = \ldots = \beta_M = 0 \\
+H_1 &amp; \colon \text{ At least one of the above } \beta_j \neq 0
+\end{align*}</span></p>
+<ul>
+<li>We have also shown that</li>
+</ul>
+<p><span class="math display">
+\beta_1 = \mu_1 \,, \qquad \beta_i = \mu_i - \mu_1 \quad \forall \,  i &gt; 1
+</span></p>
+</section>
+<section id="section-6" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>In particular we obtain</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\beta_2 =  \ldots = \beta_M = 0 &amp; \quad \iff
+\quad \mu_2 - \mu_1 =  \ldots = \mu_M - \mu_1 = 0 \\[10pts]
+&amp; \quad \iff \quad \mu_2 = \ldots = \mu_M = \mu_1
+\end{align*}</span></p>
+<ul>
+<li>Thefore the F-test for overall significance is equivalent to ANOVA F-test</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_1 = \mu_2 = \ldots = \mu_M \\
+H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<p><strong>F-test for overall significance is equivalent to ANOVA F-test</strong></p>
+</section>
+<section id="processing-dummy-variables-in-r" class="slide level2 smaller">
+<h2>Processing dummy variables in R</h2>
+<ul>
+<li>The variables <span class="math inline">\, \texttt{q1, q2, q3, q4} \,</span> are vectors taking the values <span class="math inline">\, \texttt{0}</span> and <span class="math inline">\, \texttt{1}</span>
+<ul>
+<li>No further data processing is needed for <span class="math inline">\, \texttt{q1, q2, q3, q4}</span></li>
+<li><strong>Remember:</strong> To avoid dummy variable trap only 3 of these 4 dummy variables can be included (if the model also includes an intercept term)</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.20em">
+<p><br></p>
+</div>
+<ul>
+<li>The variable <span class="math inline">\, \texttt{quarter}</span> is a vector taking the values <span class="math inline">\, \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}</span>
+<ul>
+<li>Need to tell R this is a qualitative variable</li>
+<li>This is done with the <span class="math inline">\, \texttt{factor}</span> command</li>
+</ul></li>
+</ul>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(quarter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+Levels: 1 2 3 4</code></pre>
+</div>
+</div>
+</section>
+<section id="regression-approach" class="slide level2 smaller">
+<h2>Regression approach</h2>
+<p>We can proceed in 2 equivalent ways</p>
+<ol type="1">
+<li>Use a dummy variable approach (and arbitrarily excluding <span class="math inline">\, \texttt{q1}</span>)</li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># We drop q1 to avoid dummy variable trap</span></span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>dummy.lm <span class="ot">&lt;-</span> <span class="fu">lm</span> (fridge <span class="sc">~</span> q2 <span class="sc">+</span> q3 <span class="sc">+</span> q4)</span>
+<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dummy.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<ol start="2" type="1">
+<li>Using the <span class="math inline">\, \texttt{factor}</span> command on <span class="math inline">\, \texttt{quarter}</span></li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Need to convert quarter to a factor</span></span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>quarter.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(quarter)</span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a>factor.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(fridge <span class="sc">~</span> quarter.f)</span>
+<span id="cb35-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(factor.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.10em">
+<p><br></p>
+</div>
+<ul>
+<li>Get the same numerical answers using both approaches</li>
+</ul>
+</section>
+<section id="output-for-dummy-variable-approach" class="slide level2 smaller">
+<h2>Output for dummy variable approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+</section>
+<section id="output-for-factor-approach" class="slide level2 smaller">
+<h2>Output for factor approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><p>The two outputs are essentially the same (only difference is variables names)</p></li>
+<li><p><span class="math inline">\, \texttt{quarter.f}</span> is a factor with four levels <span class="math inline">\, \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}</span></p></li>
+<li><p>Variables <span class="math inline">\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}</span> refer to the levels <span class="math inline">\, \texttt{2}, \texttt{3}, \texttt{4}</span> in <span class="math inline">\, \texttt{quarter.f}</span></p></li>
+</ul>
+</section>
+<section id="output-for-factor-approach-1" class="slide level2 smaller">
+<h2>Output for factor approach</h2>
+<div style="font-size: 0.83em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ quarter.f)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+quarter.f2    245.37      84.84   2.892 0.007320 ** 
+quarter.f3    347.63      84.84   4.097 0.000323 ***
+quarter.f4    -62.12      84.84  -0.732 0.470091    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05
+</code></pre>
+</div>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><p><span class="math inline">\, \texttt{lm}</span> is treating <span class="math inline">\, \texttt{quarter.f2}, \texttt{quarter.f3}, \texttt{quarter.f4}</span> as if they were dummy variables</p></li>
+<li><p>Note that <span class="math inline">\, \texttt{lm}</span> automatically drops <span class="math inline">\, \texttt{quarter.f1}</span> to prevent dummy variable trap</p></li>
+<li><p>Thus <span class="math inline">\, \texttt{lm}</span> behaves the same way as if we passed dummy variables <span class="math inline">\, \texttt{q2}, \texttt{q3}, \texttt{q4}</span></p></li>
+</ul>
+</section>
+<section id="computing-regression-coefficients" class="slide level2 smaller">
+<h2>Computing regression coefficients</h2>
+<div style="font-size: 0.86em">
+<pre class="verbatim"><code>Call:
+lm(formula = fridge ~ q2 + q3 + q4)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1222.12      59.99  20.372  &lt; 2e-16 ***
+q2            245.37      84.84   2.892 0.007320 ** 
+q3            347.63      84.84   4.097 0.000323 ***
+q4            -62.12      84.84  -0.732 0.470091    </code></pre>
+</div>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<ul>
+<li><p>Recall the formula for the linear regression model in exam <span class="math display">
+Y = \beta_1 + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4 + \varepsilon
+</span></p></li>
+<li><p>Looking at the output, we find the coefficients <span class="math display">
+\beta_1 = 1222.12 \,, \quad \beta_2 = 245.37 \,, \quad
+\beta_3 = 347.63 \,, \quad \beta_4 = -62.12
+</span></p></li>
+</ul>
+</section>
+<section id="computing-mean-quarterly-sales" class="slide level2 smaller">
+<h2>Computing mean quarterly sales</h2>
+<ul>
+<li><p>We want to compute the expected fridge sales for each quarter</p></li>
+<li><p>To this end, recall the relation between dummy variables</p></li>
+</ul>
+<p><span class="math display">
+Q_1 + Q_2 + Q_3 + Q_4 = 1
+</span></p>
+<ul>
+<li>Substituting the above in the regression model we get</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y &amp; = \beta_1 + \beta_2 Q_2 + \beta_3 Q_3 + \beta_4 Q_4 + \varepsilon\\[10pts]
+&amp; = \beta_1 Q_1 + (\beta_1 + \beta_2) Q_2 + (\beta_1 + \beta_3) Q_3 + (\beta_1 + \beta_4) Q_4 + \varepsilon
+\end{align*}</span></p>
+</section>
+<section id="computing-mean-quarterly-sales-1" class="slide level2 smaller">
+<h2>Computing mean quarterly sales</h2>
+<ul>
+<li>Recall the estimates</li>
+</ul>
+<p><span class="math display">
+\beta_1 = 1222.12 \,, \quad \beta_2 = 245.37 \,, \quad
+\beta_3 = 347.63 \,, \quad \beta_4 = -62.12
+</span></p>
+<ul>
+<li>The coefficients for each dummy variable are therefore</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Dummy variable</th>
+<th style="text-align: center;">Coefficient formula</th>
+<th style="text-align: center;">Estimated coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">Q_1</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">Q_2</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_2</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 + 245.37 = 1467.49</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">Q_3</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_3</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 + 347.63 = 1569.75</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">Q_4</span></td>
+<td style="text-align: center;"><span class="math inline">\beta_1 + \beta_4</span></td>
+<td style="text-align: center;"><span class="math inline">1222.12 - 62.12 = 1160</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="regression-formula" class="slide level2 smaller">
+<h2>Regression formula</h2>
+<ul>
+<li>The regression model fitted is hence</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y = &amp; \,\, 1222.12 \times \, Q_1 +
+1467.49 \times \, Q_2 + \\[15pts]
+&amp; \,\, 1569.75 \times \, Q_3 + 1160 \times \, Q_4
+\end{align*}</span></p>
+<ul>
+<li>Taking expectations we get</li>
+</ul>
+<p><span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[Y | Q_1 = x_1 , \ldots, Q_4 = x_4] = &amp; \,\, 1222.12 \times \, x_1 +
+1467.49 \times \, x_2 + \\[15pts]
+&amp; \,\, 1569.75 \times \, x_3 + 1160 \times \, x_4
+\end{align*}</span></p>
+</section>
+<section id="interpretation-quarterly-sales-estimates" class="slide level2 smaller">
+<h2>Interpretation: Quarterly sales estimates</h2>
+<ul>
+<li>The expected sales for Q1 are</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[\text{ Fridge sales } | \text{ Q1 } ] =
+{\rm I\kern-.3em E}[Y | Q_1 = 1 , Q_2 =  Q_3 = Q_4 = 0 ] =
+1222.12
+</span></p>
+<ul>
+<li>Similarly we get the expected sales for Q2, Q3 and Q4</li>
+</ul>
+<p><span class="math display">\begin{align*}
+{\rm I\kern-.3em E}[\text{ Fridge sales } | \text{ Q2 } = 1] &amp; = 1467.49 \\[15pts]
+{\rm I\kern-.3em E}[\text{ Fridge sales } | \text{ Q3 } = 1] &amp; = 1569.75 \\[15pts]
+{\rm I\kern-.3em E}[\text{ Fridge sales } | \text{ Q4 } = 1] &amp; = 1160 \\[15pts]
+\end{align*}</span></p>
+</section>
+<section id="anova-f-statistic-from-regression" class="slide level2 smaller">
+<h2>ANOVA F-statistic from regression</h2>
+<p><strong>Alternative way to get ANOVA F-statistic:</strong> Look at output of dummy variable model</p>
+<p><span class="math display">
+\texttt{lm(fridge} \, \sim \, \texttt{q2 + q3 + q4)}
+</span></p>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<pre class="verbatim"><code>Residual standard error: 169.7 on 28 degrees of freedom
+Multiple R-squared:  0.5318,    Adjusted R-squared:  0.4816 
+F-statistic:  10.6 on 3 and 28 DF,  p-value: 7.908e-05</code></pre>
+<div style="font-size: 0.5em">
+<p><br></p>
+</div>
+<ul>
+<li>The F-test for <strong>overall fit</strong> gives
+<ul>
+<li>F-statistic <span class="math inline">\,\, F = 10.6</span></li>
+<li>p-value <span class="math inline">\,\, p = 7.908 \times 10^{-5}</span></li>
+</ul></li>
+</ul>
+<p><strong>These always coincide with F-statistic and p-value for ANOVA F-test! <span class="math inline">\quad</span> Why?</strong></p>
+</section>
+<section id="anova-f-test-and-regression" class="slide level2 smaller">
+<h2>ANOVA F-test and regression</h2>
+<ul>
+<li><strong>ANOVA F-test equivalent to F-test for overall significance</strong></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>This happens because
+<ul>
+<li><strong>Linear regression can be used to perform ANOVA F-test</strong></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>We have already seen a particular instance of this fact in the Homework
+<ul>
+<li><strong>Simple linear regression can be used to perform two-sample t-test</strong></li>
+</ul></li>
+</ul>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<ul>
+<li>This was done by considering the model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta \, 1_B (i) + \varepsilon_i
+</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<p>In more details:</p>
+<ul>
+<li><p><span class="math inline">A</span> and <span class="math inline">B</span> are two normal populations <span class="math inline">N(\mu_A, \sigma^2)</span> and <span class="math inline">N(\mu_B, \sigma^2)</span></p></li>
+<li><p>We have two samples</p>
+<ul>
+<li>Sample of size <span class="math inline">n_A</span> from population <span class="math inline">A</span> <span class="math display">
+a = (a_1, \ldots, a_{n_A})
+</span></li>
+<li>Sample of size <span class="math inline">n_B</span> from population <span class="math inline">B</span> <span class="math display">
+b = (b_1, \ldots, b_{n_B})
+</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="simple-regression-for-two-sample-t-test-1" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>The data vector <span class="math inline">y</span> is obtained by concatenating <span class="math inline">a</span> and <span class="math inline">b</span></li>
+</ul>
+<p><span class="math display">
+y = (a,b) = (a_1, \ldots, a_{n_A}, b_1, \ldots, b_{n_B} )
+</span></p>
+<ul>
+<li>We then considered the dummy variable model</li>
+</ul>
+<p><span class="math display">
+Y_i = \alpha + \beta \, 1_B (i) + \varepsilon_i
+</span></p>
+<ul>
+<li>Here <span class="math inline">1_B (i)</span> is the dummy variable relative to population <span class="math inline">B</span></li>
+</ul>
+<p><span class="math display">
+1_B(i) = \begin{cases}
+1 &amp; \text{ if i-th sample belongs to population B} \\
+0 &amp; \text{ otherwise}
+\end{cases}
+</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test-2" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>The regression function is therefore</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = x] = \alpha + \beta x
+</span></p>
+<ul>
+<li>By construction we have that</li>
+</ul>
+<p><span class="math display">
+Y | \text{sample belongs to population A}  \ \sim \ N(\mu_A, \sigma^2)
+</span></p>
+<ul>
+<li>Therefore by definition of <span class="math inline">1_B</span> we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 0] = {\rm I\kern-.3em E}[Y | \text{ sample belongs to population A}] = \mu_A
+</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test-3" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>On the other hand, the regression function is</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = x] = \alpha + \beta x
+</span></p>
+<ul>
+<li>Thus</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 0] = \alpha + \beta \cdot 0 = \alpha
+</span></p>
+<ul>
+<li><p>Recall that <span class="math inline">\, {\rm I\kern-.3em E}[Y | 1_B = 0] = \mu_A</span></p></li>
+<li><p>Hence we get</p></li>
+</ul>
+<p><span class="math display">
+\alpha = \mu_A
+</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test-4" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>Similarly, we get that</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 1] = {\rm I\kern-.3em E}[Y | \text{ sample belongs to population B}] = \mu_B
+</span></p>
+<ul>
+<li>On the other hand, using the regression function we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_B = 1] = \alpha + \beta \cdot 1 = \alpha + \beta
+</span></p>
+<ul>
+<li>Therefore</li>
+</ul>
+<p><span class="math display">
+\alpha + \beta = \mu_B
+</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test-5" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>Since <span class="math inline">\alpha = \mu_A</span> we get</li>
+</ul>
+<p><span class="math display">
+\alpha + \beta = \mu_B  \quad \implies \quad \beta = \mu_B - \mu_A
+</span></p>
+<ul>
+<li>In particular we have shown that the regression model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y_i &amp; = \alpha + \beta \, 1_{B} (i) + \varepsilon_i \\[10pts]
+    &amp; = \mu_A + (\mu_B - \mu_A) \, 1_{B} (i) + \varepsilon_i
+\end{align*}</span></p>
+</section>
+<section id="simple-regression-for-two-sample-t-test-6" class="slide level2 smaller">
+<h2>Simple regression for two-sample t-test</h2>
+<ul>
+<li>F-test for overall significance for previous slide model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon \beta = 0 \\
+H_1 \colon \beta \neq 0
+\end{align*}</span></p>
+<ul>
+<li>Since <span class="math inline">\beta = \mu_B - \mu_A</span> the above is equivalent to</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 \colon \mu_A = \mu_B \\
+H_1 \colon \mu_A \neq \mu_B
+\end{align*}</span></p>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<p><strong>F-test for overall significance is equivalent to two-sample t-test</strong></p>
+</section>
+<section id="anova-f-test-and-regression-1" class="slide level2 smaller">
+<h2>ANOVA F-test and regression</h2>
+<p>We now consider the general ANOVA case</p>
+<ul>
+<li>Suppose to have <span class="math inline">M</span> populations <span class="math inline">A_i</span> with normal distribution <span class="math inline">N(\mu_i,\sigma^2)</span> <span class="math inline">\qquad</span> (with same variance)</li>
+</ul>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li><strong>Example:</strong> In Fridge sales example we have <span class="math inline">M = 4</span> populations (the 4 quarters)</li>
+</ul>
+<div style="font-size: 0.1em">
+<p><br></p>
+</div>
+<ul>
+<li>The ANOVA F-test for difference in populations means is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_1 = \mu_2 = \ldots =  \mu_M  \\
+H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<ul>
+<li><strong>Goal:</strong> Show that the above test can be obtained with regression</li>
+</ul>
+</section>
+<section id="setting-up-dummy-variable-model-2" class="slide level2 smaller">
+<h2>Setting up dummy variable model</h2>
+<ul>
+<li><p>We want to introduce dummy variable regression model which models ANOVA</p></li>
+<li><p>To each population <span class="math inline">A_i</span> associate a dummy variable</p></li>
+</ul>
+<p><span class="math display">
+1_{A_i}(i) = \begin{cases}
+1 &amp; \text{ if i-th sample belongs to population } A_i \\
+0 &amp; \text{ otherwise} \\
+\end{cases}
+</span></p>
+<ul>
+<li><p>Suppose to have samples <span class="math inline">a_i</span> of size <span class="math inline">n_{A_i}</span> from population <span class="math inline">A_i</span></p></li>
+<li><p>Concatenate these samples into a long vector (length <span class="math inline">n_{A_1} + \ldots + n_{A_M}</span>)</p></li>
+</ul>
+<p><span class="math display">
+y = (a_1, \ldots, a_M)
+</span></p>
+</section>
+<section id="setting-up-dummy-variable-model-3" class="slide level2 smaller">
+<h2>Setting up dummy variable model</h2>
+<ul>
+<li>Consider the dummy variable model (with <span class="math inline">1_{A_1}</span> omitted)</li>
+</ul>
+<p><span class="math display">
+Y_i = \beta_1 + \beta_2 \, 1_{A_2} (i) + \beta_3 \, 1_{A_3} (i) +  \ldots  + \beta_M \, 1_{A_M} (i) + \varepsilon_i
+</span></p>
+<ul>
+<li>The regression function is therefore</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[Y | 1_{A_2} = x_2 , \, \ldots, \, 1_{A_M} = x_M ] = \beta_1 + \beta_2 \, x_2 +  \ldots  + \beta_M \, x_M
+</span></p>
+<ul>
+<li>By construction we have that</li>
+</ul>
+<p><span class="math display">
+Y | \text{sample belongs to population } A_i \ \sim \ N(\mu_i , \sigma^2)
+</span></p>
+</section>
+<section id="conditional-expectations-3" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>The sample belongs to population <span class="math inline">A_1</span> if and only if</li>
+</ul>
+<p><span class="math display">
+1_{A_2} = 1_{A_3} = \ldots = 1_{A_M} = 0
+</span></p>
+<ul>
+<li>Hence we can compute the conditional expectation</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 0 , \, \ldots, \, 1_{A_M} = 0] =
+{\rm I\kern-.3em E}[Y | \text{sample belongs to population } A_1] = \mu_1
+</span></p>
+<ul>
+<li>On the other hand, by definition of regression function, we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 0 , \, \ldots, \, 1_{A_M} = 0] = \beta_1 + \beta_2 \cdot 0 + \ldots + \beta_M \cdot 0 = \beta_1
+</span></p>
+<ul>
+<li>We conclude that <span class="math inline">\,\, \mu_1 = \beta_1</span></li>
+</ul>
+</section>
+<section id="conditional-expectations-4" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>Similarly, the sample belongs to population <span class="math inline">A_2</span> if and only if</li>
+</ul>
+<p><span class="math display">
+1_{A_2} = 1 \quad \text{and} \quad 1_{A_1} = 1_{A_3} = \ldots = 1_{A_M} = 0
+</span></p>
+<ul>
+<li>Hence we can compute the conditional expectation</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 1 , \, \ldots, \, 1_{A_M} = 0] =
+{\rm I\kern-.3em E}[Y | \text{sample belongs to population } A_2] = \mu_2
+</span></p>
+<ul>
+<li>On the other hand, by definition of regression function, we get</li>
+</ul>
+<p><span class="math display">
+{\rm I\kern-.3em E}[ Y | 1_{A_2} = 1 , \, \ldots, \, 1_{A_M} = 0] = \beta_1 + \beta_2 \cdot 1 + \ldots + \beta_M \cdot 0 = \beta_1 + \beta_2
+</span></p>
+<ul>
+<li>We conclude that <span class="math inline">\,\, \mu_2 = \beta_1 + \beta_2</span></li>
+</ul>
+</section>
+<section id="conditional-expectations-5" class="slide level2 smaller">
+<h2>Conditional expectations</h2>
+<ul>
+<li>We have shown that</li>
+</ul>
+<p><span class="math display">
+\mu_1 = \beta_1 \quad \text{ and } \quad \mu_2 = \beta_1 + \beta_2
+</span></p>
+<ul>
+<li>Therefore we obtain</li>
+</ul>
+<p><span class="math display">
+\beta_1 = \mu_1 \quad \text{ and } \quad \beta_2 = \mu_2 - \mu_1
+</span></p>
+<ul>
+<li>Arguing in a similar way, we can show that also</li>
+</ul>
+<p><span class="math display">
+\beta_i = \mu_i - \mu_1  \qquad \forall \, i &gt; 1
+</span></p>
+</section>
+<section id="conclusion-1" class="slide level2 smaller">
+<h2>Conclusion</h2>
+<ul>
+<li>The considered dummy variable model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+Y_i &amp; = \beta_1 + \beta_2 \, 1_{A_2} (i) +   \ldots  + \beta_M \, 1_{A_M} (i) + \varepsilon_i
+\end{align*}</span></p>
+<ul>
+<li>The F-test of overall significance for the above regression model is</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon  \beta_2 = \beta_3 = \ldots = \beta_M = 0 \\
+H_1 &amp; \colon \text{ At least one of the above } \beta_j \neq 0
+\end{align*}</span></p>
+<ul>
+<li>We have also shown that</li>
+</ul>
+<p><span class="math display">
+\beta_1 = \mu_1 \,, \qquad \beta_i = \mu_i - \mu_1 \quad \forall \,  i &gt; 1
+</span></p>
+</section>
+<section id="section-7" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>In particular we obtain</li>
+</ul>
+<p><span class="math display">\begin{align*}
+\beta_2 =  \ldots = \beta_M = 0 &amp; \quad \iff
+\quad \mu_2 - \mu_1 =  \ldots = \mu_M - \mu_1 = 0 \\[10pts]
+&amp; \quad \iff \quad \mu_2 = \ldots = \mu_M = \mu_1
+\end{align*}</span></p>
+<ul>
+<li>Thefore the F-test for overall significance is equivalent to ANOVA F-test</li>
+</ul>
+<p><span class="math display">\begin{align*}
+H_0 &amp; \colon \mu_1 = \mu_2 = \ldots = \mu_M \\
+H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
+\end{align*}</span></p>
+<div style="font-size: 0.2em">
+<p><br></p>
+</div>
+<p><strong>F-test for overall significance is equivalent to ANOVA F-test</strong></p>
+</section></section>
+<section id="part-6-two-way-anova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 6: <br> Two-way ANOVA</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -447,8 +2697,8 @@
 </div>
 </section>
 
-<section id="part-6-two-way-anova-with-interactions" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 6: <br> Two-way ANOVA <br> with interactions</h1>
+<section id="part-7-two-way-anova-with-interactions" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 7: <br> Two-way ANOVA <br> with interactions</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -461,8 +2711,8 @@
 </div>
 </section>
 
-<section id="part-7-ancova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Part 7: <br> ANCOVA</h1>
+<section id="part-8-ancova" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Part 8: <br> ANCOVA</h1>
 <div class="footer">
 <div color="#cc0164">
 
@@ -671,6 +2921,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
