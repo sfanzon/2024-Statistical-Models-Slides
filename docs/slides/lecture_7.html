@@ -406,27 +406,15 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
   .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Proposition {
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -434,15 +422,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Lemma {
+  .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -454,11 +442,31 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Theorem {
+  .Proposition {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Axiom {
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -466,17 +474,9 @@
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
   </style>
 </head>
@@ -1669,16 +1669,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.13840000, error is 0.00319265
-After    20000 iterations pi is 3.14400000, error is 0.00240735
-After    30000 iterations pi is 3.14053333, error is 0.00105932
-After    40000 iterations pi is 3.13830000, error is 0.00329265
-After    50000 iterations pi is 3.14248000, error is 0.00088735
-After    60000 iterations pi is 3.14593333, error is 0.00434068
-After    70000 iterations pi is 3.14148571, error is 0.00010694
-After    80000 iterations pi is 3.13875000, error is 0.00284265
-After    90000 iterations pi is 3.13871111, error is 0.00288154
-After   100000 iterations pi is 3.13768000, error is 0.00391265</code></pre>
+<pre><code>After    10000 iterations pi is 3.13920000, error is 0.00239265
+After    20000 iterations pi is 3.14080000, error is 0.00079265
+After    30000 iterations pi is 3.13893333, error is 0.00265932
+After    40000 iterations pi is 3.13780000, error is 0.00379265
+After    50000 iterations pi is 3.13888000, error is 0.00271265
+After    60000 iterations pi is 3.14006667, error is 0.00152599
+After    70000 iterations pi is 3.13880000, error is 0.00279265
+After    80000 iterations pi is 3.13835000, error is 0.00324265
+After    90000 iterations pi is 3.13862222, error is 0.00297043
+After   100000 iterations pi is 3.13576000, error is 0.00583265</code></pre>
 </div>
 </div>
 </section>
@@ -1959,11 +1959,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.81873</code></pre>
+Custom Monte Carlo p-value: 0.82076</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.8305847</code></pre>
+R Monte Carlo p-value: 0.8225887</code></pre>
 </div>
 </div>
 <ul>
