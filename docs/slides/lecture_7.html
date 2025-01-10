@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.542">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
   <meta name="author" content="Dr.&nbsp;John Fry">
@@ -45,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -73,7 +73,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -87,7 +87,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -99,7 +99,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -114,7 +114,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -406,39 +406,7 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Idea {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Question {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -446,11 +414,7 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
+  .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -458,15 +422,27 @@
     --color1: #f1f1f2;
     --color2: #c0c0c1;
   }
-  .Notation {
+  .Idea {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
     --color1: #c6e6ed;
     --color2: #1995ad;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Warning {
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -474,7 +450,31 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -551,7 +551,7 @@
 <p><strong>Example</strong>: Blood counts</p>
 <ul>
 <li><p>Suppose to have counts of blood type for some people</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">A</th>
@@ -570,7 +570,7 @@
 </tbody>
 </table></li>
 <li><p>We want to compare the above to the probability model</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">A</th>
@@ -592,7 +592,7 @@
 </section>
 <section id="counts-with-multiple-factors" class="slide level2 smaller">
 <h2>Counts with multiple factors</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -647,7 +647,7 @@
 </section>
 <section id="counts-with-multiple-factors-1" class="slide level2 smaller">
 <h2>Counts with multiple factors</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -728,7 +728,7 @@
 <li>Observations can only belong to one category</li>
 <li><span class="math inline">O_i</span> refers to <strong>observed count</strong> of category <span class="math inline">i</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Type <span class="math inline">1</span></th>
@@ -749,7 +749,7 @@
 <ul>
 <li><span class="math inline">E_i</span> refers to <strong>expected count</strong> of category <span class="math inline">i</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Type <span class="math inline">1</span></th>
@@ -829,7 +829,7 @@
 <h2>Modelling counts</h2>
 <p><strong>Multinomial distribution:</strong> Schematic visualization</p>
 <p><br></p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Outcome type</th>
@@ -867,7 +867,7 @@
 <li>Probability of <em>success</em> is <span class="math inline">p_1</span></li>
 <li>Probability of <em>failure</em> is <span class="math inline">p_2 = 1 - p_1</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Outcome types</th>
@@ -1014,7 +1014,7 @@ O_n = m - O_1 - \ldots - O_{n-1}
 \chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2 }{ E_i } \ \approx \ \chi_{n-1}^2  
 </span></p></li>
 <li><p>The approximation is:</p>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 80%">
@@ -1066,7 +1066,7 @@ O_n = m - O_1 - \ldots - O_{n-1}
 <p><strong>Data</strong>: Vector of counts <span class="math inline">(o_1,\ldots,o_n)</span></p>
 <p><strong>Schematically:</strong> We can represent probabilities and counts in a table</p>
 <p><br></p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Type</th>
@@ -1195,7 +1195,7 @@ H_0 \colon p_i = p_i^0   \qquad \text{ for all } \, i = 1 , \ldots, n
 <h2>Example: Blood counts</h2>
 <ul>
 <li><p>Suppose to have counts of blood type for some people</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">A</th>
@@ -1214,7 +1214,7 @@ H_0 \colon p_i = p_i^0   \qquad \text{ for all } \, i = 1 , \ldots, n
 </tbody>
 </table></li>
 <li><p>We want to compare the above to the probability model</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">A</th>
@@ -1324,7 +1324,7 @@ E_1 = 2001.3 \qquad E_2 = 750.5 \qquad E_3 = 250.2 \qquad E_4 = 3002
 <li>A dice with <span class="math inline">6</span> faces is rolled <span class="math inline">100</span> times</li>
 <li>Counts observed are</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">1</span></th>
@@ -1404,15 +1404,13 @@ X-squared = 9.68, df = 5, p-value = 0.08483</code></pre>
 <li><p>Degrees of freedom are <span class="math inline">\, {\rm df} = 5</span></p></li>
 <li><p>p-value is <span class="math inline">p \approx 0.08</span></p></li>
 </ul>
-</div>
-<div class="column" style="width:35%;">
+</div><div class="column" style="width:35%;">
 <ul>
 <li><p>Therefore <span class="math inline">p &gt; 0.05</span></p></li>
 <li><p>We cannot reject <span class="math inline">H_0</span></p></li>
 <li><p>The dice appears to be fair</p></li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="example-voting-data" class="slide level2 smaller">
 <h2>Example: Voting data</h2>
 <h3 id="goodness-of-fit-test-in-r-1">Goodness-of-fit test in R</h3>
@@ -1421,7 +1419,7 @@ X-squared = 9.68, df = 5, p-value = 0.08483</code></pre>
 <li>Voter can choose one of these or be undecided</li>
 <li>100 people are surveyed and the results are</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Republican</th>
@@ -1669,16 +1667,16 @@ x_i^2 + y_i^2 \leq 1
 <h3 id="implementation-in-r-output">Implementation in R: Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>After    10000 iterations pi is 3.15480000, error is 0.01320735
-After    20000 iterations pi is 3.15240000, error is 0.01080735
-After    30000 iterations pi is 3.14320000, error is 0.00160735
-After    40000 iterations pi is 3.14230000, error is 0.00070735
-After    50000 iterations pi is 3.14432000, error is 0.00272735
-After    60000 iterations pi is 3.14553333, error is 0.00394068
-After    70000 iterations pi is 3.15017143, error is 0.00857877
-After    80000 iterations pi is 3.15190000, error is 0.01030735
-After    90000 iterations pi is 3.15004444, error is 0.00845179
-After   100000 iterations pi is 3.14744000, error is 0.00584735</code></pre>
+<pre><code>After    10000 iterations pi is 3.12960000, error is 0.01199265
+After    20000 iterations pi is 3.12520000, error is 0.01639265
+After    30000 iterations pi is 3.12653333, error is 0.01505932
+After    40000 iterations pi is 3.13450000, error is 0.00709265
+After    50000 iterations pi is 3.13824000, error is 0.00335265
+After    60000 iterations pi is 3.13820000, error is 0.00339265
+After    70000 iterations pi is 3.14034286, error is 0.00124980
+After    80000 iterations pi is 3.14200000, error is 0.00040735
+After    90000 iterations pi is 3.14213333, error is 0.00054068
+After   100000 iterations pi is 3.14120000, error is 0.00039265</code></pre>
 </div>
 </div>
 </section>
@@ -1688,7 +1686,7 @@ After   100000 iterations pi is 3.14744000, error is 0.00584735</code></pre>
 <ul>
 <li>Consider data counts</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Type</th>
@@ -1768,7 +1766,7 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 <h2>Monte Carlo p-value</h2>
 <h3 id="exercise">Exercise</h3>
 <p><strong>Data:</strong> Number of defects in printed circuit boards</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"># Defects</th>
@@ -1789,7 +1787,7 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 </tbody>
 </table>
 <p>Null hypothesis probabilities are</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><span class="math inline">p_1^0</span></th>
@@ -1814,7 +1812,7 @@ p =  P( \chi^2 &gt; \chi^2_{\rm obs} ) \ \approx \ \frac{ \# \text{ of extreme s
 <ul>
 <li>Total number of counts is <span class="math inline">m = 60</span>. Expected counts are <span class="math inline">E_i = m p_i^0</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><span class="math inline">E_1</span></th>
@@ -1959,11 +1957,11 @@ p \ = \ \frac{ \# \text{ of extreme simulated statistics} }{ \text{Total number 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Custom Monte Carlo p-value: 0.81921</code></pre>
+Custom Monte Carlo p-value: 0.81991</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-R Monte Carlo p-value: 0.816092</code></pre>
+R Monte Carlo p-value: 0.8245877</code></pre>
 </div>
 </div>
 <ul>
@@ -1991,7 +1989,7 @@ R Monte Carlo p-value: 0.816092</code></pre>
 <ul>
 <li>Two classifications for each game: Result and Manager in charge</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -2042,7 +2040,7 @@ R Monte Carlo p-value: 0.816092</code></pre>
 </section>
 <section id="contingency-tables-general-case" class="slide level2 smaller">
 <h2>Contingency tables: General case</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2108,7 +2106,7 @@ R Monte Carlo p-value: 0.816092</code></pre>
 </section>
 <section id="contingency-tables-general-case-1" class="slide level2 smaller">
 <h2>Contingency tables: General case</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2172,7 +2170,7 @@ O_{+2} = \sum_{i=1}^R O_{i2}
 </section>
 <section id="contingency-tables-general-case-2" class="slide level2 smaller">
 <h2>Contingency tables: General case</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2235,7 +2233,7 @@ m = O_{++} = \sum_{i=1}^R \sum_{j=1}^C O_{ij}
 </section>
 <section id="contingency-tables-general-case-3" class="slide level2 smaller">
 <h2>Contingency tables: General case</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2298,7 +2296,7 @@ m = O_{++} = \sum_{i=1}^R \sum_{j=1}^C O_{ij}
 </section>
 <section id="contingency-tables-general-case-4" class="slide level2 smaller">
 <h2>Contingency tables: General case</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2361,7 +2359,7 @@ m = O_{++} = \sum_{i=1}^R \sum_{j=1}^C O_{ij}
 </section>
 <section id="contingency-tables-probabilities" class="slide level2 smaller">
 <h2>Contingency tables: Probabilities</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2424,7 +2422,7 @@ p_{ij} := P(X = i , Y = j)
 </section>
 <section id="contingency-tables-probabilities-1" class="slide level2 smaller">
 <h2>Contingency tables: Probabilities</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2487,7 +2485,7 @@ P(X = i) = \sum_{j=1}^C P(X = i , Y = j) = \sum_{j=1}^C p_{ij} = p_{i+}
 </section>
 <section id="contingency-tables-probabilities-2" class="slide level2 smaller">
 <h2>Contingency tables: Probabilities</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2550,7 +2548,7 @@ P(Y = j) = \sum_{i=1}^R P(X = i , Y = j) = \sum_{i=1}^R p_{ij} = p_{+j}
 </section>
 <section id="contingency-tables-probabilities-3" class="slide level2 smaller">
 <h2>Contingency tables: Probabilities</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2613,7 +2611,7 @@ P(Y = j) = \sum_{i=1}^R P(X = i , Y = j) = \sum_{i=1}^R p_{ij} = p_{+j}
 </section>
 <section id="contingency-tables-probabilities-4" class="slide level2 smaller">
 <h2>Contingency tables: Probabilities</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2719,7 +2717,7 @@ O_{ij} \sim \mathop{\mathrm{Bin}}(m,p_{ij})
 </section>
 <section id="expected-counts" class="slide level2 smaller">
 <h2>Expected counts</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2782,7 +2780,7 @@ E_{ij} := {\rm I\kern-.3em E}[O_{ij}] =  m p_{ij}
 </section>
 <section id="marginal-expected-counts" class="slide level2 smaller">
 <h2>Marginal expected counts</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2846,7 +2844,7 @@ E_{+j} := \sum_{i=1}^R  E_{ij}
 </section>
 <section id="marginal-expected-counts-1" class="slide level2 smaller">
 <h2>Marginal expected counts</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -2908,7 +2906,7 @@ E_{+j} := \sum_{i=1}^R  E_{ij}
 </section>
 <section id="the-chi-squared-statistic" class="slide level2 smaller">
 <h2>The chi-squared statistic</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -3098,7 +3096,7 @@ p \geq 0.05
 </section>
 <section id="example-manchester-united-performance-1" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -3177,7 +3175,7 @@ p \geq 0.05
 <ul>
 <li>We compute total number of games for each manager</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -3340,7 +3338,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -3387,7 +3385,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence-1" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -3433,7 +3431,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence-2" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -3481,7 +3479,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence-3" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -3533,7 +3531,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence-4" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -3584,7 +3582,7 @@ X-squared = 137.93, df = 17, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="testing-for-independence-5" class="slide level2 smaller">
 <h2>Testing for independence</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -3781,7 +3779,7 @@ j = 1, \ldots, C
 <section id="the-chi-squared-test-of-independence-1" class="slide level2 smaller">
 <h2>The chi-squared test of independence</h2>
 <p><strong>Data:</strong> Matrix of counts, represented by two-way contigency table</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
@@ -3924,7 +3922,7 @@ p \geq 0.05
 </section>
 <section id="example-residential-status-and-region" class="slide level2 smaller">
 <h2>Example: Residential Status and Region</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -3980,7 +3978,7 @@ p \geq 0.05
 <li>Total and marginal counts are already provided in the table</li>
 </ul></li>
 </ol>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -4026,7 +4024,7 @@ p \geq 0.05
 <li>Compute the estimated expected counts <span class="math inline">E_{ij} = \dfrac{o_{i+} \, o_{+j} }{ m }</span></li>
 </ul></li>
 </ol>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 30%">
@@ -4140,7 +4138,7 @@ p \geq 0.05
 <li>There is evidence <span class="math inline">(p &lt; 0.05)</span> that Residential Status depends on Region</li>
 <li>By rescaling table values, we can compute the table of percentages</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -4226,7 +4224,7 @@ X-squared = 228.11, df = 2, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="example-manchester-united-performance-11" class="slide level2 smaller">
 <h2>Example: Manchester United performance</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Manager</th>
@@ -4595,18 +4593,7 @@ X-squared = 12.678, df = 10, p-value = 0.2422</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -4638,7 +4625,47 @@ X-squared = 12.678, df = 10, p-value = 0.2422</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -4675,7 +4702,11 @@ X-squared = 12.678, df = 10, p-value = 0.2422</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.542">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr Silvio Fanzon">
 <meta name="author" content="Dr John Fry">
-<meta name="dcterms.date" content="2024-01-15">
+<meta name="dcterms.date" content="2025-01-15">
 
 <title>Statistical Models</title>
 <style>
@@ -77,7 +77,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -120,18 +120,18 @@ window.Quarto = {
     <span class="navbar-title">Statistical Models</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools">
+        <div class="quarto-navbar-tools tools-end">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Homepage</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -150,9 +150,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Slides</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -225,8 +225,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/lecture_12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix</span></a>
+  <a href="./slides/appendix_A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix A</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides/appendix_B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix B</span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +285,7 @@ window.Quarto = {
           </p>
       </div>
     <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.hull.ac.uk/staff-directory/john-fry">Dr John Fry</a> <a href="mailto:J.M.Fry@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    <p class="author">Dr John Fry <a href="mailto:J.M.Fry@hull.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -294,7 +300,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 Jan 2024</p>
+      <p class="date">15 Jan 2025</p>
     </div>
   </div>
   
@@ -308,7 +314,7 @@ window.Quarto = {
 
 <section id="welcome" class="level1">
 <h1>Welcome</h1>
-<p>These are the Slides of the module <strong>Statistical Models 551305</strong> for T2 2023/24 at the University of Hull. If you have any question or find any typo, please email me at</p>
+<p>These are the Slides of the module <strong>Statistical Models 551305</strong> for T2 2024/25 at the University of Hull. If you have any question or find any typo, please email me at</p>
 <div style="text-align: center;">
 <p><strong><a href="mailto:%20S.Fanzon@hull.ac.uk">S.Fanzon@hull.ac.uk</a></strong></p>
 </div>
@@ -318,13 +324,13 @@ window.Quarto = {
 </div>
 <p>and on the <strong>Course Webpage</strong> hosted on my website</p>
 <div style="text-align: center;">
-<p><strong><a href="https://www.silviofanzon.com/blog/2024/Statistical-Models/">silviofanzon.com/blog/2024/Statistical-Models/</a></strong></p>
+<p><strong><a href="https://www.silviofanzon.com/blog/2025/Statistical-Models/">silviofanzon.com/blog/2025/Statistical-Models/</a></strong></p>
 </div>
 </section>
 <section id="slides" class="level1">
 <h1>Slides</h1>
 <p>There are 11 lectures in this module. Links to the slides and lecture titles are below.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 70%">
@@ -381,7 +387,11 @@ window.Quarto = {
 <td style="text-align: left;">Violation of regression assumptions and ANOVA</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="./slides/lecture_12.html">Appendix</a></td>
+<td style="text-align: left;"><a href="./slides/appendix_A.html">Appendix A</a></td>
+<td style="text-align: left;">Probability Revision</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./slides/appendix_B.html">Appendix B</a></td>
 <td style="text-align: left;">More on R</td>
 </tr>
 </tbody>
@@ -395,7 +405,7 @@ window.Quarto = {
 </section>
 <section id="r-codes" class="level1">
 <h1>R Codes</h1>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 70%">
@@ -680,18 +690,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -723,7 +722,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -731,10 +752,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // default icon
           link.classList.add("external");
       }
@@ -773,7 +799,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -821,7 +851,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.542">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
   <meta name="author" content="Dr.&nbsp;John Fry">
@@ -45,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -73,7 +73,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -87,7 +87,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -119,7 +119,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -134,7 +134,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -426,59 +426,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
+  .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,7 +438,7 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Idea {
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -494,7 +446,55 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
+  .Corollary {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -716,7 +716,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 <li><strong>Observation</strong>: Data shows a massive drop in CCI between 2009 and 2007</li>
 <li><strong>Method:</strong> Use <span class="math inline">t</span>-test to see if data is sufficient to prove that CCI actually dropped</li>
 </ul>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 4%">
@@ -806,7 +806,7 @@ p &amp; := 2P(t_{n-1}&gt;|t|) \\
 <li>If units cannot be compared, then we must use a two-sample approach</li>
 <li>Two-sample approach will be discussed later</li>
 </ul>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 4%">
@@ -922,7 +922,7 @@ t = \frac{\overline x - \mu_0}{s/\sqrt{n}}
 <h2>Example: 2008 crisis</h2>
 <h3 id="calculation-3">Calculation</h3>
 <p><br></p>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 4%">
@@ -1074,13 +1074,11 @@ H_0 \colon \mu = 0
 <li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-1" role="doc-biblioref" onclick="">1</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R</em> <br> Second Edition, Springer, 2008</p></li>
 <li><p><span class="citation" data-cites="davies">[<a href="#/references-1" role="doc-biblioref" onclick="">2</a>]</span> Davies, T.M. <br> <em>The book of R</em> <br> No Starch Press, 2016</p></li>
 </ul>
-</div>
-<div class="column" style="width:35%;">
+</div><div class="column" style="width:35%;">
 <p><strong>Concise Statistics with R</strong></p>
 <p><br></p>
 <p><strong>Comprehensive R manual</strong></p>
-</div>
-</section>
+</div></section>
 <section id="installing-r" class="slide level2 smaller">
 <h2>Installing R</h2>
 <ul>
@@ -1308,7 +1306,7 @@ H_0 \colon \mu = 0
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.0786565 -0.0823201 -1.4221775 -0.3084164 -0.5282035</code></pre>
+<pre><code>[1] -1.5994135  0.7859864  0.4554528  1.1728454 -1.2189535</code></pre>
 </div>
 </div>
 <p>These can then be plotted by concatenating the plot command</p>
@@ -1783,7 +1781,7 @@ s^2 =  \frac{\sum_{i=1}^n (x_i -  \overline{x})^2 }{n-1}
 <li>Let us go back to an Example we saw in Lecure 3</li>
 <li>Below is the Wage data on 10 Advertising Professionals Accountants</li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 8%">
@@ -1998,7 +1996,7 @@ H_0 \colon \mu &lt; \mu_0
 <li><strong>Observation</strong>: Data shows a massive drop in CCI between 2009 and 2007</li>
 <li><strong>Method:</strong> Use <span class="math inline">t</span>-test to see if data is sufficient to prove that CCI actually dropped</li>
 </ul>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 4%">
@@ -2180,16 +2178,14 @@ mean of x
 <li><span class="math inline">\texttt{df} = \,</span> degrees of freedom</li>
 <li><span class="math inline">\texttt{p-value} = \,</span> the exact p-value</li>
 </ul>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <p><strong>Note:</strong></p>
 <ul>
 <li>You do not need Statistical Tables!</li>
 <li>You see that <span class="math inline">p &lt; 0.05</span></li>
 <li>Therefore we reject null hypothesis that the mean difference is <span class="math inline">0</span></li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="example-2008-crisis-17" class="slide level2 smaller">
 <h2>Example: 2008 crisis</h2>
 <h3 id="analysis-of-output-3">Analysis of Output</h3>
@@ -2838,18 +2834,7 @@ y = x^2 \,, \qquad x \in [-1, 1]
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2881,7 +2866,47 @@ y = x^2 \,, \qquad x \in [-1, 1]
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -2918,7 +2943,11 @@ y = x^2 \,, \qquad x \in [-1, 1]
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

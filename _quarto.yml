@@ -48,8 +48,10 @@ website:
             text: Lecture 10
           - href: slides/lecture_11.qmd
             text: Lecture 11
-          - href: slides/lecture_12.qmd
-            text: Appendix
+          - href: slides/appendix_A.qmd
+            text: Appendix A
+          - href: slides/appendix_B.qmd
+            text: Appendix B
       - href: license.qmd
         text: License
   page-footer:

@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.542">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
   <meta name="author" content="Dr.&nbsp;John Fry">
@@ -45,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -73,7 +73,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -87,7 +87,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -119,7 +119,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -134,7 +134,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -426,6 +426,14 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
@@ -438,39 +446,7 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Remark {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -478,11 +454,31 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
+  }
   .Axiom {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Problem {
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -490,13 +486,17 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Remark {
+    --color1: #bce5de;
+    --color2: #21aa93;
   }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -867,8 +867,7 @@ e_i := y_i - \hat y_i
 </div>
 </div>
 </div>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -878,8 +877,7 @@ e_i := y_i - \hat y_i
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="graphical-checks-1" class="slide level2 smaller">
 <h2>Graphical checks</h2>
 <h3 id="second-method-residual-graphs">Second method: Residual graphs</h3>
@@ -913,8 +911,7 @@ e_i := y_i - \hat y_i
 <li>Vertical spread is comparable</li>
 </ul></li>
 </ul>
-</div>
-<div class="column" style="width:47%;">
+</div><div class="column" style="width:47%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -924,8 +921,7 @@ e_i := y_i - \hat y_i
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="interepretation-of-residual-graphs-1" class="slide level2 smaller">
 <h2>Interepretation of Residual Graphs</h2>
 <h3 id="patterns-implying-heteroscedasticity">Patterns implying Heteroscedasticity</h3>
@@ -942,16 +938,14 @@ e_i := y_i - \hat y_i
 <div class="columns">
 <div class="column" style="width:100%;">
 <p><img data-src="images/funnellinplot.png" style="width:100.0%"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="funnelling-in-of-residuals" class="slide level2 smaller">
 <h2>Funnelling in of residuals</h2>
 <div class="columns">
 <div class="column" style="width:100%;">
 <p><img data-src="images/funnelloutplot.png" style="width:100.0%"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="linear-and-quadratic-residuals" class="slide level2">
 <h2>Linear and Quadratic residuals</h2>
@@ -965,8 +959,7 @@ e_i := y_i - \hat y_i
 </div>
 </div>
 </div>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -976,8 +969,7 @@ e_i := y_i - \hat y_i
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="remedial-transformations" class="slide level2 smaller">
 <h2>Remedial transformations</h2>
 <ul>
@@ -1120,8 +1112,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-1" class="slide level2 smaller">
 <h2></h2>
@@ -1152,8 +1143,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-2" class="slide level2 smaller">
 <h2></h2>
@@ -1186,8 +1176,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-3" class="slide level2 smaller">
 <h2></h2>
@@ -1243,8 +1232,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 
 <section id="section-5" class="title-slide slide level1 smaller center">
@@ -1277,8 +1265,7 @@ Y_i = \beta_1 + \beta_2 X_{i} + \varepsilon_i
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 
 <section>
@@ -1563,8 +1550,7 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-7" class="slide level2 smaller">
 <h2></h2>
@@ -1581,8 +1567,7 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
 <p><img data-src="images/shifted_vectors.png" style="width:110.0%"> <img data-src="images/shifted_vectors_2.png" style="width:110.0%"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-8" class="slide level2 smaller">
 <h2></h2>
@@ -1653,8 +1638,7 @@ L \neq \frac{1}{(2\pi \sigma^2)^{n/2}} \, \exp   \left(   -\frac{ \mathop{\mathr
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="statistical-tests-for-autocorrelation" class="slide level2 smaller">
 <h2>Statistical tests for Autocorrelation</h2>
@@ -1768,7 +1752,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 <li><p>But <span class="math inline">Z_3</span> is small perturbation of <span class="math inline">Z_2</span></p></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -1804,8 +1788,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-multicollinear-data-1" class="slide level2 smaller">
 <h2>Example of Multicollinear data</h2>
@@ -1822,7 +1805,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 <li><strong>Both instances qualify as multicollinearity</strong></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -1858,8 +1841,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-multicollinear-data-2" class="slide level2 smaller">
 <h2>Example of Multicollinear data</h2>
@@ -1877,7 +1859,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 </div>
 </div>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -1913,8 +1895,7 @@ Y_i = \beta_1 z_{i1} + \beta_2 z_{i2} + \ldots + \beta_p z_{ip} + \varepsilon_i
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="consequences-of-multicollinearity" class="slide level2 smaller">
 <h2>Consequences of Multicollinearity</h2>
@@ -1988,7 +1969,7 @@ Z_2 = 5 Z_1
 <li><p>Let us check with R</p></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -2024,8 +2005,7 @@ Z_2 = 5 Z_1
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-non-invertible-zt-z-1" class="slide level2 smaller">
 <h2>Example of non-invertible <span class="math inline">Z^T Z</span></h2>
@@ -2047,7 +2027,7 @@ Z_2 = 5 Z_1
 </div>
 </div>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -2083,8 +2063,7 @@ Z_2 = 5 Z_1
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-non-invertible-zt-z-2" class="slide level2 smaller">
 <h2>Example of non-invertible <span class="math inline">Z^T Z</span></h2>
@@ -2217,7 +2196,7 @@ Z_2 = 5 Z_1
 <li><p>Therefore <span class="math inline">Z^T Z</span> is not invertible</p></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -2253,8 +2232,7 @@ Z_2 = 5 Z_1
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-numerical-instability-1" class="slide level2 smaller">
 <h2>Example of numerical instability</h2>
@@ -2271,7 +2249,7 @@ Z_1 \,\, \leadsto \,\, Z_1 + 0.01
 </ul></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1</span></th>
@@ -2307,8 +2285,7 @@ Z_1 \,\, \leadsto \,\, Z_1 + 0.01
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-of-numerical-instability-2" class="slide level2 smaller">
 <h2>Example of numerical instability</h2>
@@ -2323,7 +2300,7 @@ Z = (Z_1 + 0.01 | Z_2 | Z_3)
 <li><p>Let us compute this inverse in R</p></li>
 </ul>
 </div><div class="column" style="display: flex; justify-content: center; align-items: center;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th><span class="math inline">Z_1 + 0.01</span></th>
@@ -2359,8 +2336,7 @@ Z = (Z_1 + 0.01 | Z_2 | Z_3)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-11" class="slide level2 smaller">
 <h2></h2>
@@ -2585,7 +2561,7 @@ Z = (Z_1 + 0.01 | Z_2 | Z_3)
 <section id="example-dataset" class="slide level2 smaller">
 <h2>Example dataset</h2>
 <div style="font-size: 0.90em">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Expenditure <span class="math inline">Y</span></th>
@@ -3139,8 +3115,7 @@ Y = \beta_1 + \beta_2 \, X_2 + \beta_3 \, X_3 + \beta_4 \, X_4 + \beta_5 \, X_5
 <div class="columns">
 <div class="column" style="width:100%;">
 <p><img data-src="images/longley_output_4.png" style="width:72.0%"></p>
-</div>
-</div>
+</div></div>
 <div style="font-size: 0.9em">
 <ul>
 <li>Fitting the full model gives
@@ -3537,8 +3512,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 <li>The risk peak in year 2 is explained by unusually low risk in year 1</li>
 </ul></li>
 </ul>
-</div>
-<div class="column" style="width:46%;">
+</div><div class="column" style="width:46%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Click here for full code</summary>
@@ -3580,8 +3554,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="revisiting-the-divorces-example-1" class="slide level2 smaller">
 <h2>Revisiting the Divorces example</h2>
 <div class="column" style="width:45%;">
@@ -3594,8 +3567,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </ul></li>
 <li>Statistically <em>Order 6</em> model is better than <em>Linear</em> model</li>
 </ul>
-</div>
-<div class="column" style="width:46%;">
+</div><div class="column" style="width:46%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Click here for full code</summary>
@@ -3637,8 +3609,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="revisiting-the-divorces-example-2" class="slide level2 smaller">
 <h2>Revisiting the Divorces example</h2>
 <div class="column" style="width:45%;">
@@ -3655,8 +3626,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </ul></li>
 <li>Answer: We need a new measure for comparing regression models</li>
 </ul>
-</div>
-<div class="column" style="width:46%;">
+</div><div class="column" style="width:46%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Click here for full code</summary>
@@ -3698,8 +3668,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="akaike-information-criterion-aic" class="slide level2 smaller">
 <h2>Akaike information criterion (AIC)</h2>
 <ul>
@@ -3784,7 +3753,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 <li>Code for this example is available here <a href="codes/divorces_stepwise.R">divorces_stepwise.R</a></li>
 </ul>
 <p><br></p>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 10%">
@@ -3821,7 +3790,7 @@ y = \beta_1 + \beta_2 x + \varepsilon
 </tbody>
 </table>
 <p><br></p>
-<table style="width:100%;">
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 10%">
@@ -4099,7 +4068,7 @@ lm(formula = percent ~ year)
 <div style="font-size: 0.40em">
 <p><br></p>
 </div>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Fridge Sales</th>
@@ -4882,7 +4851,7 @@ q4            -62.12      84.84  -0.732 0.470091    </code></pre>
 <p><br></p>
 </div>
 <div style="font-size: 0.9em">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Dummy variable</th>
@@ -5013,8 +4982,7 @@ H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
 <li><p>We clearly see 4 populations</p></li>
 <li><p>Averages appear different</p></li>
 </ul>
-</div>
-<div class="column" style="width:55%;">
+</div><div class="column" style="width:55%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -5024,8 +4992,7 @@ H_1 &amp; \colon  \mu_i \neq \mu_j \, \text{ for at least one pair i and j}
 </div>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="anova-f-test-for-fridge-sales-1" class="slide level2 smaller">
 <h2>ANOVA F-test for fridge sales</h2>
 <ul>
@@ -5754,18 +5721,7 @@ H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -5797,7 +5753,47 @@ H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -5834,7 +5830,11 @@ H_1 &amp; \colon \mu_i \neq \mu_j \text{ for at least one pair i and j}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

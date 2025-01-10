@@ -1,6 +1,6 @@
 ---
 title: "Statistical Models"
-subtitle: "Appendix"
+subtitle: "Appendix B"
 from: markdown+emoji
 author: 
     - name: Dr. Silvio Fanzon
@@ -26,7 +26,7 @@ $
 
 
 
-# Appendix: <br>More on R {background-color="#cc0164" visibility="uncounted"}
+# Appendix B: <br>More on R {background-color="#cc0164" visibility="uncounted"}
 
 ::: footer
 
@@ -38,7 +38,7 @@ $
 
 
 
-## Outline of Appendix
+## Outline of Appendix B
 
 1. Functions in R
 2. More on Vectors

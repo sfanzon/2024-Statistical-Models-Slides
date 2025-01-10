@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.542">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
   <meta name="author" content="Dr.&nbsp;John Fry">
@@ -54,7 +54,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -69,7 +69,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -361,45 +361,9 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Proposition {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
   .Idea {
     --color1: #f4cce0;
     --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Corollary {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Question {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Example {
-    --color1: #bce5de;
-    --color2: #21aa93;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Proof {
     --color1: #f1f1f2;
@@ -409,19 +373,15 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Lemma {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Important {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -429,7 +389,47 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Conjecture {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Problem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Warning {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Example {
+    --color1: #bce5de;
+    --color2: #21aa93;
+  }
+  .Question {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Corollary {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -526,7 +526,7 @@
 <li>2 Lectures of 2h each</li>
 <li>1 Tutorial of 1h</li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Session</th>
@@ -557,7 +557,7 @@
 <h2>Assessment</h2>
 <p>This course will be assessed as follows:</p>
 <p><br></p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><strong>Type of Assessment</strong></th>
@@ -602,7 +602,7 @@
 <section id="key-submission-dates" class="slide level2">
 <h2>Key submission dates</h2>
 <div class="column" style="width:48%;">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><strong>Assignment</strong></th>
@@ -636,9 +636,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="column" style="width:48%;">
-<table>
+</div><div class="column" style="width:48%;">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"><strong>Assignment</strong></th>
@@ -672,8 +671,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-</section>
+</div></section>
 <section id="how-to-submit-assignments" class="slide level2">
 <h2>How to submit assignments</h2>
 <ul>
@@ -699,11 +697,9 @@
 <ul>
 <li><span class="citation" data-cites="bingham-fry">[<a href="#/references-4" role="doc-biblioref" onclick="">1</a>]</span> Bingham, N. H. and Fry, J. M. <br> <em>Regression: Linear models in statistics.</em> <br> Springer, 2010</li>
 </ul>
-</div>
-<div class="column" style="width:38%;">
+</div><div class="column" style="width:38%;">
 <p><a href="https://link.springer.com/book/10.1007/978-1-84882-969-5"><img data-src="images/bingham_fry.png" style="width:80.0%"></a></p>
-</div>
-</section>
+</div></section>
 <section id="references-1" class="slide level2">
 <h2>References</h2>
 <h3 id="main-textbooks-1">Main textbooks</h3>
@@ -713,11 +709,9 @@
 <ul>
 <li><span class="citation" data-cites="fry-burke">[<a href="#/references-4" role="doc-biblioref" onclick="">2</a>]</span> Fry, J. M. and Burke, M. <br><em>Quantitative methods in finance using R.</em> <br>Open University Press, 2022</li>
 </ul>
-</div>
-<div class="column" style="width:38%;">
+</div><div class="column" style="width:38%;">
 <p><a href="https://www.mheducation.co.uk/quantitative-methods-in-finance-using-r-9780335251261-emea-group"><img data-src="images/fry_burke.png" style="width:80.0%"></a></p>
-</div>
-</section>
+</div></section>
 <section id="references-2" class="slide level2">
 <h2>References</h2>
 <h3 id="secondary-references">Secondary References</h3>
@@ -726,12 +720,10 @@
 <li><p><span class="citation" data-cites="casella-berger">[<a href="#/references-4" role="doc-biblioref" onclick="">3</a>]</span> Casella, G. and Berger R. L. <br> <em>Statistical inference.</em> <br> Second Edition, Brooks/Cole, 2002</p></li>
 <li><p><span class="citation" data-cites="degroot">[<a href="#/references-4" role="doc-biblioref" onclick="">4</a>]</span> DeGroot M. H. and Schervish M. J. <br> <em>Probability and Statistics.</em> <br> Fourth Edition, Addison-Wesley, 2012</p></li>
 </ul>
-</div>
-<div class="column" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <p><strong>Probability &amp; Statistics manual</strong></p>
 <p><strong>Easier Probability &amp; Statistics manual</strong></p>
-</div>
-</section>
+</div></section>
 <section id="references-3" class="slide level2">
 <h2>References</h2>
 <h3 id="secondary-references-1">Secondary References</h3>
@@ -740,12 +732,10 @@
 <li><p><span class="citation" data-cites="dalgaard">[<a href="#/references-4" role="doc-biblioref" onclick="">5</a>]</span> Dalgaard, P. <br> <em>Introductory statistics with R.</em> <br> Second Edition, Springer, 2008</p></li>
 <li><p><span class="citation" data-cites="davies">[<a href="#/references-4" role="doc-biblioref" onclick="">6</a>]</span> Davies, T. M. <br> <em>The book of R.</em> <br> No Starch Press, 2016</p></li>
 </ul>
-</div>
-<div class="column" style="width:30%;">
+</div><div class="column" style="width:30%;">
 <p><strong>Concise Statistics with R</strong></p>
 <p><strong>Comprehensive R manual</strong></p>
-</div>
-</section></section>
+</div></section></section>
 <section>
 <section id="part-2-introduction" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
 <h1>Part 2: <br>Introduction</h1>
@@ -819,8 +809,7 @@
 <li>What is the <strong>variance</strong>?</li>
 </ul></li>
 </ul>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <p><strong>Regression:</strong></p>
 <ul>
 <li>What happens to <span class="math inline">Y</span> as <span class="math inline">X</span> increases?
@@ -830,8 +819,7 @@
 <li>nothing?</li>
 </ul></li>
 </ul>
-</div>
-<p><strong>Statistics answers these questions systematically</strong></p>
+</div><p><strong>Statistics answers these questions systematically</strong></p>
 <ul>
 <li>important for large datasets</li>
 <li>The same mathematical machinery (normal family of distributions) can be applied to both questions</li>
@@ -901,10 +889,12 @@
 <p>Dataset with <span class="math inline">33</span> entries for Stock and Gold price pairs</p>
 </div>
 <div style="font-size: 0.55em">
+<div>
+
+</div>
 <div class="cell quarto-layout-panel" data-layout-ncol="1">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<table class="kable_wrapper" data-quarto-postprocess="true">
+<table class="kable_wrapper caption-top" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -912,7 +902,7 @@
 </colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
+<td style="text-align: left;"><table class="table simple table-striped table-hover caption-top" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -978,7 +968,7 @@
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
+<td style="text-align: left;"><table class="table simple table-striped table-hover caption-top" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1044,7 +1034,7 @@
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left;"><table class="table simple table-striped table-hover" data-quarto-postprocess="true">
+<td style="text-align: left;"><table class="table simple table-striped table-hover caption-top" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1113,13 +1103,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 
 
-</div>
 </div>
 </div>
 </div>
@@ -1153,8 +1138,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="dont-panic" class="slide level2 smaller">
 <h2>Don’t panic</h2>
@@ -1203,8 +1187,7 @@
 <li>Conditional probability</li>
 <li>Events independence</li>
 </ul>
-</div>
-<div class="column" style="width:38%;">
+</div><div class="column" style="width:38%;">
 <ul>
 <li>Random Variable</li>
 <li>Distribution</li>
@@ -1212,8 +1195,7 @@
 <li>pmf</li>
 <li>pdf</li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="sample-space" class="slide level2 smaller">
 <h2>Sample space</h2>
 <div id="sample-space-1" class="Definition" title="Sample space">
@@ -1618,7 +1600,7 @@ P \left( X \in I \right)
 <ul>
 <li>Sample space <span class="math inline">\Omega</span> given by the below values of <span class="math inline">\omega</span></li>
 </ul>
-<table style="width:85%;">
+<table class="caption-top" style="width:85%;">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 9%">
@@ -1652,7 +1634,7 @@ P(\omega) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8} \,, 
 X(\omega) :=  \text{ Number of H in }  \omega
 </span></p></li>
 </ul>
-<table>
+<table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\omega</span></td>
@@ -1684,7 +1666,7 @@ X(\omega) :=  \text{ Number of H in }  \omega
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\omega</span></td>
@@ -1725,7 +1707,7 @@ P(X=3)
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\omega</span></td>
@@ -1765,7 +1747,7 @@ P(X=3) &amp; = P(HHH) = \frac{1}{8}
 <ul>
 <li>Recall the definition of <span class="math inline">X</span></li>
 </ul>
-<table>
+<table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\omega</span></td>
@@ -1794,7 +1776,7 @@ P(X=3) &amp; = P(HHH) = \frac{1}{8}
 <ul>
 <li>The distribution of <span class="math inline">X</span> is summarized in the table below</li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 40%">
 <col style="width: 15%">
@@ -1859,7 +1841,7 @@ F_X(x) := P_X (X \leq x)
 <li><p>Consider again 3 coin tosses and the rv <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
 <li><p>We computed that the distribution <span class="math inline">P_X</span> of <span class="math inline">X</span> is</p></li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 40%">
 <col style="width: 15%">
@@ -1897,8 +1879,7 @@ F_X(x) =
 \end{cases}
 </span></li>
 </ul>
-</div>
-<div class="column" style="width:56%;">
+</div><div class="column" style="width:56%;">
 <ul>
 <li>For example <span class="math display">\begin{align*}
 F_X(2.1) &amp; = P(X \leq 2.1) \\
@@ -1907,8 +1888,7 @@ F_X(2.1) &amp; = P(X \leq 2.1) \\
        &amp; = \frac{1}{8} + \frac{3}{8} + \frac{3}{8} = \frac{7}{8}
 \end{align*}</span></li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="cumulative-distribution-function-2" class="slide level2 smaller">
 <h2>Cumulative Distribution Function</h2>
 <h3 id="example-1">Example</h3>
@@ -1919,14 +1899,12 @@ F_X(2.1) &amp; = P(X \leq 2.1) \\
 <li><span class="math inline">F_X'=0</span> except at <span class="math inline">x=0,1,2,3</span></li>
 <li><span class="math inline">F_X</span> jumps at <span class="math inline">x=0,1,2,3</span></li>
 </ul>
-</div>
-<div class="column" style="width:56%;">
+</div><div class="column" style="width:56%;">
 <ul>
 <li>Size of jump at <span class="math inline">x</span> is <span class="math inline">P(X=x)</span></li>
 <li><span class="math inline">F_X'=P_X</span> in the sense of <strong>distributions</strong> <br> (Advanced analysis concept - not covered)</li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="discrete-random-variables" class="slide level2 smaller">
 <h2>Discrete Random Variables</h2>
 <p>In the previous example:</p>
@@ -1978,7 +1956,7 @@ f_X(x) := P(X = x)
 <li><p>Consider again 3 coin tosses and the RV <span class="math inline">X(\omega) :=  \text{ Number of H in }  \omega</span></p></li>
 <li><p>The pmf of <span class="math inline">X</span> is <span class="math inline">f_X(x):=P(X=x)</span>, which we have already computed</p></li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 40%">
 <col style="width: 15%">
@@ -2183,7 +2161,7 @@ P(a \leq X \leq b) = \int_a^b f(t) \, dt   \,\,\, \text{ (pdf)}
 <li><p>Suppose <span class="math inline">X \colon \Omega \to \mathbb{R}</span> is RV</p></li>
 <li><p><strong>Cumulative Density Function (cdf)</strong>: <span class="math inline">F_X(x) := P(X \leq x)</span></p></li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 46%">
 <col style="width: 53%">
@@ -2636,15 +2614,13 @@ M_X(t) := {\rm I\kern-.3em E}[e^{tX}] \,, \quad \forall \, t \in \mathbb{R}
 M_X(t) = \sum_{x \in \mathbb{R}} e^{tx} f_X(x)
 </span></li>
 </ul>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <ul>
 <li><span class="math inline">X</span> continuous: <span class="math display">
 M_X(t) = \int_{-\infty}^\infty e^{tx} f_X(x) \, dx
 </span></li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="moment-generating-function-2" class="slide level2 smaller">
 <h2>Moment generating function</h2>
 <h3 id="computing-moments">Computing moments</h3>
@@ -3206,18 +3182,7 @@ M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -3249,7 +3214,47 @@ M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -3286,7 +3291,11 @@ M_Y(t) =  \frac{\beta^{\alpha}}{(\beta-t)^{\alpha}}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -15,8 +15,7 @@ author:
         department: Department of Mathematics
         state: United Kingdom
     email: J.M.Fry@hull.ac.uk
-    url: https://www.hull.ac.uk/staff-directory/john-fry
-date: 2024-01-15 
+date: 2025-01-15 
 # To enter today's date replace by today
 # Enter date formatted as dd MM yyyy
 date-format: "D MMM YYYY"
@@ -25,7 +24,7 @@ date-format: "D MMM YYYY"
 
 # Welcome 
 
-These are the Slides of the module **Statistical Models 551305** for T2 2023/24 at the University of Hull. 
+These are the Slides of the module **Statistical Models 551305** for T2 2024/25 at the University of Hull. 
 If you have any question or find any typo, please email me at
 
 
@@ -51,7 +50,7 @@ and on the **Course Webpage** hosted on my website
 
 ::: {.content-visible when-format="html"}
 <div style="text-align: center;">
-**[silviofanzon.com/blog/2024/Statistical-Models/](https://www.silviofanzon.com/blog/2024/Statistical-Models/)**
+**[silviofanzon.com/blog/2025/Statistical-Models/](https://www.silviofanzon.com/blog/2025/Statistical-Models/)**
 </div>
 :::
 
@@ -78,7 +77,8 @@ There are 11 lectures in this module. Links to the slides and lecture titles are
 | <a href="slides/lecture_9.qmd">Lecture 9</a>   | General linear regression                     |
 | <a href="slides/lecture_10.qmd">Lecture 10</a> | Practical regression                          |
 | <a href="slides/lecture_11.qmd">Lecture 11</a> | Violation of regression assumptions and ANOVA |
-| <a href="slides/lecture_12.qmd">Appendix</a>   | More on R                                     |
+| <a href="slides/appendix_A.qmd">Appendix A</a> | Probability Revision                          |
+| <a href="slides/appendix_B.qmd">Appendix B</a> | More on R                                     |
 : {tbl-colwidths="[30,70]"}
 
 

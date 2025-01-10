@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.542">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
   <meta name="author" content="Dr.&nbsp;John Fry">
@@ -45,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -73,7 +73,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -87,7 +87,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -99,7 +99,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -114,7 +114,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -406,7 +406,11 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-  .Axiom {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Problem {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -414,7 +418,27 @@
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Lemma {
+  .Proposition {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Notation {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Definition {
+    --color1: #c6e6ed;
+    --color2: #1995ad;
+  }
+  .Theorem {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Warning {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -422,23 +446,15 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Important {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Problem {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Conjecture {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
   .Question {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .Proposition {
+  .Important {
+    --color1: #f4cce0;
+    --color2: #db4d92;
+  }
+  .Lemma {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -446,35 +462,19 @@
     --color1: #f4cce0;
     --color2: #db4d92;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Proof {
+    --color1: #f1f1f2;
+    --color2: #c0c0c1;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Definition {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
+  .Axiom {
+    --color1: #f4cce0;
+    --color2: #db4d92;
   }
   .Example {
     --color1: #bce5de;
     --color2: #21aa93;
   }
-  .Notation {
-    --color1: #c6e6ed;
-    --color2: #1995ad;
-  }
-  .Proof {
-    --color1: #f1f1f2;
-    --color2: #c0c0c1;
-  }
-  .Warning {
-    --color1: #f4cce0;
-    --color2: #db4d92;
-  }
-  .Theorem {
+  .Conjecture {
     --color1: #f4cce0;
     --color2: #db4d92;
   }
@@ -486,7 +486,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Statistical Models</h1>
-  <p class="subtitle">Appendix</p>
+  <p class="subtitle">Appendix A</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -515,23 +515,18 @@
 
 </section>
 <section>
-<section id="appendix-more-on-r" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
-<h1>Appendix: <br>More on R</h1>
+<section id="appendix-a-probability-revision" class="title-slide slide level1 center" data-background-color="#cc0164" data-visibility="uncounted">
+<h1>Appendix A: <br>Probability Revision</h1>
 <div class="footer">
 <div color="#cc0164">
 
 </div>
 </div>
 </section>
-<section id="outline-of-appendix" class="slide level2">
-<h2>Outline of Appendix</h2>
+<section id="outline-of-appendix-a" class="slide level2">
+<h2>Outline of Appendix A</h2>
 <ol type="1">
 <li>Functions in R</li>
-<li>More on Vectors</li>
-<li>Lists</li>
-<li>Data Frames</li>
-<li>Data Entry</li>
-<li>R Style Guide</li>
 </ol>
 </section></section>
 <section>
@@ -601,7 +596,7 @@
 <li><p>If a function has a lot of arguments, positional matching is tedious</p></li>
 <li><p>For example <code>plot()</code> accepts the following (and more!) arguments</p></li>
 </ul>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Argument</th>
@@ -804,10 +799,10 @@
 <span id="cb7-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"They coincide!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of x computed with my_mean is: 0.02337842</code></pre>
+<pre><code>Mean of x computed with my_mean is: 0.01107773</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean of x computed with R mean is: 0.02337842</code></pre>
+<pre><code>Mean of x computed with R mean is: 0.01107773</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>They coincide!</code></pre>
@@ -878,8 +873,7 @@
 <pre><code>Red Green Blue</code></pre>
 </div>
 </div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Red Green"</span>, <span class="st">"Blue"</span>)</span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
 <span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -891,8 +885,7 @@
 <pre><code>Red Green Blue</code></pre>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="logical-vectors" class="slide level2 smaller">
 <h2>Logical vectors</h2>
 <ul>
@@ -961,8 +954,7 @@
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>F <span class="sc">+</span> F</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -973,8 +965,7 @@
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
-</div>
-</section>
+</div></section>
 <section id="logical-vectors-application-1" class="slide level2 smaller">
 <h2>Logical vectors – Application</h2>
 <ul>
@@ -991,7 +982,7 @@
 <span id="cb34-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"This is pretty close to 500!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of entries which are above the average 0 is 472</code></pre>
+<pre><code>Number of entries which are above the average 0 is 523</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>This is pretty close to 500!</code></pre>
@@ -1693,14 +1684,12 @@ $string
 <li>R prints data frames like matrices</li>
 <li>First row contains vector names</li>
 </ul>
-</div>
-<div class="column" style="width:54%;">
+</div><div class="column" style="width:54%;">
 <ul>
 <li>First column contains row names</li>
 <li>Data are paired: e.g.&nbsp;Peter is 42 and Male</li>
 </ul>
-</div>
-<div class="cell">
+</div><div class="cell">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a aria-hidden="true" tabindex="-1"></a>family <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb108-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">person =</span> <span class="fu">c</span>(<span class="st">"Peter"</span>, <span class="st">"Lois"</span>, <span class="st">"Meg"</span>, <span class="st">"Chris"</span>, <span class="st">"Stewie"</span>),</span>
 <span id="cb108-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">40</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">1</span>),</span>
@@ -2084,8 +2073,7 @@ $string
 <li>The text file looks like this</li>
 </ul>
 <p><img data-src="images/family_guy.png" style="width:78.0%"></p>
-</div>
-<div class="column" style="width:44%;">
+</div><div class="column" style="width:44%;">
 <ul>
 <li>Remarks:
 <ul>
@@ -2094,8 +2082,7 @@ $string
 <li>Missing values denoted by <code>*</code></li>
 </ul></li>
 </ul>
-</div>
-</section>
+</div></section>
 <section id="read.table-command" class="slide level2 smaller">
 <h2>read.table command</h2>
 <ul>
@@ -2158,14 +2145,12 @@ $string
 6  Brian  NA   M   Med      NA</code></pre>
 </div>
 </div>
-</div>
-<div class="column" style="width:48%;">
+</div><div class="column" style="width:48%;">
 <ul>
 <li>For comparison this is the <code>.txt</code> file</li>
 </ul>
 <p><img data-src="images/family_guy.png" style="width:85.0%"></p>
-</div>
-</section>
+</div></section>
 <section id="application-t-test" class="slide level2 smaller">
 <h2>Application: t-test</h2>
 <p><strong>Example</strong>: Analysis of Consumer Confidence Index for 2008 crisis from Lecture 4</p>
@@ -2421,8 +2406,7 @@ mean of x
 <span id="cb153-7"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
 <span id="cb153-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(x)</span>
 <span id="cb153-9"><a aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
 <div class="sourceCode" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb154-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb154-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> debug)</span>
@@ -2432,8 +2416,7 @@ mean of x
 <span id="cb154-7"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) </span>
 <span id="cb154-8"><a aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb154-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(x)} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
+</div></section>
 <section id="line-length" class="slide level2 smaller">
 <h2>Line length</h2>
 <ul>
@@ -2783,18 +2766,7 @@ mean of x
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2826,7 +2798,47 @@ mean of x
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -2863,7 +2875,11 @@ mean of x
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

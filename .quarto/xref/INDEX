@@ -67,5 +67,11 @@
   },
   "list-of-mathstuff.qmd": {
     "list-of-mathstuff.html": "4aecb7a2"
+  },
+  "slides/appendix_A.qmd": {
+    "appendix_A.html": "adde42a8"
+  },
+  "slides/appendix_B.qmd": {
+    "appendix_B.html": "dfc6592f"
   }
 }
